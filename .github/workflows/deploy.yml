@@ -17,13 +17,17 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.EDGE01_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Build and deploy
+      - name: Deploy
+        env:
+          HOST: ${{ secrets.EDGE01_HOST }}
         run: |
-          ssh -o StrictHostKeyChecking=no root@${{ secrets.EDGE01_HOST }} '
-            cd /tmp/healthlog-landing &&
-            git fetch origin main &&
-            git reset --hard origin/main &&
-            docker build --network host -t o8g80o008scc48c884coo0kk:latest . &&
-            cd /data/coolify/applications/o8g80o008scc48c884coo0kk &&
-            docker compose up -d --force-recreate
-          '
+          ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=15 -o ServerAliveCountMax=20 root@$HOST << 'DEPLOY'
+          set -e
+          cd /tmp/healthlog-landing
+          git fetch origin main
+          git reset --hard origin/main
+          docker build --network host -q -t o8g80o008scc48c884coo0kk:latest .
+          cd /data/coolify/applications/o8g80o008scc48c884coo0kk
+          docker compose up -d --force-recreate
+          echo "Deploy complete"
+          DEPLOY
