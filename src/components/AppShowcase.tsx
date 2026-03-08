@@ -129,24 +129,6 @@ export function AppShowcase() {
           </div>
         </div>
 
-        {/* Floating mobile screenshot */}
-        <div className="showcase-mobile hidden md:block">
-          <div className="showcase-mobile-frame">
-            {/* Phone notch */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-[#0a0b10] rounded-b-2xl z-20" />
-            <div className="relative w-full h-full overflow-hidden rounded-[28px]">
-              <Image
-                src="/screenshots/mobile-dashboard-opt.webp"
-                alt="HealthLog mobile dashboard with health metrics and bottom navigation"
-                fill
-                sizes="200px"
-                className="object-cover object-top"
-                quality={90}
-              />
-            </div>
-          </div>
-        </div>
-
         {/* Progress indicators */}
         <div className="flex justify-center gap-2 mt-6">
           {screenshots.map((_, i) => (
