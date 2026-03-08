@@ -100,15 +100,37 @@ function GitHubIcon() {
 /* ── ECG Background Line (realistic sinus rhythm) ─ */
 
 function EcgBackgroundLine() {
-  // Realistic ECG: P-wave, QRS complex (Q down, R spike up, S down), T-wave
-  const ecgCycle =
-    "M0,40 C4,40 8,40 12,40 C16,40 18,36 22,34 C26,32 30,32 34,34 C38,36 40,40 44,40 C48,40 50,40 54,40 C56,40 57,42 58,48 C59,52 59,52 60,52 C61,52 61,40 62,12 C63,8 63,8 64,8 C65,8 65,40 66,52 C67,56 67,56 68,52 C69,48 70,42 72,40 C76,40 80,40 84,40 C88,40 92,40 96,40 C100,40 104,34 108,32 C112,30 116,30 120,32 C124,34 128,38 132,40 C136,40 140,40 144,40 C148,40 152,40 156,40 C158,40 160,40 160,40";
+  // Realistic normal sinus rhythm ECG (Lead II):
+  // Baseline (y=50) → P-wave (small bump up) → flat PR segment → Q dip → tall R spike → S dip → flat ST → T-wave (gentle bump) → baseline
+  // One full beat cycle = 160 units wide, viewBox height = 80, baseline at y=50
+  const beat = [
+    // Flat baseline
+    "M0,50 L20,50",
+    // P-wave: gentle rounded bump (amplitude ~8px up from baseline)
+    "C24,50 26,44 30,42 C34,40 36,42 40,50",
+    // PR segment: flat
+    "L50,50",
+    // Q-wave: small dip down (~5px)
+    "L52,55",
+    // R-wave: sharp tall spike up (from 55 to 8 — big, dominant)
+    "L56,8",
+    // S-wave: sharp dip below baseline (~12px below)
+    "L60,62",
+    // Return to baseline
+    "L63,50",
+    // ST segment: flat
+    "L80,50",
+    // T-wave: broader, gentler rounded bump (amplitude ~12px up)
+    "C84,50 88,38 95,36 C102,34 106,38 110,50",
+    // Trailing baseline
+    "L160,50",
+  ].join(" ");
 
   return (
     <div className="ecg-line" aria-hidden="true">
       <svg viewBox="0 0 320 80" preserveAspectRatio="none">
-        <path d={ecgCycle} fill="none" stroke="#bd93f9" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-        <path d={ecgCycle} fill="none" stroke="#bd93f9" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" transform="translate(160, 0)" />
+        <path d={beat} fill="none" stroke="#bd93f9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d={beat} fill="none" stroke="#bd93f9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" transform="translate(160, 0)" />
       </svg>
     </div>
   );
@@ -130,7 +152,7 @@ function AppMockup() {
           <div className="flex-1 flex justify-center">
             <div className="flex items-center gap-1.5 px-4 py-1 rounded-md bg-[rgba(68,71,90,0.4)] max-w-[280px] w-full">
               <svg viewBox="0 0 16 16" fill="none" className="w-3 h-3 text-text-tertiary flex-shrink-0" aria-hidden="true"><path d="M8 1a4 4 0 0 0-4 4v3H3a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-1V5a4 4 0 0 0-4-4z" stroke="currentColor" strokeWidth="1.2" /></svg>
-              <span className="text-[10px] font-mono text-text-tertiary tracking-wide truncate">health.meinserver.de</span>
+              <span className="text-[10px] font-mono text-text-tertiary tracking-wide truncate">health.myserver.com</span>
             </div>
           </div>
         </div>
@@ -144,7 +166,7 @@ function AppMockup() {
                 <LogoIcon className="w-5 h-5" />
                 <span className="font-display font-bold text-sm text-text-primary tracking-tight">HealthLog</span>
               </div>
-              <p className="text-[11px] text-text-tertiary">Guten Morgen, Marc</p>
+              <p className="text-[11px] text-text-tertiary">Good morning, Marc</p>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-[#44475a] flex items-center justify-center">
@@ -158,22 +180,22 @@ function AppMockup() {
 
           {/* Metric Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-4">
-            <DashboardMetric label="Gewicht" value="82.4" unit="kg" change="-0.8" changeLabel="7T" color="purple" />
-            <DashboardMetric label="Systolisch" value="124" unit="mmHg" change="-3" changeLabel="7T" color="pink" />
-            <DashboardMetric label="Diastolisch" value="78" unit="mmHg" change="+1" changeLabel="7T" color="cyan" />
-            <DashboardMetric label="Puls" value="68" unit="bpm" change="-2" changeLabel="7T" color="green" />
+            <DashboardMetric label="Weight" value="82.4" unit="kg" change="-0.8" changeLabel="7d" color="purple" />
+            <DashboardMetric label="Systolic" value="124" unit="mmHg" change="-3" changeLabel="7d" color="pink" />
+            <DashboardMetric label="Diastolic" value="78" unit="mmHg" change="+1" changeLabel="7d" color="cyan" />
+            <DashboardMetric label="Heart Rate" value="68" unit="bpm" change="-2" changeLabel="7d" color="green" />
           </div>
 
           {/* Chart */}
           <div className="bg-[#1e1f29] rounded-xl border border-[#44475a] p-4 mb-4">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-xs font-medium text-text-primary">Gewichtsverlauf</span>
+              <span className="text-xs font-medium text-text-primary">Weight Trend</span>
               <div className="flex gap-1">
-                <span className="text-[9px] px-2 py-0.5 rounded bg-purple/15 text-purple font-mono">30T</span>
-                <span className="text-[9px] px-2 py-0.5 rounded bg-[#44475a] text-text-tertiary font-mono">90T</span>
+                <span className="text-[9px] px-2 py-0.5 rounded bg-purple/15 text-purple font-mono">30d</span>
+                <span className="text-[9px] px-2 py-0.5 rounded bg-[#44475a] text-text-tertiary font-mono">90d</span>
               </div>
             </div>
-            <svg viewBox="0 0 320 70" className="w-full h-16" preserveAspectRatio="none" aria-label="Gewichtsverlauf Chart">
+            <svg viewBox="0 0 320 70" className="w-full h-16" preserveAspectRatio="none" aria-label="Weight trend chart">
               <defs>
                 <linearGradient id="mg" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="#bd93f9" stopOpacity="0.25" />
@@ -186,9 +208,9 @@ function AppMockup() {
               <path d="M0,52 C40,48 80,44 120,41 C160,38 200,34 240,28 C280,22 300,20 320,19" fill="none" stroke="#bd93f9" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
             </svg>
             <div className="flex items-center justify-between mt-2">
-              <span className="text-[9px] text-text-tertiary font-mono">08. Feb</span>
-              <span className="text-[9px] text-green font-mono">-2.3 kg Trend</span>
-              <span className="text-[9px] text-text-tertiary font-mono">08. Mär</span>
+              <span className="text-[9px] text-text-tertiary font-mono">Feb 08</span>
+              <span className="text-[9px] text-green font-mono">-2.3 kg trend</span>
+              <span className="text-[9px] text-text-tertiary font-mono">Mar 08</span>
             </div>
           </div>
 
@@ -196,7 +218,7 @@ function AppMockup() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="bg-[#1e1f29] rounded-xl border border-[#44475a] p-3">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-medium text-text-primary">Medikamente heute</span>
+                <span className="text-[10px] font-medium text-text-primary">Medications today</span>
                 <span className="text-[9px] text-green font-mono font-semibold">2/2</span>
               </div>
               <div className="space-y-1.5">
@@ -213,7 +235,7 @@ function AppMockup() {
               </div>
               <div className="mt-2 pt-2 border-t border-[#44475a]">
                 <div className="flex items-center justify-between">
-                  <span className="text-[9px] text-text-tertiary">30-Tage Compliance</span>
+                  <span className="text-[9px] text-text-tertiary">30-day compliance</span>
                   <span className="text-[10px] text-green font-mono font-bold">97%</span>
                 </div>
                 <div className="mt-1 h-1 rounded-full bg-[#44475a] overflow-hidden">
@@ -223,8 +245,8 @@ function AppMockup() {
             </div>
             <div className="bg-[#1e1f29] rounded-xl border border-[#44475a] p-3">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-medium text-text-primary">Stimmung</span>
-                <span className="text-[9px] text-purple font-mono">Heute</span>
+                <span className="text-[10px] font-medium text-text-primary">Mood</span>
+                <span className="text-[9px] text-purple font-mono">Today</span>
               </div>
               <div className="flex items-center gap-3 mb-2">
                 <div className="flex gap-0.5">
@@ -232,16 +254,16 @@ function AppMockup() {
                     <div key={n} className={`w-5 h-5 rounded-md flex items-center justify-center text-[9px] font-bold ${n <= 4 ? "bg-purple/20 text-purple" : "bg-[#44475a] text-text-tertiary"}`}>{n}</div>
                   ))}
                 </div>
-                <span className="text-[10px] text-text-secondary">4/5 — Gut</span>
+                <span className="text-[10px] text-text-secondary">4/5 — Good</span>
               </div>
               <div className="flex items-center gap-1 flex-wrap">
-                <span className="text-[8px] px-1.5 py-0.5 rounded bg-[#44475a] text-text-tertiary">produktiv</span>
-                <span className="text-[8px] px-1.5 py-0.5 rounded bg-[#44475a] text-text-tertiary">ausgeruht</span>
-                <span className="text-[8px] px-1.5 py-0.5 rounded bg-[#44475a] text-text-tertiary">sport</span>
+                <span className="text-[8px] px-1.5 py-0.5 rounded bg-[#44475a] text-text-tertiary">productive</span>
+                <span className="text-[8px] px-1.5 py-0.5 rounded bg-[#44475a] text-text-tertiary">well-rested</span>
+                <span className="text-[8px] px-1.5 py-0.5 rounded bg-[#44475a] text-text-tertiary">exercise</span>
               </div>
               <div className="mt-2 pt-2 border-t border-[#44475a]">
                 <div className="flex items-center justify-between">
-                  <span className="text-[9px] text-text-tertiary">7-Tage Durchschnitt</span>
+                  <span className="text-[9px] text-text-tertiary">7-day average</span>
                   <span className="text-[10px] text-purple font-mono font-bold">3.8/5</span>
                 </div>
               </div>
@@ -276,28 +298,28 @@ function DashboardMetric({ label, value, unit, change, changeLabel, color }: {
 const primaryFeatures = [
   {
     icon: <HeartMetricIcon />,
-    title: "Alle Vitalwerte im Blick",
-    description: "Tracke Gewicht, Blutdruck, Puls, Körperfett, Schlaf und Schritte. Interaktive Charts zeigen dir Trends auf einen Blick — mit personalisierten Zielbereichen, die dir sofort zeigen, wo du stehst.",
+    title: "All vitals at a glance",
+    description: "Track weight, blood pressure, heart rate, body fat, sleep, and steps. Interactive charts reveal trends instantly — with personalized target ranges that show you exactly where you stand.",
     color: "purple",
   },
   {
     icon: <PillIcon />,
-    title: "Nie wieder eine Tablette vergessen",
-    description: "Definiere Einnahme-Zeitfenster, lass dich über Telegram oder Push erinnern und behalte deine Compliance im Blick. Bei verpassten Einnahmen eskaliert HealthLog automatisch.",
+    title: "Never miss a dose again",
+    description: "Define intake windows, get reminded via Telegram or Push, and monitor your compliance. HealthLog automatically escalates when doses are missed.",
     color: "cyan",
   },
   {
     icon: <BrainIcon />,
-    title: "KI-gestützte Gesundheitsanalysen",
-    description: "Lass dir von OpenAI personalisierte Insights zu Blutdruck, Gewicht, Puls, Stimmung und Medikamenten-Compliance generieren. Bring-Your-Own-Key — deine Daten verlassen nie unkontrolliert deinen Server.",
+    title: "AI-powered health insights",
+    description: "Get personalized analyses of blood pressure, weight, heart rate, mood, and medication compliance powered by OpenAI. Bring-Your-Own-Key — your data never leaves your server uncontrolled.",
     color: "orange",
   },
 ];
 
 const secondaryFeatures = [
-  { icon: <MoodIcon />, title: "Stimmungstracking", description: "5-Punkte-Skala mit Tags, Korrelationsanalysen und moodLog.app-Integration.", color: "pink" },
-  { icon: <FileIcon />, title: "Arztbericht als PDF", description: "Professionelle PDF-Berichte im europäischen Medizin-Format, direkt im Browser generiert.", color: "green" },
-  { icon: <SyncIcon />, title: "Withings-Synchronisation", description: "Automatische Sync mit Withings-Waagen, Blutdruckmessgeräten und Activity Trackern.", color: "cyan" },
+  { icon: <MoodIcon />, title: "Mood tracking", description: "5-point scale with tags, correlation analysis, and moodLog.app integration.", color: "pink" },
+  { icon: <FileIcon />, title: "Doctor report PDF", description: "Professional PDF reports in European medical format, generated directly in your browser.", color: "green" },
+  { icon: <SyncIcon />, title: "Withings sync", description: "Automatic synchronization with Withings scales, blood pressure monitors, and activity trackers.", color: "cyan" },
 ];
 
 const colorMap: Record<string, { bg: string; text: string }> = {
@@ -320,14 +342,14 @@ const techItems = [
 /* ── Privacy Checklist ──────────────────────────── */
 
 const privacyChecks = [
-  "Keine Cloud-Abhängigkeit — läuft komplett auf deinem Server",
-  "Keine Telemetrie, keine Analytics, keine Tracking-Scripts",
-  "AES-256-GCM Verschlüsselung für alle sensitiven Daten",
-  "API-Tokens werden mit SHA-256 gehasht gespeichert",
-  "Passkey-Authentifizierung — Phishing-resistent, kein Passwort-Leak",
-  "Passwort-Fallback mit Argon2id-Hashing und Stärkeprüfung",
-  "Withings-OAuth-Tokens verschlüsselt in der Datenbank",
-  "Open Source — jede Zeile Code ist überprüfbar",
+  "No cloud dependency — runs entirely on your own server",
+  "No telemetry, no analytics, no tracking scripts",
+  "AES-256-GCM encryption for all sensitive data",
+  "API tokens stored as SHA-256 hashes",
+  "Passkey authentication — phishing-resistant, no password leaks",
+  "Password fallback with Argon2id hashing and strength validation",
+  "Withings OAuth tokens encrypted in the database",
+  "Open Source — every line of code is auditable",
 ];
 
 /* ── Main Page ──────────────────────────────────── */
@@ -365,28 +387,27 @@ export default function Home() {
           </div>
 
           <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-7xl leading-[1.05] tracking-tight mb-6">
-            <span className="text-text-primary">Deine Gesundheit.</span>
+            <span className="text-text-primary">Your Health.</span>
             <br />
             <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #bd93f9, #8be9fd, #ff79c6)" }}>
-              Dein Server.
+              Your Server.
             </span>
           </h1>
 
           <p className="text-text-secondary text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-            HealthLog ist die self-hosted Health-Tracking-App, die dir die
-            volle Kontrolle über deine Gesundheitsdaten gibt. Gewicht,
-            Blutdruck, Medikamente, Stimmung — alles in einer modernen PWA
-            auf deinem eigenen Server. Verschlüsselt, offline-fähig und
-            komplett Open Source.
+            HealthLog is the self-hosted health tracking app that gives you
+            full control over your health data. Weight, blood pressure,
+            medications, mood — all in a modern PWA on your own server.
+            Encrypted, offline-capable, and fully open source.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="https://github.com/MBombeck/HealthLog" className="cta-button" target="_blank" rel="noopener noreferrer">
-              <span>Source Code ansehen</span>
+              <span>View Source Code</span>
               <GitHubIcon />
             </a>
             <a href="#interface" className="inline-flex items-center gap-2 px-6 py-3.5 text-text-secondary hover:text-text-primary text-sm font-display font-medium tracking-wide transition-colors">
-              So sieht es aus
+              See it in action
               <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4" aria-hidden="true">
                 <path d="M8 3v10m0 0l4-4m-4 4L4 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -407,12 +428,12 @@ export default function Home() {
           <div className="text-center mb-6">
             <p className="reveal text-cyan text-xs font-mono tracking-[0.2em] uppercase mb-4">Interface</p>
             <h2 className="reveal font-display font-bold text-3xl sm:text-4xl tracking-tight text-text-primary mb-4">
-              Dein Gesundheits-Dashboard auf einen Blick
+              Your health dashboard at a glance
             </h2>
             <p className="reveal text-text-secondary text-base max-w-xl mx-auto leading-relaxed">
-              Ein dunkles, augenschonendes Interface im Dracula-Farbschema.
-              Mobile-first designt, mit sofortigem Zugriff auf alle deine
-              Metriken, Medikamente und Stimmungsdaten.
+              A dark, eye-friendly interface in the Dracula color scheme.
+              Mobile-first designed, with instant access to all your
+              metrics, medications, and mood data.
             </p>
           </div>
           <div className="reveal mt-12">
@@ -427,12 +448,11 @@ export default function Home() {
           <div className="text-center mb-6">
             <p className="reveal text-purple text-xs font-mono tracking-[0.2em] uppercase mb-4">Features</p>
             <h2 className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight text-text-primary mb-4">
-              Was HealthLog für dich tut
+              What HealthLog does for you
             </h2>
             <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-              Von der täglichen Messung bis zum KI-gestützten
-              Gesundheitsbericht — HealthLog deckt deinen kompletten
-              Health-Tracking-Workflow ab.
+              From daily measurements to AI-powered health reports —
+              HealthLog covers your entire health tracking workflow.
             </p>
           </div>
 
@@ -483,11 +503,11 @@ export default function Home() {
           {/* Additional capabilities */}
           <div className="reveal mt-10 flex flex-wrap justify-center gap-3">
             {[
-              "Offline-fähige PWA",
+              "Offline-capable PWA",
               "Telegram / ntfy / Web Push",
               "30+ Achievements",
               "CSV/JSON Export",
-              "Deutsch & Englisch",
+              "German & English",
               "Docker-ready",
             ].map((item) => (
               <span key={item} className="px-3 py-1.5 rounded-full text-xs font-mono text-text-tertiary border border-[rgba(98,114,164,0.12)] bg-[rgba(15,16,24,0.4)]">
@@ -506,17 +526,17 @@ export default function Home() {
               <ShieldIcon className="shield-glow" />
             </div>
             <p className="reveal text-green text-xs font-mono tracking-[0.2em] uppercase mb-4">
-              Datenschutz & Sicherheit
+              Privacy & Security
             </p>
             <h2 className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight text-text-primary mb-4">
-              Deine Daten gehören dir.
+              Your data belongs to you.
               <br />
-              <span className="text-green/80">Punkt.</span>
+              <span className="text-green/80">Period.</span>
             </h2>
             <p className="reveal text-text-secondary text-base sm:text-lg max-w-xl mx-auto leading-relaxed font-light">
-              Im Gegensatz zu Cloud-Apps wie Apple Health oder Google Fit
-              behältst du bei HealthLog die volle Kontrolle. Keine
-              Datenweitergabe, kein Abo-Modell, kein Vendor Lock-in.
+              Unlike cloud apps like Apple Health or Google Fit,
+              HealthLog keeps you in full control. No data sharing,
+              no subscription model, no vendor lock-in.
             </p>
           </div>
 
@@ -537,7 +557,7 @@ export default function Home() {
       {/* ─── TECH STACK ───────────────────────────── */}
       <section className="relative py-16 overflow-hidden">
         <div className="reveal text-center mb-8">
-          <p className="text-text-tertiary text-xs font-mono tracking-[0.2em] uppercase">Gebaut mit</p>
+          <p className="text-text-tertiary text-xs font-mono tracking-[0.2em] uppercase">Built with</p>
         </div>
         <div className="relative">
           <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-void to-transparent z-10 pointer-events-none" />
@@ -558,11 +578,11 @@ export default function Home() {
       <section className="relative py-24 px-6 section-glow">
         <div className="reveal max-w-2xl mx-auto text-center">
           <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight text-text-primary mb-4">
-            In wenigen Minuten einsatzbereit
+            Up and running in minutes
           </h2>
           <p className="text-text-secondary text-base max-w-lg mx-auto leading-relaxed mb-8">
-            HealthLog ist Open Source und kostenlos. Klone das Repository,
-            passe die Konfiguration an und starte mit Docker.
+            HealthLog is open source and free. Clone the repository,
+            adjust the configuration, and start with Docker.
           </p>
 
           {/* Quick Start */}
@@ -581,7 +601,7 @@ docker compose up -d`}</code>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="https://github.com/MBombeck/HealthLog" className="cta-button" target="_blank" rel="noopener noreferrer">
-              <span>Repository auf GitHub</span>
+              <span>View on GitHub</span>
               <GitHubIcon />
             </a>
           </div>

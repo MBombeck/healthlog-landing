@@ -22,9 +22,9 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://healthlog.ioioio.dev"),
-  title: "HealthLog — Deine Gesundheit. Dein Server.",
+  title: "HealthLog — Your Health. Your Server.",
   description:
-    "Self-hosted Health-Tracking PWA mit Medikamentenmanagement, Mood Tracking, KI-Insights und Withings-Integration. Deine Daten bleiben auf deinem Server. AES-256-GCM verschluesselt.",
+    "Self-hosted health tracking PWA with medication management, mood tracking, AI insights, and Withings integration. Your data stays on your server. AES-256-GCM encrypted.",
   icons: {
     icon: "/favicon.svg",
   },
@@ -32,19 +32,19 @@ export const metadata: Metadata = {
     canonical: "https://healthlog.ioioio.dev",
   },
   openGraph: {
-    title: "HealthLog — Deine Gesundheit. Dein Server.",
+    title: "HealthLog — Your Health. Your Server.",
     description:
-      "Self-hosted Health-Tracking PWA. Gewicht, Blutdruck, Medikamente, Stimmung — alles auf deinem Server. AES-256-GCM verschluesselt.",
+      "Self-hosted health tracking PWA. Weight, blood pressure, medications, mood — all on your own server. AES-256-GCM encrypted.",
     type: "website",
     url: "https://healthlog.ioioio.dev",
     siteName: "HealthLog",
-    locale: "de_DE",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "HealthLog — Deine Gesundheit. Dein Server.",
+    title: "HealthLog — Your Health. Your Server.",
     description:
-      "Self-hosted Health-Tracking PWA mit E2E-Verschluesselung. Gewicht, Blutdruck, Medikamente, Stimmung — auf deinem Server.",
+      "Self-hosted health tracking PWA with E2E encryption. Weight, blood pressure, medications, mood — on your server.",
   },
   robots: {
     index: true,
@@ -69,28 +69,28 @@ export default function RootLayout({
     applicationCategory: "HealthApplication",
     operatingSystem: "Web",
     description:
-      "Self-hosted Health-Tracking PWA mit Medikamentenmanagement, Mood Tracking, KI-Insights und Withings-Integration.",
+      "Self-hosted health tracking PWA with medication management, mood tracking, AI insights, and Withings integration.",
     offers: {
       "@type": "Offer",
       price: "0",
-      priceCurrency: "EUR",
+      priceCurrency: "USD",
     },
     featureList: [
-      "Gewicht, Blutdruck, Puls, Koerperfett, Schlaf, Schritte",
-      "Medikamentenmanagement mit Compliance-Analytik",
-      "Mood Tracking (5-Punkte-Skala)",
-      "KI-gestuetzte Gesundheitsanalysen",
-      "Arztbericht als PDF",
-      "Withings-Geraetesynchronisation",
-      "AES-256-GCM Verschluesselung",
-      "Passkey-Authentifizierung",
-      "Offline-faehige PWA",
+      "Weight, blood pressure, heart rate, body fat, sleep, steps",
+      "Medication management with compliance analytics",
+      "Mood tracking (5-point scale)",
+      "AI-powered health insights",
+      "Doctor report as PDF",
+      "Withings device synchronization",
+      "AES-256-GCM encryption",
+      "Passkey authentication",
+      "Offline-capable PWA",
     ],
-    inLanguage: "de",
+    inLanguage: "en",
   };
 
   return (
-    <html lang="de">
+    <html lang="en">
       <body
         className={`${plusJakarta.variable} ${dmSans.variable} ${jetbrainsMono.variable} antialiased`}
       >
