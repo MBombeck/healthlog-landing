@@ -486,9 +486,7 @@ export default function Home() {
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <div className="flex justify-center mb-10">
-            <div className="logo-pulse">
-              <LogoIcon className="w-16 h-16 md:w-20 md:h-20" />
-            </div>
+            <LogoIcon className="w-16 h-16 md:w-20 md:h-20" />
           </div>
 
           <h1 className="font-display font-extrabold text-[2.75rem] sm:text-6xl md:text-[5.5rem] leading-[1.02] tracking-[-0.03em] mb-8">
