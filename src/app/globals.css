@@ -666,6 +666,84 @@ body {
   }
 }
 
+/* ── App Showcase ───────────────────────────────── */
+.showcase-frame {
+  position: relative;
+  border-radius: 20px;
+  padding: 1.5px;
+  background: linear-gradient(
+    135deg,
+    var(--purple),
+    var(--cyan),
+    var(--pink),
+    var(--purple)
+  );
+  background-size: 300% 300%;
+  animation: gradient-rotate 8s ease infinite;
+  box-shadow:
+    0 0 80px rgba(189, 147, 249, 0.12),
+    0 40px 80px rgba(0, 0, 0, 0.4);
+}
+
+.showcase-frame-inner {
+  background: var(--surface);
+  border-radius: 18.5px;
+  overflow: hidden;
+}
+
+.showcase-mobile {
+  position: absolute;
+  bottom: -40px;
+  right: -30px;
+  z-index: 20;
+  animation: float-mobile 6s ease-in-out infinite;
+}
+
+.showcase-mobile-frame {
+  position: relative;
+  width: 180px;
+  height: 380px;
+  border-radius: 32px;
+  padding: 3px;
+  background: linear-gradient(
+    180deg,
+    rgba(189, 147, 249, 0.5),
+    rgba(139, 233, 253, 0.3),
+    rgba(255, 121, 198, 0.4)
+  );
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(189, 147, 249, 0.1);
+  overflow: hidden;
+}
+
+.showcase-mobile-frame > div:last-child {
+  background: #0a0b10;
+}
+
+@keyframes float-mobile {
+  0%, 100% { transform: translateY(0) rotate(2deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+@media (max-width: 1024px) {
+  .showcase-mobile {
+    right: -15px;
+    bottom: -30px;
+  }
+  .showcase-mobile-frame {
+    width: 150px;
+    height: 320px;
+    border-radius: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .showcase-mobile {
+    display: none;
+  }
+}
+
 /* ── Reduced Motion ─────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html {

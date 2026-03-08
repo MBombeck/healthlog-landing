@@ -2,6 +2,7 @@ import { EcgMonitor } from "@/components/EcgMonitor";
 import { ScrollIndicator, ScrollRevealObserver } from "@/components/HeroClient";
 import { DemoCredentials } from "@/components/DemoCredentials";
 import { TerminalBlock } from "@/components/TerminalBlock";
+import { AppShowcase } from "@/components/AppShowcase";
 
 /* ── SVG Icons ──────────────────────────────────── */
 
@@ -126,157 +127,7 @@ function PlayIcon({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
-/* ── Realistic App Mockup ───────────────────────── */
-
-function AppMockup() {
-  return (
-    <div className="gradient-border max-w-[820px] mx-auto">
-      <div className="gradient-border-inner">
-        {/* Browser Chrome */}
-        <div className="flex items-center gap-2 px-4 py-3 border-b border-[rgba(98,114,164,0.12)] bg-[#1e1f29]">
-          <div className="flex gap-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#ff5555] opacity-60" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#ffb86c] opacity-60" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#50fa7b] opacity-60" />
-          </div>
-          <div className="flex-1 flex justify-center">
-            <div className="flex items-center gap-1.5 px-4 py-1 rounded-md bg-[rgba(68,71,90,0.4)] max-w-[280px] w-full">
-              <svg viewBox="0 0 16 16" fill="none" className="w-3 h-3 text-text-tertiary flex-shrink-0" aria-hidden="true"><path d="M8 1a4 4 0 0 0-4 4v3H3a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-1V5a4 4 0 0 0-4-4z" stroke="currentColor" strokeWidth="1.2" /></svg>
-              <span className="text-[10px] font-mono text-text-tertiary tracking-wide truncate">health.myserver.com</span>
-            </div>
-          </div>
-        </div>
-
-        {/* App Content */}
-        <div className="bg-[#282a36] p-4 sm:p-6">
-          <div className="flex items-center justify-between mb-5">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <LogoIcon className="w-5 h-5" />
-                <span className="font-display font-bold text-sm text-text-primary tracking-tight">HealthLog</span>
-              </div>
-              <p className="text-[11px] text-text-tertiary">Good morning, Marc</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-[#44475a] flex items-center justify-center">
-                <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4 text-text-tertiary" aria-hidden="true"><path d="M8 2v12M2 8h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
-              </div>
-              <div className="w-8 h-8 rounded-full bg-purple/20 flex items-center justify-center">
-                <span className="text-[11px] text-purple font-bold">M</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-4">
-            <DashboardMetric label="Weight" value="82.4" unit="kg" change="-0.8" changeLabel="7d" color="purple" />
-            <DashboardMetric label="Systolic" value="124" unit="mmHg" change="-3" changeLabel="7d" color="pink" />
-            <DashboardMetric label="Diastolic" value="78" unit="mmHg" change="+1" changeLabel="7d" color="cyan" />
-            <DashboardMetric label="Heart Rate" value="68" unit="bpm" change="-2" changeLabel="7d" color="green" />
-          </div>
-
-          <div className="bg-[#1e1f29] rounded-xl border border-[#44475a] p-4 mb-4">
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-xs font-medium text-text-primary">Weight Trend</span>
-              <div className="flex gap-1">
-                <span className="text-[9px] px-2 py-0.5 rounded bg-purple/15 text-purple font-mono">30d</span>
-                <span className="text-[9px] px-2 py-0.5 rounded bg-[#44475a] text-text-tertiary font-mono">90d</span>
-              </div>
-            </div>
-            <svg viewBox="0 0 320 70" className="w-full h-16" preserveAspectRatio="none" role="img" aria-label="Weight trend chart showing a downward trend of minus 2.3 kilograms over 30 days">
-              <defs>
-                <linearGradient id="mg" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#bd93f9" stopOpacity="0.25" />
-                  <stop offset="100%" stopColor="#bd93f9" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              <rect x="0" y="20" width="320" height="25" fill="rgba(80,250,123,0.04)" rx="2" />
-              <path d="M0,55 C12,53 24,50 40,48 C56,46 72,42 88,40 C104,38 120,41 140,39 C160,37 176,34 196,32 C216,30 232,33 252,28 C272,23 288,20 320,18" fill="none" stroke="#bd93f9" strokeWidth="2" strokeLinecap="round" />
-              <path d="M0,55 C12,53 24,50 40,48 C56,46 72,42 88,40 C104,38 120,41 140,39 C160,37 176,34 196,32 C216,30 232,33 252,28 C272,23 288,20 320,18 L320,70 L0,70 Z" fill="url(#mg)" />
-            </svg>
-            <div className="flex items-center justify-between mt-2">
-              <span className="text-[9px] text-text-tertiary font-mono">Feb 08</span>
-              <span className="text-[9px] text-green font-mono">-2.3 kg trend</span>
-              <span className="text-[9px] text-text-tertiary font-mono">Mar 08</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            <div className="bg-[#1e1f29] rounded-xl border border-[#44475a] p-3">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-medium text-text-primary">Medications today</span>
-                <span className="text-[9px] text-green font-mono font-semibold">2/2</span>
-              </div>
-              <div className="space-y-1.5">
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-green" />
-                  <span className="text-[10px] text-text-secondary flex-1">Ramipril 5mg</span>
-                  <span className="text-[9px] text-text-tertiary font-mono">08:12</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-green" />
-                  <span className="text-[10px] text-text-secondary flex-1">Vitamin D3 2000IE</span>
-                  <span className="text-[9px] text-text-tertiary font-mono">08:15</span>
-                </div>
-              </div>
-              <div className="mt-2 pt-2 border-t border-[#44475a]">
-                <div className="flex items-center justify-between">
-                  <span className="text-[9px] text-text-tertiary">30-day compliance</span>
-                  <span className="text-[10px] text-green font-mono font-bold">97%</span>
-                </div>
-                <div className="mt-1 h-1 rounded-full bg-[#44475a] overflow-hidden">
-                  <div className="h-full rounded-full bg-green" style={{ width: "97%" }} />
-                </div>
-              </div>
-            </div>
-            <div className="bg-[#1e1f29] rounded-xl border border-[#44475a] p-3">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-medium text-text-primary">Mood</span>
-                <span className="text-[9px] text-purple font-mono">Today</span>
-              </div>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="flex gap-0.5">
-                  {[1, 2, 3, 4, 5].map((n) => (
-                    <div key={n} className={`w-5 h-5 rounded-md flex items-center justify-center text-[9px] font-bold ${n <= 4 ? "bg-purple/20 text-purple" : "bg-[#44475a] text-text-tertiary"}`}>{n}</div>
-                  ))}
-                </div>
-                <span className="text-[10px] text-text-secondary">4/5 — Good</span>
-              </div>
-              <div className="flex items-center gap-1 flex-wrap">
-                <span className="text-[8px] px-1.5 py-0.5 rounded bg-[#44475a] text-text-tertiary">productive</span>
-                <span className="text-[8px] px-1.5 py-0.5 rounded bg-[#44475a] text-text-tertiary">well-rested</span>
-                <span className="text-[8px] px-1.5 py-0.5 rounded bg-[#44475a] text-text-tertiary">exercise</span>
-              </div>
-              <div className="mt-2 pt-2 border-t border-[#44475a]">
-                <div className="flex items-center justify-between">
-                  <span className="text-[9px] text-text-tertiary">7-day average</span>
-                  <span className="text-[10px] text-purple font-mono font-bold">3.8/5</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function DashboardMetric({ label, value, unit, change, changeLabel, color }: {
-  label: string; value: string; unit: string; change: string; changeLabel: string; color: string;
-}) {
-  const isNeg = change.startsWith("-");
-  const changeColor = isNeg ? "text-cyan" : "text-text-tertiary";
-  const borderMap: Record<string, string> = { purple: "border-l-purple", pink: "border-l-pink", cyan: "border-l-cyan", green: "border-l-green" };
-  return (
-    <div className={`bg-[#1e1f29] rounded-lg border border-[#44475a] ${borderMap[color]} border-l-2 p-3`}>
-      <div className="text-[9px] text-text-tertiary mb-1.5 tracking-wider uppercase">{label}</div>
-      <div className="flex items-baseline gap-1">
-        <span className="text-xl font-display font-bold text-text-primary leading-none">{value}</span>
-        <span className="text-[9px] text-text-tertiary">{unit}</span>
-      </div>
-      <div className={`text-[9px] mt-1 ${changeColor} font-mono`}>{change} {changeLabel}</div>
-    </div>
-  );
-}
+/* AppMockup replaced by AppShowcase component with real screenshots */
 
 /* ── Feature Data ───────────────────────────────── */
 
@@ -451,7 +302,7 @@ export default function Home() {
             </p>
           </div>
           <div className="reveal">
-            <AppMockup />
+            <AppShowcase />
           </div>
         </div>
       </section>
