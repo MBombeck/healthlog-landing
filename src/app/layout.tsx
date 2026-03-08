@@ -5,19 +5,22 @@ import "./globals.css";
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["600", "700", "800"],
+  display: "swap",
 });
 
 const dmSans = DM_Sans({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500"],
+  display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   weight: ["400"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -133,7 +136,7 @@ export default function RootLayout({
     ],
     screenshot: "https://healthlog.dev/og-image.png",
     softwareVersion: "1.0",
-    license: "https://opensource.org/licenses/MIT",
+    license: "https://www.gnu.org/licenses/agpl-3.0.html",
     inLanguage: ["en", "de"],
     downloadUrl: "https://github.com/MBombeck/HealthLog",
     installUrl: "https://docs.healthlog.dev",

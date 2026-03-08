@@ -194,19 +194,27 @@ function EcgMonitor() {
 
       const sweepI = Math.floor(sweepX);
 
-      for (let seg = 0; seg < trailLength - 1; seg++) {
-        const i = (sweepI - trailLength + seg + totalPx) % totalPx;
-        const j = (i + 1) % totalPx;
-        const age = (trailLength - seg) / trailLength;
+      const alphaSteps = 8;
+      for (let a = 0; a < alphaSteps; a++) {
+        const segStart = Math.floor((a / alphaSteps) * trailLength);
+        const segEnd = Math.floor(((a + 1) / alphaSteps) * trailLength);
+        const midSeg = (segStart + segEnd) / 2;
+        const age = (trailLength - midSeg) / trailLength;
         const alpha = 0.05 + 0.95 * (1 - age);
-        const y1 = baseline - data[i] * amp;
-        const y2 = baseline - data[j] * amp;
 
         ctx.beginPath();
-        ctx.moveTo(i < j ? i : 0, y1);
-        ctx.lineTo(i < j ? j : 1, y2);
         ctx.strokeStyle = `rgba(${purple[0]},${purple[1]},${purple[2]},${alpha})`;
         ctx.lineWidth = 2;
+        let pathStarted = false;
+        let prevI = -1;
+        for (let seg = segStart; seg < segEnd; seg++) {
+          const i = (sweepI - trailLength + seg + totalPx) % totalPx;
+          const y = baseline - data[i] * amp;
+          const wrapped = prevI >= 0 && i < prevI;
+          if (!pathStarted || wrapped) { ctx.moveTo(i, y); pathStarted = true; }
+          else { ctx.lineTo(i, y); }
+          prevI = i;
+        }
         ctx.stroke();
       }
 
@@ -215,11 +223,14 @@ function EcgMonitor() {
       ctx.shadowBlur = 12;
       ctx.beginPath();
       let started = false;
+      let prevGlowI = -1;
       for (let seg = trailLength - glowLen; seg < trailLength; seg++) {
         const i = (sweepI - trailLength + seg + totalPx) % totalPx;
         const y = baseline - data[i] * amp;
-        if (!started) { ctx.moveTo(i, y); started = true; }
+        const wrapped = prevGlowI >= 0 && i < prevGlowI;
+        if (!started || wrapped) { ctx.moveTo(i, y); started = true; }
         else { ctx.lineTo(i, y); }
+        prevGlowI = i;
       }
       ctx.strokeStyle = `rgba(${purple[0]},${purple[1]},${purple[2]},0.6)`;
       ctx.lineWidth = 4;
