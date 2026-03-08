@@ -484,16 +484,15 @@ const privacyChecks = [
 const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*";
 
 function useScrambleDecode() {
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const intervalsRef = useRef<Set<ReturnType<typeof setInterval>>>(new Set());
 
   const decode = useCallback((target: string, setter: (v: string) => void, durationMs = 800) => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
     const len = target.length;
     const iterationsPerChar = 10;
     const totalSteps = len * iterationsPerChar;
     let step = 0;
 
-    intervalRef.current = setInterval(() => {
+    const id = setInterval(() => {
       const revealed = Math.floor(step / iterationsPerChar);
       let result = "";
       for (let i = 0; i < len; i++) {
@@ -503,14 +502,16 @@ function useScrambleDecode() {
       setter(result);
       step++;
       if (step >= totalSteps) {
-        if (intervalRef.current) clearInterval(intervalRef.current);
+        clearInterval(id);
+        intervalsRef.current.delete(id);
         setter(target);
       }
     }, durationMs / totalSteps);
+    intervalsRef.current.add(id);
   }, []);
 
   useEffect(() => {
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+    return () => { intervalsRef.current.forEach((id) => clearInterval(id)); };
   }, []);
 
   return decode;
@@ -544,22 +545,33 @@ export default function Home() {
   const [displayPassword, setDisplayPassword] = useState("");
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const scrambleDecode = useScrambleDecode();
+  const copyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const generateTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
+      if (generateTimeoutRef.current) clearTimeout(generateTimeoutRef.current);
+    };
+  }, []);
 
   const copyToClipboard = useCallback(async (text: string, field: string) => {
     try {
       await navigator.clipboard.writeText(text);
+      if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
       setCopiedField(field);
-      setTimeout(() => setCopiedField(null), 2000);
+      copyTimeoutRef.current = setTimeout(() => setCopiedField(null), 2000);
     } catch { /* clipboard not available */ }
   }, []);
 
   const handleGenerate = useCallback(() => {
+    if (credentialsRevealed) return;
     setCredentialsRevealed(true);
-    scrambleDecode("demo", setDisplayUser, 500);
-    setTimeout(() => {
+    scrambleDecode("demo", setDisplayUser, 250);
+    generateTimeoutRef.current = setTimeout(() => {
       scrambleDecode("demo123demo123", setDisplayPassword, 900);
     }, 300);
-  }, [scrambleDecode]);
+  }, [scrambleDecode, credentialsRevealed]);
 
   const terminalCommands = "git clone https://github.com/MBombeck/HealthLog.git\ncd HealthLog\ncp .env.example .env\ndocker compose up -d";
 
@@ -848,9 +860,10 @@ export default function Home() {
                   <div
                     className="credential-field flex items-center justify-between px-4 py-3 rounded-xl bg-[rgba(15,16,24,0.8)] border border-[rgba(98,114,164,0.08)]"
                     onClick={() => copyToClipboard("demo", "user")}
-                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") copyToClipboard("demo", "user"); }}
+                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); copyToClipboard("demo", "user"); } }}
                     role="button"
                     tabIndex={0}
+                    aria-label="Copy username: demo"
                   >
                     <span className="text-xs text-text-tertiary font-mono tracking-wider uppercase">User</span>
                     {copiedField === "user" ? (
@@ -867,9 +880,10 @@ export default function Home() {
                   <div
                     className="credential-field flex items-center justify-between px-4 py-3 rounded-xl bg-[rgba(15,16,24,0.8)] border border-[rgba(98,114,164,0.08)]"
                     onClick={() => copyToClipboard("demo123demo123", "password")}
-                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") copyToClipboard("demo123demo123", "password"); }}
+                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); copyToClipboard("demo123demo123", "password"); } }}
                     role="button"
                     tabIndex={0}
+                    aria-label="Copy password"
                   >
                     <span className="text-xs text-text-tertiary font-mono tracking-wider uppercase">Password</span>
                     {copiedField === "password" ? (
@@ -917,12 +931,12 @@ export default function Home() {
           </p>
 
           <div
-            className="glass-card terminal-window terminal-copyable p-5 sm:p-6 text-left mb-12 max-w-lg mx-auto relative"
+            className="group glass-card terminal-window terminal-copyable p-5 sm:p-6 text-left mb-12 max-w-lg mx-auto relative"
             onClick={() => copyToClipboard(terminalCommands, "terminal")}
-            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") copyToClipboard(terminalCommands, "terminal"); }}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); copyToClipboard(terminalCommands, "terminal"); } }}
             role="button"
             tabIndex={0}
-            title="Click to copy"
+            aria-label="Copy installation commands"
           >
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
