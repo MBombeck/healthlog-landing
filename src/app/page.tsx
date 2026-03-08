@@ -447,25 +447,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── LIVE DEMO ─────────────────────────────── */}
-      <section className="relative py-32 sm:py-40 px-6 section-glow" aria-labelledby="demo-heading">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 id="demo-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
-            See it in action
-          </h2>
-          <p className="reveal text-text-secondary text-base sm:text-lg max-w-lg mx-auto leading-relaxed mb-12">
-            Explore the full app with pre-populated data.
-            No signup, no installation — just click and explore.
-          </p>
-
-          <DemoCredentials />
-
-          <p className="reveal text-text-tertiary text-xs font-mono">
-            Resets automatically — feel free to add, edit, and delete anything.
-          </p>
-        </div>
-      </section>
-
       {/* ─── COMPARISON ──────────────────────────── */}
       <section id="comparison" className="relative py-32 sm:py-40 px-6 section-glow" aria-labelledby="comparison-heading">
         <div className="max-w-5xl mx-auto">
@@ -558,6 +539,25 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── LIVE DEMO ─────────────────────────────── */}
+      <section className="relative py-32 sm:py-40 px-6 section-glow" aria-labelledby="demo-heading">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 id="demo-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+            See it in action
+          </h2>
+          <p className="reveal text-text-secondary text-base sm:text-lg max-w-lg mx-auto leading-relaxed mb-12">
+            Explore the full app with pre-populated data.
+            No signup, no installation — just click and explore.
+          </p>
+
+          <DemoCredentials />
+
+          <p className="reveal text-text-tertiary text-xs font-mono">
+            Resets automatically — feel free to add, edit, and delete anything.
+          </p>
         </div>
       </section>
 
