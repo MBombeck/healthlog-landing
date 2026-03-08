@@ -21,17 +21,34 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HealthLog — Deine Gesundheit. Dein Dashboard.",
+  metadataBase: new URL("https://healthlog.ioioio.dev"),
+  title: "HealthLog — Deine Gesundheit. Dein Server.",
   description:
-    "Self-hosted Health-Tracking PWA mit Medikamentenmanagement, Mood Tracking, KI-Insights und Withings-Integration. Deine Daten bleiben auf deinem Server.",
+    "Self-hosted Health-Tracking PWA mit Medikamentenmanagement, Mood Tracking, KI-Insights und Withings-Integration. Deine Daten bleiben auf deinem Server. AES-256-GCM verschluesselt.",
   icons: {
     icon: "/favicon.svg",
   },
+  alternates: {
+    canonical: "https://healthlog.ioioio.dev",
+  },
   openGraph: {
-    title: "HealthLog — Deine Gesundheit. Dein Dashboard.",
+    title: "HealthLog — Deine Gesundheit. Dein Server.",
     description:
-      "Self-hosted Health-Tracking PWA. Gewicht, Blutdruck, Medikamente, Stimmung — alles auf deinem Server.",
+      "Self-hosted Health-Tracking PWA. Gewicht, Blutdruck, Medikamente, Stimmung — alles auf deinem Server. AES-256-GCM verschluesselt.",
     type: "website",
+    url: "https://healthlog.ioioio.dev",
+    siteName: "HealthLog",
+    locale: "de_DE",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "HealthLog — Deine Gesundheit. Dein Server.",
+    description:
+      "Self-hosted Health-Tracking PWA mit E2E-Verschluesselung. Gewicht, Blutdruck, Medikamente, Stimmung — auf deinem Server.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -45,11 +62,42 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "HealthLog",
+    applicationCategory: "HealthApplication",
+    operatingSystem: "Web",
+    description:
+      "Self-hosted Health-Tracking PWA mit Medikamentenmanagement, Mood Tracking, KI-Insights und Withings-Integration.",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "EUR",
+    },
+    featureList: [
+      "Gewicht, Blutdruck, Puls, Koerperfett, Schlaf, Schritte",
+      "Medikamentenmanagement mit Compliance-Analytik",
+      "Mood Tracking (5-Punkte-Skala)",
+      "KI-gestuetzte Gesundheitsanalysen",
+      "Arztbericht als PDF",
+      "Withings-Geraetesynchronisation",
+      "AES-256-GCM Verschluesselung",
+      "Passkey-Authentifizierung",
+      "Offline-faehige PWA",
+    ],
+    inLanguage: "de",
+  };
+
   return (
     <html lang="de">
       <body
         className={`${plusJakarta.variable} ${dmSans.variable} ${jetbrainsMono.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>
