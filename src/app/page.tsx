@@ -215,14 +215,11 @@ function EcgMonitor() {
       ctx.shadowBlur = 12;
       ctx.beginPath();
       let started = false;
-      let prevI = -1;
       for (let seg = trailLength - glowLen; seg < trailLength; seg++) {
         const i = (sweepI - trailLength + seg + totalPx) % totalPx;
         const y = baseline - data[i] * amp;
         if (!started) { ctx.moveTo(i, y); started = true; }
-        else if (prevI >= 0 && Math.abs(i - prevI) > 2) { ctx.moveTo(i, y); }
         else { ctx.lineTo(i, y); }
-        prevI = i;
       }
       ctx.strokeStyle = `rgba(${purple[0]},${purple[1]},${purple[2]},0.6)`;
       ctx.lineWidth = 4;
@@ -251,6 +248,9 @@ function EcgMonitor() {
   }, []);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
     startAnimation();
     const onResize = () => {
       cancelAnimationFrame(rafRef.current);
