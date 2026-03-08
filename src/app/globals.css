@@ -154,6 +154,7 @@ body {
   left: 35%;
   animation: aurora-drift-3 28s ease-in-out infinite;
   pointer-events: none;
+  will-change: transform;
 }
 
 @keyframes aurora-drift-1 {

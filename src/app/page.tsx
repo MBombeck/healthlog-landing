@@ -1,6 +1,7 @@
-"use client";
-
-import { useEffect, useRef, useState, useCallback } from "react";
+import { EcgMonitor } from "@/components/EcgMonitor";
+import { ScrollIndicator, ScrollRevealObserver } from "@/components/HeroClient";
+import { DemoCredentials } from "@/components/DemoCredentials";
+import { TerminalBlock } from "@/components/TerminalBlock";
 
 /* ── SVG Icons ──────────────────────────────────── */
 
@@ -122,164 +123,6 @@ function PlayIcon({ className = "w-5 h-5" }: { className?: string }) {
       <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
       <polygon points="10,8 16,12 10,16" fill="currentColor" />
     </svg>
-  );
-}
-
-function KeyIcon() {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4" aria-hidden="true">
-      <circle cx="10.5" cy="5.5" r="3.5" stroke="currentColor" strokeWidth="1.2" />
-      <path d="M8 8l-5.5 5.5M4.5 11.5l2 2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-/* ── Canvas ECG Heart Monitor ─────────────────── */
-
-function ecgSample(t: number): number {
-  const p = 0.22 * Math.exp(-Math.pow((t - 0.12) / 0.04, 2));
-  const q = -0.08 * Math.exp(-Math.pow((t - 0.22) / 0.008, 2));
-  const r = 1.0 * Math.exp(-Math.pow((t - 0.25) / 0.013, 2));
-  const s = -0.12 * Math.exp(-Math.pow((t - 0.28) / 0.008, 2));
-  const tw = 0.3 * Math.exp(-Math.pow((t - 0.42) / 0.045, 2));
-  return p + q + r + s + tw;
-}
-
-function EcgMonitor() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const rafRef = useRef(0);
-
-  const startAnimation = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const dpr = window.devicePixelRatio || 1;
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx.scale(dpr, dpr);
-
-    const w = rect.width;
-    const h = rect.height;
-    const baseline = h * 0.55;
-    const amp = h * 0.4;
-
-    const totalPx = Math.ceil(w);
-    const beatsOnScreen = Math.max(3, Math.round(w / 350));
-    const pxPerBeat = totalPx / beatsOnScreen;
-    const data = new Float32Array(totalPx);
-    for (let i = 0; i < totalPx; i++) {
-      data[i] = ecgSample((i % pxPerBeat) / pxPerBeat);
-    }
-
-    const sweepSpeed = w / 5000;
-    let sweepX = 0;
-    let lastTime = -1;
-    const gapPx = 60;
-    const trailLength = Math.floor((totalPx - gapPx) * 0.45);
-    const purple = [189, 147, 249];
-
-    function frame(now: number) {
-      if (lastTime < 0) lastTime = now;
-      const dt = now - lastTime;
-      lastTime = now;
-      sweepX = (sweepX + sweepSpeed * dt) % w;
-
-      const cv = canvasRef.current;
-      if (!cv || !ctx) return;
-
-      ctx.clearRect(0, 0, w, h);
-
-      const sweepI = Math.floor(sweepX);
-
-      const alphaSteps = 8;
-      for (let a = 0; a < alphaSteps; a++) {
-        const segStart = Math.floor((a / alphaSteps) * trailLength);
-        const segEnd = Math.floor(((a + 1) / alphaSteps) * trailLength);
-        const midSeg = (segStart + segEnd) / 2;
-        const age = (trailLength - midSeg) / trailLength;
-        const alpha = 0.05 + 0.95 * (1 - age);
-
-        ctx.beginPath();
-        ctx.strokeStyle = `rgba(${purple[0]},${purple[1]},${purple[2]},${alpha})`;
-        ctx.lineWidth = 2;
-        let pathStarted = false;
-        let prevI = -1;
-        for (let seg = segStart; seg < segEnd; seg++) {
-          const i = (sweepI - trailLength + seg + totalPx) % totalPx;
-          const y = baseline - data[i] * amp;
-          const wrapped = prevI >= 0 && i < prevI;
-          if (!pathStarted || wrapped) { ctx.moveTo(i, y); pathStarted = true; }
-          else { ctx.lineTo(i, y); }
-          prevI = i;
-        }
-        ctx.stroke();
-      }
-
-      const glowLen = Math.min(80, trailLength);
-      ctx.shadowColor = `rgba(${purple[0]},${purple[1]},${purple[2]},0.8)`;
-      ctx.shadowBlur = 12;
-      ctx.beginPath();
-      let started = false;
-      let prevGlowI = -1;
-      for (let seg = trailLength - glowLen; seg < trailLength; seg++) {
-        const i = (sweepI - trailLength + seg + totalPx) % totalPx;
-        const y = baseline - data[i] * amp;
-        const wrapped = prevGlowI >= 0 && i < prevGlowI;
-        if (!started || wrapped) { ctx.moveTo(i, y); started = true; }
-        else { ctx.lineTo(i, y); }
-        prevGlowI = i;
-      }
-      ctx.strokeStyle = `rgba(${purple[0]},${purple[1]},${purple[2]},0.6)`;
-      ctx.lineWidth = 4;
-      ctx.stroke();
-      ctx.shadowBlur = 0;
-
-      const headY = baseline - data[sweepI] * amp;
-      const grad = ctx.createRadialGradient(sweepX, headY, 0, sweepX, headY, 10);
-      grad.addColorStop(0, "rgba(255,255,255,0.9)");
-      grad.addColorStop(0.3, `rgba(${purple[0]},${purple[1]},${purple[2]},0.7)`);
-      grad.addColorStop(1, `rgba(${purple[0]},${purple[1]},${purple[2]},0)`);
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.arc(sweepX, headY, 10, 0, Math.PI * 2);
-      ctx.fill();
-
-      ctx.fillStyle = "#fff";
-      ctx.beginPath();
-      ctx.arc(sweepX, headY, 2.5, 0, Math.PI * 2);
-      ctx.fill();
-
-      rafRef.current = requestAnimationFrame(frame);
-    }
-
-    rafRef.current = requestAnimationFrame(frame);
-  }, []);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
-
-    startAnimation();
-    const onResize = () => {
-      cancelAnimationFrame(rafRef.current);
-      startAnimation();
-    };
-    window.addEventListener("resize", onResize);
-    return () => {
-      cancelAnimationFrame(rafRef.current);
-      window.removeEventListener("resize", onResize);
-    };
-  }, [startAnimation]);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className="ecg-canvas"
-      aria-hidden="true"
-    />
   );
 }
 
@@ -490,124 +333,16 @@ const privacyChecks = [
   "Open Source — every single line of code is auditable",
 ];
 
-/* ── Scramble Decode Hook ─────────────────────────── */
+const terminalCommands = "git clone https://github.com/MBombeck/HealthLog.git\ncd HealthLog\ncp .env.example .env\ndocker compose up -d";
 
-const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*";
-
-function useScrambleDecode() {
-  const intervalsRef = useRef<Set<ReturnType<typeof setInterval>>>(new Set());
-
-  const decode = useCallback((target: string, setter: (v: string) => void, durationMs = 800) => {
-    const len = target.length;
-    const iterationsPerChar = 10;
-    const totalSteps = len * iterationsPerChar;
-    let step = 0;
-
-    const id = setInterval(() => {
-      const revealed = Math.floor(step / iterationsPerChar);
-      let result = "";
-      for (let i = 0; i < len; i++) {
-        if (i < revealed) result += target[i];
-        else result += SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-      }
-      setter(result);
-      step++;
-      if (step >= totalSteps) {
-        clearInterval(id);
-        intervalsRef.current.delete(id);
-        setter(target);
-      }
-    }, durationMs / totalSteps);
-    intervalsRef.current.add(id);
-  }, []);
-
-  useEffect(() => {
-    return () => { intervalsRef.current.forEach((id) => clearInterval(id)); };
-  }, []);
-
-  return decode;
-}
-
-/* ── Inline Check Icon (no margin) ────────────────── */
-
-function CopyCheckIcon() {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true">
-      <path d="M3 8.5L6.5 12L13 4" stroke="#50fa7b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function ClipboardIcon() {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5" aria-hidden="true">
-      <rect x="5" y="2" width="6" height="2" rx="0.5" stroke="currentColor" strokeWidth="1.2" />
-      <rect x="3" y="4" width="10" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.2" />
-    </svg>
-  );
-}
-
-/* ── Main Page ──────────────────────────────────── */
+/* ── Main Page (Server Component) ────────────────── */
 
 export default function Home() {
-  const [scrolled, setScrolled] = useState(false);
-  const [credentialsRevealed, setCredentialsRevealed] = useState(false);
-  const [displayUser, setDisplayUser] = useState("");
-  const [displayPassword, setDisplayPassword] = useState("");
-  const [copiedField, setCopiedField] = useState<string | null>(null);
-  const scrambleDecode = useScrambleDecode();
-  const copyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const generateTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    return () => {
-      if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
-      if (generateTimeoutRef.current) clearTimeout(generateTimeoutRef.current);
-    };
-  }, []);
-
-  const copyToClipboard = useCallback(async (text: string, field: string) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
-      setCopiedField(field);
-      copyTimeoutRef.current = setTimeout(() => setCopiedField(null), 2000);
-    } catch { /* clipboard not available */ }
-  }, []);
-
-  const handleGenerate = useCallback(() => {
-    if (credentialsRevealed) return;
-    setCredentialsRevealed(true);
-    scrambleDecode("demo", setDisplayUser, 250);
-    generateTimeoutRef.current = setTimeout(() => {
-      scrambleDecode("demo123demo123", setDisplayPassword, 900);
-    }, 300);
-  }, [scrambleDecode, credentialsRevealed]);
-
-  const terminalCommands = "git clone https://github.com/MBombeck/HealthLog.git\ncd HealthLog\ncp .env.example .env\ndocker compose up -d";
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
-        });
-      },
-      { threshold: 0.08, rootMargin: "0px 0px -60px 0px" }
-    );
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-
-    const handleScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <div className="relative">
+      {/* Client-side scroll reveal observer */}
+      <ScrollRevealObserver />
+
       {/* Skip navigation */}
       <a
         href="#main-content"
@@ -668,15 +403,7 @@ export default function Home() {
           </nav>
         </div>
 
-        {/* Scroll indicator */}
-        <div
-          className={`absolute bottom-10 left-1/2 -translate-x-1/2 transition-all duration-700 ${scrolled ? "opacity-0 translate-y-2 pointer-events-none" : "opacity-25"}`}
-          aria-hidden="true"
-        >
-          <div className="w-5 h-8 border border-text-tertiary rounded-full flex justify-center pt-1.5">
-            <div className="w-1 h-2 bg-text-tertiary rounded-full animate-bounce" />
-          </div>
-        </div>
+        <ScrollIndicator />
       </header>
 
       {/* ─── APP MOCKUP ───────────────────────────── */}
@@ -718,7 +445,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Primary features — large cards */}
+          {/* Primary features -- large cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-16">
             {primaryFeatures.map((feature, i) => {
               const colors = colorMap[feature.color];
@@ -738,7 +465,7 @@ export default function Home() {
             })}
           </div>
 
-          {/* Secondary features — compact cards */}
+          {/* Secondary features -- compact cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-5">
             {secondaryFeatures.map((feature, i) => {
               const colors = colorMap[feature.color];
@@ -823,7 +550,7 @@ export default function Home() {
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-void to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-void to-transparent z-10 pointer-events-none" />
           <div className="overflow-hidden">
-            <div className="tech-scroll">
+            <div className="tech-scroll" aria-hidden="true">
               {[...techItems, ...techItems].map((item, i) => (
                 <span key={`${item}-${i}`} className="flex-shrink-0 px-5 py-2.5 rounded-full border border-[rgba(98,114,164,0.08)] bg-[rgba(15,16,24,0.5)] text-text-secondary text-sm font-mono whitespace-nowrap hover:border-[rgba(189,147,249,0.2)] hover:text-text-primary transition-all duration-300">
                   {item}
@@ -845,85 +572,7 @@ export default function Home() {
             No signup, no installation — just click and explore.
           </p>
 
-          <div className="reveal demo-card glass-card max-w-md mx-auto p-8 mb-10">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-pink/10 flex items-center justify-center">
-                <KeyIcon />
-              </div>
-              <div className="text-left">
-                <p className="text-xs text-text-tertiary font-mono tracking-wider uppercase">Demo-Zugangsdaten</p>
-              </div>
-            </div>
-
-            <div className="mb-8">
-              {!credentialsRevealed ? (
-                <button
-                  onClick={handleGenerate}
-                  className="generate-button group"
-                >
-                  <KeyIcon />
-                  <span>Zugangsdaten generieren</span>
-                  <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4 transition-transform group-hover:rotate-90" aria-hidden="true">
-                    <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                  </svg>
-                </button>
-              ) : (
-                <div className="space-y-3 credential-enter">
-                  <div
-                    className="credential-field flex items-center justify-between px-4 py-3 rounded-xl bg-[rgba(15,16,24,0.8)] border border-[rgba(98,114,164,0.08)]"
-                    onClick={() => copyToClipboard("demo", "user")}
-                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); copyToClipboard("demo", "user"); } }}
-                    role="button"
-                    tabIndex={0}
-                    aria-label="Copy username: demo"
-                  >
-                    <span className="text-xs text-text-tertiary font-mono tracking-wider uppercase">User</span>
-                    {copiedField === "user" ? (
-                      <span className="text-sm font-mono text-green font-semibold flex items-center gap-1.5">
-                        <CopyCheckIcon /> Kopiert
-                      </span>
-                    ) : (
-                      <span className="text-sm font-mono text-purple font-semibold tracking-wide tabular-nums flex items-center gap-2">
-                        {displayUser}
-                        <ClipboardIcon />
-                      </span>
-                    )}
-                  </div>
-                  <div
-                    className="credential-field flex items-center justify-between px-4 py-3 rounded-xl bg-[rgba(15,16,24,0.8)] border border-[rgba(98,114,164,0.08)]"
-                    onClick={() => copyToClipboard("demo123demo123", "password")}
-                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); copyToClipboard("demo123demo123", "password"); } }}
-                    role="button"
-                    tabIndex={0}
-                    aria-label="Copy password"
-                  >
-                    <span className="text-xs text-text-tertiary font-mono tracking-wider uppercase">Password</span>
-                    {copiedField === "password" ? (
-                      <span className="text-sm font-mono text-green font-semibold flex items-center gap-1.5">
-                        <CopyCheckIcon /> Kopiert
-                      </span>
-                    ) : (
-                      <span className="text-sm font-mono text-purple font-semibold tracking-wide tabular-nums flex items-center gap-2">
-                        {displayPassword}
-                        <ClipboardIcon />
-                      </span>
-                    )}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <a
-              href="https://demo.healthlog.dev"
-              className="cta-button group w-full justify-center"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <PlayIcon className="w-5 h-5 relative z-10" />
-              <span>Try the live demo</span>
-              <ArrowIcon />
-            </a>
-          </div>
+          <DemoCredentials />
 
           <p className="reveal text-text-tertiary text-xs font-mono">
             Resets automatically — feel free to add, edit, and delete anything.
@@ -942,31 +591,7 @@ export default function Home() {
             set your config, start with Docker.
           </p>
 
-          <div
-            className="group glass-card terminal-window terminal-copyable p-5 sm:p-6 text-left mb-12 max-w-lg mx-auto relative"
-            onClick={() => copyToClipboard(terminalCommands, "terminal")}
-            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); copyToClipboard(terminalCommands, "terminal"); } }}
-            role="button"
-            tabIndex={0}
-            aria-label="Copy installation commands"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-green" />
-                <span className="text-[11px] font-mono text-text-tertiary tracking-wide">terminal</span>
-              </div>
-              <div className="flex items-center gap-1.5 text-text-tertiary text-[10px] font-mono">
-                {copiedField === "terminal" ? (
-                  <span className="flex items-center gap-1 text-green"><CopyCheckIcon /> Kopiert</span>
-                ) : (
-                  <span className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"><ClipboardIcon /> Copy</span>
-                )}
-              </div>
-            </div>
-            <pre className="text-sm font-mono text-purple leading-[1.8] overflow-x-auto">
-              <code>{terminalCommands}</code>
-            </pre>
-          </div>
+          <TerminalBlock commands={terminalCommands} />
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
