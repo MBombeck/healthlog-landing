@@ -194,12 +194,9 @@ function EcgMonitor() {
 
       const sweepI = Math.floor(sweepX);
 
-      const deadzone = 0.02;
-
       for (let seg = 0; seg < trailLength - 1; seg++) {
         const i = (sweepI - trailLength + seg + totalPx) % totalPx;
         const j = (i + 1) % totalPx;
-        if (Math.abs(data[i]) < deadzone && Math.abs(data[j]) < deadzone) continue;
         const age = (trailLength - seg) / trailLength;
         const alpha = 0.05 + 0.95 * (1 - age);
         const y1 = baseline - data[i] * amp;
@@ -221,7 +218,6 @@ function EcgMonitor() {
       let prevI = -1;
       for (let seg = trailLength - glowLen; seg < trailLength; seg++) {
         const i = (sweepI - trailLength + seg + totalPx) % totalPx;
-        if (Math.abs(data[i]) < deadzone) { started = false; continue; }
         const y = baseline - data[i] * amp;
         if (!started) { ctx.moveTo(i, y); started = true; }
         else if (prevI >= 0 && Math.abs(i - prevI) > 2) { ctx.moveTo(i, y); }
@@ -233,22 +229,20 @@ function EcgMonitor() {
       ctx.stroke();
       ctx.shadowBlur = 0;
 
-      if (Math.abs(data[sweepI]) >= deadzone) {
-        const headY = baseline - data[sweepI] * amp;
-        const grad = ctx.createRadialGradient(sweepX, headY, 0, sweepX, headY, 10);
-        grad.addColorStop(0, "rgba(255,255,255,0.9)");
-        grad.addColorStop(0.3, `rgba(${purple[0]},${purple[1]},${purple[2]},0.7)`);
-        grad.addColorStop(1, `rgba(${purple[0]},${purple[1]},${purple[2]},0)`);
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(sweepX, headY, 10, 0, Math.PI * 2);
-        ctx.fill();
+      const headY = baseline - data[sweepI] * amp;
+      const grad = ctx.createRadialGradient(sweepX, headY, 0, sweepX, headY, 10);
+      grad.addColorStop(0, "rgba(255,255,255,0.9)");
+      grad.addColorStop(0.3, `rgba(${purple[0]},${purple[1]},${purple[2]},0.7)`);
+      grad.addColorStop(1, `rgba(${purple[0]},${purple[1]},${purple[2]},0)`);
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(sweepX, headY, 10, 0, Math.PI * 2);
+      ctx.fill();
 
-        ctx.fillStyle = "#fff";
-        ctx.beginPath();
-        ctx.arc(sweepX, headY, 2.5, 0, Math.PI * 2);
-        ctx.fill();
-      }
+      ctx.fillStyle = "#fff";
+      ctx.beginPath();
+      ctx.arc(sweepX, headY, 2.5, 0, Math.PI * 2);
+      ctx.fill();
 
       rafRef.current = requestAnimationFrame(frame);
     }
