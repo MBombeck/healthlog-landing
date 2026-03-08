@@ -137,28 +137,37 @@ function EcgHeartMonitor() {
     return () => cancelAnimationFrame(raf);
   }, []);
 
-  // 7 beat cycles spanning full width, baseline at y=55, R-spike at y=5
-  const ecgPath = [
-    "M0,55 l30,0",
-    // Beat 1
-    "c4,-1 6,-6 8,-8 c2,-2 4,0 6,3 c2,3 3,5 5,5 l8,0 c1,0 2,2 3,5 l3,-50 l4,65 c1,-3 2,-7 4,-10 l12,0 c4,-1 8,-10 12,-13 c4,-3 8,0 10,5 c2,5 4,8 6,8 l25,0",
-    // Beat 2
-    "c4,-1 6,-5 8,-7 c2,-2 4,0 6,3 c2,3 3,4 5,4 l8,0 c1,0 2,2 3,5 l3,-48 l4,62 c1,-3 2,-8 4,-11 l12,0 c4,-1 8,-9 12,-12 c4,-3 8,0 10,4 c2,4 4,8 6,8 l28,0",
-    // Beat 3
-    "c4,-1 6,-6 8,-8 c2,-2 4,1 6,4 c2,3 3,4 5,4 l7,0 c1,0 2,2 3,5 l3,-50 l4,66 c1,-4 2,-8 4,-11 l11,0 c4,-1 8,-10 12,-13 c4,-3 8,1 10,5 c2,4 4,8 6,8 l26,0",
-    // Beat 4
-    "c4,-1 6,-5 8,-7 c2,-2 4,0 6,3 c2,3 3,4 5,4 l8,0 c1,0 2,3 3,6 l3,-52 l4,64 c1,-3 2,-7 4,-10 l12,0 c4,-1 8,-9 12,-12 c4,-3 8,0 10,5 c2,5 4,7 6,7 l27,0",
-    // Beat 5
-    "c4,-1 6,-6 8,-8 c2,-2 4,0 6,3 c2,3 3,5 5,5 l8,0 c1,0 2,2 3,5 l3,-49 l4,63 c1,-3 2,-7 4,-10 l12,0 c4,-1 8,-10 12,-13 c4,-3 8,0 10,5 c2,5 4,8 6,8 l25,0",
-    // Beat 6
-    "c4,-1 6,-5 8,-7 c2,-2 4,1 6,3 c2,2 3,4 5,4 l8,0 c1,0 2,2 3,5 l3,-48 l4,62 c1,-3 2,-8 4,-11 l12,0 c4,-1 8,-9 12,-12 c4,-3 8,0 10,4 c2,4 4,8 6,8 l28,0",
-    // Beat 7
-    "c4,-1 6,-6 8,-8 c2,-2 4,0 6,4 c2,4 3,4 5,4 l7,0 c1,0 2,2 3,5 l3,-50 l4,66 c1,-4 2,-8 4,-11 l11,0 c4,-1 8,-10 12,-13 c4,-3 8,1 10,5 c2,4 4,8 6,8 l40,0",
-  ].join(" ");
+  // Generate ECG path with absolute coordinates — no drift possible.
+  // Each beat: baseline → P-wave (small bump) → Q dip → R spike (huge) → S dip → T-wave → baseline
+  // Baseline at y=50, R-spike at y=5, viewBox 0 0 1600 70
+  function makeBeat(startX: number): string {
+    const b = 50; // baseline y
+    const points = [
+      [startX, b],        // start baseline
+      [startX + 20, b],   // flat baseline
+      [startX + 30, 42],  // P-wave up
+      [startX + 40, b],   // P-wave back
+      [startX + 52, b],   // PR segment
+      [startX + 56, 56],  // Q dip (small down)
+      [startX + 62, 5],   // R spike (BIG up!)
+      [startX + 68, 62],  // S dip (below baseline)
+      [startX + 74, b],   // back to baseline
+      [startX + 88, b],   // ST segment
+      [startX + 100, 36], // T-wave up
+      [startX + 112, b],  // T-wave back
+      [startX + 140, b],  // trailing baseline
+    ];
+    return points.map(([x, y]) => `L${x},${y}`).join(" ");
+  }
+
+  const beatWidth = 140;
+  const numBeats = 11;
+  const beats = Array.from({ length: numBeats }, (_, i) => makeBeat(i * beatWidth));
+  const ecgPath = `M0,50 ${beats.join(" ")} L${numBeats * beatWidth + 20},50`;
 
   return (
     <div className="ecg-monitor" aria-hidden="true">
-      <svg viewBox="0 0 1400 70" preserveAspectRatio="none" className="w-full h-full">
+      <svg viewBox="0 0 1560 70" preserveAspectRatio="none" className="w-full h-full">
         <defs>
           <filter id="ecg-glow">
             <feGaussianBlur stdDeviation="3" result="blur" />
