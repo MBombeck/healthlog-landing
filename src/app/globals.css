@@ -584,6 +584,88 @@ body {
   border-color: rgba(189, 147, 249, 0.15);
 }
 
+/* ── Comparison Table ──────────────────────────── */
+.comparison-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 0.875rem 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  border-bottom: 1px solid var(--border-subtle);
+  white-space: nowrap;
+}
+
+.comparison-table th {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  position: sticky;
+  top: 0;
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.comparison-table th:first-child,
+.comparison-table td:first-child {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.comparison-table thead th:first-child {
+  color: var(--text-tertiary);
+}
+
+/* HealthLog column highlight */
+.comparison-table th:nth-child(2),
+.comparison-table td:nth-child(2) {
+  background: rgba(189, 147, 249, 0.04);
+}
+
+.comparison-table th:nth-child(2) {
+  color: var(--purple);
+}
+
+.comparison-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.comparison-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.comparison-table tbody tr:hover {
+  background: rgba(189, 147, 249, 0.02);
+}
+
+/* Mobile comparison cards */
+.comparison-cards {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .comparison-scroll {
+    display: none;
+  }
+  .comparison-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
 /* ── Reduced Motion ─────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html {

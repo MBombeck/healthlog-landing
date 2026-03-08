@@ -335,6 +335,33 @@ const privacyChecks = [
 
 const terminalCommands = "git clone https://github.com/MBombeck/HealthLog.git\ncd HealthLog\ncp .env.example .env\ndocker compose up -d";
 
+/* ── Comparison Row ─────────────────────────────── */
+
+function ComparisonRow({ feature, values, highlights }: {
+  feature: string;
+  values: string[];
+  highlights: (boolean | null)[];
+}) {
+  return (
+    <tr>
+      <td>{feature}</td>
+      {values.map((value, i) => {
+        const highlight = highlights[i];
+        const colorClass = highlight === true
+          ? "text-green font-semibold"
+          : highlight === false
+            ? "text-text-tertiary"
+            : "text-text-secondary";
+        return (
+          <td key={`${feature}-${i}`} className={colorClass}>
+            {value}
+          </td>
+        );
+      })}
+    </tr>
+  );
+}
+
 /* ── Main Page (Server Component) ────────────────── */
 
 export default function Home() {
@@ -594,6 +621,101 @@ export default function Home() {
           <p className="reveal text-text-tertiary text-xs font-mono">
             Resets automatically — feel free to add, edit, and delete anything.
           </p>
+        </div>
+      </section>
+
+      {/* ─── COMPARISON ──────────────────────────── */}
+      <section id="comparison" className="relative py-32 sm:py-40 px-6 section-glow" aria-labelledby="comparison-heading">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="reveal flex justify-center mb-6">
+              <span className="section-label text-cyan border-cyan/15 bg-cyan/[0.03]">Comparison</span>
+            </div>
+            <h2 id="comparison-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+              HealthLog vs. The Rest
+            </h2>
+            <p className="reveal text-text-secondary text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+              See how a self-hosted, open-source approach compares to the big players.
+            </p>
+          </div>
+
+          {/* Desktop: Table */}
+          <div className="reveal comparison-scroll">
+            <div className="glass-card overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="comparison-table" role="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Feature</th>
+                      <th scope="col">HealthLog</th>
+                      <th scope="col">Apple Health</th>
+                      <th scope="col">Google Fit</th>
+                      <th scope="col">MyFitnessPal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ComparisonRow feature="Self-hosted" values={["Yes", "No", "No", "No"]} highlights={[true, false, false, false]} />
+                    <ComparisonRow feature="Data encryption" values={["AES-256-GCM", "At rest", "At rest", "At rest"]} highlights={[true, false, false, false]} />
+                    <ComparisonRow feature="Open source" values={["AGPL-3.0", "No", "No", "No"]} highlights={[true, false, false, false]} />
+                    <ComparisonRow feature="Offline capable" values={["Full PWA", "Native", "Native", "Limited"]} highlights={[true, null, null, false]} />
+                    <ComparisonRow feature="Medication tracking" values={["Full compliance", "Basic", "No", "No"]} highlights={[true, null, false, false]} />
+                    <ComparisonRow feature="AI insights" values={["BYOK (your key)", "Limited", "No", "Premium only"]} highlights={[true, null, false, false]} />
+                    <ComparisonRow feature="Data export" values={["CSV + JSON", "XML (HealthKit)", "Google Takeout", "Premium only"]} highlights={[true, null, null, false]} />
+                    <ComparisonRow feature="Cost" values={["Free forever", "Free (Apple only)", "Free", "Freemium"]} highlights={[true, null, null, false]} />
+                    <ComparisonRow feature="Ad-free" values={["Always", "Yes", "Yes", "Premium only"]} highlights={[true, null, null, false]} />
+                    <ComparisonRow feature="Custom server" values={["Your infrastructure", "Apple servers", "Google servers", "Under Armour servers"]} highlights={[true, false, false, false]} />
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile: Card layout */}
+          <div className="reveal comparison-cards">
+            {[
+              { name: "Apple Health", items: [
+                { feature: "Self-hosted", hl: "Yes", other: "No" },
+                { feature: "Data encryption", hl: "AES-256-GCM", other: "At rest" },
+                { feature: "Open source", hl: "AGPL-3.0", other: "No" },
+                { feature: "Medication tracking", hl: "Full compliance", other: "Basic" },
+                { feature: "AI insights", hl: "BYOK (your key)", other: "Limited" },
+                { feature: "Cost", hl: "Free forever", other: "Free (Apple only)" },
+              ]},
+              { name: "Google Fit", items: [
+                { feature: "Self-hosted", hl: "Yes", other: "No" },
+                { feature: "Data encryption", hl: "AES-256-GCM", other: "At rest" },
+                { feature: "Open source", hl: "AGPL-3.0", other: "No" },
+                { feature: "Medication tracking", hl: "Full compliance", other: "No" },
+                { feature: "AI insights", hl: "BYOK (your key)", other: "No" },
+                { feature: "Data export", hl: "CSV + JSON", other: "Google Takeout" },
+              ]},
+              { name: "MyFitnessPal", items: [
+                { feature: "Self-hosted", hl: "Yes", other: "No" },
+                { feature: "Open source", hl: "AGPL-3.0", other: "No" },
+                { feature: "Offline capable", hl: "Full PWA", other: "Limited" },
+                { feature: "Ad-free", hl: "Always", other: "Premium only" },
+                { feature: "Data export", hl: "CSV + JSON", other: "Premium only" },
+                { feature: "Cost", hl: "Free forever", other: "Freemium" },
+              ]},
+            ].map((competitor) => (
+              <div key={competitor.name} className="glass-card p-6">
+                <div className="flex items-center justify-between mb-4 pb-3 border-b border-[rgba(98,114,164,0.12)]">
+                  <span className="font-display font-bold text-sm text-purple">HealthLog</span>
+                  <span className="text-text-tertiary text-xs font-mono">vs</span>
+                  <span className="font-display font-bold text-sm text-text-secondary">{competitor.name}</span>
+                </div>
+                <div className="space-y-3">
+                  {competitor.items.map((item) => (
+                    <div key={item.feature} className="grid grid-cols-[1fr_auto_auto] gap-3 items-center">
+                      <span className="text-xs text-text-tertiary font-mono">{item.feature}</span>
+                      <span className="text-xs text-green font-mono text-right">{item.hl}</span>
+                      <span className="text-xs text-text-tertiary font-mono text-right min-w-[80px]">{item.other}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
