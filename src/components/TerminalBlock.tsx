@@ -60,7 +60,7 @@ export function TerminalBlock({ commands }: { commands: string }) {
           )}
         </div>
       </div>
-      <pre className="text-sm font-mono text-purple leading-[1.8] overflow-x-auto">
+      <pre className="text-xs sm:text-sm font-mono text-purple leading-[1.8] overflow-x-auto">
         <code>{commands}</code>
       </pre>
     </div>

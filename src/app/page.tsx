@@ -218,7 +218,7 @@ function ComparisonRow({ feature, values, highlights }: {
 
 export default function Home() {
   return (
-    <div className="relative">
+    <div className="relative overflow-x-clip">
       {/* Client-side scroll reveal observer */}
       <ScrollRevealObserver />
 
@@ -234,7 +234,7 @@ export default function Home() {
       <div className="noise-overlay" />
 
       {/* ─── HERO ─────────────────────────────────── */}
-      <header id="main-content" className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden" role="banner">
+      <header id="main-content" className="relative min-h-[100dvh] flex flex-col items-center justify-center px-4 sm:px-6 overflow-hidden" role="banner">
         <div className="aurora" />
         <div className="aurora-pink" />
         <div className="grid-pattern" />
@@ -245,7 +245,7 @@ export default function Home() {
             <LogoIcon className="w-16 h-16 md:w-20 md:h-20" />
           </div>
 
-          <h1 className="font-display font-extrabold text-[2.75rem] sm:text-6xl md:text-[5.5rem] leading-[1.02] tracking-[-0.03em] mb-8">
+          <h1 className="font-display font-extrabold text-[2.25rem] sm:text-6xl md:text-[5.5rem] leading-[1.05] tracking-[-0.03em] mb-8">
             <span className="text-text-primary">Your Health.</span>
             <br />
             <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #bd93f9 0%, #8be9fd 50%, #ff79c6 100%)" }}>
@@ -288,7 +288,7 @@ export default function Home() {
 
       {/* ─── APP MOCKUP ───────────────────────────── */}
       <main>
-      <section id="interface" className="relative py-32 sm:py-40 px-6 section-glow" aria-labelledby="interface-heading">
+      <section id="interface" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="interface-heading">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <div className="reveal flex justify-center mb-6">
@@ -309,7 +309,7 @@ export default function Home() {
       </section>
 
       {/* ─── FEATURES ─────────────────────────────── */}
-      <section id="features" className="relative py-32 sm:py-40 px-6 section-glow" aria-labelledby="features-heading">
+      <section id="features" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="features-heading">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <div className="reveal flex justify-center mb-6">
@@ -392,7 +392,7 @@ export default function Home() {
       </section>
 
       {/* ─── PRIVACY ──────────────────────────────── */}
-      <section className="relative py-32 sm:py-40 px-6 section-glow privacy-section" aria-labelledby="privacy-heading">
+      <section className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow privacy-section" aria-labelledby="privacy-heading">
         <div className="max-w-3xl mx-auto relative z-10">
           <div className="text-center mb-14">
             <div className="reveal flex justify-center mb-8">
@@ -413,7 +413,7 @@ export default function Home() {
           </div>
 
           <div className="reveal glass-card p-8 sm:p-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 sm:gap-x-10 gap-y-4">
               {privacyChecks.map((check) => (
                 <div key={check} className="flex items-start gap-3">
                   <CheckIcon />
@@ -431,8 +431,8 @@ export default function Home() {
           <p className="text-text-tertiary text-xs font-mono tracking-[0.2em] uppercase">Built with</p>
         </div>
         <div className="relative">
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-void to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-void to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-void to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-void to-transparent z-10 pointer-events-none" />
           <div className="overflow-hidden">
             <div className="tech-scroll" aria-hidden="true">
               {[...techItems, ...techItems].map((item, i) => (
@@ -452,7 +452,7 @@ export default function Home() {
       </section>
 
       {/* ─── COMPARISON ──────────────────────────── */}
-      <section id="comparison" className="relative py-32 sm:py-40 px-6 section-glow" aria-labelledby="comparison-heading">
+      <section id="comparison" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="comparison-heading">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <div className="reveal flex justify-center mb-6">
@@ -533,10 +533,10 @@ export default function Home() {
                 </div>
                 <div className="space-y-3">
                   {competitor.items.map((item) => (
-                    <div key={item.feature} className="grid grid-cols-[1fr_auto_auto] gap-3 items-center">
-                      <span className="text-xs text-text-tertiary font-mono">{item.feature}</span>
-                      <span className="text-xs text-green font-mono text-right">{item.hl}</span>
-                      <span className="text-xs text-text-tertiary font-mono text-right min-w-[80px]">{item.other}</span>
+                    <div key={item.feature} className="grid grid-cols-[1fr_auto_auto] gap-2 sm:gap-3 items-center">
+                      <span className="text-[11px] sm:text-xs text-text-tertiary font-mono">{item.feature}</span>
+                      <span className="text-[11px] sm:text-xs text-green font-mono text-right">{item.hl}</span>
+                      <span className="text-[11px] sm:text-xs text-text-tertiary font-mono text-right">{item.other}</span>
                     </div>
                   ))}
                 </div>
@@ -547,7 +547,7 @@ export default function Home() {
       </section>
 
       {/* ─── LIVE DEMO ─────────────────────────────── */}
-      <section className="relative py-32 sm:py-40 px-6 section-glow" aria-labelledby="demo-heading">
+      <section className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="demo-heading">
         <div className="max-w-3xl mx-auto text-center">
           <h2 id="demo-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
             See it in action
@@ -566,7 +566,7 @@ export default function Home() {
       </section>
 
       {/* ─── CTA + QUICK START ────────────────────── */}
-      <section className="relative py-32 sm:py-40 px-6 section-glow" aria-labelledby="quickstart-heading">
+      <section className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="quickstart-heading">
         <div className="reveal max-w-2xl mx-auto text-center">
           <h2 id="quickstart-heading" className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
             Up and running<br />in minutes
@@ -605,7 +605,7 @@ export default function Home() {
       </main>
 
       {/* ─── FOOTER ───────────────────────────────── */}
-      <footer className="relative py-14 px-6 border-t border-[rgba(98,114,164,0.06)]" role="contentinfo">
+      <footer className="relative py-14 px-4 sm:px-6 border-t border-[rgba(98,114,164,0.06)]" role="contentinfo">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
             <LogoIcon className="w-5 h-5" />
