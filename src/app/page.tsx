@@ -507,20 +507,22 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://github.com/MBombeck/HealthLog"
+              href="https://healthlog-beta.ioioio.dev"
               className="cta-button group"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <GitHubIcon className="w-5 h-5 relative z-10" />
-              <span>Get started on GitHub</span>
+              <span>Try the live demo</span>
               <ArrowIcon />
             </a>
-            <a href="#interface" className="cta-secondary group">
-              <span>See it in action</span>
-              <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4 transition-transform group-hover:translate-y-0.5" aria-hidden="true">
-                <path d="M8 3v10m0 0l-4-4m4 4l4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+            <a
+              href="https://github.com/MBombeck/HealthLog"
+              className="cta-secondary group"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GitHubIcon className="w-5 h-5" />
+              <span>View on GitHub</span>
             </a>
           </div>
         </div>
@@ -714,16 +716,26 @@ docker compose up -d`}</code>
             </pre>
           </div>
 
-          <a
-            href="https://github.com/MBombeck/HealthLog"
-            className="cta-button group"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <GitHubIcon className="w-5 h-5 relative z-10" />
-            <span>View on GitHub</span>
-            <ArrowIcon />
-          </a>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://healthlog-beta.ioioio.dev"
+              className="cta-button group"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Try the live demo</span>
+              <ArrowIcon />
+            </a>
+            <a
+              href="https://github.com/MBombeck/HealthLog"
+              className="cta-secondary group"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GitHubIcon className="w-5 h-5" />
+              <span>View on GitHub</span>
+            </a>
+          </div>
         </div>
       </section>
 
