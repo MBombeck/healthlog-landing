@@ -248,6 +248,9 @@ function EcgMonitor() {
   }, []);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
     startAnimation();
     const onResize = () => {
       cancelAnimationFrame(rafRef.current);
@@ -582,11 +585,19 @@ export default function Home() {
 
   return (
     <main className="relative">
+      {/* Skip navigation */}
+      <a
+        href="#main-content"
+        className="skip-to-content"
+      >
+        Skip to content
+      </a>
+
       {/* Noise texture overlay */}
       <div className="noise-overlay" />
 
       {/* ─── HERO ─────────────────────────────────── */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+      <section id="main-content" className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
         <div className="aurora" />
         <div className="aurora-pink" />
         <div className="grid-pattern" />
