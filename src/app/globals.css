@@ -150,13 +150,13 @@ body {
   pointer-events: none;
 }
 
-/* ── ECG Heart Monitor (dynamic draw) ─────────── */
-.ecg-monitor {
+/* ── ECG Heart Monitor (Canvas) ────────────────── */
+.ecg-canvas {
   position: absolute;
-  bottom: 10%;
+  bottom: 8%;
   left: 0;
   width: 100%;
-  height: 140px;
+  height: 160px;
   opacity: 0.25;
   pointer-events: none;
 }

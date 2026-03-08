@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 /* ── SVG Icons ──────────────────────────────────── */
 
@@ -83,7 +83,7 @@ function ShieldIcon({ className = "" }: { className?: string }) {
 
 function CheckIcon() {
   return (
-    <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4 flex-shrink-0" aria-hidden="true">
+    <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4 flex-shrink-0 mt-0.5" aria-hidden="true">
       <path d="M3 8.5L6.5 12L13 4" stroke="#50fa7b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
@@ -97,108 +97,150 @@ function GitHubIcon({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
-/* ── ECG Heart Monitor (stroke-dashoffset draw) ─── */
+/* ── Canvas ECG Heart Monitor ─────────────────── */
 
-// Pre-computed ECG path with absolute coordinates — baseline y=50, R-spike y=5
-const ECG_BEAT_WIDTH = 140;
-const ECG_NUM_BEATS = 11;
-const ECG_PATH = (() => {
-  const b = 50;
-  const beats = Array.from({ length: ECG_NUM_BEATS }, (_, i) => {
-    const x = i * ECG_BEAT_WIDTH;
-    return [
-      [x, b], [x + 20, b], [x + 30, 42], [x + 40, b], [x + 52, b],
-      [x + 56, 56], [x + 62, 5], [x + 68, 62], [x + 74, b],
-      [x + 88, b], [x + 100, 36], [x + 112, b], [x + 140, b],
-    ].map(([px, py]) => `L${px},${py}`).join(" ");
-  });
-  return `M0,50 ${beats.join(" ")} L${ECG_NUM_BEATS * ECG_BEAT_WIDTH + 20},50`;
-})();
+// Medically accurate PQRST waveform using Gaussian curves
+function ecgSample(t: number): number {
+  const p = 0.22 * Math.exp(-Math.pow((t - 0.12) / 0.04, 2));
+  const q = -0.08 * Math.exp(-Math.pow((t - 0.22) / 0.008, 2));
+  const r = 1.0 * Math.exp(-Math.pow((t - 0.25) / 0.013, 2));
+  const s = -0.12 * Math.exp(-Math.pow((t - 0.28) / 0.008, 2));
+  const tw = 0.3 * Math.exp(-Math.pow((t - 0.42) / 0.045, 2));
+  return p + q + r + s + tw;
+}
 
-function EcgHeartMonitor() {
-  const pathRef = useRef<SVGPathElement>(null);
-  const glowRef = useRef<SVGPathElement>(null);
+function EcgMonitor() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const rafRef = useRef(0);
 
-  useEffect(() => {
-    const path = pathRef.current;
-    const glow = glowRef.current;
-    if (!path || !glow) return;
+  const startAnimation = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
-    const length = path.getTotalLength();
-    const visibleLength = length * 0.35;
-    const dashArray = `${visibleLength} ${length - visibleLength}`;
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
 
-    path.style.strokeDasharray = dashArray;
-    path.style.strokeDashoffset = `${length}`;
-    glow.style.strokeDasharray = dashArray;
-    glow.style.strokeDashoffset = `${length}`;
+    const w = rect.width;
+    const h = rect.height;
+    const baseline = h * 0.55;
+    const amp = h * 0.4;
 
-    const duration = 8000;
-    let rafId = 0;
-    let start = -1;
-
-    function animate(timestamp: number) {
-      if (start < 0) start = timestamp;
-      const elapsed = (timestamp - start) % duration;
-      const progress = elapsed / duration;
-      const offset = length - progress * length;
-
-      const p = pathRef.current;
-      const g = glowRef.current;
-      if (!p || !g) return; // stop if unmounted
-
-      p.style.strokeDashoffset = `${offset}`;
-      g.style.strokeDashoffset = `${offset}`;
-      rafId = requestAnimationFrame(animate);
+    // Pre-compute waveform data for full width
+    const totalPx = Math.ceil(w);
+    const beatsOnScreen = Math.max(3, Math.round(w / 350));
+    const pxPerBeat = totalPx / beatsOnScreen;
+    const data = new Float32Array(totalPx);
+    for (let i = 0; i < totalPx; i++) {
+      data[i] = ecgSample((i % pxPerBeat) / pxPerBeat);
     }
 
-    rafId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafId);
+    const sweepSpeed = w / 5000; // full width in ~5s
+    let sweepX = 0;
+    let lastTime = -1;
+    const gapPx = 40;
+    const trailLength = totalPx - gapPx;
+    const purple = [189, 147, 249]; // #bd93f9
+
+    function frame(now: number) {
+      if (lastTime < 0) lastTime = now;
+      const dt = now - lastTime;
+      lastTime = now;
+      sweepX = (sweepX + sweepSpeed * dt) % w;
+
+      const cv = canvasRef.current;
+      if (!cv || !ctx) return;
+
+      // Clear
+      ctx.clearRect(0, 0, w, h);
+
+      // Draw the ECG trail with fade
+      const sweepI = Math.floor(sweepX);
+
+      for (let seg = 0; seg < trailLength - 1; seg++) {
+        const i = (sweepI - trailLength + seg + totalPx) % totalPx;
+        const j = (i + 1) % totalPx;
+
+        // Fade: newest = 1, oldest = 0.05
+        const age = (trailLength - seg) / trailLength;
+        const alpha = 0.05 + 0.95 * (1 - age);
+
+        const y1 = baseline - data[i] * amp;
+        const y2 = baseline - data[j] * amp;
+
+        ctx.beginPath();
+        ctx.moveTo(i < j ? i : 0, y1);
+        ctx.lineTo(i < j ? j : 1, y2);
+        ctx.strokeStyle = `rgba(${purple[0]},${purple[1]},${purple[2]},${alpha})`;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+
+      // Glow line (brighter near sweep head)
+      const glowLen = Math.min(80, trailLength);
+      ctx.shadowColor = `rgba(${purple[0]},${purple[1]},${purple[2]},0.8)`;
+      ctx.shadowBlur = 12;
+      ctx.beginPath();
+      let started = false;
+      for (let seg = trailLength - glowLen; seg < trailLength; seg++) {
+        const i = (sweepI - trailLength + seg + totalPx) % totalPx;
+        const y = baseline - data[i] * amp;
+        if (!started) { ctx.moveTo(i, y); started = true; }
+        else { ctx.lineTo(i, y); }
+      }
+      ctx.strokeStyle = `rgba(${purple[0]},${purple[1]},${purple[2]},0.6)`;
+      ctx.lineWidth = 4;
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      // Bright sweep head dot
+      const headY = baseline - data[sweepI] * amp;
+      const grad = ctx.createRadialGradient(sweepX, headY, 0, sweepX, headY, 10);
+      grad.addColorStop(0, "rgba(255,255,255,0.9)");
+      grad.addColorStop(0.3, `rgba(${purple[0]},${purple[1]},${purple[2]},0.7)`);
+      grad.addColorStop(1, `rgba(${purple[0]},${purple[1]},${purple[2]},0)`);
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(sweepX, headY, 10, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Inner white dot
+      ctx.fillStyle = "#fff";
+      ctx.beginPath();
+      ctx.arc(sweepX, headY, 2.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      rafRef.current = requestAnimationFrame(frame);
+    }
+
+    rafRef.current = requestAnimationFrame(frame);
   }, []);
 
-  const ecgPath = ECG_PATH;
+  useEffect(() => {
+    startAnimation();
+
+    const onResize = () => {
+      cancelAnimationFrame(rafRef.current);
+      startAnimation();
+    };
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [startAnimation]);
 
   return (
-    <div className="ecg-monitor" aria-hidden="true">
-      <svg viewBox="0 0 1560 70" preserveAspectRatio="none" className="w-full h-full">
-        <defs>
-          <filter id="ecg-glow">
-            <feGaussianBlur stdDeviation="3" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-          <linearGradient id="ecg-fade" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#bd93f9" stopOpacity="0" />
-            <stop offset="8%" stopColor="#bd93f9" stopOpacity="1" />
-            <stop offset="100%" stopColor="#bd93f9" stopOpacity="1" />
-          </linearGradient>
-        </defs>
-        {/* Glow layer */}
-        <path
-          ref={glowRef}
-          d={ecgPath}
-          fill="none"
-          stroke="#bd93f9"
-          strokeWidth="4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          opacity="0.3"
-          filter="url(#ecg-glow)"
-        />
-        {/* Main line */}
-        <path
-          ref={pathRef}
-          d={ecgPath}
-          fill="none"
-          stroke="url(#ecg-fade)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </div>
+    <canvas
+      ref={canvasRef}
+      className="ecg-canvas"
+      aria-hidden="true"
+    />
   );
 }
 
@@ -225,7 +267,6 @@ function AppMockup() {
 
         {/* App Content */}
         <div className="bg-[#282a36] p-4 sm:p-6">
-          {/* App Header */}
           <div className="flex items-center justify-between mb-5">
             <div>
               <div className="flex items-center gap-2 mb-1">
@@ -244,7 +285,6 @@ function AppMockup() {
             </div>
           </div>
 
-          {/* Metric Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-4">
             <DashboardMetric label="Weight" value="82.4" unit="kg" change="-0.8" changeLabel="7d" color="purple" />
             <DashboardMetric label="Systolic" value="124" unit="mmHg" change="-3" changeLabel="7d" color="pink" />
@@ -252,7 +292,6 @@ function AppMockup() {
             <DashboardMetric label="Heart Rate" value="68" unit="bpm" change="-2" changeLabel="7d" color="green" />
           </div>
 
-          {/* Chart */}
           <div className="bg-[#1e1f29] rounded-xl border border-[#44475a] p-4 mb-4">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-medium text-text-primary">Weight Trend</span>
@@ -271,7 +310,6 @@ function AppMockup() {
               <rect x="0" y="20" width="320" height="25" fill="rgba(80,250,123,0.04)" rx="2" />
               <path d="M0,55 C12,53 24,50 40,48 C56,46 72,42 88,40 C104,38 120,41 140,39 C160,37 176,34 196,32 C216,30 232,33 252,28 C272,23 288,20 320,18" fill="none" stroke="#bd93f9" strokeWidth="2" strokeLinecap="round" />
               <path d="M0,55 C12,53 24,50 40,48 C56,46 72,42 88,40 C104,38 120,41 140,39 C160,37 176,34 196,32 C216,30 232,33 252,28 C272,23 288,20 320,18 L320,70 L0,70 Z" fill="url(#mg)" />
-              <path d="M0,52 C40,48 80,44 120,41 C160,38 200,34 240,28 C280,22 300,20 320,19" fill="none" stroke="#bd93f9" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
             </svg>
             <div className="flex items-center justify-between mt-2">
               <span className="text-[9px] text-text-tertiary font-mono">Feb 08</span>
@@ -280,7 +318,6 @@ function AppMockup() {
             </div>
           </div>
 
-          {/* Medication + Mood */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="bg-[#1e1f29] rounded-xl border border-[#44475a] p-3">
               <div className="flex items-center justify-between mb-2">
@@ -396,8 +433,6 @@ const colorMap: Record<string, { bg: string; text: string }> = {
   orange: { bg: "rgba(255,184,108,0.08)", text: "#ffb86c" },
 };
 
-/* ── Tech Stack ─────────────────────────────────── */
-
 const techItems = [
   "Next.js 16", "TypeScript Strict", "PostgreSQL 16", "Prisma 7",
   "Progressive Web App", "AES-256-GCM", "WebAuthn / Passkeys",
@@ -405,17 +440,15 @@ const techItems = [
   "pg-boss Queue", "Docker", "Recharts", "Zod v4",
 ];
 
-/* ── Privacy Checklist ──────────────────────────── */
-
 const privacyChecks = [
   "No cloud dependency — runs entirely on your own server",
   "No telemetry, no analytics, no tracking scripts",
-  "AES-256-GCM encryption for all sensitive data",
-  "API tokens stored as SHA-256 hashes",
+  "AES-256-GCM encryption for all sensitive data at rest",
+  "API tokens stored as SHA-256 hashes, never in plaintext",
   "Passkey authentication — phishing-resistant, no password leaks",
   "Password fallback with Argon2id hashing and strength validation",
   "Withings OAuth tokens encrypted in the database",
-  "Open Source — every line of code is auditable",
+  "Open Source — every single line of code is auditable",
 ];
 
 /* ── Main Page ──────────────────────────────────── */
@@ -424,23 +457,17 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    // Scroll reveal observer
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
+          if (entry.isIntersecting) entry.target.classList.add("visible");
         });
       },
       { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-    // Scroll indicator fade
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 100);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 100);
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
@@ -456,7 +483,9 @@ export default function Home() {
         <div className="aurora" />
         <div className="aurora-pink" />
         <div className="grid-pattern" />
-        <EcgHeartMonitor />
+
+        {/* Canvas ECG behind hero content */}
+        <EcgMonitor />
 
         <div className="relative z-10 max-w-3xl mx-auto text-center">
           <div className="flex justify-center mb-10">
@@ -479,7 +508,6 @@ export default function Home() {
             own server. Offline-capable. Open source.
           </p>
 
-          {/* Single prominent CTA */}
           <a
             href="https://github.com/MBombeck/HealthLog"
             className="cta-button group"
@@ -494,7 +522,6 @@ export default function Home() {
           </a>
         </div>
 
-        {/* Scroll indicator — fades out on scroll */}
         <div
           className={`absolute bottom-8 left-1/2 -translate-x-1/2 transition-opacity duration-500 ${scrolled ? "opacity-0 pointer-events-none" : "opacity-30"}`}
           aria-hidden="true"
@@ -539,7 +566,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Primary features — large cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-14">
             {primaryFeatures.map((feature, i) => {
               const colors = colorMap[feature.color];
@@ -559,7 +585,6 @@ export default function Home() {
             })}
           </div>
 
-          {/* Secondary features — compact row */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
             {secondaryFeatures.map((feature, i) => {
               const colors = colorMap[feature.color];
@@ -583,7 +608,6 @@ export default function Home() {
             })}
           </div>
 
-          {/* Additional capabilities */}
           <div className="reveal mt-10 flex flex-wrap justify-center gap-3">
             {[
               "Offline-capable PWA",
@@ -623,7 +647,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Privacy checklist */}
           <div className="reveal glass-card p-6 sm:p-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
               {privacyChecks.map((check) => (
@@ -668,7 +691,6 @@ export default function Home() {
             adjust the configuration, and start with Docker.
           </p>
 
-          {/* Quick Start */}
           <div className="glass-card p-4 sm:p-5 text-left mb-10 max-w-lg mx-auto">
             <div className="flex items-center gap-2 mb-3">
               <div className="w-2 h-2 rounded-full bg-green" />
