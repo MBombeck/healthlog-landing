@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-/* ── SVG Icons (inline for zero dependencies) ───── */
+/* ── SVG Icons ──────────────────────────────────── */
 
 function LogoIcon({ className = "" }: { className?: string }) {
   return (
@@ -36,13 +36,7 @@ function LogoIcon({ className = "" }: { className?: string }) {
 function HeartMetricIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-      <path
-        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -50,13 +44,10 @@ function HeartMetricIcon() {
 function PillIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-      <path
-        d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 14.25h3m-6-6h9m-9 3h9"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <rect x="5" y="2" width="14" height="20" rx="7" stroke="currentColor" strokeWidth="1.5" />
+      <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="9" cy="7" r="1" fill="currentColor" opacity="0.4" />
+      <circle cx="12" cy="17" r="1" fill="currentColor" opacity="0.4" />
     </svg>
   );
 }
@@ -64,38 +55,10 @@ function PillIcon() {
 function MoodIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-      <circle
-        cx="12"
-        cy="12"
-        r="10"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-      <path
-        d="M8 14s1.5 2 4 2 4-2 4-2"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <line
-        x1="9"
-        y1="9"
-        x2="9.01"
-        y2="9"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      <line
-        x1="15"
-        y1="9"
-        x2="15.01"
-        y2="9"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
+      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="9" y1="9" x2="9.01" y2="9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <line x1="15" y1="9" x2="15.01" y2="9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }
@@ -103,31 +66,9 @@ function MoodIcon() {
 function BrainIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-      <path
-        d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <line
-        x1="9"
-        y1="21"
-        x2="15"
-        y2="21"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <line
-        x1="10"
-        y1="23"
-        x2="14"
-        y2="23"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
+      <path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="9" y1="21" x2="15" y2="21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="10" y1="23" x2="14" y2="23" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
@@ -135,38 +76,10 @@ function BrainIcon() {
 function FileIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-      <path
-        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <polyline
-        points="14,2 14,8 20,8"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <line
-        x1="8"
-        y1="13"
-        x2="16"
-        y2="13"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <line
-        x1="8"
-        y1="17"
-        x2="13"
-        y2="17"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <polyline points="14,2 14,8 20,8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="8" y1="13" x2="16" y2="13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="8" y1="17" x2="13" y2="17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
@@ -174,53 +87,53 @@ function FileIcon() {
 function SyncIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-      <path
-        d="M23 4v6h-6"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M1 20v-6h6"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M23 4v6h-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M1 20v-6h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function BellIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
+      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function TrophyIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
+      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M4 22h16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 19.24 7 22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 19.24 17 22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function WifiOffIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
+      <path d="M12 20h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="M8.5 16.429a5 5 0 0 1 7 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M5 12.859a10 10 0 0 1 5.17-2.69" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M19 12.859a10 10 0 0 0-2.007-1.523" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M2 8.82a15 15 0 0 1 4.177-2.643" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M22 8.82a15 15 0 0 0-11.288-3.764" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
 function ShieldIcon({ className = "" }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      className={`w-16 h-16 ${className}`}
-    >
-      <path
-        d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
-        stroke="#50fa7b"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="rgba(80, 250, 123, 0.08)"
-      />
-      <polyline
-        points="9,12 11,14 15,10"
-        stroke="#50fa7b"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+    <svg viewBox="0 0 24 24" fill="none" className={`w-16 h-16 ${className}`}>
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#50fa7b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="rgba(80, 250, 123, 0.08)" />
+      <polyline points="9,12 11,14 15,10" stroke="#50fa7b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -228,22 +141,8 @@ function ShieldIcon({ className = "" }: { className?: string }) {
 function LockIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-      <rect
-        x="3"
-        y="11"
-        width="18"
-        height="11"
-        rx="2"
-        ry="2"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-      <path
-        d="M7 11V7a5 5 0 0 1 10 0v4"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
@@ -251,44 +150,10 @@ function LockIcon() {
 function ServerIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-      <rect
-        x="2"
-        y="2"
-        width="20"
-        height="8"
-        rx="2"
-        ry="2"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-      <rect
-        x="2"
-        y="14"
-        width="20"
-        height="8"
-        rx="2"
-        ry="2"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-      <line
-        x1="6"
-        y1="6"
-        x2="6.01"
-        y2="6"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      <line
-        x1="6"
-        y1="18"
-        x2="6.01"
-        y2="18"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
+      <rect x="2" y="2" width="20" height="8" rx="2" ry="2" stroke="currentColor" strokeWidth="1.5" />
+      <rect x="2" y="14" width="20" height="8" rx="2" ry="2" stroke="currentColor" strokeWidth="1.5" />
+      <line x1="6" y1="6" x2="6.01" y2="6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <line x1="6" y1="18" x2="6.01" y2="18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }
@@ -296,128 +161,167 @@ function ServerIcon() {
 function KeyIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-      <path
-        d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
-/* ── ECG Background Line Component ──────────────── */
+/* ── ECG Background Line (smooth bezier curves) ── */
 
 function EcgBackgroundLine() {
-  const ecgPath =
-    "M0,40 L40,40 L50,40 L55,20 L60,60 L65,10 L70,40 L80,40 L120,40 L160,40 L170,40 L175,20 L180,60 L185,10 L190,40 L200,40 L240,40 L280,40 L290,40 L295,20 L300,60 L305,10 L310,40 L320,40 L360,40 L400,40 L410,40 L415,20 L420,60 L425,10 L430,40 L440,40 L480,40";
+  // Realistic ECG waveform with smooth bezier curves: P wave, QRS complex, T wave
+  const ecgSegment = "M0,40 C15,40 25,40 35,40 C38,40 40,39 42,38 C44,37 46,36 48,38 C49,39 50,40 52,40 C54,40 55,38 56,34 C57,30 58,24 59,18 C60,12 60.5,8 61,12 C61.5,16 62,28 63,38 C63.5,43 64,50 65,54 C66,58 66.5,60 67,56 C67.5,52 68,44 69,40 C70,36 71,38 73,39 C75,40 78,40 82,40 C86,40 90,40 94,38 C96,37 98,36 100,37 C102,38 104,40 108,40 C112,40 120,40 130,40 C140,40 150,40 160,40";
+
   return (
     <div className="ecg-line">
-      <svg viewBox="0 0 480 80" preserveAspectRatio="none">
-        <path d={ecgPath} fill="none" stroke="#bd93f9" strokeWidth="2" />
-        <path
-          d={ecgPath}
-          fill="none"
-          stroke="#bd93f9"
-          strokeWidth="2"
-          transform="translate(480, 0)"
-        />
+      <svg viewBox="0 0 320 80" preserveAspectRatio="none">
+        <path d={ecgSegment} fill="none" stroke="#bd93f9" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d={ecgSegment} fill="none" stroke="#bd93f9" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" transform="translate(160, 0)" />
       </svg>
     </div>
   );
 }
 
-/* ── Mockup App Display ─────────────────────────── */
+/* ── Realistic App Mockup ───────────────────────── */
 
 function AppMockup() {
   return (
-    <div className="gradient-border max-w-[720px] mx-auto">
+    <div className="gradient-border max-w-[780px] mx-auto">
       <div className="gradient-border-inner">
-        {/* Title Bar */}
-        <div className="flex items-center gap-2 px-4 py-3 border-b border-[rgba(98,114,164,0.12)]">
+        {/* Browser Chrome */}
+        <div className="flex items-center gap-2 px-4 py-3 border-b border-[rgba(98,114,164,0.12)] bg-[#1e1f29]">
           <div className="flex gap-1.5">
             <div className="w-2.5 h-2.5 rounded-full bg-[#ff5555] opacity-60" />
             <div className="w-2.5 h-2.5 rounded-full bg-[#ffb86c] opacity-60" />
             <div className="w-2.5 h-2.5 rounded-full bg-[#50fa7b] opacity-60" />
           </div>
-          <div className="flex-1 text-center">
-            <span className="text-[11px] font-mono text-text-tertiary tracking-wide">
-              healthlog.example.com
-            </span>
+          <div className="flex-1 flex justify-center">
+            <div className="flex items-center gap-1.5 px-4 py-1 rounded-md bg-[rgba(68,71,90,0.4)] max-w-[280px] w-full">
+              <svg viewBox="0 0 16 16" fill="none" className="w-3 h-3 text-text-tertiary flex-shrink-0"><path d="M8 1a4 4 0 0 0-4 4v3H3a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-1V5a4 4 0 0 0-4-4z" stroke="currentColor" strokeWidth="1.2" /></svg>
+              <span className="text-[10px] font-mono text-text-tertiary tracking-wide truncate">healthlog.example.com</span>
+            </div>
           </div>
         </div>
 
-        {/* App Content */}
-        <div className="p-5 space-y-4">
-          {/* Header */}
-          <div className="flex items-center justify-between mb-2">
+        {/* App Content — realistic HealthLog dashboard */}
+        <div className="bg-[#282a36] p-4 sm:p-6">
+          {/* App Header */}
+          <div className="flex items-center justify-between mb-5">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <LogoIcon className="w-5 h-5" />
+                <span className="font-display font-bold text-sm text-text-primary tracking-tight">HealthLog</span>
+              </div>
+              <p className="text-[11px] text-text-tertiary">Guten Morgen, Marc</p>
+            </div>
             <div className="flex items-center gap-2">
-              <LogoIcon className="w-6 h-6" />
-              <span className="font-display font-bold text-sm text-text-primary tracking-tight">
-                HealthLog
-              </span>
-            </div>
-            <div className="w-7 h-7 rounded-full bg-purple/20 flex items-center justify-center">
-              <span className="text-[10px] text-purple font-bold">M</span>
-            </div>
-          </div>
-
-          {/* Metric Cards */}
-          <div className="mockup-grid">
-            <MockupMetric label="Gewicht" value="82.4" unit="kg" trend="down" />
-            <MockupMetric label="Blutdruck" value="124/78" unit="mmHg" trend="stable" />
-            <MockupMetric label="Puls" value="68" unit="bpm" trend="down" />
-
-            {/* Chart Area */}
-            <div className="mockup-chart">
-              <svg
-                viewBox="0 0 300 60"
-                className="w-full h-full"
-                preserveAspectRatio="none"
-              >
-                <defs>
-                  <linearGradient
-                    id="chartGrad"
-                    x1="0"
-                    y1="0"
-                    x2="0"
-                    y2="1"
-                  >
-                    <stop offset="0%" stopColor="#bd93f9" stopOpacity="0.3" />
-                    <stop offset="100%" stopColor="#bd93f9" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-                <path
-                  d="M0,45 C20,42 40,38 60,35 C80,32 100,28 120,30 C140,32 160,25 180,22 C200,19 220,24 240,20 C260,16 280,18 300,15"
-                  fill="none"
-                  stroke="#bd93f9"
-                  strokeWidth="2"
-                />
-                <path
-                  d="M0,45 C20,42 40,38 60,35 C80,32 100,28 120,30 C140,32 160,25 180,22 C200,19 220,24 240,20 C260,16 280,18 300,15 L300,60 L0,60 Z"
-                  fill="url(#chartGrad)"
-                />
-              </svg>
-              <div className="absolute bottom-2 left-3 text-[9px] text-text-tertiary font-mono">
-                30 Tage Trend
+              <div className="w-8 h-8 rounded-lg bg-[#44475a] flex items-center justify-center">
+                <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4 text-text-tertiary"><path d="M8 2v12M2 8h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+              </div>
+              <div className="w-8 h-8 rounded-full bg-purple/20 flex items-center justify-center">
+                <span className="text-[11px] text-purple font-bold">M</span>
               </div>
             </div>
           </div>
 
-          {/* Medication Row */}
-          <div className="flex items-center gap-3 bg-[rgba(80,250,123,0.04)] border border-[rgba(80,250,123,0.1)] rounded-lg p-3">
-            <div className="w-2 h-2 rounded-full bg-green animate-pulse" />
-            <div className="flex-1">
-              <div className="text-[11px] font-semibold text-text-primary">
-                Ramipril 5mg
-              </div>
-              <div className="text-[9px] text-text-tertiary">
-                Eingenommen um 08:12
+          {/* Metric Cards Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-4">
+            <DashboardMetric label="Gewicht" value="82.4" unit="kg" change="-0.8" changeLabel="7T" color="purple" />
+            <DashboardMetric label="Systolisch" value="124" unit="mmHg" change="-3" changeLabel="7T" color="pink" />
+            <DashboardMetric label="Diastolisch" value="78" unit="mmHg" change="+1" changeLabel="7T" color="cyan" />
+            <DashboardMetric label="Puls" value="68" unit="bpm" change="-2" changeLabel="7T" color="green" />
+          </div>
+
+          {/* Chart Area */}
+          <div className="bg-[#1e1f29] rounded-xl border border-[#44475a] p-4 mb-4">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-xs font-medium text-text-primary">Gewichtsverlauf</span>
+              <div className="flex gap-1">
+                <span className="text-[9px] px-2 py-0.5 rounded bg-purple/15 text-purple font-mono">30T</span>
+                <span className="text-[9px] px-2 py-0.5 rounded bg-[#44475a] text-text-tertiary font-mono">90T</span>
               </div>
             </div>
-            <div className="text-[10px] text-green font-mono font-semibold">
-              97% Compliance
+            <svg viewBox="0 0 320 70" className="w-full h-16" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="mg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#bd93f9" stopOpacity="0.25" />
+                  <stop offset="100%" stopColor="#bd93f9" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              {/* Target range band */}
+              <rect x="0" y="20" width="320" height="25" fill="rgba(80,250,123,0.04)" rx="2" />
+              {/* Weight line — smooth bezier */}
+              <path d="M0,55 C12,53 24,50 40,48 C56,46 72,42 88,40 C104,38 120,41 140,39 C160,37 176,34 196,32 C216,30 232,33 252,28 C272,23 288,20 320,18" fill="none" stroke="#bd93f9" strokeWidth="2" strokeLinecap="round" />
+              <path d="M0,55 C12,53 24,50 40,48 C56,46 72,42 88,40 C104,38 120,41 140,39 C160,37 176,34 196,32 C216,30 232,33 252,28 C272,23 288,20 320,18 L320,70 L0,70 Z" fill="url(#mg)" />
+              {/* Moving average dashed */}
+              <path d="M0,52 C40,48 80,44 120,41 C160,38 200,34 240,28 C280,22 300,20 320,19" fill="none" stroke="#bd93f9" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
+            </svg>
+            <div className="flex items-center justify-between mt-2">
+              <span className="text-[9px] text-text-tertiary font-mono">08. Feb</span>
+              <span className="text-[9px] text-green font-mono">-2.3 kg Trend</span>
+              <span className="text-[9px] text-text-tertiary font-mono">08. Mär</span>
+            </div>
+          </div>
+
+          {/* Medication + Mood Row */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {/* Medication Status */}
+            <div className="bg-[#1e1f29] rounded-xl border border-[#44475a] p-3">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-medium text-text-primary">Medikamente heute</span>
+                <span className="text-[9px] text-green font-mono font-semibold">2/2</span>
+              </div>
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-green" />
+                  <span className="text-[10px] text-text-secondary flex-1">Ramipril 5mg</span>
+                  <span className="text-[9px] text-text-tertiary font-mono">08:12</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-green" />
+                  <span className="text-[10px] text-text-secondary flex-1">Vitamin D3 2000IE</span>
+                  <span className="text-[9px] text-text-tertiary font-mono">08:15</span>
+                </div>
+              </div>
+              <div className="mt-2 pt-2 border-t border-[#44475a]">
+                <div className="flex items-center justify-between">
+                  <span className="text-[9px] text-text-tertiary">30-Tage Compliance</span>
+                  <span className="text-[10px] text-green font-mono font-bold">97%</span>
+                </div>
+                {/* Compliance bar */}
+                <div className="mt-1 h-1 rounded-full bg-[#44475a] overflow-hidden">
+                  <div className="h-full rounded-full bg-green" style={{ width: "97%" }} />
+                </div>
+              </div>
+            </div>
+
+            {/* Mood Status */}
+            <div className="bg-[#1e1f29] rounded-xl border border-[#44475a] p-3">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-medium text-text-primary">Stimmung</span>
+                <span className="text-[9px] text-purple font-mono">Heute</span>
+              </div>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="flex gap-0.5">
+                  {[1, 2, 3, 4, 5].map((n) => (
+                    <div key={n} className={`w-5 h-5 rounded-md flex items-center justify-center text-[9px] font-bold ${n <= 4 ? "bg-purple/20 text-purple" : "bg-[#44475a] text-text-tertiary"}`}>
+                      {n}
+                    </div>
+                  ))}
+                </div>
+                <span className="text-[10px] text-text-secondary">4/5 — Gut</span>
+              </div>
+              <div className="flex items-center gap-1 flex-wrap">
+                <span className="text-[8px] px-1.5 py-0.5 rounded bg-[#44475a] text-text-tertiary">produktiv</span>
+                <span className="text-[8px] px-1.5 py-0.5 rounded bg-[#44475a] text-text-tertiary">ausgeruht</span>
+                <span className="text-[8px] px-1.5 py-0.5 rounded bg-[#44475a] text-text-tertiary">sport</span>
+              </div>
+              <div className="mt-2 pt-2 border-t border-[#44475a]">
+                <div className="flex items-center justify-between">
+                  <span className="text-[9px] text-text-tertiary">7-Tage Durchschnitt</span>
+                  <span className="text-[10px] text-purple font-mono font-bold">3.8/5</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -426,84 +330,99 @@ function AppMockup() {
   );
 }
 
-function MockupMetric({
+function DashboardMetric({
   label,
   value,
   unit,
-  trend,
+  change,
+  changeLabel,
+  color,
 }: {
   label: string;
   value: string;
   unit: string;
-  trend: "up" | "down" | "stable";
+  change: string;
+  changeLabel: string;
+  color: string;
 }) {
-  const trendArrow = trend === "down" ? "↓" : trend === "up" ? "↑" : "→";
-  const trendColor =
-    trend === "down"
-      ? "text-green"
-      : trend === "up"
-        ? "text-[#ff5555]"
-        : "text-text-tertiary";
+  const isNeg = change.startsWith("-");
+  const changeColor = isNeg ? "text-cyan" : "text-text-tertiary";
+  const colorMap: Record<string, string> = {
+    purple: "border-l-purple",
+    pink: "border-l-pink",
+    cyan: "border-l-cyan",
+    green: "border-l-green",
+  };
   return (
-    <div className="mockup-metric">
-      <div className="text-[9px] text-text-tertiary mb-1 tracking-wider uppercase">
-        {label}
-      </div>
+    <div className={`bg-[#1e1f29] rounded-lg border border-[#44475a] ${colorMap[color]} border-l-2 p-3`}>
+      <div className="text-[9px] text-text-tertiary mb-1.5 tracking-wider uppercase">{label}</div>
       <div className="flex items-baseline gap-1">
-        <span className="text-lg font-display font-bold text-text-primary leading-none">
-          {value}
-        </span>
+        <span className="text-xl font-display font-bold text-text-primary leading-none">{value}</span>
         <span className="text-[9px] text-text-tertiary">{unit}</span>
       </div>
-      <div className={`text-[9px] mt-1 ${trendColor}`}>{trendArrow} -2.1%</div>
+      <div className={`text-[9px] mt-1 ${changeColor} font-mono`}>
+        {change} {changeLabel}
+      </div>
     </div>
   );
 }
 
-/* ── Feature Card Data ──────────────────────────── */
+/* ── Feature Data ───────────────────────────────── */
 
 const features = [
   {
     icon: <HeartMetricIcon />,
     title: "Gesundheitsmetriken",
-    description:
-      "Gewicht, Blutdruck, Puls, Körperfett, Schlaf und Schritte. Trend-Charts mit gleitenden Durchschnitten und Zielbereichsbändern.",
+    description: "Gewicht, Blutdruck, Puls, Körperfett, Schlaf und Schritte. Interaktive Trend-Charts mit gleitenden Durchschnitten, linearen Trendlinien und personalisierten Zielbereichen nach ESC/ESH- und WHO-Richtlinien.",
     color: "purple",
   },
   {
     icon: <PillIcon />,
     title: "Medikamentenmanagement",
-    description:
-      "Flexible Zeitfenster, Compliance-Analytik mit 7/30-Tage-Raten, Streaks und Heatmap-Kalender. Externe API für iOS Shortcuts.",
+    description: "Definiere flexible Einnahme-Zeitfenster, tracke Compliance mit 7- und 30-Tage-Raten, Streaks und Heatmap-Kalender. Externe API-Schnittstelle für die Einnahme-Protokollierung über iOS Shortcuts oder Home Assistant.",
     color: "cyan",
   },
   {
     icon: <MoodIcon />,
-    title: "Mood Tracking",
-    description:
-      "5-Punkte-Skala mit optionalen Notizen und Tags. Trend-Visualisierungen und Korrelationsanalyse mit Gesundheitsmetriken.",
+    title: "Stimmungstracking",
+    description: "Bewerte deine Stimmung auf einer 5-Punkte-Skala mit optionalen Notizen und Tags. Analysiere Trends, Verteilungen und Korrelationen zwischen Stimmung und Gesundheitsmetriken.",
     color: "pink",
   },
   {
     icon: <BrainIcon />,
     title: "KI-Gesundheitsanalysen",
-    description:
-      "OpenAI-gestützte Insights zu Blutdruck, Gewicht, Puls, Stimmung und Compliance. Bring Your Own Key — deine Daten, dein Modell.",
+    description: "OpenAI-gestützte Insights zu sieben Bereichen: Allgemein, Blutdruck, Gewicht, Puls, Stimmung, Medikamente und BMI. Bring-Your-Own-Key-Modell — deine Daten verlassen nie deinen Server unkontrolliert.",
     color: "orange",
   },
   {
     icon: <FileIcon />,
-    title: "Arztbericht PDF",
-    description:
-      "Professioneller PDF-Export im europäischen Medizin-Format. Vitalzeichen, BP-Klassifikation nach ESC/ESH 2018, BMI nach WHO.",
+    title: "Arztbericht als PDF",
+    description: "Generiere professionelle PDF-Berichte im europäischen Medizin-Format direkt im Browser. Vitalzeichen-Tabellen, BP-Klassifikation nach ESC/ESH 2018, BMI nach WHO-Standards — alles auf Deutsch.",
     color: "green",
   },
   {
     icon: <SyncIcon />,
-    title: "Withings Integration",
-    description:
-      "Automatische Synchronisation mit Waagen, Blutdruckmessgeräten und Activity Trackern. OAuth2 mit verschlüsseltem Token-Speicher.",
+    title: "Withings-Synchronisation",
+    description: "Verbinde Waagen, Blutdruckmessgeräte und Activity Tracker von Withings. Automatische und Webhook-basierte Synchronisation mit Deduplizierung und verschlüsseltem OAuth2-Token-Speicher.",
     color: "cyan",
+  },
+  {
+    icon: <BellIcon />,
+    title: "Drei Benachrichtigungskanäle",
+    description: "Medikamenten-Erinnerungen über Telegram mit Inline-Buttons, ntfy als selbstgehosteter Push-Dienst und native Web-Push-Benachrichtigungen über VAPID. Eskalation bei verpassten Einnahmen.",
+    color: "purple",
+  },
+  {
+    icon: <TrophyIcon />,
+    title: "Achievements & Gamification",
+    description: "Über 30 Achievements mit persistenter Freischalt-Historie motivieren zur regelmäßigen Nutzung. Von ersten Messungen über Compliance-Streaks bis hin zu langfristigen Gesundheitszielen.",
+    color: "orange",
+  },
+  {
+    icon: <WifiOffIcon />,
+    title: "Offline-fähige PWA",
+    description: "Installiere HealthLog als Progressive Web App auf jedem Gerät. Intelligente Cache-Strategien im Service Worker sorgen dafür, dass du auch ohne Internetverbindung auf deine Daten zugreifen kannst.",
+    color: "pink",
   },
 ];
 
@@ -515,7 +434,7 @@ const colorMap: Record<string, { bg: string; text: string }> = {
   orange: { bg: "rgba(255,184,108,0.08)", text: "#ffb86c" },
 };
 
-/* ── Tech Stack Items ───────────────────────────── */
+/* ── Tech Stack ─────────────────────────────────── */
 
 const techItems = [
   "Next.js 16",
@@ -524,12 +443,15 @@ const techItems = [
   "Prisma 7",
   "Progressive Web App",
   "AES-256-GCM",
-  "WebAuthn Passkeys",
+  "WebAuthn / Passkeys",
   "Telegram Bot API",
-  "OpenAI API",
+  "OpenAI API (BYOK)",
   "Withings OAuth2",
-  "pg-boss Jobs",
+  "pg-boss Queue",
   "Docker",
+  "Recharts",
+  "Zod v4",
+  "Wide Events Logging",
 ];
 
 /* ── Privacy Features ───────────────────────────── */
@@ -538,21 +460,32 @@ const privacyFeatures = [
   {
     icon: <ServerIcon />,
     title: "Self-Hosted",
-    description: "Läuft auf deinem eigenen Server. Keine Cloud, keine Abhängigkeit, kein Vendor Lock-in.",
+    description: "Deine Instanz, dein Server, deine Regeln. HealthLog läuft komplett auf deiner eigenen Infrastruktur — ob Homelab, VPS oder Raspberry Pi. Keine Cloud-Abhängigkeit, kein Vendor Lock-in.",
   },
   {
     icon: <LockIcon />,
-    title: "AES-256-GCM",
-    description: "Alle sensitiven Daten werden clientseitig verschlüsselt, bevor sie die Datenbank erreichen.",
+    title: "AES-256-GCM Verschlüsselung",
+    description: "Alle sensitiven Daten — OAuth-Tokens, API-Keys, VAPID-Schlüssel — werden mit AES-256-GCM verschlüsselt, bevor sie die Datenbank erreichen. API-Tokens werden mit SHA-256 gehasht gespeichert.",
   },
   {
     icon: <KeyIcon />,
-    title: "Passkey-Auth",
-    description: "WebAuthn-basierte Authentifizierung. Kein Passwort-Leak möglich. Phishing-resistent.",
+    title: "Passkey-Authentifizierung",
+    description: "WebAuthn-basierte Passkeys als primäre Authentifizierung. Phishing-resistent, kein Passwort-Leak möglich. Optionaler Passwort-Fallback mit Argon2id-Hashing und zxcvbn-Stärkeprüfung.",
   },
 ];
 
-/* ── Main Page Component ────────────────────────── */
+/* ── Numbers Section Data ───────────────────────── */
+
+const stats = [
+  { value: "6", label: "Gesundheitsmetriken" },
+  { value: "21", label: "Datenbankmodelle" },
+  { value: "30+", label: "Achievements" },
+  { value: "3", label: "Benachrichtigungskanäle" },
+  { value: "2", label: "Sprachen (DE/EN)" },
+  { value: "60+", label: "API-Endpunkte" },
+];
+
+/* ── Main Page ──────────────────────────────────── */
 
 export default function Home() {
   const revealRefs = useRef<(HTMLElement | null)[]>([]);
@@ -592,17 +525,10 @@ export default function Home() {
 
         <div className="relative z-10 max-w-3xl mx-auto text-center">
           {/* Logo */}
-          <div className="reveal visible flex justify-center mb-8">
+          <div className="reveal visible flex justify-center mb-10">
             <div className="logo-pulse">
               <LogoIcon className="w-16 h-16 md:w-20 md:h-20" />
             </div>
-          </div>
-
-          {/* Brand */}
-          <div className="reveal visible mb-6">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(189,147,249,0.15)] bg-[rgba(189,147,249,0.05)] text-purple text-xs font-mono tracking-widest uppercase">
-              Self-Hosted Health Tracking
-            </span>
           </div>
 
           {/* Headline */}
@@ -615,32 +541,36 @@ export default function Home() {
             <span
               className="bg-clip-text text-transparent"
               style={{
-                backgroundImage:
-                  "linear-gradient(135deg, #bd93f9, #8be9fd, #ff79c6)",
+                backgroundImage: "linear-gradient(135deg, #bd93f9, #8be9fd, #ff79c6)",
               }}
             >
               Dein Dashboard.
             </span>
           </h1>
 
-          {/* Subtitle */}
+          {/* Subtitle — more content */}
           <p
             ref={addRevealRef}
-            className="reveal visible text-text-secondary text-base sm:text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed font-light"
+            className="reveal visible text-text-secondary text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-5 leading-relaxed font-light"
           >
-            Gewicht, Blutdruck, Medikamente, Stimmung — alles in einer
-            App. Auf deinem Server. Unter deiner Kontrolle.
+            HealthLog ist eine self-hosted Health-Tracking-App, die dir die volle
+            Kontrolle über deine Gesundheitsdaten gibt. Gewicht, Blutdruck,
+            Medikamente, Stimmung und mehr — alles in einer modernen PWA, die
+            auf deinem eigenen Server läuft.
+          </p>
+          <p
+            ref={addRevealRef}
+            className="reveal visible text-text-tertiary text-sm sm:text-base max-w-xl mx-auto mb-10 leading-relaxed"
+          >
+            End-to-End verschlüsselt. Offline-fähig. Mit KI-gestützten
+            Gesundheitsanalysen und automatischer Gerätesynchronisation.
           </p>
 
           {/* CTA */}
           <div ref={addRevealRef} className="reveal visible flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="https://github.com/MBombeck/HealthLog" className="cta-button" target="_blank" rel="noopener noreferrer">
               <span>Auf GitHub ansehen</span>
-              <svg
-                viewBox="0 0 16 16"
-                fill="currentColor"
-                className="w-4 h-4 relative z-10"
-              >
+              <svg viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 relative z-10">
                 <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
               </svg>
             </a>
@@ -648,15 +578,9 @@ export default function Home() {
               href="#features"
               className="inline-flex items-center gap-2 px-6 py-3.5 text-text-secondary hover:text-text-primary text-sm font-display font-medium tracking-wide transition-colors"
             >
-              Mehr erfahren
+              Features entdecken
               <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
-                <path
-                  d="M8 3v10m0 0l4-4m-4 4L4 9"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
+                <path d="M8 3v10m0 0l4-4m-4 4L4 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
           </div>
@@ -672,25 +596,22 @@ export default function Home() {
 
       {/* ─── FEATURES ─────────────────────────────── */}
       <section id="features" className="relative py-24 sm:py-32 px-6 section-glow">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <p
-              ref={addRevealRef}
-              className="reveal text-purple text-xs font-mono tracking-[0.2em] uppercase mb-4"
-            >
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-6">
+            <p ref={addRevealRef} className="reveal text-purple text-xs font-mono tracking-[0.2em] uppercase mb-4">
               Features
             </p>
-            <h2
-              ref={addRevealRef}
-              className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight text-text-primary"
-            >
+            <h2 ref={addRevealRef} className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight text-text-primary mb-4">
               Alles, was du brauchst.
-              <br />
-              <span className="text-text-tertiary">Nichts, was du nicht brauchst.</span>
             </h2>
+            <p ref={addRevealRef} className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              Von der täglichen Gewichtsmessung bis zum KI-gestützten
+              Gesundheitsbericht — HealthLog deckt den kompletten Workflow
+              deines persönlichen Health-Trackings ab.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-14">
             {features.map((feature, i) => {
               const colors = colorMap[feature.color];
               return (
@@ -701,10 +622,7 @@ export default function Home() {
                 >
                   <div
                     className="feature-icon mb-4"
-                    style={{
-                      backgroundColor: colors.bg,
-                      color: colors.text,
-                    }}
+                    style={{ backgroundColor: colors.bg, color: colors.text }}
                   >
                     {feature.icon}
                   </div>
@@ -718,68 +636,57 @@ export default function Home() {
               );
             })}
           </div>
+        </div>
+      </section>
 
-          {/* Additional features list */}
-          <div
-            ref={addRevealRef}
-            className="reveal mt-12 flex flex-wrap justify-center gap-3"
-          >
-            {[
-              "Offline-fähige PWA",
-              "3 Benachrichtigungskanäle",
-              "30+ Achievements",
-              "CSV/JSON Export",
-              "i18n (DE/EN)",
-              "Gamification",
-            ].map((item) => (
-              <span
-                key={item}
-                className="px-3 py-1.5 rounded-full text-xs font-mono text-text-tertiary border border-[rgba(98,114,164,0.12)] bg-[rgba(15,16,24,0.4)]"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
+      {/* ─── NUMBERS ──────────────────────────────── */}
+      <section className="relative py-16 px-6">
+        <div ref={addRevealRef} className="reveal max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+          {stats.map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="font-display font-extrabold text-3xl sm:text-4xl text-purple mb-1">
+                {stat.value}
+              </div>
+              <div className="text-text-tertiary text-xs font-medium">
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* ─── APP MOCKUP ───────────────────────────── */}
-      <section className="relative py-24 sm:py-32 px-6">
+      <section className="relative py-24 sm:py-32 px-6 section-glow">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <p
-              ref={addRevealRef}
-              className="reveal text-cyan text-xs font-mono tracking-[0.2em] uppercase mb-4"
-            >
+          <div className="text-center mb-6">
+            <p ref={addRevealRef} className="reveal text-cyan text-xs font-mono tracking-[0.2em] uppercase mb-4">
               Interface
             </p>
-            <h2
-              ref={addRevealRef}
-              className="reveal font-display font-bold text-3xl sm:text-4xl tracking-tight text-text-primary"
-            >
+            <h2 ref={addRevealRef} className="reveal font-display font-bold text-3xl sm:text-4xl tracking-tight text-text-primary mb-4">
               Klar. Präzise. Dracula.
             </h2>
+            <p ref={addRevealRef} className="reveal text-text-secondary text-base max-w-xl mx-auto leading-relaxed">
+              Ein dunkles, augenschonendes Interface basierend auf dem beliebten
+              Dracula-Farbschema. Mobile-first designt, mit einer klaren
+              Informationshierarchie und sofortigem Zugriff auf alle Metriken.
+            </p>
           </div>
 
-          <div ref={addRevealRef} className="reveal">
+          <div ref={addRevealRef} className="reveal mt-12">
             <AppMockup />
           </div>
         </div>
       </section>
 
       {/* ─── TECH STACK ───────────────────────────── */}
-      <section className="relative py-16 overflow-hidden section-glow">
-        <div
-          ref={addRevealRef}
-          className="reveal text-center mb-8"
-        >
+      <section className="relative py-16 overflow-hidden">
+        <div ref={addRevealRef} className="reveal text-center mb-8">
           <p className="text-text-tertiary text-xs font-mono tracking-[0.2em] uppercase">
             Gebaut mit
           </p>
         </div>
 
         <div className="relative">
-          {/* Fade edges */}
           <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-void to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-void to-transparent z-10 pointer-events-none" />
 
@@ -799,33 +706,26 @@ export default function Home() {
       </section>
 
       {/* ─── PRIVACY ──────────────────────────────── */}
-      <section className="relative py-24 sm:py-32 px-6">
+      <section className="relative py-24 sm:py-32 px-6 section-glow">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <div ref={addRevealRef} className="reveal flex justify-center mb-6">
               <ShieldIcon className="shield-glow" />
             </div>
-            <p
-              ref={addRevealRef}
-              className="reveal text-green text-xs font-mono tracking-[0.2em] uppercase mb-4"
-            >
-              Datenschutz
+            <p ref={addRevealRef} className="reveal text-green text-xs font-mono tracking-[0.2em] uppercase mb-4">
+              Datenschutz & Sicherheit
             </p>
-            <h2
-              ref={addRevealRef}
-              className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight text-text-primary mb-4"
-            >
+            <h2 ref={addRevealRef} className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight text-text-primary mb-4">
               Deine Daten.
               <br />
               <span className="text-green/80">Dein Server.</span>
             </h2>
-            <p
-              ref={addRevealRef}
-              className="reveal text-text-secondary text-base sm:text-lg max-w-lg mx-auto leading-relaxed font-light"
-            >
-              HealthLog speichert keine Daten in der Cloud. Alles bleibt
-              auf deiner Infrastruktur — verschlüsselt und unter deiner
-              vollen Kontrolle.
+            <p ref={addRevealRef} className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+              HealthLog wurde von Grund auf mit einem Security-First-Ansatz
+              entwickelt. Keine Telemetrie, keine Analytics, keine externen
+              Tracking-Scripts. Deine Gesundheitsdaten gehören dir — und bleiben
+              auf deiner Infrastruktur, verschlüsselt und unter deiner vollen
+              Kontrolle.
             </p>
           </div>
 
@@ -847,6 +747,30 @@ export default function Home() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CTA SECTION ──────────────────────────── */}
+      <section className="relative py-24 px-6">
+        <div ref={addRevealRef} className="reveal max-w-2xl mx-auto text-center">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight text-text-primary mb-4">
+            Bereit, deine Gesundheit
+            <br />
+            selbst in die Hand zu nehmen?
+          </h2>
+          <p className="text-text-secondary text-base max-w-lg mx-auto leading-relaxed mb-8">
+            HealthLog ist Open Source und kostenlos. Starte mit Docker in
+            wenigen Minuten und behalte die volle Kontrolle über deine
+            Gesundheitsdaten.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="https://github.com/MBombeck/HealthLog" className="cta-button" target="_blank" rel="noopener noreferrer">
+              <span>Repository auf GitHub</span>
+              <svg viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 relative z-10">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+              </svg>
+            </a>
           </div>
         </div>
       </section>

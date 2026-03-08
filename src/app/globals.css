@@ -24,7 +24,7 @@
   --green-dim: rgba(80, 250, 123, 0.1);
   --orange: #ffb86c;
 
-  --font-display: "Syne", sans-serif;
+  --font-display: "Plus Jakarta Sans", sans-serif;
   --font-body: "DM Sans", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
@@ -162,9 +162,9 @@ body {
 }
 
 .ecg-line svg {
-  width: 200%;
+  width: 250%;
   height: 100%;
-  animation: ecg-scroll 8s linear infinite;
+  animation: ecg-scroll 12s linear infinite;
 }
 
 @keyframes ecg-scroll {

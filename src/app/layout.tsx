@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const syne = Syne({
+const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -48,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body
-        className={`${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${plusJakarta.variable} ${dmSans.variable} ${jetbrainsMono.variable} antialiased`}
       >
         {children}
       </body>
