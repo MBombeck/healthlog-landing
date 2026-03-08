@@ -150,26 +150,15 @@ body {
   pointer-events: none;
 }
 
-/* ── ECG Heartbeat Line ─────────────────────────── */
-.ecg-line {
+/* ── ECG Heart Monitor (dynamic draw) ─────────── */
+.ecg-monitor {
   position: absolute;
-  bottom: 12%;
+  bottom: 10%;
   left: 0;
   width: 100%;
-  height: 120px;
-  opacity: 0.2;
+  height: 140px;
+  opacity: 0.25;
   pointer-events: none;
-}
-
-.ecg-line svg {
-  width: 200%;
-  height: 100%;
-  animation: ecg-scroll 10s linear infinite;
-}
-
-@keyframes ecg-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
 }
 
 /* ── Logo Pulse ─────────────────────────────────── */

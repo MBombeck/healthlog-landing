@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /* ── SVG Icons ──────────────────────────────────── */
 
@@ -89,91 +89,112 @@ function CheckIcon() {
   );
 }
 
-function GitHubIcon() {
+function GitHubIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 relative z-10" aria-hidden="true">
+    <svg viewBox="0 0 16 16" fill="currentColor" className={className} aria-hidden="true">
       <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
     </svg>
   );
 }
 
-/* ── ECG Background Line (organic monitor style) ── */
+/* ── ECG Heart Monitor (stroke-dashoffset draw) ─── */
 
-function EcgBackgroundLine() {
-  // Organic ECG waveform inspired by real heart monitor displays.
-  // Uses bezier curves for natural feel, slight variation between beats.
-  // ViewBox: 1200x100, baseline at y=60, R-spike peaks at y=5
+function EcgHeartMonitor() {
+  const pathRef = useRef<SVGPathElement>(null);
+  const glowRef = useRef<SVGPathElement>(null);
+
+  useEffect(() => {
+    const path = pathRef.current;
+    const glow = glowRef.current;
+    if (!path || !glow) return;
+
+    const length = path.getTotalLength();
+    // Set up dash pattern: visible segment + gap = total length
+    const visibleLength = length * 0.35;
+    const dashArray = `${visibleLength} ${length - visibleLength}`;
+
+    path.style.strokeDasharray = dashArray;
+    path.style.strokeDashoffset = `${length}`;
+    glow.style.strokeDasharray = dashArray;
+    glow.style.strokeDashoffset = `${length}`;
+
+    // Animate continuously
+    const duration = 8000;
+    let start: number;
+
+    function animate(timestamp: number) {
+      if (!start) start = timestamp;
+      const elapsed = (timestamp - start) % duration;
+      const progress = elapsed / duration;
+      const offset = length - progress * length;
+
+      path!.style.strokeDashoffset = `${offset}`;
+      glow!.style.strokeDashoffset = `${offset}`;
+      requestAnimationFrame(animate);
+    }
+
+    const raf = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  // 7 beat cycles spanning full width, baseline at y=55, R-spike at y=5
   const ecgPath = [
+    "M0,55 l30,0",
     // Beat 1
-    "M0,60",
-    "c10,0 15,-1 25,-2", // subtle baseline drift
-    "c5,1 8,2 12,0", // tiny noise
-    "c4,-2 6,-8 10,-10", // P-wave rise
-    "c4,-2 8,0 12,4", // P-wave peak
-    "c4,4 6,8 8,8", // P-wave descent
-    "c4,0 8,0 12,0", // PR segment
-    "c2,0 3,2 4,5", // Q dip
-    "c1,3 2,4 3,-20", // Q-to-R transition
-    "c2,-30 3,-35 4,-38", // R spike up
-    "c1,3 2,40 3,55", // R spike down
-    "c1,15 2,20 3,18", // S dip below baseline
-    "c1,-2 3,-8 5,-11", // S recovery
-    "c4,0 10,0 16,0", // ST segment
-    "c6,-2 10,-10 16,-14", // T-wave rise
-    "c6,-4 10,-2 14,4", // T-wave peak
-    "c4,6 8,10 12,10", // T-wave descent
-    "c8,0 20,0 30,0", // baseline
-
-    // Beat 2 (slightly varied)
-    "c8,0 12,-1 18,-1",
-    "c4,0 6,-6 9,-9",
-    "c3,-3 7,1 11,5",
-    "c4,5 6,5 8,5",
-    "c4,0 8,0 11,0",
-    "c2,0 3,3 4,6",
-    "c1,2 2,-15 3,-25",
-    "c2,-28 3,-32 4,-36",
-    "c1,5 2,42 3,56",
-    "c1,14 2,18 3,16",
-    "c1,-2 3,-7 5,-10",
-    "c4,0 10,0 15,0",
-    "c5,-2 9,-8 14,-12",
-    "c5,-4 9,-3 13,3",
-    "c4,5 7,9 11,9",
-    "c10,0 24,0 35,0",
-
+    "c4,-1 6,-6 8,-8 c2,-2 4,0 6,3 c2,3 3,5 5,5 l8,0 c1,0 2,2 3,5 l3,-50 l4,65 c1,-3 2,-7 4,-10 l12,0 c4,-1 8,-10 12,-13 c4,-3 8,0 10,5 c2,5 4,8 6,8 l25,0",
+    // Beat 2
+    "c4,-1 6,-5 8,-7 c2,-2 4,0 6,3 c2,3 3,4 5,4 l8,0 c1,0 2,2 3,5 l3,-48 l4,62 c1,-3 2,-8 4,-11 l12,0 c4,-1 8,-9 12,-12 c4,-3 8,0 10,4 c2,4 4,8 6,8 l28,0",
     // Beat 3
-    "c6,0 10,-1 16,-2",
-    "c4,1 7,-5 10,-8",
-    "c3,-3 7,0 11,4",
-    "c4,4 5,6 7,6",
-    "c4,0 9,0 13,0",
-    "c2,0 3,2 4,5",
-    "c1,3 2,-18 3,-28",
-    "c2,-26 3,-30 4,-32",
-    "c1,4 2,38 3,52",
-    "c1,16 2,21 3,19",
-    "c1,-2 3,-9 5,-12",
-    "c4,0 8,0 14,0",
-    "c6,-1 10,-9 15,-13",
-    "c5,-4 9,-2 13,4",
-    "c4,6 8,9 11,9",
-    "c12,0 28,0 40,0",
+    "c4,-1 6,-6 8,-8 c2,-2 4,1 6,4 c2,3 3,4 5,4 l7,0 c1,0 2,2 3,5 l3,-50 l4,66 c1,-4 2,-8 4,-11 l11,0 c4,-1 8,-10 12,-13 c4,-3 8,1 10,5 c2,4 4,8 6,8 l26,0",
+    // Beat 4
+    "c4,-1 6,-5 8,-7 c2,-2 4,0 6,3 c2,3 3,4 5,4 l8,0 c1,0 2,3 3,6 l3,-52 l4,64 c1,-3 2,-7 4,-10 l12,0 c4,-1 8,-9 12,-12 c4,-3 8,0 10,5 c2,5 4,7 6,7 l27,0",
+    // Beat 5
+    "c4,-1 6,-6 8,-8 c2,-2 4,0 6,3 c2,3 3,5 5,5 l8,0 c1,0 2,2 3,5 l3,-49 l4,63 c1,-3 2,-7 4,-10 l12,0 c4,-1 8,-10 12,-13 c4,-3 8,0 10,5 c2,5 4,8 6,8 l25,0",
+    // Beat 6
+    "c4,-1 6,-5 8,-7 c2,-2 4,1 6,3 c2,2 3,4 5,4 l8,0 c1,0 2,2 3,5 l3,-48 l4,62 c1,-3 2,-8 4,-11 l12,0 c4,-1 8,-9 12,-12 c4,-3 8,0 10,4 c2,4 4,8 6,8 l28,0",
+    // Beat 7
+    "c4,-1 6,-6 8,-8 c2,-2 4,0 6,4 c2,4 3,4 5,4 l7,0 c1,0 2,2 3,5 l3,-50 l4,66 c1,-4 2,-8 4,-11 l11,0 c4,-1 8,-10 12,-13 c4,-3 8,1 10,5 c2,4 4,8 6,8 l40,0",
   ].join(" ");
 
   return (
-    <div className="ecg-line" aria-hidden="true">
-      <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+    <div className="ecg-monitor" aria-hidden="true">
+      <svg viewBox="0 0 1400 70" preserveAspectRatio="none" className="w-full h-full">
         <defs>
           <filter id="ecg-glow">
-            <feGaussianBlur stdDeviation="2" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
           </filter>
+          <linearGradient id="ecg-fade" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#bd93f9" stopOpacity="0" />
+            <stop offset="8%" stopColor="#bd93f9" stopOpacity="1" />
+            <stop offset="100%" stopColor="#bd93f9" stopOpacity="1" />
+          </linearGradient>
         </defs>
         {/* Glow layer */}
-        <path d={ecgPath} fill="none" stroke="#bd93f9" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" filter="url(#ecg-glow)" />
-        {/* Main crisp line */}
-        <path d={ecgPath} fill="none" stroke="#bd93f9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          ref={glowRef}
+          d={ecgPath}
+          fill="none"
+          stroke="#bd93f9"
+          strokeWidth="4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          opacity="0.3"
+          filter="url(#ecg-glow)"
+        />
+        {/* Main line */}
+        <path
+          ref={pathRef}
+          d={ecgPath}
+          fill="none"
+          stroke="url(#ecg-fade)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     </div>
   );
@@ -398,7 +419,10 @@ const privacyChecks = [
 /* ── Main Page ──────────────────────────────────── */
 
 export default function Home() {
+  const [scrolled, setScrolled] = useState(false);
+
   useEffect(() => {
+    // Scroll reveal observer
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -410,7 +434,17 @@ export default function Home() {
       { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+
+    // Scroll indicator fade
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 100);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -420,7 +454,7 @@ export default function Home() {
         <div className="aurora" />
         <div className="aurora-pink" />
         <div className="grid-pattern" />
-        <EcgBackgroundLine />
+        <EcgHeartMonitor />
 
         <div className="relative z-10 max-w-3xl mx-auto text-center">
           <div className="flex justify-center mb-10">
@@ -437,35 +471,39 @@ export default function Home() {
             </span>
           </h1>
 
-          <p className="text-text-secondary text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-            HealthLog is the self-hosted health tracking app that gives you
-            full control over your health data. Weight, blood pressure,
-            medications, mood — all in a modern PWA on your own server.
-            Encrypted, offline-capable, and fully open source.
+          <p className="text-text-secondary text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+            The self-hosted health tracking app that gives you full control.
+            Weight, blood pressure, medications, mood — encrypted on your
+            own server. Offline-capable. Open source.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://github.com/MBombeck/HealthLog" className="cta-button" target="_blank" rel="noopener noreferrer">
-              <span>View Source Code</span>
-              <GitHubIcon />
-            </a>
-            <a href="#interface" className="inline-flex items-center gap-2 px-6 py-3.5 text-text-secondary hover:text-text-primary text-sm font-display font-medium tracking-wide transition-colors">
-              See it in action
-              <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4" aria-hidden="true">
-                <path d="M8 3v10m0 0l4-4m-4 4L4 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
-          </div>
+          {/* Single prominent CTA */}
+          <a
+            href="https://github.com/MBombeck/HealthLog"
+            className="cta-button group"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GitHubIcon className="w-5 h-5 relative z-10" />
+            <span>Get started on GitHub</span>
+            <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4 relative z-10 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-30" aria-hidden="true">
+        {/* Scroll indicator — fades out on scroll */}
+        <div
+          className={`absolute bottom-8 left-1/2 -translate-x-1/2 transition-opacity duration-500 ${scrolled ? "opacity-0 pointer-events-none" : "opacity-30"}`}
+          aria-hidden="true"
+        >
           <div className="w-5 h-8 border border-text-tertiary rounded-full flex justify-center pt-1.5">
             <div className="w-1 h-2 bg-text-tertiary rounded-full animate-bounce" />
           </div>
         </div>
       </section>
 
-      {/* ─── APP MOCKUP (before features — show, don't tell) ── */}
+      {/* ─── APP MOCKUP ───────────────────────────── */}
       <section id="interface" className="relative py-24 sm:py-32 px-6 section-glow">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-6">
@@ -629,7 +667,7 @@ export default function Home() {
           </p>
 
           {/* Quick Start */}
-          <div className="glass-card p-4 sm:p-5 text-left mb-8 max-w-lg mx-auto">
+          <div className="glass-card p-4 sm:p-5 text-left mb-10 max-w-lg mx-auto">
             <div className="flex items-center gap-2 mb-3">
               <div className="w-2 h-2 rounded-full bg-green" />
               <span className="text-xs font-mono text-text-tertiary">Quick Start</span>
@@ -642,12 +680,18 @@ docker compose up -d`}</code>
             </pre>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://github.com/MBombeck/HealthLog" className="cta-button" target="_blank" rel="noopener noreferrer">
-              <span>View on GitHub</span>
-              <GitHubIcon />
-            </a>
-          </div>
+          <a
+            href="https://github.com/MBombeck/HealthLog"
+            className="cta-button group"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GitHubIcon className="w-5 h-5 relative z-10" />
+            <span>View on GitHub</span>
+            <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4 relative z-10 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
+              <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
         </div>
       </section>
 
