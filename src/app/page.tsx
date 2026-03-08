@@ -148,8 +148,8 @@ function EcgMonitor() {
     const sweepSpeed = w / 5000;
     let sweepX = 0;
     let lastTime = -1;
-    const gapPx = 40;
-    const trailLength = totalPx - gapPx;
+    const gapPx = 60;
+    const trailLength = Math.floor((totalPx - gapPx) * 0.45);
     const purple = [189, 147, 249];
 
     function frame(now: number) {
@@ -485,14 +485,6 @@ export default function Home() {
         <EcgMonitor />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          {/* Status badge */}
-          <div className="flex justify-center mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(80,250,123,0.15)] bg-[rgba(80,250,123,0.04)]">
-              <div className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
-              <span className="text-[11px] font-mono text-green/80 tracking-wide">Open Source & Self-Hosted</span>
-            </div>
-          </div>
-
           <div className="flex justify-center mb-10">
             <div className="logo-pulse">
               <LogoIcon className="w-16 h-16 md:w-20 md:h-20" />

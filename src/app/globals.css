@@ -166,10 +166,10 @@ body {
 /* ── ECG Heart Monitor (Canvas) ────────────────── */
 .ecg-canvas {
   position: absolute;
-  bottom: 6%;
+  bottom: 2%;
   left: 0;
   width: 100%;
-  height: 160px;
+  height: 140px;
   opacity: 0.2;
   pointer-events: none;
 }
