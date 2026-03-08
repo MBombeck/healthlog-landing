@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://healthlog.ioioio.dev/sitemap.xml
+Sitemap: https://healthlog.dev/sitemap.xml

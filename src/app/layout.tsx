@@ -21,7 +21,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://healthlog.ioioio.dev"),
+  metadataBase: new URL("https://healthlog.dev"),
   title: "HealthLog — Your Health. Your Server.",
   description:
     "Self-hosted health tracking PWA with medication management, mood tracking, AI insights, and Withings integration. Your data stays on your server. AES-256-GCM encrypted.",
@@ -29,14 +29,14 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
   },
   alternates: {
-    canonical: "https://healthlog.ioioio.dev",
+    canonical: "https://healthlog.dev",
   },
   openGraph: {
     title: "HealthLog — Your Health. Your Server.",
     description:
       "Self-hosted health tracking PWA. Weight, blood pressure, medications, mood — all on your own server. AES-256-GCM encrypted.",
     type: "website",
-    url: "https://healthlog.ioioio.dev",
+    url: "https://healthlog.dev",
     siteName: "HealthLog",
     locale: "en_US",
   },

@@ -505,7 +505,7 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://healthlog-beta.ioioio.dev"
+              href="https://demo.healthlog.dev"
               className="cta-button group"
               target="_blank"
               rel="noopener noreferrer"
@@ -716,7 +716,7 @@ docker compose up -d`}</code>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://healthlog-beta.ioioio.dev"
+              href="https://demo.healthlog.dev"
               className="cta-button group"
               target="_blank"
               rel="noopener noreferrer"
@@ -745,6 +745,9 @@ docker compose up -d`}</code>
             <span className="font-display font-semibold text-sm text-text-tertiary tracking-tight">HealthLog</span>
           </div>
           <div className="flex items-center gap-6">
+            <a href="https://docs.healthlog.dev" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+              Docs
+            </a>
             <a href="https://github.com/MBombeck/HealthLog" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
               GitHub
             </a>
