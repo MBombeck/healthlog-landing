@@ -74,8 +74,8 @@ function SyncIcon() {
 
 function ShieldIcon({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className={`w-16 h-16 ${className}`} aria-hidden="true">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#50fa7b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="rgba(80, 250, 123, 0.08)" />
+    <svg viewBox="0 0 24 24" fill="none" className={`w-20 h-20 ${className}`} aria-hidden="true">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#50fa7b" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="rgba(80, 250, 123, 0.06)" />
       <polyline points="9,12 11,14 15,10" stroke="#50fa7b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
@@ -97,9 +97,16 @@ function GitHubIcon({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
+function ArrowIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4 relative z-10 transition-transform group-hover:translate-x-1" aria-hidden="true">
+      <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 /* ── Canvas ECG Heart Monitor ─────────────────── */
 
-// Medically accurate PQRST waveform using Gaussian curves
 function ecgSample(t: number): number {
   const p = 0.22 * Math.exp(-Math.pow((t - 0.12) / 0.04, 2));
   const q = -0.08 * Math.exp(-Math.pow((t - 0.22) / 0.008, 2));
@@ -130,7 +137,6 @@ function EcgMonitor() {
     const baseline = h * 0.55;
     const amp = h * 0.4;
 
-    // Pre-compute waveform data for full width
     const totalPx = Math.ceil(w);
     const beatsOnScreen = Math.max(3, Math.round(w / 350));
     const pxPerBeat = totalPx / beatsOnScreen;
@@ -139,12 +145,12 @@ function EcgMonitor() {
       data[i] = ecgSample((i % pxPerBeat) / pxPerBeat);
     }
 
-    const sweepSpeed = w / 5000; // full width in ~5s
+    const sweepSpeed = w / 5000;
     let sweepX = 0;
     let lastTime = -1;
     const gapPx = 40;
     const trailLength = totalPx - gapPx;
-    const purple = [189, 147, 249]; // #bd93f9
+    const purple = [189, 147, 249];
 
     function frame(now: number) {
       if (lastTime < 0) lastTime = now;
@@ -155,20 +161,15 @@ function EcgMonitor() {
       const cv = canvasRef.current;
       if (!cv || !ctx) return;
 
-      // Clear
       ctx.clearRect(0, 0, w, h);
 
-      // Draw the ECG trail with fade
       const sweepI = Math.floor(sweepX);
 
       for (let seg = 0; seg < trailLength - 1; seg++) {
         const i = (sweepI - trailLength + seg + totalPx) % totalPx;
         const j = (i + 1) % totalPx;
-
-        // Fade: newest = 1, oldest = 0.05
         const age = (trailLength - seg) / trailLength;
         const alpha = 0.05 + 0.95 * (1 - age);
-
         const y1 = baseline - data[i] * amp;
         const y2 = baseline - data[j] * amp;
 
@@ -180,7 +181,6 @@ function EcgMonitor() {
         ctx.stroke();
       }
 
-      // Glow line (brighter near sweep head)
       const glowLen = Math.min(80, trailLength);
       ctx.shadowColor = `rgba(${purple[0]},${purple[1]},${purple[2]},0.8)`;
       ctx.shadowBlur = 12;
@@ -197,7 +197,6 @@ function EcgMonitor() {
       ctx.stroke();
       ctx.shadowBlur = 0;
 
-      // Bright sweep head dot
       const headY = baseline - data[sweepI] * amp;
       const grad = ctx.createRadialGradient(sweepX, headY, 0, sweepX, headY, 10);
       grad.addColorStop(0, "rgba(255,255,255,0.9)");
@@ -208,7 +207,6 @@ function EcgMonitor() {
       ctx.arc(sweepX, headY, 10, 0, Math.PI * 2);
       ctx.fill();
 
-      // Inner white dot
       ctx.fillStyle = "#fff";
       ctx.beginPath();
       ctx.arc(sweepX, headY, 2.5, 0, Math.PI * 2);
@@ -222,13 +220,11 @@ function EcgMonitor() {
 
   useEffect(() => {
     startAnimation();
-
     const onResize = () => {
       cancelAnimationFrame(rafRef.current);
       startAnimation();
     };
     window.addEventListener("resize", onResize);
-
     return () => {
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener("resize", onResize);
@@ -248,7 +244,7 @@ function EcgMonitor() {
 
 function AppMockup() {
   return (
-    <div className="gradient-border max-w-[780px] mx-auto">
+    <div className="gradient-border max-w-[820px] mx-auto">
       <div className="gradient-border-inner">
         {/* Browser Chrome */}
         <div className="flex items-center gap-2 px-4 py-3 border-b border-[rgba(98,114,164,0.12)] bg-[#1e1f29]">
@@ -402,27 +398,27 @@ const primaryFeatures = [
   {
     icon: <HeartMetricIcon />,
     title: "All vitals at a glance",
-    description: "Track weight, blood pressure, heart rate, body fat, sleep, and steps. Interactive charts reveal trends instantly — with personalized target ranges that show you exactly where you stand.",
+    description: "Track weight, blood pressure, heart rate, body fat, sleep, and steps. Interactive charts reveal trends instantly — with personalized target ranges.",
     color: "purple",
   },
   {
     icon: <PillIcon />,
     title: "Never miss a dose again",
-    description: "Define intake windows, get reminded via Telegram or Push, and monitor your compliance. HealthLog automatically escalates when doses are missed.",
+    description: "Define intake windows, get reminded via Telegram or Push, and monitor your compliance. Automatic escalation when doses are missed.",
     color: "cyan",
   },
   {
     icon: <BrainIcon />,
     title: "AI-powered health insights",
-    description: "Get personalized analyses of blood pressure, weight, heart rate, mood, and medication compliance powered by OpenAI. Bring-Your-Own-Key — your data never leaves your server uncontrolled.",
+    description: "Personalized analyses of blood pressure, weight, heart rate, mood, and compliance powered by OpenAI. Bring-Your-Own-Key — your data stays yours.",
     color: "orange",
   },
 ];
 
 const secondaryFeatures = [
-  { icon: <MoodIcon />, title: "Mood tracking", description: "5-point scale with tags, correlation analysis, and moodLog.app integration.", color: "pink" },
-  { icon: <FileIcon />, title: "Doctor report PDF", description: "Professional PDF reports in European medical format, generated directly in your browser.", color: "green" },
-  { icon: <SyncIcon />, title: "Withings sync", description: "Automatic synchronization with Withings scales, blood pressure monitors, and activity trackers.", color: "cyan" },
+  { icon: <MoodIcon />, title: "Mood tracking", description: "5-point scale with tags, correlation analysis, and journal integration.", color: "pink" },
+  { icon: <FileIcon />, title: "Doctor report PDF", description: "Professional medical reports in European format, generated in your browser.", color: "green" },
+  { icon: <SyncIcon />, title: "Withings sync", description: "Automatic sync with Withings scales, BP monitors, and activity trackers.", color: "cyan" },
 ];
 
 const colorMap: Record<string, { bg: string; text: string }> = {
@@ -463,11 +459,11 @@ export default function Home() {
           if (entry.isIntersecting) entry.target.classList.add("visible");
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -60px 0px" }
     );
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-    const handleScroll = () => setScrolled(window.scrollY > 100);
+    const handleScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
@@ -478,52 +474,68 @@ export default function Home() {
 
   return (
     <main className="relative">
+      {/* Noise texture overlay */}
+      <div className="noise-overlay" />
+
       {/* ─── HERO ─────────────────────────────────── */}
       <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
         <div className="aurora" />
         <div className="aurora-pink" />
         <div className="grid-pattern" />
-
-        {/* Canvas ECG behind hero content */}
         <EcgMonitor />
 
-        <div className="relative z-10 max-w-3xl mx-auto text-center">
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
+          {/* Status badge */}
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(80,250,123,0.15)] bg-[rgba(80,250,123,0.04)]">
+              <div className="w-1.5 h-1.5 rounded-full bg-green animate-pulse" />
+              <span className="text-[11px] font-mono text-green/80 tracking-wide">Open Source & Self-Hosted</span>
+            </div>
+          </div>
+
           <div className="flex justify-center mb-10">
             <div className="logo-pulse">
               <LogoIcon className="w-16 h-16 md:w-20 md:h-20" />
             </div>
           </div>
 
-          <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-7xl leading-[1.05] tracking-tight mb-6">
+          <h1 className="font-display font-extrabold text-[2.75rem] sm:text-6xl md:text-[5.5rem] leading-[1.02] tracking-[-0.03em] mb-8">
             <span className="text-text-primary">Your Health.</span>
             <br />
-            <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #bd93f9, #8be9fd, #ff79c6)" }}>
+            <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #bd93f9 0%, #8be9fd 50%, #ff79c6 100%)" }}>
               Your Server.
             </span>
           </h1>
 
-          <p className="text-text-secondary text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+          <p className="text-text-secondary text-lg sm:text-xl md:text-[1.35rem] max-w-2xl mx-auto mb-14 leading-[1.7] font-light tracking-[-0.01em]">
             The self-hosted health tracking app that gives you full control.
             Weight, blood pressure, medications, mood — encrypted on your
             own server. Offline-capable. Open source.
           </p>
 
-          <a
-            href="https://github.com/MBombeck/HealthLog"
-            className="cta-button group"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <GitHubIcon className="w-5 h-5 relative z-10" />
-            <span>Get started on GitHub</span>
-            <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4 relative z-10 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
-              <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://github.com/MBombeck/HealthLog"
+              className="cta-button group"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GitHubIcon className="w-5 h-5 relative z-10" />
+              <span>Get started on GitHub</span>
+              <ArrowIcon />
+            </a>
+            <a href="#interface" className="cta-secondary group">
+              <span>See it in action</span>
+              <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4 transition-transform group-hover:translate-y-0.5" aria-hidden="true">
+                <path d="M8 3v10m0 0l-4-4m4 4l4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+          </div>
         </div>
 
+        {/* Scroll indicator */}
         <div
-          className={`absolute bottom-8 left-1/2 -translate-x-1/2 transition-opacity duration-500 ${scrolled ? "opacity-0 pointer-events-none" : "opacity-30"}`}
+          className={`absolute bottom-10 left-1/2 -translate-x-1/2 transition-all duration-700 ${scrolled ? "opacity-0 translate-y-2 pointer-events-none" : "opacity-25"}`}
           aria-hidden="true"
         >
           <div className="w-5 h-8 border border-text-tertiary rounded-full flex justify-center pt-1.5">
@@ -533,51 +545,56 @@ export default function Home() {
       </section>
 
       {/* ─── APP MOCKUP ───────────────────────────── */}
-      <section id="interface" className="relative py-24 sm:py-32 px-6 section-glow">
+      <section id="interface" className="relative py-32 sm:py-40 px-6 section-glow">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-6">
-            <p className="reveal text-cyan text-xs font-mono tracking-[0.2em] uppercase mb-4">Interface</p>
-            <h2 className="reveal font-display font-bold text-3xl sm:text-4xl tracking-tight text-text-primary mb-4">
-              Your health dashboard at a glance
+          <div className="text-center mb-16">
+            <div className="reveal flex justify-center mb-6">
+              <span className="section-label text-cyan border-cyan/15 bg-cyan/[0.03]">Interface</span>
+            </div>
+            <h2 className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+              Your health dashboard
             </h2>
-            <p className="reveal text-text-secondary text-base max-w-xl mx-auto leading-relaxed">
+            <p className="reveal text-text-secondary text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
               A dark, eye-friendly interface in the Dracula color scheme.
-              Mobile-first designed, with instant access to all your
-              metrics, medications, and mood data.
+              Mobile-first, with instant access to all your metrics.
             </p>
           </div>
-          <div className="reveal mt-12">
+          <div className="reveal">
             <AppMockup />
           </div>
         </div>
       </section>
 
       {/* ─── FEATURES ─────────────────────────────── */}
-      <section id="features" className="relative py-24 sm:py-32 px-6 section-glow">
+      <section id="features" className="relative py-32 sm:py-40 px-6 section-glow">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-6">
-            <p className="reveal text-purple text-xs font-mono tracking-[0.2em] uppercase mb-4">Features</p>
-            <h2 className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight text-text-primary mb-4">
-              What HealthLog does for you
+          <div className="text-center mb-16">
+            <div className="reveal flex justify-center mb-6">
+              <span className="section-label text-purple border-purple/15 bg-purple/[0.03]">Features</span>
+            </div>
+            <h2 className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+              Everything you need.<br />
+              <span className="text-text-secondary">Nothing you don&apos;t.</span>
             </h2>
             <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
               From daily measurements to AI-powered health reports —
-              HealthLog covers your entire health tracking workflow.
+              HealthLog covers your entire health workflow.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-14">
+          {/* Primary features — large cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-16">
             {primaryFeatures.map((feature, i) => {
               const colors = colorMap[feature.color];
               return (
-                <div key={feature.title} className={`reveal reveal-delay-${i + 1} glass-card p-7 group`}>
-                  <div className="feature-icon mb-4" style={{ backgroundColor: colors.bg, color: colors.text }}>
+                <div key={feature.title} className={`reveal reveal-delay-${i + 1} glass-card feature-card-accent p-8 group`} style={{ "--accent-color": colors.text } as React.CSSProperties}>
+                  <div className="feature-icon mb-5" style={{ backgroundColor: colors.bg, color: colors.text }}>
                     {feature.icon}
                   </div>
-                  <h3 className="font-display font-bold text-lg text-text-primary mb-3 tracking-tight">
+                  <h3 className="font-display font-bold text-lg text-text-primary mb-3 tracking-[-0.01em]">
                     {feature.title}
                   </h3>
-                  <p className="text-text-secondary text-sm leading-relaxed">
+                  <p className="text-text-secondary text-sm leading-[1.7]">
                     {feature.description}
                   </p>
                 </div>
@@ -585,20 +602,21 @@ export default function Home() {
             })}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+          {/* Secondary features — compact cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-5">
             {secondaryFeatures.map((feature, i) => {
               const colors = colorMap[feature.color];
               return (
-                <div key={feature.title} className={`reveal reveal-delay-${i + 1} glass-card p-5 group`}>
-                  <div className="flex items-start gap-3">
+                <div key={feature.title} className={`reveal reveal-delay-${i + 1} glass-card feature-card-accent p-6 group`} style={{ "--accent-color": colors.text } as React.CSSProperties}>
+                  <div className="flex items-start gap-4">
                     <div className="feature-icon flex-shrink-0" style={{ backgroundColor: colors.bg, color: colors.text }}>
                       {feature.icon}
                     </div>
                     <div>
-                      <h3 className="font-display font-bold text-sm text-text-primary mb-1 tracking-tight">
+                      <h3 className="font-display font-bold text-sm text-text-primary mb-1.5 tracking-[-0.01em]">
                         {feature.title}
                       </h3>
-                      <p className="text-text-secondary text-xs leading-relaxed">
+                      <p className="text-text-secondary text-xs leading-[1.7]">
                         {feature.description}
                       </p>
                     </div>
@@ -608,7 +626,8 @@ export default function Home() {
             })}
           </div>
 
-          <div className="reveal mt-10 flex flex-wrap justify-center gap-3">
+          {/* Extra capability badges */}
+          <div className="reveal mt-12 flex flex-wrap justify-center gap-3">
             {[
               "Offline-capable PWA",
               "Telegram / ntfy / Web Push",
@@ -617,7 +636,7 @@ export default function Home() {
               "German & English",
               "Docker-ready",
             ].map((item) => (
-              <span key={item} className="px-3 py-1.5 rounded-full text-xs font-mono text-text-tertiary border border-[rgba(98,114,164,0.12)] bg-[rgba(15,16,24,0.4)]">
+              <span key={item} className="px-4 py-2 rounded-full text-xs font-mono text-text-tertiary border border-[rgba(98,114,164,0.1)] bg-[rgba(15,16,24,0.4)] hover:border-[rgba(189,147,249,0.15)] hover:text-text-secondary transition-all duration-300">
                 {item}
               </span>
             ))}
@@ -626,33 +645,32 @@ export default function Home() {
       </section>
 
       {/* ─── PRIVACY ──────────────────────────────── */}
-      <section className="relative py-24 sm:py-32 px-6 section-glow">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="reveal flex justify-center mb-6">
+      <section className="relative py-32 sm:py-40 px-6 section-glow privacy-section">
+        <div className="max-w-3xl mx-auto relative z-10">
+          <div className="text-center mb-14">
+            <div className="reveal flex justify-center mb-8">
               <ShieldIcon className="shield-glow" />
             </div>
-            <p className="reveal text-green text-xs font-mono tracking-[0.2em] uppercase mb-4">
-              Privacy & Security
-            </p>
-            <h2 className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight text-text-primary mb-4">
+            <div className="reveal flex justify-center mb-6">
+              <span className="section-label text-green border-green/15 bg-green/[0.03]">Privacy & Security</span>
+            </div>
+            <h2 className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
               Your data belongs to you.
               <br />
               <span className="text-green/80">Period.</span>
             </h2>
-            <p className="reveal text-text-secondary text-base sm:text-lg max-w-xl mx-auto leading-relaxed font-light">
-              Unlike cloud apps like Apple Health or Google Fit,
-              HealthLog keeps you in full control. No data sharing,
-              no subscription model, no vendor lock-in.
+            <p className="reveal text-text-secondary text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+              Unlike Apple Health or Google Fit, HealthLog keeps you in full control.
+              No data sharing, no subscription, no vendor lock-in.
             </p>
           </div>
 
-          <div className="reveal glass-card p-6 sm:p-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+          <div className="reveal glass-card p-8 sm:p-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
               {privacyChecks.map((check) => (
                 <div key={check} className="flex items-start gap-3">
                   <CheckIcon />
-                  <span className="text-text-secondary text-sm leading-relaxed">{check}</span>
+                  <span className="text-text-secondary text-sm leading-[1.65]">{check}</span>
                 </div>
               ))}
             </div>
@@ -661,17 +679,17 @@ export default function Home() {
       </section>
 
       {/* ─── TECH STACK ───────────────────────────── */}
-      <section className="relative py-16 overflow-hidden">
-        <div className="reveal text-center mb-8">
+      <section className="relative py-20 overflow-hidden">
+        <div className="reveal text-center mb-10">
           <p className="text-text-tertiary text-xs font-mono tracking-[0.2em] uppercase">Built with</p>
         </div>
         <div className="relative">
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-void to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-void to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-void to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-void to-transparent z-10 pointer-events-none" />
           <div className="overflow-hidden">
             <div className="tech-scroll">
               {[...techItems, ...techItems].map((item, i) => (
-                <span key={`${item}-${i}`} className="flex-shrink-0 px-5 py-2.5 rounded-full border border-[rgba(98,114,164,0.1)] bg-[rgba(15,16,24,0.5)] text-text-secondary text-sm font-mono whitespace-nowrap hover:border-[rgba(189,147,249,0.2)] hover:text-text-primary transition-colors">
+                <span key={`${item}-${i}`} className="flex-shrink-0 px-5 py-2.5 rounded-full border border-[rgba(98,114,164,0.08)] bg-[rgba(15,16,24,0.5)] text-text-secondary text-sm font-mono whitespace-nowrap hover:border-[rgba(189,147,249,0.2)] hover:text-text-primary transition-all duration-300">
                   {item}
                 </span>
               ))}
@@ -681,22 +699,22 @@ export default function Home() {
       </section>
 
       {/* ─── CTA + QUICK START ────────────────────── */}
-      <section className="relative py-24 px-6 section-glow">
+      <section className="relative py-32 sm:py-40 px-6 section-glow">
         <div className="reveal max-w-2xl mx-auto text-center">
-          <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight text-text-primary mb-4">
-            Up and running in minutes
+          <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+            Up and running<br />in minutes
           </h2>
-          <p className="text-text-secondary text-base max-w-lg mx-auto leading-relaxed mb-8">
-            HealthLog is open source and free. Clone the repository,
-            adjust the configuration, and start with Docker.
+          <p className="text-text-secondary text-base sm:text-lg max-w-lg mx-auto leading-relaxed mb-12">
+            HealthLog is open source and free. Clone the repo,
+            set your config, start with Docker.
           </p>
 
-          <div className="glass-card p-4 sm:p-5 text-left mb-10 max-w-lg mx-auto">
-            <div className="flex items-center gap-2 mb-3">
+          <div className="glass-card terminal-window p-5 sm:p-6 text-left mb-12 max-w-lg mx-auto">
+            <div className="flex items-center gap-2 mb-4">
               <div className="w-2 h-2 rounded-full bg-green" />
-              <span className="text-xs font-mono text-text-tertiary">Quick Start</span>
+              <span className="text-[11px] font-mono text-text-tertiary tracking-wide">terminal</span>
             </div>
-            <pre className="text-sm font-mono text-purple leading-relaxed overflow-x-auto">
+            <pre className="text-sm font-mono text-purple leading-[1.8] overflow-x-auto">
               <code>{`git clone https://github.com/MBombeck/HealthLog.git
 cd HealthLog
 cp .env.example .env
@@ -712,25 +730,23 @@ docker compose up -d`}</code>
           >
             <GitHubIcon className="w-5 h-5 relative z-10" />
             <span>View on GitHub</span>
-            <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4 relative z-10 transition-transform group-hover:translate-x-0.5" aria-hidden="true">
-              <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <ArrowIcon />
           </a>
         </div>
       </section>
 
       {/* ─── FOOTER ───────────────────────────────── */}
-      <footer className="relative py-12 px-6 border-t border-[rgba(98,114,164,0.08)]">
+      <footer className="relative py-14 px-6 border-t border-[rgba(98,114,164,0.06)]">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
             <LogoIcon className="w-5 h-5" />
-            <span className="font-display font-bold text-sm text-text-secondary tracking-tight">HealthLog</span>
+            <span className="font-display font-semibold text-sm text-text-tertiary tracking-tight">HealthLog</span>
           </div>
           <div className="flex items-center gap-6">
-            <a href="https://github.com/MBombeck/HealthLog" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary transition-colors text-sm">
+            <a href="https://github.com/MBombeck/HealthLog" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
               GitHub
             </a>
-            <span className="text-text-tertiary text-xs font-mono">Open Source</span>
+            <span className="text-text-tertiary/60 text-xs font-mono">Open Source</span>
           </div>
         </div>
       </footer>
