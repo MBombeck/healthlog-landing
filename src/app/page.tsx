@@ -476,10 +476,89 @@ const privacyChecks = [
   "Open Source — every single line of code is auditable",
 ];
 
+/* ── Scramble Decode Hook ─────────────────────────── */
+
+const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*";
+
+function useScrambleDecode() {
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const decode = useCallback((target: string, setter: (v: string) => void, durationMs = 800) => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    const len = target.length;
+    const iterationsPerChar = 10;
+    const totalSteps = len * iterationsPerChar;
+    let step = 0;
+
+    intervalRef.current = setInterval(() => {
+      const revealed = Math.floor(step / iterationsPerChar);
+      let result = "";
+      for (let i = 0; i < len; i++) {
+        if (i < revealed) result += target[i];
+        else result += SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+      }
+      setter(result);
+      step++;
+      if (step >= totalSteps) {
+        if (intervalRef.current) clearInterval(intervalRef.current);
+        setter(target);
+      }
+    }, durationMs / totalSteps);
+  }, []);
+
+  useEffect(() => {
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  }, []);
+
+  return decode;
+}
+
+/* ── Inline Check Icon (no margin) ────────────────── */
+
+function CopyCheckIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true">
+      <path d="M3 8.5L6.5 12L13 4" stroke="#50fa7b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ClipboardIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5" aria-hidden="true">
+      <rect x="5" y="2" width="6" height="2" rx="0.5" stroke="currentColor" strokeWidth="1.2" />
+      <rect x="3" y="4" width="10" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.2" />
+    </svg>
+  );
+}
+
 /* ── Main Page ──────────────────────────────────── */
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
+  const [credentialsRevealed, setCredentialsRevealed] = useState(false);
+  const [displayUser, setDisplayUser] = useState("");
+  const [displayPassword, setDisplayPassword] = useState("");
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+  const scrambleDecode = useScrambleDecode();
+
+  const copyToClipboard = useCallback(async (text: string, field: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedField(field);
+      setTimeout(() => setCopiedField(null), 2000);
+    } catch { /* clipboard not available */ }
+  }, []);
+
+  const handleGenerate = useCallback(() => {
+    setCredentialsRevealed(true);
+    scrambleDecode("demo", setDisplayUser, 500);
+    setTimeout(() => {
+      scrambleDecode("demo123demo123", setDisplayPassword, 900);
+    }, 300);
+  }, [scrambleDecode]);
+
+  const terminalCommands = "git clone https://github.com/MBombeck/HealthLog.git\ncd HealthLog\ncp .env.example .env\ndocker compose up -d";
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -720,6 +799,101 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── LIVE DEMO ─────────────────────────────── */}
+      <section className="relative py-32 sm:py-40 px-6 section-glow">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+            See it in action
+          </h2>
+          <p className="reveal text-text-secondary text-base sm:text-lg max-w-lg mx-auto leading-relaxed mb-12">
+            Explore the full app with pre-populated data.
+            No signup, no installation — just click and explore.
+          </p>
+
+          <div className="reveal demo-card glass-card max-w-md mx-auto p-8 mb-10">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-xl bg-pink/10 flex items-center justify-center">
+                <KeyIcon />
+              </div>
+              <div className="text-left">
+                <p className="text-xs text-text-tertiary font-mono tracking-wider uppercase">Demo-Zugangsdaten</p>
+              </div>
+            </div>
+
+            <div className="mb-8">
+              {!credentialsRevealed ? (
+                <button
+                  onClick={handleGenerate}
+                  className="generate-button group"
+                >
+                  <KeyIcon />
+                  <span>Zugangsdaten generieren</span>
+                  <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4 transition-transform group-hover:rotate-90" aria-hidden="true">
+                    <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </button>
+              ) : (
+                <div className="space-y-3 credential-enter">
+                  <div
+                    className="credential-field flex items-center justify-between px-4 py-3 rounded-xl bg-[rgba(15,16,24,0.8)] border border-[rgba(98,114,164,0.08)]"
+                    onClick={() => copyToClipboard("demo", "user")}
+                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") copyToClipboard("demo", "user"); }}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <span className="text-xs text-text-tertiary font-mono tracking-wider uppercase">User</span>
+                    {copiedField === "user" ? (
+                      <span className="text-sm font-mono text-green font-semibold flex items-center gap-1.5">
+                        <CopyCheckIcon /> Kopiert
+                      </span>
+                    ) : (
+                      <span className="text-sm font-mono text-purple font-semibold tracking-wide tabular-nums flex items-center gap-2">
+                        {displayUser}
+                        <ClipboardIcon />
+                      </span>
+                    )}
+                  </div>
+                  <div
+                    className="credential-field flex items-center justify-between px-4 py-3 rounded-xl bg-[rgba(15,16,24,0.8)] border border-[rgba(98,114,164,0.08)]"
+                    onClick={() => copyToClipboard("demo123demo123", "password")}
+                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") copyToClipboard("demo123demo123", "password"); }}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <span className="text-xs text-text-tertiary font-mono tracking-wider uppercase">Password</span>
+                    {copiedField === "password" ? (
+                      <span className="text-sm font-mono text-green font-semibold flex items-center gap-1.5">
+                        <CopyCheckIcon /> Kopiert
+                      </span>
+                    ) : (
+                      <span className="text-sm font-mono text-purple font-semibold tracking-wide tabular-nums flex items-center gap-2">
+                        {displayPassword}
+                        <ClipboardIcon />
+                      </span>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <a
+              href="https://demo.healthlog.dev"
+              className="cta-button group w-full justify-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <PlayIcon className="w-5 h-5 relative z-10" />
+              <span>Try the live demo</span>
+              <ArrowIcon />
+            </a>
+          </div>
+
+          <p className="reveal text-text-tertiary text-xs font-mono">
+            Resets automatically — feel free to add, edit, and delete anything.
+          </p>
+        </div>
+      </section>
+
       {/* ─── CTA + QUICK START ────────────────────── */}
       <section className="relative py-32 sm:py-40 px-6 section-glow">
         <div className="reveal max-w-2xl mx-auto text-center">
@@ -731,16 +905,29 @@ export default function Home() {
             set your config, start with Docker.
           </p>
 
-          <div className="glass-card terminal-window p-5 sm:p-6 text-left mb-12 max-w-lg mx-auto">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-2 h-2 rounded-full bg-green" />
-              <span className="text-[11px] font-mono text-text-tertiary tracking-wide">terminal</span>
+          <div
+            className="glass-card terminal-window terminal-copyable p-5 sm:p-6 text-left mb-12 max-w-lg mx-auto relative"
+            onClick={() => copyToClipboard(terminalCommands, "terminal")}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") copyToClipboard(terminalCommands, "terminal"); }}
+            role="button"
+            tabIndex={0}
+            title="Click to copy"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-green" />
+                <span className="text-[11px] font-mono text-text-tertiary tracking-wide">terminal</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-text-tertiary text-[10px] font-mono">
+                {copiedField === "terminal" ? (
+                  <span className="flex items-center gap-1 text-green"><CopyCheckIcon /> Kopiert</span>
+                ) : (
+                  <span className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"><ClipboardIcon /> Copy</span>
+                )}
+              </div>
             </div>
             <pre className="text-sm font-mono text-purple leading-[1.8] overflow-x-auto">
-              <code>{`git clone https://github.com/MBombeck/HealthLog.git
-cd HealthLog
-cp .env.example .env
-docker compose up -d`}</code>
+              <code>{terminalCommands}</code>
             </pre>
           </div>
 
@@ -765,59 +952,6 @@ docker compose up -d`}</code>
               <span>Read the Docs</span>
             </a>
           </div>
-        </div>
-      </section>
-
-      {/* ─── LIVE DEMO ─────────────────────────────── */}
-      <section className="relative py-32 sm:py-40 px-6 section-glow">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="reveal flex justify-center mb-6">
-            <span className="section-label text-pink border-pink/15 bg-pink/[0.03]">Live Demo</span>
-          </div>
-          <h2 className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
-            See it in action
-          </h2>
-          <p className="reveal text-text-secondary text-base sm:text-lg max-w-lg mx-auto leading-relaxed mb-12">
-            Explore the full app with pre-populated data.
-            No signup, no installation — just click and explore.
-          </p>
-
-          <div className="reveal demo-card glass-card max-w-md mx-auto p-8 mb-10">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-pink/10 flex items-center justify-center">
-                <KeyIcon />
-              </div>
-              <div className="text-left">
-                <p className="text-xs text-text-tertiary font-mono tracking-wider uppercase">Demo-Zugangsdaten</p>
-              </div>
-            </div>
-
-            <div className="space-y-3 mb-8">
-              <div className="flex items-center justify-between px-4 py-3 rounded-xl bg-[rgba(15,16,24,0.8)] border border-[rgba(98,114,164,0.08)]">
-                <span className="text-xs text-text-tertiary font-mono tracking-wider uppercase">User</span>
-                <span className="text-sm font-mono text-purple font-semibold tracking-wide">demo</span>
-              </div>
-              <div className="flex items-center justify-between px-4 py-3 rounded-xl bg-[rgba(15,16,24,0.8)] border border-[rgba(98,114,164,0.08)]">
-                <span className="text-xs text-text-tertiary font-mono tracking-wider uppercase">Password</span>
-                <span className="text-sm font-mono text-purple font-semibold tracking-wide">demo123demo123</span>
-              </div>
-            </div>
-
-            <a
-              href="https://demo.healthlog.dev"
-              className="cta-button group w-full justify-center"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <PlayIcon className="w-5 h-5 relative z-10" />
-              <span>Try the live demo</span>
-              <ArrowIcon />
-            </a>
-          </div>
-
-          <p className="reveal text-text-tertiary text-xs font-mono">
-            Resets automatically — feel free to add, edit, and delete anything.
-          </p>
         </div>
       </section>
 
