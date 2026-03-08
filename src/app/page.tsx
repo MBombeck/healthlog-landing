@@ -328,7 +328,7 @@ function AppMockup() {
                 <span className="text-[9px] px-2 py-0.5 rounded bg-[#44475a] text-text-tertiary font-mono">90d</span>
               </div>
             </div>
-            <svg viewBox="0 0 320 70" className="w-full h-16" preserveAspectRatio="none" aria-label="Weight trend chart">
+            <svg viewBox="0 0 320 70" className="w-full h-16" preserveAspectRatio="none" role="img" aria-label="Weight trend chart showing a downward trend of minus 2.3 kilograms over 30 days">
               <defs>
                 <linearGradient id="mg" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="#bd93f9" stopOpacity="0.25" />
@@ -596,7 +596,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative">
+    <div className="relative">
       {/* Skip navigation */}
       <a
         href="#main-content"
@@ -609,7 +609,7 @@ export default function Home() {
       <div className="noise-overlay" />
 
       {/* ─── HERO ─────────────────────────────────── */}
-      <section id="main-content" className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+      <header id="main-content" className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden" role="banner">
         <div className="aurora" />
         <div className="aurora-pink" />
         <div className="grid-pattern" />
@@ -634,7 +634,7 @@ export default function Home() {
             own server. Offline-capable. Open source.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <nav className="flex flex-col sm:flex-row items-center justify-center gap-4" aria-label="Primary actions">
             <a
               href="https://github.com/MBombeck/HealthLog"
               className="cta-button group"
@@ -654,7 +654,7 @@ export default function Home() {
               <BookIcon className="w-5 h-5" />
               <span>Read the Docs</span>
             </a>
-          </div>
+          </nav>
         </div>
 
         {/* Scroll indicator */}
@@ -666,16 +666,17 @@ export default function Home() {
             <div className="w-1 h-2 bg-text-tertiary rounded-full animate-bounce" />
           </div>
         </div>
-      </section>
+      </header>
 
       {/* ─── APP MOCKUP ───────────────────────────── */}
-      <section id="interface" className="relative py-32 sm:py-40 px-6 section-glow">
+      <main>
+      <section id="interface" className="relative py-32 sm:py-40 px-6 section-glow" aria-labelledby="interface-heading">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <div className="reveal flex justify-center mb-6">
               <span className="section-label text-cyan border-cyan/15 bg-cyan/[0.03]">Interface</span>
             </div>
-            <h2 className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+            <h2 id="interface-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
               Your health dashboard
             </h2>
             <p className="reveal text-text-secondary text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
@@ -690,13 +691,13 @@ export default function Home() {
       </section>
 
       {/* ─── FEATURES ─────────────────────────────── */}
-      <section id="features" className="relative py-32 sm:py-40 px-6 section-glow">
+      <section id="features" className="relative py-32 sm:py-40 px-6 section-glow" aria-labelledby="features-heading">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <div className="reveal flex justify-center mb-6">
               <span className="section-label text-purple border-purple/15 bg-purple/[0.03]">Features</span>
             </div>
-            <h2 className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+            <h2 id="features-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
               Everything you need.<br />
               <span className="text-text-secondary">Nothing you don&apos;t.</span>
             </h2>
@@ -769,7 +770,7 @@ export default function Home() {
       </section>
 
       {/* ─── PRIVACY ──────────────────────────────── */}
-      <section className="relative py-32 sm:py-40 px-6 section-glow privacy-section">
+      <section className="relative py-32 sm:py-40 px-6 section-glow privacy-section" aria-labelledby="privacy-heading">
         <div className="max-w-3xl mx-auto relative z-10">
           <div className="text-center mb-14">
             <div className="reveal flex justify-center mb-8">
@@ -778,7 +779,7 @@ export default function Home() {
             <div className="reveal flex justify-center mb-6">
               <span className="section-label text-green border-green/15 bg-green/[0.03]">Privacy & Security</span>
             </div>
-            <h2 className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+            <h2 id="privacy-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
               Your data belongs to you.
               <br />
               <span className="text-green/80">Period.</span>
@@ -803,7 +804,7 @@ export default function Home() {
       </section>
 
       {/* ─── TECH STACK ───────────────────────────── */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-20 overflow-hidden" aria-label="Technology stack">
         <div className="reveal text-center mb-10">
           <p className="text-text-tertiary text-xs font-mono tracking-[0.2em] uppercase">Built with</p>
         </div>
@@ -823,9 +824,9 @@ export default function Home() {
       </section>
 
       {/* ─── LIVE DEMO ─────────────────────────────── */}
-      <section className="relative py-32 sm:py-40 px-6 section-glow">
+      <section className="relative py-32 sm:py-40 px-6 section-glow" aria-labelledby="demo-heading">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+          <h2 id="demo-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
             See it in action
           </h2>
           <p className="reveal text-text-secondary text-base sm:text-lg max-w-lg mx-auto leading-relaxed mb-12">
@@ -920,9 +921,9 @@ export default function Home() {
       </section>
 
       {/* ─── CTA + QUICK START ────────────────────── */}
-      <section className="relative py-32 sm:py-40 px-6 section-glow">
+      <section className="relative py-32 sm:py-40 px-6 section-glow" aria-labelledby="quickstart-heading">
         <div className="reveal max-w-2xl mx-auto text-center">
-          <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+          <h2 id="quickstart-heading" className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
             Up and running<br />in minutes
           </h2>
           <p className="text-text-secondary text-base sm:text-lg max-w-lg mx-auto leading-relaxed mb-12">
@@ -980,8 +981,10 @@ export default function Home() {
         </div>
       </section>
 
+      </main>
+
       {/* ─── FOOTER ───────────────────────────────── */}
-      <footer className="relative py-14 px-6 border-t border-[rgba(98,114,164,0.06)]">
+      <footer className="relative py-14 px-6 border-t border-[rgba(98,114,164,0.06)]" role="contentinfo">
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
             <LogoIcon className="w-5 h-5" />
@@ -1004,6 +1007,6 @@ export default function Home() {
           </div>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }

@@ -22,9 +22,26 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://healthlog.dev"),
-  title: "HealthLog — Your Health. Your Server.",
+  title: {
+    default: "HealthLog — Self-Hosted Health Tracking App | Open Source PWA",
+    template: "%s | HealthLog",
+  },
   description:
-    "Self-hosted health tracking PWA with medication management, mood tracking, AI insights, and Withings integration. Your data stays on your server. AES-256-GCM encrypted.",
+    "Self-hosted health tracking PWA with medication management, mood tracking, AI-powered insights, and Withings integration. AES-256-GCM encrypted. Docker deploy in minutes. Free and open source.",
+  keywords: [
+    "self-hosted health tracker",
+    "health tracking app",
+    "open source health app",
+    "medication management",
+    "blood pressure tracker",
+    "weight tracker",
+    "mood tracker",
+    "self-hosted PWA",
+    "health dashboard",
+    "Withings integration",
+    "privacy-first health app",
+    "Docker health app",
+  ],
   icons: {
     icon: "/favicon.svg",
   },
@@ -32,23 +49,42 @@ export const metadata: Metadata = {
     canonical: "https://healthlog.dev",
   },
   openGraph: {
-    title: "HealthLog — Your Health. Your Server.",
+    title: "HealthLog — Self-Hosted Health Tracking with Full Data Ownership",
     description:
-      "Self-hosted health tracking PWA. Weight, blood pressure, medications, mood — all on your own server. AES-256-GCM encrypted.",
+      "Track weight, blood pressure, medications, and mood on your own server. AES-256-GCM encrypted, offline-capable PWA. Free and open source.",
     type: "website",
     url: "https://healthlog.dev",
     siteName: "HealthLog",
     locale: "en_US",
+    images: [
+      {
+        url: "https://healthlog.dev/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "HealthLog — Self-hosted health tracking dashboard showing weight trends, medication compliance, and mood tracking",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "HealthLog — Your Health. Your Server.",
+    title: "HealthLog — Self-Hosted Health Tracking App",
     description:
-      "Self-hosted health tracking PWA with E2E encryption. Weight, blood pressure, medications, mood — on your server.",
+      "Track weight, blood pressure, medications, and mood on your own server. AES-256-GCM encrypted, open source, Docker-ready.",
+    images: ["https://healthlog.dev/og-image.png"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  other: {
+    "application-name": "HealthLog",
   },
 };
 
@@ -62,42 +98,77 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
+  const jsonLdApp = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "HealthLog",
+    url: "https://healthlog.dev",
     applicationCategory: "HealthApplication",
-    operatingSystem: "Web",
+    operatingSystem: "Web, Docker",
     description:
-      "Self-hosted health tracking PWA with medication management, mood tracking, AI insights, and Withings integration.",
+      "Self-hosted health tracking PWA with medication management, mood tracking, AI-powered insights, and Withings integration. AES-256-GCM encrypted. Free and open source.",
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+    },
+    author: {
+      "@type": "Person",
+      name: "Marc Bombeck",
+      url: "https://github.com/MBombeck",
     },
     featureList: [
-      "Weight, blood pressure, heart rate, body fat, sleep, steps",
-      "Medication management with compliance analytics",
-      "Mood tracking (5-point scale)",
-      "AI-powered health insights",
-      "Doctor report as PDF",
+      "Weight, blood pressure, heart rate, body fat, sleep, steps tracking",
+      "Medication management with compliance analytics and reminders",
+      "Mood tracking with 5-point scale and tags",
+      "AI-powered health insights via OpenAI (BYOK)",
+      "Doctor report PDF generation",
       "Withings device synchronization",
-      "AES-256-GCM encryption",
-      "Passkey authentication",
-      "Offline-capable PWA",
+      "AES-256-GCM encryption for all sensitive data",
+      "Passkey (WebAuthn) authentication",
+      "Offline-capable Progressive Web App",
+      "CSV and JSON data export",
+      "Telegram, ntfy, and Web Push notifications",
     ],
+    screenshot: "https://healthlog.dev/og-image.png",
+    softwareVersion: "1.0",
+    license: "https://opensource.org/licenses/MIT",
+    inLanguage: ["en", "de"],
+    downloadUrl: "https://github.com/MBombeck/HealthLog",
+    installUrl: "https://docs.healthlog.dev",
+  };
+
+  const jsonLdWebPage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "HealthLog — Self-Hosted Health Tracking App",
+    description:
+      "Self-hosted health tracking PWA with medication management, mood tracking, AI-powered insights, and Withings integration.",
+    url: "https://healthlog.dev",
     inLanguage: "en",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "HealthLog",
+      url: "https://healthlog.dev",
+    },
   };
 
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdApp) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebPage) }}
+        />
+      </head>
       <body
         className={`${plusJakarta.variable} ${dmSans.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
         {children}
       </body>
     </html>
