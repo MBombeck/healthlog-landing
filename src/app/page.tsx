@@ -429,16 +429,6 @@ export default function Home() {
             </a>
           </nav>
 
-          <div className="mt-6 flex justify-center">
-            <a href="https://github.com/MBombeck/HealthLog" target="_blank" rel="noopener noreferrer">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://img.shields.io/github/stars/MBombeck/HealthLog?style=social"
-                alt="GitHub stars"
-                className="h-5"
-              />
-            </a>
-          </div>
         </div>
 
         <ScrollIndicator />
