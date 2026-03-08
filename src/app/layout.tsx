@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   title: "HealthLog — Deine Gesundheit. Dein Dashboard.",
   description:
     "Self-hosted Health-Tracking PWA mit Medikamentenmanagement, Mood Tracking, KI-Insights und Withings-Integration. Deine Daten bleiben auf deinem Server.",
+  icons: {
+    icon: "/favicon.svg",
+  },
   openGraph: {
     title: "HealthLog — Deine Gesundheit. Dein Dashboard.",
     description:

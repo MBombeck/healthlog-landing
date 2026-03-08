@@ -467,14 +467,14 @@ const features = [
     icon: <HeartMetricIcon />,
     title: "Gesundheitsmetriken",
     description:
-      "Gewicht, Blutdruck, Puls, Koerperfett, Schlaf und Schritte. Trend-Charts mit gleitenden Durchschnitten und Zielbereichsbaendern.",
+      "Gewicht, Blutdruck, Puls, Körperfett, Schlaf und Schritte. Trend-Charts mit gleitenden Durchschnitten und Zielbereichsbändern.",
     color: "purple",
   },
   {
     icon: <PillIcon />,
     title: "Medikamentenmanagement",
     description:
-      "Flexible Zeitfenster, Compliance-Analytik mit 7/30-Tage-Raten, Streaks und Heatmap-Kalender. Externe API fuer iOS Shortcuts.",
+      "Flexible Zeitfenster, Compliance-Analytik mit 7/30-Tage-Raten, Streaks und Heatmap-Kalender. Externe API für iOS Shortcuts.",
     color: "cyan",
   },
   {
@@ -488,21 +488,21 @@ const features = [
     icon: <BrainIcon />,
     title: "KI-Gesundheitsanalysen",
     description:
-      "OpenAI-gestuetzte Insights zu Blutdruck, Gewicht, Puls, Stimmung und Compliance. Bring Your Own Key — deine Daten, dein Modell.",
+      "OpenAI-gestützte Insights zu Blutdruck, Gewicht, Puls, Stimmung und Compliance. Bring Your Own Key — deine Daten, dein Modell.",
     color: "orange",
   },
   {
     icon: <FileIcon />,
     title: "Arztbericht PDF",
     description:
-      "Professioneller PDF-Export im europaeischen Medizin-Format. Vitalzeichen, BP-Klassifikation nach ESC/ESH 2018, BMI nach WHO.",
+      "Professioneller PDF-Export im europäischen Medizin-Format. Vitalzeichen, BP-Klassifikation nach ESC/ESH 2018, BMI nach WHO.",
     color: "green",
   },
   {
     icon: <SyncIcon />,
     title: "Withings Integration",
     description:
-      "Automatische Synchronisation mit Waagen, Blutdruckmessgeraeten und Activity Trackern. OAuth2 mit verschluesseltem Token-Speicher.",
+      "Automatische Synchronisation mit Waagen, Blutdruckmessgeräten und Activity Trackern. OAuth2 mit verschlüsseltem Token-Speicher.",
     color: "cyan",
   },
 ];
@@ -538,17 +538,17 @@ const privacyFeatures = [
   {
     icon: <ServerIcon />,
     title: "Self-Hosted",
-    description: "Laeuft auf deinem eigenen Server. Keine Cloud, keine Abhaengigkeit, kein Vendor Lock-in.",
+    description: "Läuft auf deinem eigenen Server. Keine Cloud, keine Abhängigkeit, kein Vendor Lock-in.",
   },
   {
     icon: <LockIcon />,
     title: "AES-256-GCM",
-    description: "Alle sensitiven Daten werden clientseitig verschluesselt, bevor sie die Datenbank erreichen.",
+    description: "Alle sensitiven Daten werden clientseitig verschlüsselt, bevor sie die Datenbank erreichen.",
   },
   {
     icon: <KeyIcon />,
     title: "Passkey-Auth",
-    description: "WebAuthn-basierte Authentifizierung. Kein Passwort-Leak moeglich. Phishing-resistent.",
+    description: "WebAuthn-basierte Authentifizierung. Kein Passwort-Leak möglich. Phishing-resistent.",
   },
 ];
 
@@ -725,8 +725,8 @@ export default function Home() {
             className="reveal mt-12 flex flex-wrap justify-center gap-3"
           >
             {[
-              "Offline-faehige PWA",
-              "3 Benachrichtigungskanale",
+              "Offline-fähige PWA",
+              "3 Benachrichtigungskanäle",
               "30+ Achievements",
               "CSV/JSON Export",
               "i18n (DE/EN)",
@@ -757,7 +757,7 @@ export default function Home() {
               ref={addRevealRef}
               className="reveal font-display font-bold text-3xl sm:text-4xl tracking-tight text-text-primary"
             >
-              Klar. Praezise. Dracula.
+              Klar. Präzise. Dracula.
             </h2>
           </div>
 
@@ -824,7 +824,7 @@ export default function Home() {
               className="reveal text-text-secondary text-base sm:text-lg max-w-lg mx-auto leading-relaxed font-light"
             >
               HealthLog speichert keine Daten in der Cloud. Alles bleibt
-              auf deiner Infrastruktur — verschluesselt und unter deiner
+              auf deiner Infrastruktur — verschlüsselt und unter deiner
               vollen Kontrolle.
             </p>
           </div>
