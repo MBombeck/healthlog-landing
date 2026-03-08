@@ -330,16 +330,20 @@ export default function Home() {
             {primaryFeatures.map((feature, i) => {
               const colors = colorMap[feature.color];
               return (
-                <div key={feature.title} className={`reveal reveal-delay-${i + 1} glass-card feature-card-accent p-8 group`} style={{ "--accent-color": colors.text } as React.CSSProperties}>
-                  <div className="feature-icon mb-5" style={{ backgroundColor: colors.bg, color: colors.text }}>
-                    {feature.icon}
+                <div key={feature.title} className={`reveal reveal-delay-${i + 1} glass-card feature-card-accent p-6 group`} style={{ "--accent-color": colors.text } as React.CSSProperties}>
+                  <div className="flex items-start gap-4">
+                    <div className="feature-icon flex-shrink-0" style={{ backgroundColor: colors.bg, color: colors.text }}>
+                      {feature.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-display font-bold text-sm text-text-primary mb-1.5 tracking-[-0.01em]">
+                        {feature.title}
+                      </h3>
+                      <p className="text-text-secondary text-xs leading-[1.7]">
+                        {feature.description}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="font-display font-bold text-lg text-text-primary mb-3 tracking-[-0.01em]">
-                    {feature.title}
-                  </h3>
-                  <p className="text-text-secondary text-sm leading-[1.7]">
-                    {feature.description}
-                  </p>
                 </div>
               );
             })}
