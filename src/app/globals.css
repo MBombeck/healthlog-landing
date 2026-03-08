@@ -156,15 +156,15 @@ body {
   bottom: 15%;
   left: 0;
   width: 100%;
-  height: 80px;
-  opacity: 0.08;
+  height: 100px;
+  opacity: 0.15;
   pointer-events: none;
 }
 
 .ecg-line svg {
-  width: 250%;
+  width: 200%;
   height: 100%;
-  animation: ecg-scroll 12s linear infinite;
+  animation: ecg-scroll 8s linear infinite;
 }
 
 @keyframes ecg-scroll {

@@ -100,37 +100,27 @@ function GitHubIcon() {
 /* ── ECG Background Line (realistic sinus rhythm) ─ */
 
 function EcgBackgroundLine() {
-  // Realistic normal sinus rhythm ECG (Lead II):
-  // Baseline (y=50) → P-wave (small bump up) → flat PR segment → Q dip → tall R spike → S dip → flat ST → T-wave (gentle bump) → baseline
-  // One full beat cycle = 160 units wide, viewBox height = 80, baseline at y=50
-  const beat = [
-    // Flat baseline
-    "M0,50 L20,50",
-    // P-wave: gentle rounded bump (amplitude ~8px up from baseline)
-    "C24,50 26,44 30,42 C34,40 36,42 40,50",
-    // PR segment: flat
-    "L50,50",
-    // Q-wave: small dip down (~5px)
-    "L52,55",
-    // R-wave: sharp tall spike up (from 55 to 8 — big, dominant)
-    "L56,8",
-    // S-wave: sharp dip below baseline (~12px below)
-    "L60,62",
-    // Return to baseline
-    "L63,50",
-    // ST segment: flat
-    "L80,50",
-    // T-wave: broader, gentler rounded bump (amplitude ~12px up)
-    "C84,50 88,38 95,36 C102,34 106,38 110,50",
-    // Trailing baseline
-    "L160,50",
-  ].join(" ");
+  // Classic ECG monitor style: sharp straight lines for QRS, baseline at y=80
+  // Based on standard web ECG pattern: baseline → P-wave → Q dip → R spike (y=0) → S dip → T-wave → baseline
+  // One beat = 130 units wide, repeated across 650-unit viewBox (5 beats)
+  const beat =
+    "M0,80 L10,80 L20,70 L30,80 L40,80 L50,90 L60,0 L70,90 L80,80 L90,80 L100,55 L110,80 L130,80";
 
   return (
     <div className="ecg-line" aria-hidden="true">
-      <svg viewBox="0 0 320 80" preserveAspectRatio="none">
-        <path d={beat} fill="none" stroke="#bd93f9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d={beat} fill="none" stroke="#bd93f9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" transform="translate(160, 0)" />
+      <svg viewBox="0 0 650 100" preserveAspectRatio="none">
+        {[0, 130, 260, 390, 520].map((offset) => (
+          <path
+            key={offset}
+            d={beat}
+            fill="none"
+            stroke="#bd93f9"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            transform={`translate(${offset}, 0)`}
+          />
+        ))}
       </svg>
     </div>
   );
