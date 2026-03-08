@@ -99,6 +99,22 @@ function GitHubIcon({ className = "w-5 h-5" }: { className?: string }) {
 
 /* ── ECG Heart Monitor (stroke-dashoffset draw) ─── */
 
+// Pre-computed ECG path with absolute coordinates — baseline y=50, R-spike y=5
+const ECG_BEAT_WIDTH = 140;
+const ECG_NUM_BEATS = 11;
+const ECG_PATH = (() => {
+  const b = 50;
+  const beats = Array.from({ length: ECG_NUM_BEATS }, (_, i) => {
+    const x = i * ECG_BEAT_WIDTH;
+    return [
+      [x, b], [x + 20, b], [x + 30, 42], [x + 40, b], [x + 52, b],
+      [x + 56, 56], [x + 62, 5], [x + 68, 62], [x + 74, b],
+      [x + 88, b], [x + 100, 36], [x + 112, b], [x + 140, b],
+    ].map(([px, py]) => `L${px},${py}`).join(" ");
+  });
+  return `M0,50 ${beats.join(" ")} L${ECG_NUM_BEATS * ECG_BEAT_WIDTH + 20},50`;
+})();
+
 function EcgHeartMonitor() {
   const pathRef = useRef<SVGPathElement>(null);
   const glowRef = useRef<SVGPathElement>(null);
@@ -109,7 +125,6 @@ function EcgHeartMonitor() {
     if (!path || !glow) return;
 
     const length = path.getTotalLength();
-    // Set up dash pattern: visible segment + gap = total length
     const visibleLength = length * 0.35;
     const dashArray = `${visibleLength} ${length - visibleLength}`;
 
@@ -118,52 +133,30 @@ function EcgHeartMonitor() {
     glow.style.strokeDasharray = dashArray;
     glow.style.strokeDashoffset = `${length}`;
 
-    // Animate continuously
     const duration = 8000;
-    let start: number;
+    let rafId = 0;
+    let start = -1;
 
     function animate(timestamp: number) {
-      if (!start) start = timestamp;
+      if (start < 0) start = timestamp;
       const elapsed = (timestamp - start) % duration;
       const progress = elapsed / duration;
       const offset = length - progress * length;
 
-      path!.style.strokeDashoffset = `${offset}`;
-      glow!.style.strokeDashoffset = `${offset}`;
-      requestAnimationFrame(animate);
+      const p = pathRef.current;
+      const g = glowRef.current;
+      if (!p || !g) return; // stop if unmounted
+
+      p.style.strokeDashoffset = `${offset}`;
+      g.style.strokeDashoffset = `${offset}`;
+      rafId = requestAnimationFrame(animate);
     }
 
-    const raf = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(raf);
+    rafId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafId);
   }, []);
 
-  // Generate ECG path with absolute coordinates — no drift possible.
-  // Each beat: baseline → P-wave (small bump) → Q dip → R spike (huge) → S dip → T-wave → baseline
-  // Baseline at y=50, R-spike at y=5, viewBox 0 0 1600 70
-  function makeBeat(startX: number): string {
-    const b = 50; // baseline y
-    const points = [
-      [startX, b],        // start baseline
-      [startX + 20, b],   // flat baseline
-      [startX + 30, 42],  // P-wave up
-      [startX + 40, b],   // P-wave back
-      [startX + 52, b],   // PR segment
-      [startX + 56, 56],  // Q dip (small down)
-      [startX + 62, 5],   // R spike (BIG up!)
-      [startX + 68, 62],  // S dip (below baseline)
-      [startX + 74, b],   // back to baseline
-      [startX + 88, b],   // ST segment
-      [startX + 100, 36], // T-wave up
-      [startX + 112, b],  // T-wave back
-      [startX + 140, b],  // trailing baseline
-    ];
-    return points.map(([x, y]) => `L${x},${y}`).join(" ");
-  }
-
-  const beatWidth = 140;
-  const numBeats = 11;
-  const beats = Array.from({ length: numBeats }, (_, i) => makeBeat(i * beatWidth));
-  const ecgPath = `M0,50 ${beats.join(" ")} L${numBeats * beatWidth + 20},50`;
+  const ecgPath = ECG_PATH;
 
   return (
     <div className="ecg-monitor" aria-hidden="true">

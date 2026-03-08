@@ -330,31 +330,6 @@ body {
   opacity: 0.3;
 }
 
-/* ── Mockup Screen Content ──────────────────────── */
-.mockup-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  padding: 20px;
-}
-
-.mockup-metric {
-  background: rgba(189, 147, 249, 0.05);
-  border: 1px solid rgba(189, 147, 249, 0.08);
-  border-radius: 10px;
-  padding: 14px;
-}
-
-.mockup-chart {
-  grid-column: span 3;
-  height: 80px;
-  background: rgba(189, 147, 249, 0.03);
-  border: 1px solid rgba(189, 147, 249, 0.06);
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-}
-
 /* ── Privacy Shield Icon ────────────────────────── */
 .shield-glow {
   filter: drop-shadow(0 0 16px rgba(80, 250, 123, 0.25));
