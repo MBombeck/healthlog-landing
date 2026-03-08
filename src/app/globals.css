@@ -199,22 +199,6 @@ body {
   pointer-events: none;
 }
 
-/* ── Logo Pulse ─────────────────────────────────── */
-.logo-pulse {
-  animation: pulse-glow 4s ease-in-out infinite;
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    filter: drop-shadow(0 0 12px rgba(189, 147, 249, 0.25));
-    transform: scale(1);
-  }
-  50% {
-    filter: drop-shadow(0 0 28px rgba(189, 147, 249, 0.5));
-    transform: scale(1.04);
-  }
-}
-
 /* ── Glass Card ─────────────────────────────────── */
 .glass-card {
   background: var(--surface-glass);
@@ -254,37 +238,6 @@ body {
 
 .feature-card-accent:hover::before {
   opacity: 0.6;
-}
-
-/* ── Gradient Border (Mockup Frame) ─────────────── */
-.gradient-border {
-  position: relative;
-  border-radius: 24px;
-  padding: 1.5px;
-  background: linear-gradient(
-    135deg,
-    var(--purple),
-    var(--cyan),
-    var(--pink),
-    var(--purple)
-  );
-  background-size: 300% 300%;
-  animation: gradient-rotate 8s ease infinite;
-  box-shadow:
-    0 0 60px rgba(189, 147, 249, 0.1),
-    0 0 120px rgba(139, 233, 253, 0.05);
-}
-
-.gradient-border-inner {
-  background: var(--surface);
-  border-radius: 22.5px;
-  overflow: hidden;
-}
-
-@keyframes gradient-rotate {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 /* ── Scroll Reveal ──────────────────────────────── */
@@ -467,14 +420,6 @@ body {
   background: radial-gradient(circle, rgba(80, 250, 123, 0.06) 0%, transparent 70%);
   pointer-events: none;
   filter: blur(60px);
-}
-
-/* ── Stat Counter ──────────────────────────────── */
-.stat-number {
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 /* ── Quick Start Terminal ───────────────────────── */
@@ -666,6 +611,13 @@ body {
   }
 }
 
+/* ── Gradient Rotation Keyframes ────────────────── */
+@keyframes gradient-rotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 /* ── App Showcase ───────────────────────────────── */
 .showcase-frame {
   position: relative;
@@ -763,11 +715,6 @@ body {
   .aurora::after,
   .aurora-pink {
     animation: none;
-  }
-
-  .gradient-border {
-    animation: none;
-    background-size: 100% 100%;
   }
 
   .tech-scroll {

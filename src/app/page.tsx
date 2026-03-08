@@ -127,8 +127,6 @@ function PlayIcon({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
-/* AppMockup replaced by AppShowcase component with real screenshots */
-
 /* ── Feature Data ───────────────────────────────── */
 
 const primaryFeatures = [
@@ -198,11 +196,9 @@ function ComparisonRow({ feature, values, highlights }: {
       <td>{feature}</td>
       {values.map((value, i) => {
         const highlight = highlights[i];
-        const colorClass = highlight === true
-          ? "text-green font-semibold"
-          : highlight === false
-            ? "text-text-tertiary"
-            : "text-text-secondary";
+        let colorClass = "text-text-secondary";
+        if (highlight === true) colorClass = "text-green font-semibold";
+        else if (highlight === false) colorClass = "text-text-tertiary";
         return (
           <td key={`${feature}-${i}`} className={colorClass}>
             {value}

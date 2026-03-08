@@ -37,13 +37,17 @@ export function AppShowcase() {
       startAutoplay();
     }
     return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
     };
   }, [isHovering, startAutoplay]);
 
   const handleSelect = (index: number) => {
     setActive(index);
     if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = null;
     if (!isHovering) startAutoplay();
   };
 
@@ -59,10 +63,12 @@ export function AppShowcase() {
       }}
     >
       {/* Screenshot selector tabs */}
-      <div className="flex justify-center gap-2 mb-8">
+      <div className="flex justify-center gap-2 mb-8" role="tablist" aria-label="App screenshots">
         {screenshots.map((s, i) => (
           <button
             key={s.label}
+            role="tab"
+            aria-selected={i === active}
             onClick={() => handleSelect(i)}
             className={`
               px-4 py-2 rounded-full text-xs font-mono transition-all duration-300
