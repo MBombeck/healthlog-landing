@@ -105,6 +105,35 @@ function ArrowIcon() {
   );
 }
 
+function BookIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="9" y1="7" x2="16" y2="7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="9" y1="11" x2="14" y2="11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function PlayIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
+      <polygon points="10,8 16,12 10,16" fill="currentColor" />
+    </svg>
+  );
+}
+
+function KeyIcon() {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4" aria-hidden="true">
+      <circle cx="10.5" cy="5.5" r="3.5" stroke="currentColor" strokeWidth="1.2" />
+      <path d="M8 8l-5.5 5.5M4.5 11.5l2 2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 /* ── Canvas ECG Heart Monitor ─────────────────── */
 
 function ecgSample(t: number): number {
@@ -505,22 +534,23 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://demo.healthlog.dev"
+              href="https://github.com/MBombeck/HealthLog"
               className="cta-button group"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span>Try the live demo</span>
+              <GitHubIcon className="w-5 h-5 relative z-10" />
+              <span>View on GitHub</span>
               <ArrowIcon />
             </a>
             <a
-              href="https://github.com/MBombeck/HealthLog"
+              href="https://docs.healthlog.dev"
               className="cta-secondary group"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <GitHubIcon className="w-5 h-5" />
-              <span>View on GitHub</span>
+              <BookIcon className="w-5 h-5" />
+              <span>Read the Docs</span>
             </a>
           </div>
         </div>
@@ -716,24 +746,78 @@ docker compose up -d`}</code>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://demo.healthlog.dev"
+              href="https://github.com/MBombeck/HealthLog"
               className="cta-button group"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span>Try the live demo</span>
+              <GitHubIcon className="w-5 h-5 relative z-10" />
+              <span>View on GitHub</span>
               <ArrowIcon />
             </a>
             <a
-              href="https://github.com/MBombeck/HealthLog"
+              href="https://docs.healthlog.dev"
               className="cta-secondary group"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <GitHubIcon className="w-5 h-5" />
-              <span>View on GitHub</span>
+              <BookIcon className="w-5 h-5" />
+              <span>Read the Docs</span>
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* ─── LIVE DEMO ─────────────────────────────── */}
+      <section className="relative py-32 sm:py-40 px-6 section-glow">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="reveal flex justify-center mb-6">
+            <span className="section-label text-pink border-pink/15 bg-pink/[0.03]">Live Demo</span>
+          </div>
+          <h2 className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+            See it in action
+          </h2>
+          <p className="reveal text-text-secondary text-base sm:text-lg max-w-lg mx-auto leading-relaxed mb-12">
+            Explore the full app with pre-populated data.
+            No signup, no installation — just click and explore.
+          </p>
+
+          <div className="reveal demo-card glass-card max-w-md mx-auto p-8 mb-10">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-xl bg-pink/10 flex items-center justify-center">
+                <KeyIcon />
+              </div>
+              <div className="text-left">
+                <p className="text-xs text-text-tertiary font-mono tracking-wider uppercase">Demo-Zugangsdaten</p>
+              </div>
+            </div>
+
+            <div className="space-y-3 mb-8">
+              <div className="flex items-center justify-between px-4 py-3 rounded-xl bg-[rgba(15,16,24,0.8)] border border-[rgba(98,114,164,0.08)]">
+                <span className="text-xs text-text-tertiary font-mono tracking-wider uppercase">User</span>
+                <span className="text-sm font-mono text-purple font-semibold tracking-wide">demo</span>
+              </div>
+              <div className="flex items-center justify-between px-4 py-3 rounded-xl bg-[rgba(15,16,24,0.8)] border border-[rgba(98,114,164,0.08)]">
+                <span className="text-xs text-text-tertiary font-mono tracking-wider uppercase">Password</span>
+                <span className="text-sm font-mono text-purple font-semibold tracking-wide">demo123demo123</span>
+              </div>
+            </div>
+
+            <a
+              href="https://demo.healthlog.dev"
+              className="cta-button group w-full justify-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <PlayIcon className="w-5 h-5 relative z-10" />
+              <span>Try the live demo</span>
+              <ArrowIcon />
+            </a>
+          </div>
+
+          <p className="reveal text-text-tertiary text-xs font-mono">
+            Resets automatically — feel free to add, edit, and delete anything.
+          </p>
         </div>
       </section>
 
@@ -745,13 +829,16 @@ docker compose up -d`}</code>
             <span className="font-display font-semibold text-sm text-text-tertiary tracking-tight">HealthLog</span>
           </div>
           <div className="flex items-center gap-6">
-            <a href="https://demo.healthlog.dev" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
-              Demo
-            </a>
-            <a href="https://docs.healthlog.dev" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+            <a href="https://docs.healthlog.dev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+              <BookIcon className="w-4 h-4" />
               Docs
             </a>
-            <a href="https://github.com/MBombeck/HealthLog" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+            <a href="https://demo.healthlog.dev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+              <PlayIcon className="w-4 h-4" />
+              Demo
+            </a>
+            <a href="https://github.com/MBombeck/HealthLog" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+              <GitHubIcon className="w-4 h-4" />
               GitHub
             </a>
             <span className="text-text-tertiary/60 text-xs font-mono">Open Source</span>

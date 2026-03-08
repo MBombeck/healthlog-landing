@@ -470,6 +470,30 @@ body {
   opacity: 0;
 }
 
+/* ── Demo Credentials Card ─────────────────────── */
+.demo-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--pink), var(--purple), transparent);
+  opacity: 0.6;
+}
+
+.demo-card:hover {
+  border-color: rgba(255, 121, 198, 0.2);
+  box-shadow:
+    0 12px 40px rgba(255, 121, 198, 0.06),
+    0 0 0 1px rgba(255, 121, 198, 0.04);
+}
+
 /* ── Responsive ─────────────────────────────────── */
 @media (max-width: 768px) {
   .aurora::before {
