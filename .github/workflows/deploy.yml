@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
 
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -21,13 +25,27 @@ jobs:
         env:
           HOST: ${{ secrets.EDGE01_HOST }}
         run: |
-          ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=15 -o ServerAliveCountMax=20 root@$HOST << 'DEPLOY'
+          ssh -o ServerAliveInterval=15 -o ServerAliveCountMax=20 root@$HOST 'bash -s' << 'DEPLOY'
           set -e
-          cd /tmp/healthlog-landing
+          COMMIT="${GITHUB_SHA:-latest}"
+          REPO_DIR="/tmp/healthlog-landing"
+          APP_DIR="/data/coolify/applications/o8g80o008scc48c884coo0kk"
+          IMAGE="o8g80o008scc48c884coo0kk:latest"
+
+          echo "==> Pulling latest code"
+          cd "$REPO_DIR"
           git fetch origin main
           git reset --hard origin/main
-          docker build --network host -q -t o8g80o008scc48c884coo0kk:latest .
-          cd /data/coolify/applications/o8g80o008scc48c884coo0kk
-          docker compose up -d --force-recreate
-          echo "Deploy complete"
+
+          echo "==> Building image"
+          docker build --network host -q -t "$IMAGE" .
+
+          echo "==> Updating compose"
+          sed -i "s|image: '[^']*'|image: '${IMAGE}'|" "$APP_DIR/docker-compose.yaml"
+
+          echo "==> Recreating container"
+          cd "$APP_DIR"
+          docker compose up -d --force-recreate 2>&1
+
+          echo "==> Deploy complete"
           DEPLOY
