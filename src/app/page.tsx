@@ -745,6 +745,9 @@ docker compose up -d`}</code>
             <span className="font-display font-semibold text-sm text-text-tertiary tracking-tight">HealthLog</span>
           </div>
           <div className="flex items-center gap-6">
+            <a href="https://demo.healthlog.dev" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+              Demo
+            </a>
             <a href="https://docs.healthlog.dev" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
               Docs
             </a>
