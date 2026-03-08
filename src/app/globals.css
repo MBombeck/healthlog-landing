@@ -1,0 +1,391 @@
+@import "tailwindcss";
+
+/* ── Design Tokens ──────────────────────────────── */
+:root {
+  --void: #06070b;
+  --surface: #0a0b10;
+  --surface-raised: #0f1018;
+  --surface-glass: rgba(15, 16, 24, 0.6);
+  --border-subtle: rgba(98, 114, 164, 0.12);
+  --border-glass: rgba(189, 147, 249, 0.08);
+
+  --text-primary: #f0eff4;
+  --text-secondary: #8b8d9e;
+  --text-tertiary: #5a5c6e;
+
+  --purple: #bd93f9;
+  --purple-dim: rgba(189, 147, 249, 0.15);
+  --purple-glow: rgba(189, 147, 249, 0.3);
+  --cyan: #8be9fd;
+  --cyan-dim: rgba(139, 233, 253, 0.1);
+  --pink: #ff79c6;
+  --pink-dim: rgba(255, 121, 198, 0.1);
+  --green: #50fa7b;
+  --green-dim: rgba(80, 250, 123, 0.1);
+  --orange: #ffb86c;
+
+  --font-display: "Syne", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@theme inline {
+  --color-void: var(--void);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-purple: var(--purple);
+  --color-cyan: var(--cyan);
+  --color-pink: var(--pink);
+  --color-green: var(--green);
+  --color-orange: var(--orange);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+/* ── Base ────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--void);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--purple-dim);
+  color: var(--purple);
+}
+
+/* ── Aurora Background ──────────────────────────── */
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora::before,
+.aurora::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.4;
+  will-change: transform;
+}
+
+.aurora::before {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--purple) 0%, transparent 70%);
+  top: -15%;
+  left: 15%;
+  animation: aurora-drift-1 18s ease-in-out infinite;
+}
+
+.aurora::after {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--cyan) 0%, transparent 70%);
+  top: -10%;
+  right: 10%;
+  animation: aurora-drift-2 22s ease-in-out infinite;
+}
+
+.aurora-pink {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--pink) 0%, transparent 70%);
+  filter: blur(120px);
+  opacity: 0.25;
+  top: 10%;
+  left: 40%;
+  animation: aurora-drift-3 25s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes aurora-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(60px, 30px) scale(1.1); }
+  50% { transform: translate(-30px, 50px) scale(0.95); }
+  75% { transform: translate(40px, -20px) scale(1.05); }
+}
+
+@keyframes aurora-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-50px, 40px) scale(1.08); }
+  66% { transform: translate(30px, -30px) scale(0.92); }
+}
+
+@keyframes aurora-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  30% { transform: translate(70px, -40px) scale(1.15); }
+  60% { transform: translate(-40px, 60px) scale(0.9); }
+}
+
+/* ── Grid Pattern Background ────────────────────── */
+.grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(189, 147, 249, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(189, 147, 249, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 30%, transparent 100%);
+  pointer-events: none;
+}
+
+/* ── ECG Heartbeat Line ─────────────────────────── */
+.ecg-line {
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.ecg-line svg {
+  width: 200%;
+  height: 100%;
+  animation: ecg-scroll 8s linear infinite;
+}
+
+@keyframes ecg-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Logo Pulse ─────────────────────────────────── */
+.logo-pulse {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(189, 147, 249, 0.3));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(189, 147, 249, 0.5));
+    transform: scale(1.03);
+  }
+}
+
+/* ── Glass Card ─────────────────────────────────── */
+.glass-card {
+  background: var(--surface-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: var(--border-glass);
+  background: rgba(15, 16, 24, 0.75);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(189, 147, 249, 0.06);
+}
+
+/* ── Gradient Border (Mockup Frame) ─────────────── */
+.gradient-border {
+  position: relative;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    var(--purple),
+    var(--cyan),
+    var(--pink),
+    var(--purple)
+  );
+  background-size: 300% 300%;
+  animation: gradient-rotate 6s ease infinite;
+}
+
+.gradient-border-inner {
+  background: var(--surface);
+  border-radius: 19px;
+  overflow: hidden;
+}
+
+@keyframes gradient-rotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── Scroll Reveal ──────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ── Tech Badge Scroll ──────────────────────────── */
+.tech-scroll {
+  display: flex;
+  gap: 1rem;
+  animation: scroll-x 30s linear infinite;
+  width: max-content;
+}
+
+.tech-scroll:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-x {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── CTA Button ─────────────────────────────────── */
+.cta-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: var(--purple);
+  color: var(--void);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.cta-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 24px var(--purple-glow);
+}
+
+.cta-button:hover::before {
+  opacity: 1;
+}
+
+.cta-button span {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Feature Icon Container ─────────────────────── */
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Section Divider ────────────────────────────── */
+.section-glow {
+  position: relative;
+}
+
+.section-glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--purple), transparent);
+  opacity: 0.3;
+}
+
+/* ── Mockup Screen Content ──────────────────────── */
+.mockup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 20px;
+}
+
+.mockup-metric {
+  background: rgba(189, 147, 249, 0.05);
+  border: 1px solid rgba(189, 147, 249, 0.08);
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.mockup-chart {
+  grid-column: span 3;
+  height: 80px;
+  background: rgba(189, 147, 249, 0.03);
+  border: 1px solid rgba(189, 147, 249, 0.06);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Privacy Shield Icon ────────────────────────── */
+.shield-glow {
+  filter: drop-shadow(0 0 16px rgba(80, 250, 123, 0.25));
+}
+
+/* ── Responsive ─────────────────────────────────── */
+@media (max-width: 768px) {
+  .aurora::before {
+    width: 350px;
+    height: 350px;
+    filter: blur(80px);
+  }
+  .aurora::after {
+    width: 300px;
+    height: 300px;
+    filter: blur(80px);
+  }
+  .aurora-pink {
+    width: 250px;
+    height: 250px;
+    filter: blur(80px);
+  }
+}
