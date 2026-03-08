@@ -647,9 +647,6 @@ body {
     transform: none;
   }
 
-  .ecg-canvas {
-    display: none;
-  }
 }
 /* ── Responsive ─────────────────────────────────── */
 @media (max-width: 768px) {
