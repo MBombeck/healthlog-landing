@@ -153,18 +153,18 @@ body {
 /* ── ECG Heartbeat Line ─────────────────────────── */
 .ecg-line {
   position: absolute;
-  bottom: 15%;
+  bottom: 12%;
   left: 0;
   width: 100%;
-  height: 100px;
-  opacity: 0.15;
+  height: 120px;
+  opacity: 0.2;
   pointer-events: none;
 }
 
 .ecg-line svg {
   width: 200%;
   height: 100%;
-  animation: ecg-scroll 8s linear infinite;
+  animation: ecg-scroll 10s linear infinite;
 }
 
 @keyframes ecg-scroll {

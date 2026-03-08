@@ -97,30 +97,83 @@ function GitHubIcon() {
   );
 }
 
-/* ── ECG Background Line (realistic sinus rhythm) ─ */
+/* ── ECG Background Line (organic monitor style) ── */
 
 function EcgBackgroundLine() {
-  // Classic ECG monitor style: sharp straight lines for QRS, baseline at y=80
-  // Based on standard web ECG pattern: baseline → P-wave → Q dip → R spike (y=0) → S dip → T-wave → baseline
-  // One beat = 130 units wide, repeated across 650-unit viewBox (5 beats)
-  const beat =
-    "M0,80 L10,80 L20,70 L30,80 L40,80 L50,90 L60,0 L70,90 L80,80 L90,80 L100,55 L110,80 L130,80";
+  // Organic ECG waveform inspired by real heart monitor displays.
+  // Uses bezier curves for natural feel, slight variation between beats.
+  // ViewBox: 1200x100, baseline at y=60, R-spike peaks at y=5
+  const ecgPath = [
+    // Beat 1
+    "M0,60",
+    "c10,0 15,-1 25,-2", // subtle baseline drift
+    "c5,1 8,2 12,0", // tiny noise
+    "c4,-2 6,-8 10,-10", // P-wave rise
+    "c4,-2 8,0 12,4", // P-wave peak
+    "c4,4 6,8 8,8", // P-wave descent
+    "c4,0 8,0 12,0", // PR segment
+    "c2,0 3,2 4,5", // Q dip
+    "c1,3 2,4 3,-20", // Q-to-R transition
+    "c2,-30 3,-35 4,-38", // R spike up
+    "c1,3 2,40 3,55", // R spike down
+    "c1,15 2,20 3,18", // S dip below baseline
+    "c1,-2 3,-8 5,-11", // S recovery
+    "c4,0 10,0 16,0", // ST segment
+    "c6,-2 10,-10 16,-14", // T-wave rise
+    "c6,-4 10,-2 14,4", // T-wave peak
+    "c4,6 8,10 12,10", // T-wave descent
+    "c8,0 20,0 30,0", // baseline
+
+    // Beat 2 (slightly varied)
+    "c8,0 12,-1 18,-1",
+    "c4,0 6,-6 9,-9",
+    "c3,-3 7,1 11,5",
+    "c4,5 6,5 8,5",
+    "c4,0 8,0 11,0",
+    "c2,0 3,3 4,6",
+    "c1,2 2,-15 3,-25",
+    "c2,-28 3,-32 4,-36",
+    "c1,5 2,42 3,56",
+    "c1,14 2,18 3,16",
+    "c1,-2 3,-7 5,-10",
+    "c4,0 10,0 15,0",
+    "c5,-2 9,-8 14,-12",
+    "c5,-4 9,-3 13,3",
+    "c4,5 7,9 11,9",
+    "c10,0 24,0 35,0",
+
+    // Beat 3
+    "c6,0 10,-1 16,-2",
+    "c4,1 7,-5 10,-8",
+    "c3,-3 7,0 11,4",
+    "c4,4 5,6 7,6",
+    "c4,0 9,0 13,0",
+    "c2,0 3,2 4,5",
+    "c1,3 2,-18 3,-28",
+    "c2,-26 3,-30 4,-32",
+    "c1,4 2,38 3,52",
+    "c1,16 2,21 3,19",
+    "c1,-2 3,-9 5,-12",
+    "c4,0 8,0 14,0",
+    "c6,-1 10,-9 15,-13",
+    "c5,-4 9,-2 13,4",
+    "c4,6 8,9 11,9",
+    "c12,0 28,0 40,0",
+  ].join(" ");
 
   return (
     <div className="ecg-line" aria-hidden="true">
-      <svg viewBox="0 0 650 100" preserveAspectRatio="none">
-        {[0, 130, 260, 390, 520].map((offset) => (
-          <path
-            key={offset}
-            d={beat}
-            fill="none"
-            stroke="#bd93f9"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            transform={`translate(${offset}, 0)`}
-          />
-        ))}
+      <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+        <defs>
+          <filter id="ecg-glow">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
+        {/* Glow layer */}
+        <path d={ecgPath} fill="none" stroke="#bd93f9" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" filter="url(#ecg-glow)" />
+        {/* Main crisp line */}
+        <path d={ecgPath} fill="none" stroke="#bd93f9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </div>
   );
