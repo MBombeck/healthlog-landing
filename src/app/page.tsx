@@ -452,7 +452,7 @@ export default function Home() {
       </section>
 
       {/* ─── COMPARISON ──────────────────────────── */}
-      <section id="comparison" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="comparison-heading">
+      <section id="comparison" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow hidden md:block" aria-labelledby="comparison-heading">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <div className="reveal flex justify-center mb-6">
@@ -549,6 +549,9 @@ export default function Home() {
       {/* ─── LIVE DEMO ─────────────────────────────── */}
       <section className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="demo-heading">
         <div className="max-w-3xl mx-auto text-center">
+          <div className="reveal flex justify-center mb-6">
+            <span className="section-label text-orange border-orange/15 bg-orange/[0.03]">Live Demo</span>
+          </div>
           <h2 id="demo-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
             See it in action
           </h2>
@@ -568,6 +571,9 @@ export default function Home() {
       {/* ─── CTA + QUICK START ────────────────────── */}
       <section className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="quickstart-heading">
         <div className="reveal max-w-2xl mx-auto text-center">
+          <div className="reveal flex justify-center mb-6">
+            <span className="section-label text-pink border-pink/15 bg-pink/[0.03]">Quick Start</span>
+          </div>
           <h2 id="quickstart-heading" className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
             Up and running<br />in minutes
           </h2>
