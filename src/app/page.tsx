@@ -138,7 +138,7 @@ const primaryFeatures = [
   {
     icon: <HeartMetricIcon />,
     title: "All vitals at a glance",
-    description: "Track weight, blood pressure, heart rate, body fat, sleep, and steps. Interactive charts reveal trends instantly — with personalized target ranges.",
+    description: "Weight, blood pressure, heart rate, body fat, sleep, steps — and now blood glucose with fasting/postprandial/random/bedtime contexts in mg/dL or mmol/L.",
     color: "purple",
   },
   {
@@ -149,16 +149,19 @@ const primaryFeatures = [
   },
   {
     icon: <BrainIcon />,
-    title: "AI-powered health insights",
-    description: "Personalized analyses of blood pressure, weight, heart rate, mood, and compliance powered by OpenAI. Bring-Your-Own-Key — your data stays yours.",
+    title: "Multi-provider AI insights",
+    description: "Pick OpenAI, Anthropic Claude, or any local OpenAI-compatible endpoint (Ollama, LM Studio). BYOK — or stay fully on-prem.",
     color: "orange",
   },
 ];
 
 const secondaryFeatures = [
-  { icon: <MoodIcon />, title: "Mood tracking", description: "5-point scale with tags, correlation analysis, and journal integration.", color: "pink" },
-  { icon: <FileIcon />, title: "Doctor report PDF", description: "Professional medical reports in European format, generated in your browser.", color: "green" },
+  { icon: <HeartMetricIcon />, title: "Custom thresholds", description: "Override the guideline defaults with the targets your clinician set. Audit-logged, marked clearly on the Doctor Report PDF.", color: "purple" },
+  { icon: <FileIcon />, title: "Customizable dashboard", description: "Show, hide, and reorder every widget. Reset to defaults anytime — your data is never touched.", color: "green" },
+  { icon: <MoodIcon />, title: "Built-in feedback", description: "Send bug reports and feature requests from inside the app. Works out of the box; GitHub escalation is opt-in for admins.", color: "pink" },
+  { icon: <FileIcon />, title: "Doctor report PDF", description: "Professional medical reports in your locale — numbers, dates, and units formatted right. Includes glucose trends.", color: "green" },
   { icon: <SyncIcon />, title: "Withings sync", description: "Automatic sync with Withings scales, BP monitors, and activity trackers.", color: "cyan" },
+  { icon: <MoodIcon />, title: "Mood tracking", description: "5-point scale with tags, correlation analysis, and journal integration.", color: "pink" },
 ];
 
 const colorMap: Record<string, { bg: string; text: string }> = {
@@ -350,7 +353,7 @@ export default function Home() {
           </div>
 
           {/* Secondary features -- compact cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5">
             {secondaryFeatures.map((feature, i) => {
               const colors = colorMap[feature.color];
               return (
@@ -380,7 +383,8 @@ export default function Home() {
               "Telegram / ntfy / Web Push",
               "30+ Achievements",
               "CSV/JSON Export",
-              "German & English",
+              "Locale-aware (EN / DE)",
+              "Glucose mg/dL ↔ mmol/L",
               "Docker-ready",
             ].map((item) => (
               <span key={item} className="px-4 py-2 rounded-full text-xs font-mono text-text-tertiary border border-[rgba(98,114,164,0.1)] bg-[rgba(15,16,24,0.4)] hover:border-[rgba(189,147,249,0.15)] hover:text-text-secondary transition-all duration-300">
