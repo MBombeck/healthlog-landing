@@ -187,7 +187,14 @@ const privacyChecks = [
   "Open Source — every single line of code is auditable",
 ];
 
-const terminalCommands = "git clone https://github.com/MBombeck/HealthLog.git\ncd HealthLog\ncp .env.example .env\ndocker compose up -d";
+const terminalCommands = `git clone https://github.com/MBombeck/HealthLog.git
+cd HealthLog
+cp .env.example .env
+echo "POSTGRES_PASSWORD=$(openssl rand -base64 24)" >> .env
+echo "SESSION_SECRET=$(openssl rand -hex 32)"       >> .env
+echo "ENCRYPTION_KEY=$(openssl rand -hex 32)"       >> .env
+echo "API_TOKEN_HMAC_KEY=$(openssl rand -hex 32)"   >> .env
+docker compose up -d`;
 
 /* ── Comparison Row ─────────────────────────────── */
 
