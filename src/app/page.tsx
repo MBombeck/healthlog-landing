@@ -138,7 +138,7 @@ const primaryFeatures = [
   {
     icon: <HeartMetricIcon />,
     title: "All vitals at a glance",
-    description: "Track weight, blood pressure, heart rate, body fat, sleep, and steps. Interactive charts reveal trends instantly — with personalized target ranges.",
+    description: "Track weight, blood pressure, heart rate, body fat, body composition (total body water + bone mass), blood glucose, pulse oximetry (SpO₂), sleep, and steps. Interactive charts reveal trends instantly — with personalized target ranges.",
     color: "purple",
   },
   {
@@ -150,7 +150,7 @@ const primaryFeatures = [
   {
     icon: <BrainIcon />,
     title: "AI-powered health insights",
-    description: "Personalized analyses of blood pressure, weight, heart rate, mood, and compliance powered by OpenAI. Bring-Your-Own-Key — your data stays yours.",
+    description: "Personalized analyses of blood pressure, weight, heart rate, mood, and compliance — multi-provider (OpenAI, Anthropic Claude, Codex via your ChatGPT subscription, or any local OpenAI-compatible endpoint like Ollama / LM Studio / vLLM). Bring-Your-Own-Key, your data stays yours.",
     color: "orange",
   },
 ];
@@ -180,7 +180,7 @@ const privacyChecks = [
   "No cloud dependency — runs entirely on your own server",
   "No telemetry, no analytics, no tracking scripts",
   "AES-256-GCM encryption for all sensitive data at rest",
-  "API tokens stored as SHA-256 hashes, never in plaintext",
+  "API tokens stored as keyed HMAC-SHA-256 hashes, never in plaintext",
   "Passkey authentication — phishing-resistant, no password leaks",
   "Password fallback with Argon2id hashing and strength validation",
   "Withings OAuth tokens encrypted in the database",
