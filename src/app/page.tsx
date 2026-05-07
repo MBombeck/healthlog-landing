@@ -138,7 +138,7 @@ const primaryFeatures = [
   {
     icon: <HeartMetricIcon />,
     title: "All vitals at a glance",
-    description: "Track weight, blood pressure, heart rate, body fat, body composition (total body water + bone mass), blood glucose, sleep, and steps. Interactive charts reveal trends instantly — with personalized target ranges.",
+    description: "Track weight, blood pressure, heart rate, body fat, body composition (total body water + bone mass), blood glucose, pulse oximetry (SpO₂), sleep, and steps. Interactive charts reveal trends instantly — with personalized target ranges.",
     color: "purple",
   },
   {

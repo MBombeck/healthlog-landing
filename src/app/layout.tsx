@@ -126,6 +126,7 @@ export default function RootLayout({
     featureList: [
       "Weight, blood pressure, heart rate, body fat, sleep, steps tracking",
       "Body composition: total body water + bone mass via Withings auto-sync",
+      "Pulse oximetry (SpO₂) tracking with personalisable target bands for COPD / chronic respiratory users",
       "Blood glucose tracking with fasting/postprandial/random/bedtime contexts",
       "Medication management with compliance analytics and reminders",
       "Mood tracking with 5-point scale and tags",
@@ -141,7 +142,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped manually
     // until the cross-repo release tool (audit phase P5) lands.
-    softwareVersion: "1.3",
+    softwareVersion: "1.3.3",
     license: "https://www.gnu.org/licenses/agpl-3.0.html",
     // Landing page is English-only today. The HealthLog app itself is
     // bilingual (EN/DE) — that fact belongs on the app, not the marketing
