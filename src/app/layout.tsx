@@ -125,9 +125,11 @@ export default function RootLayout({
     },
     featureList: [
       "Weight, blood pressure, heart rate, body fat, sleep, steps tracking",
+      "Body composition: total body water + bone mass via Withings auto-sync",
+      "Blood glucose tracking with fasting/postprandial/random/bedtime contexts",
       "Medication management with compliance analytics and reminders",
       "Mood tracking with 5-point scale and tags",
-      "AI-powered health insights via OpenAI (BYOK)",
+      "AI-powered health insights via OpenAI, Anthropic, or local OpenAI-compatible providers (BYOK)",
       "Doctor report PDF generation",
       "Withings device synchronization",
       "AES-256-GCM encryption for all sensitive data",
@@ -137,9 +139,14 @@ export default function RootLayout({
       "Telegram, ntfy, and Web Push notifications",
     ],
     screenshot: "https://healthlog.dev/og-image.png",
-    softwareVersion: "1.0",
+    // Tracks the latest stable HealthLog server release. Bumped manually
+    // until the cross-repo release tool (audit phase P5) lands.
+    softwareVersion: "1.3",
     license: "https://www.gnu.org/licenses/agpl-3.0.html",
-    inLanguage: ["en", "de"],
+    // Landing page is English-only today. The HealthLog app itself is
+    // bilingual (EN/DE) — that fact belongs on the app, not the marketing
+    // page. Re-add "de" here once a German landing variant ships.
+    inLanguage: "en",
     downloadUrl: "https://github.com/MBombeck/HealthLog",
     installUrl: "https://docs.healthlog.dev",
   };
