@@ -150,7 +150,7 @@ const primaryFeatures = [
   {
     icon: <BrainIcon />,
     title: "AI-powered health insights",
-    description: "Personalized analyses of blood pressure, weight, heart rate, mood, and compliance — multi-provider (OpenAI, Anthropic Claude, Codex via your ChatGPT subscription, or any local OpenAI-compatible endpoint like Ollama / LM Studio / vLLM). Bring-Your-Own-Key, your data stays yours.",
+    description: "Personalized analyses of blood pressure, weight, heart rate, mood, and compliance — multi-provider (OpenAI, Anthropic Claude, ChatGPT subscription via OAuth, or any local OpenAI-compatible endpoint like Ollama / LM Studio / vLLM). Findings cite concrete numbers and embed inline charts, with three years of history per metric. BYOK, your data stays yours.",
     color: "orange",
   },
 ];
@@ -388,6 +388,8 @@ export default function Home() {
               "30+ Achievements",
               "CSV/JSON Export",
               "German & English",
+              "Native iOS API ready",
+              "S3 off-host backups",
               "Docker-ready",
             ].map((item) => (
               <span key={item} className="px-4 py-2 rounded-full text-xs font-mono text-text-tertiary border border-[rgba(98,114,164,0.1)] bg-[rgba(15,16,24,0.4)] hover:border-[rgba(189,147,249,0.15)] hover:text-text-secondary transition-all duration-300">

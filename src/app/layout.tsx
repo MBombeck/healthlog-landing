@@ -130,9 +130,16 @@ export default function RootLayout({
       "Blood glucose tracking with fasting/postprandial/random/bedtime contexts",
       "Medication management with compliance analytics and reminders",
       "Mood tracking with 5-point scale and tags",
-      "AI-powered health insights via OpenAI, Anthropic, or local OpenAI-compatible providers (BYOK)",
-      "Doctor report PDF generation",
-      "Withings device synchronization",
+      "AI-powered health insights via OpenAI (BYOK or admin-shared key), Anthropic Claude, ChatGPT-OAuth, or local OpenAI-compatible providers (Ollama, LM Studio, vLLM)",
+      "Inline charts inside AI findings and three years of context per metric (360 daily + 24 monthly means)",
+      "Personal health targets that override guideline defaults, audit-logged per change",
+      "Customizable dashboard — show, hide, and reorder every widget",
+      "Doctor report PDF generation, locale-aware (EN/DE), with optional AI summary",
+      "Withings device synchronization (Body+, BPM Connect, ScanWatch)",
+      "Native API clients with Bearer + refresh-token rotation and Idempotency-Key support",
+      "Off-host weekly encrypted backups to any S3-compatible bucket",
+      "Worker / web split for scaling beyond a single container",
+      "Versioned encryption keys with online rotation",
       "AES-256-GCM encryption for all sensitive data",
       "Passkey (WebAuthn) authentication",
       "Offline-capable Progressive Web App",
@@ -142,7 +149,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped manually
     // until the cross-repo release tool (audit phase P5) lands.
-    softwareVersion: "1.3.3",
+    softwareVersion: "1.4.6",
     license: "https://www.gnu.org/licenses/agpl-3.0.html",
     // Landing page is English-only today. The HealthLog app itself is
     // bilingual (EN/DE) — that fact belongs on the app, not the marketing
