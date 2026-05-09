@@ -150,7 +150,7 @@ const primaryFeatures = [
   {
     icon: <BrainIcon />,
     title: "AI-powered health insights",
-    description: "Personalized analyses of blood pressure, weight, heart rate, mood, and compliance — multi-provider (OpenAI, Anthropic Claude, ChatGPT subscription via OAuth, or any local OpenAI-compatible endpoint like Ollama / LM Studio / vLLM). Findings cite concrete numbers and embed inline charts, with three years of history per metric. BYOK, your data stays yours.",
+    description: "Personalized analyses of blood pressure, weight, heart rate, mood, and compliance — multi-provider (OpenAI, Anthropic Claude, your ChatGPT subscription via one-click Codex login, or any local OpenAI-compatible endpoint like Ollama / LM Studio / vLLM). Findings cite concrete numbers and embed inline charts, with three years of history per metric. BYOK, your data stays yours.",
     color: "orange",
   },
 ];
