@@ -149,7 +149,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped manually
     // until the cross-repo release tool (audit phase P5) lands.
-    softwareVersion: "1.5.0",
+    softwareVersion: "1.4.14",
     license: "https://www.gnu.org/licenses/agpl-3.0.html",
     // Landing page is English-only today. The HealthLog app itself is
     // bilingual (EN/DE) — that fact belongs on the app, not the marketing
