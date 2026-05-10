@@ -383,11 +383,11 @@ export default function Home() {
           {/* Extra capability badges */}
           <div className="reveal mt-12 flex flex-wrap justify-center gap-3">
             {[
-              "Apple-Health-quality charts",
+              "Clean-line charts with per-chart overlays",
               "vs. last month / last year overlays",
               "Offline-capable PWA",
               "Telegram / ntfy / Web Push",
-              "30+ Achievements",
+              "59 Achievements (plus a few hidden ones)",
               "CSV/JSON Export",
               "German & English",
               "Native iOS API ready",

@@ -137,7 +137,7 @@ export default function RootLayout({
       "Medical-reference grounding — every normative recommendation cites a curated guideline (ESH, ESC, ACC/AHA, WHO, DGE) with source links",
       "Hardened AI insights with strict citation requirement — every recommendation must point at a real datapoint, no hallucinated numbers",
       "Inline charts inside AI findings and three years of context per metric (360 daily + 24 monthly means)",
-      "Apple-Health-quality charts with gradient fills, smooth animation, personal 90-day baseline, rich tooltips, and explicit empty states",
+      "Clean-line health charts with smooth animation, rich tooltips, and explicit empty states — plus per-chart toggles for trend indicator, trend arrow, and target-range overlay",
       "Comparison overlays — toggle vs. last month / vs. last year on every chart, tile, and the AI insights surface",
       "Personal health targets that override guideline defaults, audit-logged per change",
       "Customizable dashboard — show, hide, and reorder every widget",
@@ -156,7 +156,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped manually
     // until the cross-repo release tool (audit phase P5) lands.
-    softwareVersion: "1.4.16",
+    softwareVersion: "1.4.18",
     license: "https://www.gnu.org/licenses/agpl-3.0.html",
     // Landing page is English-only today. The HealthLog app itself is
     // bilingual (EN/DE) — that fact belongs on the app, not the marketing
