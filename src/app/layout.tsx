@@ -132,6 +132,9 @@ export default function RootLayout({
       "Mood tracking with 5-point scale and tags",
       "AI-powered health insights via OpenAI (BYOK or admin-shared key), Anthropic Claude, your ChatGPT subscription (one-click device-code Codex flow, no API plan needed), or local OpenAI-compatible providers (Ollama, LM Studio, vLLM)",
       "Multi-provider fallback chain — providers retry in user-defined order on hard failure, with last-working provider cached per user",
+      "AI Coach drawer with streaming chat and encrypted conversation history — same provider chain as AI Insights, source-chip provenance per turn, per-user daily token budget",
+      "Personal Health Score (composite 0–100 with three bands) drawn from blood-pressure target rate, weight-trend alignment, mood stability, and medication compliance",
+      "Daily Briefing card and printable weekly report at /insights/report/[week]",
       "Per-recommendation explainability with rationale (window + comparison + deviation), pinned mini-chart of the data window, and was-this-helpful feedback",
       "Server-computed 0–100 confidence score per recommendation (sample size + recency + signal strength) — no model-claimed values",
       "Medical-reference grounding — every normative recommendation cites a curated guideline (ESH, ESC, ACC/AHA, WHO, DGE) with source links",
@@ -156,7 +159,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped manually
     // until the cross-repo release sync tool lands.
-    softwareVersion: "1.4.19",
+    softwareVersion: "1.4.20",
     license: "https://www.gnu.org/licenses/agpl-3.0.html",
     // Landing page is English-only today. The HealthLog app itself is
     // bilingual (EN/DE) — that fact belongs on the app, not the marketing
