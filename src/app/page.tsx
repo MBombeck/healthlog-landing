@@ -149,8 +149,8 @@ const primaryFeatures = [
   },
   {
     icon: <BrainIcon />,
-    title: "AI-powered health insights",
-    description: "Personalized analyses of blood pressure, weight, heart rate, mood, and compliance — multi-provider (OpenAI, Anthropic Claude, your ChatGPT subscription via one-click Codex login, or any local OpenAI-compatible endpoint like Ollama / LM Studio / vLLM). Findings cite concrete numbers and embed inline charts, with three years of history per metric. BYOK, your data stays yours.",
+    title: "AI insights that show their work",
+    description: "Every recommendation explains itself: the data window it analysed, what it compared against, the deviation it spotted, and a pinned mini-chart of the data — plus a server-computed 0–100 confidence score and a citation linking to ESH / ESC / WHO / DGE guidelines. Multi-provider fallback (OpenAI / Anthropic / ChatGPT-via-Codex / local Ollama). BYOK, your data stays yours.",
     color: "orange",
   },
 ];
@@ -383,6 +383,8 @@ export default function Home() {
           {/* Extra capability badges */}
           <div className="reveal mt-12 flex flex-wrap justify-center gap-3">
             {[
+              "Apple-Health-quality charts",
+              "vs. last month / last year overlays",
               "Offline-capable PWA",
               "Telegram / ntfy / Web Push",
               "30+ Achievements",

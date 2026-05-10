@@ -131,8 +131,14 @@ export default function RootLayout({
       "Medication management with compliance analytics and reminders",
       "Mood tracking with 5-point scale and tags",
       "AI-powered health insights via OpenAI (BYOK or admin-shared key), Anthropic Claude, your ChatGPT subscription (one-click device-code Codex flow, no API plan needed), or local OpenAI-compatible providers (Ollama, LM Studio, vLLM)",
+      "Multi-provider fallback chain — providers retry in user-defined order on hard failure, with last-working provider cached per user",
+      "Per-recommendation explainability with rationale (window + comparison + deviation), pinned mini-chart of the data window, and was-this-helpful feedback",
+      "Server-computed 0–100 confidence score per recommendation (sample size + recency + signal strength) — no model-claimed values",
+      "Medical-reference grounding — every normative recommendation cites a curated guideline (ESH, ESC, ACC/AHA, WHO, DGE) with source links",
       "Hardened AI insights with strict citation requirement — every recommendation must point at a real datapoint, no hallucinated numbers",
       "Inline charts inside AI findings and three years of context per metric (360 daily + 24 monthly means)",
+      "Apple-Health-quality charts with gradient fills, smooth animation, personal 90-day baseline, rich tooltips, and explicit empty states",
+      "Comparison overlays — toggle vs. last month / vs. last year on every chart, tile, and the AI insights surface",
       "Personal health targets that override guideline defaults, audit-logged per change",
       "Customizable dashboard — show, hide, and reorder every widget",
       "Doctor report PDF generation, locale-aware (EN/DE), with optional AI summary",
@@ -150,7 +156,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped manually
     // until the cross-repo release tool (audit phase P5) lands.
-    softwareVersion: "1.4.15",
+    softwareVersion: "1.4.16",
     license: "https://www.gnu.org/licenses/agpl-3.0.html",
     // Landing page is English-only today. The HealthLog app itself is
     // bilingual (EN/DE) — that fact belongs on the app, not the marketing
