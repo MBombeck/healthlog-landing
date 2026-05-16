@@ -20,12 +20,25 @@ FROM nginx:alpine
 
 COPY --from=builder /app/out /usr/share/nginx/html
 
-# Custom nginx config for SPA
+# Custom nginx config for SPA.
+#
+# The `/.well-known/apple-app-site-association` exact-match block runs
+# before the generic `/` catch-all so Apple's CDN fetch lands on the
+# Next.js-emitted JSON file with the correct `application/json`
+# Content-Type. The file has no extension so it would otherwise inherit
+# the default `application/octet-stream` and Apple would reject the
+# response. The `default_type` override scopes the content type to that
+# one path; no other request is affected.
 RUN echo 'server { \
     listen 80; \
     server_name _; \
     root /usr/share/nginx/html; \
     index index.html; \
+    \
+    location = /.well-known/apple-app-site-association { \
+        default_type application/json; \
+        add_header Cache-Control "public, max-age=3600"; \
+    } \
     \
     location / { \
         try_files $uri $uri.html $uri/ /index.html; \
