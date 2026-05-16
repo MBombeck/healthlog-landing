@@ -6,7 +6,11 @@ RUN corepack enable pnpm
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-RUN pnpm install --frozen-lockfile
+# --ignore-scripts skips native-binding builds for sharp and unrs-resolver.
+# next.config.ts sets images.unoptimized = true (static export), so sharp's
+# runtime is never invoked; unrs-resolver only runs at Next's TypeScript
+# compilation step, which the bundled JS fallback handles fine.
+RUN pnpm install --frozen-lockfile --ignore-scripts
 
 COPY . .
 RUN pnpm build
