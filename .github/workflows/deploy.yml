@@ -43,7 +43,7 @@ jobs:
           git reset --hard origin/main
 
           echo "==> Building image"
-          docker build --network host -q -t "$IMAGE" .
+          docker build --network host --progress=plain -t "$IMAGE" .
 
           echo "==> Updating compose"
           sed -i "s|image: '[^']*'|image: '${IMAGE}'|" "$APP_DIR/docker-compose.yaml"
