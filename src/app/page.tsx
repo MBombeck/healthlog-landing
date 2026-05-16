@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { EcgMonitor } from "@/components/EcgMonitor";
 import { ScrollIndicator, ScrollRevealObserver } from "@/components/HeroClient";
 import { DemoCredentials } from "@/components/DemoCredentials";
@@ -641,6 +643,12 @@ export default function Home() {
               <GitHubIcon className="w-4 h-4" />
               GitHub
             </a>
+            <Link href="/privacy" className="text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+              Privacy
+            </Link>
+            <Link href="/support" className="text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+              Support
+            </Link>
             <span className="text-text-tertiary/60 text-xs font-mono">Open Source</span>
           </div>
         </div>
