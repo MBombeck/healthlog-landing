@@ -33,6 +33,11 @@ jobs:
           IMAGE="o8g80o008scc48c884coo0kk:latest"
 
           echo "==> Pulling latest code"
+          if [ ! -d "$REPO_DIR/.git" ]; then
+            echo "==> Repo missing — cloning fresh into $REPO_DIR"
+            rm -rf "$REPO_DIR"
+            git clone --depth=1 https://github.com/MBombeck/healthlog-landing.git "$REPO_DIR"
+          fi
           cd "$REPO_DIR"
           git fetch origin main
           git reset --hard origin/main
