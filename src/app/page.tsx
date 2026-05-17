@@ -140,7 +140,7 @@ const primaryFeatures = [
   {
     icon: <HeartMetricIcon />,
     title: "All vitals at a glance",
-    description: "Track weight, blood pressure, heart rate, body fat, body composition (total body water + bone mass), blood glucose, pulse oximetry (SpO₂), sleep, and steps. Interactive charts reveal trends instantly — with personalized target ranges.",
+    description: "Track weight, blood pressure, heart rate, body fat, body composition (total body water + bone mass), blood glucose, pulse oximetry (SpO₂), sleep, and steps. Interactive charts reveal trends instantly — with personalized target ranges. A persistent rollup tier keeps long-range reads sub-second even on years of history.",
     color: "purple",
   },
   {
@@ -151,16 +151,16 @@ const primaryFeatures = [
   },
   {
     icon: <BrainIcon />,
-    title: "AI insights that show their work",
-    description: "Every recommendation explains itself: the data window it analysed, what it compared against, the deviation it spotted, and a pinned mini-chart of the data — plus a server-computed 0–100 confidence score and a citation linking to ESH / ESC / WHO / DGE guidelines. Multi-provider fallback (OpenAI / Anthropic / ChatGPT-via-Codex / local Ollama). BYOK, your data stays yours.",
+    title: "AI Coach grounded in your data",
+    description: "A conversational Coach plus daily briefing, weekly report, and a Health Score tile — every reply cites the metric, window and reading count it drew on, with mini-charts pinned underneath. Multi-provider chain: ChatGPT subscription, BYOK OpenAI, BYOK Anthropic, local Ollama. Local endpoints keep all data on your network.",
     color: "orange",
   },
 ];
 
 const secondaryFeatures = [
+  { icon: <SyncIcon />, title: "Apple Health import", description: "Drop your iOS export.zip on the upload page — a streaming parser folds multi-GB archives into the same timeline as everything else.", color: "purple" },
   { icon: <MoodIcon />, title: "Mood tracking", description: "5-point scale with tags, correlation analysis, and journal integration.", color: "pink" },
   { icon: <FileIcon />, title: "Doctor report PDF", description: "Professional medical reports in European format, generated in your browser.", color: "green" },
-  { icon: <SyncIcon />, title: "Withings sync", description: "Automatic sync with Withings scales, BP monitors, and activity trackers.", color: "cyan" },
 ];
 
 const colorMap: Record<string, { bg: string; text: string }> = {
@@ -193,7 +193,6 @@ const terminalCommands = `git clone https://github.com/MBombeck/HealthLog.git
 cd HealthLog
 cp .env.example .env
 echo "POSTGRES_PASSWORD=$(openssl rand -base64 24)" >> .env
-echo "SESSION_SECRET=$(openssl rand -hex 32)"       >> .env
 echo "ENCRYPTION_KEY=$(openssl rand -hex 32)"       >> .env
 echo "API_TOKEN_HMAC_KEY=$(openssl rand -hex 32)"   >> .env
 docker compose up -d`;
@@ -317,6 +316,94 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── HOW IT WORKS ─────────────────────────── */}
+      <section id="how-it-works" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="how-it-works-heading">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="reveal flex justify-center mb-6">
+              <span className="section-label text-cyan border-cyan/15 bg-cyan/[0.03]">How it works</span>
+            </div>
+            <h2 id="how-it-works-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+              One pipeline. Every reading.
+            </h2>
+            <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              Sources reach a small set of ingest endpoints, a source-priority resolver picks one canonical row per
+              day, Postgres holds both the raw measurement and a pre-aggregated rollup, and every surface — dashboard tiles,
+              Insights cards, AI Coach answers, the doctor PDF — reads from the same path so the numbers always match.
+            </p>
+          </div>
+          <div className="reveal glass-card p-4 sm:p-8 bg-[rgba(15,16,24,0.4)]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/diagrams/01-data-flow.svg"
+              alt="HealthLog data flow: sources to ingest to Postgres + rollups to reads to surfaces"
+              className="w-full h-auto rounded-md"
+              loading="lazy"
+            />
+          </div>
+          <div className="reveal grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+            <a href="https://docs.healthlog.dev/integrations/apple-health/" target="_blank" rel="noopener noreferrer" className="glass-card p-5 hover:border-[rgba(189,147,249,0.25)] transition-colors duration-300">
+              <div className="text-xs font-mono text-purple mb-1.5 uppercase tracking-wider">Apple Health</div>
+              <div className="text-sm text-text-secondary leading-relaxed">Streaming export.zip importer, idempotent on the SHA-256 of the archive bytes.</div>
+            </a>
+            <a href="https://docs.healthlog.dev/integrations/withings/" target="_blank" rel="noopener noreferrer" className="glass-card p-5 hover:border-[rgba(139,233,253,0.25)] transition-colors duration-300">
+              <div className="text-xs font-mono text-cyan mb-1.5 uppercase tracking-wider">Withings</div>
+              <div className="text-sm text-text-secondary leading-relaxed">OAuth2 + webhook for near-real-time push from scales, BP monitors and ScanWatch.</div>
+            </a>
+            <a href="https://docs.healthlog.dev/concepts/source-priority/" target="_blank" rel="noopener noreferrer" className="glass-card p-5 hover:border-[rgba(255,184,108,0.25)] transition-colors duration-300">
+              <div className="text-xs font-mono text-orange mb-1.5 uppercase tracking-wider">Source priority</div>
+              <div className="text-sm text-text-secondary leading-relaxed">Three sensors logging the same day resolve to one canonical row — no triple-counting.</div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── AI COACH ─────────────────────────────── */}
+      <section id="ai-coach" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="ai-coach-heading">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="reveal flex justify-center mb-6">
+              <span className="section-label text-orange border-orange/15 bg-orange/[0.03]">AI Coach</span>
+            </div>
+            <h2 id="ai-coach-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+              Every claim cites its data.
+            </h2>
+            <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              The Coach is a partner sitting next to you, not a chatbot guessing. Each reply walks the same
+              snapshot → prompt → multi-provider chain → schema-validated parse, then renders prose first with
+              the evidence collapsed underneath. Pick the provider that fits your privacy and budget.
+            </p>
+          </div>
+          <div className="reveal glass-card p-4 sm:p-8 bg-[rgba(15,16,24,0.4)]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/diagrams/02-coach-pipeline.svg"
+              alt="Coach prompt pipeline: question to snapshot to prompt to provider chain to cited reply"
+              className="w-full h-auto rounded-md"
+              loading="lazy"
+            />
+          </div>
+          <div className="reveal grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+            <div className="glass-card p-5">
+              <div className="text-xs font-mono text-cyan mb-1.5 uppercase tracking-wider">ChatGPT</div>
+              <div className="text-sm text-text-secondary leading-relaxed">Reuse your ChatGPT Plus / Pro subscription via device-code OAuth.</div>
+            </div>
+            <div className="glass-card p-5">
+              <div className="text-xs font-mono text-purple mb-1.5 uppercase tracking-wider">OpenAI BYOK</div>
+              <div className="text-sm text-text-secondary leading-relaxed">Paste your own API key. gpt-4o-mini default, override per user.</div>
+            </div>
+            <div className="glass-card p-5">
+              <div className="text-xs font-mono text-pink mb-1.5 uppercase tracking-wider">Anthropic</div>
+              <div className="text-sm text-text-secondary leading-relaxed">Workspace-scoped key. Claude 3.5 Sonnet default, AES-GCM at rest.</div>
+            </div>
+            <div className="glass-card p-5">
+              <div className="text-xs font-mono text-green mb-1.5 uppercase tracking-wider">Local</div>
+              <div className="text-sm text-text-secondary leading-relaxed">Ollama, LM Studio or vLLM on your network. Nothing leaves the host.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── FEATURES ─────────────────────────────── */}
       <section id="features" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="features-heading">
         <div className="max-w-5xl mx-auto">
@@ -387,6 +474,7 @@ export default function Home() {
             {[
               "Clean-line charts with per-chart overlays",
               "vs. last month / last year overlays",
+              "Persistent rollup tier for sub-second reads",
               "Offline-capable PWA",
               "Telegram / ntfy / Web Push",
               "59 Achievements (plus a few hidden ones)",
@@ -434,6 +522,21 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="reveal mt-8 glass-card p-4 sm:p-6 bg-[rgba(15,16,24,0.4)]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/diagrams/05-security-model.svg"
+              alt="Security model: three concentric perimeters — auth, session, encrypted core — with rate limiter, audit log, HMAC tokens, CSP/HSTS and SSRF guard as side rails"
+              className="w-full h-auto rounded-md"
+              loading="lazy"
+            />
+            <p className="text-text-tertiary text-xs mt-3 text-center">
+              Three concentric perimeters protect the encrypted core. See the{" "}
+              <a href="https://docs.healthlog.dev/security/overview/" target="_blank" rel="noopener noreferrer" className="text-cyan hover:underline">security architecture page</a>{" "}
+              for the full walkthrough.
+            </p>
           </div>
         </div>
       </section>
@@ -597,7 +700,23 @@ export default function Home() {
 
           <TerminalBlock commands={terminalCommands} />
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="reveal mt-10 glass-card p-4 sm:p-6 bg-[rgba(15,16,24,0.4)] text-left">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/diagrams/03-self-hosting-topology.svg"
+              alt="Self-hosting topology: internet to reverse proxy to Next.js app and pg-boss worker to PostgreSQL, with GHCR image pull and optional Coolify auto-deploy and S3 backup"
+              className="w-full h-auto rounded-md"
+              loading="lazy"
+            />
+            <p className="text-text-tertiary text-xs mt-3 text-center">
+              A single container does both web and worker by default. Split via{" "}
+              <code className="text-cyan">HEALTHLOG_PROCESS_TYPE</code> for horizontal scale. See the{" "}
+              <a href="https://docs.healthlog.dev/self-hosting/docker/" target="_blank" rel="noopener noreferrer" className="text-cyan hover:underline">self-hosting docs</a>{" "}
+              for the deployment guides.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
             <a
               href="https://github.com/MBombeck/HealthLog"
               className="cta-button group"
