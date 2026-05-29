@@ -30,18 +30,26 @@ export const metadata: Metadata = {
     template: "%s | HealthLog",
   },
   description:
-    "Self-hosted health tracking PWA with medication management, mood tracking, AI-powered insights, and Withings integration. AES-256-GCM encrypted. Docker deploy in minutes. Free and open source.",
+    "Self-hosted, open-source health tracker. Native iOS app with live Apple Health (HealthKit) two-way sync, Withings device sync, multi-provider AI insights, and a client-side doctor-report PDF. AES-256-GCM encrypted. Docker deploy in minutes.",
   keywords: [
     "self-hosted health tracker",
     "health tracking app",
     "open source health app",
+    "Apple Health sync",
+    "HealthKit self-hosted",
+    "iOS health app open source",
     "medication management",
+    "medication compliance tracker",
     "blood pressure tracker",
+    "blood glucose tracker",
     "weight tracker",
     "mood tracker",
     "self-hosted PWA",
     "health dashboard",
     "Withings integration",
+    "Withings self-hosted",
+    "AI health insights",
+    "doctor report PDF",
     "privacy-first health app",
     "Docker health app",
   ],
@@ -54,7 +62,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "HealthLog — Self-Hosted Health Tracking with Full Data Ownership",
     description:
-      "Track weight, blood pressure, medications, and mood on your own server. AES-256-GCM encrypted, offline-capable PWA. Free and open source.",
+      "Track weight, blood pressure, glucose, medications, and mood on your own server. Native iOS app with live Apple Health sync, Withings devices, AI insights. AES-256-GCM encrypted, open source.",
     type: "website",
     url: "https://healthlog.dev",
     siteName: "HealthLog",
@@ -72,7 +80,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "HealthLog — Self-Hosted Health Tracking App",
     description:
-      "Track weight, blood pressure, medications, and mood on your own server. AES-256-GCM encrypted, open source, Docker-ready.",
+      "Track weight, blood pressure, glucose, medications, and mood on your own server. Native iOS app with live Apple Health sync. AES-256-GCM encrypted, open source, Docker-ready.",
     images: ["https://healthlog.dev/og-image.png"],
   },
   robots: {
@@ -109,9 +117,9 @@ export default function RootLayout({
     name: "HealthLog",
     url: "https://healthlog.dev",
     applicationCategory: "HealthApplication",
-    operatingSystem: "Web, Docker",
+    operatingSystem: "iOS, Web, Docker",
     description:
-      "Self-hosted health tracking PWA with medication management, mood tracking, AI-powered insights, and Withings integration. AES-256-GCM encrypted. Free and open source.",
+      "Self-hosted, open-source health tracker. Native iOS app with live Apple Health (HealthKit) two-way sync, Withings device sync, multi-provider AI insights, medication compliance, and a client-side doctor-report PDF. AES-256-GCM encrypted.",
     offers: {
       "@type": "Offer",
       price: "0",
@@ -124,6 +132,7 @@ export default function RootLayout({
       url: "https://github.com/MBombeck/HealthLog",
     },
     featureList: [
+      "Native SwiftUI iOS app (public TestFlight beta) with live two-way Apple Health (HealthKit) sync — steps, weight, blood pressure, glucose, sleep, body composition",
       "Weight, blood pressure, heart rate, body fat, sleep, steps tracking",
       "Body composition: total body water + bone mass via Withings auto-sync",
       "Pulse oximetry (SpO₂) tracking with personalisable target bands for COPD / chronic respiratory users",
@@ -159,7 +168,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped manually
     // until the cross-repo release sync tool lands.
-    softwareVersion: "1.4.32",
+    softwareVersion: "1.6.0",
     license: "https://www.gnu.org/licenses/agpl-3.0.html",
     // Landing page is English-only today. The HealthLog app itself is
     // bilingual (EN/DE) — that fact belongs on the app, not the marketing
@@ -184,6 +193,45 @@ export default function RootLayout({
     },
   };
 
+  const jsonLdFaq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Is HealthLog free?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. HealthLog is free and open source under the AGPL-3.0 licence. You run it on your own server with a single docker compose up — there is no subscription and no paid tier.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does HealthLog sync with Apple Health?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. The native SwiftUI iOS app (public TestFlight beta) keeps Apple Health (HealthKit) in two-way sync — steps, weight, blood pressure, blood glucose, sleep, and body composition flow straight to your own server. On any platform you can also drop an Apple Health export.zip on the upload page.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where is my health data stored?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Entirely on your own infrastructure. HealthLog is self-hosted on PostgreSQL, with all sensitive fields encrypted at rest using AES-256-GCM. There is no cloud dependency, no telemetry, and no third-party analytics.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Which devices and services does HealthLog integrate with?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Withings devices (Body+, BPM Connect, ScanWatch) sync over OAuth2 with near-real-time webhooks, and Apple Health syncs live through the iOS app or via export import. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
+        },
+      },
+    ],
+  };
+
   return (
     <html lang="en">
       <head>
@@ -194,6 +242,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebPage) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
         />
       </head>
       <body
