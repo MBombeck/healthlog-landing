@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import { EcgMonitor } from "@/components/EcgMonitor";
 import { ScrollIndicator, ScrollRevealObserver } from "@/components/HeroClient";
@@ -125,6 +126,14 @@ function BookIcon({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
+function AppleIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M17.05 12.04c-.03-2.78 2.27-4.11 2.37-4.18-1.29-1.89-3.3-2.15-4.02-2.18-1.71-.17-3.34 1.01-4.21 1.01-.86 0-2.2-.99-3.62-.96-1.86.03-3.58 1.08-4.54 2.75-1.94 3.36-.5 8.34 1.39 11.07.92 1.33 2.02 2.83 3.46 2.78 1.39-.06 1.91-.9 3.59-.9 1.68 0 2.15.9 3.62.87 1.49-.03 2.44-1.36 3.36-2.7 1.06-1.55 1.5-3.05 1.52-3.13-.03-.01-2.92-1.12-2.95-4.44zM14.28 4.03c.76-.93 1.27-2.21 1.13-3.49-1.1.05-2.42.73-3.21 1.65-.71.81-1.32 2.12-1.16 3.37 1.22.1 2.48-.62 3.24-1.53z" />
+    </svg>
+  );
+}
+
 function PlayIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
@@ -174,7 +183,8 @@ const colorMap: Record<string, { bg: string; text: string }> = {
 const techItems = [
   "Next.js 16", "TypeScript Strict", "PostgreSQL 16", "Prisma 7",
   "Progressive Web App", "AES-256-GCM", "WebAuthn / Passkeys",
-  "Telegram Bot API", "OpenAI API", "Withings OAuth2",
+  "Telegram Bot API", "OpenAI / Anthropic / local", "Withings OAuth2",
+  "Apple HealthKit", "SwiftUI iOS",
   "pg-boss Queue", "Docker", "Recharts", "Zod v4",
 ];
 
@@ -263,8 +273,9 @@ export default function Home() {
 
           <p className="text-text-secondary text-lg sm:text-xl md:text-[1.35rem] max-w-2xl mx-auto mb-14 leading-[1.7] font-light tracking-[-0.01em]">
             The self-hosted health tracking app that gives you full control.
-            Weight, blood pressure, medications, mood — encrypted on your
-            own server. Offline-capable. Open source.
+            Weight, blood pressure, glucose, medications, mood — encrypted on
+            your own server. Syncs live with Apple Health on iOS, or with
+            Withings on any device. Open source.
           </p>
 
           <nav className="flex flex-col sm:flex-row items-center justify-center gap-4" aria-label="Primary actions">
@@ -404,6 +415,84 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── iOS / APPLE HEALTH ───────────────────── */}
+      <section id="ios" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="ios-heading">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-14">
+            <div className="reveal flex justify-center mb-6">
+              <span className="section-label text-cyan border-cyan/15 bg-cyan/[0.03]">iOS &amp; Apple Health</span>
+            </div>
+            <h2 id="ios-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+              Your iPhone writes<br />straight to your server.
+            </h2>
+            <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              A native SwiftUI client, in public beta on TestFlight, keeps Apple
+              Health in two-way sync with your own instance — no cloud middleman.
+              Steps, weight, blood pressure, glucose, sleep and body composition
+              flow both ways and land on the same timeline as every other reading.
+            </p>
+          </div>
+
+          <div className="reveal grid grid-cols-3 gap-3 sm:gap-6 max-w-3xl mx-auto mb-12">
+            {[
+              { src: "/screenshots/ios/ios-dashboard.webp", alt: "HealthLog iOS app home screen with the Apple Health connection card, Health Score ring, today's medication compliance, and weight and blood-pressure tiles" },
+              { src: "/screenshots/ios/ios-insights.webp", alt: "HealthLog iOS Insights screen with the Coach prompt, Health Score, BMI, and a blood-pressure target band" },
+              { src: "/screenshots/ios/ios-medication-detail.webp", alt: "HealthLog iOS medication detail screen showing 30-day compliance, a 14-day adherence strip, last dose, and intake history" },
+            ].map((shot, i) => (
+              <div
+                key={shot.src}
+                className={`reveal reveal-delay-${i + 1} phone-frame relative aspect-[620/1348] overflow-hidden`}
+              >
+                <Image
+                  src={shot.src}
+                  alt={shot.alt}
+                  fill
+                  sizes="(max-width: 768px) 33vw, 240px"
+                  className="object-cover object-top"
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="reveal grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+            <div className="glass-card p-5">
+              <div className="text-xs font-mono text-cyan mb-1.5 uppercase tracking-wider">Live HealthKit sync</div>
+              <div className="text-sm text-text-secondary leading-relaxed">Two-way Apple Health sync — steps, weight, blood pressure, glucose, sleep and body composition, written directly to your instance.</div>
+            </div>
+            <div className="glass-card p-5">
+              <div className="text-xs font-mono text-purple mb-1.5 uppercase tracking-wider">Sign in with a passkey</div>
+              <div className="text-sm text-text-secondary leading-relaxed">Face ID / Touch ID passkey sign-in, with per-device refresh-token rotation against your own server.</div>
+            </div>
+            <div className="glass-card p-5">
+              <div className="text-xs font-mono text-orange mb-1.5 uppercase tracking-wider">Reminders &amp; reports</div>
+              <div className="text-sm text-text-secondary leading-relaxed">Local medication reminders with take / skip actions, the AI Coach, and the doctor-report export — all on the phone.</div>
+            </div>
+          </div>
+
+          <div className="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://testflight.apple.com/join/bucuTBpa"
+              className="cta-button group"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AppleIcon className="w-5 h-5 relative z-10" />
+              <span>Join the TestFlight beta</span>
+              <ArrowIcon />
+            </a>
+            <a
+              href="https://docs.healthlog.dev/integrations/apple-health/"
+              className="cta-secondary group"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BookIcon className="w-5 h-5" />
+              <span>Apple Health docs</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ─── FEATURES ─────────────────────────────── */}
       <section id="features" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="features-heading">
         <div className="max-w-5xl mx-auto">
@@ -480,7 +569,7 @@ export default function Home() {
               "59 Achievements (plus a few hidden ones)",
               "CSV/JSON Export",
               "German & English",
-              "Native iOS API ready",
+              "Native iOS app (TestFlight beta)",
               "S3 off-host backups",
               "Docker-ready",
             ].map((item) => (
@@ -600,9 +689,13 @@ export default function Home() {
                     <ComparisonRow feature="Self-hosted" values={["Yes", "No", "No", "No"]} highlights={[true, false, false, false]} />
                     <ComparisonRow feature="Data encryption" values={["AES-256-GCM", "At rest", "At rest", "At rest"]} highlights={[true, false, false, false]} />
                     <ComparisonRow feature="Open source" values={["AGPL-3.0", "No", "No", "No"]} highlights={[true, false, false, false]} />
+                    <ComparisonRow feature="Native iOS app" values={["Public beta", "Native", "Native", "Native"]} highlights={[true, null, null, null]} />
+                    <ComparisonRow feature="Apple Health sync" values={["Two-way, your server", "Own silo", "Import only", "Two-way"]} highlights={[true, false, false, null]} />
+                    <ComparisonRow feature="Withings device sync" values={["OAuth2 + webhook", "Via Health", "Via Fit", "Limited"]} highlights={[true, null, null, false]} />
+                    <ComparisonRow feature="Doctor-report PDF" values={["Built in", "No", "No", "No"]} highlights={[true, false, false, false]} />
                     <ComparisonRow feature="Offline capable" values={["Full PWA", "Native", "Native", "Limited"]} highlights={[true, null, null, false]} />
                     <ComparisonRow feature="Medication tracking" values={["Full compliance", "Basic", "No", "No"]} highlights={[true, null, false, false]} />
-                    <ComparisonRow feature="AI insights" values={["BYOK (your key)", "Limited", "No", "Premium only"]} highlights={[true, null, false, false]} />
+                    <ComparisonRow feature="AI insights" values={["BYOK or local", "Limited", "No", "Premium only"]} highlights={[true, null, false, false]} />
                     <ComparisonRow feature="Data export" values={["CSV + JSON", "XML (HealthKit)", "Google Takeout", "Premium only"]} highlights={[true, null, null, false]} />
                     <ComparisonRow feature="Cost" values={["Free forever", "Free (Apple only)", "Free", "Freemium"]} highlights={[true, null, null, false]} />
                     <ComparisonRow feature="Ad-free" values={["Always", "Yes", "Yes", "Premium only"]} highlights={[true, null, null, false]} />
@@ -621,7 +714,7 @@ export default function Home() {
                 { feature: "Data encryption", hl: "AES-256-GCM", other: "At rest" },
                 { feature: "Open source", hl: "AGPL-3.0", other: "No" },
                 { feature: "Medication tracking", hl: "Full compliance", other: "Basic" },
-                { feature: "AI insights", hl: "BYOK (your key)", other: "Limited" },
+                { feature: "AI insights", hl: "BYOK or local", other: "Limited" },
                 { feature: "Cost", hl: "Free forever", other: "Free (Apple only)" },
               ]},
               { name: "Google Fit", items: [
@@ -629,7 +722,7 @@ export default function Home() {
                 { feature: "Data encryption", hl: "AES-256-GCM", other: "At rest" },
                 { feature: "Open source", hl: "AGPL-3.0", other: "No" },
                 { feature: "Medication tracking", hl: "Full compliance", other: "No" },
-                { feature: "AI insights", hl: "BYOK (your key)", other: "No" },
+                { feature: "AI insights", hl: "BYOK or local", other: "No" },
                 { feature: "Data export", hl: "CSV + JSON", other: "Google Takeout" },
               ]},
               { name: "MyFitnessPal", items: [

@@ -644,6 +644,26 @@ body {
   overflow: hidden;
 }
 
+/* ── Phone frame (iOS showcase) ─────────────────── */
+.phone-frame {
+  border-radius: 1.75rem;
+  padding: 4px;
+  background: linear-gradient(
+    160deg,
+    rgba(189, 147, 249, 0.35),
+    rgba(139, 233, 253, 0.2),
+    rgba(98, 114, 164, 0.18)
+  );
+  border: 1px solid rgba(98, 114, 164, 0.18);
+  box-shadow:
+    0 0 50px rgba(139, 233, 253, 0.08),
+    0 24px 50px rgba(0, 0, 0, 0.4);
+}
+
+.phone-frame > * {
+  border-radius: 1.5rem;
+}
+
 
 /* ── Reduced Motion ─────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
