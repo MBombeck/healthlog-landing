@@ -26,15 +26,15 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://healthlog.dev"),
   title: {
-    default: "HealthLog — Self-Hosted Health Tracking App | Open Source PWA",
+    default: "HealthLog — Self-Hosted Health Tracking App | Source-Available PWA",
     template: "%s | HealthLog",
   },
   description:
-    "Self-hosted health tracking PWA with medication management, mood tracking, AI-powered insights, and Withings integration. AES-256-GCM encrypted. Docker deploy in minutes. Free and open source.",
+    "Self-hosted health tracking PWA with medication management, mood tracking, AI-powered insights, and Withings integration. AES-256-GCM encrypted. Docker deploy in minutes. Free for noncommercial use, source available.",
   keywords: [
     "self-hosted health tracker",
     "health tracking app",
-    "open source health app",
+    "source available health app",
     "medication management",
     "blood pressure tracker",
     "weight tracker",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "HealthLog — Self-Hosted Health Tracking with Full Data Ownership",
     description:
-      "Track weight, blood pressure, medications, and mood on your own server. AES-256-GCM encrypted, offline-capable PWA. Free and open source.",
+      "Track weight, blood pressure, medications, and mood on your own server. AES-256-GCM encrypted, offline-capable PWA. Free for noncommercial use, source available.",
     type: "website",
     url: "https://healthlog.dev",
     siteName: "HealthLog",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "HealthLog — Self-Hosted Health Tracking App",
     description:
-      "Track weight, blood pressure, medications, and mood on your own server. AES-256-GCM encrypted, open source, Docker-ready.",
+      "Track weight, blood pressure, medications, and mood on your own server. AES-256-GCM encrypted, source available, Docker-ready.",
     images: ["https://healthlog.dev/og-image.png"],
   },
   robots: {
@@ -111,7 +111,7 @@ export default function RootLayout({
     applicationCategory: "HealthApplication",
     operatingSystem: "Web, Docker",
     description:
-      "Self-hosted health tracking PWA with medication management, mood tracking, AI-powered insights, and Withings integration. AES-256-GCM encrypted. Free and open source.",
+      "Self-hosted health tracking PWA with medication management, mood tracking, AI-powered insights, and Withings integration. AES-256-GCM encrypted. Free for noncommercial use, source available.",
     offers: {
       "@type": "Offer",
       price: "0",
@@ -138,7 +138,7 @@ export default function RootLayout({
     ],
     screenshot: "https://healthlog.dev/og-image.png",
     softwareVersion: "1.0",
-    license: "https://www.gnu.org/licenses/agpl-3.0.html",
+    license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
     inLanguage: ["en", "de"],
     downloadUrl: "https://github.com/MBombeck/HealthLog",
     installUrl: "https://docs.healthlog.dev",
