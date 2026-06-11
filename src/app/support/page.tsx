@@ -120,7 +120,7 @@ export default function SupportPage() {
             Get help with HealthLog
           </h1>
           <p className="text-text-secondary max-w-xl text-base leading-relaxed">
-            HealthLog is an open-source, self-hosted application maintained
+            HealthLog is a source-available, self-hosted application maintained
             on a best-effort schedule. The channels below are the supported
             paths for installation help, bug reports, and feature
             discussions.
@@ -218,7 +218,7 @@ export default function SupportPage() {
           </h2>
           <div className="glass-card space-y-3 p-6 text-sm leading-relaxed">
             <p className="text-text-secondary">
-              HealthLog is an open-source side project, not a commercial
+              HealthLog is a source-available side project, not a commercial
               product with a paid support plan. Responses are best-effort and
               typically arrive within a few days. Security-related reports
               are prioritised.
@@ -260,14 +260,14 @@ export default function SupportPage() {
 
         <footer className="text-text-tertiary mt-12 border-t border-[rgba(98,114,164,0.08)] pt-6 text-xs">
           <p>
-            HealthLog — open source under{" "}
+            HealthLog — source available under{" "}
             <a
               href="https://github.com/MBombeck/HealthLog/blob/main/LICENSE"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-text-primary underline-offset-2 hover:underline"
             >
-              AGPL-3.0
+              PolyForm Noncommercial 1.0.0
             </a>
             . Last updated {LAST_UPDATED}.
           </p>

@@ -249,15 +249,15 @@ export default function PrivacyPage() {
 
         <Section id="intro" title="1. Overview">
           <p>
-            HealthLog is an open-source, self-hostable personal-health-tracking
+            HealthLog is a source-available, self-hostable personal-health-tracking
             application released under the{" "}
             <a
-              href="https://www.gnu.org/licenses/agpl-3.0.html"
+              href="https://polyformproject.org/licenses/noncommercial/1.0.0/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-purple hover:text-cyan underline-offset-2 hover:underline"
             >
-              GNU Affero General Public License v3.0
+              PolyForm Noncommercial License 1.0.0
             </a>
             . Source code is published at{" "}
             <a
@@ -584,7 +584,7 @@ export default function PrivacyPage() {
             />
             <SubProcessor
               name="GitHub, Inc."
-              role="Hosting of the open-source repository and the issue tracker used as the support channel."
+              role="Hosting of the public source repository and the issue tracker used as the support channel."
               data="Issue contents and any voluntary attachments. Avoid posting personal data in public issues; a private channel is offered after the first response."
               location="United States."
               policyUrl="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
@@ -823,7 +823,7 @@ export default function PrivacyPage() {
         <Section id="changes" title="11. Changes to this policy">
           <p>
             This document is version-stamped at the top. Material changes are
-            summarised in the in-app release notes and on the open-source
+            summarised in the in-app release notes and on the public
             changelog. The published policy version is bound to the
             application release version that introduced it.
           </p>
@@ -862,14 +862,14 @@ export default function PrivacyPage() {
 
         <footer className="text-text-tertiary mt-12 border-t border-[rgba(98,114,164,0.08)] pt-6 text-xs">
           <p>
-            HealthLog — open source under{" "}
+            HealthLog — source available under{" "}
             <a
               href="https://github.com/MBombeck/HealthLog/blob/main/LICENSE"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-text-primary underline-offset-2 hover:underline"
             >
-              AGPL-3.0
+              PolyForm Noncommercial 1.0.0
             </a>
             . Policy version {POLICY_VERSION}. Last updated {LAST_UPDATED}.
           </p>

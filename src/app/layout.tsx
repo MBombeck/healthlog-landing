@@ -26,18 +26,18 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://healthlog.dev"),
   title: {
-    default: "HealthLog — Self-Hosted Health Tracking App | Open Source PWA",
+    default: "HealthLog — Self-Hosted Health Tracking App | Source-Available PWA",
     template: "%s | HealthLog",
   },
   description:
-    "Self-hosted, open-source health tracker. Native iOS app with live Apple Health (HealthKit) two-way sync, Withings device sync, multi-provider AI insights, and a client-side doctor-report PDF. AES-256-GCM encrypted. Docker deploy in minutes.",
+    "Self-hosted health tracker. Native iOS app with live Apple Health (HealthKit) two-way sync, Withings device sync, multi-provider AI insights, and a client-side doctor-report PDF. AES-256-GCM encrypted. Docker deploy in minutes. Free for noncommercial use, source available.",
   keywords: [
     "self-hosted health tracker",
     "health tracking app",
-    "open source health app",
+    "source available health app",
     "Apple Health sync",
     "HealthKit self-hosted",
-    "iOS health app open source",
+    "iOS health app self-hosted",
     "medication management",
     "medication compliance tracker",
     "blood pressure tracker",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "HealthLog — Self-Hosted Health Tracking with Full Data Ownership",
     description:
-      "Track weight, blood pressure, glucose, medications, and mood on your own server. Native iOS app with live Apple Health sync, Withings devices, AI insights. AES-256-GCM encrypted, open source.",
+      "Track weight, blood pressure, glucose, medications, and mood on your own server. Native iOS app with live Apple Health sync, Withings devices, AI insights. AES-256-GCM encrypted, source available.",
     type: "website",
     url: "https://healthlog.dev",
     siteName: "HealthLog",
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "HealthLog — Self-Hosted Health Tracking App",
     description:
-      "Track weight, blood pressure, glucose, medications, and mood on your own server. Native iOS app with live Apple Health sync. AES-256-GCM encrypted, open source, Docker-ready.",
+      "Track weight, blood pressure, glucose, medications, and mood on your own server. Native iOS app with live Apple Health sync. AES-256-GCM encrypted, source available, Docker-ready.",
     images: ["https://healthlog.dev/og-image.png"],
   },
   robots: {
@@ -119,7 +119,7 @@ export default function RootLayout({
     applicationCategory: "HealthApplication",
     operatingSystem: "iOS, Web, Docker",
     description:
-      "Self-hosted, open-source health tracker. Native iOS app with live Apple Health (HealthKit) two-way sync, Withings device sync, multi-provider AI insights, medication compliance, and a client-side doctor-report PDF. AES-256-GCM encrypted.",
+      "Self-hosted health tracker. Native iOS app with live Apple Health (HealthKit) two-way sync, Withings device sync, multi-provider AI insights, medication compliance, and a client-side doctor-report PDF. AES-256-GCM encrypted. Free for noncommercial use, source available.",
     offers: {
       "@type": "Offer",
       price: "0",
@@ -169,7 +169,7 @@ export default function RootLayout({
     // Tracks the latest stable HealthLog server release. Bumped manually
     // until the cross-repo release sync tool lands.
     softwareVersion: "1.6.0",
-    license: "https://www.gnu.org/licenses/agpl-3.0.html",
+    license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
     // Landing page is English-only today. The HealthLog app itself is
     // bilingual (EN/DE) — that fact belongs on the app, not the marketing
     // page. Re-add "de" here once a German landing variant ships.
@@ -202,7 +202,7 @@ export default function RootLayout({
         name: "Is HealthLog free?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. HealthLog is free and open source under the AGPL-3.0 licence. You run it on your own server with a single docker compose up — there is no subscription and no paid tier.",
+          text: "Yes, for noncommercial use. HealthLog is source available under the PolyForm Noncommercial 1.0.0 licence. You run it on your own server with a single docker compose up — there is no subscription and no paid tier.",
         },
       },
       {

@@ -168,8 +168,12 @@ const primaryFeatures = [
 
 const secondaryFeatures = [
   { icon: <SyncIcon />, title: "Apple Health import", description: "Drop your iOS export.zip on the upload page — a streaming parser folds multi-GB archives into the same timeline as everything else.", color: "purple" },
+  { icon: <HeartMetricIcon />, title: "Custom thresholds", description: "Override the guideline defaults with the targets your clinician set. Audit-logged, marked clearly on the Doctor Report PDF.", color: "purple" },
+  { icon: <FileIcon />, title: "Customizable dashboard", description: "Show, hide, and reorder every widget. Reset to defaults anytime — your data is never touched.", color: "green" },
+  { icon: <MoodIcon />, title: "Built-in feedback", description: "Send bug reports and feature requests from inside the app. Works out of the box; GitHub escalation is opt-in for admins.", color: "pink" },
+  { icon: <FileIcon />, title: "Doctor report PDF", description: "Professional medical reports in your locale — numbers, dates, and units formatted right. Includes glucose trends.", color: "green" },
+  { icon: <SyncIcon />, title: "Withings sync", description: "Automatic sync with Withings scales, BP monitors, and activity trackers.", color: "cyan" },
   { icon: <MoodIcon />, title: "Mood tracking", description: "5-point scale with tags, correlation analysis, and journal integration.", color: "pink" },
-  { icon: <FileIcon />, title: "Doctor report PDF", description: "Professional medical reports in European format, generated in your browser.", color: "green" },
 ];
 
 const colorMap: Record<string, { bg: string; text: string }> = {
@@ -196,7 +200,7 @@ const privacyChecks = [
   "Passkey authentication — phishing-resistant, no password leaks",
   "Password fallback with Argon2id hashing and strength validation",
   "Withings OAuth tokens encrypted in the database",
-  "Open Source — every single line of code is auditable",
+  "Source available — every single line of code is auditable",
 ];
 
 const terminalCommands = `git clone https://github.com/MBombeck/HealthLog.git
@@ -275,7 +279,7 @@ export default function Home() {
             The self-hosted health tracking app that gives you full control.
             Weight, blood pressure, glucose, medications, mood — encrypted on
             your own server. Syncs live with Apple Health on iOS, or with
-            Withings on any device. Open source.
+            Withings on any device. Source available.
           </p>
 
           <nav className="flex flex-col sm:flex-row items-center justify-center gap-4" aria-label="Primary actions">
@@ -535,7 +539,7 @@ export default function Home() {
           </div>
 
           {/* Secondary features -- compact cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5">
             {secondaryFeatures.map((feature, i) => {
               const colors = colorMap[feature.color];
               return (
@@ -568,7 +572,8 @@ export default function Home() {
               "Telegram / ntfy / Web Push",
               "59 Achievements (plus a few hidden ones)",
               "CSV/JSON Export",
-              "German & English",
+              "Locale-aware (EN / DE)",
+              "Glucose mg/dL ↔ mmol/L",
               "Native iOS app (TestFlight beta)",
               "S3 off-host backups",
               "Docker-ready",
@@ -667,7 +672,7 @@ export default function Home() {
               HealthLog vs. The Rest
             </h2>
             <p className="reveal text-text-secondary text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-              See how a self-hosted, open-source approach compares to the big players.
+              See how a self-hosted, source-available approach compares to the big players.
             </p>
           </div>
 
@@ -688,7 +693,7 @@ export default function Home() {
                   <tbody>
                     <ComparisonRow feature="Self-hosted" values={["Yes", "No", "No", "No"]} highlights={[true, false, false, false]} />
                     <ComparisonRow feature="Data encryption" values={["AES-256-GCM", "At rest", "At rest", "At rest"]} highlights={[true, false, false, false]} />
-                    <ComparisonRow feature="Open source" values={["AGPL-3.0", "No", "No", "No"]} highlights={[true, false, false, false]} />
+                    <ComparisonRow feature="Source available" values={["PolyForm NC 1.0.0", "No", "No", "No"]} highlights={[true, false, false, false]} />
                     <ComparisonRow feature="Native iOS app" values={["Public beta", "Native", "Native", "Native"]} highlights={[true, null, null, null]} />
                     <ComparisonRow feature="Apple Health sync" values={["Two-way, your server", "Own silo", "Import only", "Two-way"]} highlights={[true, false, false, null]} />
                     <ComparisonRow feature="Withings device sync" values={["OAuth2 + webhook", "Via Health", "Via Fit", "Limited"]} highlights={[true, null, null, false]} />
@@ -712,7 +717,7 @@ export default function Home() {
               { name: "Apple Health", items: [
                 { feature: "Self-hosted", hl: "Yes", other: "No" },
                 { feature: "Data encryption", hl: "AES-256-GCM", other: "At rest" },
-                { feature: "Open source", hl: "AGPL-3.0", other: "No" },
+                { feature: "Source available", hl: "PolyForm NC 1.0.0", other: "No" },
                 { feature: "Medication tracking", hl: "Full compliance", other: "Basic" },
                 { feature: "AI insights", hl: "BYOK or local", other: "Limited" },
                 { feature: "Cost", hl: "Free forever", other: "Free (Apple only)" },
@@ -720,14 +725,14 @@ export default function Home() {
               { name: "Google Fit", items: [
                 { feature: "Self-hosted", hl: "Yes", other: "No" },
                 { feature: "Data encryption", hl: "AES-256-GCM", other: "At rest" },
-                { feature: "Open source", hl: "AGPL-3.0", other: "No" },
+                { feature: "Source available", hl: "PolyForm NC 1.0.0", other: "No" },
                 { feature: "Medication tracking", hl: "Full compliance", other: "No" },
                 { feature: "AI insights", hl: "BYOK or local", other: "No" },
                 { feature: "Data export", hl: "CSV + JSON", other: "Google Takeout" },
               ]},
               { name: "MyFitnessPal", items: [
                 { feature: "Self-hosted", hl: "Yes", other: "No" },
-                { feature: "Open source", hl: "AGPL-3.0", other: "No" },
+                { feature: "Source available", hl: "PolyForm NC 1.0.0", other: "No" },
                 { feature: "Offline capable", hl: "Full PWA", other: "Limited" },
                 { feature: "Ad-free", hl: "Always", other: "Premium only" },
                 { feature: "Data export", hl: "CSV + JSON", other: "Premium only" },
@@ -787,8 +792,8 @@ export default function Home() {
             Up and running<br />in minutes
           </h2>
           <p className="text-text-secondary text-base sm:text-lg max-w-lg mx-auto leading-relaxed mb-12">
-            HealthLog is open source and free. Clone the repo,
-            set your config, start with Docker.
+            HealthLog is source available and free for noncommercial use.
+            Clone the repo, set your config, start with Docker.
           </p>
 
           <TerminalBlock commands={terminalCommands} />
@@ -861,9 +866,14 @@ export default function Home() {
             <Link href="/support" className="text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
               Support
             </Link>
-            <span className="text-text-tertiary/60 text-xs font-mono">Open Source</span>
+            <span className="text-text-tertiary/60 text-xs font-mono">PolyForm Noncommercial 1.0.0</span>
           </div>
         </div>
+        <p className="max-w-5xl mx-auto mt-6 text-center sm:text-left text-text-tertiary/60 text-xs leading-relaxed">
+          Licensed under the PolyForm Noncommercial License 1.0.0 — free to use, self-host, and
+          modify for noncommercial purposes. Releases up to and including v1.15.18 were published
+          under AGPL-3.0 and remain available under that license.
+        </p>
       </footer>
     </div>
   );
