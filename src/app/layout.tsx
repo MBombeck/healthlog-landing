@@ -30,18 +30,26 @@ export const metadata: Metadata = {
     template: "%s | HealthLog",
   },
   description:
-    "Self-hosted health tracking PWA with medication management, mood tracking, AI-powered insights, and Withings integration. AES-256-GCM encrypted. Docker deploy in minutes. Free for noncommercial use, source available.",
+    "Self-hosted health tracker. Native iOS app with live Apple Health (HealthKit) two-way sync, Withings device sync, multi-provider AI insights, and a client-side doctor-report PDF. AES-256-GCM encrypted. Docker deploy in minutes. Free for noncommercial use, source available.",
   keywords: [
     "self-hosted health tracker",
     "health tracking app",
     "source available health app",
+    "Apple Health sync",
+    "HealthKit self-hosted",
+    "iOS health app self-hosted",
     "medication management",
+    "medication compliance tracker",
     "blood pressure tracker",
+    "blood glucose tracker",
     "weight tracker",
     "mood tracker",
     "self-hosted PWA",
     "health dashboard",
     "Withings integration",
+    "Withings self-hosted",
+    "AI health insights",
+    "doctor report PDF",
     "privacy-first health app",
     "Docker health app",
   ],
@@ -54,7 +62,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "HealthLog — Self-Hosted Health Tracking with Full Data Ownership",
     description:
-      "Track weight, blood pressure, medications, and mood on your own server. AES-256-GCM encrypted, offline-capable PWA. Free for noncommercial use, source available.",
+      "Track weight, blood pressure, glucose, medications, and mood on your own server. Native iOS app with live Apple Health sync, Withings devices, AI insights. AES-256-GCM encrypted, source available.",
     type: "website",
     url: "https://healthlog.dev",
     siteName: "HealthLog",
@@ -72,7 +80,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "HealthLog — Self-Hosted Health Tracking App",
     description:
-      "Track weight, blood pressure, medications, and mood on your own server. AES-256-GCM encrypted, source available, Docker-ready.",
+      "Track weight, blood pressure, glucose, medications, and mood on your own server. Native iOS app with live Apple Health sync. AES-256-GCM encrypted, source available, Docker-ready.",
     images: ["https://healthlog.dev/og-image.png"],
   },
   robots: {
@@ -109,9 +117,9 @@ export default function RootLayout({
     name: "HealthLog",
     url: "https://healthlog.dev",
     applicationCategory: "HealthApplication",
-    operatingSystem: "Web, Docker",
+    operatingSystem: "iOS, Web, Docker",
     description:
-      "Self-hosted health tracking PWA with medication management, mood tracking, AI-powered insights, and Withings integration. AES-256-GCM encrypted. Free for noncommercial use, source available.",
+      "Self-hosted health tracker. Native iOS app with live Apple Health (HealthKit) two-way sync, Withings device sync, multi-provider AI insights, medication compliance, and a client-side doctor-report PDF. AES-256-GCM encrypted. Free for noncommercial use, source available.",
     offers: {
       "@type": "Offer",
       price: "0",
@@ -119,17 +127,38 @@ export default function RootLayout({
       availability: "https://schema.org/InStock",
     },
     author: {
-      "@type": "Person",
-      name: "Marc Bombeck",
-      url: "https://github.com/MBombeck",
+      "@type": "Organization",
+      name: "HealthLog",
+      url: "https://github.com/MBombeck/HealthLog",
     },
     featureList: [
+      "Native SwiftUI iOS app (public TestFlight beta) with live two-way Apple Health (HealthKit) sync — steps, weight, blood pressure, glucose, sleep, body composition",
       "Weight, blood pressure, heart rate, body fat, sleep, steps tracking",
+      "Body composition: total body water + bone mass via Withings auto-sync",
+      "Pulse oximetry (SpO₂) tracking with personalisable target bands for COPD / chronic respiratory users",
+      "Blood glucose tracking with fasting/postprandial/random/bedtime contexts",
       "Medication management with compliance analytics and reminders",
       "Mood tracking with 5-point scale and tags",
-      "AI-powered health insights via OpenAI (BYOK)",
-      "Doctor report PDF generation",
-      "Withings device synchronization",
+      "AI-powered health insights via OpenAI (BYOK or admin-shared key), Anthropic Claude, your ChatGPT subscription (one-click device-code Codex flow, no API plan needed), or local OpenAI-compatible providers (Ollama, LM Studio, vLLM)",
+      "Multi-provider fallback chain — providers retry in user-defined order on hard failure, with last-working provider cached per user",
+      "AI Coach drawer with streaming chat and encrypted conversation history — same provider chain as AI Insights, source-chip provenance per turn, per-user daily token budget",
+      "Personal Health Score (composite 0–100 with three bands) drawn from blood-pressure target rate, weight-trend alignment, mood stability, and medication compliance",
+      "Daily Briefing card and printable weekly report at /insights/report/[week]",
+      "Per-recommendation explainability with rationale (window + comparison + deviation), pinned mini-chart of the data window, and was-this-helpful feedback",
+      "Server-computed 0–100 confidence score per recommendation (sample size + recency + signal strength) — no model-claimed values",
+      "Medical-reference grounding — every normative recommendation cites a curated guideline (ESH, ESC, ACC/AHA, WHO, DGE) with source links",
+      "Hardened AI insights with strict citation requirement — every recommendation must point at a real datapoint, no hallucinated numbers",
+      "Inline charts inside AI findings and three years of context per metric (360 daily + 24 monthly means)",
+      "Clean-line health charts with smooth animation, rich tooltips, and explicit empty states — plus per-chart toggles for trend indicator, trend arrow, and target-range overlay",
+      "Comparison overlays — toggle vs. last month / vs. last year on every chart, tile, and the AI insights surface",
+      "Personal health targets that override guideline defaults, audit-logged per change",
+      "Customizable dashboard — show, hide, and reorder every widget",
+      "Doctor report PDF generation, locale-aware (EN/DE), with optional AI summary",
+      "Withings device synchronization (Body+, BPM Connect, ScanWatch)",
+      "Native API clients with Bearer + refresh-token rotation and Idempotency-Key support",
+      "Off-host weekly encrypted backups to any S3-compatible bucket, with download / upload / restore from the admin panel and full audit-log trail",
+      "Worker / web split for scaling beyond a single container",
+      "Versioned encryption keys with online rotation",
       "AES-256-GCM encryption for all sensitive data",
       "Passkey (WebAuthn) authentication",
       "Offline-capable Progressive Web App",
@@ -137,9 +166,14 @@ export default function RootLayout({
       "Telegram, ntfy, and Web Push notifications",
     ],
     screenshot: "https://healthlog.dev/og-image.png",
-    softwareVersion: "1.0",
+    // Tracks the latest stable HealthLog server release. Bumped manually
+    // until the cross-repo release sync tool lands.
+    softwareVersion: "1.6.0",
     license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
-    inLanguage: ["en", "de"],
+    // Landing page is English-only today. The HealthLog app itself is
+    // bilingual (EN/DE) — that fact belongs on the app, not the marketing
+    // page. Re-add "de" here once a German landing variant ships.
+    inLanguage: "en",
     downloadUrl: "https://github.com/MBombeck/HealthLog",
     installUrl: "https://docs.healthlog.dev",
   };
@@ -159,6 +193,45 @@ export default function RootLayout({
     },
   };
 
+  const jsonLdFaq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Is HealthLog free?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, for noncommercial use. HealthLog is source available under the PolyForm Noncommercial 1.0.0 licence. You run it on your own server with a single docker compose up — there is no subscription and no paid tier.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does HealthLog sync with Apple Health?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. The native SwiftUI iOS app (public TestFlight beta) keeps Apple Health (HealthKit) in two-way sync — steps, weight, blood pressure, blood glucose, sleep, and body composition flow straight to your own server. On any platform you can also drop an Apple Health export.zip on the upload page.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where is my health data stored?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Entirely on your own infrastructure. HealthLog is self-hosted on PostgreSQL, with all sensitive fields encrypted at rest using AES-256-GCM. There is no cloud dependency, no telemetry, and no third-party analytics.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Which devices and services does HealthLog integrate with?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Withings devices (Body+, BPM Connect, ScanWatch) sync over OAuth2 with near-real-time webhooks, and Apple Health syncs live through the iOS app or via export import. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
+        },
+      },
+    ],
+  };
+
   return (
     <html lang="en">
       <head>
@@ -169,6 +242,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebPage) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
         />
       </head>
       <body

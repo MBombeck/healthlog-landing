@@ -6,17 +6,22 @@ import Image from "next/image";
 const screenshots = [
   {
     src: "/screenshots/desktop-dashboard-opt.webp",
-    alt: "HealthLog dashboard showing weight trends, blood pressure, medication compliance, and mood tracking",
+    alt: "HealthLog dashboard showing weight, blood pressure, pulse, and mood metric tiles with weight and BMI trend charts",
     label: "Dashboard",
   },
   {
     src: "/screenshots/desktop-medications-opt.webp",
-    alt: "Medication management with compliance rates and intake schedules",
+    alt: "HealthLog medication management with 7-day and 30-day compliance rings, next-intake times, and per-medication take or skip actions",
     label: "Medications",
   },
   {
+    src: "/screenshots/desktop-trends-opt.webp",
+    alt: "HealthLog trend charts for medication adherence, sleep duration, and daily step count",
+    label: "Trends",
+  },
+  {
     src: "/screenshots/desktop-measurements-opt.webp",
-    alt: "Health measurements list with type badges, values, and dates",
+    alt: "HealthLog measurements list showing weight, glucose, oxygen saturation, blood pressure, and steps with Withings and Apple Health source badges",
     label: "Measurements",
   },
 ];
