@@ -665,6 +665,50 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── ONE TIMELINE / CORRELATION ───────────── */}
+      <section id="unified" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow scroll-mt-20" aria-labelledby="unified-heading">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-14">
+            <div className="reveal flex justify-center mb-6">
+              <span className="section-label text-purple border-purple/15 bg-purple/[0.03]">Why HealthLog</span>
+            </div>
+            <h2 id="unified-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+              Your data, finally in one place
+            </h2>
+            <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              Half your numbers live in one app, the rest are scattered across your watch,
+              your ring, your scale and a handful of services — each a closed silo behind its
+              own subscription. HealthLog pulls them onto a single timeline you own, and keeps
+              them there for good.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="glass-card feature-card-accent p-6" style={{ "--accent-color": "#8be9fd" } as React.CSSProperties}>
+              <h3 className="font-display font-bold text-sm text-text-primary mb-1.5 tracking-[-0.01em]">One timeline, every vendor</h3>
+              <p className="text-text-secondary text-xs leading-[1.7]">
+                Steps, blood pressure, sleep, glucose and mood from any connected device land
+                together — deduplicated to a single canonical reading per day, whatever the source.
+              </p>
+            </div>
+            <div className="glass-card feature-card-accent p-6" style={{ "--accent-color": "#50fa7b" } as React.CSSProperties}>
+              <h3 className="font-display font-bold text-sm text-text-primary mb-1.5 tracking-[-0.01em]">Yours for good</h3>
+              <p className="text-text-secondary text-xs leading-[1.7]">
+                When a subscription lapses or a service shuts down, your history stays. Everything
+                lives on your own server and exports in full — no lock-in, no expiry.
+              </p>
+            </div>
+            <div className="glass-card feature-card-accent p-6" style={{ "--accent-color": "#bd93f9" } as React.CSSProperties}>
+              <h3 className="font-display font-bold text-sm text-text-primary mb-1.5 tracking-[-0.01em]">Correlations the silos can&apos;t see</h3>
+              <p className="text-text-secondary text-xs leading-[1.7]">
+                With the data finally side by side, the AI Coach connects what separate apps never
+                could — how your sleep moves your resting heart rate, how a medication change tracks
+                with your blood pressure.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── PRIVACY ──────────────────────────────── */}
       <section id="privacy" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow privacy-section scroll-mt-20" aria-labelledby="privacy-heading">
         <div className="max-w-3xl mx-auto relative z-10">
