@@ -20,6 +20,7 @@ import {
 import { DemoLink } from "./demo-link";
 import { FootnotesEnhancer } from "./footnotes-enhancer";
 import { LearnImage } from "./learn-image";
+import { LearnRelatedCarousel } from "./learn-related-carousel";
 import { LearnShare } from "./learn-share";
 import { LearnToc } from "./learn-toc";
 
@@ -38,10 +39,20 @@ export async function LearnArticle({
   const am = meta.articles[slug];
   const { default: Content } = await loader();
   const accent = CATEGORY_COLOR[article.category];
-  const related = relatedArticles(slug, 2);
+  const related = relatedArticles(slug, 6);
   const extra = UI_EXTRA[locale];
   const dates = articleDates(article);
   const faq = getFaq(locale, slug);
+
+  // Serializable data only — the carousel is a client component, so no functions
+  // cross the boundary.
+  const relatedCards = related.map((r) => ({
+    slug: r.slug,
+    href: learnArticlePath(locale, r.slug),
+    title: meta.articles[r.slug]?.title ?? r.slug,
+    categoryLabel: meta.categories[r.category],
+    color: CATEGORY_COLOR[r.category],
+  }));
 
   const url = `${SITE_ORIGIN}${learnArticlePath(locale, slug)}`;
   const jsonLd: Record<string, unknown>[] = [
@@ -223,40 +234,11 @@ export async function LearnArticle({
           </aside>
         )}
 
-        {related.length > 0 && (
-          <section className="mt-14" aria-label={extra.continueReading}>
-            <h2 className="section-label text-text-tertiary mb-5 inline-flex w-fit">
-              {extra.continueReading}
-            </h2>
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-              {related.map((r) => {
-                const rm = meta.articles[r.slug];
-                return (
-                  <Link
-                    key={r.slug}
-                    href={learnArticlePath(locale, r.slug)}
-                    className="glass-card group flex flex-col gap-3 p-4 transition-colors hover:border-[rgba(189,147,249,0.25)]"
-                  >
-                    <LearnImage
-                      base={`/learn-img/${r.slug}`}
-                      alt=""
-                      thumb
-                      className="learn-card-thumb"
-                    />
-                    <span
-                      className="font-mono text-[0.7rem] font-medium tracking-[0.16em] uppercase"
-                      style={{ color: CATEGORY_COLOR[r.category] }}
-                    >
-                      {meta.categories[r.category]}
-                    </span>
-                    <h3 className="font-display text-text-primary group-hover:text-purple text-base font-bold tracking-tight transition-colors">
-                      {rm?.title ?? r.slug}
-                    </h3>
-                  </Link>
-                );
-              })}
-            </div>
-          </section>
+        {relatedCards.length > 0 && (
+          <LearnRelatedCarousel
+            cards={relatedCards}
+            heading={extra.continueReading}
+          />
         )}
         </div>
 

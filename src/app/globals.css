@@ -637,13 +637,9 @@ body {
   position: relative;
   border-radius: 16px;
   padding: 1px;
-  /* Subtle neutral frame rather than an animated rainbow ring, lifted off the
-     dark page by a soft purple/cyan glow (matching the iOS phone frames). */
+  /* Subtle neutral frame, no glow — just depth. */
   background: rgba(98, 114, 164, 0.16);
-  box-shadow:
-    0 0 120px rgba(189, 147, 249, 0.2),
-    0 0 60px rgba(139, 233, 253, 0.1),
-    0 40px 90px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
 }
 
 .showcase-frame-inner {

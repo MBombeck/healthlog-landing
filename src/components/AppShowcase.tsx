@@ -146,9 +146,10 @@ export function AppShowcase() {
 
         {/* Right: pinned browser frame, screenshots cross-fade */}
         <div>
-          {/* top-1/2 + translate keeps the frame centred AND pinned through
-              every caption (an h-screen sticky released a viewport too early). */}
-          <div className="sticky top-1/2 -translate-y-1/2">
+          {/* Pin the frame near the top (below the sticky nav) so it stays put —
+              chrome bar and all — through every caption including the last, and
+              only releases when the caption column ends. */}
+          <div className="sticky top-24">
             <div className="relative w-full">
               <BrowserFrame>
                 <div className="relative aspect-[1600/785] overflow-hidden bg-[#282a36]">

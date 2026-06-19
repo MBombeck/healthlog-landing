@@ -224,7 +224,7 @@ const primaryFeatures = [
   {
     icon: <BrainIcon />,
     title: "AI Coach grounded in your data",
-    description: "A conversational Coach, daily briefing, weekly report and Health Score — every reply cites the exact metric, window and reading count it drew on, with mini-charts pinned underneath. Bring your own provider: your ChatGPT subscription, an OpenAI or Anthropic key, or a fully local model that never leaves your network.",
+    description: "A conversational Coach, daily briefing, weekly report and Health Score — every reply cites the exact metric, window and reading count it drew on, with mini-charts pinned underneath. Bring your own provider: your ChatGPT subscription via OpenAI OAuth, your own OpenAI or Anthropic key, or a fully local model that never leaves your network.",
     color: "orange",
   },
 ];
@@ -391,7 +391,10 @@ export default function Home() {
             <a href="#privacy" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
               Privacy
             </a>
-            <Link href="/learn" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
+            <a href="#faq" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
+              FAQ
+            </a>
+            <Link href="/learn" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
               Learn
             </Link>
             <a href="https://docs.healthlog.dev" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
@@ -449,100 +452,10 @@ export default function Home() {
 
       {/* ─── APP MOCKUP ───────────────────────────── */}
       <main>
-      <section id="interface" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="interface-heading">
+      <section id="interface" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-label="App interface">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="reveal flex justify-center mb-6">
-              <span className="section-label text-cyan border-cyan/15 bg-cyan/[0.03]">Interface</span>
-            </div>
-            <h2 id="interface-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
-              Your health dashboard
-            </h2>
-            <p className="reveal text-text-secondary text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-              A dark, eye-friendly interface in the Dracula color scheme.
-              Mobile-first, with instant access to all your metrics.
-            </p>
-          </div>
           <div className="reveal">
             <AppShowcase />
-          </div>
-        </div>
-      </section>
-
-      {/* ─── iOS / APPLE HEALTH ───────────────────── */}
-      <section id="ios" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="ios-heading">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
-            <div className="reveal flex justify-center mb-6">
-              <span className="section-label text-cyan border-cyan/15 bg-cyan/[0.03]">iOS &amp; Apple Health</span>
-            </div>
-            <h2 id="ios-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
-              Your iPhone writes<br />straight to your server.
-            </h2>
-            <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-              A native SwiftUI client, in public beta on TestFlight, keeps Apple
-              Health in two-way sync with your own instance — no cloud middleman.
-              Steps, weight, blood pressure, glucose, sleep and body composition
-              flow both ways and land on the same timeline as every other reading.
-            </p>
-          </div>
-
-          <div className="reveal grid grid-cols-3 gap-3 sm:gap-6 max-w-3xl mx-auto mb-12">
-            {[
-              { src: "/screenshots/ios/ios-dashboard.webp", alt: "HealthLog iOS app home screen with the Apple Health connection card, Health Score ring, today's medication compliance, and weight and blood-pressure tiles" },
-              { src: "/screenshots/ios/ios-insights.webp", alt: "HealthLog iOS Insights screen with the Coach prompt, Health Score, BMI, and a blood-pressure target band" },
-              { src: "/screenshots/ios/ios-medication-detail.webp", alt: "HealthLog iOS medication detail screen showing 30-day compliance, a 14-day adherence strip, last dose, and intake history" },
-            ].map((shot, i) => (
-              <div
-                key={shot.src}
-                className={`reveal reveal-delay-${i + 1} phone-frame relative aspect-[620/1348] overflow-hidden`}
-              >
-                <Image
-                  src={shot.src}
-                  alt={shot.alt}
-                  fill
-                  sizes="(max-width: 768px) 33vw, 240px"
-                  className="object-cover object-top"
-                />
-              </div>
-            ))}
-          </div>
-
-          <div className="reveal grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
-            <div className="glass-card p-5">
-              <div className="text-xs font-mono text-cyan mb-1.5 uppercase tracking-wider">Live HealthKit sync</div>
-              <div className="text-sm text-text-secondary leading-relaxed">Two-way Apple Health sync — steps, weight, blood pressure, glucose, sleep and body composition, written directly to your instance.</div>
-            </div>
-            <div className="glass-card p-5">
-              <div className="text-xs font-mono text-purple mb-1.5 uppercase tracking-wider">Sign in with a passkey</div>
-              <div className="text-sm text-text-secondary leading-relaxed">Face ID / Touch ID passkey sign-in, with per-device refresh-token rotation against your own server.</div>
-            </div>
-            <div className="glass-card p-5">
-              <div className="text-xs font-mono text-orange mb-1.5 uppercase tracking-wider">Reminders &amp; reports</div>
-              <div className="text-sm text-text-secondary leading-relaxed">Local medication reminders with take / skip actions, the AI Coach, and the doctor-report export — all on the phone.</div>
-            </div>
-          </div>
-
-          <div className="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="https://testflight.apple.com/join/bucuTBpa"
-              className="cta-button group"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <AppleIcon className="w-5 h-5 relative z-10" />
-              <span>Join the TestFlight beta</span>
-              <ArrowIcon />
-            </a>
-            <a
-              href="https://docs.healthlog.dev/integrations/apple-health/"
-              className="cta-secondary group"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BookIcon className="w-5 h-5" />
-              <span>Apple Health docs</span>
-            </a>
           </div>
         </div>
       </section>
@@ -633,6 +546,84 @@ export default function Home() {
                 {item}
               </span>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── iOS / APPLE HEALTH ───────────────────── */}
+      <section id="ios" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="ios-heading">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-14">
+            <div className="reveal flex justify-center mb-6">
+              <span className="section-label text-cyan border-cyan/15 bg-cyan/[0.03]">iOS &amp; Apple Health</span>
+            </div>
+            <h2 id="ios-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+              Your iPhone writes<br />straight to your server.
+            </h2>
+            <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              A native SwiftUI client, in public beta on TestFlight, keeps Apple
+              Health in two-way sync with your own instance — no cloud middleman.
+              Steps, weight, blood pressure, glucose, sleep and body composition
+              flow both ways and land on the same timeline as every other reading.
+            </p>
+          </div>
+
+          <div className="reveal grid grid-cols-3 gap-3 sm:gap-6 max-w-3xl mx-auto mb-12">
+            {[
+              { src: "/screenshots/ios/ios-dashboard.webp", alt: "HealthLog iOS app home screen with the Apple Health connection card, Health Score ring, today's medication compliance, and weight and blood-pressure tiles" },
+              { src: "/screenshots/ios/ios-insights.webp", alt: "HealthLog iOS Insights screen with the Coach prompt, Health Score, BMI, and a blood-pressure target band" },
+              { src: "/screenshots/ios/ios-medication-detail.webp", alt: "HealthLog iOS medication detail screen showing 30-day compliance, a 14-day adherence strip, last dose, and intake history" },
+            ].map((shot, i) => (
+              <div
+                key={shot.src}
+                className={`reveal reveal-delay-${i + 1} phone-frame relative aspect-[620/1348] overflow-hidden`}
+              >
+                <Image
+                  src={shot.src}
+                  alt={shot.alt}
+                  fill
+                  sizes="(max-width: 768px) 33vw, 240px"
+                  className="object-cover object-top"
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="reveal grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+            <div className="glass-card p-5">
+              <div className="text-xs font-mono text-cyan mb-1.5 uppercase tracking-wider">Live HealthKit sync</div>
+              <div className="text-sm text-text-secondary leading-relaxed">Two-way Apple Health sync — steps, weight, blood pressure, glucose, sleep and body composition, written directly to your instance.</div>
+            </div>
+            <div className="glass-card p-5">
+              <div className="text-xs font-mono text-purple mb-1.5 uppercase tracking-wider">Sign in with a passkey</div>
+              <div className="text-sm text-text-secondary leading-relaxed">Face ID / Touch ID passkey sign-in, with per-device refresh-token rotation against your own server.</div>
+            </div>
+            <div className="glass-card p-5">
+              <div className="text-xs font-mono text-orange mb-1.5 uppercase tracking-wider">Reminders &amp; reports</div>
+              <div className="text-sm text-text-secondary leading-relaxed">Local medication reminders with take / skip actions, the AI Coach, and the doctor-report export — all on the phone.</div>
+            </div>
+          </div>
+
+          <div className="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://testflight.apple.com/join/bucuTBpa"
+              className="cta-button group"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AppleIcon className="w-5 h-5 relative z-10" />
+              <span>Join the TestFlight beta</span>
+              <ArrowIcon />
+            </a>
+            <a
+              href="https://docs.healthlog.dev/integrations/apple-health/"
+              className="cta-secondary group"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BookIcon className="w-5 h-5" />
+              <span>Apple Health docs</span>
+            </a>
           </div>
         </div>
       </section>
