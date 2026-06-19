@@ -413,10 +413,6 @@ export default function Home() {
         <EcgMonitor />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <div className="flex justify-center mb-10">
-            <LogoIcon className="w-16 h-16 md:w-20 md:h-20" />
-          </div>
-
           <h1 className="font-display font-extrabold text-[2.25rem] sm:text-6xl md:text-[5.5rem] leading-[1.05] tracking-[-0.03em] mb-8">
             <span className="text-text-primary">Your Health.</span>
             <br />
