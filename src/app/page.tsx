@@ -387,10 +387,6 @@ export default function Home() {
             <a href="https://docs.healthlog.dev" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
               Docs
             </a>
-            <DemoPopupLink className="text-text-tertiary hover:text-text-primary inline-flex min-h-11 items-center gap-1.5 text-sm transition-colors">
-              <PlayIcon className="h-4 w-4" />
-              Demo
-            </DemoPopupLink>
             <a
               href="https://github.com/MBombeck/HealthLog"
               target="_blank"
@@ -469,39 +465,6 @@ export default function Home() {
           </div>
           <div className="reveal">
             <AppShowcase />
-          </div>
-        </div>
-      </section>
-
-      {/* ─── HOW IT WORKS ─────────────────────────── */}
-      <section id="how-it-works" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="how-it-works-heading">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="reveal flex justify-center mb-6">
-              <span className="section-label text-cyan border-cyan/15 bg-cyan/[0.03]">How it works</span>
-            </div>
-            <h2 id="how-it-works-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
-              One pipeline. Every reading.
-            </h2>
-            <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-              Sources reach a small set of ingest endpoints, a source-priority resolver picks one canonical row per
-              day, Postgres holds both the raw measurement and a pre-aggregated rollup, and every surface — dashboard tiles,
-              Insights cards, AI Coach answers, the doctor PDF — reads from the same path so the numbers always match.
-            </p>
-          </div>
-          <div className="reveal grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-            <a href="https://docs.healthlog.dev/integrations/apple-health/" target="_blank" rel="noopener noreferrer" className="glass-card p-5 hover:border-[rgba(189,147,249,0.25)] transition-colors duration-300">
-              <div className="text-xs font-mono text-purple mb-1.5 uppercase tracking-wider">Apple Health</div>
-              <div className="text-sm text-text-secondary leading-relaxed">Streaming export.zip importer, idempotent on the SHA-256 of the archive bytes.</div>
-            </a>
-            <a href="https://docs.healthlog.dev/integrations/withings/" target="_blank" rel="noopener noreferrer" className="glass-card p-5 hover:border-[rgba(139,233,253,0.25)] transition-colors duration-300">
-              <div className="text-xs font-mono text-cyan mb-1.5 uppercase tracking-wider">Withings</div>
-              <div className="text-sm text-text-secondary leading-relaxed">OAuth2 + webhook for near-real-time push from scales, BP monitors and ScanWatch.</div>
-            </a>
-            <a href="https://docs.healthlog.dev/concepts/source-priority/" target="_blank" rel="noopener noreferrer" className="glass-card p-5 hover:border-[rgba(255,184,108,0.25)] transition-colors duration-300">
-              <div className="text-xs font-mono text-orange mb-1.5 uppercase tracking-wider">Source priority</div>
-              <div className="text-sm text-text-secondary leading-relaxed">Three sensors logging the same day resolve to one canonical row — no triple-counting.</div>
-            </a>
           </div>
         </div>
       </section>
@@ -1060,13 +1023,18 @@ export default function Home() {
               <LifeBuoyIcon className="w-4 h-4" />
               Support
             </Link>
-            <span className="text-text-tertiary text-xs font-mono">© 2026 HealthLog</span>
-            <a href="https://polyformproject.org/licenses/noncommercial/1.0.0/" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-secondary transition-colors duration-300 text-xs font-mono">PolyForm Noncommercial 1.0.0</a>
           </div>
         </div>
-        <p className="max-w-5xl mx-auto mt-6 text-center sm:text-left text-text-tertiary text-xs leading-relaxed">
-          Licensed under the PolyForm Noncommercial License 1.0.0 — free to use, self-host, and
-          modify for noncommercial purposes.
+        <p className="max-w-5xl mx-auto mt-6 text-center text-text-tertiary text-xs font-mono">
+          © 2026 HealthLog ·{" "}
+          <a
+            href="https://polyformproject.org/licenses/noncommercial/1.0.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-text-secondary transition-colors"
+          >
+            PolyForm Noncommercial 1.0.0
+          </a>
         </p>
       </footer>
     </div>

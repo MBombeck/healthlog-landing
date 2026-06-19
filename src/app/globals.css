@@ -90,14 +90,16 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  /* clip (not hidden) prevents horizontal overflow WITHOUT establishing a
+     scroll container — hidden here breaks `position: sticky` descendants. */
+  overflow-x: clip;
 }
 
 body {
   background: var(--void);
   color: var(--text-primary);
   font-family: var(--font-body);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 ::selection {
@@ -633,20 +635,12 @@ body {
 /* ── App Showcase ───────────────────────────────── */
 .showcase-frame {
   position: relative;
-  border-radius: 20px;
-  padding: 1.5px;
-  background: linear-gradient(
-    135deg,
-    var(--purple),
-    var(--cyan),
-    var(--pink),
-    var(--purple)
-  );
-  background-size: 300% 300%;
-  animation: gradient-rotate 8s ease infinite;
-  box-shadow:
-    0 0 80px rgba(189, 147, 249, 0.12),
-    0 40px 80px rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  padding: 1px;
+  /* Subtle neutral frame (Linear/Stripe-style) rather than an animated
+     rainbow ring — quieter and more premium around the screenshot. */
+  background: rgba(98, 114, 164, 0.16);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
 }
 
 .showcase-frame-inner {
