@@ -50,10 +50,29 @@ export function Aside({
   );
 }
 
+function MdxImage({ src = "", alt = "" }: { src?: string; alt?: string }) {
+  // In-body illustrations live under /learn-img(-2) as .jpg with AVIF/WebP
+  // variants from the prebuild — serve a <picture> with dimensions to avoid CLS.
+  if (src.endsWith(".jpg") && src.includes("/learn-img")) {
+    const base = src.slice(0, -4);
+    return (
+      <picture>
+        <source type="image/avif" srcSet={`${base}.avif`} />
+        <source type="image/webp" srcSet={`${base}.webp`} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={alt} width={1376} height={768} loading="lazy" decoding="async" />
+      </picture>
+    );
+  }
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img src={src} alt={alt} loading="lazy" decoding="async" />;
+}
+
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     a: SmartLink,
     Aside,
+    img: MdxImage,
     ...components,
   };
 }

@@ -8,6 +8,7 @@ import {
   relatedArticles,
 } from "@/content/learn";
 import { LEARN_CONTENT } from "@/content/learn/content-map";
+import { getFaq } from "@/content/learn/faq";
 import { getMeta } from "@/content/learn/meta";
 import {
   SITE_ORIGIN,
@@ -17,7 +18,9 @@ import {
   type Locale,
 } from "@/content/learn/locales";
 import { FootnotesEnhancer } from "./footnotes-enhancer";
+import { LearnImage } from "./learn-image";
 import { LearnShare } from "./learn-share";
+import { LearnToc } from "./learn-toc";
 
 export async function LearnArticle({
   locale,
@@ -37,9 +40,10 @@ export async function LearnArticle({
   const related = relatedArticles(slug, 2);
   const extra = UI_EXTRA[locale];
   const dates = articleDates(article);
+  const faq = getFaq(locale, slug);
 
   const url = `${SITE_ORIGIN}${learnArticlePath(locale, slug)}`;
-  const jsonLd = [
+  const jsonLd: Record<string, unknown>[] = [
     {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -66,6 +70,19 @@ export async function LearnArticle({
       ],
     },
   ];
+
+  if (faq.length) {
+    jsonLd.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      inLanguage: locale,
+      mainEntity: faq.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    });
+  }
 
   return (
     <main
@@ -104,20 +121,38 @@ export async function LearnArticle({
 
         {/* Shared illustration (same image across all languages). Decorative — the
             headline beside it already states the topic, so alt is empty. */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={`/learn-img/${slug}.jpg`}
+        <LearnImage
+          base={`/learn-img/${slug}`}
           alt=""
-          width={1376}
-          height={768}
-          loading="eager"
+          eager
           className="mt-8 w-full rounded-2xl border border-[rgba(98,114,164,0.12)]"
         />
+
+        <LearnToc label={extra.onThisPage} />
 
         <article className="prose-learn mt-10">
           <Content />
         </article>
         <FootnotesEnhancer label={extra.footnotes} />
+
+        {faq.length > 0 && (
+          <section className="mt-14" aria-labelledby="faq-heading">
+            <h2
+              id="faq-heading"
+              className="font-display text-text-primary mb-4 text-xl font-bold tracking-tight"
+            >
+              {extra.faqTitle}
+            </h2>
+            <div className="flex flex-col gap-2">
+              {faq.map((f, i) => (
+                <details key={i} className="learn-faq">
+                  <summary>{f.q}</summary>
+                  <p>{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
 
         <LearnShare
           url={url}
@@ -190,11 +225,10 @@ export async function LearnArticle({
                     href={learnArticlePath(locale, r.slug)}
                     className="glass-card group flex flex-col gap-3 p-4 transition-colors hover:border-[rgba(189,147,249,0.25)]"
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`/learn-img/${r.slug}.jpg`}
+                    <LearnImage
+                      base={`/learn-img/${r.slug}`}
                       alt=""
-                      loading="lazy"
+                      thumb
                       className="learn-card-thumb"
                     />
                     <span

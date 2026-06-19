@@ -17,6 +17,7 @@ export function generateMetadata(): Metadata {
     alternates: {
       canonical: `${SITE_ORIGIN}/learn`,
       languages: hreflangMap((l) => learnHubPath(l)),
+      types: { "application/rss+xml": `${SITE_ORIGIN}/learn/feed.xml` },
     },
     robots: { index: true, follow: true },
     openGraph: {

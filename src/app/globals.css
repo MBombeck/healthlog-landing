@@ -1140,3 +1140,71 @@ body {
 .prose-learn sup a {
   padding: 0 0.15em;
 }
+
+/* ── /learn — table of contents ──────────────────── */
+.learn-toc {
+  margin-top: 2rem;
+  border-left: 2px solid var(--border-subtle);
+  padding: 0.25rem 0 0.25rem 1.1rem;
+}
+.learn-toc__title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin: 0 0 0.6rem;
+}
+.learn-toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.learn-toc a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: color 0.12s ease;
+}
+.learn-toc a:hover {
+  color: var(--cyan);
+}
+
+/* ── /learn — FAQ accordion ──────────────────────── */
+.learn-faq {
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  background: var(--surface-glass);
+  padding: 0 1.1rem;
+}
+.learn-faq > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+.learn-faq > summary::-webkit-details-marker { display: none; }
+.learn-faq > summary::after {
+  content: "+";
+  color: var(--text-tertiary);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+.learn-faq[open] > summary::after { content: "–"; }
+.learn-faq > p {
+  margin: 0;
+  padding: 0 0 1rem;
+  color: #c2c4d2;
+  font-size: 0.97rem;
+  line-height: 1.7;
+}

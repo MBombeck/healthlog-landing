@@ -14,6 +14,7 @@ import {
   learnHubPath,
   type Locale,
 } from "@/content/learn/locales";
+import { LearnImage } from "./learn-image";
 import { LearnSearch } from "./learn-search";
 
 /** Hub main content (the LearnShell wraps it with header/footer). */
@@ -71,8 +72,9 @@ export function LearnHub({ locale }: { locale: Locale }) {
           if (articles.length === 0) return null;
           return (
             <section key={category} data-learn-section className="space-y-5">
-              <h2
-                className="section-label inline-flex w-fit"
+              <Link
+                href={`${learnHubPath(locale)}/topic/${category}`}
+                className="section-label inline-flex w-fit transition-opacity hover:opacity-80"
                 style={{
                   color: CATEGORY_COLOR[category],
                   borderColor: `${CATEGORY_COLOR[category]}33`,
@@ -80,7 +82,7 @@ export function LearnHub({ locale }: { locale: Locale }) {
                 }}
               >
                 {meta.categories[category]}
-              </h2>
+              </Link>
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {articles.map((a) => {
                   const am = meta.articles[a.slug];
@@ -91,11 +93,10 @@ export function LearnHub({ locale }: { locale: Locale }) {
                       data-search={`${am?.title ?? ""} ${am?.dek ?? ""} ${meta.categories[a.category]}`.toLowerCase()}
                       className="glass-card group flex flex-col gap-3 p-4 transition-colors hover:border-[rgba(189,147,249,0.25)]"
                     >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={`/learn-img/${a.slug}.jpg`}
+                      <LearnImage
+                        base={`/learn-img/${a.slug}`}
                         alt=""
-                        loading="lazy"
+                        thumb
                         className="learn-card-thumb"
                       />
                       <h3 className="font-display text-text-primary group-hover:text-purple mt-1 text-lg font-bold tracking-tight transition-colors">

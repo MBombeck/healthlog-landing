@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/fix-html-lang.mjs",
+    "build": "node scripts/gen-image-variants.mjs && next build && node scripts/fix-html-lang.mjs",
     "start": "next start",
     "lint": "eslint"
   },
@@ -27,6 +27,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "sharp": "^0.35.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
