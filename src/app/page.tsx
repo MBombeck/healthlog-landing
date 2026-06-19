@@ -860,6 +860,9 @@ export default function Home() {
               <GitHubIcon className="w-4 h-4" />
               GitHub
             </a>
+            <Link href="/learn" className="text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+              Learn
+            </Link>
             <Link href="/privacy" className="text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
               Privacy
             </Link>
