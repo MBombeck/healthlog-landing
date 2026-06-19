@@ -394,10 +394,10 @@ export default function Home() {
             <a href="#faq" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
               FAQ
             </a>
-            <Link href="/learn" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
+            <Link href="/learn" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary inline-flex min-h-11 items-center text-sm transition-colors">
               Learn
             </Link>
-            <a href="https://docs.healthlog.dev" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
+            <a href="https://docs.healthlog.dev" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary inline-flex min-h-11 items-center text-sm transition-colors">
               Docs
             </a>
           </div>
@@ -682,7 +682,7 @@ export default function Home() {
               them there for good.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             <div className="glass-card feature-card-accent p-6" style={{ "--accent-color": "#8be9fd" } as React.CSSProperties}>
               <h3 className="font-display font-bold text-sm text-text-primary mb-1.5 tracking-[-0.01em]">One timeline, every vendor</h3>
               <p className="text-text-secondary text-xs leading-[1.7]">
@@ -695,6 +695,14 @@ export default function Home() {
               <p className="text-text-secondary text-xs leading-[1.7]">
                 When a subscription lapses or a service shuts down, your history stays. Everything
                 lives on your own server and exports in full — no lock-in, no expiry.
+              </p>
+            </div>
+            <div className="glass-card feature-card-accent p-6" style={{ "--accent-color": "#ffb86c" } as React.CSSProperties}>
+              <h3 className="font-display font-bold text-sm text-text-primary mb-1.5 tracking-[-0.01em]">Open API, fully documented</h3>
+              <p className="text-text-secondary text-xs leading-[1.7]">
+                Every feature is reachable over a documented REST API with scoped tokens — log a
+                dose, pull your readings, wire HealthLog into your own scripts. The full contract
+                ships as OpenAPI.
               </p>
             </div>
             <div className="glass-card feature-card-accent p-6" style={{ "--accent-color": "#bd93f9" } as React.CSSProperties}>
@@ -1016,45 +1024,41 @@ export default function Home() {
 
       {/* ─── FOOTER ───────────────────────────────── */}
       <footer className="relative py-14 px-4 sm:px-6 border-t border-[rgba(98,114,164,0.06)]" role="contentinfo">
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5">
-            <LogoIcon className="w-5 h-5" />
-            <span className="font-display font-semibold text-sm text-text-tertiary tracking-tight">HealthLog</span>
-          </div>
-          <div className="flex items-center gap-6">
-            <a href="https://docs.healthlog.dev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+        <div className="max-w-5xl mx-auto flex justify-center">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            <a href="https://docs.healthlog.dev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 py-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
               <BookIcon className="w-4 h-4" />
               Docs
             </a>
-            <DemoPopupLink className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+            <DemoPopupLink className="flex items-center gap-1.5 py-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
               <PlayIcon className="w-4 h-4" />
               Demo
             </DemoPopupLink>
-            <a href="https://github.com/MBombeck/HealthLog" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+            <a href="https://github.com/MBombeck/HealthLog" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 py-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
               <GitHubIcon className="w-4 h-4" />
               GitHub
             </a>
-            <a href="https://github.com/MBombeck/HealthLog/releases" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+            <a href="https://github.com/MBombeck/HealthLog/releases" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 py-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
               <TagIcon className="w-4 h-4" />
               Releases
             </a>
-            <Link href="/learn" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+            <Link href="/learn" className="flex items-center gap-1.5 py-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
               <BookIcon className="w-4 h-4" />
               Learn
             </Link>
-            <a href="/learn/feed.xml" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+            <a href="/learn/feed.xml" className="flex items-center gap-1.5 py-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
               <RssIcon className="w-4 h-4" />
               RSS
             </a>
-            <Link href="/privacy" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+            <Link href="/privacy" className="flex items-center gap-1.5 py-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
               <ShieldFooterIcon className="w-4 h-4" />
               Privacy
             </Link>
-            <Link href="/imprint" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+            <Link href="/imprint" className="flex items-center gap-1.5 py-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
               <FileIcon className="w-4 h-4" />
               Imprint
             </Link>
-            <Link href="/support" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+            <Link href="/support" className="flex items-center gap-1.5 py-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
               <LifeBuoyIcon className="w-4 h-4" />
               Support
             </Link>

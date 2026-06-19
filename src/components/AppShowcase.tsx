@@ -88,8 +88,9 @@ export function AppShowcase() {
     const nodes = captionRefs.current.filter(Boolean) as HTMLDivElement[];
     if (nodes.length === 0) return;
 
-    // A zero-height band at the vertical centre of the viewport: whichever
-    // caption crosses it becomes active.
+    // Zero-height line near the TOP of the viewport (≈15%), level with where the
+    // pinned frame and the caption text sit — so the active screenshot matches
+    // the caption currently aligned at the top, not one centred mid-screen.
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -101,7 +102,7 @@ export function AppShowcase() {
           }
         }
       },
-      { rootMargin: "-50% 0px -50% 0px", threshold: 0 },
+      { rootMargin: "-15% 0px -85% 0px", threshold: 0 },
     );
 
     nodes.forEach((node) => observer.observe(node));
@@ -121,7 +122,7 @@ export function AppShowcase() {
                 captionRefs.current[i] = el;
               }}
               data-index={i}
-              className="flex min-h-[78vh] flex-col justify-center transition-opacity duration-500"
+              className="flex min-h-[80vh] flex-col justify-start pt-[14vh] transition-opacity duration-500"
               style={{ opacity: i === active ? 1 : 0.5 }}
             >
               <span
@@ -146,10 +147,10 @@ export function AppShowcase() {
 
         {/* Right: pinned browser frame, screenshots cross-fade */}
         <div>
-          {/* Pin the frame near the top (below the sticky nav) so it stays put —
-              chrome bar and all — through every caption including the last, and
-              only releases when the caption column ends. */}
-          <div className="sticky top-24">
+          {/* Pin the frame near the top (level with the caption text) so it stays
+              put — chrome bar and all — through every caption including the last,
+              and only releases when the caption column ends. */}
+          <div className="sticky top-[14vh]">
             <div className="relative w-full">
               <BrowserFrame>
                 <div className="relative aspect-[1600/785] overflow-hidden bg-[#282a36]">
