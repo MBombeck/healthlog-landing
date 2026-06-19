@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { LEARN_ARTICLES, getArticle } from "@/content/learn";
+import { LEARN_CONTENT } from "@/content/learn/content-map";
 
 // Static export: only the manifest slugs exist; anything else is a 404.
 export const dynamicParams = false;
@@ -11,12 +12,13 @@ export function generateStaticParams() {
   return LEARN_ARTICLES.map((a) => ({ slug: a.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const article = getArticle(params.slug);
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = getArticle(slug);
   if (!article) return {};
   const url = `https://healthlog.dev/learn/${article.slug}`;
   return {
@@ -41,15 +43,18 @@ export function generateMetadata({
 export default async function LearnArticlePage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const article = getArticle(params.slug);
+  const { slug } = await params;
+  const article = getArticle(slug);
   if (!article) notFound();
 
-  // MDX content lives as a pure module under src/content/learn/<slug>.mdx.
-  const { default: Content } = await import(
-    `@/content/learn/${params.slug}.mdx`
-  );
+  // MDX content lives as a pure module under src/content/learn/<slug>.mdx,
+  // loaded via the explicit slug→loader map (template-literal dynamic imports
+  // don't resolve under Turbopack static export).
+  const loader = LEARN_CONTENT[slug];
+  if (!loader) notFound();
+  const { default: Content } = await loader();
 
   const url = `https://healthlog.dev/learn/${article.slug}`;
   const jsonLd = {
