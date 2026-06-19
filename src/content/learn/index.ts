@@ -23,6 +23,20 @@ export interface LearnArticle {
   category: CategoryKey;
   readingTimeMin: number;
   knowledgeSlug: string | null;
+  /** ISO date; falls back to the section-wide dates below. */
+  publishedAt?: string;
+  updatedAt?: string;
+}
+
+// Section-wide dates (single source of truth; override per-article above).
+export const LEARN_PUBLISHED = "2026-06-19";
+export const LEARN_UPDATED = "2026-06-19";
+
+export function articleDates(a: LearnArticle): { published: string; updated: string } {
+  return {
+    published: a.publishedAt ?? LEARN_PUBLISHED,
+    updated: a.updatedAt ?? LEARN_UPDATED,
+  };
 }
 
 export const CATEGORY_ORDER: CategoryKey[] = [

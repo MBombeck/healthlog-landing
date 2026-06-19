@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
 
 import { LEARN_ARTICLES } from "@/content/learn";
+import { LEARN_UPDATED } from "@/content/learn";
 import {
   LOCALES,
   SITE_ORIGIN,
+  hreflangMap,
   learnArticlePath,
   learnHubPath,
 } from "@/content/learn/locales";
@@ -24,15 +26,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const learnPages: MetadataRoute.Sitemap = LOCALES.flatMap((locale) => [
     {
       url: `${SITE_ORIGIN}${learnHubPath(locale)}`,
-      lastModified: LAST_MODIFIED,
+      lastModified: LEARN_UPDATED,
       changeFrequency: "weekly" as const,
       priority: locale === "en" ? 0.8 : 0.7,
+      alternates: { languages: hreflangMap((l) => learnHubPath(l)) },
     },
     ...LEARN_ARTICLES.map((a) => ({
       url: `${SITE_ORIGIN}${learnArticlePath(locale, a.slug)}`,
-      lastModified: LAST_MODIFIED,
+      lastModified: a.updatedAt ?? LEARN_UPDATED,
       changeFrequency: "monthly" as const,
       priority: locale === "en" ? 0.7 : 0.6,
+      alternates: { languages: hreflangMap((l) => learnArticlePath(l, a.slug)) },
     })),
   ]);
 

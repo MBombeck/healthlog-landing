@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { getMeta } from "@/content/learn/meta";
 import {
   LOCALES,
+  UI_EXTRA,
   learnArticlePath,
   learnHubPath,
   type Locale,
@@ -25,9 +26,13 @@ export function LearnShell({
   children: ReactNode;
 }) {
   const { ui } = getMeta(locale);
+  const extra = UI_EXTRA[locale];
 
   return (
     <div className="learn-shell bg-void text-text-primary relative min-h-dvh overflow-x-clip">
+      <a href="#main-content" className="skip-to-content">
+        {extra.skipToContent}
+      </a>
       <div className="noise-overlay" />
       <div className="aurora" aria-hidden="true" />
       <div className="aurora-pink" aria-hidden="true" />
@@ -54,9 +59,17 @@ export function LearnShell({
               href="https://docs.healthlog.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-tertiary hover:text-text-primary inline-flex min-h-11 items-center text-sm transition-colors"
+              className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex"
             >
               {ui.docs}
+            </a>
+            <a
+              href="https://demo.healthlog.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex"
+            >
+              Demo
             </a>
             <LanguageSwitcher
               current={locale}

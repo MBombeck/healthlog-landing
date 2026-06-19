@@ -41,7 +41,11 @@ RUN echo 'server { \
     } \
     \
     location / { \
-        try_files $uri $uri.html $uri/ /index.html; \
+        try_files $uri $uri.html $uri/index.html =404; \
+    } \
+    error_page 404 /404.html; \
+    location ~ ^/(.+)/$ { \
+        return 301 /$1; \
     } \
     \
     location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2)$ { \

@@ -168,7 +168,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped manually
     // until the cross-repo release sync tool lands.
-    softwareVersion: "1.6.0",
+    softwareVersion: "1.18.6",
     license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
     // Landing page is English-only today. The HealthLog app itself is
     // bilingual (EN/DE) — that fact belongs on the app, not the marketing
@@ -232,9 +232,38 @@ export default function RootLayout({
     ],
   };
 
+  const jsonLdOrg = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://healthlog.dev/#org",
+        name: "HealthLog",
+        url: "https://healthlog.dev",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://healthlog.dev/og-image.png",
+        },
+        sameAs: ["https://github.com/MBombeck/HealthLog"],
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://healthlog.dev/#website",
+        name: "HealthLog",
+        url: "https://healthlog.dev",
+        publisher: { "@id": "https://healthlog.dev/#org" },
+        inLanguage: "en",
+      },
+    ],
+  };
+
   return (
     <html lang="en">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrg) }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdApp) }}

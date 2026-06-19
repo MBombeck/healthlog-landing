@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import {
   CATEGORY_COLOR,
+  articleDates,
   getArticle,
   relatedArticles,
 } from "@/content/learn";
@@ -16,6 +17,7 @@ import {
   type Locale,
 } from "@/content/learn/locales";
 import { FootnotesEnhancer } from "./footnotes-enhancer";
+import { LearnShare } from "./learn-share";
 
 export async function LearnArticle({
   locale,
@@ -34,6 +36,7 @@ export async function LearnArticle({
   const accent = CATEGORY_COLOR[article.category];
   const related = relatedArticles(slug, 2);
   const extra = UI_EXTRA[locale];
+  const dates = articleDates(article);
 
   const url = `${SITE_ORIGIN}${learnArticlePath(locale, slug)}`;
   const jsonLd = [
@@ -46,8 +49,10 @@ export async function LearnArticle({
       inLanguage: locale,
       isAccessibleForFree: true,
       image: `${SITE_ORIGIN}/learn-img/${slug}.jpg`,
-      author: { "@type": "Organization", name: "HealthLog" },
-      publisher: { "@type": "Organization", name: "HealthLog" },
+      datePublished: dates.published,
+      dateModified: dates.updated,
+      author: { "@type": "Organization", name: "HealthLog", url: SITE_ORIGIN },
+      publisher: { "@type": "Organization", name: "HealthLog", url: SITE_ORIGIN },
       mainEntityOfPage: { "@type": "WebPage", "@id": url },
       articleSection: meta.categories[article.category],
     },
@@ -91,13 +96,18 @@ export async function LearnArticle({
             {am?.title ?? slug}
           </h1>
           <p className="text-text-secondary text-lg leading-relaxed">{am?.dek}</p>
+          <p className="text-text-tertiary text-xs">
+            {extra.updatedLabel}{" "}
+            <time dateTime={dates.updated}>{dates.updated}</time>
+          </p>
         </header>
 
-        {/* Shared illustration (same image across all languages). */}
+        {/* Shared illustration (same image across all languages). Decorative — the
+            headline beside it already states the topic, so alt is empty. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`/learn-img/${slug}.jpg`}
-          alt={am?.title ?? slug}
+          alt=""
           width={1376}
           height={768}
           loading="eager"
@@ -108,6 +118,41 @@ export async function LearnArticle({
           <Content />
         </article>
         <FootnotesEnhancer label={extra.footnotes} />
+
+        <LearnShare
+          url={url}
+          title={am?.title ?? slug}
+          shareLabel={extra.share}
+          copiedLabel={extra.linkCopied}
+        />
+
+        {/* Quiet product CTA — connects the reader back to HealthLog. */}
+        <aside className="glass-card mt-10 flex flex-col gap-3 p-6">
+          <h2 className="font-display text-text-primary text-lg font-bold tracking-tight">
+            {extra.ctaTitle}
+          </h2>
+          <p className="text-text-secondary text-sm leading-relaxed">
+            {extra.ctaBody}
+          </p>
+          <div className="mt-1 flex flex-wrap gap-4">
+            <a
+              href="https://demo.healthlog.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-purple hover:text-cyan inline-flex items-center gap-1.5 text-sm font-medium underline-offset-2 hover:underline"
+            >
+              {extra.ctaDemo} <span aria-hidden="true">→</span>
+            </a>
+            <a
+              href="https://github.com/MBombeck/HealthLog"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-text-secondary hover:text-text-primary inline-flex items-center gap-1.5 text-sm font-medium underline-offset-2 hover:underline"
+            >
+              {extra.ctaSelfHost} <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </aside>
 
         {article.knowledgeSlug && (
           <aside className="glass-card mt-14 flex flex-col gap-3 p-6">

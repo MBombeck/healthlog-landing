@@ -51,15 +51,24 @@ export interface UiExtra {
   continueReading: string;
   searchPlaceholder: string;
   searchNoResults: string;
+  updatedLabel: string;
+  share: string;
+  linkCopied: string;
+  ctaTitle: string;
+  ctaBody: string;
+  ctaDemo: string;
+  ctaSelfHost: string;
+  skipToContent: string;
+  onThisPage: string;
 }
 
 export const UI_EXTRA: Record<Locale, UiExtra> = {
-  en: { footnotes: "Sources", continueReading: "Continue reading", searchPlaceholder: "Search guides…", searchNoResults: "No guides match your search." },
-  de: { footnotes: "Quellen", continueReading: "Weiterlesen", searchPlaceholder: "Ratgeber durchsuchen…", searchNoResults: "Keine passenden Ratgeber gefunden." },
-  es: { footnotes: "Fuentes", continueReading: "Sigue leyendo", searchPlaceholder: "Buscar guías…", searchNoResults: "Ninguna guía coincide con tu búsqueda." },
-  fr: { footnotes: "Sources", continueReading: "Continuer la lecture", searchPlaceholder: "Rechercher des guides…", searchNoResults: "Aucun guide ne correspond à votre recherche." },
-  it: { footnotes: "Fonti", continueReading: "Continua a leggere", searchPlaceholder: "Cerca guide…", searchNoResults: "Nessuna guida corrisponde alla ricerca." },
-  pl: { footnotes: "Źródła", continueReading: "Czytaj dalej", searchPlaceholder: "Szukaj poradników…", searchNoResults: "Brak poradników pasujących do wyszukiwania." },
+  en: { footnotes: "Sources", continueReading: "Continue reading", searchPlaceholder: "Search guides…", searchNoResults: "No guides match your search.", updatedLabel: "Updated", share: "Share", linkCopied: "Link copied", ctaTitle: "Track it yourself", ctaBody: "HealthLog turns the metrics in these guides into your own private, self-hosted health dashboard.", ctaDemo: "Try the live demo", ctaSelfHost: "Self-host it", skipToContent: "Skip to content", onThisPage: "On this page" },
+  de: { footnotes: "Quellen", continueReading: "Weiterlesen", searchPlaceholder: "Ratgeber durchsuchen…", searchNoResults: "Keine passenden Ratgeber gefunden.", updatedLabel: "Aktualisiert", share: "Teilen", linkCopied: "Link kopiert", ctaTitle: "Selbst verfolgen", ctaBody: "HealthLog macht aus den Werten in diesen Ratgebern dein eigenes, selbstgehostetes Gesundheits-Dashboard.", ctaDemo: "Live-Demo testen", ctaSelfHost: "Selbst hosten", skipToContent: "Zum Inhalt springen", onThisPage: "Auf dieser Seite" },
+  es: { footnotes: "Fuentes", continueReading: "Sigue leyendo", searchPlaceholder: "Buscar guías…", searchNoResults: "Ninguna guía coincide con tu búsqueda.", updatedLabel: "Actualizado", share: "Compartir", linkCopied: "Enlace copiado", ctaTitle: "Mídelo tú mismo", ctaBody: "HealthLog convierte las métricas de estas guías en tu propio panel de salud privado y autoalojado.", ctaDemo: "Prueba la demo", ctaSelfHost: "Autoalójalo", skipToContent: "Saltar al contenido", onThisPage: "En esta página" },
+  fr: { footnotes: "Sources", continueReading: "Continuer la lecture", searchPlaceholder: "Rechercher des guides…", searchNoResults: "Aucun guide ne correspond à votre recherche.", updatedLabel: "Mis à jour", share: "Partager", linkCopied: "Lien copié", ctaTitle: "Suivez-le vous-même", ctaBody: "HealthLog transforme les mesures de ces guides en votre propre tableau de bord santé privé et auto-hébergé.", ctaDemo: "Essayer la démo", ctaSelfHost: "Auto-hébergez-le", skipToContent: "Aller au contenu", onThisPage: "Sur cette page" },
+  it: { footnotes: "Fonti", continueReading: "Continua a leggere", searchPlaceholder: "Cerca guide…", searchNoResults: "Nessuna guida corrisponde alla ricerca.", updatedLabel: "Aggiornato", share: "Condividi", linkCopied: "Link copiato", ctaTitle: "Monitoralo tu stesso", ctaBody: "HealthLog trasforma i parametri di queste guide nella tua dashboard di salute privata e self-hosted.", ctaDemo: "Prova la demo", ctaSelfHost: "Self-hosting", skipToContent: "Vai al contenuto", onThisPage: "In questa pagina" },
+  pl: { footnotes: "Źródła", continueReading: "Czytaj dalej", searchPlaceholder: "Szukaj poradników…", searchNoResults: "Brak poradników pasujących do wyszukiwania.", updatedLabel: "Zaktualizowano", share: "Udostępnij", linkCopied: "Skopiowano link", ctaTitle: "Śledź to samodzielnie", ctaBody: "HealthLog zamienia wskaźniki z tych poradników w Twój własny, samodzielnie hostowany panel zdrowia.", ctaDemo: "Wypróbuj demo", ctaSelfHost: "Hostuj samodzielnie", skipToContent: "Przejdź do treści", onThisPage: "Na tej stronie" },
 };
 
 export function learnHubPath(locale: Locale): string {

@@ -1108,3 +1108,35 @@ body {
   padding-top: 0;
 }
 .learn-footnotes .footnotes h2 { display: none; }
+
+/* ── /learn — audit fixes: a11y + CLS ────────────── */
+/* Visible focus ring (was missing site-wide on /learn). */
+.learn-shell a:focus-visible,
+.learn-shell button:focus-visible,
+.learn-shell summary:focus-visible,
+.learn-shell input:focus-visible,
+.learn-shell [tabindex]:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+/* Sticky header (~64px) was occluding anchor jumps. */
+.prose-learn h2,
+.prose-learn h3,
+.prose-learn .footnotes li {
+  scroll-margin-top: 6rem;
+}
+/* Reserve space for in-body images so they don't shift layout (CLS). */
+.prose-learn img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+/* Bigger tap targets on touch. */
+.lang-switcher__menu a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.prose-learn sup a {
+  padding: 0 0.15em;
+}

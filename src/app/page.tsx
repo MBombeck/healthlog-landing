@@ -302,6 +302,10 @@ export default function Home() {
               <BookIcon className="w-5 h-5" />
               <span>Read the Docs</span>
             </a>
+            <Link href="/learn" className="cta-secondary group">
+              <BookIcon className="w-5 h-5" />
+              <span>Learn</span>
+            </Link>
           </nav>
 
         </div>
