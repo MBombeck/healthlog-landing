@@ -6,14 +6,9 @@ import { SITE_ORIGIN } from "@/content/learn/locales";
 /**
  * Legal notice / Impressum for the marketing site.
  *
- * German law (§ 5 TMG, § 18 Abs. 2 MStV) requires a publicly reachable
- * provider identification for a German-operated commercial-facing site. The
- * page is self-contained — no auth shell, no app navigation — and inherits the
- * dark Dracula visual language from `globals.css`, matching `/privacy`.
- *
- * The operator details are deliberately left as bracketed placeholders. They
- * must be filled in by whoever publishes this instance — no name or address is
- * invented here.
+ * Provider identification under § 5 TMG and § 18 Abs. 2 MStV for the
+ * German-operated site. Self-contained — no auth shell — inheriting the dark
+ * Dracula visual language from `globals.css`, matching `/privacy`.
  */
 
 const TITLE = "Imprint";
@@ -61,14 +56,6 @@ function Section({ id, title, children }: SectionProps) {
   );
 }
 
-function Placeholder({ children }: { children: React.ReactNode }) {
-  return (
-    <code className="border-purple/30 bg-surface-raised text-purple my-0.5 inline-block rounded border border-dashed px-1.5 py-0.5 font-mono text-xs">
-      {children}
-    </code>
-  );
-}
-
 export default function ImprintPage() {
   return (
     <div className="bg-void text-text-primary relative min-h-dvh overflow-x-clip">
@@ -111,38 +98,17 @@ export default function ImprintPage() {
           </p>
         </div>
 
-        <div className="glass-card space-y-2 p-4 text-sm leading-relaxed">
-          <p className="text-text-primary font-medium">
-            A note on the placeholders below.
-          </p>
-          <p className="text-text-secondary">
-            The bracketed fields, shown as{" "}
-            <Placeholder>[ … ]</Placeholder>, are templates. Whoever operates
-            this instance must replace each one with their own real provider
-            details before publishing. No name or address has been filled in
-            here.
-          </p>
-        </div>
-
-        <Section id="provider" title="Provider (Diensteanbieter)">
+        <Section id="provider" title="Provider">
           <p>The provider responsible for this website is:</p>
           <ul className="list-none space-y-1.5">
-            <li>
-              <Placeholder>[ Name des Betreibers ]</Placeholder>
-            </li>
-            <li>
-              <Placeholder>[ Anschrift / Postfach ]</Placeholder>
-            </li>
-            <li>
-              <Placeholder>[ Postleitzahl und Ort ]</Placeholder>
-            </li>
-            <li>
-              <Placeholder>[ Land ]</Placeholder>
-            </li>
+            <li>Marc-André Bombeck</li>
+            <li>Am Alten Sägewerk 67</li>
+            <li>44795 Bochum</li>
+            <li>Germany</li>
           </ul>
         </Section>
 
-        <Section id="contact" title="Contact (Kontakt)">
+        <Section id="contact" title="Contact">
           <p>
             Email:{" "}
             <a
@@ -152,60 +118,30 @@ export default function ImprintPage() {
               support@healthlog.dev
             </a>
           </p>
-          <p>
-            Telephone:{" "}
-            <Placeholder>[ Telefonnummer, optional ]</Placeholder>
-          </p>
         </Section>
 
-        <Section
-          id="responsible"
-          title="Responsible for content (Inhaltlich verantwortlich)"
-        >
-          <p>
-            Responsible for editorial content under § 18 Abs. 2 MStV:
-          </p>
+        <Section id="responsible" title="Responsible for content">
+          <p>Responsible for editorial content under § 18 Abs. 2 MStV:</p>
           <ul className="list-none space-y-1.5">
-            <li>
-              <Placeholder>[ Verantwortlich i.S.d. § 18 Abs. 2 MStV ]</Placeholder>
-            </li>
-            <li>
-              <Placeholder>[ Anschrift, falls abweichend ]</Placeholder>
-            </li>
+            <li>Marc-André Bombeck</li>
+            <li>Am Alten Sägewerk 67, 44795 Bochum, Germany</li>
           </ul>
         </Section>
 
-        <Section id="vat" title="VAT / Register (USt-IdNr. / Register)">
+        <Section id="status" title="Status">
           <p>
-            VAT identification number under § 27 a of the German VAT Act
-            (UStG), if applicable:
-          </p>
-          <p>
-            <Placeholder>[ USt-IdNr., falls vorhanden ]</Placeholder>
-          </p>
-          <p>
-            Commercial register entry, if applicable:
-          </p>
-          <p>
-            <Placeholder>[ Registergericht und Registernummer, falls vorhanden ]</Placeholder>
+            HealthLog is a private, non-commercial project. There is no VAT
+            identification number and no commercial-register entry. Place of
+            jurisdiction is Bochum, Germany; the competent court is the
+            Amtsgericht Bochum.
           </p>
         </Section>
 
-        <Section id="dispute" title="Dispute resolution (Streitschlichtung)">
+        <Section id="dispute" title="Dispute resolution">
           <p>
-            The European Commission provides a platform for online dispute
-            resolution (ODR):{" "}
-            <a
-              href="https://ec.europa.eu/consumers/odr/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-purple hover:text-cyan underline-offset-2 hover:underline"
-            >
-              ec.europa.eu/consumers/odr
-            </a>
-            . The operator is not obliged and generally not willing to
-            participate in dispute-resolution proceedings before a consumer
-            arbitration board.
+            The operator is neither obliged nor willing to participate in
+            dispute-resolution proceedings before a consumer arbitration board
+            (§ 36 VSBG).
           </p>
         </Section>
 
