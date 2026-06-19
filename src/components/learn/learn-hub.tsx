@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import {
+  CATEGORY_COLOR,
   CATEGORY_ORDER,
   LEARN_ARTICLES,
   type CategoryKey,
@@ -48,10 +49,10 @@ export function LearnHub({ locale }: { locale: Locale }) {
         <p className="text-text-tertiary font-mono text-xs tracking-[0.2em] uppercase">
           {meta.ui.hubKicker}
         </p>
-        <h1 className="font-display text-text-primary text-3xl font-extrabold tracking-[-0.02em] md:text-4xl">
+        <h1 className="learn-gradient-text font-display text-3xl font-extrabold tracking-[-0.02em] md:text-5xl">
           {meta.ui.hubTitle}
         </h1>
-        <p className="text-text-secondary max-w-xl text-base leading-relaxed">
+        <p className="text-text-secondary max-w-3xl text-lg leading-relaxed">
           {meta.ui.hubIntro}
         </p>
       </div>
@@ -62,7 +63,14 @@ export function LearnHub({ locale }: { locale: Locale }) {
           if (articles.length === 0) return null;
           return (
             <section key={category} className="space-y-5">
-              <h2 className="section-label text-text-tertiary inline-flex w-fit">
+              <h2
+                className="section-label inline-flex w-fit"
+                style={{
+                  color: CATEGORY_COLOR[category],
+                  borderColor: `${CATEGORY_COLOR[category]}33`,
+                  backgroundColor: `${CATEGORY_COLOR[category]}0d`,
+                }}
+              >
                 {meta.categories[category]}
               </h2>
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">

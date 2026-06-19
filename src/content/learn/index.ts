@@ -53,8 +53,32 @@ export const LEARN_ARTICLES: LearnArticle[] = [
 
 export const LEARN_SLUGS = LEARN_ARTICLES.map((a) => a.slug);
 
+/** Accent colour per category (hub section labels + article kicker). */
+export const CATEGORY_COLOR: Record<CategoryKey, string> = {
+  foundations: "#bd93f9",
+  heart: "#ff7eb6",
+  sleep: "#8be9fd",
+  metabolic: "#ffb86c",
+  fitness: "#5af78e",
+  body: "#7aa2f7",
+  mind: "#f0a8e4",
+};
+
 export function getArticle(slug: string): LearnArticle | undefined {
   return LEARN_ARTICLES.find((a) => a.slug === slug);
+}
+
+/** Up to `n` related guides: same category first, then manifest neighbours. */
+export function relatedArticles(slug: string, n = 2): LearnArticle[] {
+  const current = getArticle(slug);
+  if (!current) return [];
+  const sameCat = LEARN_ARTICLES.filter(
+    (a) => a.slug !== slug && a.category === current.category,
+  );
+  const others = LEARN_ARTICLES.filter(
+    (a) => a.slug !== slug && a.category !== current.category,
+  );
+  return [...sameCat, ...others].slice(0, n);
 }
 
 /** Localized strings for one guide. */

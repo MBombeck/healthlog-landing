@@ -837,13 +837,26 @@ body {
   color: var(--text-primary);
   font-weight: 600;
 }
+/* Body links: coloured, no underline (underlines in running text distract). */
 .prose-learn a {
   color: var(--cyan);
   text-decoration: none;
-  border-bottom: 1px solid rgba(139, 233, 253, 0.25);
-  transition: border-color 0.15s ease, color 0.15s ease;
+  border-bottom: none;
+  transition: color 0.15s ease;
 }
 .prose-learn a:hover {
+  color: #b6f3ff;
+}
+/* Footnote reference markers in the text: no underline, just the coloured number. */
+.prose-learn sup a {
+  border-bottom: none;
+  font-weight: 600;
+}
+/* But inside the Sources list, the link to each source IS underlined. */
+.prose-learn .footnotes a {
+  border-bottom: 1px solid rgba(139, 233, 253, 0.3);
+}
+.prose-learn .footnotes a:hover {
   border-bottom-color: var(--cyan);
 }
 .prose-learn ul,
@@ -1038,3 +1051,60 @@ body {
   border: 1px solid var(--border-subtle);
   background: var(--surface);
 }
+
+/* ── /learn — lighter reading text (less harsh on bright screens) ─── */
+.learn-shell {
+  --text-secondary: #b8bac9;
+  --text-tertiary: #8a8c9e;
+}
+.prose-learn {
+  color: #c2c4d2;
+}
+.prose-learn p,
+.prose-learn li {
+  color: #c2c4d2;
+}
+
+/* Gradient headline (echoes the home page's gradient text). */
+.learn-gradient-text {
+  background: linear-gradient(100deg, #d8c7ff 0%, var(--purple) 38%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: 0.08em;
+}
+
+/* Collapsible footnotes (progressively enhanced into <details>). */
+.learn-footnotes {
+  margin-top: 3.25rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.25rem;
+}
+.learn-footnotes > summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.learn-footnotes > summary::-webkit-details-marker { display: none; }
+.learn-footnotes > summary::before {
+  content: "▸";
+  color: var(--text-tertiary);
+  transition: transform 0.15s ease;
+}
+.learn-footnotes[open] > summary::before { content: "▾"; }
+/* When collapsed into <details>, drop the section's own top border + heading. */
+.learn-footnotes .footnotes {
+  margin-top: 1rem;
+  border-top: none;
+  padding-top: 0;
+}
+.learn-footnotes .footnotes h2 { display: none; }

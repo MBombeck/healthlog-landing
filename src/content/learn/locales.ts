@@ -45,6 +45,23 @@ export function isLocale(value: string): value is Locale {
   return (LOCALES as readonly string[]).includes(value);
 }
 
+/** Short UI strings added after the initial translation pass. */
+export interface UiExtra {
+  footnotes: string;
+  continueReading: string;
+  searchPlaceholder: string;
+  searchNoResults: string;
+}
+
+export const UI_EXTRA: Record<Locale, UiExtra> = {
+  en: { footnotes: "Sources", continueReading: "Continue reading", searchPlaceholder: "Search guides…", searchNoResults: "No guides match your search." },
+  de: { footnotes: "Quellen", continueReading: "Weiterlesen", searchPlaceholder: "Ratgeber durchsuchen…", searchNoResults: "Keine passenden Ratgeber gefunden." },
+  es: { footnotes: "Fuentes", continueReading: "Sigue leyendo", searchPlaceholder: "Buscar guías…", searchNoResults: "Ninguna guía coincide con tu búsqueda." },
+  fr: { footnotes: "Sources", continueReading: "Continuer la lecture", searchPlaceholder: "Rechercher des guides…", searchNoResults: "Aucun guide ne correspond à votre recherche." },
+  it: { footnotes: "Fonti", continueReading: "Continua a leggere", searchPlaceholder: "Cerca guide…", searchNoResults: "Nessuna guida corrisponde alla ricerca." },
+  pl: { footnotes: "Źródła", continueReading: "Czytaj dalej", searchPlaceholder: "Szukaj poradników…", searchNoResults: "Brak poradników pasujących do wyszukiwania." },
+};
+
 export function learnHubPath(locale: Locale): string {
   return locale === DEFAULT_LOCALE ? "/learn" : `/${locale}/learn`;
 }

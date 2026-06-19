@@ -33,10 +33,10 @@ export function LearnShell({
       <div className="aurora-pink" aria-hidden="true" />
 
       <header
-        className="bg-void/80 sticky top-0 z-10 border-b border-[rgba(98,114,164,0.08)] backdrop-blur"
+        className="bg-void/80 sticky top-0 z-50 border-b border-[rgba(98,114,164,0.08)] backdrop-blur"
         role="banner"
       >
-        <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3 md:px-6">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 md:px-6">
           <Link
             href="/"
             className="text-text-primary hover:text-purple font-display inline-flex min-h-11 items-center text-sm font-semibold tracking-tight transition-colors"
@@ -70,7 +70,7 @@ export function LearnShell({
       {children}
 
       <footer className="border-t border-[rgba(98,114,164,0.08)]">
-        <div className="text-text-tertiary mx-auto flex max-w-3xl flex-col gap-2 px-4 py-8 text-sm md:flex-row md:items-center md:justify-between md:px-6">
+        <div className="text-text-tertiary mx-auto flex max-w-5xl flex-col gap-2 px-4 py-8 text-sm md:flex-row md:items-center md:justify-between md:px-6">
           <p>{ui.footerDisclaimer}</p>
           <div className="flex gap-5">
             <Link href="/" className="hover:text-text-primary transition-colors">
