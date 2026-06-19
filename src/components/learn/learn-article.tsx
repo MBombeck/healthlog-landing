@@ -17,6 +17,7 @@ import {
   learnHubPath,
   type Locale,
 } from "@/content/learn/locales";
+import { DemoLink } from "./demo-link";
 import { FootnotesEnhancer } from "./footnotes-enhancer";
 import { LearnImage } from "./learn-image";
 import { LearnShare } from "./learn-share";
@@ -94,7 +95,7 @@ export async function LearnArticle({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_13rem] lg:items-start lg:gap-10">
+      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_13rem] lg:gap-10">
         <div className="max-w-[46rem]">
         <Link
           href={learnHubPath(locale)}
@@ -118,6 +119,18 @@ export async function LearnArticle({
             {extra.updatedLabel}{" "}
             <time dateTime={dates.updated}>{dates.updated}</time>
           </p>
+          {article.tags.length > 0 && (
+            <ul className="flex flex-wrap gap-2 pt-1" aria-label="Topics">
+              {article.tags.map((tag) => (
+                <li
+                  key={tag}
+                  className="text-text-tertiary rounded-full border border-[rgba(98,114,164,0.16)] px-2.5 py-0.5 font-mono text-[0.7rem] tracking-wide"
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          )}
         </header>
 
         {/* Shared illustration (same image across all languages). Decorative — the
@@ -171,14 +184,12 @@ export async function LearnArticle({
             {extra.ctaBody}
           </p>
           <div className="mt-1 flex flex-wrap gap-4">
-            <a
-              href="https://demo.healthlog.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-purple hover:text-cyan inline-flex items-center gap-1.5 text-sm font-medium underline-offset-2 hover:underline"
+            <DemoLink
+              locale={locale}
+              className="text-purple hover:text-cyan inline-flex cursor-pointer items-center gap-1.5 text-sm font-medium underline-offset-2 hover:underline"
             >
               {extra.ctaDemo} <span aria-hidden="true">→</span>
-            </a>
+            </DemoLink>
             <a
               href="https://github.com/MBombeck/HealthLog"
               target="_blank"

@@ -40,7 +40,7 @@ export function LearnSearch({
   }
 
   return (
-    <div className="relative mt-8 max-w-md">
+    <div className="relative mt-8">
       <SearchIcon />
       <input
         type="search"

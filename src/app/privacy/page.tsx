@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { SITE_ORIGIN } from "@/content/learn/locales";
+
 /**
  * Public privacy policy for the marketing site.
  *
- * Adapted from the in-app `/privacy` route on healthlog.bombeck.io. The
+ * Adapted from the in-app `/privacy` route on the reference instance. The
  * landing variant is self-contained — no auth shell, no app navigation — and
  * inherits the dark Dracula visual language defined in `globals.css`.
  *
@@ -22,12 +24,30 @@ import Link from "next/link";
 const POLICY_VERSION = "1.4.32";
 const LAST_UPDATED = "2026-05-16";
 
+const TITLE = "Privacy Policy";
+const DESCRIPTION =
+  "How HealthLog handles personal-health data, sub-processors, GDPR rights, and the EU MDR medical-device boundary.";
+
 export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description:
-    "How HealthLog handles personal-health data, sub-processors, GDPR rights, and the EU MDR medical-device boundary.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: "https://healthlog.dev/privacy" },
   robots: { index: true, follow: true },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: `${SITE_ORIGIN}/privacy`,
+    type: "website",
+    siteName: "HealthLog",
+    locale: "en_US",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og-image.png"],
+  },
 };
 
 interface SectionProps {
@@ -591,7 +611,7 @@ export default function PrivacyPage() {
             />
             <SubProcessor
               name="Cloudflare, Inc."
-              role="Authoritative DNS for the bombeck.io and healthlog.dev zones."
+              role="Authoritative DNS for the healthlog.dev zone."
               data="Source IP address and user-agent at DNS resolution time."
               location="United States; Cloudflare's standard global anycast network."
               policyUrl="https://www.cloudflare.com/privacypolicy/"

@@ -26,16 +26,34 @@ export async function generateMetadata({
   if (!isCategory(category)) return {};
   const meta = getMeta("en");
   const label = meta.categories[category];
+  const title = `${label} — Learn`;
+  const description = `${label} guides from HealthLog: ${meta.ui.hubIntro}`;
+  const url = `${SITE_ORIGIN}/learn/topic/${category}`;
   return {
-    title: `${label} — Learn`,
-    description: `${label} guides from HealthLog: ${meta.ui.hubIntro}`,
+    title,
+    description,
     alternates: {
-      canonical: `${SITE_ORIGIN}/learn/topic/${category}`,
+      canonical: url,
       languages: hreflangMap((l) =>
         l === "en" ? `/learn/topic/${category}` : `/${l}/learn/topic/${category}`,
       ),
     },
     robots: { index: true, follow: true },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "website",
+      siteName: "HealthLog",
+      locale: "en_US",
+      images: ["/og-image.png"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og-image.png"],
+    },
   };
 }
 

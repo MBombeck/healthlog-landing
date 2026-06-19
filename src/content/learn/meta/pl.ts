@@ -36,7 +36,7 @@ const meta: LearnMeta = {
     },
     "resting-heart-rate": {
       title: "Co mówi Ci tętno spoczynkowe",
-      dek: "Najprostsza liczba na Twoim nadgarstku jest też jedną z najbardziej szczerych. Oto jak ją odczytywać.",
+      dek: "Najprostsza liczba na Twoim nadgarstku jest zarazem jedną z najszczerszych. Oto jak ją czytać.",
       description:
         "Czym jest tętno spoczynkowe, co uchodzi za normę, co je podnosi lub obniża i kiedy utrzymująca się zmiana zasługuje na uwagę lekarza.",
     },
@@ -53,8 +53,8 @@ const meta: LearnMeta = {
         "Jak odczytywać ciśnienie krwi: co oznaczają dwie liczby, jakie są kategorie z wytycznych, dlaczego technika pomiaru ma znaczenie i kiedy wyniki wymagają kontroli lekarskiej.",
     },
     "sleep-consistency": {
-      title: "Dlaczego regularność snu bije jego długość",
-      dek: "Osiem godzin o przypadkowych porach to nie to samo co siedem przy stałym rytmie. Sygnałem jest pora.",
+      title: "Dlaczego regularność snu liczy się bardziej niż jego długość",
+      dek: "Osiem godzin o przypadkowych porach to nie to samo co siedem przy stałym rytmie. To pora niesie sygnał.",
       description:
         "Sen wyjaśniony: fazy, ile go naprawdę potrzebujesz, dlaczego regularny rytm liczy się tak samo jak łączna liczba godzin i co może ujawnić trend Twojego snu.",
     },
@@ -72,9 +72,9 @@ const meta: LearnMeta = {
     },
     "body-temperature-baseline": {
       title: "Twoja bazowa temperatura jako sygnał",
-      dek: "Nie ma jednej „prawidłowej” temperatury — jest Twoja. Użyteczne jest odchylenie od niej.",
+      dek: "Nie ma jednej „prawidłowej” temperatury — jest Twoja. To odchylenie od niej naprawdę coś mówi.",
       description:
-        "Dlaczego temperatura ciała zmienia się w ciągu dnia i między ludźmi, dlaczego osobista linia bazowa bije podręcznikowe 37 °C i co może oznaczać utrzymujące się odchylenie.",
+        "Dlaczego temperatura ciała zmienia się w ciągu dnia i u różnych osób, dlaczego osobista linia bazowa mówi więcej niż podręcznikowe 37 °C i co może oznaczać utrzymujące się odchylenie.",
     },
     "blood-sugar-beyond-diabetes": {
       title: "Cukier we krwi, nie tylko przy cukrzycy",
@@ -114,9 +114,9 @@ const meta: LearnMeta = {
     },
     "reading-your-trends": {
       title: "Czytaj trendy, nie liczby",
-      dek: "Najużyteczniejsza umiejętność w śledzeniu zdrowia to nie odczyt liczby — to odczytywanie własnej linii w czasie.",
+      dek: "Najcenniejsza umiejętność w śledzeniu zdrowia to nie odczytanie liczby — to czytanie własnej linii w czasie.",
       description:
-        "Dlaczego Twoja osobista linia bazowa bije każdy zakres populacyjny, jak odróżnić znaczący trend od dziennego szumu i dlaczego spójne warunki pomiaru liczą się bardziej niż precyzja.",
+        "Dlaczego Twoja osobista linia bazowa mówi więcej niż jakikolwiek zakres populacyjny, jak odróżnić znaczący trend od dziennego szumu i dlaczego spójne warunki pomiaru liczą się bardziej niż precyzja.",
     },
     "steps-and-movement": {
       title: "Kroki i codzienny ruch",
@@ -126,7 +126,7 @@ const meta: LearnMeta = {
     },
     "caffeine-alcohol-and-your-readings": {
       title: "Kofeina, alkohol i Twoje odczyty",
-      dek: "Dwa codzienne nawyki zostawiają wyraźne odciski palców na Twoim tętnie, śnie i regeneracji. Oto czego szukać.",
+      dek: "Dwa codzienne nawyki zostawiają wyraźny ślad na Twoim tętnie, śnie i regeneracji. Oto czego szukać.",
       description:
         "Jak kofeina i alkohol widocznie poruszają wskaźniki, które śledzisz — tętno, HRV, sen i glukozę — i dlaczego wyjaśniają tak wiele kiepskich poranków.",
     },

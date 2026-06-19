@@ -5,7 +5,7 @@ const meta: LearnMeta = {
     hubKicker: "Learn",
     hubTitle: "Health metrics, explained",
     hubIntro:
-      "Clear, plain-language guides to the numbers your body produces — what they mean, what moves them, and when a change is worth attention. Every claim is sourced; each guide links down to a deeper reference page in the documentation.",
+      "Plain-language guides to the numbers your body produces — what they mean, what moves them, and when a change is worth your attention. Every claim is sourced, and each guide links down to a deeper reference page in the documentation.",
     allGuides: "All guides",
     minRead: (n) => `${n} min read`,
     goDeeperLabel: "Go deeper",

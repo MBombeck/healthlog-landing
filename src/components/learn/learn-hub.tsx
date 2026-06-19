@@ -56,7 +56,7 @@ export function LearnHub({ locale }: { locale: Locale }) {
         <h1 className="learn-gradient-text font-display text-3xl font-extrabold tracking-[-0.02em] md:text-5xl">
           {meta.ui.hubTitle}
         </h1>
-        <p className="text-text-secondary max-w-3xl text-lg leading-relaxed">
+        <p className="text-text-secondary text-lg leading-relaxed">
           {meta.ui.hubIntro}
         </p>
       </div>
@@ -90,7 +90,7 @@ export function LearnHub({ locale }: { locale: Locale }) {
                     <Link
                       key={a.slug}
                       href={learnArticlePath(locale, a.slug)}
-                      data-search={`${am?.title ?? ""} ${am?.dek ?? ""} ${meta.categories[a.category]}`.toLowerCase()}
+                      data-search={`${am?.title ?? ""} ${am?.dek ?? ""} ${meta.categories[a.category]} ${a.tags.join(" ")}`.toLowerCase()}
                       className="glass-card group flex flex-col gap-3 p-4 transition-colors hover:border-[rgba(189,147,249,0.25)]"
                     >
                       <LearnImage
@@ -105,9 +105,19 @@ export function LearnHub({ locale }: { locale: Locale }) {
                       <p className="text-text-secondary text-sm leading-relaxed">
                         {am?.dek}
                       </p>
-                      <span className="text-text-tertiary mt-auto pt-2 font-mono text-xs">
-                        {meta.ui.minRead(a.readingTimeMin)}
-                      </span>
+                      <div className="mt-auto flex flex-wrap items-center gap-1.5 pt-2">
+                        {a.tags.slice(0, 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-text-tertiary rounded-full border border-[rgba(98,114,164,0.14)] px-2 py-0.5 font-mono text-[0.65rem] tracking-wide"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                        <span className="text-text-tertiary ml-auto font-mono text-xs">
+                          {meta.ui.minRead(a.readingTimeMin)}
+                        </span>
+                      </div>
                     </Link>
                   );
                 })}

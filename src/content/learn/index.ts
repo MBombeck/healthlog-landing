@@ -23,6 +23,12 @@ export interface LearnArticle {
   category: CategoryKey;
   readingTimeMin: number;
   knowledgeSlug: string | null;
+  /**
+   * English, language-neutral topic tags. Deliberately not localized (like the
+   * source labels) — shown as quiet chips and folded into the hub search index
+   * so a reader can find a guide by topic in any language.
+   */
+  tags: readonly string[];
   /** ISO date; falls back to the section-wide dates below. */
   publishedAt?: string;
   updatedAt?: string;
@@ -50,25 +56,25 @@ export const CATEGORY_ORDER: CategoryKey[] = [
 ];
 
 export const LEARN_ARTICLES: LearnArticle[] = [
-  { slug: "understanding-your-health-metrics", category: "foundations", readingTimeMin: 8, knowledgeSlug: null },
-  { slug: "resting-heart-rate", category: "heart", readingTimeMin: 7, knowledgeSlug: "resting-heart-rate" },
-  { slug: "heart-rate-variability", category: "heart", readingTimeMin: 8, knowledgeSlug: "hrv" },
-  { slug: "reading-your-blood-pressure", category: "heart", readingTimeMin: 8, knowledgeSlug: "blood-pressure" },
-  { slug: "sleep-consistency", category: "sleep", readingTimeMin: 8, knowledgeSlug: "sleep" },
-  { slug: "respiratory-rate", category: "sleep", readingTimeMin: 6, knowledgeSlug: "respiratory-rate" },
-  { slug: "blood-oxygen-spo2", category: "sleep", readingTimeMin: 6, knowledgeSlug: "spo2" },
-  { slug: "body-temperature-baseline", category: "sleep", readingTimeMin: 6, knowledgeSlug: "temperature" },
-  { slug: "blood-sugar-beyond-diabetes", category: "metabolic", readingTimeMin: 9, knowledgeSlug: "glucose-hba1c" },
-  { slug: "vo2max-and-longevity", category: "fitness", readingTimeMin: 8, knowledgeSlug: "vo2max-activity" },
-  { slug: "beyond-the-scale", category: "body", readingTimeMin: 8, knowledgeSlug: "weight-bmi" },
-  { slug: "tracking-mood", category: "mind", readingTimeMin: 7, knowledgeSlug: "mood" },
-  { slug: "the-cycle-as-a-vital-sign", category: "mind", readingTimeMin: 8, knowledgeSlug: "menstrual-cycle" },
-  { slug: "how-wearables-measure-you", category: "foundations", readingTimeMin: 8, knowledgeSlug: null },
-  { slug: "reading-your-trends", category: "foundations", readingTimeMin: 7, knowledgeSlug: null },
-  { slug: "steps-and-movement", category: "fitness", readingTimeMin: 7, knowledgeSlug: null },
-  { slug: "caffeine-alcohol-and-your-readings", category: "metabolic", readingTimeMin: 7, knowledgeSlug: null },
-  { slug: "hydration-and-your-body", category: "body", readingTimeMin: 7, knowledgeSlug: null },
-  { slug: "stress-and-recovery", category: "mind", readingTimeMin: 8, knowledgeSlug: null },
+  { slug: "understanding-your-health-metrics", category: "foundations", readingTimeMin: 8, knowledgeSlug: null, tags: ["overview", "baseline", "trends", "getting started"] },
+  { slug: "resting-heart-rate", category: "heart", readingTimeMin: 7, knowledgeSlug: "resting-heart-rate", tags: ["heart rate", "cardiovascular", "recovery", "baseline"] },
+  { slug: "heart-rate-variability", category: "heart", readingTimeMin: 8, knowledgeSlug: "hrv", tags: ["HRV", "recovery", "stress", "heart rate"] },
+  { slug: "reading-your-blood-pressure", category: "heart", readingTimeMin: 8, knowledgeSlug: "blood-pressure", tags: ["blood pressure", "cardiovascular", "hypertension"] },
+  { slug: "sleep-consistency", category: "sleep", readingTimeMin: 8, knowledgeSlug: "sleep", tags: ["sleep", "circadian rhythm", "recovery", "routine"] },
+  { slug: "respiratory-rate", category: "sleep", readingTimeMin: 6, knowledgeSlug: "respiratory-rate", tags: ["respiratory rate", "breathing", "vital signs"] },
+  { slug: "blood-oxygen-spo2", category: "sleep", readingTimeMin: 6, knowledgeSlug: "spo2", tags: ["SpO₂", "blood oxygen", "vital signs", "wearables"] },
+  { slug: "body-temperature-baseline", category: "sleep", readingTimeMin: 6, knowledgeSlug: "temperature", tags: ["body temperature", "baseline", "vital signs"] },
+  { slug: "blood-sugar-beyond-diabetes", category: "metabolic", readingTimeMin: 9, knowledgeSlug: "glucose-hba1c", tags: ["blood glucose", "metabolic health", "HbA1c", "nutrition"] },
+  { slug: "vo2max-and-longevity", category: "fitness", readingTimeMin: 8, knowledgeSlug: "vo2max-activity", tags: ["VO₂max", "fitness", "longevity", "exercise"] },
+  { slug: "beyond-the-scale", category: "body", readingTimeMin: 8, knowledgeSlug: "weight-bmi", tags: ["weight", "BMI", "body composition", "body fat"] },
+  { slug: "tracking-mood", category: "mind", readingTimeMin: 7, knowledgeSlug: "mood", tags: ["mood", "mental health", "wellbeing"] },
+  { slug: "the-cycle-as-a-vital-sign", category: "mind", readingTimeMin: 8, knowledgeSlug: "menstrual-cycle", tags: ["menstrual cycle", "fertility", "hormones"] },
+  { slug: "how-wearables-measure-you", category: "foundations", readingTimeMin: 8, knowledgeSlug: null, tags: ["wearables", "sensors", "accuracy", "technology"] },
+  { slug: "reading-your-trends", category: "foundations", readingTimeMin: 7, knowledgeSlug: null, tags: ["trends", "baseline", "data literacy"] },
+  { slug: "steps-and-movement", category: "fitness", readingTimeMin: 7, knowledgeSlug: null, tags: ["steps", "activity", "exercise"] },
+  { slug: "caffeine-alcohol-and-your-readings", category: "metabolic", readingTimeMin: 7, knowledgeSlug: null, tags: ["caffeine", "alcohol", "sleep", "lifestyle"] },
+  { slug: "hydration-and-your-body", category: "body", readingTimeMin: 7, knowledgeSlug: null, tags: ["hydration", "fluid balance", "weight"] },
+  { slug: "stress-and-recovery", category: "mind", readingTimeMin: 8, knowledgeSlug: null, tags: ["stress", "recovery", "HRV", "sleep"] },
 ];
 
 export const LEARN_SLUGS = LEARN_ARTICLES.map((a) => a.slug);

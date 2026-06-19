@@ -62,7 +62,7 @@ const meta: LearnMeta = {
       title: "Atemfrequenz: das leiseste Vitalzeichen",
       dek: "Über deine Atemfrequenz denkst du kaum nach — genau deshalb ist eine Veränderung so aufschlussreich.",
       description:
-        "Was die Atemfrequenz ist, der Normalbereich in Ruhe, warum eine nächtliche Baseline so stabil ist und warum ein anhaltender Anstieg ein frühes, beachtenswertes Signal sein kann.",
+        "Was die Atemfrequenz ist, der Normalbereich in Ruhe, warum eine nächtliche Baseline so stabil ist und warum ein anhaltender Anstieg ein frühes Signal sein kann, das Beachtung verdient.",
     },
     "blood-oxygen-spo2": {
       title: "Was die Blutsauerstoffsättigung verrät (und was nicht)",

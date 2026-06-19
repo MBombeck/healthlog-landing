@@ -36,7 +36,7 @@ const meta: LearnMeta = {
     },
     "resting-heart-rate": {
       title: "Qué te dice tu frecuencia cardíaca en reposo",
-      dek: "El número más simple de tu muñeca es también uno de los más honestos. Así se lee.",
+      dek: "El número más simple de tu muñeca es también uno de los más honestos. Así se interpreta.",
       description:
         "Qué es la frecuencia cardíaca en reposo, qué se considera normal, qué la sube o la baja, y cuándo un cambio sostenido merece la atención de un profesional.",
     },

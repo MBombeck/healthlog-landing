@@ -43,18 +43,12 @@ export function LearnShell({
       >
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 md:px-6">
           <Link
-            href="/"
-            className="text-text-primary hover:text-purple font-display inline-flex min-h-11 items-center text-sm font-semibold tracking-tight transition-colors"
+            href={learnHubPath(locale)}
+            className="text-text-primary hover:text-purple font-display inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold tracking-tight transition-colors"
           >
-            HealthLog
+            HealthLog <span className="text-text-tertiary font-normal">Learn</span>
           </Link>
           <nav className="flex items-center gap-4 md:gap-5" aria-label="Learn">
-            <Link
-              href={learnHubPath(locale)}
-              className="text-text-tertiary hover:text-text-primary inline-flex min-h-11 items-center text-sm transition-colors"
-            >
-              {ui.hubKicker}
-            </Link>
             <a
               href="https://docs.healthlog.dev"
               target="_blank"
@@ -62,14 +56,6 @@ export function LearnShell({
               className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex"
             >
               {ui.docs}
-            </a>
-            <a
-              href="https://demo.healthlog.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex"
-            >
-              Demo
             </a>
             <LanguageSwitcher
               current={locale}

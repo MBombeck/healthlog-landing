@@ -6,7 +6,7 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "¿Por qué no debería reaccionar ante una sola lectura de salud?",
-      a: "El cuerpo es ruidoso. La variabilidad de la frecuencia cardíaca oscila cerca de un diez por ciento de un día a otro como puro ruido, y el peso corporal varía uno o dos kilos solo por líquidos, de modo que una lectura alta o baja suele estar dentro de esa dispersión normal. Lo que tiene significado es la dirección de un promedio móvil a lo largo de días y semanas, no un punto aislado.",
+      a: "El cuerpo es ruidoso. La variabilidad de la frecuencia cardíaca oscila cerca de un diez por ciento de un día a otro como puro ruido, y el peso corporal varía uno o dos kilos solo por líquidos; una lectura alta o baja suele estar dentro de esa dispersión normal. Lo que significa algo es la dirección de un promedio móvil a lo largo de días y semanas, no un punto aislado.",
     },
     {
       q: "¿Por qué varias de mis métricas se mueven juntas a la vez?",
@@ -20,7 +20,7 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
   "resting-heart-rate": [
     {
       q: "¿Cuál es una frecuencia cardíaca en reposo normal?",
-      a: "El rango clásico en adultos es de 60 a 100 latidos por minuto, y las personas entrenadas en resistencia suelen situarse entre los 40 y los 60. Esa banda se trazó por seguridad clínica más que por salud óptima, y grandes estudios encuentran que el riesgo sube de forma bastante constante a medida que aumenta la frecuencia en reposo, así que la tendencia importa más que cualquier lectura aislada.",
+      a: "El rango clásico en adultos es de 60 a 100 latidos por minuto, y las personas entrenadas en resistencia suelen situarse entre los 40 y los 60. Esa banda se trazó por seguridad clínica más que por salud óptima, y grandes estudios encuentran que el riesgo sube de forma bastante constante a medida que aumenta la frecuencia en reposo. La tendencia importa más que cualquier lectura aislada.",
     },
     {
       q: "¿Cuál es el mejor momento para medir la frecuencia cardíaca en reposo?",
@@ -42,7 +42,7 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "¿Por qué cambia tanto mi VFC de una noche a otra?",
-      a: "La VFC es extremadamente sensible a las condiciones. La postura, la frecuencia respiratoria, la hora del día, la última comida, la cafeína, una enfermedad, el sueño y el estrés agudo la mueven, y el alcohol la suprime de forma dependiente de la dosis. Las oscilaciones de una sola noche de cerca de un diez por ciento son habituales y no significan nada por sí solas, por lo que un promedio móvil de siete días es la unidad honesta para leerla.",
+      a: "La VFC es extremadamente sensible a las condiciones. La postura, la frecuencia respiratoria, la hora del día, la última comida, la cafeína, una enfermedad, el sueño y el estrés agudo la mueven, y el alcohol la suprime de forma dependiente de la dosis. Las oscilaciones de una sola noche de cerca de un diez por ciento son habituales y no significan nada por sí solas; un promedio móvil de siete días es la unidad honesta para leerla.",
     },
     {
       q: "¿Por qué tengo la VFC baja después de beber alcohol?",
@@ -64,7 +64,7 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "¿Cómo mido correctamente mi presión arterial en casa?",
-      a: "Siéntate tranquilo cinco minutos antes, con la espalda apoyada y los pies planos, el brazo descansando a la altura del corazón y un brazalete de brazo del tamaño correcto. Evita la cafeína, fumar y hablar de antemano. La técnica mueve la cifra más que casi cualquier cosa que ocurra dentro de ti ese día, y los promedios fuera de la consulta a lo largo de varios días son el estándar de referencia, con la hipertensión en casa estimada en torno a 135/85.",
+      a: "Siéntate tranquilo cinco minutos antes, con la espalda apoyada y los pies planos, el brazo descansando a la altura del corazón y un brazalete de brazo del tamaño correcto. Evita la cafeína, fumar y hablar de antemano. La técnica mueve la cifra más que casi cualquier cosa que ocurra dentro de ti ese día. Los promedios fuera de la consulta a lo largo de varios días son el estándar de referencia, con la hipertensión en casa estimada en torno a 135/85.",
     },
     {
       q: "¿Cuándo es una emergencia una lectura de presión arterial alta?",
@@ -96,7 +96,7 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "¿Por qué se mide la frecuencia respiratoria por la noche y no durante el día?",
-      a: "Despierto, la frecuencia respiratoria es una de las cifras más dependientes del estado que produce tu cuerpo; hablar, moverse, la emoción e incluso saber que te están midiendo la modifican, así que una lectura puntual diurna es casi inútil. Dormido, esas influencias desaparecen y tu frecuencia nocturna se asienta en una cifra notablemente estable, lo que hace fácil ver una desviación real.",
+      a: "Despierto, la frecuencia respiratoria es una de las cifras más dependientes del estado que produce tu cuerpo; hablar, moverse, la emoción e incluso saber que te están midiendo la modifican, así que una lectura puntual diurna es casi inútil. Dormido, esas influencias desaparecen y tu frecuencia nocturna se asienta en una cifra notablemente estable, fácil de comparar para ver una desviación real.",
     },
     {
       q: "¿Qué significa que mi frecuencia respiratoria nocturna suba?",
@@ -132,7 +132,7 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "¿Por qué cambia mi temperatura a lo largo del día?",
-      a: "La temperatura sigue una curva circadiana, oscilando cerca de medio grado entre su punto más bajo de la madrugada, hacia las 4 a 8 de la mañana, y su pico al principio de la noche, en torno a las 6 a 8 de la tarde. Una lectura nocturna que parece algo alta suele ser solo el pico diario normal, por lo que conviene comparar lecturas tomadas a la misma hora del día y en el mismo sitio.",
+      a: "La temperatura sigue una curva circadiana, oscilando cerca de medio grado entre su punto más bajo de la madrugada, hacia las 4 a 8 de la mañana, y su pico al principio de la noche, en torno a las 6 a 8 de la tarde. Una lectura nocturna que parece algo alta suele ser solo el pico diario normal; compara siempre lecturas tomadas a la misma hora del día y en el mismo sitio.",
     },
     {
       q: "¿Es la temperatura de la piel de un vestible lo mismo que la temperatura corporal?",
@@ -240,11 +240,11 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "¿Cómo sabe mi reloj mis fases de sueño?",
-      a: "No ve tu cerebro. Infiere el sueño a partir de lo poco que te mueves, a menudo combinado con la frecuencia cardíaca y su variación latido a latido, y luego etiqueta la noche en ligero, profundo y REM. Frente al estándar del laboratorio clínico, los dispositivos son bastante buenos distinguiendo dormido o despierto y bastante peores en qué fase, así que lee con confianza la hora de acostarte y la duración total y trata las fases de colores como una estimación.",
+      a: "No ve tu cerebro. Infiere el sueño a partir de lo poco que te mueves, a menudo combinado con la frecuencia cardíaca y su variación latido a latido, y luego etiqueta la noche en ligero, profundo y REM. Frente al estándar del laboratorio clínico, los dispositivos distinguen bastante bien dormido de despierto y bastante peor en qué fase: fíate de la hora de acostarte y la duración total, y trata las fases de colores como una estimación.",
     },
     {
       q: "¿Son exactas las lecturas de los dispositivos vestibles?",
-      a: "La mayoría de lo que te muestra un dispositivo vestible es una estimación, no una medición de laboratorio. La frecuencia cardíaca óptica, las fases de sueño inferidas, la SpO2 de muñeca y toda puntuación de recuperación o disposición son modelos construidos sobre unas pocas señales reales, lo bastante exactos para revelar cambios con el tiempo pero rara vez lo bastante precisos para tratar un solo valor como verdad absoluta. Léelos como relativos, no absolutos.",
+      a: "La mayoría de lo que te muestra un dispositivo vestible es una estimación, no una medición de laboratorio. La frecuencia cardíaca óptica, las fases de sueño inferidas, la SpO2 de muñeca y toda puntuación de recuperación o disposición son modelos construidos sobre unas pocas señales reales, lo bastante exactos para revelar cambios con el tiempo pero rara vez lo bastante precisos para tratar un solo valor como verdad absoluta. Léelos en relativo, no en absoluto.",
     },
     {
       q: "¿Qué miden en realidad las puntuaciones de recuperación y disposición?",
@@ -258,7 +258,7 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "¿Cómo distingo una señal real del ruido aleatorio?",
-      a: "El ruido es una lectura cerca del borde de tu rango habitual, o un pequeño movimiento que se revierte al día siguiente. La señal es una dirección que persiste: un cambio de varios días muy por encima de tu dispersión habitual, o una lenta deriva en el promedio móvil a lo largo de semanas. Un promedio móvil suaviza la dispersión, y un cambio varias veces mayor que tu vaivén diario habitual merece atención.",
+      a: "El ruido es una lectura cerca del borde de tu rango habitual, o un pequeño movimiento que se revierte al día siguiente. La señal es una dirección que persiste: un cambio de varios días muy por encima de tu dispersión habitual, o una lenta deriva en el promedio móvil a lo largo de semanas. El promedio móvil suaviza el vaivén, y un cambio varias veces mayor que tu oscilación diaria habitual merece atención.",
     },
     {
       q: "¿Cuánto tarda en ser fiable una base?",

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { CATEGORY_ORDER, type CategoryKey } from "@/content/learn";
 import { getMeta } from "@/content/learn/meta";
 import {
+  OG_LOCALE,
   PREFIXED_LOCALES,
   SITE_ORIGIN,
   hreflangMap,
@@ -34,16 +35,34 @@ export async function generateMetadata({
   if (!isLocale(lang) || !isCategory(category)) return {};
   const meta = getMeta(lang);
   const label = meta.categories[category];
+  const title = `${label} — ${meta.ui.hubKicker}`;
+  const description = `${label}: ${meta.ui.hubIntro}`;
+  const url = `${SITE_ORIGIN}/${lang}/learn/topic/${category}`;
   return {
-    title: `${label} — ${meta.ui.hubKicker}`,
-    description: `${label}: ${meta.ui.hubIntro}`,
+    title,
+    description,
     alternates: {
-      canonical: `${SITE_ORIGIN}/${lang}/learn/topic/${category}`,
+      canonical: url,
       languages: hreflangMap((l) =>
         l === "en" ? `/learn/topic/${category}` : `/${l}/learn/topic/${category}`,
       ),
     },
     robots: { index: true, follow: true },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "website",
+      siteName: "HealthLog",
+      locale: OG_LOCALE[lang],
+      images: ["/og-image.png"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og-image.png"],
+    },
   };
 }
 

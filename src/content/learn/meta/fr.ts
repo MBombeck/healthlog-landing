@@ -42,7 +42,7 @@ const meta: LearnMeta = {
     },
     "heart-rate-variability": {
       title: "La variabilité de la fréquence cardiaque, sans le battage",
-      dek: "La VFC est puissante et très mal comprise. Un regard posé sur ce que disent les écarts d'un battement à l'autre.",
+      dek: "La VFC est puissante et largement mal comprise. Un regard posé sur ce que révèlent les écarts d'un battement à l'autre.",
       description:
         "La variabilité de la fréquence cardiaque expliquée : ce que mesure la VFC, pourquoi elle varie autant d'une personne à l'autre, comment lire votre propre tendance, et les limites d'une mesure isolée.",
     },
@@ -60,7 +60,7 @@ const meta: LearnMeta = {
     },
     "respiratory-rate": {
       title: "La fréquence respiratoire : le signe vital le plus discret",
-      dek: "Vous pensez rarement à votre rythme respiratoire — c'est précisément pour cela qu'un changement y est si parlant.",
+      dek: "Vous pensez rarement à votre respiration — et c'est justement pour cela qu'un changement y est si parlant.",
       description:
         "Ce qu'est la fréquence respiratoire, sa plage normale au repos, pourquoi une référence nocturne est si stable, et pourquoi une hausse durable peut être un signal précoce digne d'attention.",
     },
@@ -116,7 +116,7 @@ const meta: LearnMeta = {
       title: "Lisez des tendances, pas des chiffres",
       dek: "La compétence la plus utile en suivi de santé n'est pas de lire un chiffre — c'est de lire votre propre ligne dans le temps.",
       description:
-        "Pourquoi votre référence personnelle l'emporte sur toute plage de population, comment distinguer une tendance parlante du bruit quotidien, et pourquoi des conditions de mesure cohérentes comptent plus que la précision.",
+        "Pourquoi votre référence personnelle l'emporte sur n'importe quelle plage de population, comment distinguer une vraie tendance du bruit quotidien, et pourquoi mesurer toujours dans les mêmes conditions compte plus que la précision.",
     },
     "steps-and-movement": {
       title: "Les pas et le mouvement du quotidien",
@@ -126,7 +126,7 @@ const meta: LearnMeta = {
     },
     "caffeine-alcohol-and-your-readings": {
       title: "La caféine, l'alcool et vos mesures",
-      dek: "Deux habitudes du quotidien laissent des empreintes nettes sur votre fréquence cardiaque, votre sommeil et votre récupération. Voici ce qu'il faut chercher.",
+      dek: "Deux habitudes du quotidien laissent des traces nettes sur votre fréquence cardiaque, votre sommeil et votre récupération. Voici ce qu'il faut y chercher.",
       description:
         "Comment la caféine et l'alcool déplacent visiblement les indicateurs que vous suivez — fréquence cardiaque, VFC, sommeil et glycémie — et pourquoi ils expliquent tant de matins difficiles.",
     },

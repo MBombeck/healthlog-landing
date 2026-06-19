@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { SITE_ORIGIN } from "@/content/learn/locales";
+
 /**
  * Public support landing.
  *
@@ -13,24 +15,41 @@ import Link from "next/link";
  *   - Where to install      → docs.healthlog.dev
  *   - Where to report bugs  → GitHub Issues
  *   - Where to ask for help → GitHub Discussions, then Issues as fallback
- *   - Email contact         → mbombeck@gmail.com (no dedicated support
- *                             mailbox configured yet; the documented address
- *                             is the maintainer's personal one used across
- *                             the existing /privacy and /imprint surfaces)
+ *   - Email contact         → support@healthlog.dev (project support mailbox,
+ *                             also referenced from the /privacy and /imprint
+ *                             surfaces)
  *
  * Visual language matches the privacy page — self-contained, dark Dracula
  * tokens, no app shell.
  */
 
 const LAST_UPDATED = "2026-05-16";
-const SUPPORT_EMAIL = "mbombeck@gmail.com";
+const SUPPORT_EMAIL = "support@healthlog.dev";
+
+const TITLE = "Support";
+const DESCRIPTION =
+  "How to install, configure, and get help with HealthLog — the self-hosted health-tracking PWA.";
 
 export const metadata: Metadata = {
-  title: "Support",
-  description:
-    "How to install, configure, and get help with HealthLog — the self-hosted health-tracking PWA.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: "https://healthlog.dev/support" },
   robots: { index: true, follow: true },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: `${SITE_ORIGIN}/support`,
+    type: "website",
+    siteName: "HealthLog",
+    locale: "en_US",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og-image.png"],
+  },
 };
 
 interface ResourceCardProps {

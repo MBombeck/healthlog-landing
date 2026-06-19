@@ -6,7 +6,7 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
     },
     {
       q: "Why shouldn't I react to a single health reading?",
-      a: "Bodies are noisy. Heart rate variability swings about ten percent day to day as pure noise, and body weight drifts a kilogram or two on fluid alone, so one high or low reading is usually inside that normal scatter. What carries meaning is the direction of a rolling average over days and weeks, not any single dot.",
+      a: "Bodies are noisy. Heart rate variability swings about ten percent from one day to the next as pure noise, and body weight drifts a kilogram or two on fluid alone, so one high or low reading usually sits inside that normal scatter. The meaning lives in the direction of a rolling average over days and weeks, not in any single dot.",
     },
     {
       q: "Why do several of my metrics move together at once?",

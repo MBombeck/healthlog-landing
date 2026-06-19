@@ -11,7 +11,7 @@
 
   --text-primary: #f0eff4;
   --text-secondary: #8b8d9e;
-  --text-tertiary: #5a5c6e;
+  --text-tertiary: #8a8c9e;
 
   --purple: #bd93f9;
   --purple-dim: rgba(189, 147, 249, 0.15);
@@ -68,6 +68,17 @@
   top: 0;
   outline: 2px solid var(--text-primary);
   outline-offset: 2px;
+}
+
+/* ── Global keyboard-focus ring ──────────────────── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 /* ── Base ────────────────────────────────────────── */
@@ -817,6 +828,8 @@ body {
   color: var(--text-primary);
   margin-top: 3rem;
   letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 .prose-learn h3 {
   font-family: var(--font-display);
@@ -824,6 +837,8 @@ body {
   font-size: 1.2rem;
   color: var(--text-primary);
   margin-top: 2rem;
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 .prose-learn h2 a,
 .prose-learn h3 a {
@@ -1246,4 +1261,56 @@ body {
 .learn-toc--inline ol { padding-bottom: 0.85rem; }
 @media (min-width: 1024px) {
   .learn-toc--inline { display: none; }
+}
+
+/* ── Forced colors (Windows High Contrast) ───────── */
+@media (forced-colors: active) {
+  .glass-card,
+  .cta-secondary,
+  .section-label {
+    border: 1px solid CanvasText;
+  }
+}
+
+/* ── Print stylesheet (long-form /learn articles) ── */
+@media print {
+  /* Hide decorative layers. */
+  .noise-overlay,
+  .aurora,
+  .aurora-pink,
+  .grid-pattern,
+  .ecg-canvas,
+  canvas {
+    display: none !important;
+  }
+  .section-glow::before {
+    display: none !important;
+  }
+
+  /* Legible black-on-white. */
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .prose-learn,
+  .prose-learn p,
+  .prose-learn li,
+  .prose-learn h1,
+  .prose-learn h2,
+  .prose-learn h3 {
+    color: #000 !important;
+  }
+
+  /* Force collapsed <details> (footnotes, FAQ, ToC) to print their bodies. */
+  details > *:not(summary) {
+    display: revert !important;
+  }
+  .learn-footnotes .footnotes {
+    border-top: 1px solid #ccc;
+    padding-top: 1rem;
+  }
+  .learn-footnotes .footnotes h2 {
+    display: revert !important;
+  }
 }

@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
+import { SITE_ORIGIN } from "@/content/learn/locales";
+
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-display",
   subsets: ["latin"],
@@ -53,11 +55,16 @@ export const metadata: Metadata = {
     "privacy-first health app",
     "Docker health app",
   ],
+  manifest: "/site.webmanifest",
   icons: {
     icon: "/favicon.svg",
+    apple: [{ rel: "apple-touch-icon", url: "/apple-touch-icon.png" }],
   },
   alternates: {
     canonical: "https://healthlog.dev",
+    types: {
+      "application/rss+xml": `${SITE_ORIGIN}/learn/feed.xml`,
+    },
   },
   openGraph: {
     title: "HealthLog — Self-Hosted Health Tracking with Full Data Ownership",

@@ -128,7 +128,7 @@ export function DemoCredentials() {
           <KeyIcon />
         </div>
         <div className="text-left">
-          <p className="text-xs text-text-tertiary font-mono tracking-wider uppercase">Demo-Zugangsdaten</p>
+          <p className="text-xs text-text-tertiary font-mono tracking-wider uppercase">Demo credentials</p>
         </div>
       </div>
 
@@ -139,7 +139,7 @@ export function DemoCredentials() {
             className="generate-button group"
           >
             <KeyIcon />
-            <span>Zugangsdaten generieren</span>
+            <span>Reveal credentials</span>
             <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4 transition-transform group-hover:rotate-90" aria-hidden="true">
               <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
@@ -157,7 +157,7 @@ export function DemoCredentials() {
               <span className="text-xs text-text-tertiary font-mono tracking-wider uppercase">User</span>
               {copiedField === "user" ? (
                 <span className="text-sm font-mono text-green font-semibold flex items-center gap-1.5">
-                  <CopyCheckIcon /> Kopiert
+                  <CopyCheckIcon /> Copied
                 </span>
               ) : (
                 <span className="text-sm font-mono text-purple font-semibold tracking-wide tabular-nums flex items-center gap-2">
@@ -177,7 +177,7 @@ export function DemoCredentials() {
               <span className="text-xs text-text-tertiary font-mono tracking-wider uppercase">Password</span>
               {copiedField === "password" ? (
                 <span className="text-sm font-mono text-green font-semibold flex items-center gap-1.5">
-                  <CopyCheckIcon /> Kopiert
+                  <CopyCheckIcon /> Copied
                 </span>
               ) : (
                 <span className="text-sm font-mono text-purple font-semibold tracking-wide tabular-nums flex items-center gap-2">

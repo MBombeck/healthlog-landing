@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { LEARN_ARTICLES } from "@/content/learn";
+import { CATEGORY_ORDER, LEARN_ARTICLES } from "@/content/learn";
 import { LEARN_UPDATED } from "@/content/learn";
 import {
   LOCALES,
@@ -19,8 +19,11 @@ const LAST_MODIFIED = "2026-06-19";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: `${SITE_ORIGIN}/`, lastModified: LAST_MODIFIED, changeFrequency: "weekly", priority: 1.0 },
+    { url: `${SITE_ORIGIN}/features`, lastModified: LAST_MODIFIED, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_ORIGIN}/security`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_ORIGIN}/privacy`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE_ORIGIN}/support`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${SITE_ORIGIN}/imprint`, lastModified: LAST_MODIFIED, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const learnPages: MetadataRoute.Sitemap = LOCALES.flatMap((locale) => [
@@ -40,5 +43,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ]);
 
-  return [...staticPages, ...learnPages];
+  const topicPages: MetadataRoute.Sitemap = LOCALES.flatMap((locale) =>
+    CATEGORY_ORDER.map((category) => ({
+      url: `${SITE_ORIGIN}${learnHubPath(locale)}/topic/${category}`,
+      lastModified: LEARN_UPDATED,
+      changeFrequency: "monthly" as const,
+      priority: locale === "en" ? 0.6 : 0.5,
+      alternates: {
+        languages: hreflangMap((l) => `${learnHubPath(l)}/topic/${category}`),
+      },
+    })),
+  );
+
+  return [...staticPages, ...learnPages, ...topicPages];
 }

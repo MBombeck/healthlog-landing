@@ -4,8 +4,12 @@ import Image from "next/image";
 import { EcgMonitor } from "@/components/EcgMonitor";
 import { ScrollIndicator, ScrollRevealObserver } from "@/components/HeroClient";
 import { DemoCredentials } from "@/components/DemoCredentials";
+import { DemoPopupLink } from "@/components/DemoPopupLink";
 import { TerminalBlock } from "@/components/TerminalBlock";
 import { AppShowcase } from "@/components/AppShowcase";
+import { CATEGORY_COLOR, LEARN_ARTICLES } from "@/content/learn";
+import { getMeta } from "@/content/learn/meta";
+import { LearnImage } from "@/components/learn/learn-image";
 
 /* ── SVG Icons ──────────────────────────────────── */
 
@@ -61,9 +65,9 @@ function BrainIcon() {
   );
 }
 
-function FileIcon() {
+function FileIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       <polyline points="14,2 14,8 20,8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       <line x1="8" y1="13" x2="16" y2="13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -78,6 +82,47 @@ function SyncIcon() {
       <path d="M23 4v6h-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       <path d="M1 20v-6h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function FlaskIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
+      <path d="M9 2h6M10 2v6.5L4.8 18a2 2 0 0 0 1.8 3h10.8a2 2 0 0 0 1.8-3L14 8.5V2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="7" y1="15" x2="17" y2="15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function CalendarIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="3" y1="9" x2="21" y2="9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function ShieldFooterIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function LifeBuoyIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.5" />
+      <line x1="4.93" y1="4.93" x2="9.17" y2="9.17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="14.83" y1="14.83" x2="19.07" y2="19.07" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="14.83" y1="9.17" x2="19.07" y2="4.93" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="4.93" y1="19.07" x2="9.17" y2="14.83" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
@@ -143,37 +188,57 @@ function PlayIcon({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
+function RssIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="5" cy="19" r="1.5" fill="currentColor" />
+    </svg>
+  );
+}
+
+function TagIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="7" y1="7" x2="7.01" y2="7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 /* ── Feature Data ───────────────────────────────── */
 
 const primaryFeatures = [
   {
     icon: <HeartMetricIcon />,
     title: "All vitals at a glance",
-    description: "Track weight, blood pressure, heart rate, body fat, body composition (total body water + bone mass), blood glucose, pulse oximetry (SpO₂), sleep, and steps. Interactive charts reveal trends instantly — with personalized target ranges. A persistent rollup tier keeps long-range reads sub-second even on years of history.",
+    description: "Weight, blood pressure, heart rate, body composition, blood glucose, SpO₂, sleep, steps and mood — every reading on one timeline. Interactive charts carry personal target ranges and vs-last-month or vs-last-year overlays, and a persistent rollup tier keeps years of history sub-second.",
     color: "purple",
   },
   {
     icon: <PillIcon />,
     title: "Never miss a dose again",
-    description: "Define intake windows, get reminded via Telegram or Push, and monitor your compliance. Automatic escalation when doses are missed.",
+    description: "Fixed times, flexible intervals, cyclic on/off courses, as-needed or one-off injections — schedule any regimen and set per-dose intake windows. Supply tracking warns you before you run out, reminders escalate when a dose slips, and injectables carry site rotation and dose-titration history.",
     color: "cyan",
   },
   {
     icon: <BrainIcon />,
     title: "AI Coach grounded in your data",
-    description: "A conversational Coach plus daily briefing, weekly report, and a Health Score tile — every reply cites the metric, window and reading count it drew on, with mini-charts pinned underneath. Multi-provider chain: ChatGPT subscription, BYOK OpenAI, BYOK Anthropic, local Ollama. Local endpoints keep all data on your network.",
+    description: "A conversational Coach, daily briefing, weekly report and Health Score — every reply cites the exact metric, window and reading count it drew on, with mini-charts pinned underneath. Bring your own provider: your ChatGPT subscription, an OpenAI or Anthropic key, or a fully local model that never leaves your network.",
     color: "orange",
   },
 ];
 
 const secondaryFeatures = [
-  { icon: <SyncIcon />, title: "Apple Health import", description: "Drop your iOS export.zip on the upload page — a streaming parser folds multi-GB archives into the same timeline as everything else.", color: "purple" },
-  { icon: <HeartMetricIcon />, title: "Custom thresholds", description: "Override the guideline defaults with the targets your clinician set. Audit-logged, marked clearly on the Doctor Report PDF.", color: "purple" },
-  { icon: <FileIcon />, title: "Customizable dashboard", description: "Show, hide, and reorder every widget. Reset to defaults anytime — your data is never touched.", color: "green" },
-  { icon: <MoodIcon />, title: "Built-in feedback", description: "Send bug reports and feature requests from inside the app. Works out of the box; GitHub escalation is opt-in for admins.", color: "pink" },
-  { icon: <FileIcon />, title: "Doctor report PDF", description: "Professional medical reports in your locale — numbers, dates, and units formatted right. Includes glucose trends.", color: "green" },
-  { icon: <SyncIcon />, title: "Withings sync", description: "Automatic sync with Withings scales, BP monitors, and activity trackers.", color: "cyan" },
-  { icon: <MoodIcon />, title: "Mood tracking", description: "5-point scale with tags, correlation analysis, and journal integration.", color: "pink" },
+  { icon: <SyncIcon />, title: "Sync your devices", description: "Withings, WHOOP, Oura, Polar, Fitbit and Nightscout sync over OAuth; Apple Health flows two-way through the iOS app. Several sources on the same day resolve to one canonical reading — no double-counting.", color: "cyan" },
+  { icon: <SyncIcon />, title: "Apple Health import", description: "Drop your iOS export.zip on the upload page — a streaming parser folds multi-GB archives into the same timeline, idempotent on the archive's checksum.", color: "purple" },
+  { icon: <FlaskIcon />, title: "Lab results & biomarkers", description: "Log blood work against a biomarker catalogue with reference ranges, group results into panels, and watch every marker trend over time.", color: "green" },
+  { icon: <HeartMetricIcon />, title: "Illness & condition journal", description: "Track acute illnesses, chronic conditions and flares with a daily symptom log. An active episode turns on Rest Mode, which softens nudges and reframes your score instead of penalising it.", color: "pink" },
+  { icon: <MoodIcon />, title: "Cycle tracking", description: "Symptothermal cycle tracking with period logging, symptoms and a careful prediction model. Discreet by design, and off unless you switch it on.", color: "pink" },
+  { icon: <CalendarIcon />, title: "Preventive-care reminders", description: "Schedule recurring check-ups and measurements — annual blood work, a week of twice-daily blood pressure — on a rolling cadence or a calendar rule. They resolve themselves once the reading lands.", color: "orange" },
+  { icon: <FileIcon />, title: "Export everything", description: "Your data leaves the way it came in: CSV, JSON, a localized doctor-report PDF, and a FHIR R4 bundle (Patient, Observation, MedicationStatement, MedicationAdministration, Coverage) for a clinician's system.", color: "green" },
+  { icon: <FileIcon />, title: "Customizable dashboard", description: "Show, hide and reorder every widget. Reset to defaults anytime — your data is never touched.", color: "purple" },
+  { icon: <MoodIcon />, title: "Mood tracking", description: "A five-point scale with tags and notes, correlated against sleep, activity and the rest of your timeline.", color: "pink" },
 ];
 
 const colorMap: Record<string, { bg: string; text: string }> = {
@@ -201,6 +266,32 @@ const privacyChecks = [
   "Password fallback with Argon2id hashing and strength validation",
   "Withings OAuth tokens encrypted in the database",
   "Source available — every single line of code is auditable",
+];
+
+// Kept verbatim in sync with the FAQPage JSON-LD in src/app/layout.tsx —
+// Google rewards visible + structured parity, so the answer text here must
+// match the schema answers word for word.
+const faqs = [
+  {
+    question: "Is HealthLog free?",
+    answer:
+      "Yes, for noncommercial use. HealthLog is source available under the PolyForm Noncommercial 1.0.0 licence. You run it on your own server with a single docker compose up — there is no subscription and no paid tier.",
+  },
+  {
+    question: "Does HealthLog sync with Apple Health?",
+    answer:
+      "Yes. The native SwiftUI iOS app (public TestFlight beta) keeps Apple Health (HealthKit) in two-way sync — steps, weight, blood pressure, blood glucose, sleep, and body composition flow straight to your own server. On any platform you can also drop an Apple Health export.zip on the upload page.",
+  },
+  {
+    question: "Where is my health data stored?",
+    answer:
+      "Entirely on your own infrastructure. HealthLog is self-hosted on PostgreSQL, with all sensitive fields encrypted at rest using AES-256-GCM. There is no cloud dependency, no telemetry, and no third-party analytics.",
+  },
+  {
+    question: "Which devices and services does HealthLog integrate with?",
+    answer:
+      "Withings devices (Body+, BPM Connect, ScanWatch) sync over OAuth2 with near-real-time webhooks, and Apple Health syncs live through the iOS app or via export import. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
+  },
 ];
 
 const terminalCommands = `git clone https://github.com/MBombeck/HealthLog.git
@@ -239,6 +330,18 @@ function ComparisonRow({ feature, values, highlights }: {
 /* ── Main Page (Server Component) ────────────────── */
 
 export default function Home() {
+  const learnMeta = getMeta("en");
+  const featuredGuides = [
+    "resting-heart-rate",
+    "heart-rate-variability",
+    "sleep-consistency",
+    "blood-sugar-beyond-diabetes",
+    "vo2max-and-longevity",
+    "beyond-the-scale",
+  ]
+    .map((slug) => LEARN_ARTICLES.find((a) => a.slug === slug))
+    .filter((a): a is (typeof LEARN_ARTICLES)[number] => Boolean(a));
+
   return (
     <div className="relative overflow-x-clip">
       {/* Client-side scroll reveal observer */}
@@ -255,8 +358,55 @@ export default function Home() {
       {/* Noise texture overlay */}
       <div className="noise-overlay" />
 
+      {/* ─── STICKY HEADER NAV ────────────────────── */}
+      <nav
+        className="bg-void/80 sticky top-0 z-50 border-b border-[rgba(98,114,164,0.08)] backdrop-blur"
+        aria-label="Primary"
+      >
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+          <a
+            href="#main-content"
+            className="text-text-primary hover:text-purple font-display inline-flex min-h-11 items-center gap-2 text-sm font-semibold tracking-tight transition-colors"
+          >
+            <LogoIcon className="h-6 w-6" />
+            HealthLog
+          </a>
+          <div className="flex items-center gap-4 md:gap-5">
+            <a href="#features" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
+              Features
+            </a>
+            <a href="#ai-coach" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
+              AI Coach
+            </a>
+            <a href="#privacy" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
+              Privacy
+            </a>
+            <Link href="/learn" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
+              Learn
+            </Link>
+            <a href="https://docs.healthlog.dev" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
+              Docs
+            </a>
+            <DemoPopupLink className="text-text-tertiary hover:text-text-primary inline-flex min-h-11 items-center gap-1.5 text-sm transition-colors">
+              <PlayIcon className="h-4 w-4" />
+              Demo
+            </DemoPopupLink>
+            <a
+              href="https://github.com/MBombeck/HealthLog"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View HealthLog on GitHub"
+              className="text-text-secondary hover:text-text-primary hover:border-[rgba(189,147,249,0.35)] inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[rgba(98,114,164,0.18)] bg-[rgba(15,16,24,0.6)] px-3 text-sm transition-colors"
+            >
+              <GitHubIcon className="h-4 w-4" />
+              <span className="hidden md:inline">GitHub</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
       {/* ─── HERO ─────────────────────────────────── */}
-      <header id="main-content" className="relative min-h-[100dvh] flex flex-col items-center justify-center px-4 sm:px-6 overflow-hidden" role="banner">
+      <header id="main-content" className="relative min-h-screen min-h-[100dvh] flex flex-col items-center justify-center px-4 sm:px-6 overflow-hidden" role="banner">
         <div className="aurora" />
         <div className="aurora-pink" />
         <div className="grid-pattern" />
@@ -270,7 +420,7 @@ export default function Home() {
           <h1 className="font-display font-extrabold text-[2.25rem] sm:text-6xl md:text-[5.5rem] leading-[1.05] tracking-[-0.03em] mb-8">
             <span className="text-text-primary">Your Health.</span>
             <br />
-            <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #bd93f9 0%, #8be9fd 50%, #ff79c6 100%)" }}>
+            <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #bd93f9 0%, #8be9fd 50%, #ff79c6 100%)", WebkitTextFillColor: "transparent" }}>
               Your Server.
             </span>
           </h1>
@@ -278,8 +428,9 @@ export default function Home() {
           <p className="text-text-secondary text-lg sm:text-xl md:text-[1.35rem] max-w-2xl mx-auto mb-14 leading-[1.7] font-light tracking-[-0.01em]">
             The self-hosted health tracking app that gives you full control.
             Weight, blood pressure, glucose, medications, mood — encrypted on
-            your own server. Syncs live with Apple Health on iOS, or with
-            Withings on any device. Source available.
+            your own server. Syncs live with Apple Health on iOS and with
+            Withings, WHOOP, Oura, Polar, Fitbit and Nightscout on any device.
+            Source available.
           </p>
 
           <nav className="flex flex-col sm:flex-row items-center justify-center gap-4" aria-label="Primary actions">
@@ -293,18 +444,9 @@ export default function Home() {
               <span>View on GitHub</span>
               <ArrowIcon />
             </a>
-            <a
-              href="https://docs.healthlog.dev"
-              className="cta-secondary group"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BookIcon className="w-5 h-5" />
-              <span>Read the Docs</span>
-            </a>
             <Link href="/learn" className="cta-secondary group">
               <BookIcon className="w-5 h-5" />
-              <span>Learn</span>
+              <span>Learn about your metrics</span>
             </Link>
           </nav>
 
@@ -316,7 +458,7 @@ export default function Home() {
       {/* ─── APP MOCKUP ───────────────────────────── */}
       <main>
       <section id="interface" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="interface-heading">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="reveal flex justify-center mb-6">
               <span className="section-label text-cyan border-cyan/15 bg-cyan/[0.03]">Interface</span>
@@ -351,15 +493,6 @@ export default function Home() {
               Insights cards, AI Coach answers, the doctor PDF — reads from the same path so the numbers always match.
             </p>
           </div>
-          <div className="reveal glass-card p-4 sm:p-8 bg-[rgba(15,16,24,0.4)]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/diagrams/01-data-flow.svg"
-              alt="HealthLog data flow: sources to ingest to Postgres + rollups to reads to surfaces"
-              className="w-full h-auto rounded-md"
-              loading="lazy"
-            />
-          </div>
           <div className="reveal grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
             <a href="https://docs.healthlog.dev/integrations/apple-health/" target="_blank" rel="noopener noreferrer" className="glass-card p-5 hover:border-[rgba(189,147,249,0.25)] transition-colors duration-300">
               <div className="text-xs font-mono text-purple mb-1.5 uppercase tracking-wider">Apple Health</div>
@@ -378,7 +511,7 @@ export default function Home() {
       </section>
 
       {/* ─── AI COACH ─────────────────────────────── */}
-      <section id="ai-coach" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="ai-coach-heading">
+      <section id="ai-coach" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow scroll-mt-20" aria-labelledby="ai-coach-heading">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <div className="reveal flex justify-center mb-6">
@@ -393,15 +526,6 @@ export default function Home() {
               the evidence collapsed underneath. Pick the provider that fits your privacy and budget.
             </p>
           </div>
-          <div className="reveal glass-card p-4 sm:p-8 bg-[rgba(15,16,24,0.4)]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/diagrams/02-coach-pipeline.svg"
-              alt="Coach prompt pipeline: question to snapshot to prompt to provider chain to cited reply"
-              className="w-full h-auto rounded-md"
-              loading="lazy"
-            />
-          </div>
           <div className="reveal grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-6">
             <div className="glass-card p-5">
               <div className="text-xs font-mono text-cyan mb-1.5 uppercase tracking-wider">ChatGPT</div>
@@ -409,11 +533,11 @@ export default function Home() {
             </div>
             <div className="glass-card p-5">
               <div className="text-xs font-mono text-purple mb-1.5 uppercase tracking-wider">OpenAI BYOK</div>
-              <div className="text-sm text-text-secondary leading-relaxed">Paste your own API key. gpt-4o-mini default, override per user.</div>
+              <div className="text-sm text-text-secondary leading-relaxed">Paste your own OpenAI key — gpt-4o by default, override per user.</div>
             </div>
             <div className="glass-card p-5">
               <div className="text-xs font-mono text-pink mb-1.5 uppercase tracking-wider">Anthropic</div>
-              <div className="text-sm text-text-secondary leading-relaxed">Workspace-scoped key. Claude 3.5 Sonnet default, AES-GCM at rest.</div>
+              <div className="text-sm text-text-secondary leading-relaxed">Your own Anthropic key — Claude Sonnet 4.6 by default, encrypted with AES-GCM at rest.</div>
             </div>
             <div className="glass-card p-5">
               <div className="text-xs font-mono text-green mb-1.5 uppercase tracking-wider">Local</div>
@@ -502,7 +626,7 @@ export default function Home() {
       </section>
 
       {/* ─── FEATURES ─────────────────────────────── */}
-      <section id="features" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="features-heading">
+      <section id="features" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow scroll-mt-20" aria-labelledby="features-heading">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <div className="reveal flex justify-center mb-6">
@@ -513,8 +637,8 @@ export default function Home() {
               <span className="text-text-secondary">Nothing you don&apos;t.</span>
             </h2>
             <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-              From daily measurements to AI-powered health reports —
-              HealthLog covers your entire health workflow.
+              From daily measurements to lab panels, medication schedules and
+              cited AI reports — HealthLog covers your whole health workflow.
             </p>
           </div>
 
@@ -570,15 +694,16 @@ export default function Home() {
           <div className="reveal mt-12 flex flex-wrap justify-center gap-3">
             {[
               "Clean-line charts with per-chart overlays",
-              "vs. last month / last year overlays",
               "Persistent rollup tier for sub-second reads",
-              "Offline-capable PWA",
-              "Telegram / ntfy / Web Push",
-              "59 Achievements (plus a few hidden ones)",
-              "CSV/JSON Export",
-              "Locale-aware (EN / DE)",
               "Glucose mg/dL ↔ mmol/L",
+              "FHIR R4 export",
+              "GLP-1 injectable support",
+              "Offline-capable PWA",
+              "Telegram · ntfy · Web Push · APNs",
+              "Passkey sign-in",
               "Native iOS app (TestFlight beta)",
+              "40 achievements to unlock",
+              "6 languages · EN/DE/ES/FR/IT/PL",
               "S3 off-host backups",
               "Docker-ready",
             ].map((item) => (
@@ -591,7 +716,7 @@ export default function Home() {
       </section>
 
       {/* ─── PRIVACY ──────────────────────────────── */}
-      <section className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow privacy-section" aria-labelledby="privacy-heading">
+      <section id="privacy" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow privacy-section scroll-mt-20" aria-labelledby="privacy-heading">
         <div className="max-w-3xl mx-auto relative z-10">
           <div className="text-center mb-14">
             <div className="reveal flex justify-center mb-8">
@@ -622,46 +747,6 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="reveal mt-8 glass-card p-4 sm:p-6 bg-[rgba(15,16,24,0.4)]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/diagrams/05-security-model.svg"
-              alt="Security model: three concentric perimeters — auth, session, encrypted core — with rate limiter, audit log, HMAC tokens, CSP/HSTS and SSRF guard as side rails"
-              className="w-full h-auto rounded-md"
-              loading="lazy"
-            />
-            <p className="text-text-tertiary text-xs mt-3 text-center">
-              Three concentric perimeters protect the encrypted core. See the{" "}
-              <a href="https://docs.healthlog.dev/security/overview/" target="_blank" rel="noopener noreferrer" className="text-cyan hover:underline">security architecture page</a>{" "}
-              for the full walkthrough.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── TECH STACK ───────────────────────────── */}
-      <section className="relative py-20 overflow-hidden" aria-label="Technology stack">
-        <div className="reveal text-center mb-10">
-          <p className="text-text-tertiary text-xs font-mono tracking-[0.2em] uppercase">Built with</p>
-        </div>
-        <div className="relative">
-          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-void to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-void to-transparent z-10 pointer-events-none" />
-          <div className="overflow-hidden">
-            <div className="tech-scroll" aria-hidden="true">
-              {[...techItems, ...techItems].map((item, i) => (
-                <span key={`${item}-${i}`} className="flex-shrink-0 px-5 py-2.5 rounded-full border border-[rgba(98,114,164,0.08)] bg-[rgba(15,16,24,0.5)] text-text-secondary text-sm font-mono whitespace-nowrap hover:border-[rgba(189,147,249,0.2)] hover:text-text-primary transition-all duration-300">
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-          {/* Screenreader-accessible list of tech stack items */}
-          <ul className="sr-only">
-            {techItems.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
         </div>
       </section>
 
@@ -673,7 +758,7 @@ export default function Home() {
               <span className="section-label text-cyan border-cyan/15 bg-cyan/[0.03]">Comparison</span>
             </div>
             <h2 id="comparison-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
-              HealthLog vs. The Rest
+              HealthLog vs. the rest
             </h2>
             <p className="reveal text-text-secondary text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
               See how a self-hosted, source-available approach compares to the big players.
@@ -705,8 +790,9 @@ export default function Home() {
                     <ComparisonRow feature="Offline capable" values={["Full PWA", "Native", "Native", "Limited"]} highlights={[true, null, null, false]} />
                     <ComparisonRow feature="Medication tracking" values={["Full compliance", "Basic", "No", "No"]} highlights={[true, null, false, false]} />
                     <ComparisonRow feature="AI insights" values={["BYOK or local", "Limited", "No", "Premium only"]} highlights={[true, null, false, false]} />
-                    <ComparisonRow feature="Data export" values={["CSV + JSON", "XML (HealthKit)", "Google Takeout", "Premium only"]} highlights={[true, null, null, false]} />
-                    <ComparisonRow feature="Cost" values={["Free forever", "Free (Apple only)", "Free", "Freemium"]} highlights={[true, null, null, false]} />
+                    <ComparisonRow feature="Data export" values={["CSV, JSON, FHIR, PDF", "XML (HealthKit)", "Google Takeout", "Premium only"]} highlights={[true, null, null, false]} />
+                    <ComparisonRow feature="FHIR export" values={["FHIR R4 bundle", "No", "No", "No"]} highlights={[true, false, false, false]} />
+                    <ComparisonRow feature="Cost" values={["Free (noncommercial)", "Free (Apple only)", "Free", "Freemium"]} highlights={[true, null, null, false]} />
                     <ComparisonRow feature="Ad-free" values={["Always", "Yes", "Yes", "Premium only"]} highlights={[true, null, null, false]} />
                     <ComparisonRow feature="Custom server" values={["Your infrastructure", "Apple servers", "Google servers", "Under Armour servers"]} highlights={[true, false, false, false]} />
                   </tbody>
@@ -724,7 +810,7 @@ export default function Home() {
                 { feature: "Source available", hl: "PolyForm NC 1.0.0", other: "No" },
                 { feature: "Medication tracking", hl: "Full compliance", other: "Basic" },
                 { feature: "AI insights", hl: "BYOK or local", other: "Limited" },
-                { feature: "Cost", hl: "Free forever", other: "Free (Apple only)" },
+                { feature: "Cost", hl: "Free (noncommercial)", other: "Free (Apple only)" },
               ]},
               { name: "Google Fit", items: [
                 { feature: "Self-hosted", hl: "Yes", other: "No" },
@@ -732,15 +818,15 @@ export default function Home() {
                 { feature: "Source available", hl: "PolyForm NC 1.0.0", other: "No" },
                 { feature: "Medication tracking", hl: "Full compliance", other: "No" },
                 { feature: "AI insights", hl: "BYOK or local", other: "No" },
-                { feature: "Data export", hl: "CSV + JSON", other: "Google Takeout" },
+                { feature: "Data export", hl: "CSV, JSON, FHIR, PDF", other: "Google Takeout" },
               ]},
               { name: "MyFitnessPal", items: [
                 { feature: "Self-hosted", hl: "Yes", other: "No" },
                 { feature: "Source available", hl: "PolyForm NC 1.0.0", other: "No" },
                 { feature: "Offline capable", hl: "Full PWA", other: "Limited" },
                 { feature: "Ad-free", hl: "Always", other: "Premium only" },
-                { feature: "Data export", hl: "CSV + JSON", other: "Premium only" },
-                { feature: "Cost", hl: "Free forever", other: "Freemium" },
+                { feature: "Data export", hl: "CSV, JSON, FHIR, PDF", other: "Premium only" },
+                { feature: "Cost", hl: "Free (noncommercial)", other: "Freemium" },
               ]},
             ].map((competitor) => (
               <div key={competitor.name} className="glass-card p-6">
@@ -802,22 +888,6 @@ export default function Home() {
 
           <TerminalBlock commands={terminalCommands} />
 
-          <div className="reveal mt-10 glass-card p-4 sm:p-6 bg-[rgba(15,16,24,0.4)] text-left">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/diagrams/03-self-hosting-topology.svg"
-              alt="Self-hosting topology: internet to reverse proxy to Next.js app and pg-boss worker to PostgreSQL, with GHCR image pull and optional Coolify auto-deploy and S3 backup"
-              className="w-full h-auto rounded-md"
-              loading="lazy"
-            />
-            <p className="text-text-tertiary text-xs mt-3 text-center">
-              A single container does both web and worker by default. Split via{" "}
-              <code className="text-cyan">HEALTHLOG_PROCESS_TYPE</code> for horizontal scale. See the{" "}
-              <a href="https://docs.healthlog.dev/self-hosting/docker/" target="_blank" rel="noopener noreferrer" className="text-cyan hover:underline">self-hosting docs</a>{" "}
-              for the deployment guides.
-            </p>
-          </div>
-
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
             <a
               href="https://github.com/MBombeck/HealthLog"
@@ -842,6 +912,112 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── TECH STACK ───────────────────────────── */}
+      <section className="relative py-20 overflow-hidden" aria-label="Technology stack">
+        <div className="reveal text-center mb-10">
+          <p className="text-text-tertiary text-xs font-mono tracking-[0.2em] uppercase">Built with</p>
+        </div>
+        <div className="relative">
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-void to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-void to-transparent z-10 pointer-events-none" />
+          <div className="overflow-hidden">
+            <div className="tech-scroll" aria-hidden="true">
+              {[...techItems, ...techItems].map((item, i) => (
+                <span key={`${item}-${i}`} className="flex-shrink-0 px-5 py-2.5 rounded-full border border-[rgba(98,114,164,0.08)] bg-[rgba(15,16,24,0.5)] text-text-secondary text-sm font-mono whitespace-nowrap hover:border-[rgba(189,147,249,0.2)] hover:text-text-primary transition-all duration-300">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+          {/* Screenreader-accessible list of tech stack items */}
+          <ul className="sr-only">
+            {techItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ─── FAQ ──────────────────────────────────── */}
+      <section id="faq" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow scroll-mt-20" aria-labelledby="faq-heading">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-14">
+            <div className="reveal flex justify-center mb-6">
+              <span className="section-label text-purple border-purple/15 bg-purple/[0.03]">FAQ</span>
+            </div>
+            <h2 id="faq-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+              Questions, answered
+            </h2>
+            <p className="reveal text-text-secondary text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+              The things people ask before they self-host. Short, honest answers.
+            </p>
+          </div>
+
+          <div className="reveal space-y-3">
+            {faqs.map((faq) => (
+              <details key={faq.question} className="learn-faq group">
+                <summary>{faq.question}</summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── FROM LEARN ───────────────────────────── */}
+      <section className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="learn-heading">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <div className="reveal flex justify-center mb-6">
+              <span className="section-label text-cyan border-cyan/15 bg-cyan/[0.03]">Learn</span>
+            </div>
+            <h2 id="learn-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+              Understand your numbers
+            </h2>
+            <p className="reveal text-text-secondary text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+              Plain-language guides to the metrics HealthLog tracks — what they mean,
+              what moves them, and when a change is worth a closer look. Every claim is sourced.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {featuredGuides.map((a, i) => {
+              const am = learnMeta.articles[a.slug];
+              const accent = CATEGORY_COLOR[a.category];
+              return (
+                <Link
+                  key={a.slug}
+                  href={`/learn/${a.slug}`}
+                  className={`reveal reveal-delay-${(i % 3) + 1} glass-card group flex flex-col gap-3 p-4 transition-colors hover:border-[rgba(189,147,249,0.25)]`}
+                >
+                  <LearnImage base={`/learn-img/${a.slug}`} alt="" thumb className="learn-card-thumb" />
+                  <span
+                    className="font-mono text-[0.7rem] font-medium tracking-[0.16em] uppercase"
+                    style={{ color: accent }}
+                  >
+                    {learnMeta.categories[a.category]}
+                  </span>
+                  <h3 className="font-display text-text-primary group-hover:text-purple text-base font-bold tracking-tight transition-colors">
+                    {am?.title ?? a.slug}
+                  </h3>
+                  <p className="text-text-secondary text-sm leading-relaxed">
+                    {am?.dek}
+                  </p>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="reveal mt-10 flex justify-center">
+            <Link href="/learn" className="cta-secondary group">
+              <BookIcon className="w-5 h-5" />
+              <span>Browse all guides</span>
+              <ArrowIcon />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       </main>
 
       {/* ─── FOOTER ───────────────────────────────── */}
@@ -856,30 +1032,45 @@ export default function Home() {
               <BookIcon className="w-4 h-4" />
               Docs
             </a>
-            <a href="https://demo.healthlog.dev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+            <DemoPopupLink className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
               <PlayIcon className="w-4 h-4" />
               Demo
-            </a>
+            </DemoPopupLink>
             <a href="https://github.com/MBombeck/HealthLog" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
               <GitHubIcon className="w-4 h-4" />
               GitHub
             </a>
-            <Link href="/learn" className="text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+            <a href="https://github.com/MBombeck/HealthLog/releases" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+              <TagIcon className="w-4 h-4" />
+              Releases
+            </a>
+            <Link href="/learn" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+              <BookIcon className="w-4 h-4" />
               Learn
             </Link>
-            <Link href="/privacy" className="text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+            <a href="/learn/feed.xml" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+              <RssIcon className="w-4 h-4" />
+              RSS
+            </a>
+            <Link href="/privacy" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+              <ShieldFooterIcon className="w-4 h-4" />
               Privacy
             </Link>
-            <Link href="/support" className="text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+            <Link href="/imprint" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+              <FileIcon className="w-4 h-4" />
+              Imprint
+            </Link>
+            <Link href="/support" className="flex items-center gap-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+              <LifeBuoyIcon className="w-4 h-4" />
               Support
             </Link>
-            <span className="text-text-tertiary/60 text-xs font-mono">PolyForm Noncommercial 1.0.0</span>
+            <span className="text-text-tertiary text-xs font-mono">© 2026 HealthLog</span>
+            <a href="https://polyformproject.org/licenses/noncommercial/1.0.0/" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-secondary transition-colors duration-300 text-xs font-mono">PolyForm Noncommercial 1.0.0</a>
           </div>
         </div>
-        <p className="max-w-5xl mx-auto mt-6 text-center sm:text-left text-text-tertiary/60 text-xs leading-relaxed">
+        <p className="max-w-5xl mx-auto mt-6 text-center sm:text-left text-text-tertiary text-xs leading-relaxed">
           Licensed under the PolyForm Noncommercial License 1.0.0 — free to use, self-host, and
-          modify for noncommercial purposes. Releases up to and including v1.15.18 were published
-          under AGPL-3.0 and remain available under that license.
+          modify for noncommercial purposes.
         </p>
       </footer>
     </div>

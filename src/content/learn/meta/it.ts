@@ -5,7 +5,7 @@ const meta: LearnMeta = {
     hubKicker: "Impara",
     hubTitle: "I parametri della salute, spiegati",
     hubIntro:
-      "Guide chiare e in linguaggio semplice ai numeri che il tuo corpo produce: cosa significano, cosa li fa cambiare e quando una variazione merita attenzione. Ogni affermazione è documentata; ogni guida rimanda a una pagina di riferimento più approfondita nella documentazione.",
+      "Guide chiare, in parole semplici, ai numeri che il tuo corpo produce: cosa significano, cosa li fa cambiare e quando vale la pena prestarci attenzione. Ogni affermazione ha una fonte, e ogni guida rimanda a una pagina di riferimento più approfondita nella documentazione.",
     allGuides: "Tutte le guide",
     minRead: (n) => `${n} min di lettura`,
     goDeeperLabel: "Approfondisci",
@@ -32,7 +32,7 @@ const meta: LearnMeta = {
       title: "I tuoi parametri di salute, collegati tra loro",
       dek: "Perché un singolo numero racconta raramente tutta la storia — e come si incastrano i segnali che il tuo corpo produce.",
       description:
-        "Una guida in linguaggio semplice ai parametri di salute quotidiani che vale la pena monitorare — frequenza cardiaca, sonno, pressione, glicemia e altro — e a come si compongono in un quadro unico.",
+        "Una guida in parole semplici ai parametri di salute di tutti i giorni che vale la pena seguire — frequenza cardiaca, sonno, pressione, glicemia e altro — e a come si compongono in un quadro unico.",
     },
     "resting-heart-rate": {
       title: "Cosa ti dice la tua frequenza cardiaca a riposo",
@@ -54,7 +54,7 @@ const meta: LearnMeta = {
     },
     "sleep-consistency": {
       title: "Perché la regolarità del sonno batte la durata",
-      dek: "Otto ore a orari casuali non sono come sette su un programma costante. È l'orario il vero segnale.",
+      dek: "Otto ore a orari sempre diversi non valgono come sette a orari regolari. È l'orario il vero segnale.",
       description:
         "Il sonno spiegato: le fasi, di quanto hai davvero bisogno, perché un programma regolare conta quanto le ore totali e cosa può rivelare il tuo andamento del sonno.",
     },
@@ -62,7 +62,7 @@ const meta: LearnMeta = {
       title: "Frequenza respiratoria: il parametro vitale più silenzioso",
       dek: "Quasi mai pensi al tuo ritmo respiratorio — ed è proprio per questo che una sua variazione è così informativa.",
       description:
-        "Cos'è la frequenza respiratoria, l'intervallo normale a riposo, perché la linea di base notturna è così stabile e perché un aumento prolungato può essere un segnale precoce da notare.",
+        "Cos'è la frequenza respiratoria, l'intervallo normale a riposo, perché il valore di riferimento notturno è così stabile e perché un aumento prolungato può essere un segnale precoce da cogliere.",
     },
     "blood-oxygen-spo2": {
       title: "Cosa ti dice l'ossigeno nel sangue (e cosa no)",
@@ -74,7 +74,7 @@ const meta: LearnMeta = {
       title: "La tua temperatura di base come segnale",
       dek: "Non esiste un'unica temperatura 'normale' — c'è la tua. La parte utile è lo scostamento da essa.",
       description:
-        "Perché la temperatura corporea varia nell'arco della giornata e tra le persone, perché una linea di base personale batte i canonici 37 °C e cosa può indicare uno scostamento prolungato.",
+        "Perché la temperatura corporea varia nell'arco della giornata e da persona a persona, perché il tuo valore di riferimento personale conta più dei canonici 37 °C e cosa può indicare uno scostamento prolungato.",
     },
     "blood-sugar-beyond-diabetes": {
       title: "La glicemia, oltre il diabete",
@@ -96,7 +96,7 @@ const meta: LearnMeta = {
     },
     "tracking-mood": {
       title: "Monitorare l'umore come segnale di salute",
-      dek: "L'umore sembra troppo soggettivo da misurare — ma un registro costante lo trasforma in uno dei tuoi andamenti più utili.",
+      dek: "L'umore sembra troppo soggettivo per misurarlo — ma annotarlo con costanza lo trasforma in uno dei tuoi andamenti più utili.",
       description:
         "Perché un registro dell'umore semplice e costante è un parametro di salute legittimo, come interagisce con sonno e attività e quando un umore basso prolungato richiede supporto.",
     },
@@ -114,9 +114,9 @@ const meta: LearnMeta = {
     },
     "reading-your-trends": {
       title: "Leggi gli andamenti, non i numeri",
-      dek: "La competenza più utile nel monitoraggio della salute non è leggere un numero — è leggere la tua stessa linea nel tempo.",
+      dek: "La capacità più utile quando segui la tua salute non è leggere un numero — è leggere la tua stessa linea nel tempo.",
       description:
-        "Perché la tua linea di base personale batte qualsiasi intervallo di popolazione, come distinguere un andamento significativo dal rumore quotidiano e perché condizioni di misurazione costanti contano più della precisione.",
+        "Perché il tuo valore di riferimento personale conta più di qualsiasi intervallo di popolazione, come distinguere un andamento vero dal rumore di tutti i giorni e perché misurare sempre nelle stesse condizioni vale più della precisione.",
     },
     "steps-and-movement": {
       title: "Passi e movimento quotidiano",
