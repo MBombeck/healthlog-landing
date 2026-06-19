@@ -31,6 +31,16 @@ export const LOCALE_HREFLANG: Record<Locale, string> = {
   pl: "pl",
 };
 
+// Open Graph locale tags (og:locale).
+export const OG_LOCALE: Record<Locale, string> = {
+  en: "en_US",
+  de: "de_DE",
+  es: "es_ES",
+  fr: "fr_FR",
+  it: "it_IT",
+  pl: "pl_PL",
+};
+
 export function isLocale(value: string): value is Locale {
   return (LOCALES as readonly string[]).includes(value);
 }

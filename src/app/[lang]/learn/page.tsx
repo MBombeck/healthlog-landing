@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { getMeta } from "@/content/learn/meta";
 import {
+  OG_LOCALE,
   PREFIXED_LOCALES,
   SITE_ORIGIN,
   hreflangMap,
@@ -40,6 +41,8 @@ export async function generateMetadata({
       description: meta.ui.hubIntro,
       url: `${SITE_ORIGIN}${learnHubPath(lang)}`,
       type: "website",
+      siteName: "HealthLog",
+      locale: OG_LOCALE[lang],
     },
   };
 }

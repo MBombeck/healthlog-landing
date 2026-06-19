@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { LEARN_ARTICLES, getArticle } from "@/content/learn";
 import { getMeta } from "@/content/learn/meta";
 import {
+  OG_LOCALE,
   PREFIXED_LOCALES,
   SITE_ORIGIN,
   hreflangMap,
@@ -46,6 +47,8 @@ export async function generateMetadata({
       description: am.description,
       url,
       type: "article",
+      siteName: "HealthLog",
+      locale: OG_LOCALE[lang],
       images: [`${SITE_ORIGIN}/learn-img/${slug}.jpg`],
     },
     twitter: {

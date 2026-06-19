@@ -27,8 +27,10 @@ export function LearnShell({
   const { ui } = getMeta(locale);
 
   return (
-    <div className="bg-void text-text-primary relative min-h-dvh overflow-x-clip">
+    <div className="learn-shell bg-void text-text-primary relative min-h-dvh overflow-x-clip">
       <div className="noise-overlay" />
+      <div className="aurora" aria-hidden="true" />
+      <div className="aurora-pink" aria-hidden="true" />
 
       <header
         className="bg-void/80 sticky top-0 z-10 border-b border-[rgba(98,114,164,0.08)] backdrop-blur"

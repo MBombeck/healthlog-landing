@@ -802,9 +802,9 @@ body {
 .prose-learn {
   color: var(--text-secondary);
   font-family: var(--font-body);
-  font-size: 1.0625rem;
-  line-height: 1.75;
-  max-width: 44rem;
+  font-size: 1.09rem;
+  line-height: 1.78;
+  max-width: 100%;
 }
 .prose-learn > * + * {
   margin-top: 1.35rem;
@@ -987,4 +987,54 @@ body {
   font-size: 0.95rem;
   color: var(--text-primary);
   margin: 0 0 0.4rem;
+}
+
+/* ── /learn — softer aurora (calmer near the top), wider reading ─── */
+.learn-shell .aurora::before {
+  opacity: 0.16;
+  width: 620px;
+  height: 620px;
+  top: 6%;
+  left: -8%;
+}
+.learn-shell .aurora::after {
+  opacity: 0.14;
+  width: 520px;
+  height: 520px;
+  top: 34%;
+  right: -8%;
+}
+.learn-shell .aurora-pink {
+  opacity: 0.10;
+  top: 52%;
+  left: 30%;
+}
+
+/* In-body article illustration (markdown image inside the prose). */
+.prose-learn img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+  margin-top: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Defensive: if any heading ever ends up wrapped in an anchor, never underline it. */
+.prose-learn h2 a,
+.prose-learn h3 a {
+  border-bottom: none !important;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+/* Hub card thumbnail. */
+.learn-card-thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface);
 }

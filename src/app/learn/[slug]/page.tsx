@@ -39,6 +39,8 @@ export async function generateMetadata({
       description: am.description,
       url,
       type: "article",
+      siteName: "HealthLog",
+      locale: "en_US",
       images: [`${SITE_ORIGIN}/learn-img/${slug}.jpg`],
     },
     twitter: {

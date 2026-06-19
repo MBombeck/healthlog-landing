@@ -24,6 +24,8 @@ export function generateMetadata(): Metadata {
       description: meta.ui.hubIntro,
       url: `${SITE_ORIGIN}/learn`,
       type: "website",
+      siteName: "HealthLog",
+      locale: "en_US",
     },
   };
 }

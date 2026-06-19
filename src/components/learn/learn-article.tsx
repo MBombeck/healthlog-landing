@@ -28,24 +28,36 @@ export async function LearnArticle({
   const { default: Content } = await loader();
 
   const url = `${SITE_ORIGIN}${learnArticlePath(locale, slug)}`;
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: am?.title ?? slug,
-    description: am?.description,
-    url,
-    inLanguage: locale,
-    isAccessibleForFree: true,
-    image: `${SITE_ORIGIN}/learn-img/${slug}.jpg`,
-    author: { "@type": "Organization", name: "HealthLog" },
-    publisher: { "@type": "Organization", name: "HealthLog" },
-    mainEntityOfPage: { "@type": "WebPage", "@id": url },
-  };
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: am?.title ?? slug,
+      description: am?.description,
+      url,
+      inLanguage: locale,
+      isAccessibleForFree: true,
+      image: `${SITE_ORIGIN}/learn-img/${slug}.jpg`,
+      author: { "@type": "Organization", name: "HealthLog" },
+      publisher: { "@type": "Organization", name: "HealthLog" },
+      mainEntityOfPage: { "@type": "WebPage", "@id": url },
+      articleSection: meta.categories[article.category],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "HealthLog", item: SITE_ORIGIN },
+        { "@type": "ListItem", position: 2, name: meta.ui.hubKicker, item: `${SITE_ORIGIN}${learnHubPath(locale)}` },
+        { "@type": "ListItem", position: 3, name: am?.title ?? slug, item: url },
+      ],
+    },
+  ];
 
   return (
     <main
       id="main-content"
-      className="relative z-10 mx-auto max-w-3xl px-4 py-10 md:px-6 md:py-16"
+      className="relative z-10 mx-auto max-w-[52rem] px-4 py-10 md:px-6 md:py-16"
     >
       <script
         type="application/ld+json"

@@ -37,7 +37,7 @@ export function LearnHub({ locale }: { locale: Locale }) {
   return (
     <main
       id="main-content"
-      className="relative z-10 mx-auto max-w-3xl px-4 py-10 md:px-6 md:py-16"
+      className="relative z-10 mx-auto max-w-5xl px-4 py-10 md:px-6 md:py-16"
     >
       <script
         type="application/ld+json"
@@ -65,16 +65,23 @@ export function LearnHub({ locale }: { locale: Locale }) {
               <h2 className="section-label text-text-tertiary inline-flex w-fit">
                 {meta.categories[category]}
               </h2>
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {articles.map((a) => {
                   const am = meta.articles[a.slug];
                   return (
                     <Link
                       key={a.slug}
                       href={learnArticlePath(locale, a.slug)}
-                      className="glass-card group flex flex-col gap-3 p-6 transition-colors hover:border-[rgba(189,147,249,0.25)]"
+                      className="glass-card group flex flex-col gap-3 p-4 transition-colors hover:border-[rgba(189,147,249,0.25)]"
                     >
-                      <h3 className="font-display text-text-primary group-hover:text-purple text-lg font-bold tracking-tight transition-colors">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={`/learn-img/${a.slug}.jpg`}
+                        alt=""
+                        loading="lazy"
+                        className="learn-card-thumb"
+                      />
+                      <h3 className="font-display text-text-primary group-hover:text-purple mt-1 text-lg font-bold tracking-tight transition-colors">
                         {am?.title ?? a.slug}
                       </h3>
                       <p className="text-text-secondary text-sm leading-relaxed">

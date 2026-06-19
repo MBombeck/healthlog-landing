@@ -16,11 +16,10 @@ const withMDX = createMDX({
     // referenced by package name (string), not as imported function objects.
     // GFM gives footnote syntax ([^1]) and tables; slug + autolink turn every
     // heading into a linkable anchor.
+    // Headings keep their slug IDs for deep-linking, but are NOT wrapped in
+    // anchor links (that rendered them as underlined links, which looked off).
     remarkPlugins: [["remark-gfm"]],
-    rehypePlugins: [
-      ["rehype-slug"],
-      ["rehype-autolink-headings", { behavior: "wrap" }],
-    ],
+    rehypePlugins: [["rehype-slug"]],
   },
 });
 
