@@ -1208,3 +1208,42 @@ body {
   font-size: 0.97rem;
   line-height: 1.7;
 }
+
+/* ── /learn ToC — sticky rail (desktop) + inline (mobile) ────────── */
+.learn-toc a.is-active {
+  font-weight: 600;
+}
+.learn-toc a {
+  display: block;
+  padding: 0.12rem 0;
+  border-left: 2px solid transparent;
+  margin-left: -1.1rem;
+  padding-left: 1.1rem;
+}
+.learn-toc a.is-active {
+  border-left-color: currentColor;
+}
+/* Inline (mobile) collapsible variant; hidden on desktop where the rail shows. */
+.learn-toc--inline {
+  margin-top: 2rem;
+  border: 1px solid var(--border-subtle);
+  border-left: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 0 1rem;
+  background: var(--surface-glass);
+}
+.learn-toc--inline > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.85rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.learn-toc--inline > summary::-webkit-details-marker { display: none; }
+.learn-toc--inline ol { padding-bottom: 0.85rem; }
+@media (min-width: 1024px) {
+  .learn-toc--inline { display: none; }
+}

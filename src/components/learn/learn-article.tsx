@@ -94,7 +94,8 @@ export async function LearnArticle({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="max-w-[46rem]">
+      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_13rem] lg:items-start lg:gap-10">
+        <div className="max-w-[46rem]">
         <Link
           href={learnHubPath(locale)}
           className="text-text-tertiary hover:text-text-primary inline-flex items-center gap-1.5 text-sm transition-colors"
@@ -128,7 +129,7 @@ export async function LearnArticle({
           className="mt-8 w-full rounded-2xl border border-[rgba(98,114,164,0.12)]"
         />
 
-        <LearnToc label={extra.onThisPage} />
+        <LearnToc label={extra.onThisPage} accent={accent} variant="inline" />
 
         <article className="prose-learn mt-10">
           <Content />
@@ -246,6 +247,13 @@ export async function LearnArticle({
             </div>
           </section>
         )}
+        </div>
+
+        <aside className="hidden lg:block">
+          <div className="sticky top-24">
+            <LearnToc label={extra.onThisPage} accent={accent} variant="rail" />
+          </div>
+        </aside>
       </div>
     </main>
   );
