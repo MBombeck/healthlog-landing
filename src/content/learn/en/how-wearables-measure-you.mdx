@@ -1,0 +1,57 @@
+A wrist wearable hands you a confident stream of numbers — heart rate, sleep stages, blood oxygen, a "recovery" score — and the polish of the display can make all of it feel equally precise. It isn't. Behind the dashboard sit a small handful of physical sensors, each measuring one narrow thing well and a great deal else only by inference. Knowing which is which is the difference between trusting a device too much and getting real value from it.
+
+## Optical heart rate: light bounced off blood
+
+![](/learn-img-2/how-wearables-measure-you.jpg)
+
+The green light glowing on the underside of a wrist band is the heart of most wearables. The technique is **photoplethysmography**, or PPG: an LED shines light into the skin, blood absorbs some of it, and a photodetector reads how much bounces back. Because blood volume in the small vessels rises and falls with each heartbeat, that reflected signal pulses — and counting the pulses gives heart rate.[^ppg]
+
+At rest, this works well. Validation studies repeatedly find wrist PPG tracking a chest electrical signal closely when the wearer is still.[^ppg] The trouble starts with movement. During exercise the band shifts against the skin, muscle and tendon motion contaminates the optical signal, and the device has to guess harder — which is why wrist heart rate during intervals or weightlifting is the least reliable reading most people own.[^ppg] A chest strap, which measures the heart's electrical activity directly rather than optically, stays accurate through motion and remains the practical reference for hard training.[^ppg]
+
+Fit and physiology matter too. A loose band, cold fingers, dense tattoo ink over the sensor, and darker skin tones all change how light travels and can degrade the signal.[^ppg] None of this makes the number useless; it means the *conditions* of a reading are part of the reading.
+
+## The accelerometer: steps, motion, and "sleep"
+
+Almost everything that isn't optical comes from a tiny **accelerometer** — a chip that senses motion in three axes. Step counts come from recognising the rhythmic acceleration pattern of walking, which is why steps are reasonably good on a brisk walk and noisier when you push a stroller, wash dishes, or sit in a bumpy car.
+
+Sleep is the more interesting stretch. A wearable does not see your brain. It infers sleep from how little you move, often combined with heart rate and its beat-to-beat variation, then labels the night into "light," "deep," and "REM" stages.[^sleep] The clinical reference — polysomnography — records brain waves, eye movement, and muscle tone in a lab. Against that standard, consumer devices are fairly good at the simple question of *asleep or awake* and considerably weaker at *which stage*, where staging accuracy drops off.[^sleep] Read the bedtime, wake time, and total duration with some confidence; treat the coloured stage breakdown as an estimate, not a verdict. (For what actually moves the needle, see [sleep consistency](/learn/sleep-consistency).)
+
+## Skin temperature and SpO₂
+
+Newer bands add a **skin-temperature** sensor. It does not report core body temperature; it reports a *deviation* from your own recent nightly baseline. That framing is the point — a relative shift of a fraction of a degree across several nights can hint at illness, the menstrual cycle, or a hard day, while the absolute number means little on its own. (More in [body-temperature baseline](/learn/body-temperature-baseline).)
+
+Blood-oxygen estimation reuses the optical trick with a twist. **Pulse oximetry** shines two wavelengths — red and infrared — because oxygenated and deoxygenated haemoglobin absorb them differently; the ratio yields an estimated SpO₂.[^spo2] Even medical fingertip oximeters carry a margin of error of a couple of percentage points, and wrist-based estimates are looser still.[^spo2] Critically, the U.S. Food and Drug Administration has warned that pulse oximeters can read *higher* than true oxygen levels, and that this overestimation is more pronounced in people with darker skin — a limitation first widely documented in hospital data and one that wrist devices inherit.[^fda][^sjoding] Consumer wrist SpO₂ is a wellness feature, not a diagnostic one. (See [blood oxygen (SpO₂)](/learn/blood-oxygen-spo2).)
+
+## Derived scores: estimates built on estimates
+
+The headline numbers — VO₂max, "recovery," "readiness," "strain" — are not measured at all. They are **models**: algorithms that combine the raw sensor streams above with your age, weight, and history to produce a single figure.
+
+Wrist VO₂max is the clearest example. True VO₂max requires a mask, a treadmill, and analysis of the gas you breathe. A wearable estimates it from the relationship between your heart rate and your pace during outdoor activity — a reasonable proxy that tracks fitness changes over time, but an estimate that inherits every error in the heart-rate and GPS data feeding it.[^vo2] "Recovery" and "readiness" scores are proprietary blends, typically leaning on overnight [heart rate variability](/learn/heart-rate-variability), [resting heart rate](/learn/resting-heart-rate), and sleep — useful as a daily nudge, but not a clinical measurement of anything.
+
+<Aside type="note">
+Most of what a wearable shows you is an **estimate, not a lab measurement**. Optical heart rate, inferred sleep stages, wrist SpO₂, and every "score" are models built on a few real signals — accurate enough to reveal *change over time*, rarely precise enough to treat a single value as ground truth. The honest way to read them is as relative, not absolute.
+</Aside>
+
+## Trust the trend, know the limits
+
+The common thread across every sensor is the same lesson that runs through [reading your trends](/learn/reading-your-trends): a wearable is far better at detecting *change against your own baseline* than at reporting an exact value. A resting heart rate that climbs five beats over three mornings, a skin temperature that drifts up before a cold, a recovery score that sags after a bad week — these directional signals are where the value lives, because consistent conditions cancel out a lot of measurement error.
+
+| Reading | What it really is | Where accuracy degrades |
+| --- | --- | --- |
+| Heart rate | Optical (PPG) at rest; weaker in motion | Movement, loose fit, tattoos, skin tone |
+| Steps | Accelerometer pattern-matching | Non-walking arm motion, vehicles |
+| Sleep stages | Inferred from motion + heart rate | Stage labels far less reliable than duration |
+| Skin temperature | Deviation from personal baseline | Not core temperature; relative only |
+| SpO₂ | Red/infrared absorption ratio | Can over-read; worse with darker skin, motion |
+| VO₂max / recovery | Modelled estimates | Inherit every upstream sensor error |
+
+So calibrate your expectations to the sensor. Use the device for direction and habit, lean on a chest strap or a clinician's instrument when you need precision, and let any single alarming number prompt a second look rather than a conclusion.
+
+This is general information, not medical advice, and individual variation is wide. Anchor on your own baseline; use the numbers as a sanity check, not a scoreboard.
+
+[^ppg]: How photoplethysmography (PPG) works, its accuracy at rest versus during motion, and the effects of fit, skin tone, and tattoos; chest-strap electrical measurement as the motion-robust reference — Bent B, et al., "Investigating sources of inaccuracy in wearable optical heart rate sensors," *npj Digital Medicine*, 2020. https://www.nature.com/articles/s41746-020-0226-6
+[^sleep]: Consumer wearables estimate sleep from movement and heart rate and perform better at sleep/wake detection than at staging, relative to polysomnography — Chinoy ED, et al., "Performance of seven consumer sleep-tracking devices compared with polysomnography," *Sleep*, 2021. https://academic.oup.com/sleep/article/44/5/zsaa291/6055610
+[^spo2]: Principle of dual-wavelength (red/infrared) pulse oximetry and its typical accuracy margin — Nitzan M, et al., "Pulse oximetry: fundamentals and technology update," *Medical Devices: Evidence and Research*, 2014. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4099100/
+[^fda]: Pulse oximeters can overestimate blood-oxygen levels, with accuracy limitations more pronounced in people with darker skin pigmentation — U.S. Food and Drug Administration, Safety Communication, 2021. https://www.fda.gov/medical-devices/safety-communications/pulse-oximeter-accuracy-and-limitations-fda-safety-communication
+[^sjoding]: Hospital data showing pulse oximetry overestimates oxygen saturation more often in Black than in white patients — Sjoding MW, et al., "Racial Bias in Pulse Oximetry Measurement," *New England Journal of Medicine*, 2020. https://www.nejm.org/doi/full/10.1056/NEJMc2029240
+[^vo2]: Estimation of VO₂max from heart rate and pace by wrist devices, and its validity as a proxy for laboratory cardiorespiratory fitness testing — Klepin K, et al., "Validity of Cardiorespiratory Fitness Measured With a Wrist-Worn Wearable," *JMIR mHealth and uHealth*, 2019. https://mhealth.jmir.org/2019/9/e12101/

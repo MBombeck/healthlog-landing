@@ -3,9 +3,8 @@ import type { Locale } from "./locales";
 
 /**
  * Explicit (locale, slug) -> MDX loader map. Static literal import() calls are
- * required for Turbopack static export; template-literal dynamic imports do not
- * resolve. Every locale has all 13 files (untranslated ones start as English
- * copies), so a lookup never misses. Keep in sync with the manifest + locales.
+ * required for Turbopack static export. Every locale has all files (untranslated
+ * ones start as English copies). Keep in sync with the manifest + locales.
  */
 type MdxLoader = () => Promise<{ default: ComponentType }>;
 
@@ -24,6 +23,12 @@ export const LEARN_CONTENT: Record<Locale, Record<string, MdxLoader>> = {
     "beyond-the-scale": () => import("./en/beyond-the-scale.mdx"),
     "tracking-mood": () => import("./en/tracking-mood.mdx"),
     "the-cycle-as-a-vital-sign": () => import("./en/the-cycle-as-a-vital-sign.mdx"),
+    "how-wearables-measure-you": () => import("./en/how-wearables-measure-you.mdx"),
+    "reading-your-trends": () => import("./en/reading-your-trends.mdx"),
+    "steps-and-movement": () => import("./en/steps-and-movement.mdx"),
+    "caffeine-alcohol-and-your-readings": () => import("./en/caffeine-alcohol-and-your-readings.mdx"),
+    "hydration-and-your-body": () => import("./en/hydration-and-your-body.mdx"),
+    "stress-and-recovery": () => import("./en/stress-and-recovery.mdx"),
   },
   de: {
     "understanding-your-health-metrics": () => import("./de/understanding-your-health-metrics.mdx"),
@@ -39,6 +44,12 @@ export const LEARN_CONTENT: Record<Locale, Record<string, MdxLoader>> = {
     "beyond-the-scale": () => import("./de/beyond-the-scale.mdx"),
     "tracking-mood": () => import("./de/tracking-mood.mdx"),
     "the-cycle-as-a-vital-sign": () => import("./de/the-cycle-as-a-vital-sign.mdx"),
+    "how-wearables-measure-you": () => import("./de/how-wearables-measure-you.mdx"),
+    "reading-your-trends": () => import("./de/reading-your-trends.mdx"),
+    "steps-and-movement": () => import("./de/steps-and-movement.mdx"),
+    "caffeine-alcohol-and-your-readings": () => import("./de/caffeine-alcohol-and-your-readings.mdx"),
+    "hydration-and-your-body": () => import("./de/hydration-and-your-body.mdx"),
+    "stress-and-recovery": () => import("./de/stress-and-recovery.mdx"),
   },
   es: {
     "understanding-your-health-metrics": () => import("./es/understanding-your-health-metrics.mdx"),
@@ -54,6 +65,12 @@ export const LEARN_CONTENT: Record<Locale, Record<string, MdxLoader>> = {
     "beyond-the-scale": () => import("./es/beyond-the-scale.mdx"),
     "tracking-mood": () => import("./es/tracking-mood.mdx"),
     "the-cycle-as-a-vital-sign": () => import("./es/the-cycle-as-a-vital-sign.mdx"),
+    "how-wearables-measure-you": () => import("./es/how-wearables-measure-you.mdx"),
+    "reading-your-trends": () => import("./es/reading-your-trends.mdx"),
+    "steps-and-movement": () => import("./es/steps-and-movement.mdx"),
+    "caffeine-alcohol-and-your-readings": () => import("./es/caffeine-alcohol-and-your-readings.mdx"),
+    "hydration-and-your-body": () => import("./es/hydration-and-your-body.mdx"),
+    "stress-and-recovery": () => import("./es/stress-and-recovery.mdx"),
   },
   fr: {
     "understanding-your-health-metrics": () => import("./fr/understanding-your-health-metrics.mdx"),
@@ -69,6 +86,12 @@ export const LEARN_CONTENT: Record<Locale, Record<string, MdxLoader>> = {
     "beyond-the-scale": () => import("./fr/beyond-the-scale.mdx"),
     "tracking-mood": () => import("./fr/tracking-mood.mdx"),
     "the-cycle-as-a-vital-sign": () => import("./fr/the-cycle-as-a-vital-sign.mdx"),
+    "how-wearables-measure-you": () => import("./fr/how-wearables-measure-you.mdx"),
+    "reading-your-trends": () => import("./fr/reading-your-trends.mdx"),
+    "steps-and-movement": () => import("./fr/steps-and-movement.mdx"),
+    "caffeine-alcohol-and-your-readings": () => import("./fr/caffeine-alcohol-and-your-readings.mdx"),
+    "hydration-and-your-body": () => import("./fr/hydration-and-your-body.mdx"),
+    "stress-and-recovery": () => import("./fr/stress-and-recovery.mdx"),
   },
   it: {
     "understanding-your-health-metrics": () => import("./it/understanding-your-health-metrics.mdx"),
@@ -84,6 +107,12 @@ export const LEARN_CONTENT: Record<Locale, Record<string, MdxLoader>> = {
     "beyond-the-scale": () => import("./it/beyond-the-scale.mdx"),
     "tracking-mood": () => import("./it/tracking-mood.mdx"),
     "the-cycle-as-a-vital-sign": () => import("./it/the-cycle-as-a-vital-sign.mdx"),
+    "how-wearables-measure-you": () => import("./it/how-wearables-measure-you.mdx"),
+    "reading-your-trends": () => import("./it/reading-your-trends.mdx"),
+    "steps-and-movement": () => import("./it/steps-and-movement.mdx"),
+    "caffeine-alcohol-and-your-readings": () => import("./it/caffeine-alcohol-and-your-readings.mdx"),
+    "hydration-and-your-body": () => import("./it/hydration-and-your-body.mdx"),
+    "stress-and-recovery": () => import("./it/stress-and-recovery.mdx"),
   },
   pl: {
     "understanding-your-health-metrics": () => import("./pl/understanding-your-health-metrics.mdx"),
@@ -99,6 +128,12 @@ export const LEARN_CONTENT: Record<Locale, Record<string, MdxLoader>> = {
     "beyond-the-scale": () => import("./pl/beyond-the-scale.mdx"),
     "tracking-mood": () => import("./pl/tracking-mood.mdx"),
     "the-cycle-as-a-vital-sign": () => import("./pl/the-cycle-as-a-vital-sign.mdx"),
+    "how-wearables-measure-you": () => import("./pl/how-wearables-measure-you.mdx"),
+    "reading-your-trends": () => import("./pl/reading-your-trends.mdx"),
+    "steps-and-movement": () => import("./pl/steps-and-movement.mdx"),
+    "caffeine-alcohol-and-your-readings": () => import("./pl/caffeine-alcohol-and-your-readings.mdx"),
+    "hydration-and-your-body": () => import("./pl/hydration-and-your-body.mdx"),
+    "stress-and-recovery": () => import("./pl/stress-and-recovery.mdx"),
   },
 };
 

@@ -106,6 +106,42 @@ const meta: LearnMeta = {
       description:
         "Il ciclo mestruale spiegato come segnale di salute: le quattro fasi, com'è un ciclo normale, cosa lo modifica e quando una variazione richiede un medico.",
     },
+    "how-wearables-measure-you": {
+      title: "Come ti misurano davvero i dispositivi indossabili",
+      dek: "Sensori ottici, accelerometri, stime ingegnose — cosa l'hardware al tuo polso può davvero vedere, e dove non arriva.",
+      description:
+        "Come i dispositivi indossabili per il fitness misurano frequenza cardiaca, passi, sonno, ossigeno nel sangue e temperatura — i sensori dietro i numeri, le stime derivate e i limiti noti di accuratezza.",
+    },
+    "reading-your-trends": {
+      title: "Leggi gli andamenti, non i numeri",
+      dek: "La competenza più utile nel monitoraggio della salute non è leggere un numero — è leggere la tua stessa linea nel tempo.",
+      description:
+        "Perché la tua linea di base personale batte qualsiasi intervallo di popolazione, come distinguere un andamento significativo dal rumore quotidiano e perché condizioni di misurazione costanti contano più della precisione.",
+    },
+    "steps-and-movement": {
+      title: "Passi e movimento quotidiano",
+      dek: "Cosa ti dice davvero un conteggio giornaliero dei passi — e perché 10.000 era un numero pubblicitario, non un obiettivo di salute.",
+      description:
+        "Cosa rivelano i passi giornalieri sulla salute, le evidenze secondo cui i benefici iniziano ben al di sotto dei 10.000, perché il movimento nell'arco della giornata conta e come vengono stimati i conteggi dei passi.",
+    },
+    "caffeine-alcohol-and-your-readings": {
+      title: "Caffeina, alcol e le tue letture",
+      dek: "Due abitudini quotidiane lasciano impronte chiare sulla tua frequenza cardiaca, sul sonno e sul recupero. Ecco cosa cercare.",
+      description:
+        "Come caffeina e alcol spostano visibilmente i parametri che monitori — frequenza cardiaca, HRV, sonno e glicemia — e perché spiegano così tante mattine storte.",
+    },
+    "hydration-and-your-body": {
+      title: "L'idratazione e il tuo corpo",
+      dek: "La maggior parte delle oscillazioni quotidiane di peso è acqua. Uno sguardo pacato al bilancio dei liquidi — e la verità su 'otto bicchieri al giorno'.",
+      description:
+        "Cosa fa l'idratazione per la frequenza cardiaca, il peso e come ti senti, le evidenze oneste sul fabbisogno giornaliero di liquidi e quando il bilancio dei liquidi conta davvero.",
+    },
+    "stress-and-recovery": {
+      title: "Stress e recupero",
+      dek: "Il tuo corpo tiene il conto — nella tua frequenza cardiaca, nella tua HRV e nel tuo sonno. Come leggere i segni dello sforzo e del riposo.",
+      description:
+        "Come stress e recupero compaiono nella frequenza cardiaca a riposo, nella HRV e nel sonno, l'equilibrio autonomico che li sottende e perché il recupero è un segnale attivo che puoi costruire.",
+    },
   },
 };
 

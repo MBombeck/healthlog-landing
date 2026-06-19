@@ -106,6 +106,42 @@ const meta: LearnMeta = {
       description:
         "Le cycle menstruel expliqué comme signal de santé : les quatre phases, à quoi ressemble un cycle normal, ce qui le déplace, et quand un changement justifie de consulter un médecin.",
     },
+    "how-wearables-measure-you": {
+      title: "Comment les objets connectés vous mesurent vraiment",
+      dek: "Capteurs optiques, accéléromètres, estimations astucieuses — ce que le matériel à votre poignet peut réellement voir, et ce qu'il ne peut pas.",
+      description:
+        "Comment les objets connectés de fitness mesurent la fréquence cardiaque, les pas, le sommeil, l'oxygène du sang et la température — les capteurs derrière les chiffres, les estimations dérivées, et les limites de précision connues.",
+    },
+    "reading-your-trends": {
+      title: "Lisez des tendances, pas des chiffres",
+      dek: "La compétence la plus utile en suivi de santé n'est pas de lire un chiffre — c'est de lire votre propre ligne dans le temps.",
+      description:
+        "Pourquoi votre référence personnelle l'emporte sur toute plage de population, comment distinguer une tendance parlante du bruit quotidien, et pourquoi des conditions de mesure cohérentes comptent plus que la précision.",
+    },
+    "steps-and-movement": {
+      title: "Les pas et le mouvement du quotidien",
+      dek: "Ce qu'un nombre de pas quotidiens vous dit vraiment — et pourquoi 10 000 était un chiffre marketing, pas un objectif de santé.",
+      description:
+        "Ce que les pas quotidiens révèlent de la santé, les données montrant que les bénéfices commencent bien en dessous de 10 000, pourquoi le mouvement réparti dans la journée compte, et comment les nombres de pas sont estimés.",
+    },
+    "caffeine-alcohol-and-your-readings": {
+      title: "La caféine, l'alcool et vos mesures",
+      dek: "Deux habitudes du quotidien laissent des empreintes nettes sur votre fréquence cardiaque, votre sommeil et votre récupération. Voici ce qu'il faut chercher.",
+      description:
+        "Comment la caféine et l'alcool déplacent visiblement les indicateurs que vous suivez — fréquence cardiaque, VFC, sommeil et glycémie — et pourquoi ils expliquent tant de matins difficiles.",
+    },
+    "hydration-and-your-body": {
+      title: "L'hydratation et votre corps",
+      dek: "La plupart des variations de poids quotidiennes sont de l'eau. Un regard posé sur l'équilibre hydrique — et la vérité sur les « huit verres par jour ».",
+      description:
+        "Ce que l'hydratation fait pour la fréquence cardiaque, le poids et votre ressenti, les données honnêtes sur les besoins quotidiens en liquide, et quand l'équilibre hydrique compte vraiment.",
+    },
+    "stress-and-recovery": {
+      title: "Stress et récupération",
+      dek: "Votre corps tient le compte — dans votre fréquence cardiaque, votre VFC et votre sommeil. Comment lire les signes de tension et de repos.",
+      description:
+        "Comment le stress et la récupération apparaissent dans la fréquence cardiaque au repos, la VFC et le sommeil, l'équilibre autonome qui les sous-tend, et pourquoi la récupération est un signal actif que vous pouvez construire.",
+    },
   },
 };
 

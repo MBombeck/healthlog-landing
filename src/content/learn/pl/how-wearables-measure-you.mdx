@@ -1,0 +1,57 @@
+Urządzenie noszone na nadgarstku podaje Ci pewny siebie strumień liczb — tętno, fazy snu, saturację krwi, wynik „regeneracji” — a dopracowany wygląd ekranu potrafi sprawić, że wszystko to wydaje się równie precyzyjne. Tak nie jest. Za pulpitem kryje się niewielka garstka fizycznych czujników, z których każdy dobrze mierzy jedną wąską rzecz, a mnóstwo pozostałych wnioskuje jedynie pośrednio. Wiedza o tym, co jest czym, decyduje o różnicy między nadmiernym zaufaniem do urządzenia a wyciągnięciem z niego realnej korzyści.
+
+## Optyczny pomiar tętna: światło odbite od krwi
+
+![](/learn-img-2/how-wearables-measure-you.jpg)
+
+Zielone światło świecące na spodzie opaski to serce większości urządzeń ubieralnych. Technika ta to **fotopletyzmografia**, czyli PPG: dioda LED świeci światłem w skórę, krew częściowo je pochłania, a fotodetektor odczytuje, ile się odbija. Ponieważ objętość krwi w drobnych naczyniach rośnie i opada z każdym uderzeniem serca, ten odbity sygnał pulsuje — a liczenie pulsów daje tętno.[^ppg]
+
+W spoczynku działa to dobrze. Badania walidacyjne wielokrotnie stwierdzają, że nadgarstkowe PPG ściśle śledzi elektryczny sygnał z klatki piersiowej, gdy noszący jest nieruchomy.[^ppg] Kłopoty zaczynają się przy ruchu. Podczas wysiłku opaska przesuwa się względem skóry, ruch mięśni i ścięgien zakłóca sygnał optyczny, a urządzenie musi mocniej zgadywać — dlatego nadgarstkowe tętno podczas interwałów czy podnoszenia ciężarów to najmniej wiarygodny odczyt, jaki większość ludzi posiada.[^ppg] Pas piersiowy, który mierzy aktywność elektryczną serca bezpośrednio, a nie optycznie, pozostaje dokładny w trakcie ruchu i stanowi praktyczny punkt odniesienia dla ciężkiego treningu.[^ppg]
+
+Znaczenie mają też dopasowanie i fizjologia. Luźna opaska, zimne palce, gęsty tusz tatuażu nad czujnikiem oraz ciemniejsze odcienie skóry — wszystko to zmienia sposób, w jaki przemieszcza się światło, i może pogorszyć sygnał.[^ppg] Nic z tego nie czyni liczby bezużyteczną; oznacza, że *warunki* pomiaru są częścią pomiaru.
+
+## Akcelerometr: kroki, ruch i „sen”
+
+Niemal wszystko, co nie jest optyczne, pochodzi z maleńkiego **akcelerometru** — układu wyczuwającego ruch w trzech osiach. Liczba kroków bierze się z rozpoznawania rytmicznego wzorca przyspieszeń chodu, dlatego kroki są w miarę dobre podczas żwawego spaceru, a bardziej zaszumione, gdy pchasz wózek, zmywasz naczynia albo siedzisz w trzęsącym się samochodzie.
+
+Sen to ciekawszy odcinek. Urządzenie ubieralne nie widzi Twojego mózgu. Wnioskuje o śnie z tego, jak mało się ruszasz, często w połączeniu z tętnem i jego zmiennością z uderzenia na uderzenie, a następnie etykietuje noc na fazy „lekką”, „głęboką” i „REM”.[^sleep] Punkt odniesienia kliniczny — polisomnografia — rejestruje fale mózgowe, ruchy gałek ocznych i napięcie mięśni w laboratorium. Wobec tego standardu urządzenia konsumenckie całkiem dobrze radzą sobie z prostym pytaniem *śpisz czy nie śpisz*, a znacznie słabiej z *którą fazą*, gdzie dokładność określania faz spada.[^sleep] Odczytuj porę zaśnięcia, porę pobudki i łączny czas z pewną dozą zaufania; potraktuj kolorowy podział na fazy jako szacunek, a nie wyrok. (O tym, co naprawdę robi różnicę, przeczytasz w [regularności snu](/pl/learn/sleep-consistency).)
+
+## Temperatura skóry i SpO₂
+
+Nowsze opaski dodają czujnik **temperatury skóry**. Nie podaje on temperatury wnętrza ciała; podaje *odchylenie* od Twojej własnej, niedawnej nocnej linii bazowej. To ujęcie jest tu sednem — względne przesunięcie o ułamek stopnia na przestrzeni kilku nocy może wskazywać na chorobę, cykl menstruacyjny czy ciężki dzień, podczas gdy wartość bezwzględna sama w sobie niewiele znaczy. (Więcej w [bazowej temperaturze ciała](/pl/learn/body-temperature-baseline).)
+
+Szacowanie saturacji krwi wykorzystuje ten sam optyczny trik z pewnym haczykiem. **Pulsoksymetria** świeci dwiema długościami fal — czerwoną i podczerwoną — ponieważ hemoglobina utlenowana i odtlenowana pochłaniają je różnie; stosunek tych wartości daje szacowane SpO₂.[^spo2] Nawet medyczne pulsoksymetry napalcowe mają margines błędu rzędu kilku punktów procentowych, a szacunki nadgarstkowe są jeszcze luźniejsze.[^spo2] Co istotne, amerykańska Agencja Żywności i Leków (FDA) ostrzegła, że pulsoksymetry mogą odczytywać *wyższe* wartości niż rzeczywisty poziom tlenu i że to przeszacowanie jest wyraźniejsze u osób o ciemniejszej skórze — ograniczenie po raz pierwszy szeroko udokumentowane w danych szpitalnych, które dziedziczą urządzenia nadgarstkowe.[^fda][^sjoding] Konsumenckie nadgarstkowe SpO₂ to funkcja wellness, nie diagnostyczna. (Zobacz [saturację krwi (SpO₂)](/pl/learn/blood-oxygen-spo2).)
+
+## Wskaźniki pochodne: szacunki zbudowane na szacunkach
+
+Liczby z nagłówków — VO₂max, „regeneracja”, „gotowość”, „obciążenie” — w ogóle nie są mierzone. To **modele**: algorytmy łączące surowe strumienie z powyższych czujników z Twoim wiekiem, masą i historią, by wyprodukować pojedynczą wartość.
+
+Nadgarstkowe VO₂max to najwyraźniejszy przykład. Prawdziwe VO₂max wymaga maski, bieżni i analizy wydychanego gazu. Urządzenie ubieralne szacuje je z zależności między tętnem a tempem podczas aktywności na świeżym powietrzu — to rozsądny zamiennik, który śledzi zmiany kondycji w czasie, ale szacunek dziedziczący każdy błąd w danych o tętnie i GPS, które go zasilają.[^vo2] Wyniki „regeneracji” i „gotowości” to zastrzeżone mieszanki, zwykle oparte na nocnej [zmienności rytmu serca](/pl/learn/heart-rate-variability), [tętnie spoczynkowym](/pl/learn/resting-heart-rate) i śnie — użyteczne jako codzienna podpowiedź, ale niebędące klinicznym pomiarem czegokolwiek.
+
+<Aside type="note">
+Większość tego, co pokazuje Ci urządzenie ubieralne, to **szacunek, a nie pomiar laboratoryjny**. Optyczne tętno, wywnioskowane fazy snu, nadgarstkowe SpO₂ i każdy „wynik” to modele zbudowane na kilku realnych sygnałach — wystarczająco dokładne, by ujawnić *zmianę w czasie*, rzadko na tyle precyzyjne, by pojedynczą wartość traktować jako prawdę absolutną. Uczciwy sposób ich odczytu to traktować je jako względne, nie bezwzględne.
+</Aside>
+
+## Ufaj trendowi, znaj granice
+
+Wspólnym wątkiem dla każdego czujnika jest ta sama lekcja, która przewija się przez [odczytywanie trendów](/pl/learn/reading-your-trends): urządzenie ubieralne znacznie lepiej wykrywa *zmianę względem Twojej własnej linii bazowej* niż podaje dokładną wartość. Tętno spoczynkowe, które rośnie o pięć uderzeń przez trzy poranki, temperatura skóry dryfująca w górę przed przeziębieniem, wynik regeneracji opadający po złym tygodniu — te kierunkowe sygnały to miejsce, w którym leży wartość, bo spójne warunki znoszą wiele błędów pomiaru.
+
+| Odczyt | Czym naprawdę jest | Gdzie dokładność spada |
+| --- | --- | --- |
+| Tętno | Optyczne (PPG) w spoczynku; słabsze w ruchu | Ruch, luźne dopasowanie, tatuaże, odcień skóry |
+| Kroki | Dopasowywanie wzorca z akcelerometru | Ruch ramion niezwiązany z chodem, pojazdy |
+| Fazy snu | Wnioskowane z ruchu i tętna | Etykiety faz znacznie mniej wiarygodne niż czas trwania |
+| Temperatura skóry | Odchylenie od osobistej linii bazowej | Nie temperatura wnętrza; wyłącznie względna |
+| SpO₂ | Stosunek absorpcji światła czerwonego/podczerwonego | Może zawyżać; gorzej przy ciemniejszej skórze i ruchu |
+| VO₂max / regeneracja | Szacunki z modeli | Dziedziczą każdy błąd czujnika u źródła |
+
+Dostrój więc swoje oczekiwania do czujnika. Używaj urządzenia do wyznaczania kierunku i utrwalania nawyków, opieraj się na pasie piersiowym lub przyrządzie lekarza, gdy potrzebujesz precyzji, a każdą pojedynczą niepokojącą liczbę traktuj jako powód do ponownego sprawdzenia, a nie do wniosku.
+
+To ogólne informacje, a nie porada medyczna, a różnice indywidualne są duże. Opieraj się na własnej linii bazowej; traktuj liczby jako test zdroworozsądkowy, nie jako tablicę wyników.
+
+[^ppg]: Jak działa fotopletyzmografia (PPG), jej dokładność w spoczynku w porównaniu z ruchem oraz wpływ dopasowania, odcienia skóry i tatuaży; elektryczny pomiar z pasa piersiowego jako odporny na ruch punkt odniesienia — Bent B, et al., "Investigating sources of inaccuracy in wearable optical heart rate sensors," *npj Digital Medicine*, 2020. https://www.nature.com/articles/s41746-020-0226-6
+[^sleep]: Konsumenckie urządzenia ubieralne szacują sen na podstawie ruchu i tętna i lepiej radzą sobie z wykrywaniem snu/czuwania niż z określaniem faz, w odniesieniu do polisomnografii — Chinoy ED, et al., "Performance of seven consumer sleep-tracking devices compared with polysomnography," *Sleep*, 2021. https://academic.oup.com/sleep/article/44/5/zsaa291/6055610
+[^spo2]: Zasada dwufalowej (czerwień/podczerwień) pulsoksymetrii i jej typowy margines dokładności — Nitzan M, et al., "Pulse oximetry: fundamentals and technology update," *Medical Devices: Evidence and Research*, 2014. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4099100/
+[^fda]: Pulsoksymetry mogą zawyżać poziom tlenu we krwi, a ograniczenia dokładności są wyraźniejsze u osób o ciemniejszej pigmentacji skóry — U.S. Food and Drug Administration, Safety Communication, 2021. https://www.fda.gov/medical-devices/safety-communications/pulse-oximeter-accuracy-and-limitations-fda-safety-communication
+[^sjoding]: Dane szpitalne pokazujące, że pulsoksymetria częściej zawyża saturację tlenem u pacjentów czarnoskórych niż u białych — Sjoding MW, et al., "Racial Bias in Pulse Oximetry Measurement," *New England Journal of Medicine*, 2020. https://www.nejm.org/doi/full/10.1056/NEJMc2029240
+[^vo2]: Szacowanie VO₂max na podstawie tętna i tempa przez urządzenia nadgarstkowe oraz jego trafność jako zamiennika laboratoryjnego testu wydolności krążeniowo-oddechowej — Klepin K, et al., "Validity of Cardiorespiratory Fitness Measured With a Wrist-Worn Wearable," *JMIR mHealth and uHealth*, 2019. https://mhealth.jmir.org/2019/9/e12101/

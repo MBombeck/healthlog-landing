@@ -49,6 +49,12 @@ export const LEARN_ARTICLES: LearnArticle[] = [
   { slug: "beyond-the-scale", category: "body", readingTimeMin: 8, knowledgeSlug: "weight-bmi" },
   { slug: "tracking-mood", category: "mind", readingTimeMin: 7, knowledgeSlug: "mood" },
   { slug: "the-cycle-as-a-vital-sign", category: "mind", readingTimeMin: 8, knowledgeSlug: "menstrual-cycle" },
+  { slug: "how-wearables-measure-you", category: "foundations", readingTimeMin: 8, knowledgeSlug: null },
+  { slug: "reading-your-trends", category: "foundations", readingTimeMin: 7, knowledgeSlug: null },
+  { slug: "steps-and-movement", category: "fitness", readingTimeMin: 7, knowledgeSlug: null },
+  { slug: "caffeine-alcohol-and-your-readings", category: "metabolic", readingTimeMin: 7, knowledgeSlug: null },
+  { slug: "hydration-and-your-body", category: "body", readingTimeMin: 7, knowledgeSlug: null },
+  { slug: "stress-and-recovery", category: "mind", readingTimeMin: 8, knowledgeSlug: null },
 ];
 
 export const LEARN_SLUGS = LEARN_ARTICLES.map((a) => a.slug);

@@ -106,6 +106,42 @@ const meta: LearnMeta = {
       description:
         "El ciclo menstrual explicado como señal de salud: las cuatro fases, cómo es un ciclo normal, qué lo altera y cuándo un cambio justifica acudir a un profesional.",
     },
+    "how-wearables-measure-you": {
+      title: "Cómo te miden de verdad los dispositivos",
+      dek: "Sensores ópticos, acelerómetros, estimaciones ingeniosas: qué puede ver realmente el hardware de tu muñeca, y dónde no llega.",
+      description:
+        "Cómo miden los dispositivos la frecuencia cardíaca, los pasos, el sueño, el oxígeno en sangre y la temperatura: los sensores detrás de los números, las estimaciones derivadas y los límites de precisión conocidos.",
+    },
+    "reading-your-trends": {
+      title: "Lee tendencias, no números",
+      dek: "La habilidad más útil en el seguimiento de la salud no es leer un número: es leer tu propia línea a lo largo del tiempo.",
+      description:
+        "Por qué tu línea base personal supera a cualquier rango poblacional, cómo distinguir una tendencia significativa del ruido diario y por qué unas condiciones de medición constantes importan más que la precisión.",
+    },
+    "steps-and-movement": {
+      title: "Pasos y movimiento cotidiano",
+      dek: "Qué te dice de verdad un recuento diario de pasos, y por qué los 10.000 fueron una cifra de marketing, no un objetivo de salud.",
+      description:
+        "Qué revelan los pasos diarios sobre la salud, la evidencia de que los beneficios empiezan muy por debajo de 10.000, por qué importa el movimiento a lo largo del día, y cómo se estiman los recuentos de pasos.",
+    },
+    "caffeine-alcohol-and-your-readings": {
+      title: "La cafeína, el alcohol y tus lecturas",
+      dek: "Dos hábitos cotidianos dejan huellas claras en tu frecuencia cardíaca, tu sueño y tu recuperación. Esto es lo que hay que buscar.",
+      description:
+        "Cómo la cafeína y el alcohol mueven de forma visible las métricas que sigues —frecuencia cardíaca, VFC, sueño y glucosa— y por qué explican tantas mañanas en baja forma.",
+    },
+    "hydration-and-your-body": {
+      title: "La hidratación y tu cuerpo",
+      dek: "La mayoría de los vaivenes diarios de peso son agua. Una mirada serena al equilibrio de líquidos, y la verdad sobre los «ocho vasos al día».",
+      description:
+        "Qué hace la hidratación por la frecuencia cardíaca, el peso y cómo te sientes, la evidencia honesta sobre las necesidades diarias de líquido, y cuándo el equilibrio de líquidos importa de verdad.",
+    },
+    "stress-and-recovery": {
+      title: "Estrés y recuperación",
+      dek: "Tu cuerpo lleva la cuenta: en tu frecuencia cardíaca, tu VFC y tu sueño. Cómo leer los signos de la tensión y el descanso.",
+      description:
+        "Cómo aparecen el estrés y la recuperación en la frecuencia cardíaca en reposo, la VFC y el sueño, el equilibrio autónomo que los sostiene, y por qué la recuperación es una señal activa que puedes construir.",
+    },
   },
 };
 

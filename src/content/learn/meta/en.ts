@@ -106,6 +106,42 @@ const meta: LearnMeta = {
       description:
         "The menstrual cycle explained as a health signal: the four phases, what a normal cycle looks like, what shifts it, and when a change warrants a clinician.",
     },
+    "how-wearables-measure-you": {
+      title: "How wearables actually measure you",
+      dek: "Optical sensors, accelerometers, clever estimates — what the hardware on your wrist can really see, and where it can't.",
+      description:
+        "How fitness wearables measure heart rate, steps, sleep, blood oxygen and temperature — the sensors behind the numbers, the derived estimates, and the known accuracy limits.",
+    },
+    "reading-your-trends": {
+      title: "Read trends, not numbers",
+      dek: "The most useful skill in health tracking isn't reading a number — it's reading your own line over time.",
+      description:
+        "Why your personal baseline beats any population range, how to tell a meaningful trend from daily noise, and why consistent measurement conditions matter more than precision.",
+    },
+    "steps-and-movement": {
+      title: "Steps and everyday movement",
+      dek: "What a daily step count really tells you — and why 10,000 was a marketing number, not a health target.",
+      description:
+        "What daily steps reveal about health, the evidence that benefits start well below 10,000, why movement through the day matters, and how step counts are estimated.",
+    },
+    "caffeine-alcohol-and-your-readings": {
+      title: "Caffeine, alcohol and your readings",
+      dek: "Two everyday habits leave clear fingerprints on your heart rate, sleep and recovery. Here's what to look for.",
+      description:
+        "How caffeine and alcohol visibly move the metrics you track — heart rate, HRV, sleep and glucose — and why they explain so many off mornings.",
+    },
+    "hydration-and-your-body": {
+      title: "Hydration and your body",
+      dek: "Most daily weight swings are water. A calm look at fluid balance — and the truth about 'eight glasses a day'.",
+      description:
+        "What hydration does for heart rate, weight and how you feel, the honest evidence on daily fluid needs, and when fluid balance really matters.",
+    },
+    "stress-and-recovery": {
+      title: "Stress and recovery",
+      dek: "Your body keeps the score — in your heart rate, your HRV and your sleep. How to read the signs of strain and rest.",
+      description:
+        "How stress and recovery show up in resting heart rate, HRV and sleep, the autonomic balance behind them, and why recovery is an active signal you can build.",
+    },
   },
 };
 

@@ -106,6 +106,42 @@ const meta: LearnMeta = {
       description:
         "Der Menstruationszyklus als Gesundheitssignal erklärt: die vier Phasen, wie ein normaler Zyklus aussieht, was ihn verschiebt und wann eine Veränderung ärztliche Abklärung erfordert.",
     },
+    "how-wearables-measure-you": {
+      title: "Wie Wearables dich wirklich messen",
+      dek: "Optische Sensoren, Beschleunigungssensoren, clevere Schätzungen — was die Hardware an deinem Handgelenk wirklich sehen kann und wo nicht.",
+      description:
+        "Wie Fitness-Wearables Herzfrequenz, Schritte, Schlaf, Blutsauerstoff und Temperatur messen — die Sensoren hinter den Zahlen, die abgeleiteten Schätzungen und die bekannten Genauigkeitsgrenzen.",
+    },
+    "reading-your-trends": {
+      title: "Lies Trends, nicht Zahlen",
+      dek: "Die nützlichste Fähigkeit beim Gesundheitstracking ist nicht, eine Zahl zu lesen — es ist, deine eigene Linie über die Zeit zu lesen.",
+      description:
+        "Warum deine persönliche Baseline jeden Bevölkerungsbereich schlägt, wie du einen bedeutsamen Trend von täglichem Rauschen unterscheidest und warum gleichbleibende Messbedingungen mehr zählen als Präzision.",
+    },
+    "steps-and-movement": {
+      title: "Schritte und alltägliche Bewegung",
+      dek: "Was eine tägliche Schrittzahl wirklich verrät — und warum 10.000 eine Marketingzahl war, kein Gesundheitsziel.",
+      description:
+        "Was tägliche Schritte über die Gesundheit verraten, die Evidenz, dass der Nutzen weit unter 10.000 beginnt, warum Bewegung über den Tag zählt und wie Schrittzahlen geschätzt werden.",
+    },
+    "caffeine-alcohol-and-your-readings": {
+      title: "Koffein, Alkohol und deine Werte",
+      dek: "Zwei alltägliche Gewohnheiten hinterlassen klare Fingerabdrücke auf deiner Herzfrequenz, deinem Schlaf und deiner Erholung. Worauf du achten solltest.",
+      description:
+        "Wie Koffein und Alkohol die Werte, die du verfolgst, sichtbar bewegen — Herzfrequenz, HRV, Schlaf und Glukose — und warum sie so viele schlechte Morgen erklären.",
+    },
+    "hydration-and-your-body": {
+      title: "Hydration und dein Körper",
+      dek: "Die meisten täglichen Gewichtsschwankungen sind Wasser. Ein gelassener Blick auf die Flüssigkeitsbalance — und die Wahrheit über „acht Gläser am Tag“.",
+      description:
+        "Was Hydration für Herzfrequenz, Gewicht und dein Befinden bedeutet, die ehrliche Evidenz zum täglichen Flüssigkeitsbedarf und wann die Flüssigkeitsbalance wirklich zählt.",
+    },
+    "stress-and-recovery": {
+      title: "Stress und Erholung",
+      dek: "Dein Körper führt Buch — in deiner Herzfrequenz, deiner HRV und deinem Schlaf. Wie du die Zeichen von Belastung und Ruhe liest.",
+      description:
+        "Wie sich Stress und Erholung im Ruhepuls, in der HRV und im Schlaf zeigen, die autonome Balance dahinter und warum Erholung ein aktives Signal ist, das du aufbauen kannst.",
+    },
   },
 };
 

@@ -1,0 +1,57 @@
+Ein Wearable am Handgelenk liefert dir einen selbstbewussten Strom von Zahlen — Herzfrequenz, Schlafphasen, Blutsauerstoff, einen „Recovery"-Wert — und die Politur des Displays kann all das gleich präzise wirken lassen. Das ist es nicht. Hinter dem Dashboard sitzt eine kleine Handvoll physischer Sensoren, von denen jeder genau eine eng umrissene Sache gut misst und vieles andere nur durch Rückschluss. Zu wissen, was was ist, macht den Unterschied aus zwischen blindem Vertrauen in ein Gerät und echtem Nutzen daraus.
+
+## Optische Herzfrequenz: Licht, das vom Blut reflektiert wird
+
+![](/learn-img-2/how-wearables-measure-you.jpg)
+
+Das grüne Licht, das auf der Unterseite eines Armbands leuchtet, ist das Herzstück der meisten Wearables. Die Technik heißt **Photoplethysmografie** oder PPG: Eine LED strahlt Licht in die Haut, das Blut absorbiert einen Teil davon, und ein Fotodetektor misst, wie viel zurückgeworfen wird. Weil das Blutvolumen in den kleinen Gefäßen mit jedem Herzschlag steigt und fällt, pulsiert dieses reflektierte Signal — und das Zählen der Pulse ergibt die Herzfrequenz.[^ppg]
+
+In Ruhe funktioniert das gut. Validierungsstudien finden immer wieder, dass die PPG am Handgelenk ein elektrisches Brustsignal eng nachzeichnet, solange der Träger stillhält.[^ppg] Die Schwierigkeiten beginnen bei Bewegung. Beim Sport verrutscht das Band auf der Haut, Muskel- und Sehnenbewegung verunreinigt das optische Signal, und das Gerät muss stärker raten — weshalb die Handgelenks-Herzfrequenz bei Intervallen oder beim Krafttraining die unzuverlässigste Messung ist, die die meisten Menschen besitzen.[^ppg] Ein Brustgurt, der die elektrische Aktivität des Herzens direkt statt optisch misst, bleibt durch Bewegung hindurch genau und ist die praktische Referenz für hartes Training.[^ppg]
+
+Auch Sitz und Physiologie spielen eine Rolle. Ein lockeres Band, kalte Finger, dichte Tätowierfarbe über dem Sensor und dunklere Hauttöne verändern alle, wie das Licht wandert, und können das Signal verschlechtern.[^ppg] Nichts davon macht die Zahl nutzlos; es bedeutet, dass die *Bedingungen* einer Messung Teil der Messung sind.
+
+## Der Beschleunigungssensor: Schritte, Bewegung und „Schlaf"
+
+Fast alles, was nicht optisch ist, kommt von einem winzigen **Beschleunigungssensor** — einem Chip, der Bewegung in drei Achsen erfasst. Schrittzahlen entstehen durch das Erkennen des rhythmischen Beschleunigungsmusters des Gehens, weshalb Schritte bei einem zügigen Spaziergang einigermaßen gut und verrauschter sind, wenn du einen Kinderwagen schiebst, Geschirr spülst oder in einem holprigen Auto sitzt.
+
+Schlaf ist der interessantere Bereich. Ein Wearable sieht dein Gehirn nicht. Es schließt aus der geringen Bewegung auf Schlaf, oft kombiniert mit Herzfrequenz und ihrer Schlag-zu-Schlag-Variation, und etikettiert die Nacht dann in „leichte", „tiefe" und „REM"-Phasen.[^sleep] Die klinische Referenz — die Polysomnografie — zeichnet Hirnwellen, Augenbewegung und Muskeltonus im Labor auf. Gemessen an diesem Standard sind Consumer-Geräte bei der einfachen Frage *schlafend oder wach* recht gut und bei *welche Phase* deutlich schwächer, wo die Genauigkeit der Phaseneinteilung abfällt.[^sleep] Lies Zubettgehzeit, Aufwachzeit und Gesamtdauer mit einigem Vertrauen; behandle die farbige Phasenaufschlüsselung als Schätzung, nicht als Urteil. (Was wirklich den Unterschied macht, steht unter [Schlafregelmäßigkeit](/de/learn/sleep-consistency).)
+
+## Hauttemperatur und SpO₂
+
+Neuere Bänder ergänzen einen **Hauttemperatur**-Sensor. Er meldet nicht die Körperkerntemperatur; er meldet eine *Abweichung* von deiner eigenen jüngsten nächtlichen Baseline. Genau dieser Rahmen ist der Punkt — eine relative Verschiebung um den Bruchteil eines Grades über mehrere Nächte hinweg kann auf eine Krankheit, den Menstruationszyklus oder einen harten Tag hindeuten, während die absolute Zahl für sich genommen wenig bedeutet. (Mehr unter [Baseline-Körpertemperatur](/de/learn/body-temperature-baseline).)
+
+Die Schätzung des Blutsauerstoffs greift den optischen Trick mit einer Wendung wieder auf. Die **Pulsoxymetrie** strahlt zwei Wellenlängen — rot und infrarot —, weil oxygeniertes und desoxygeniertes Hämoglobin sie unterschiedlich absorbieren; das Verhältnis ergibt eine geschätzte SpO₂.[^spo2] Selbst medizinische Fingeroxymeter tragen eine Fehlerspanne von ein paar Prozentpunkten, und Schätzungen am Handgelenk sind noch lockerer.[^spo2] Entscheidend ist, dass die US-amerikanische Food and Drug Administration gewarnt hat, dass Pulsoxymeter *höher* messen können als der wahre Sauerstoffwert und dass diese Überschätzung bei Menschen mit dunklerer Haut ausgeprägter ist — eine Einschränkung, die zuerst breit in Krankenhausdaten dokumentiert wurde und die Handgelenksgeräte erben.[^fda][^sjoding] Die SpO₂ am Consumer-Handgelenk ist ein Wellness-Feature, kein diagnostisches. (Siehe [Blutsauerstoff (SpO₂)](/de/learn/blood-oxygen-spo2).)
+
+## Abgeleitete Werte: Schätzungen auf Schätzungen
+
+Die Aushängezahlen — VO₂max, „Recovery", „Readiness", „Strain" — werden überhaupt nicht gemessen. Sie sind **Modelle**: Algorithmen, die die rohen Sensorströme von oben mit deinem Alter, Gewicht und deiner Vorgeschichte kombinieren, um eine einzige Zahl zu erzeugen.
+
+Die VO₂max am Handgelenk ist das klarste Beispiel. Echte VO₂max erfordert eine Maske, ein Laufband und die Analyse der ausgeatmeten Luft. Ein Wearable schätzt sie aus dem Verhältnis zwischen deiner Herzfrequenz und deinem Tempo bei Aktivität im Freien — ein vernünftiger Näherungswert, der Fitnessveränderungen über die Zeit nachzeichnet, aber eine Schätzung, die jeden Fehler in den zugrunde liegenden Herzfrequenz- und GPS-Daten erbt.[^vo2] „Recovery"- und „Readiness"-Werte sind proprietäre Mischungen, die sich typischerweise auf die nächtliche [Herzfrequenzvariabilität](/de/learn/heart-rate-variability), den [Ruhepuls](/de/learn/resting-heart-rate) und den Schlaf stützen — nützlich als tägliches Anstupsen, aber keine klinische Messung von irgendetwas.
+
+<Aside type="note">
+Das meiste, was ein Wearable dir zeigt, ist eine **Schätzung, keine Labormessung**. Optische Herzfrequenz, abgeleitete Schlafphasen, SpO₂ am Handgelenk und jeder „Wert" sind Modelle auf Basis weniger echter Signale — genau genug, um *Veränderung über die Zeit* sichtbar zu machen, selten präzise genug, um einen einzelnen Wert als Grundwahrheit zu behandeln. Die ehrliche Art, sie zu lesen, ist relativ, nicht absolut.
+</Aside>
+
+## Vertraue dem Trend, kenne die Grenzen
+
+Der rote Faden durch jeden Sensor ist dieselbe Lektion, die sich durch [Trends lesen](/de/learn/reading-your-trends) zieht: Ein Wearable ist weit besser darin, *Veränderung gegenüber deiner eigenen Baseline* zu erkennen, als darin, einen exakten Wert zu melden. Ein Ruhepuls, der über drei Morgen um fünf Schläge steigt, eine Hauttemperatur, die vor einer Erkältung nach oben driftet, ein Recovery-Wert, der nach einer schlechten Woche durchhängt — diese Richtungssignale sind dort, wo der Wert liegt, weil gleichbleibende Bedingungen viel Messfehler herausmitteln.
+
+| Messung | Was sie wirklich ist | Wo die Genauigkeit abnimmt |
+| --- | --- | --- |
+| Herzfrequenz | Optisch (PPG) in Ruhe; schwächer in Bewegung | Bewegung, lockerer Sitz, Tätowierungen, Hautton |
+| Schritte | Mustererkennung des Beschleunigungssensors | Armbewegung ohne Gehen, Fahrzeuge |
+| Schlafphasen | Abgeleitet aus Bewegung + Herzfrequenz | Phasen-Etiketten weit unzuverlässiger als Dauer |
+| Hauttemperatur | Abweichung von der persönlichen Baseline | Keine Kerntemperatur; nur relativ |
+| SpO₂ | Rot/Infrarot-Absorptionsverhältnis | Kann zu hoch messen; schlechter bei dunklerer Haut, Bewegung |
+| VO₂max / Recovery | Modellierte Schätzungen | Erben jeden vorgelagerten Sensorfehler |
+
+Kalibriere also deine Erwartungen am jeweiligen Sensor. Nutze das Gerät für Richtung und Gewohnheit, verlass dich auf einen Brustgurt oder das Instrument einer Ärztin, wenn du Präzision brauchst, und lass jede einzelne alarmierende Zahl einen zweiten Blick auslösen statt einer Schlussfolgerung.
+
+Dies sind allgemeine Informationen, keine medizinische Beratung, und die individuellen Unterschiede sind groß. Orientiere dich an deiner eigenen Baseline; nutze die Zahlen als Plausibilitätsprüfung, nicht als Anzeigetafel.
+
+[^ppg]: Wie die Photoplethysmografie (PPG) funktioniert, ihre Genauigkeit in Ruhe versus bei Bewegung sowie die Effekte von Sitz, Hautton und Tätowierungen; die elektrische Brustgurt-Messung als bewegungsrobuste Referenz — Bent B, et al., „Investigating sources of inaccuracy in wearable optical heart rate sensors," *npj Digital Medicine*, 2020. https://www.nature.com/articles/s41746-020-0226-6
+[^sleep]: Consumer-Wearables schätzen Schlaf aus Bewegung und Herzfrequenz und schneiden bei der Schlaf/Wach-Erkennung besser ab als bei der Phaseneinteilung, gemessen an der Polysomnografie — Chinoy ED, et al., „Performance of seven consumer sleep-tracking devices compared with polysomnography," *Sleep*, 2021. https://academic.oup.com/sleep/article/44/5/zsaa291/6055610
+[^spo2]: Prinzip der Zweiwellenlängen-Pulsoxymetrie (rot/infrarot) und ihre typische Genauigkeitsspanne — Nitzan M, et al., „Pulse oximetry: fundamentals and technology update," *Medical Devices: Evidence and Research*, 2014. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4099100/
+[^fda]: Pulsoxymeter können den Blutsauerstoffwert überschätzen, wobei die Genauigkeitsgrenzen bei Menschen mit dunklerer Hautpigmentierung ausgeprägter sind — U.S. Food and Drug Administration, Safety Communication, 2021. https://www.fda.gov/medical-devices/safety-communications/pulse-oximeter-accuracy-and-limitations-fda-safety-communication
+[^sjoding]: Krankenhausdaten, die zeigen, dass die Pulsoxymetrie die Sauerstoffsättigung bei Schwarzen häufiger überschätzt als bei weißen Patienten — Sjoding MW, et al., „Racial Bias in Pulse Oximetry Measurement," *New England Journal of Medicine*, 2020. https://www.nejm.org/doi/full/10.1056/NEJMc2029240
+[^vo2]: Schätzung der VO₂max aus Herzfrequenz und Tempo durch Handgelenksgeräte und ihre Validität als Näherungswert für die laborbasierte kardiorespiratorische Fitnessprüfung — Klepin K, et al., „Validity of Cardiorespiratory Fitness Measured With a Wrist-Worn Wearable," *JMIR mHealth and uHealth*, 2019. https://mhealth.jmir.org/2019/9/e12101/

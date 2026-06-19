@@ -1,0 +1,57 @@
+Un dispositivo indossabile da polso ti consegna un flusso sicuro di numeri — frequenza cardiaca, fasi del sonno, ossigeno nel sangue, un punteggio di "recupero" — e la rifinitura del display può far sembrare tutto ugualmente preciso. Non lo è. Dietro la dashboard si nasconde una piccola manciata di sensori fisici, ognuno dei quali misura bene una cosa ristretta e tutto il resto solo per inferenza. Sapere quale fa cosa è la differenza tra fidarsi troppo di un dispositivo e ricavarne un valore reale.
+
+## Frequenza cardiaca ottica: luce riflessa dal sangue
+
+![](/learn-img-2/how-wearables-measure-you.jpg)
+
+La luce verde che brilla sul lato inferiore di un cinturino è il cuore della maggior parte dei dispositivi indossabili. La tecnica è la **fotopletismografia**, o PPG: un LED proietta luce nella pelle, il sangue ne assorbe una parte e un fotorilevatore legge quanta ne torna indietro. Poiché il volume del sangue nei piccoli vasi sale e scende a ogni battito, quel segnale riflesso pulsa — e contare le pulsazioni dà la frequenza cardiaca.[^ppg]
+
+A riposo, questo funziona bene. Gli studi di validazione rilevano ripetutamente che la PPG al polso segue da vicino un segnale elettrico toracico quando chi la indossa è fermo.[^ppg] I problemi iniziano con il movimento. Durante l'esercizio il cinturino si sposta contro la pelle, il movimento di muscoli e tendini contamina il segnale ottico e il dispositivo deve tirare più a indovinare — ed è per questo che la frequenza cardiaca al polso durante gli intervalli o il sollevamento pesi è la lettura meno affidabile che la maggior parte delle persone possieda.[^ppg] Una fascia toracica, che misura direttamente l'attività elettrica del cuore anziché otticamente, resta accurata durante il movimento e rimane il riferimento pratico per l'allenamento intenso.[^ppg]
+
+Contano anche la calzata e la fisiologia. Un cinturino lento, dita fredde, inchiostro denso di un tatuaggio sopra il sensore e tonalità di pelle più scure cambiano tutti il modo in cui la luce viaggia e possono degradare il segnale.[^ppg] Nulla di tutto ciò rende il numero inutile; significa che le *condizioni* di una lettura fanno parte della lettura.
+
+## L'accelerometro: passi, movimento e "sonno"
+
+Quasi tutto ciò che non è ottico proviene da un minuscolo **accelerometro** — un chip che rileva il movimento su tre assi. Il conteggio dei passi nasce dal riconoscimento del pattern ritmico di accelerazione del camminare, ed è per questo che i passi sono ragionevolmente buoni durante una camminata svelta e più rumorosi quando spingi un passeggino, lavi i piatti o sei seduto in un'auto che sobbalza.
+
+Il sonno è il tratto più interessante. Un indossabile non vede il tuo cervello. Inferisce il sonno da quanto poco ti muovi, spesso combinato con la frequenza cardiaca e la sua variazione battito per battito, poi etichetta la notte nelle fasi "leggero", "profondo" e "REM".[^sleep] Il riferimento clinico — la polisonnografia — registra le onde cerebrali, il movimento oculare e il tono muscolare in laboratorio. Rispetto a quello standard, i dispositivi di consumo sono abbastanza bravi nella semplice domanda *addormentato o sveglio* e considerevolmente più deboli su *quale fase*, dove l'accuratezza della stadiazione cala.[^sleep] Leggi l'orario di addormentamento, di risveglio e la durata totale con una certa fiducia; tratta la suddivisione colorata in fasi come una stima, non un verdetto. (Per ciò che fa davvero la differenza, vedi [la regolarità del sonno](/it/learn/sleep-consistency).)
+
+## Temperatura cutanea e SpO₂
+
+I cinturini più recenti aggiungono un sensore di **temperatura cutanea**. Non riporta la temperatura corporea interna; riporta uno *scostamento* dalla tua linea di base notturna recente. Quel modo di inquadrarlo è il punto — uno spostamento relativo di una frazione di grado nell'arco di diverse notti può suggerire una malattia, il ciclo mestruale o una giornata pesante, mentre il numero assoluto da solo significa poco. (Altro in [la temperatura corporea di base](/it/learn/body-temperature-baseline).)
+
+La stima dell'ossigeno nel sangue riutilizza il trucco ottico con una variante. La **pulsossimetria** proietta due lunghezze d'onda — rossa e infrarossa — perché l'emoglobina ossigenata e quella deossigenata le assorbono in modo diverso; il rapporto fornisce una SpO₂ stimata.[^spo2] Anche i pulsossimetri medici da dito hanno un margine d'errore di un paio di punti percentuali, e le stime al polso sono ancora più approssimative.[^spo2] In modo cruciale, la Food and Drug Administration statunitense ha avvertito che i pulsossimetri possono leggere valori *più alti* dei livelli reali di ossigeno, e che questa sovrastima è più marcata nelle persone con pelle più scura — un limite documentato per la prima volta su larga scala nei dati ospedalieri e che i dispositivi da polso ereditano.[^fda][^sjoding] La SpO₂ al polso di consumo è una funzione di benessere, non diagnostica. (Vedi [l'ossigeno nel sangue (SpO₂)](/it/learn/blood-oxygen-spo2).)
+
+## Punteggi derivati: stime costruite su stime
+
+I numeri di punta — VO₂max, "recupero", "prontezza", "sforzo" — non sono affatto misurati. Sono **modelli**: algoritmi che combinano i flussi grezzi dei sensori sopra con la tua età, il peso e lo storico per produrre una singola cifra.
+
+Il VO₂max al polso è l'esempio più chiaro. Il vero VO₂max richiede una maschera, un tapis roulant e l'analisi del gas che respiri. Un indossabile lo stima dalla relazione tra la tua frequenza cardiaca e il tuo passo durante l'attività all'aperto — un proxy ragionevole che segue i cambiamenti della forma fisica nel tempo, ma una stima che eredita ogni errore nei dati di frequenza cardiaca e GPS che la alimentano.[^vo2] I punteggi di "recupero" e "prontezza" sono miscele proprietarie, che si appoggiano tipicamente sulla [variabilità della frequenza cardiaca](/it/learn/heart-rate-variability) notturna, sulla [frequenza cardiaca a riposo](/it/learn/resting-heart-rate) e sul sonno — utili come spinta quotidiana, ma non una misurazione clinica di alcunché.
+
+<Aside type="note">
+La maggior parte di ciò che un indossabile ti mostra è una **stima, non una misurazione di laboratorio**. La frequenza cardiaca ottica, le fasi del sonno inferite, la SpO₂ al polso e ogni "punteggio" sono modelli costruiti su pochi segnali reali — abbastanza accurati da rivelare il *cambiamento nel tempo*, raramente abbastanza precisi da trattare un singolo valore come verità assoluta. Il modo onesto di leggerli è come relativi, non assoluti.
+</Aside>
+
+## Fidati dell'andamento, conosci i limiti
+
+Il filo comune che attraversa ogni sensore è la stessa lezione che percorre [leggere gli andamenti](/it/learn/reading-your-trends): un indossabile è molto più bravo a rilevare il *cambiamento rispetto alla tua linea di base* che a riportare un valore esatto. Una frequenza cardiaca a riposo che sale di cinque battiti in tre mattine, una temperatura cutanea che si alza prima di un raffreddore, un punteggio di recupero che cala dopo una brutta settimana — questi segnali direzionali sono dove vive il valore, perché condizioni costanti annullano gran parte dell'errore di misurazione.
+
+| Lettura | Cos'è davvero | Dove l'accuratezza si degrada |
+| --- | --- | --- |
+| Frequenza cardiaca | Ottica (PPG) a riposo; più debole in movimento | Movimento, calzata lenta, tatuaggi, tonalità della pelle |
+| Passi | Riconoscimento di pattern dell'accelerometro | Movimento del braccio non legato al camminare, veicoli |
+| Fasi del sonno | Inferite da movimento + frequenza cardiaca | Le etichette delle fasi sono molto meno affidabili della durata |
+| Temperatura cutanea | Scostamento dalla linea di base personale | Non è la temperatura interna; solo relativa |
+| SpO₂ | Rapporto di assorbimento rosso/infrarosso | Può sovrastimare; peggio con pelle scura, movimento |
+| VO₂max / recupero | Stime modellate | Ereditano ogni errore dei sensori a monte |
+
+Quindi calibra le tue aspettative sul sensore. Usa il dispositivo per la direzione e l'abitudine, appoggiati a una fascia toracica o allo strumento di un medico quando ti serve precisione, e lascia che qualsiasi singolo numero allarmante susciti un secondo sguardo anziché una conclusione.
+
+Queste sono informazioni generali, non un parere medico, e la variazione individuale è ampia. Àncorati alla tua linea di base; usa i numeri come controllo di buon senso, non come tabellone.
+
+[^ppg]: Come funziona la fotopletismografia (PPG), la sua accuratezza a riposo rispetto al movimento e gli effetti di calzata, tonalità della pelle e tatuaggi; la misurazione elettrica con fascia toracica come riferimento robusto al movimento — Bent B, et al., "Investigating sources of inaccuracy in wearable optical heart rate sensors," *npj Digital Medicine*, 2020. https://www.nature.com/articles/s41746-020-0226-6
+[^sleep]: I dispositivi indossabili di consumo stimano il sonno dal movimento e dalla frequenza cardiaca e si comportano meglio nel rilevare sonno/veglia che nella stadiazione, rispetto alla polisonnografia — Chinoy ED, et al., "Performance of seven consumer sleep-tracking devices compared with polysomnography," *Sleep*, 2021. https://academic.oup.com/sleep/article/44/5/zsaa291/6055610
+[^spo2]: Principio della pulsossimetria a doppia lunghezza d'onda (rosso/infrarosso) e il suo tipico margine di accuratezza — Nitzan M, et al., "Pulse oximetry: fundamentals and technology update," *Medical Devices: Evidence and Research*, 2014. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4099100/
+[^fda]: I pulsossimetri possono sovrastimare i livelli di ossigeno nel sangue, con limiti di accuratezza più marcati nelle persone con pigmentazione cutanea più scura — U.S. Food and Drug Administration, Safety Communication, 2021. https://www.fda.gov/medical-devices/safety-communications/pulse-oximeter-accuracy-and-limitations-fda-safety-communication
+[^sjoding]: Dati ospedalieri che mostrano come la pulsossimetria sovrastimi la saturazione di ossigeno più spesso nei pazienti neri che in quelli bianchi — Sjoding MW, et al., "Racial Bias in Pulse Oximetry Measurement," *New England Journal of Medicine*, 2020. https://www.nejm.org/doi/full/10.1056/NEJMc2029240
+[^vo2]: Stima del VO₂max da frequenza cardiaca e passo da parte dei dispositivi da polso, e la sua validità come proxy del test di laboratorio della forma cardiorespiratoria — Klepin K, et al., "Validity of Cardiorespiratory Fitness Measured With a Wrist-Worn Wearable," *JMIR mHealth and uHealth*, 2019. https://mhealth.jmir.org/2019/9/e12101/

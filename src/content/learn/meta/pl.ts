@@ -106,6 +106,42 @@ const meta: LearnMeta = {
       description:
         "Cykl menstruacyjny wyjaśniony jako sygnał zdrowia: cztery fazy, jak wygląda prawidłowy cykl, co go zmienia i kiedy zmiana wymaga konsultacji z lekarzem.",
     },
+    "how-wearables-measure-you": {
+      title: "Jak urządzenia ubieralne naprawdę Cię mierzą",
+      dek: "Czujniki optyczne, akcelerometry, sprytne szacunki — co sprzęt na Twoim nadgarstku naprawdę widzi, a czego nie.",
+      description:
+        "Jak urządzenia ubieralne mierzą tętno, kroki, sen, saturację krwi i temperaturę — czujniki stojące za liczbami, szacunki pochodne i znane granice dokładności.",
+    },
+    "reading-your-trends": {
+      title: "Czytaj trendy, nie liczby",
+      dek: "Najużyteczniejsza umiejętność w śledzeniu zdrowia to nie odczyt liczby — to odczytywanie własnej linii w czasie.",
+      description:
+        "Dlaczego Twoja osobista linia bazowa bije każdy zakres populacyjny, jak odróżnić znaczący trend od dziennego szumu i dlaczego spójne warunki pomiaru liczą się bardziej niż precyzja.",
+    },
+    "steps-and-movement": {
+      title: "Kroki i codzienny ruch",
+      dek: "Co naprawdę mówi Ci dzienna liczba kroków — i dlaczego 10 000 było liczbą marketingową, a nie celem zdrowotnym.",
+      description:
+        "Co dzienne kroki ujawniają o zdrowiu, dowody na to, że korzyści zaczynają się znacznie poniżej 10 000, dlaczego ruch przez cały dzień ma znaczenie i jak szacowana jest liczba kroków.",
+    },
+    "caffeine-alcohol-and-your-readings": {
+      title: "Kofeina, alkohol i Twoje odczyty",
+      dek: "Dwa codzienne nawyki zostawiają wyraźne odciski palców na Twoim tętnie, śnie i regeneracji. Oto czego szukać.",
+      description:
+        "Jak kofeina i alkohol widocznie poruszają wskaźniki, które śledzisz — tętno, HRV, sen i glukozę — i dlaczego wyjaśniają tak wiele kiepskich poranków.",
+    },
+    "hydration-and-your-body": {
+      title: "Nawodnienie a Twoje ciało",
+      dek: "Większość dziennych wahań masy ciała to woda. Spokojne spojrzenie na bilans płynów — i prawda o „ośmiu szklankach dziennie”.",
+      description:
+        "Co nawodnienie robi dla tętna, masy ciała i samopoczucia, uczciwe dowody na dzienne potrzeby płynów oraz kiedy bilans płynów naprawdę się liczy.",
+    },
+    "stress-and-recovery": {
+      title: "Stres i regeneracja",
+      dek: "Twoje ciało prowadzi rachunek — w tętnie, HRV i śnie. Jak odczytywać oznaki napięcia i odpoczynku.",
+      description:
+        "Jak stres i regeneracja ujawniają się w tętnie spoczynkowym, HRV i śnie, jaki bilans autonomiczny za nimi stoi i dlaczego regeneracja jest aktywnym sygnałem, który można budować.",
+    },
   },
 };
 

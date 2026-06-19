@@ -9,14 +9,17 @@ import {
 import { getMeta } from "@/content/learn/meta";
 import {
   SITE_ORIGIN,
+  UI_EXTRA,
   learnArticlePath,
   learnHubPath,
   type Locale,
 } from "@/content/learn/locales";
+import { LearnSearch } from "./learn-search";
 
 /** Hub main content (the LearnShell wraps it with header/footer). */
 export function LearnHub({ locale }: { locale: Locale }) {
   const meta = getMeta(locale);
+  const extra = UI_EXTRA[locale];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -57,12 +60,17 @@ export function LearnHub({ locale }: { locale: Locale }) {
         </p>
       </div>
 
-      <div className="mt-12 space-y-12">
+      <LearnSearch
+        placeholder={extra.searchPlaceholder}
+        noResults={extra.searchNoResults}
+      />
+
+      <div id="learn-grid" className="mt-12 space-y-12">
         {CATEGORY_ORDER.map((category) => {
           const articles = byCategory(category);
           if (articles.length === 0) return null;
           return (
-            <section key={category} className="space-y-5">
+            <section key={category} data-learn-section className="space-y-5">
               <h2
                 className="section-label inline-flex w-fit"
                 style={{
@@ -80,6 +88,7 @@ export function LearnHub({ locale }: { locale: Locale }) {
                     <Link
                       key={a.slug}
                       href={learnArticlePath(locale, a.slug)}
+                      data-search={`${am?.title ?? ""} ${am?.dek ?? ""} ${meta.categories[a.category]}`.toLowerCase()}
                       className="glass-card group flex flex-col gap-3 p-4 transition-colors hover:border-[rgba(189,147,249,0.25)]"
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}

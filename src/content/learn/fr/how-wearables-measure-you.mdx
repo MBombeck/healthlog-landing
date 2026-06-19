@@ -1,0 +1,57 @@
+Un objet connecté porté au poignet vous livre un flux assuré de chiffres — fréquence cardiaque, stades du sommeil, oxygène du sang, un score de « récupération » — et le soin apporté à l'affichage peut donner l'impression que tout cela est également précis. Ce n'est pas le cas. Derrière le tableau de bord se cache une petite poignée de capteurs physiques, chacun mesurant bien une seule chose étroite et beaucoup d'autres seulement par inférence. Savoir distinguer les uns des autres, c'est toute la différence entre faire trop confiance à un appareil et en tirer une vraie valeur.
+
+## Fréquence cardiaque optique : de la lumière renvoyée par le sang
+
+![](/learn-img-2/how-wearables-measure-you.jpg)
+
+La lumière verte qui luit sous un bracelet est le cœur de la plupart des objets connectés. La technique est la **photopléthysmographie**, ou PPG : une LED projette de la lumière dans la peau, le sang en absorbe une partie, et un photodétecteur lit la quantité renvoyée. Comme le volume de sang dans les petits vaisseaux monte et descend à chaque battement, ce signal réfléchi pulse — et compter les pulsations donne la fréquence cardiaque.[^ppg]
+
+Au repos, cela fonctionne bien. Les études de validation constatent régulièrement que la PPG au poignet suit de près un signal électrique thoracique lorsque le porteur reste immobile.[^ppg] Les ennuis commencent avec le mouvement. Pendant l'effort, le bracelet glisse contre la peau, le mouvement des muscles et des tendons contamine le signal optique, et l'appareil doit deviner davantage — ce qui explique pourquoi la fréquence cardiaque au poignet pendant des fractionnés ou de la musculation est la mesure la moins fiable que possèdent la plupart des gens.[^ppg] Une ceinture thoracique, qui mesure directement l'activité électrique du cœur plutôt que par voie optique, reste précise malgré le mouvement et demeure la référence pratique pour l'entraînement intense.[^ppg]
+
+L'ajustement et la physiologie comptent aussi. Un bracelet lâche, des doigts froids, une encre de tatouage dense sur le capteur et les teints de peau plus foncés modifient tous la façon dont la lumière voyage et peuvent dégrader le signal.[^ppg] Rien de tout cela ne rend le chiffre inutile ; cela signifie que les *conditions* d'une mesure font partie de la mesure.
+
+## L'accéléromètre : pas, mouvement et « sommeil »
+
+Presque tout ce qui n'est pas optique provient d'un minuscule **accéléromètre** — une puce qui détecte le mouvement selon trois axes. Le comptage des pas vient de la reconnaissance du schéma d'accélération rythmique de la marche, ce qui explique pourquoi les pas sont raisonnablement justes lors d'une marche soutenue et plus bruités quand vous poussez une poussette, faites la vaisselle ou roulez dans une voiture qui cahote.
+
+Le sommeil est le terrain le plus intéressant. Un objet connecté ne voit pas votre cerveau. Il infère le sommeil à partir du peu que vous bougez, souvent combiné à la fréquence cardiaque et à sa variation d'un battement à l'autre, puis étiquette la nuit en stades « léger », « profond » et « paradoxal » (REM).[^sleep] La référence clinique — la polysomnographie — enregistre les ondes cérébrales, les mouvements oculaires et le tonus musculaire en laboratoire. Face à cette norme, les appareils grand public sont plutôt bons pour la question simple *endormi ou éveillé* et nettement plus faibles pour *quel stade*, où la précision de la classification s'effondre.[^sleep] Lisez l'heure du coucher, l'heure du réveil et la durée totale avec une certaine confiance ; traitez la répartition colorée des stades comme une estimation, pas comme un verdict. (Pour ce qui fait vraiment la différence, voir [la régularité du sommeil](/fr/learn/sleep-consistency).)
+
+## Température cutanée et SpO₂
+
+Les bracelets plus récents ajoutent un capteur de **température cutanée**. Il ne renvoie pas la température corporelle centrale ; il renvoie un *écart* par rapport à votre propre référence nocturne récente. C'est tout l'intérêt de ce cadrage — un décalage relatif d'une fraction de degré sur plusieurs nuits peut suggérer une maladie, le cycle menstruel ou une journée éprouvante, tandis que le chiffre absolu ne signifie pas grand-chose à lui seul. (Plus de détails dans [la température de référence](/fr/learn/body-temperature-baseline).)
+
+L'estimation de l'oxygène du sang réutilise l'astuce optique avec une variante. **L'oxymétrie de pouls** projette deux longueurs d'onde — rouge et infrarouge — parce que l'hémoglobine oxygénée et désoxygénée les absorbent différemment ; le rapport donne une SpO₂ estimée.[^spo2] Même les oxymètres médicaux au bout du doigt comportent une marge d'erreur de quelques points de pourcentage, et les estimations au poignet sont encore plus approximatives.[^spo2] Élément crucial, la Food and Drug Administration américaine a averti que les oxymètres de pouls peuvent indiquer des niveaux d'oxygène *plus élevés* que la réalité, et que cette surestimation est plus marquée chez les personnes à la peau plus foncée — une limite d'abord largement documentée dans les données hospitalières et dont les appareils de poignet héritent.[^fda][^sjoding] La SpO₂ au poignet grand public est une fonction de bien-être, pas un outil de diagnostic. (Voir [l'oxygène du sang (SpO₂)](/fr/learn/blood-oxygen-spo2).)
+
+## Scores dérivés : des estimations bâties sur des estimations
+
+Les chiffres vedettes — VO₂max, « récupération », « readiness », « strain » — ne sont pas mesurés du tout. Ce sont des **modèles** : des algorithmes qui combinent les flux bruts des capteurs ci-dessus avec votre âge, votre poids et votre historique pour produire un chiffre unique.
+
+La VO₂max au poignet en est l'exemple le plus clair. La vraie VO₂max exige un masque, un tapis roulant et l'analyse du gaz que vous respirez. Un objet connecté l'estime à partir de la relation entre votre fréquence cardiaque et votre allure pendant une activité en extérieur — un substitut raisonnable qui suit l'évolution de la forme dans le temps, mais une estimation qui hérite de chaque erreur des données de fréquence cardiaque et de GPS qui l'alimentent.[^vo2] Les scores de « récupération » et de « readiness » sont des mélanges propriétaires, s'appuyant généralement sur la [variabilité de la fréquence cardiaque](/fr/learn/heart-rate-variability) nocturne, la [fréquence cardiaque au repos](/fr/learn/resting-heart-rate) et le sommeil — utiles comme petit rappel quotidien, mais ce ne sont pas des mesures cliniques de quoi que ce soit.
+
+<Aside type="note">
+La plupart de ce qu'un objet connecté vous montre est une **estimation, pas une mesure de laboratoire**. La fréquence cardiaque optique, les stades de sommeil inférés, la SpO₂ au poignet et chaque « score » sont des modèles bâtis sur quelques signaux réels — assez justes pour révéler une *évolution dans le temps*, rarement assez précis pour traiter une valeur isolée comme une vérité absolue. La façon honnête de les lire, c'est en relatif, pas en absolu.
+</Aside>
+
+## Faites confiance à la tendance, connaissez les limites
+
+Le fil conducteur entre tous les capteurs est la même leçon qui traverse [lire vos tendances](/fr/learn/reading-your-trends) : un objet connecté est bien meilleur pour détecter un *changement par rapport à votre propre référence* que pour rapporter une valeur exacte. Une fréquence cardiaque au repos qui grimpe de cinq battements sur trois matins, une température cutanée qui dérive vers le haut avant un rhume, un score de récupération qui s'affaisse après une mauvaise semaine — ces signaux directionnels sont là où vit la valeur, parce que des conditions constantes annulent une bonne part de l'erreur de mesure.
+
+| Mesure | Ce que c'est vraiment | Où la précision se dégrade |
+| --- | --- | --- |
+| Fréquence cardiaque | Optique (PPG) au repos ; plus faible en mouvement | Mouvement, ajustement lâche, tatouages, teint de peau |
+| Pas | Reconnaissance de schéma par accéléromètre | Mouvement de bras hors marche, véhicules |
+| Stades du sommeil | Inférés du mouvement + fréquence cardiaque | Étiquettes de stades bien moins fiables que la durée |
+| Température cutanée | Écart par rapport à la référence personnelle | Pas la température centrale ; relatif uniquement |
+| SpO₂ | Rapport d'absorption rouge/infrarouge | Peut surestimer ; pire avec une peau foncée, du mouvement |
+| VO₂max / récupération | Estimations modélisées | Héritent de chaque erreur des capteurs en amont |
+
+Calibrez donc vos attentes selon le capteur. Utilisez l'appareil pour la direction et l'habitude, appuyez-vous sur une ceinture thoracique ou un instrument de clinicien quand vous avez besoin de précision, et laissez tout chiffre alarmant isolé inviter à un second regard plutôt qu'à une conclusion.
+
+Ceci est une information générale, pas un avis médical, et la variation individuelle est large. Ancrez-vous sur votre propre référence ; utilisez les chiffres comme un contrôle de cohérence, pas comme un tableau d'affichage.
+
+[^ppg]: Comment fonctionne la photopléthysmographie (PPG), sa précision au repos par rapport au mouvement, et les effets de l'ajustement, du teint de peau et des tatouages ; la mesure électrique par ceinture thoracique comme référence robuste au mouvement — Bent B, et al., "Investigating sources of inaccuracy in wearable optical heart rate sensors," *npj Digital Medicine*, 2020. https://www.nature.com/articles/s41746-020-0226-6
+[^sleep]: Les objets connectés grand public estiment le sommeil à partir du mouvement et de la fréquence cardiaque et sont meilleurs pour la détection veille/sommeil que pour la classification des stades, par rapport à la polysomnographie — Chinoy ED, et al., "Performance of seven consumer sleep-tracking devices compared with polysomnography," *Sleep*, 2021. https://academic.oup.com/sleep/article/44/5/zsaa291/6055610
+[^spo2]: Principe de l'oxymétrie de pouls à double longueur d'onde (rouge/infrarouge) et sa marge de précision typique — Nitzan M, et al., "Pulse oximetry: fundamentals and technology update," *Medical Devices: Evidence and Research*, 2014. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4099100/
+[^fda]: Les oxymètres de pouls peuvent surestimer les niveaux d'oxygène du sang, avec des limites de précision plus marquées chez les personnes à la pigmentation cutanée plus foncée — U.S. Food and Drug Administration, Safety Communication, 2021. https://www.fda.gov/medical-devices/safety-communications/pulse-oximeter-accuracy-and-limitations-fda-safety-communication
+[^sjoding]: Des données hospitalières montrant que l'oxymétrie de pouls surestime la saturation en oxygène plus souvent chez les patients noirs que chez les patients blancs — Sjoding MW, et al., "Racial Bias in Pulse Oximetry Measurement," *New England Journal of Medicine*, 2020. https://www.nejm.org/doi/full/10.1056/NEJMc2029240
+[^vo2]: Estimation de la VO₂max à partir de la fréquence cardiaque et de l'allure par les appareils de poignet, et sa validité comme substitut au test de laboratoire de la capacité cardiorespiratoire — Klepin K, et al., "Validity of Cardiorespiratory Fitness Measured With a Wrist-Worn Wearable," *JMIR mHealth and uHealth*, 2019. https://mhealth.jmir.org/2019/9/e12101/
