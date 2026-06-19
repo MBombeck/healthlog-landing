@@ -59,7 +59,7 @@ function BrowserFrame({ children }: { children: React.ReactNode }) {
     <div className="showcase-frame w-full">
       <div className="showcase-frame-inner">
         {/* Browser chrome */}
-        <div className="flex items-center gap-2 px-3 sm:px-4 py-2.5 sm:py-3 border-b border-[rgba(98,114,164,0.12)] bg-[#1a1b26]">
+        <div className="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 border-b border-[rgba(98,114,164,0.12)] bg-[#1a1b26]">
           <div className="flex gap-1.5 flex-shrink-0">
             <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#ff5555] opacity-60" />
             <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#ffb86c] opacity-60" />
@@ -111,7 +111,7 @@ export function AppShowcase() {
   return (
     <div>
       {/* ── Desktop: sticky scroll-reveal ─────────────────────── */}
-      <div className="hidden lg:grid lg:grid-cols-[1fr_1.15fr] lg:gap-14 xl:gap-20">
+      <div className="hidden lg:grid lg:grid-cols-[340px_1fr] lg:gap-12 xl:gap-16">
         {/* Left: scrolling captions */}
         <div>
           {screens.map((s, i) => (
@@ -146,7 +146,9 @@ export function AppShowcase() {
 
         {/* Right: pinned browser frame, screenshots cross-fade */}
         <div>
-          <div className="sticky top-0 flex h-screen items-center">
+          {/* top-1/2 + translate keeps the frame centred AND pinned through
+              every caption (an h-screen sticky released a viewport too early). */}
+          <div className="sticky top-1/2 -translate-y-1/2">
             <div className="relative w-full">
               <BrowserFrame>
                 <div className="relative aspect-[1600/785] overflow-hidden bg-[#282a36]">
@@ -161,7 +163,7 @@ export function AppShowcase() {
                         src={s.src}
                         alt={s.alt}
                         fill
-                        sizes="(max-width: 1024px) 0px, 600px"
+                        sizes="(max-width: 1024px) 0px, 860px"
                         className="object-contain object-top"
                         priority={i === 0}
                         quality={90}

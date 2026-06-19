@@ -385,8 +385,8 @@ export default function Home() {
             <a href="#features" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
               Features
             </a>
-            <a href="#ai-coach" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
-              AI Coach
+            <a href="#integrations" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
+              Integrations
             </a>
             <a href="#privacy" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
               Privacy
@@ -396,16 +396,6 @@ export default function Home() {
             </Link>
             <a href="https://docs.healthlog.dev" target="_blank" rel="noopener noreferrer" className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex">
               Docs
-            </a>
-            <a
-              href="https://github.com/MBombeck/HealthLog"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="View HealthLog on GitHub"
-              className="text-text-secondary hover:text-text-primary hover:border-[rgba(189,147,249,0.35)] inline-flex min-h-11 items-center gap-1.5 rounded-full border border-[rgba(98,114,164,0.18)] bg-[rgba(15,16,24,0.6)] px-3 text-sm transition-colors"
-            >
-              <GitHubIcon className="h-4 w-4" />
-              <span className="hidden md:inline">GitHub</span>
             </a>
           </div>
         </div>
@@ -460,7 +450,7 @@ export default function Home() {
       {/* ─── APP MOCKUP ───────────────────────────── */}
       <main>
       <section id="interface" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow" aria-labelledby="interface-heading">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <div className="reveal flex justify-center mb-6">
               <span className="section-label text-cyan border-cyan/15 bg-cyan/[0.03]">Interface</span>
@@ -475,43 +465,6 @@ export default function Home() {
           </div>
           <div className="reveal">
             <AppShowcase />
-          </div>
-        </div>
-      </section>
-
-      {/* ─── AI COACH ─────────────────────────────── */}
-      <section id="ai-coach" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow scroll-mt-20" aria-labelledby="ai-coach-heading">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="reveal flex justify-center mb-6">
-              <span className="section-label text-orange border-orange/15 bg-orange/[0.03]">AI Coach</span>
-            </div>
-            <h2 id="ai-coach-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
-              Every claim cites its data.
-            </h2>
-            <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-              The Coach is a partner sitting next to you, not a chatbot guessing. Each reply walks the same
-              snapshot → prompt → multi-provider chain → schema-validated parse, then renders prose first with
-              the evidence collapsed underneath. Pick the provider that fits your privacy and budget.
-            </p>
-          </div>
-          <div className="reveal grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-            <div className="glass-card p-5">
-              <div className="text-xs font-mono text-cyan mb-1.5 uppercase tracking-wider">ChatGPT</div>
-              <div className="text-sm text-text-secondary leading-relaxed">Reuse your ChatGPT Plus / Pro subscription via device-code OAuth.</div>
-            </div>
-            <div className="glass-card p-5">
-              <div className="text-xs font-mono text-purple mb-1.5 uppercase tracking-wider">OpenAI BYOK</div>
-              <div className="text-sm text-text-secondary leading-relaxed">Paste your own OpenAI key — gpt-4o by default, override per user.</div>
-            </div>
-            <div className="glass-card p-5">
-              <div className="text-xs font-mono text-pink mb-1.5 uppercase tracking-wider">Anthropic</div>
-              <div className="text-sm text-text-secondary leading-relaxed">Your own Anthropic key — Claude Sonnet 4.6 by default, encrypted with AES-GCM at rest.</div>
-            </div>
-            <div className="glass-card p-5">
-              <div className="text-xs font-mono text-green mb-1.5 uppercase tracking-wider">Local</div>
-              <div className="text-sm text-text-secondary leading-relaxed">Ollama, LM Studio or vLLM on your network. Nothing leaves the host.</div>
-            </div>
           </div>
         </div>
       </section>
