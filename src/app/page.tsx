@@ -871,32 +871,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── TECH STACK ───────────────────────────── */}
-      <section className="relative py-20 overflow-hidden" aria-label="Technology stack">
-        <div className="reveal text-center mb-10">
-          <p className="text-text-tertiary text-xs font-mono tracking-[0.2em] uppercase">Built with</p>
-        </div>
-        <div className="relative">
-          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-void to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-void to-transparent z-10 pointer-events-none" />
-          <div className="overflow-hidden">
-            <div className="tech-scroll" aria-hidden="true">
-              {[...techItems, ...techItems].map((item, i) => (
-                <span key={`${item}-${i}`} className="flex-shrink-0 px-5 py-2.5 rounded-full border border-[rgba(98,114,164,0.08)] bg-[rgba(15,16,24,0.5)] text-text-secondary text-sm font-mono whitespace-nowrap hover:border-[rgba(189,147,249,0.2)] hover:text-text-primary transition-all duration-300">
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-          {/* Screenreader-accessible list of tech stack items */}
-          <ul className="sr-only">
-            {techItems.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       {/* ─── FAQ ──────────────────────────────────── */}
       <section id="faq" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow scroll-mt-20" aria-labelledby="faq-heading">
         <div className="max-w-3xl mx-auto">
@@ -974,6 +948,32 @@ export default function Home() {
               <ArrowIcon />
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ─── TECH STACK ───────────────────────────── */}
+      <section className="relative py-20 overflow-hidden" aria-label="Technology stack">
+        <div className="reveal text-center mb-10">
+          <p className="text-text-tertiary text-xs font-mono tracking-[0.2em] uppercase">Built with</p>
+        </div>
+        <div className="relative">
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-void to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-void to-transparent z-10 pointer-events-none" />
+          <div className="overflow-hidden">
+            <div className="tech-scroll" aria-hidden="true">
+              {[...techItems, ...techItems].map((item, i) => (
+                <span key={`${item}-${i}`} className="flex-shrink-0 px-5 py-2.5 rounded-full border border-[rgba(98,114,164,0.08)] bg-[rgba(15,16,24,0.5)] text-text-secondary text-sm font-mono whitespace-nowrap hover:border-[rgba(189,147,249,0.2)] hover:text-text-primary transition-all duration-300">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+          {/* Screenreader-accessible list of tech stack items */}
+          <ul className="sr-only">
+            {techItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </div>
       </section>
 
