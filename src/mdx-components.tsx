@@ -35,13 +35,16 @@ function SmartLink({
 
 export function Aside({
   type = "note",
+  title,
   children,
 }: {
   type?: "note" | "caution";
+  title?: string;
   children: ReactNode;
 }) {
   return (
     <aside className={`learn-aside learn-aside--${type}`} role="note">
+      {title ? <p className="learn-aside__title">{title}</p> : null}
       {children}
     </aside>
   );

@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import { LEARN_ARTICLES, getArticle } from "@/content/learn";
 import { getMeta } from "@/content/learn/meta";
 import {
+  PREFIXED_LOCALES,
   SITE_ORIGIN,
   hreflangMap,
+  isLocale,
   learnArticlePath,
+  type Locale,
 } from "@/content/learn/locales";
 import { LearnArticle } from "@/components/learn/learn-article";
 import { LearnShell, articlePaths } from "@/components/learn/learn-shell";
@@ -13,19 +17,22 @@ import { LearnShell, articlePaths } from "@/components/learn/learn-shell";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return LEARN_ARTICLES.map((a) => ({ slug: a.slug }));
+  return PREFIXED_LOCALES.flatMap((lang) =>
+    LEARN_ARTICLES.map((a) => ({ lang, slug: a.slug })),
+  );
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { lang, slug } = await params;
+  if (!isLocale(lang)) return {};
   const article = getArticle(slug);
-  const am = getMeta("en").articles[slug];
+  const am = getMeta(lang).articles[slug];
   if (!article || !am) return {};
-  const url = `${SITE_ORIGIN}/learn/${slug}`;
+  const url = `${SITE_ORIGIN}${learnArticlePath(lang, slug)}`;
   return {
     title: am.title,
     description: am.description,
@@ -50,15 +57,17 @@ export async function generateMetadata({
   };
 }
 
-export default async function LearnArticlePage({
+export default async function LocalizedLearnArticlePage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { lang, slug } = await params;
+  if (!isLocale(lang)) notFound();
+  const locale = lang as Locale;
   return (
-    <LearnShell locale="en" paths={articlePaths(slug)}>
-      <LearnArticle locale="en" slug={slug} />
+    <LearnShell locale={locale} paths={articlePaths(slug)}>
+      <LearnArticle locale={locale} slug={slug} />
     </LearnShell>
   );
 }
