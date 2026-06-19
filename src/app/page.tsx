@@ -230,7 +230,7 @@ const primaryFeatures = [
 ];
 
 const secondaryFeatures = [
-  { icon: <SyncIcon />, title: "Sync your devices", description: "Withings, WHOOP, Oura, Polar, Fitbit and Nightscout sync over OAuth; Apple Health flows two-way through the iOS app. Several sources on the same day resolve to one canonical reading — no double-counting.", color: "cyan" },
+  { icon: <PillIcon />, title: "Built for injectables", description: "GLP-1 and other injections get site-rotation tracking, a dose-titration timeline, pen inventory and a side-effect logbook — not just a checkbox.", color: "cyan" },
   { icon: <SyncIcon />, title: "Apple Health import", description: "Drop your iOS export.zip on the upload page — a streaming parser folds multi-GB archives into the same timeline, idempotent on the archive's checksum.", color: "purple" },
   { icon: <FlaskIcon />, title: "Lab results & biomarkers", description: "Log blood work against a biomarker catalogue with reference ranges, group results into panels, and watch every marker trend over time.", color: "green" },
   { icon: <HeartMetricIcon />, title: "Illness & condition journal", description: "Track acute illnesses, chronic conditions and flares with a daily symptom log. An active episode turns on Rest Mode, which softens nudges and reframes your score instead of penalising it.", color: "pink" },
@@ -239,6 +239,16 @@ const secondaryFeatures = [
   { icon: <FileIcon />, title: "Export everything", description: "Your data leaves the way it came in: CSV, JSON, a localized doctor-report PDF, and a FHIR R4 bundle (Patient, Observation, MedicationStatement, MedicationAdministration, Coverage) for a clinician's system.", color: "green" },
   { icon: <FileIcon />, title: "Customizable dashboard", description: "Show, hide and reorder every widget. Reset to defaults anytime — your data is never touched.", color: "purple" },
   { icon: <MoodIcon />, title: "Mood tracking", description: "A five-point scale with tags and notes, correlated against sleep, activity and the rest of your timeline.", color: "pink" },
+];
+
+const integrations = [
+  { name: "Withings", blurb: "Scales, blood-pressure monitors and watches sync automatically over OAuth, with a webhook for near-real-time updates.", color: "cyan" },
+  { name: "Apple Health", blurb: "Two-way sync through the native iOS app — readings flow both directions onto one timeline, no cloud middleman.", color: "purple" },
+  { name: "WHOOP", blurb: "Recovery, sleep and strain pulled in over OAuth and reconciled against your other sources.", color: "green" },
+  { name: "Oura", blurb: "Sleep, readiness and activity from the ring, landing on the same timeline as everything else.", color: "pink" },
+  { name: "Polar", blurb: "Workouts and heart-rate data sync straight from your Polar account.", color: "orange" },
+  { name: "Fitbit", blurb: "Steps, sleep and activity through the Google Health connection.", color: "cyan" },
+  { name: "Nightscout", blurb: "Continuous glucose pulled straight from your own Nightscout instance.", color: "purple" },
 ];
 
 const colorMap: Record<string, { bg: string; text: string }> = {
@@ -670,6 +680,43 @@ export default function Home() {
                 {item}
               </span>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── INTEGRATIONS ─────────────────────────── */}
+      <section id="integrations" className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow scroll-mt-20" aria-labelledby="integrations-heading">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-14">
+            <div className="reveal flex justify-center mb-6">
+              <span className="section-label text-cyan border-cyan/15 bg-cyan/[0.03]">Integrations</span>
+            </div>
+            <h2 id="integrations-heading" className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5">
+              Syncs with the gear you already wear
+            </h2>
+            <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              Connect your devices over OAuth and every reading lands on one timeline. When several
+              sources log the same day, they collapse into a single canonical value — no double-counting.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {integrations.map((it, i) => {
+              const colors = colorMap[it.color];
+              return (
+                <div
+                  key={it.name}
+                  className={`reveal reveal-delay-${(i % 3) + 1} glass-card p-5`}
+                >
+                  <div
+                    className="text-xs font-mono mb-1.5 uppercase tracking-wider"
+                    style={{ color: colors.text }}
+                  >
+                    {it.name}
+                  </div>
+                  <div className="text-sm text-text-secondary leading-relaxed">{it.blurb}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
