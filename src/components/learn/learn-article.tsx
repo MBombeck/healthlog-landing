@@ -126,10 +126,6 @@ export async function LearnArticle({
             {am?.title ?? slug}
           </h1>
           <p className="text-text-secondary text-lg leading-relaxed">{am?.dek}</p>
-          <p className="text-text-tertiary text-xs">
-            {extra.updatedLabel}{" "}
-            <time dateTime={dates.updated}>{dates.updated}</time>
-          </p>
           {article.tags.length > 0 && (
             <ul className="flex flex-wrap gap-2 pt-1" aria-label="Topics">
               {article.tags.map((tag) => (
