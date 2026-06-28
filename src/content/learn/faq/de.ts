@@ -341,5 +341,95 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Diese Signale können anhaltende Belastung anzeigen, aber nicht sagen, warum, und sie sind kein Ersatz dafür, wie du dich fühlst. Stress, der über Wochen deinen Schlaf, deine Konzentration oder deine Freude an alltäglichen Dingen stört, gehört mit einer Ärztin, einem Arzt oder einer psychologischen Fachperson besprochen, was auch immer die Zahlen sagen. Wenn sich Belastung jemals überwältigend anfühlt oder du Gedanken an Selbstverletzung hast, kontaktiere sofort die örtliche Notrufnummer oder einen Krisendienst.",
     },
   ],
+  "screening-not-diagnosis": [
+    {
+      q: "Ist ein hoher PHQ-9- oder GAD-7-Wert eine Diagnose?",
+      a: "Nein. Das sind Screening-Instrumente, keine diagnostischen Tests. Ein Wert, der seine Schwelle überschreitet, bedeutet, dass der Screen positiv ist und ein genaueres Gespräch angebracht ist, nicht dass eine Erkrankung bestätigt wäre. Selbst bei einem PHQ-9-Grenzwert von 10 wird etwa eine von acht Personen, die positiv screenen, bei genauerer Beurteilung keine schwere Depression haben — deshalb ist ein positives Ergebnis ein Anlass, mit einer Fachperson zu sprechen, und kein Urteil, das du selbst fällst.",
+    },
+    {
+      q: "Welcher Wert auf dem PHQ-9 oder GAD-7 sollte zum Handeln anstoßen?",
+      a: "Eine Gesamtpunktzahl von 10 oder darüber ist bei beiden die übliche Handlungsschwelle: etwa 88 % Sensitivität und Spezifität für eine schwere Depression beim PHQ-9 und etwa 89 % Sensitivität und 82 % Spezifität für die generalisierte Angst beim GAD-7. Der WHO-5 kennzeichnet schlechtes Wohlbefinden bei 50 % oder darunter. Das sind Ausgangspunkte für eine fachliche Beurteilung, keine Etiketten, die du dir selbst zuweist.",
+    },
+    {
+      q: "Warum sollte ich einen Screening-Fragebogen wiederholen, statt ihn einmal auszufüllen?",
+      a: "Eine einzelne Sitzung ist eine verrauschte Momentaufnahme, empfindlich dafür, wie du geschlafen hast, gegenüber jüngsten Ereignissen und dafür, wie die Fragen an jenem Tag ankommen. Über Wochen und Monate wiederholt, werden dieselben bepunkteten Fragen zu einem Trend, auf den du und eine behandelnde Person reagieren könnt, und der WHO-5 ist ausdrücklich darauf ausgelegt, als Bewegung gegen deine eigenen früheren Werte gelesen zu werden, wobei ein Rückgang von 10 Punkten als bedeutsame Veränderung zählt. Die wiederholte Erhebung ist auch die Art, wie diese Werkzeuge verfolgen, ob eine Behandlung wirkt.",
+    },
+    {
+      q: "Was ist das PHQ-9-Item zur Selbstverletzung, und was sollte ich tun?",
+      a: "Die neunte PHQ-9-Frage fragt direkt nach Gedanken, lieber tot zu sein oder sich selbst zu schaden, und sie wird für sich allein gelesen, sofort, unabhängig von der Gesamtpunktzahl — ein niedriger Gesamtwert hebt sie niemals auf. Jeder solche Gedanke, auch ein gelegentlicher, ist für sich allein ein Grund, dich jetzt sofort zu melden: Kontaktiere umgehend deine örtliche Notrufnummer oder einen Krisendienst. Diese Gefühle sind behandelbar, und Hilfe ist verfügbar.",
+    },
+  ],
+  "longevity-labs-explained": [
+    {
+      q: "Warum reicht ein Standard-Cholesterinprofil nicht aus?",
+      a: "Ein Basisprofil misst die Masse des transportierten Cholesterins, aber das kardiovaskuläre Risiko folgt der Anzahl der atherogenen Partikel, und das Cholesterin pro Partikel variiert zwischen Menschen. ApoB ist eine direkte Partikelzählung und Non-HDL-Cholesterin ein günstiger Näherungswert für dieselbe Idee, zwei Menschen mit identischem LDL-C können also sehr unterschiedliches Risiko tragen. Das Basisprofil schweigt zudem zu Lp(a) und zur Entzündung.",
+    },
+    {
+      q: "Was ist Lp(a) und warum wird es nur einmal gemessen?",
+      a: "Lipoprotein(a) ist ein LDL-ähnliches Partikel, dessen Spiegel zu etwa 80 bis 90 Prozent genetisch festgelegt ist und sich durch Ernährung, Bewegung oder gängige Statine kaum bewegt. Weil es so stabil ist, lautet die Empfehlung, es einmal im Leben zu messen, um die Minderheit zu finden, die ein erhöhtes vererbtes kardiovaskuläres Risiko trägt. Ein hoher Spiegel bedeutet nicht, dass akut etwas nicht stimmt; er verschiebt dein Ausgangsrisiko und erhöht die Priorität jedes Hebels, den du bewegen kannst.",
+    },
+    {
+      q: "Was sagt mir hs-CRP, und warum sollte ich es wiederholen?",
+      a: "Hochsensitives CRP liest die niedriggradige Entzündung, die die Atherosklerose begleitet, in kardiovaskulären Tertilen von unter 1, 1 bis 3 und über 3 mg/l. Weil jede Erkältung oder Entzündungsphase es bewegt, wird es als Durchschnitt zweier Messungen im Abstand von mindestens zwei Wochen und fern von Krankheit genommen, und ein Wert über 10 mg/l wird als wahrscheinlich akute Entzündung beiseitegelegt und wiederholt. Es ist ein Risikomodifikator, dem Lipidbild aufgelagert, keine eigenständige Zahl.",
+    },
+    {
+      q: "Sollte ich meine Laborergebnisse selbst deuten?",
+      a: "Nein. Diese Marker wirken zusammen, die Leitlinienbänder sind sich an den Rändern uneinig, und ein einzelner Wert sitzt in einem Band aus biologischem und analytischem Rauschen — der ehrliche Test für eine echte Veränderung ist also der Reference Change Value über wiederholte Tests, nicht ob ein Ergebnis eine Schwelle überschritten hat. Ein Panel wird als Ganzes gedeutet, gegen dein persönliches Risiko und deine Vorgeschichte, von der behandelnden Person, die es angefordert hat. Behandle einen Wert außerhalb des Bereichs als Anlass, eine Frage zu stellen.",
+    },
+  ],
+  "waist-and-central-fat": [
+    {
+      q: "Warum zählt der Taillenumfang mehr als das Gewicht?",
+      a: "Wo du Fett speicherst, trägt mehr Information als wie viel du wiegst. Viszerales Fett, um die Bauchorgane gewickelt, schüttet Fettsäuren und Entzündungssignale aus, die Insulinresistenz, höheren Blutdruck und ein ungünstiges Lipidprofil antreiben, während subkutanes Fett an Hüften und Oberschenkeln weitgehend inert ist. Der Taillenumfang ist ein einfacher Näherungswert für das viszerale Kompartiment und sagt das kardiometabolische Risiko unabhängig vom BMI voraus.",
+    },
+    {
+      q: "Was ist die Regel zum Taille-Größe-Verhältnis?",
+      a: "Halte deine Taille unter der Hälfte deiner Körpergröße. Sie braucht keine Tabelle, funktioniert über Körpergrößen, Geschlechter und Abstammungen hinweg, wo feste Taillenschwellen es nicht tun, und eine große Metaanalyse fand sie als besseren Prädiktor des kardiometabolischen Risikos als den BMI oder den Taillenumfang allein. Ein Verhältnis von 0,5 oder darüber ist das praktische Signal, sich den Rest des Bildes anzusehen.",
+    },
+    {
+      q: "Wie messe ich meine Taille richtig?",
+      a: "Miss an der Mitte zwischen deiner untersten Rippe und der Oberkante deines Hüftknochens, nicht reflexhaft am Bauchnabel, mit dem Band straff, aber ohne die Haut einzudrücken, genommen am Ende eines normalen Ausatmens. Miss jedes Mal auf dieselbe Weise, denn eine uneinheitliche Methode erfindet Veränderungen, die es gar nicht gibt. Ein weiches Maßband, konsequent benutzt, schlägt eine teure Waage, die achtlos verwendet wird.",
+    },
+    {
+      q: "Unterscheiden sich die Taillenschwellen nach Ethnie?",
+      a: "Ja. Die üblichen Grenzwerte von über 94 und 102 cm für Männer und über 80 und 88 cm für Frauen wurden weitgehend aus Populationen europäischer Herkunft gezogen. Menschen süd- und ostasiatischer Abstammung tragen bei geringeren Taillen ein höheres kardiometabolisches Risiko, die Schwellen verschieben sich also nach unten, üblicherweise auf etwa 90 cm für Männer und 80 cm für Frauen. Die Taille-Größe-Regel ist über Populationen hinweg besser übertragbar.",
+    },
+  ],
+  "grip-strength-as-a-vital-sign": [
+    {
+      q: "Warum sagt die Griffkraft die Gesundheit voraus?",
+      a: "Der Griff ist ein zuverlässiger, mühearmer Näherungswert für die Ganzkörperkraft, die Muskelmasse und das neuromuskuläre System, das sie antreibt. Wenn dieses System durch Alterung, Inaktivität oder Krankheit nachlässt, lässt der Griff mit ihm nach, was eine fallende Griffkraft zu einem der ersten messbaren Anzeichen für Sarkopenie macht. In der PURE-Studie mit fast 140.000 Menschen sagte sie die Gesamt- und die kardiovaskuläre Sterblichkeit besser voraus als der systolische Blutdruck.",
+    },
+    {
+      q: "Was ist eine gute Griffkraft für mein Alter?",
+      a: "Die Griffkraft wird gegen dein eigenes Alter und Geschlecht gelesen, nie gegen ein festes Ziel. Sie erreicht ihren Höchstwert im frühen Erwachsenenalter (grob 46 bis 51 kg für Männer und 28 bis 31 kg für Frauen), bildet in den Dreißigern ein Plateau und fällt ab der Lebensmitte, ein Wert, der mit 30 unauffällig ist, kann mit 70 hervorragend sein. Europäische Arbeitsgruppen kennzeichnen eine wahrscheinliche Sarkopenie unter etwa 27 kg für Männer und 16 kg für Frauen, was ein Anstoß zur Beurteilung ist, kein Fitnesswert.",
+    },
+    {
+      q: "Wie messe ich die Griffkraft konsistent?",
+      a: "Nutze jedes Mal dasselbe Dynamometer, sitzend mit im rechten Winkel gebeugtem Ellbogen, nimm zwei oder drei maximale Druckversuche pro Hand mit kurzer Pause und halte den besten fest. Beobachte den gleitenden Trend über Monate statt einer einzelnen Messung: Der Griff sinkt bei Müdigkeit, einem kürzlichen harten Training, einer Handverletzung oder schlicht einem anderen Gerät, vergleiche also Gleiches mit Gleichem.",
+    },
+    {
+      q: "Wie verbessere ich meine Griffkraft?",
+      a: "Der Griff und die Ganzkörperkraft, für die er steht, reagieren auf Krafttraining, nicht darauf, einen Ball zu drücken. Die großen Bewegungsleitlinien empfehlen muskelkräftigende Aktivität für alle wichtigen Muskelgruppen an mindestens zwei Tagen pro Woche, neben aerober Aktivität, und das ist der verlässlichste Hebel, um Kraft über die Lebensspanne aufzubauen und zu erhalten. Kläre zuerst mit einer behandelnden Person ab, wenn du inaktiv warst oder eine einschlägige Erkrankung hast.",
+    },
+  ],
+  "weather-altitude-and-your-body": [
+    {
+      q: "Warum ist mein Ruhepuls bei heißem Wetter höher?",
+      a: "Wenn dir warm ist, schickt dein Körper Blut zur Haut, um Wärme abzugeben, das Herz pumpt also härter und schneller, um den Kreislauf stabil zu halten. Ein heißer Tag oder ein warmes Schlafzimmer kann den Ruhe- und Belastungspuls um mehrere Schläge anheben, ganz ohne Änderung der Fitness. Hitze zerstückelt auch den Schlaf, denn das Einschlafen hängt davon ab, dass deine Kerntemperatur fällt, was ein warmer Raum dämpft.",
+    },
+    {
+      q: "Ist ein niedrigerer Blutsauerstoffwert in der Höhe normal?",
+      a: "Ja. Weiter oben enthält die Luft denselben Sauerstoffanteil bei geringerem Druck, jeder Atemzug liefert also weniger und der Blutsauerstoff fällt — etwa 90 Prozent können bei rund 2.500 m völlig normal sein —, während Atemfrequenz und Herzfrequenz zum Ausgleich steigen. Über ein paar Tage pendelt die Akklimatisierung die Zahlen teilweise ein. Ein sich verschlimmernder Kopfschmerz mit Übelkeit, Atemnot in Ruhe oder Verwirrtheit ist etwas anderes: Das sind Warnzeichen der Höhenkrankheit und ein Grund abzusteigen.",
+    },
+    {
+      q: "Kann die Luftqualität meine Gesundheitswerte beeinflussen?",
+      a: "Feinstaub, PM2.5, ist klein genug, um tief in die Lunge zu gelangen und in den Blutkreislauf überzutreten, und die Exposition ist mit höherer kardiorespiratorischer Belastung, erhöhter Entzündung und höherem Blutdruck verknüpft, wobei das Risiko über den gesamten Expositionsbereich steigt. An einem Tag mit hoher Belastung kann eine schnellere Atemfrequenz oder ein schlechterer Erholungswert eine Ursache im Freien haben, besonders nach dem Sport darin.",
+    },
+    {
+      q: "Wie sollte ich meine Daten lesen, wenn sich die Umgebung ändert?",
+      a: "Protokolliere den Kontext — eine Hitzewelle, eine Reise in die Höhe, einen rauchigen oder smogigen Tag — genauso, wie du ein spätes Abendessen oder ein hartes Training protokollieren würdest, sodass ein einzelner umweltbedingter Wert nicht mit einem sich entwickelnden Problem verwechselt wird. Das Signal, dem Beachtung gebührt, ist eine anhaltende Verschiebung, die bestehen bleibt, sobald die Bedingungen wieder normal sind. Hitzeerkrankung und Höhenkrankheit sind allerdings Notfälle, auf die du danach reagierst, wie du dich fühlst, nicht nach einem Wearable.",
+    },
+  ],
 };
 export default FAQ;

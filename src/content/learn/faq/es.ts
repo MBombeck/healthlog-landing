@@ -341,5 +341,95 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Estas señales pueden indicar una tensión sostenida pero no pueden decirte por qué, y no sustituyen a cómo te sientes. El estrés que altera tu sueño, tu concentración o tu disfrute de las cosas corrientes durante semanas merece hablarse con un médico o un profesional de salud mental, digan lo que digan los números. Si el malestar llega a sentirse abrumador o tienes pensamientos de autolesión, contacta de inmediato con tu número de emergencias local o un servicio de crisis.",
     },
   ],
+  "screening-not-diagnosis": [
+    {
+      q: "¿Es una puntuación alta del PHQ-9 o el GAD-7 un diagnóstico?",
+      a: "No. Son instrumentos de cribado, no pruebas diagnósticas. Una puntuación que cruza su umbral significa que el cribado es positivo y que conviene una conversación más a fondo, no que una afección esté confirmada. Incluso con un punto de corte del PHQ-9 de 10, aproximadamente una de cada ocho personas que dan positivo no tendrá una depresión mayor en una evaluación más completa, que es por lo que un resultado positivo es un aviso para hablar con un profesional y no un veredicto que dictamines tú mismo.",
+    },
+    {
+      q: "¿Qué puntuación del PHQ-9 o el GAD-7 debería motivar una acción?",
+      a: "Un total de 10 o más es el umbral de acción estándar para ambos: alrededor del 88 % de sensibilidad y especificidad para depresión mayor en el PHQ-9, y alrededor del 89 % de sensibilidad y 82 % de especificidad para ansiedad generalizada en el GAD-7. El WHO-5 señala bienestar pobre en o por debajo del 50 %. Son puntos de partida para una evaluación profesional, no etiquetas que te adjudiques a ti mismo.",
+    },
+    {
+      q: "¿Por qué debería repetir un cuestionario de cribado en lugar de hacerlo una vez?",
+      a: "Una sola sesión es una instantánea ruidosa, sensible a cómo dormiste, a los acontecimientos recientes y a cómo te llegan las preguntas ese día. Repetidas a lo largo de semanas y meses, las mismas preguntas puntuadas se convierten en una tendencia sobre la que tú y un profesional podéis actuar, y el WHO-5 está diseñado explícitamente para leerse como movimiento frente a tus propias puntuaciones anteriores, con una caída de 10 puntos contando como un cambio significativo. La administración repetida es también la forma en que estas herramientas siguen si un tratamiento funciona.",
+    },
+    {
+      q: "¿Qué es el ítem del PHQ-9 sobre la autolesión, y qué debería hacer?",
+      a: "La novena pregunta del PHQ-9 pregunta directamente por pensamientos de que estarías mejor muerto o de hacerte daño, y se lee por sí sola, de inmediato, al margen de la puntuación total: una puntuación global baja nunca lo cancela. Cualquier pensamiento de ese tipo, aunque sea ocasional, es por sí solo un motivo para buscar ayuda ahora mismo: contacta de inmediato con tu número local de emergencias o con un servicio de crisis. Estos sentimientos son tratables y hay ayuda disponible.",
+    },
+  ],
+  "longevity-labs-explained": [
+    {
+      q: "¿Por qué no basta con un panel de colesterol estándar?",
+      a: "Un panel básico mide la masa de colesterol que se transporta, pero el riesgo cardiovascular sigue el número de partículas aterogénicas, y el colesterol por partícula varía entre personas. La ApoB es un recuento directo de partículas y el colesterol no-HDL es un sustituto barato de la misma idea, así que dos personas con un LDL-C idéntico pueden cargar con un riesgo muy distinto. El panel básico también guarda silencio sobre la Lp(a) y sobre la inflamación.",
+    },
+    {
+      q: "¿Qué es la Lp(a) y por qué se mide solo una vez?",
+      a: "La lipoproteína(a) es una partícula similar al LDL cuyo nivel está fijado genéticamente en torno a un 80 a 90 por ciento y apenas se mueve con la dieta, el ejercicio o las estatinas estándar. Como es tan estable, la recomendación es medirla una vez en la vida para encontrar a la minoría que carga con un riesgo cardiovascular hereditario elevado. Un nivel alto no significa que algo vaya agudamente mal; desplaza tu riesgo de base y eleva la prioridad de cada palanca que sí puedes mover.",
+    },
+    {
+      q: "¿Qué me dice la hs-CRP, y por qué repetirla?",
+      a: "La CRP de alta sensibilidad lee la inflamación de bajo grado que acompaña a la aterosclerosis, en terciles cardiovasculares de menos de 1, de 1 a 3 y de más de 3 mg/L. Como cualquier resfriado o brote la mueve, se toma como el promedio de dos mediciones separadas al menos dos semanas y lejos de una enfermedad, y un valor por encima de 10 mg/L se aparta como probable inflamación aguda y se repite. Es un modificador del riesgo superpuesto a la imagen lipídica, no un número independiente.",
+    },
+    {
+      q: "¿Debería interpretar yo mismo mis resultados de laboratorio?",
+      a: "No. Estos marcadores interactúan, las bandas de las guías discrepan en los márgenes, y un único valor vive dentro de una banda de ruido biológico y analítico, así que la prueba honesta de un cambio real es el valor de cambio de referencia a lo largo de pruebas repetidas, no si un resultado cruzó un umbral. Un panel se interpreta como un todo, frente a tu riesgo y tu historia personales, por el profesional que lo pidió. Trata un valor fuera de rango como un motivo para hacer una pregunta.",
+    },
+  ],
+  "waist-and-central-fat": [
+    {
+      q: "¿Por qué importa el perímetro de cintura más que el peso?",
+      a: "Dónde almacenas grasa lleva más información que cuánto pesas. La grasa visceral, envuelta alrededor de los órganos abdominales, libera ácidos grasos y señales inflamatorias que impulsan la resistencia a la insulina, una presión arterial más alta y un perfil lipídico desfavorable, mientras que la grasa subcutánea de las caderas y los muslos es en buena medida inerte. El perímetro de cintura es un sustituto sencillo del compartimento visceral y predice el riesgo cardiometabólico de forma independiente del IMC.",
+    },
+    {
+      q: "¿Cuál es la regla de la relación cintura-altura?",
+      a: "Mantén tu cintura por debajo de la mitad de tu altura. No necesita ninguna tabla, funciona entre alturas, sexos y ascendencias donde los umbrales fijos de cintura no lo hacen, y un gran metaanálisis la encontró mejor predictora del riesgo cardiometabólico que el IMC o el perímetro de cintura por sí solos. Una relación en o por encima de 0,5 es la señal práctica para mirar el resto de la imagen.",
+    },
+    {
+      q: "¿Cómo mido mi cintura correctamente?",
+      a: "Mide en el punto medio entre tu costilla más baja y la parte superior del hueso de la cadera, no en el ombligo por reflejo, con la cinta ceñida pero sin comprimir la piel y tomada al final de una espiración normal. Mide de la misma manera cada vez, porque un método inconsistente inventa cambios que no están ahí. Una cinta blanda usada de forma constante le gana a una báscula cara usada con descuido.",
+    },
+    {
+      q: "¿Difieren los umbrales de cintura según la etnia?",
+      a: "Sí. Los puntos de corte comunes de más de 94 y 102 cm para hombres y más de 80 y 88 cm para mujeres se trazaron en gran parte a partir de poblaciones de origen europeo. Las personas de ascendencia surasiática y del este asiático cargan con mayor riesgo cardiometabólico a cinturas menores, así que los umbrales se desplazan a la baja, comúnmente a unos 90 cm para hombres y 80 cm para mujeres. La regla de la cintura-altura viaja mejor entre poblaciones.",
+    },
+  ],
+  "grip-strength-as-a-vital-sign": [
+    {
+      q: "¿Por qué predice la salud la fuerza de prensión?",
+      a: "La prensión es un sustituto fiel y de bajo esfuerzo de la fuerza de todo el cuerpo, la masa muscular y el sistema neuromuscular que los impulsa. Cuando ese sistema declina por el envejecimiento, la inactividad o la enfermedad, la prensión declina con él, lo que convierte una prensión en caída en uno de los primeros signos medibles de sarcopenia. En el estudio PURE, de casi 140.000 personas, predijo la mortalidad por todas las causas y cardiovascular mejor que la presión arterial sistólica.",
+    },
+    {
+      q: "¿Cuál es una buena fuerza de prensión para mi edad?",
+      a: "La prensión se lee frente a tu propia edad y sexo, nunca frente a un objetivo fijo. Alcanza su pico en la adultez temprana (aproximadamente de 46 a 51 kg en hombres y de 28 a 31 kg en mujeres), se estabiliza en los treinta y declina desde la mediana edad, así que un valor que es anodino a los 30 puede ser excelente a los 70. Los grupos de trabajo europeos señalan sarcopenia probable por debajo de unos 27 kg en hombres y 16 kg en mujeres, lo que es un aviso para una evaluación, no una puntuación de forma física.",
+    },
+    {
+      q: "¿Cómo mido la fuerza de prensión de forma constante?",
+      a: "Usa el mismo dinamómetro cada vez, sentado con el codo doblado en ángulo recto, tomando dos o tres apretones máximos por mano con un breve descanso y registrando el mejor. Vigila la tendencia móvil a lo largo de los meses en lugar de cualquier lectura suelta: la prensión baja con la fatiga, un entrenamiento duro reciente, una lesión de mano o simplemente un dispositivo distinto, así que compara lo comparable.",
+    },
+    {
+      q: "¿Cómo mejoro mi fuerza de prensión?",
+      a: "La prensión y la fuerza de todo el cuerpo que representa responden al entrenamiento de fuerza, no a apretar una pelota. Las principales guías de actividad recomiendan actividad de fortalecimiento muscular para todos los grupos musculares principales al menos dos días a la semana, junto a la actividad aeróbica, y esta es la palanca más fiable para construir y preservar la fuerza a lo largo de la vida. Consulta primero con un profesional si has estado inactivo o tienes una afección relevante.",
+    },
+  ],
+  "weather-altitude-and-your-body": [
+    {
+      q: "¿Por qué está más alta mi frecuencia cardíaca en reposo con calor?",
+      a: "Cuando tienes calor, tu cuerpo envía sangre a la piel para disipar el calor, así que el corazón bombea con más fuerza y más rápido para mantener la circulación estable. Un día caluroso o un dormitorio caliente pueden elevar la frecuencia cardíaca en reposo y en esfuerzo en varios latidos sin cambio alguno en la forma física. El calor también fragmenta el sueño, porque conciliar el sueño depende de que tu temperatura central baje, algo que una habitación caliente amortigua.",
+    },
+    {
+      q: "¿Es normal una lectura de oxígeno en sangre más baja en altitud?",
+      a: "Sí. Más arriba, el aire mantiene la misma fracción de oxígeno a menor presión, así que cada respiración aporta menos y el oxígeno en sangre cae —alrededor del 90 por ciento puede ser perfectamente normal a unos 2.500 m— mientras la frecuencia respiratoria y cardíaca suben para compensar. A lo largo de unos días, la aclimatación asienta en parte los números. Un dolor de cabeza que empeora con náuseas, la falta de aire en reposo o la confusión es distinto: esos son signos de alarma de enfermedad de altitud y un motivo para descender.",
+    },
+    {
+      q: "¿Puede la calidad del aire afectar a mis lecturas de salud?",
+      a: "Las partículas finas, las PM2.5, son lo bastante pequeñas como para llegar al fondo de los pulmones y cruzar al torrente sanguíneo, y la exposición se vincula con una mayor tensión cardiorrespiratoria, inflamación elevada y presión arterial más alta, con un riesgo que asciende a lo largo de todo el rango de exposición. En un día de alta contaminación, una respiración más rápida o una peor puntuación de recuperación pueden tener una causa al aire libre, sobre todo después de hacer ejercicio en él.",
+    },
+    {
+      q: "¿Cómo debería leer mis datos cuando cambia el entorno?",
+      a: "Anota el contexto —una ola de calor, un viaje a la altitud, un día con humo o esmog— igual que anotarías una cena tardía o un entrenamiento duro, para que una sola lectura impulsada por el entorno no se confunda con un problema que se está gestando. La señal que merece la pena atender es una deriva sostenida que se mantiene una vez que las condiciones vuelven a la normalidad. La enfermedad por calor y la de altitud, sin embargo, son emergencias sobre las que actuar según cómo te sientes, no según un dispositivo.",
+    },
+  ],
 };
 export default FAQ;

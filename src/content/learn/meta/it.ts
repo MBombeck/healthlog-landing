@@ -142,6 +142,37 @@ const meta: LearnMeta = {
       description:
         "Come stress e recupero compaiono nella frequenza cardiaca a riposo, nella HRV e nel sonno, l'equilibrio autonomico che li sottende e perché il recupero è un segnale attivo che puoi costruire.",
     },
+    "screening-not-diagnosis": {
+      title: "Un punteggio di screening non è una diagnosi",
+      dek: "Il PHQ-9 e il GAD-7 sembrano referti di laboratorio, ma fanno screening — non diagnosticano. Perché quella distinzione è tutto il punto.",
+      description:
+        "Cosa misurano davvero i questionari di salute mentale PHQ-9, GAD-7, WHO-5 e PSS-10, come leggere le loro fasce di gravità, perché ripeterli batte una singola seduta e perché uno screening positivo è uno stimolo a parlare con un professionista — non un'autodiagnosi.",
+    },
+    "longevity-labs-explained": {
+      title:
+        "Esami per la longevità: gli esami del sangue oltre il colesterolo",
+      dek: "Un pannello lipidico standard sottostima il tuo rischio. ApoB, Lp(a) e hs-CRP raccontano la storia più completa.",
+      description:
+        "Perché un pannello del colesterolo di base si lascia sfuggire il rischio, e cosa aggiungono ApoB, non-HDL, Lp(a), hs-CRP, HbA1c e insulina a digiuno — con intervalli di orientamento, l'inquadramento andamento-e-ripetizione e perché gli esami del sangue si leggono con un medico.",
+    },
+    "waist-and-central-fat": {
+      title: "Girovita e grasso centrale: perché il metro batte la bilancia",
+      dek: "Il punto in cui immagazzini il grasso conta più di quanto pesi. Il rapporto vita-altezza segue il rischio che il BMI si lascia sfuggire.",
+      description:
+        "Perché il grasso viscerale è più dannoso di quello sottocutaneo, le soglie di circonferenza vita e del rapporto vita-altezza, come misurare con coerenza e cosa predice l'adiposità centrale per la salute metabolica e cardiovascolare.",
+    },
+    "grip-strength-as-a-vital-sign": {
+      title: "Forza di presa: il test di longevità più economico",
+      dek: "Un dinamometro a mano predice la mortalità meglio della pressione. La forza è un parametro vitale, non solo una metrica da palestra.",
+      description:
+        "Cosa rappresenta la forza di presa per la forza di tutto il corpo e la sarcopenia, gli intervalli di norma per età e sesso, l'associazione con la mortalità dello studio PURE, come seguirne l'andamento e come l'allenamento di forza la muove.",
+    },
+    "weather-altitude-and-your-body": {
+      title: "Tempo, altitudine e il tuo corpo",
+      dek: "Caldo, altitudine e qualità dell'aria muovono frequenza cardiaca, sonno e respiro prima che tu te ne accorga — contesto per le letture 'storte'.",
+      description:
+        "Come caldo, altitudine e inquinamento dell'aria cambiano la frequenza cardiaca a riposo, il sonno, il respiro e l'ossigeno nel sangue, perché quegli scostamenti sono informazione anziché malfunzionamento e come leggere i tuoi dati a confronto con l'ambiente invece che nel vuoto.",
+    },
   },
 };
 

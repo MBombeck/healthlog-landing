@@ -142,6 +142,36 @@ const meta: LearnMeta = {
       description:
         "How stress and recovery show up in resting heart rate, HRV and sleep, the autonomic balance behind them, and why recovery is an active signal you can build.",
     },
+    "screening-not-diagnosis": {
+      title: "A screening score is not a diagnosis",
+      dek: "PHQ-9 and GAD-7 look like lab results, but they screen — they don't diagnose. Why that distinction is the whole point.",
+      description:
+        "What the PHQ-9, GAD-7, WHO-5 and PSS-10 mental-health questionnaires actually measure, how to read their severity bands, why repeating them beats a single sitting, and why a positive screen is a prompt to talk to a professional — not a self-diagnosis.",
+    },
+    "longevity-labs-explained": {
+      title: "Longevity labs: the bloodwork beyond cholesterol",
+      dek: "A standard lipid panel under-counts your risk. ApoB, Lp(a) and hs-CRP tell the fuller story.",
+      description:
+        "Why a basic cholesterol panel misses risk, and what ApoB, non-HDL, Lp(a), hs-CRP, HbA1c and fasting insulin add — with orientation ranges, the trend-and-repeat framing, and why bloodwork is read with a clinician.",
+    },
+    "waist-and-central-fat": {
+      title: "Waist and central fat: why the tape beats the scale",
+      dek: "Where you store fat matters more than how much you weigh. Waist-to-height tracks the risk BMI misses.",
+      description:
+        "Why visceral fat is more harmful than subcutaneous fat, the waist and waist-to-height-ratio thresholds, how to measure consistently, and what central adiposity predicts for metabolic and cardiovascular health.",
+    },
+    "grip-strength-as-a-vital-sign": {
+      title: "Grip strength: the cheapest longevity test",
+      dek: "A hand dynamometer predicts mortality better than blood pressure. Strength is a vital sign, not just a gym metric.",
+      description:
+        "What grip strength proxies for whole-body strength and sarcopenia, the norm ranges by age and sex, the PURE-study mortality association, how to track the trend, and how resistance training moves it.",
+    },
+    "weather-altitude-and-your-body": {
+      title: "Weather, altitude and your body",
+      dek: "Heat, altitude and air quality move your heart rate, sleep and breathing before you notice — context for 'off' readings.",
+      description:
+        "How heat, altitude and air pollution change your resting heart rate, sleep, breathing and blood oxygen, why those shifts are information rather than malfunction, and how to read your data against the environment instead of in a vacuum.",
+    },
   },
 };
 

@@ -142,6 +142,38 @@ const meta: LearnMeta = {
       description:
         "Comment le stress et la récupération apparaissent dans la fréquence cardiaque au repos, la VFC et le sommeil, l'équilibre autonome qui les sous-tend, et pourquoi la récupération est un signal actif que vous pouvez construire.",
     },
+    "screening-not-diagnosis": {
+      title: "Un score de dépistage n'est pas un diagnostic",
+      dek: "Le PHQ-9 et le GAD-7 ressemblent à des résultats de laboratoire, mais ils dépistent — ils ne diagnostiquent pas. Pourquoi cette distinction fait tout.",
+      description:
+        "Ce que mesurent réellement les questionnaires de santé mentale PHQ-9, GAD-7, WHO-5 et PSS-10, comment lire leurs bandes de sévérité, pourquoi les répéter vaut mieux qu'une passation unique, et pourquoi un dépistage positif est une invitation à en parler à un professionnel — non un autodiagnostic.",
+    },
+    "longevity-labs-explained": {
+      title:
+        "Les analyses de longévité : la prise de sang au-delà du cholestérol",
+      dek: "Un bilan lipidique standard sous-estime votre risque. L'ApoB, la Lp(a) et la hs-CRP en racontent l'histoire complète.",
+      description:
+        "Pourquoi un bilan de cholestérol de base passe à côté du risque, et ce qu'ajoutent l'ApoB, le non-HDL, la Lp(a), la hs-CRP, l'HbA1c et l'insuline à jeun — avec des plages de repère, le principe de la tendance répétée, et pourquoi une prise de sang se lit avec un clinicien.",
+    },
+    "waist-and-central-fat": {
+      title:
+        "Tour de taille et graisse centrale : pourquoi le mètre ruban l'emporte sur la balance",
+      dek: "L'endroit où vous stockez la graisse compte plus que votre poids. Le rapport tour de taille/taille suit le risque que l'IMC manque.",
+      description:
+        "Pourquoi la graisse viscérale est plus nocive que la graisse sous-cutanée, les seuils du tour de taille et du rapport tour de taille/taille, comment mesurer de façon régulière, et ce que l'adiposité centrale prédit pour la santé métabolique et cardiovasculaire.",
+    },
+    "grip-strength-as-a-vital-sign": {
+      title: "La force de préhension : le test de longévité le moins coûteux",
+      dek: "Un dynamomètre de poigne prédit la mortalité mieux que la tension artérielle. La force est un signe vital, pas seulement un indicateur de salle de sport.",
+      description:
+        "Ce dont la force de préhension est le reflet — force du corps entier et sarcopénie —, les plages de référence selon l'âge et le sexe, l'association à la mortalité de l'étude PURE, comment en suivre la tendance, et comment le renforcement musculaire la fait évoluer.",
+    },
+    "weather-altitude-and-your-body": {
+      title: "La météo, l'altitude et votre corps",
+      dek: "La chaleur, l'altitude et la qualité de l'air déplacent votre fréquence cardiaque, votre sommeil et votre respiration avant que vous ne le remarquiez — un contexte pour les mesures « qui clochent ».",
+      description:
+        "Comment la chaleur, l'altitude et la pollution de l'air modifient votre fréquence cardiaque au repos, votre sommeil, votre respiration et votre oxygène du sang, pourquoi ces décalages sont une information plutôt qu'un dysfonctionnement, et comment lire vos données face à l'environnement plutôt que dans le vide.",
+    },
   },
 };
 

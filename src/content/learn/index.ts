@@ -75,6 +75,11 @@ export const LEARN_ARTICLES: LearnArticle[] = [
   { slug: "caffeine-alcohol-and-your-readings", category: "metabolic", readingTimeMin: 7, knowledgeSlug: null, tags: ["caffeine", "alcohol", "sleep", "lifestyle"] },
   { slug: "hydration-and-your-body", category: "body", readingTimeMin: 7, knowledgeSlug: null, tags: ["hydration", "fluid balance", "weight"] },
   { slug: "stress-and-recovery", category: "mind", readingTimeMin: 8, knowledgeSlug: null, tags: ["stress", "recovery", "HRV", "sleep"] },
+  { slug: "screening-not-diagnosis", category: "mind", readingTimeMin: 8, knowledgeSlug: "mental-health-screening", tags: ["PHQ-9", "GAD-7", "mental health", "screening"] },
+  { slug: "longevity-labs-explained", category: "metabolic", readingTimeMin: 9, knowledgeSlug: "longevity-labs", tags: ["ApoB", "Lp(a)", "hs-CRP", "lipids", "longevity"] },
+  { slug: "waist-and-central-fat", category: "body", readingTimeMin: 7, knowledgeSlug: "waist-circumference", tags: ["waist", "WHtR", "visceral fat", "metabolic health"] },
+  { slug: "grip-strength-as-a-vital-sign", category: "fitness", readingTimeMin: 7, knowledgeSlug: "grip-strength", tags: ["grip strength", "strength", "sarcopenia", "longevity"] },
+  { slug: "weather-altitude-and-your-body", category: "foundations", readingTimeMin: 7, knowledgeSlug: "environment", tags: ["heat", "altitude", "air quality", "environment"] },
 ];
 
 export const LEARN_SLUGS = LEARN_ARTICLES.map((a) => a.slug);
