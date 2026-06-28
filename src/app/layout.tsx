@@ -139,6 +139,14 @@ export default function RootLayout({
       url: "https://github.com/MBombeck/HealthLog",
     },
     featureList: [
+      "OAuth-secured Model Context Protocol (MCP) server — connect your own record to MCP-compatible assistants (Claude, ChatGPT, and others); read-only by default, optional confirmed write scope, off until enabled",
+      "Mental-wellbeing self-assessments (PHQ-9 and GAD-7) — opt-in screening, not diagnosis, with encrypted answers and locale-aware crisis-support contacts",
+      "Grip strength, a 0–10 pain score, waist circumference and waist-to-height ratio, and respiratory rate as first-class tracked signals",
+      "Longevity lab panel in the biomarker catalogue — ApoB, Lp(a), hs-CRP, HbA1c, fasting glucose and insulin, eGFR, GGT, ferritin, omega-3 index — with reference ranges",
+      "Structured, encrypted medical-history records — allergies and family history — included in the health-record export",
+      "Optional environmental-context module — daily weather, daylight, and temperature correlated against mood, sleep, and vitals",
+      "Inbound documents — file a doctor's report or discharge letter and review the transcribed facts before they enter your record",
+      "Two-factor authentication (TOTP and WebAuthn) with step-up checks for sensitive actions",
       "Native SwiftUI iOS app (public TestFlight beta) with live two-way Apple Health (HealthKit) sync — steps, weight, blood pressure, glucose, sleep, body composition",
       "Weight, blood pressure, heart rate, body fat, sleep, steps tracking",
       "Body composition: total body water + bone mass via Withings auto-sync",
@@ -175,7 +183,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped manually
     // until the cross-repo release sync tool lands.
-    softwareVersion: "1.18.6",
+    softwareVersion: "1.25.0",
     license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
     // Landing page is English-only today. The HealthLog app itself is
     // bilingual (EN/DE) — that fact belongs on the app, not the marketing
@@ -234,6 +242,22 @@ export default function RootLayout({
         acceptedAnswer: {
           "@type": "Answer",
           text: "Withings devices (Body+, BPM Connect, ScanWatch) sync over OAuth2 with near-real-time webhooks, and Apple Health syncs live through the iOS app or via export import. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I connect HealthLog to an AI assistant?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. HealthLog can expose your own record to MCP-compatible assistants such as Claude or ChatGPT over an OAuth-secured Model Context Protocol server. It is off by default and gated behind a module switch; you mint the connector token yourself, read-only or read-and-write, and any write is previewed, confirmed, append-only and audited.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is HealthLog a medical device?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. HealthLog is a personal health-tracking tool, not a medical device, and it does not diagnose. Screening questionnaires like PHQ-9 and GAD-7 are for self-awareness, not diagnosis, and the AI Coach summarises your own data rather than giving medical advice. Always consult a qualified clinician for medical decisions. Your data stays on your own server.",
         },
       },
     ],

@@ -14,7 +14,7 @@ import { SITE_ORIGIN } from "@/content/learn/locales";
 
 const TITLE = "Security & privacy — your data, your server";
 const DESCRIPTION =
-  "How HealthLog protects health data: AES-256-GCM at rest with versioned key rotation, passkeys and Argon2id, server-side sessions and hashed API tokens, self-hosting on your own infrastructure, source-priority dedup, and zero telemetry. Source available.";
+  "How HealthLog protects health data: AES-256-GCM at rest with versioned key rotation, passkeys, Argon2id and two-factor auth, server-side sessions and hashed API tokens, an off-by-default OAuth-scoped AI assistant connector, self-hosting on your own infrastructure, and zero telemetry. Source available.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -81,6 +81,7 @@ const TOC = [
   { id: "encryption", label: "Encryption at rest" },
   { id: "auth", label: "Passkeys & passwords" },
   { id: "sessions", label: "Sessions & API tokens" },
+  { id: "connector", label: "AI assistant connector" },
   { id: "dedup", label: "Source-priority dedup" },
   { id: "telemetry", label: "No telemetry" },
   { id: "license", label: "Source available" },
@@ -236,6 +237,12 @@ export default function SecurityPage() {
             strength-validated. The plaintext password is never stored and never
             logged.
           </p>
+          <p>
+            Two-factor authentication is available with TOTP authenticator apps
+            or a WebAuthn security key, and sensitive actions — changing your
+            password among them — require a fresh second-factor check rather than
+            riding on an old session.
+          </p>
         </SecuritySection>
 
         <SecuritySection
@@ -254,6 +261,27 @@ export default function SecurityPage() {
             Devices each get their own refresh token with one-time-use rotation.
             If a rotated token is ever reused, that signals theft, and the
             device&apos;s token family is revoked rather than left live.
+          </p>
+        </SecuritySection>
+
+        <SecuritySection
+          id="connector"
+          label="AI assistant connector"
+          color="purple"
+          title="Off by default, scoped by design"
+        >
+          <p>
+            The optional Model Context Protocol server lets an MCP-compatible
+            assistant read your record — and, with a write-scoped token, log a
+            confirmed entry. It is off until you enable the module, and it stays
+            dark unless an instance URL is configured.
+          </p>
+          <p>
+            You mint the connector token yourself, read-only or read-and-write,
+            over an OAuth 2.1 flow with PKCE. The token is bound to the connector
+            surface alone: it can never write or delete over the REST API and can
+            never reach the admin surface. Writes are append-only, idempotent,
+            range-bounded and audited.
           </p>
         </SecuritySection>
 
