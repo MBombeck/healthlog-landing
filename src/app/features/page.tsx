@@ -13,7 +13,7 @@ import { SITE_ORIGIN } from "@/content/learn/locales";
 
 const TITLE = "Features — everything HealthLog tracks";
 const DESCRIPTION =
-  "A full tour of HealthLog: vitals and trends, medication adherence, lab biomarkers, FHIR and doctor-report export, an illness journal with Rest Mode, preventive-care reminders, a cited AI Coach, and device sync — all self-hosted and source available.";
+  "A full tour of HealthLog: vitals and trends, medication adherence, lab biomarkers and a longevity panel, PHQ-9/GAD-7 wellbeing screening, medical history, inbound documents, FHIR and doctor-report export, an illness journal with Rest Mode, a cited AI Coach, an OAuth-secured MCP server for AI assistants, and device sync — all self-hosted and source available.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -81,14 +81,20 @@ const TOC = [
   { id: "vitals", label: "Vitals & trends" },
   { id: "medication", label: "Medication & adherence" },
   { id: "labs", label: "Labs & biomarkers" },
+  { id: "wellbeing", label: "Mental wellbeing" },
+  { id: "history", label: "Medical history" },
+  { id: "documents", label: "Inbound documents" },
   { id: "export", label: "Export & interoperability" },
   { id: "illness", label: "Illness journal & Rest Mode" },
   { id: "cycle", label: "Cycle tracking" },
   { id: "preventive", label: "Preventive-care reminders" },
+  { id: "environment", label: "Environmental context" },
   { id: "coach", label: "AI Coach" },
+  { id: "assistants", label: "AI assistants & MCP" },
   { id: "integrations", label: "Integrations" },
   { id: "notifications", label: "Notifications" },
   { id: "languages", label: "Languages & achievements" },
+  { id: "scope", label: "What HealthLog is — and isn't" },
 ];
 
 export default function FeaturesPage() {
@@ -168,10 +174,15 @@ export default function FeaturesPage() {
         >
           <p>
             Weight, blood pressure, heart rate, body composition, blood glucose,
-            SpO₂, sleep, steps and mood all share a single timeline. Each metric
-            carries your own target ranges rather than generic defaults, and the
-            charts overlay this period against last month or last year so a
-            change reads at a glance.
+            SpO₂, respiratory rate, sleep, steps and mood all share a single
+            timeline. Each metric carries your own target ranges rather than
+            generic defaults, and the charts overlay this period against last
+            month or last year so a change reads at a glance.
+          </p>
+          <p>
+            Newer signals slot in the same way, each with its own detail page,
+            reference range and trend: grip strength, a 0–10 pain score, and
+            waist circumference with waist-to-height ratio.
           </p>
           <p>
             Behind the charts sits a persistent rollup tier that pre-aggregates
@@ -230,6 +241,62 @@ export default function FeaturesPage() {
             reference ranges, so each value lands in or out of range on entry.
             Group related markers into panels, and watch every biomarker trend
             across draws instead of reading isolated numbers off a PDF.
+          </p>
+          <p>
+            A longevity panel rounds out the catalogue — ApoB, Lp(a), hs-CRP,
+            HbA1c, fasting glucose and insulin, eGFR, GGT, ferritin and the
+            omega-3 index — each with its reference range. Biomarker detail pages
+            match the metric pages: a description, a summary, the chart, the
+            trend, and a one-tap question to the Coach.
+          </p>
+        </FeatureSection>
+
+        <FeatureSection
+          id="wellbeing"
+          label="Mental wellbeing"
+          color="purple"
+          title="Screening, never a diagnosis"
+        >
+          <p>
+            Opt into PHQ-9 and GAD-7 self-assessments that sit alongside your
+            mood log. They are screening questionnaires for self-awareness, not a
+            diagnosis, and the module is off until you switch it on.
+          </p>
+          <p>
+            Item answers are encrypted at rest. A non-zero self-harm response
+            surfaces calm, locale-aware crisis-support contacts rather than a
+            silent score. Your answers stay out of the AI Coach, the assistant
+            connector and exports by default — only the scores export, and only
+            once you enable the module.
+          </p>
+        </FeatureSection>
+
+        <FeatureSection
+          id="history"
+          label="Medical history"
+          color="green"
+          title="Allergies and family history, structured"
+        >
+          <p>
+            Record allergies and family history as structured entries gathered
+            under a single Medical history section, encrypted at rest, and
+            included in the health-record export. It is your record to keep —
+            HealthLog stores what you enter and never interprets it into a
+            diagnosis.
+          </p>
+        </FeatureSection>
+
+        <FeatureSection
+          id="documents"
+          label="Inbound documents"
+          color="cyan"
+          title="File a letter, review the facts"
+        >
+          <p>
+            File a doctor&apos;s report or a discharge letter and review the facts it
+            contains before they enter your record. HealthLog transcribes what is
+            written and never interprets it — you decide what stays. The feature
+            is off by default.
           </p>
         </FeatureSection>
 
@@ -298,6 +365,24 @@ export default function FeaturesPage() {
         </FeatureSection>
 
         <FeatureSection
+          id="environment"
+          label="Environmental context"
+          color="orange"
+          title="What the weather was doing"
+        >
+          <p>
+            An optional module records the daily weather, daylight and
+            temperature for your location and correlates them against your mood,
+            sleep and vitals — useful for spotting the seasonal patterns a number
+            in isolation hides.
+          </p>
+          <p>
+            It is off by default. Set a home location, add dated location periods
+            for travel, and backfill the history once it is on.
+          </p>
+        </FeatureSection>
+
+        <FeatureSection
           id="coach"
           label="AI Coach"
           color="orange"
@@ -310,10 +395,16 @@ export default function FeaturesPage() {
             pinned underneath, not as a chatbot guessing.
           </p>
           <p>
+            Its proactive check-in is warmer and in your language: it greets you
+            by name, keeps to one calm thought, never quotes your own words back,
+            and never arrives two days running. One setting turns the daily
+            suggestions off; another lets the Coach compose the check-in itself.
+          </p>
+          <p>
             Pick the provider that fits your privacy and budget: your ChatGPT
-            subscription, an OpenAI key (gpt-4o), an Anthropic key (Claude
-            Sonnet 4.6), or a fully local OpenAI-compatible model running on
-            Ollama, LM Studio or vLLM that never leaves your network.
+            subscription, an OpenAI key, an Anthropic (Claude) key, or a fully
+            local OpenAI-compatible model running on Ollama, LM Studio or vLLM
+            that never leaves your network.
           </p>
           <div className="glass-card overflow-hidden p-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -328,6 +419,38 @@ export default function FeaturesPage() {
               answer.
             </p>
           </div>
+        </FeatureSection>
+
+        <FeatureSection
+          id="assistants"
+          label="AI assistants & MCP"
+          color="cyan"
+          title="Connect your record to an assistant"
+        >
+          <p>
+            HealthLog can expose your own record to MCP-compatible assistants —
+            Claude, ChatGPT and others — over a standard, OAuth-secured Model
+            Context Protocol server, remote over <code>/mcp</code> or as a local
+            stdio command. A connected assistant can read your metric series,
+            glucose, sleep, workouts, medication compliance and schedule, labs,
+            correlations, baselines, recovery, illness, cycle and the
+            preventive-care due-list — every value carrying its unit and
+            reference range, with an honest &quot;no data&quot; instead of a
+            fabricated zero.
+          </p>
+          <p>
+            Writing is opt-in and confirmed: with a write-scoped token you mint
+            yourself, an assistant can log a measurement, a blood-pressure pair
+            or a mood entry — previewed first, then confirmed, append-only,
+            idempotent and audited. Installable prompt &quot;skills&quot; cover a
+            doctor-visit summary, a weekly review, a medication check, and
+            recovery, glucose, sleep and lab-trend briefs.
+          </p>
+          <p>
+            The whole surface is off by default, behind a module switch, and a
+            connector token is bound to the MCP surface alone — it can never write
+            or delete over the REST API and can never reach the admin surface.
+          </p>
         </FeatureSection>
 
         <FeatureSection
@@ -373,6 +496,28 @@ export default function FeaturesPage() {
             French, Italian and Polish. Along the way, 40 achievements give
             consistent tracking a bit of momentum without turning your health
             into a game you can lose.
+          </p>
+        </FeatureSection>
+
+        <FeatureSection
+          id="scope"
+          label="What HealthLog is — and isn't"
+          color="green"
+          title="A tool you own, not a verdict"
+        >
+          <p>
+            HealthLog is a personal health-tracking tool, not a medical device,
+            and it does not diagnose. The screening questionnaires are for
+            self-awareness, and the AI Coach summarises and explains your own
+            data rather than giving medical advice. For any medical decision,
+            talk to a qualified clinician.
+          </p>
+          <p>
+            And it stays yours. Everything lives on infrastructure you control,
+            with sensitive fields encrypted at rest and no telemetry phoning
+            home. Nothing leaves your server unless you turn on an integration,
+            an AI provider, the assistant connector or a notification channel —
+            each one off until you choose it.
           </p>
         </FeatureSection>
 

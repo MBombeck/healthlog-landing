@@ -206,13 +206,42 @@ function TagIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
+function PlugIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
+      <path d="M9 2v6M15 2v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M6 8h12v3a6 6 0 0 1-12 0V8z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="12" y1="17" x2="12" y2="22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function ClipboardIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
+      <path d="M9 2h6a1 1 0 0 1 1 1v2H8V3a1 1 0 0 1 1-1z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <line x1="8" y1="11" x2="16" y2="11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="8" y1="15" x2="13" y2="15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function CloudIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
+      <path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97 6 6 0 0 0-11.64-1.6A4 4 0 0 0 6.5 19h11z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 /* ── Feature Data ───────────────────────────────── */
 
 const primaryFeatures = [
   {
     icon: <HeartMetricIcon />,
     title: "All vitals at a glance",
-    description: "Weight, blood pressure, heart rate, body composition, blood glucose, SpO₂, sleep, steps and mood — every reading on one timeline. Interactive charts carry personal target ranges and vs-last-month or vs-last-year overlays, and a persistent rollup tier keeps years of history sub-second.",
+    description: "Weight, blood pressure, heart rate, body composition, blood glucose, SpO₂, respiratory rate, sleep, steps and mood — plus grip strength, a pain score and waist measurements. Every reading on one timeline, with personal target ranges, vs-last-month or vs-last-year overlays, and a persistent rollup tier that keeps years of history sub-second.",
     color: "purple",
   },
   {
@@ -224,7 +253,7 @@ const primaryFeatures = [
   {
     icon: <BrainIcon />,
     title: "AI Coach grounded in your data",
-    description: "A conversational Coach, daily briefing, weekly report and Health Score — every reply cites the exact metric, window and reading count it drew on, with mini-charts pinned underneath. Bring your own provider: your ChatGPT subscription via OpenAI OAuth, your own OpenAI or Anthropic key, or a fully local model that never leaves your network.",
+    description: "A conversational Coach, daily briefing, weekly report and Health Score — every reply cites the exact metric, window and reading count it drew on, with mini-charts pinned underneath. Its proactive check-in is warmer now: it greets you by name, keeps to one calm thought, and never nags. Bring your own provider — your ChatGPT subscription via OpenAI OAuth, your own OpenAI or Anthropic key, or a fully local model that never leaves your network.",
     color: "orange",
   },
 ];
@@ -232,13 +261,18 @@ const primaryFeatures = [
 const secondaryFeatures = [
   { icon: <PillIcon />, title: "Built for injectables", description: "GLP-1 and other injections get site-rotation tracking, a dose-titration timeline, pen inventory and a side-effect logbook — not just a checkbox.", color: "cyan" },
   { icon: <SyncIcon />, title: "Apple Health import", description: "Drop your iOS export.zip on the upload page — a streaming parser folds multi-GB archives into the same timeline, idempotent on the archive's checksum.", color: "purple" },
-  { icon: <FlaskIcon />, title: "Lab results & biomarkers", description: "Log blood work against a biomarker catalogue with reference ranges, group results into panels, and watch every marker trend over time.", color: "green" },
+  { icon: <FlaskIcon />, title: "Lab results & biomarkers", description: "Log blood work against a biomarker catalogue with reference ranges, group results into panels, and watch every marker trend over time. A longevity panel covers ApoB, Lp(a), hs-CRP, HbA1c, fasting glucose and insulin, eGFR, GGT, ferritin and the omega-3 index.", color: "green" },
   { icon: <HeartMetricIcon />, title: "Illness & condition journal", description: "Track acute illnesses, chronic conditions and flares with a daily symptom log. An active episode turns on Rest Mode, which softens nudges and reframes your score instead of penalising it.", color: "pink" },
   { icon: <MoodIcon />, title: "Cycle tracking", description: "Symptothermal cycle tracking with period logging, symptoms and a careful prediction model. Discreet by design, and off unless you switch it on.", color: "pink" },
   { icon: <CalendarIcon />, title: "Preventive-care reminders", description: "Schedule recurring check-ups and measurements — annual blood work, a week of twice-daily blood pressure — on a rolling cadence or a calendar rule. They resolve themselves once the reading lands.", color: "orange" },
   { icon: <FileIcon />, title: "Export everything", description: "Your data leaves the way it came in: CSV, JSON, a localized doctor-report PDF, and a FHIR R4 bundle (Patient, Observation, MedicationStatement, MedicationAdministration, Coverage) for a clinician's system.", color: "green" },
   { icon: <FileIcon />, title: "Customizable dashboard", description: "Show, hide and reorder every widget. Reset to defaults anytime — your data is never touched.", color: "purple" },
   { icon: <MoodIcon />, title: "Mood tracking", description: "A five-point scale with tags and notes, correlated against sleep, activity and the rest of your timeline.", color: "pink" },
+  { icon: <PlugIcon />, title: "Connect your record to AI assistants", description: "An OAuth-secured Model Context Protocol server lets MCP-compatible assistants — Claude, ChatGPT and others — read your record and, with a write-scoped token you mint, log a measurement after you confirm. Off by default; you stay in control of the connector token.", color: "cyan" },
+  { icon: <ClipboardIcon />, title: "Mental-wellbeing check-ins", description: "Optional PHQ-9 and GAD-7 self-assessments sit alongside your mood log — screening, never a diagnosis. Answers are encrypted, and a non-zero self-harm response surfaces calm, local crisis-support contacts.", color: "purple" },
+  { icon: <FileIcon />, title: "Medical history", description: "Structured, encrypted allergy and family-history records, gathered in one place and included in the health-record export. Yours to keep, never interpreted for you.", color: "green" },
+  { icon: <CloudIcon />, title: "Environmental context", description: "An optional module pulls daily weather, daylight and temperature for your location and correlates them against your mood, sleep and vitals. Off by default, with a home location and backfill.", color: "orange" },
+  { icon: <FileIcon />, title: "Inbound documents", description: "File a doctor's report or discharge letter and review the facts it contains before they enter your record. HealthLog transcribes what is written and never interprets it. Off by default.", color: "cyan" },
 ];
 
 const integrations = [
@@ -301,6 +335,16 @@ const faqs = [
     question: "Which devices and services does HealthLog integrate with?",
     answer:
       "Withings devices (Body+, BPM Connect, ScanWatch) sync over OAuth2 with near-real-time webhooks, and Apple Health syncs live through the iOS app or via export import. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
+  },
+  {
+    question: "Can I connect HealthLog to an AI assistant?",
+    answer:
+      "Yes. HealthLog can expose your own record to MCP-compatible assistants such as Claude or ChatGPT over an OAuth-secured Model Context Protocol server. It is off by default and gated behind a module switch; you mint the connector token yourself, read-only or read-and-write, and any write is previewed, confirmed, append-only and audited.",
+  },
+  {
+    question: "Is HealthLog a medical device?",
+    answer:
+      "No. HealthLog is a personal health-tracking tool, not a medical device, and it does not diagnose. Screening questionnaires like PHQ-9 and GAD-7 are for self-awareness, not diagnosis, and the AI Coach summarises your own data rather than giving medical advice. Always consult a qualified clinician for medical decisions. Your data stays on your own server.",
   },
 ];
 
@@ -533,6 +577,11 @@ export default function Home() {
               "Glucose mg/dL ↔ mmol/L",
               "FHIR R4 export",
               "GLP-1 injectable support",
+              "MCP connector · OAuth-secured",
+              "PHQ-9 · GAD-7 screening",
+              "Longevity lab panel",
+              "Grip strength · pain · waist",
+              "Two-factor auth · TOTP & passkey",
               "Offline-capable PWA",
               "Telegram · ntfy · Web Push · APNs",
               "Passkey sign-in",
