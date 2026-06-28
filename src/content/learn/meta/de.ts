@@ -142,6 +142,36 @@ const meta: LearnMeta = {
       description:
         "Wie sich Stress und Erholung im Ruhepuls, in der HRV und im Schlaf zeigen, die autonome Balance dahinter und warum Erholung ein aktives Signal ist, das du aufbauen kannst.",
     },
+    "screening-not-diagnosis": {
+      title: "Ein Screening-Wert ist keine Diagnose",
+      dek: "PHQ-9 und GAD-7 sehen aus wie Laborbefunde, aber sie screenen — sie diagnostizieren nicht. Warum genau dieser Unterschied der springende Punkt ist.",
+      description:
+        "Was die Fragebögen PHQ-9, GAD-7, WHO-5 und PSS-10 zur psychischen Gesundheit tatsächlich messen, wie du ihre Schwerebänder liest, warum das Wiederholen eine einzelne Sitzung schlägt und warum ein positiver Screen ein Anlass ist, mit einer Fachperson zu sprechen — keine Selbstdiagnose.",
+    },
+    "longevity-labs-explained": {
+      title: "Langlebigkeitswerte: die Blutwerte jenseits des Cholesterins",
+      dek: "Ein Standard-Lipidprofil unterzählt dein Risiko. ApoB, Lp(a) und hs-CRP erzählen die vollständigere Geschichte.",
+      description:
+        "Warum ein einfaches Cholesterinprofil Risiko übersieht und was ApoB, Non-HDL, Lp(a), hs-CRP, HbA1c und Nüchterninsulin ergänzen — mit Orientierungsbereichen, dem Prinzip von Trend und Wiederholung und warum Blutwerte mit einer behandelnden Person gelesen werden.",
+    },
+    "waist-and-central-fat": {
+      title: "Taille und zentrales Fett: warum das Maßband die Waage schlägt",
+      dek: "Wo du Fett speicherst, zählt mehr als wie viel du wiegst. Das Taille-Größe-Verhältnis erfasst das Risiko, das der BMI übersieht.",
+      description:
+        "Warum viszerales Fett schädlicher ist als subkutanes Fett, die Schwellen für Taillenumfang und Taille-Größe-Verhältnis, wie du konsistent misst und was die zentrale Adipositas für die metabolische und kardiovaskuläre Gesundheit vorhersagt.",
+    },
+    "grip-strength-as-a-vital-sign": {
+      title: "Griffkraft: der günstigste Langlebigkeitstest",
+      dek: "Ein Hand-Dynamometer sagt die Sterblichkeit besser voraus als der Blutdruck. Kraft ist ein Vitalzeichen, nicht nur ein Fitnessstudio-Wert.",
+      description:
+        "Wofür die Griffkraft als Näherungswert für Ganzkörperkraft und Sarkopenie steht, die Normbereiche nach Alter und Geschlecht, der Sterblichkeitszusammenhang aus der PURE-Studie, wie du den Trend verfolgst und wie Krafttraining ihn bewegt.",
+    },
+    "weather-altitude-and-your-body": {
+      title: "Wetter, Höhe und dein Körper",
+      dek: "Hitze, Höhe und Luftqualität bewegen deinen Puls, deinen Schlaf und deine Atmung, bevor du es bemerkst — Kontext für „verkehrte“ Werte.",
+      description:
+        "Wie Hitze, Höhe und Luftverschmutzung deinen Ruhepuls, deinen Schlaf, deine Atmung und deinen Blutsauerstoff verändern, warum diese Verschiebungen Information statt Fehlfunktion sind und wie du deine Daten gegen die Umgebung liest statt im Vakuum.",
+    },
   },
 };
 

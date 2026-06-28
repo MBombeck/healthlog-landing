@@ -142,6 +142,36 @@ const meta: LearnMeta = {
       description:
         "Jak stres i regeneracja ujawniają się w tętnie spoczynkowym, HRV i śnie, jaki bilans autonomiczny za nimi stoi i dlaczego regeneracja jest aktywnym sygnałem, który można budować.",
     },
+    "screening-not-diagnosis": {
+      title: "Wynik przesiewowy to nie diagnoza",
+      dek: "PHQ-9 i GAD-7 wyglądają jak wyniki laboratoryjne, ale przesiewają — nie diagnozują. Dlaczego to rozróżnienie jest w tym wszystkim sednem.",
+      description:
+        "Co tak naprawdę mierzą kwestionariusze zdrowia psychicznego PHQ-9, GAD-7, WHO-5 i PSS-10, jak odczytywać ich przedziały nasilenia, dlaczego powtarzanie bije jednorazowe podejście i dlaczego dodatni przesiew to zachęta do rozmowy ze specjalistą, a nie samodzielna diagnoza.",
+    },
+    "longevity-labs-explained": {
+      title: "Badania długowieczności: krew poza cholesterolem",
+      dek: "Standardowy lipidogram zaniża twoje ryzyko. ApoB, Lp(a) i hs-CRP opowiadają pełniejszą historię.",
+      description:
+        "Dlaczego podstawowy lipidogram pomija ryzyko i co dodają ApoB, nie-HDL, Lp(a), hs-CRP, HbA1c oraz insulina na czczo — z zakresami orientacyjnymi, ujęciem „trend i powtórka” oraz wyjaśnieniem, dlaczego badania krwi czyta się z lekarzem.",
+    },
+    "waist-and-central-fat": {
+      title: "Talia i tłuszcz centralny: dlaczego centymetr bije wagę",
+      dek: "To, gdzie magazynujesz tłuszcz, liczy się bardziej niż to, ile ważysz. Stosunek talii do wzrostu śledzi ryzyko, które BMI pomija.",
+      description:
+        "Dlaczego tłuszcz trzewny jest groźniejszy niż podskórny, jakie są progi obwodu talii i stosunku talii do wzrostu, jak mierzyć konsekwentnie i co otyłość centralna przewiduje dla zdrowia metabolicznego i sercowo-naczyniowego.",
+    },
+    "grip-strength-as-a-vital-sign": {
+      title: "Siła chwytu: najtańszy test długowieczności",
+      dek: "Dynamometr ręczny przewiduje śmiertelność lepiej niż ciśnienie krwi. Siła to parametr życiowy, a nie tylko wskaźnik z siłowni.",
+      description:
+        "Co siła chwytu odwzorowuje względem siły całego ciała i sarkopenii, jakie są zakresy norm według wieku i płci, jaki jest związek ze śmiertelnością z badania PURE, jak śledzić trend i jak trening oporowy go zmienia.",
+    },
+    "weather-altitude-and-your-body": {
+      title: "Pogoda, wysokość a Twoje ciało",
+      dek: "Upał, wysokość i jakość powietrza poruszają Twoje tętno, sen i oddech, zanim to zauważysz — kontekst dla odczytów „nie tak”.",
+      description:
+        "Jak upał, wysokość i zanieczyszczenie powietrza zmieniają Twoje tętno spoczynkowe, sen, oddech i natlenienie krwi, dlaczego te przesunięcia są informacją, a nie usterką, i jak czytać dane względem otoczenia, a nie w próżni.",
+    },
   },
 };
 

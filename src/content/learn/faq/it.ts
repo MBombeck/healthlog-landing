@@ -341,5 +341,95 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Questi segnali possono indicare uno sforzo che dura, ma non sanno dirti perché, e non sostituiscono come ti senti. Uno stress che per settimane ti rovina il sonno, la concentrazione o il piacere delle cose di tutti i giorni vale la pena discuterlo con un medico o uno specialista della salute mentale, qualunque cosa dicano i numeri. Se il disagio dovesse mai sembrarti opprimente, o se hai pensieri di farti del male, chiama subito il numero di emergenza locale o un servizio di crisi.",
     },
   ],
+  "screening-not-diagnosis": [
+    {
+      q: "Un punteggio alto al PHQ-9 o al GAD-7 è una diagnosi?",
+      a: "No. Sono strumenti di screening, non test diagnostici. Un punteggio che supera la propria soglia significa che lo screening è positivo e che vale la pena di una conversazione più approfondita, non che una condizione sia confermata. Persino con una soglia del PHQ-9 a 10, circa una persona su otto tra quelle che risultano positive non avrà una depressione maggiore a una valutazione più completa: ecco perché un risultato positivo è uno stimolo a parlarne con un professionista anziché un verdetto che ti emetti da solo.",
+    },
+    {
+      q: "Quale punteggio al PHQ-9 o al GAD-7 dovrebbe spingere ad agire?",
+      a: "Un totale di 10 o più è la soglia d'azione standard per entrambi: circa l'88% di sensibilità e specificità per la depressione maggiore nel PHQ-9, e circa l'89% di sensibilità e l'82% di specificità per l'ansia generalizzata nel GAD-7. Il WHO-5 segnala un benessere scarso al 50% o meno. Sono punti di partenza per una valutazione professionale, non etichette da assegnarsi da soli.",
+    },
+    {
+      q: "Perché dovrei ripetere un questionario di screening invece di farlo una volta sola?",
+      a: "Una singola seduta è una fotografia rumorosa, sensibile a come hai dormito, agli eventi recenti e a come arrivano le domande quel giorno. Ripetute nell'arco di settimane e mesi, le stesse domande con punteggio diventano un andamento su cui tu e un medico potete agire, e il WHO-5 è pensato esplicitamente per leggersi come movimento rispetto ai tuoi punteggi di prima, con una caduta di 10 punti che conta come cambiamento significativo. La somministrazione ripetuta è anche il modo con cui questi strumenti monitorano se una terapia sta funzionando.",
+    },
+    {
+      q: "Qual è l'item del PHQ-9 sul farsi del male, e cosa dovrei fare?",
+      a: "La nona domanda del PHQ-9 chiede direttamente dei pensieri di morte o di farti del male, e si legge da sé, immediatamente, a prescindere dal punteggio totale — un punteggio complessivo basso non lo annulla mai. Qualunque pensiero del genere, anche occasionale, è di per sé un motivo per chiedere aiuto subito: contatta immediatamente il numero di emergenza della tua zona o un servizio di crisi. Sono stati d'animo che si curano e l'aiuto c'è.",
+    },
+  ],
+  "longevity-labs-explained": [
+    {
+      q: "Perché un pannello del colesterolo standard non basta?",
+      a: "Un pannello di base misura la massa di colesterolo trasportato, ma il rischio cardiovascolare segue il numero di particelle aterogene, e il colesterolo per particella varia tra le persone. L'ApoB è un conteggio diretto delle particelle e il colesterolo non-HDL è un surrogato economico della stessa idea, così due persone con un LDL-C identico possono portare un rischio molto diverso. Il pannello di base tace anche sull'Lp(a) e sull'infiammazione.",
+    },
+    {
+      q: "Cos'è l'Lp(a) e perché si misura una sola volta?",
+      a: "La lipoproteina(a) è una particella simile all'LDL il cui livello è determinato per circa l'80–90% dalla genetica e si muove a malapena con dieta, attività fisica o statine standard. Proprio perché è così stabile, l'indicazione è di misurarla una volta nella vita per individuare la minoranza che porta un rischio cardiovascolare ereditario elevato. Un livello alto non significa che qualcosa sia acutamente sbagliato; sposta il tuo rischio di base e fa salire la priorità di ogni leva su cui puoi agire.",
+    },
+    {
+      q: "Cosa mi dice l'hs-CRP, e perché ripeterlo?",
+      a: "La CRP ad alta sensibilità legge l'infiammazione di basso grado che accompagna l'aterosclerosi, in terzili cardiovascolari sotto 1, da 1 a 3 e oltre 3 mg/L. Poiché qualunque raffreddore o riacutizzazione lo sposta, si prende come media di due misurazioni a distanza di almeno due settimane e lontano da una malattia, e un valore superiore a 10 mg/L viene messo da parte come probabile infiammazione acuta e ripetuto. È un modificatore del rischio sovrapposto al quadro lipidico, non un numero a sé stante.",
+    },
+    {
+      q: "Dovrei interpretare da solo i miei esami del sangue?",
+      a: "No. Questi marcatori interagiscono, le fasce delle linee guida non concordano ai margini e un singolo valore si colloca dentro una fascia di rumore biologico e analitico, quindi la prova onesta di un reale cambiamento è il valore di cambiamento di riferimento attraverso test ripetuti, non se un risultato ha superato una soglia. Un pannello viene interpretato nel suo insieme, rispetto al tuo rischio e alla tua storia personali, dal medico che lo ha richiesto. Tratta un valore fuori intervallo come un motivo per fare una domanda.",
+    },
+  ],
+  "waist-and-central-fat": [
+    {
+      q: "Perché la circonferenza vita conta più del peso?",
+      a: "Il punto in cui immagazzini il grasso porta più informazioni di quanto pesi. Il grasso viscerale, avvolto attorno agli organi addominali, rilascia acidi grassi e segnali infiammatori che alimentano insulino-resistenza, pressione più alta e un profilo lipidico sfavorevole, mentre il grasso sottocutaneo su fianchi e cosce è in gran parte inerte. La circonferenza vita è un semplice surrogato del compartimento viscerale e predice il rischio cardiometabolico indipendentemente dal BMI.",
+    },
+    {
+      q: "Qual è la regola del rapporto vita-altezza?",
+      a: "Tieni il girovita sotto la metà della tua altezza. Non richiede alcuna tabella, funziona attraverso altezze, sessi e origini diverse dove le soglie fisse di vita non funzionano, e un'ampia meta-analisi l'ha trovata un predittore del rischio cardiometabolico migliore del BMI o della circonferenza vita da soli. Un rapporto pari o superiore a 0.5 è il segnale pratico per guardare il resto del quadro.",
+    },
+    {
+      q: "Come misuro correttamente il girovita?",
+      a: "Misura nel punto medio tra l'ultima costola e la cresta dell'osso dell'anca, non all'ombelico per riflesso, con il metro aderente ma senza comprimere la pelle e preso al termine di una normale espirazione. Misura sempre allo stesso modo, perché un metodo incoerente inventa cambiamenti che non esistono. Un metro morbido usato con coerenza batte una bilancia costosa usata con sciatteria.",
+    },
+    {
+      q: "Le soglie del girovita variano in base all'etnia?",
+      a: "Sì. Le soglie comuni di oltre 94 e 102 cm per gli uomini e di oltre 80 e 88 cm per le donne sono state tratte in gran parte da popolazioni di origine europea. Le persone di origine sud- ed est-asiatica portano un rischio cardiometabolico più alto a vita più ridotta, quindi le soglie si abbassano, comunemente intorno ai 90 cm per gli uomini e agli 80 cm per le donne. La regola del rapporto vita-altezza è più valida attraverso le popolazioni.",
+    },
+  ],
+  "grip-strength-as-a-vital-sign": [
+    {
+      q: "Perché la forza di presa predice la salute?",
+      a: "La presa è un surrogato fedele e a basso sforzo della forza di tutto il corpo, della massa muscolare e del sistema neuromuscolare che le guida. Quando quel sistema declina per invecchiamento, inattività o malattia, la presa declina con esso, rendendo una presa in calo uno dei primi segni misurabili della sarcopenia. Nello studio PURE su quasi 140.000 persone ha predetto la mortalità per ogni causa e cardiovascolare meglio della pressione sistolica.",
+    },
+    {
+      q: "Qual è una buona forza di presa per la mia età?",
+      a: "La presa si legge rispetto alla tua età e al tuo sesso, mai rispetto a un obiettivo fisso. Raggiunge il picco nella prima età adulta (all'incirca 46–51 kg per gli uomini e 28–31 kg per le donne), arriva a un plateau intorno ai trent'anni e declina dalla mezza età, così un valore insignificante a 30 anni può essere eccellente a 70. I gruppi di lavoro europei segnalano una probabile sarcopenia sotto i ~27 kg per gli uomini e i 16 kg per le donne, che è uno stimolo a una valutazione, non un punteggio di forma fisica.",
+    },
+    {
+      q: "Come misuro la forza di presa con coerenza?",
+      a: "Usa lo stesso dinamometro ogni volta, da seduto con il gomito piegato ad angolo retto, eseguendo due o tre strette massimali per mano con una breve pausa e registrando la migliore. Osserva l'andamento mobile nell'arco dei mesi anziché una singola lettura: la presa cala con la stanchezza, un allenamento intenso recente, un infortunio alla mano o semplicemente un dispositivo diverso, quindi confronta cose simili.",
+    },
+    {
+      q: "Come miglioro la mia forza di presa?",
+      a: "La presa e la forza di tutto il corpo che rappresenta rispondono all'allenamento di forza, non allo stringere una pallina. Le principali linee guida sull'attività fisica raccomandano un'attività di rinforzo muscolare per tutti i principali gruppi muscolari almeno due giorni a settimana, accanto all'attività aerobica, e questa è la leva più affidabile per costruire e preservare la forza nell'arco della vita. Consulta prima un medico se sei stato inattivo o hai una condizione rilevante.",
+    },
+  ],
+  "weather-altitude-and-your-body": [
+    {
+      q: "Perché la mia frequenza cardiaca a riposo è più alta con il caldo?",
+      a: "Quando hai caldo, il tuo corpo invia sangue alla pelle per disperdere calore, così il cuore pompa più forte e più in fretta per mantenere stabile la circolazione. Una giornata calda o una camera da letto calda possono alzare la frequenza cardiaca a riposo e sotto sforzo di diversi battiti senza alcun cambiamento nella forma fisica. Il caldo frammenta anche il sonno, perché addormentarsi dipende dal calo della temperatura interna, che una stanza calda smorza.",
+    },
+    {
+      q: "Una lettura più bassa dell'ossigeno nel sangue è normale in quota?",
+      a: "Sì. Più in alto, l'aria contiene la stessa frazione di ossigeno a pressione più bassa, così ogni respiro ne porta di meno e l'ossigeno nel sangue cala — intorno al 90% può essere del tutto normale a circa 2.500 m — mentre frequenza respiratoria e cardiaca salgono per compensare. Nel giro di qualche giorno l'acclimatazione assesta in parte i numeri. Un mal di testa che peggiora con nausea, affanno a riposo o confusione è un'altra cosa: questi sono segnali d'allarme di una patologia da altitudine e un motivo per scendere.",
+    },
+    {
+      q: "La qualità dell'aria può influire sulle mie letture di salute?",
+      a: "Il particolato fine, il PM2.5, è abbastanza piccolo da raggiungere il profondo dei polmoni e passare nel sangue, e l'esposizione è collegata a un maggiore stress cardiorespiratorio, a un'infiammazione aumentata e a una pressione più alta, con un rischio che cresce lungo tutto l'intervallo di esposizione. In una giornata ad alto inquinamento un respiro più veloce o un punteggio di recupero peggiore possono avere una causa all'aperto, specie dopo aver fatto attività fisica in quelle condizioni.",
+    },
+    {
+      q: "Come dovrei leggere i miei dati quando cambia l'ambiente?",
+      a: "Annota il contesto — un'ondata di calore, un viaggio in quota, una giornata fumosa o smoggosa — allo stesso modo in cui annoteresti una cena tardiva o un allenamento intenso, così che una singola lettura guidata dall'ambiente non venga scambiata per un problema in via di sviluppo. Il segnale a cui prestare attenzione è una deriva sostenuta che persiste una volta che le condizioni tornano alla normalità. La patologia da calore e quella da altitudine, però, sono emergenze su cui agire in base a come ti senti, non in base a un dispositivo indossabile.",
+    },
+  ],
 };
 export default FAQ;

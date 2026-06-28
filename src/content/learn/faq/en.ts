@@ -341,5 +341,95 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "These signals can flag sustained strain but cannot tell you why, and they are no substitute for how you feel. Stress that disrupts your sleep, concentration or enjoyment of ordinary things for weeks is worth talking through with a doctor or mental-health professional, whatever the numbers say. If distress ever feels overwhelming or you have thoughts of self-harm, contact your local emergency number or a crisis service right away.",
     },
   ],
+  "screening-not-diagnosis": [
+    {
+      q: "Is a high PHQ-9 or GAD-7 score a diagnosis?",
+      a: "No. These are screening instruments, not diagnostic tests. A score crossing its threshold means the screen is positive and a closer conversation is warranted, not that a condition is confirmed. Even at a PHQ-9 cut-off of 10, roughly one in eight people who screen positive will not have major depression on fuller assessment, which is why a positive result is a prompt to talk to a professional rather than a verdict you render yourself.",
+    },
+    {
+      q: "What score on the PHQ-9 or GAD-7 should prompt action?",
+      a: "A total of 10 or above is the standard action threshold for both: about 88% sensitivity and specificity for major depression on the PHQ-9, and about 89% sensitivity and 82% specificity for generalised anxiety on the GAD-7. The WHO-5 flags poor wellbeing at or below 50%. These are starting points for a professional assessment, not labels to assign yourself.",
+    },
+    {
+      q: "Why should I repeat a screening questionnaire instead of doing it once?",
+      a: "A single sitting is a noisy snapshot, sensitive to how you slept, recent events and how the questions land that day. Repeated over weeks and months, the same scored questions become a trend you and a clinician can act on, and the WHO-5 is explicitly designed to be read as movement against your own earlier scores, with a 10-point fall counting as a meaningful change. Repeat administration is also how these tools track whether a treatment is working.",
+    },
+    {
+      q: "What is the PHQ-9 item about self-harm, and what should I do?",
+      a: "The ninth PHQ-9 question asks directly about thoughts of being better off dead or of harming yourself, and it is read on its own, immediately, regardless of the total score — a low overall score never cancels it out. Any such thought, even occasional, is on its own a reason to reach out right now: contact your local emergency number or a crisis service immediately. These feelings are treatable and help is available.",
+    },
+  ],
+  "longevity-labs-explained": [
+    {
+      q: "Why isn't a standard cholesterol panel enough?",
+      a: "A basic panel measures the mass of cholesterol being carried, but cardiovascular risk tracks the number of atherogenic particles, and the cholesterol per particle varies between people. ApoB is a direct particle count and non-HDL cholesterol is a cheap proxy for the same idea, so two people with identical LDL-C can carry very different risk. The basic panel is also silent on Lp(a) and on inflammation.",
+    },
+    {
+      q: "What is Lp(a) and why is it measured only once?",
+      a: "Lipoprotein(a) is an LDL-like particle whose level is roughly 80 to 90 percent genetically set and barely moves with diet, exercise or standard statins. Because it is so stable, the guidance is to measure it once in a lifetime to find the minority carrying an elevated inherited cardiovascular risk. A high level doesn't mean something is acutely wrong; it shifts your baseline risk and raises the priority of every lever you can move.",
+    },
+    {
+      q: "What does hs-CRP tell me, and why repeat it?",
+      a: "High-sensitivity CRP reads the low-grade inflammation that accompanies atherosclerosis, in cardiovascular tertiles of under 1, 1 to 3, and over 3 mg/L. Because any cold or flare moves it, it is taken as the average of two measurements at least two weeks apart and away from illness, and a value above 10 mg/L is set aside as likely acute inflammation and repeated. It is a risk modifier layered onto the lipid picture, not a standalone number.",
+    },
+    {
+      q: "Should I interpret my lab results myself?",
+      a: "No. These markers interact, the guideline bands disagree at the edges, and a single value sits inside a band of biological and analytical noise, so the honest test of a real change is the reference change value across repeated tests, not whether one result crossed a threshold. A panel is interpreted as a whole, against your personal risk and history, by the clinician who ordered it. Treat an out-of-range value as a reason to ask a question.",
+    },
+  ],
+  "waist-and-central-fat": [
+    {
+      q: "Why does waist circumference matter more than weight?",
+      a: "Where you store fat carries more information than how much you weigh. Visceral fat, wrapped around the abdominal organs, releases fatty acids and inflammatory signals that drive insulin resistance, higher blood pressure and an adverse lipid profile, while subcutaneous fat on the hips and thighs is largely inert. Waist circumference is a simple proxy for the visceral compartment and predicts cardiometabolic risk independently of BMI.",
+    },
+    {
+      q: "What is the waist-to-height ratio rule?",
+      a: "Keep your waist under half your height. It needs no chart, works across heights, sexes and ancestries where fixed waist thresholds do not, and a large meta-analysis found it a better predictor of cardiometabolic risk than BMI or waist circumference alone. A ratio at or above 0.5 is the practical flag to look at the rest of the picture.",
+    },
+    {
+      q: "How do I measure my waist correctly?",
+      a: "Measure at the midpoint between your lowest rib and the top of your hip bone, not at the navel by reflex, with the tape snug but not compressing the skin and taken at the end of a normal breath out. Measure the same way every time, because an inconsistent method invents changes that aren't there. A soft tape used consistently beats an expensive scale used carelessly.",
+    },
+    {
+      q: "Do waist thresholds differ by ethnicity?",
+      a: "Yes. The common cut-offs of over 94 and 102 cm for men and over 80 and 88 cm for women were drawn largely from European-origin populations. People of South and East Asian descent carry higher cardiometabolic risk at lower waists, so the thresholds shift down, commonly to around 90 cm for men and 80 cm for women. The waist-to-height rule travels better across populations.",
+    },
+  ],
+  "grip-strength-as-a-vital-sign": [
+    {
+      q: "Why does grip strength predict health?",
+      a: "Grip is a faithful, low-effort proxy for whole-body strength, muscle mass and the neuromuscular system that drives them. When that system declines through ageing, inactivity or illness, grip declines with it, making a falling grip one of the first measurable signs of sarcopenia. In the PURE study of nearly 140,000 people it predicted all-cause and cardiovascular mortality better than systolic blood pressure did.",
+    },
+    {
+      q: "What is a good grip strength for my age?",
+      a: "Grip is read against your own age and sex, never a fixed target. It peaks in early adulthood (roughly 46 to 51 kg for men and 28 to 31 kg for women), plateaus in the thirties and declines from mid-life, so a value that is unremarkable at 30 can be excellent at 70. European working groups flag probable sarcopenia below about 27 kg for men and 16 kg for women, which is a prompt for assessment, not a fitness score.",
+    },
+    {
+      q: "How do I measure grip strength consistently?",
+      a: "Use the same dynamometer each time, seated with the elbow bent at a right angle, taking two or three maximal squeezes per hand with a short rest and recording the best. Watch the rolling trend across months rather than any single reading: grip dips with fatigue, a recent hard workout, a hand injury or simply a different device, so compare like with like.",
+    },
+    {
+      q: "How do I improve my grip strength?",
+      a: "Grip and the whole-body strength it proxies respond to resistance training, not to squeezing a ball. The major activity guidelines recommend muscle-strengthening activity for all main muscle groups on at least two days a week, alongside aerobic activity, and this is the most reliable lever for building and preserving strength across the lifespan. Check with a clinician first if you have been inactive or have a relevant condition.",
+    },
+  ],
+  "weather-altitude-and-your-body": [
+    {
+      q: "Why is my resting heart rate higher in hot weather?",
+      a: "When you are warm, your body sends blood to the skin to shed heat, so the heart pumps harder and faster to keep circulation steady. A hot day or a warm bedroom can lift resting and exertion heart rate by several beats with no change in fitness. Heat also fragments sleep, because falling asleep depends on your core temperature dropping, which a warm room blunts.",
+    },
+    {
+      q: "Is a lower blood oxygen reading normal at altitude?",
+      a: "Yes. Higher up, the air holds the same fraction of oxygen at lower pressure, so each breath delivers less and blood oxygen falls — around 90 percent can be entirely normal at about 2,500 m — while breathing rate and heart rate rise to compensate. Over a few days, acclimatisation partly settles the numbers. A worsening headache with nausea, breathlessness at rest or confusion is different: those are warning signs of altitude illness and a reason to descend.",
+    },
+    {
+      q: "Can air quality affect my health readings?",
+      a: "Fine particulate matter, PM2.5, is small enough to reach deep into the lungs and cross into the bloodstream, and exposure is linked to higher cardiorespiratory strain, raised inflammation and higher blood pressure, with risk climbing across the whole exposure range. On a high-pollution day a quicker breathing rate or a poorer recovery score can have an outdoor cause, especially after exercising in it.",
+    },
+    {
+      q: "How should I read my data when the environment changes?",
+      a: "Log the context — a heatwave, a trip to altitude, a smoky or smoggy day — the same way you would log a late dinner or a hard workout, so a single environment-driven reading isn't mistaken for a developing problem. The signal worth attending to is a sustained drift that holds once conditions return to normal. Heat illness and altitude illness, though, are emergencies to act on by how you feel, not by a wearable.",
+    },
+  ],
 };
 export default FAQ;

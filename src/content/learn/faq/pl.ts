@@ -341,5 +341,95 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Te sygnały mogą zwiastować trwałe obciążenie, ale nie powiedzą ci dlaczego i nie zastąpią tego, jak się naprawdę czujesz. Stres, który tygodniami zaburza twój sen, koncentrację albo radość ze zwykłych rzeczy, warto omówić z lekarzem lub specjalistą zdrowia psychicznego, niezależnie od tego, co mówią liczby. Jeśli cierpienie kiedykolwiek wyda się nie do udźwignięcia albo pojawią się myśli o zrobieniu sobie krzywdy, natychmiast zadzwoń pod lokalny numer alarmowy lub na telefon zaufania.",
     },
   ],
+  "screening-not-diagnosis": [
+    {
+      q: "Czy wysoki wynik PHQ-9 lub GAD-7 jest diagnozą?",
+      a: "Nie. To narzędzia przesiewowe, a nie testy diagnostyczne. Wynik przekraczający swój próg oznacza, że przesiew jest dodatni i uzasadniona jest bliższa rozmowa, a nie że schorzenie zostało potwierdzone. Nawet przy progu PHQ-9 równym 10 mniej więcej jedna na osiem osób z dodatnim przesiewem nie będzie miała dużej depresji przy pełniejszej ocenie — dlatego dodatni wynik to zachęta do rozmowy ze specjalistą, a nie werdykt, który stawiasz sam.",
+    },
+    {
+      q: "Jaki wynik PHQ-9 lub GAD-7 powinien skłonić do działania?",
+      a: "Suma 10 lub więcej to standardowy próg działania dla obu: około 88% czułości i swoistości dla dużej depresji w PHQ-9 oraz około 89% czułości i 82% swoistości dla uogólnionego lęku w GAD-7. WHO-5 sygnalizuje słaby dobrostan na poziomie 50% lub niżej. To punkty wyjścia do profesjonalnej oceny, a nie etykiety, które przyklejasz sobie sam.",
+    },
+    {
+      q: "Dlaczego powinienem powtarzać kwestionariusz przesiewowy, zamiast wypełnić go raz?",
+      a: "Pojedyncze podejście to zaszumiona migawka, czuła na to, jak spałeś, na świeże wydarzenia i na to, jak tego dnia trafiają pytania. Powtarzane przez tygodnie i miesiące, te same punktowane pytania stają się trendem, na który ty i lekarz możecie zareagować, a WHO-5 jest wprost zaprojektowane, by czytać je jako ruch względem twoich wcześniejszych wyników, gdzie spadek o 10 punktów liczy się jako zmiana istotna. Powtarzanie to także sposób, w jaki te narzędzia śledzą, czy leczenie działa.",
+    },
+    {
+      q: "Czym jest pozycja PHQ-9 dotycząca samookaleczenia i co powinienem zrobić?",
+      a: "Dziewiąte pytanie PHQ-9 pyta wprost o myśli, że lepiej byłoby nie żyć, lub o zrobienie sobie krzywdy, i czyta się je osobno, natychmiast, niezależnie od sumy — niski wynik ogólny nigdy go nie unieważnia. Każda taka myśl, choćby przelotna, sama w sobie jest powodem, by sięgnąć po pomoc od razu: zadzwoń bezzwłocznie pod lokalny numer alarmowy lub do służby kryzysowej. Te uczucia są uleczalne, a pomoc jest na wyciągnięcie ręki.",
+    },
+  ],
+  "longevity-labs-explained": [
+    {
+      q: "Dlaczego standardowy lipidogram nie wystarcza?",
+      a: "Podstawowy panel mierzy masę transportowanego cholesterolu, ale ryzyko sercowo-naczyniowe zależy od liczby cząstek aterogennych, a ilość cholesterolu na cząstkę różni się między ludźmi. ApoB to bezpośredni licznik cząstek, a cholesterol nie-HDL to tani zamiennik tej samej idei, więc dwie osoby z identycznym LDL-C mogą nieść bardzo różne ryzyko. Podstawowy panel milczy też o Lp(a) i o stanie zapalnym.",
+    },
+    {
+      q: "Czym jest Lp(a) i dlaczego mierzy się je tylko raz?",
+      a: "Lipoproteina(a) to cząstka podobna do LDL, której poziom jest mniej więcej w 80 do 90 procent uwarunkowany genetycznie i prawie nie reaguje na dietę, wysiłek ani standardowe statyny. Ponieważ jest tak stabilna, zaleca się zmierzyć ją raz w życiu, by odnaleźć mniejszość niosącą podwyższone dziedziczne ryzyko sercowo-naczyniowe. Wysoki poziom nie oznacza, że dzieje się coś ostrego; przesuwa twoje ryzyko bazowe i podnosi priorytet każdej dźwigni, którą możesz poruszyć.",
+    },
+    {
+      q: "Co mówi mi hs-CRP i dlaczego należy je powtarzać?",
+      a: "CRP o wysokiej czułości odczytuje przewlekły stan zapalny niskiego stopnia, który towarzyszy miażdżycy, w tercylach sercowo-naczyniowych: poniżej 1, od 1 do 3 oraz powyżej 3 mg/l. Ponieważ porusza je każde przeziębienie czy zaostrzenie, przyjmuje się je jako średnią z dwóch pomiarów w odstępie co najmniej dwóch tygodni i z dala od choroby, a wartość powyżej 10 mg/l odkłada się na bok jako prawdopodobny ostry stan zapalny i powtarza. To modyfikator ryzyka nakładany na obraz lipidowy, a nie samodzielna liczba.",
+    },
+    {
+      q: "Czy powinienem sam interpretować swoje wyniki laboratoryjne?",
+      a: "Nie. Te markery wchodzą ze sobą w interakcje, przedziały z wytycznych różnią się na krawędziach, a pojedyncza wartość mieści się w pasie biologicznego i analitycznego szumu, więc uczciwym sprawdzianem realnej zmiany jest wartość zmiany referencyjnej na przestrzeni powtarzanych badań, a nie to, czy jeden wynik przekroczył próg. Panel interpretuje się jako całość, względem twojego osobistego ryzyka i historii, przez lekarza, który go zlecił. Wartość poza zakresem traktuj jako powód, by zadać pytanie.",
+    },
+  ],
+  "waist-and-central-fat": [
+    {
+      q: "Dlaczego obwód talii liczy się bardziej niż waga?",
+      a: "To, gdzie magazynujesz tłuszcz, niesie więcej informacji niż to, ile ważysz. Tłuszcz trzewny, owinięty wokół narządów jamy brzusznej, uwalnia kwasy tłuszczowe i sygnały zapalne, które napędzają insulinooporność, wyższe ciśnienie krwi i niekorzystny profil lipidowy, podczas gdy tłuszcz podskórny na biodrach i udach jest w dużej mierze obojętny. Obwód talii to prosty zamiennik dla przedziału trzewnego i przewiduje ryzyko kardiometaboliczne niezależnie od BMI.",
+    },
+    {
+      q: "Na czym polega zasada stosunku talii do wzrostu?",
+      a: "Utrzymuj talię poniżej połowy swojego wzrostu. Nie wymaga żadnej tabeli, działa między wzrostami, płciami i grupami pochodzenia tam, gdzie stałe progi obwodu zawodzą, a duża metaanaliza uznała ją za lepszy predyktor ryzyka kardiometabolicznego niż samo BMI czy sam obwód talii. Stosunek równy 0,5 lub wyższy to praktyczny sygnał, by przyjrzeć się reszcie obrazu.",
+    },
+    {
+      q: "Jak prawidłowo zmierzyć talię?",
+      a: "Mierz w połowie odległości między najniższym żebrem a górnym brzegiem kości biodrowej, a nie odruchowo na wysokości pępka, z taśmą przylegającą, lecz nieuciskającą skóry, na końcu spokojnego wydechu. Mierz za każdym razem tak samo, bo niespójna metoda wymyśla zmiany, których nie ma. Miękki centymetr używany konsekwentnie bije drogą wagę używaną byle jak.",
+    },
+    {
+      q: "Czy progi obwodu talii różnią się zależnie od pochodzenia etnicznego?",
+      a: "Tak. Powszechne progi powyżej 94 i 102 cm dla mężczyzn oraz powyżej 80 i 88 cm dla kobiet wyznaczono w większości na populacjach pochodzenia europejskiego. Osoby pochodzenia południowo- i wschodnioazjatyckiego niosą wyższe ryzyko kardiometaboliczne przy mniejszej talii, więc progi przesuwają się w dół, zwykle do około 90 cm dla mężczyzn i 80 cm dla kobiet. Zasada stosunku talii do wzrostu lepiej przenosi się między populacjami.",
+    },
+  ],
+  "grip-strength-as-a-vital-sign": [
+    {
+      q: "Dlaczego siła chwytu przewiduje zdrowie?",
+      a: "Chwyt to wierny, niskonakładowy zamiennik siły całego ciała, masy mięśniowej i układu nerwowo-mięśniowego, który nimi steruje. Gdy ten układ słabnie przez starzenie, brak aktywności lub chorobę, chwyt słabnie razem z nim, czyniąc spadającą siłę chwytu jednym z pierwszych mierzalnych objawów sarkopenii. W badaniu PURE obejmującym blisko 140 000 osób przewidywał śmiertelność ogólną i sercowo-naczyniową lepiej niż ciśnienie skurczowe.",
+    },
+    {
+      q: "Jaka siła chwytu jest dobra dla mojego wieku?",
+      a: "Chwyt czyta się względem twojego własnego wieku i płci, nigdy względem stałego celu. Osiąga szczyt we wczesnej dorosłości (mniej więcej 46 do 51 kg u mężczyzn i 28 do 31 kg u kobiet), ustala się na plateau w okolicach trzydziestki i spada od połowy życia, więc wartość niewyróżniająca się w wieku 30 lat może być znakomita w wieku 70. Europejskie grupy robocze sygnalizują prawdopodobną sarkopenię poniżej około 27 kg u mężczyzn i 16 kg u kobiet, co jest zachętą do oceny, a nie wynikiem sprawnościowym.",
+    },
+    {
+      q: "Jak mierzyć siłę chwytu konsekwentnie?",
+      a: "Używaj za każdym razem tego samego dynamometru, w pozycji siedzącej z łokciem zgiętym pod kątem prostym, wykonując dwa lub trzy maksymalne ściski na rękę z krótką przerwą i zapisując najlepszy. Obserwuj kroczący trend na przestrzeni miesięcy, a nie pojedynczy odczyt: chwyt spada przy zmęczeniu, po niedawnym ciężkim treningu, przy urazie ręki lub po prostu na innym urządzeniu, więc porównuj porównywalne.",
+    },
+    {
+      q: "Jak poprawić siłę chwytu?",
+      a: "Chwyt i siła całego ciała, którą odwzorowuje, odpowiadają na trening oporowy, a nie na ściskanie piłeczki. Główne wytyczne aktywności zalecają wzmacnianie mięśni wszystkich głównych grup mięśniowych co najmniej dwa dni w tygodniu, obok aktywności tlenowej, i jest to najpewniejsza dźwignia budowania i zachowania siły przez całe życie. Najpierw skonsultuj się z lekarzem, jeśli długo się nie ruszałeś albo masz istotne schorzenie.",
+    },
+  ],
+  "weather-altitude-and-your-body": [
+    {
+      q: "Dlaczego moje tętno spoczynkowe jest wyższe w upalną pogodę?",
+      a: "Kiedy jest ci ciepło, ciało kieruje krew do skóry, by oddać ciepło, więc serce pompuje mocniej i szybciej, by utrzymać stabilne krążenie. Gorący dzień albo ciepła sypialnia potrafi podnieść spoczynkowe i wysiłkowe tętno o kilka uderzeń bez żadnej zmiany kondycji. Upał rozbija też sen, bo zasypianie zależy od spadku temperatury rdzenia, który ciepłe pomieszczenie tłumi.",
+    },
+    {
+      q: "Czy niższy odczyt natlenienia krwi jest normalny na wysokości?",
+      a: "Tak. Wyżej powietrze zawiera ten sam ułamek tlenu pod niższym ciśnieniem, więc każdy oddech dostarcza go mniej i natlenienie krwi spada — około 90 procent może być zupełnie normalne na mniej więcej 2500 m — podczas gdy częstość oddechów i tętno rosną, by to skompensować. Przez kilka dni aklimatyzacja częściowo uspokaja liczby. Nasilający się ból głowy z nudnościami, duszność w spoczynku lub splątanie to co innego: to objawy ostrzegawcze choroby wysokościowej i powód, by zejść.",
+    },
+    {
+      q: "Czy jakość powietrza może wpływać na moje odczyty zdrowotne?",
+      a: "Drobny pył zawieszony, PM2.5, jest na tyle mały, by sięgnąć głęboko do płuc i przedostać się do krwiobiegu, a narażenie wiąże się z większym obciążeniem krążeniowo-oddechowym, podwyższonym stanem zapalnym i wyższym ciśnieniem krwi, przy ryzyku rosnącym wzdłuż całego zakresu narażenia. W dzień o wysokim zanieczyszczeniu szybszy oddech albo gorszy wynik regeneracji może mieć przyczynę na zewnątrz, zwłaszcza po wysiłku w takim powietrzu.",
+    },
+    {
+      q: "Jak powinienem czytać dane, gdy zmienia się otoczenie?",
+      a: "Zapisuj kontekst — falę upałów, wyjazd na wysokość, dzień zadymiony lub smogowy — tak samo, jak zapisałbyś późną kolację czy ciężki trening, żeby pojedynczy odczyt napędzany otoczeniem nie został wzięty za rozwijający się problem. Sygnałem wartym uwagi jest utrzymujący się dryf, który trzyma się po powrocie warunków do normy. Choroba cieplna i choroba wysokościowa to jednak stany nagłe, na które reaguje się po tym, jak się czujesz, a nie po wskazaniu urządzenia noszonego.",
+    },
+  ],
 };
 export default FAQ;

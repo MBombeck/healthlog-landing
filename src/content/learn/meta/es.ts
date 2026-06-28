@@ -142,6 +142,36 @@ const meta: LearnMeta = {
       description:
         "Cómo aparecen el estrés y la recuperación en la frecuencia cardíaca en reposo, la VFC y el sueño, el equilibrio autónomo que los sostiene, y por qué la recuperación es una señal activa que puedes construir.",
     },
+    "screening-not-diagnosis": {
+      title: "La puntuación de un cribado no es un diagnóstico",
+      dek: "El PHQ-9 y el GAD-7 parecen resultados de laboratorio, pero criban: no diagnostican. Por qué esa distinción es lo esencial.",
+      description:
+        "Qué miden en realidad los cuestionarios de salud mental PHQ-9, GAD-7, WHO-5 y PSS-10, cómo leer sus bandas de gravedad, por qué repetirlos supera a una sola sesión, y por qué un cribado positivo es un aviso para hablar con un profesional, no un autodiagnóstico.",
+    },
+    "longevity-labs-explained": {
+      title: "Análisis de longevidad: la sangre más allá del colesterol",
+      dek: "Un panel lipídico estándar subestima tu riesgo. La ApoB, la Lp(a) y la hs-CRP cuentan la historia más completa.",
+      description:
+        "Por qué un panel de colesterol básico se pierde riesgo, y qué añaden la ApoB, el no-HDL, la Lp(a), la hs-CRP, la HbA1c y la insulina en ayunas, con rangos de orientación, el enfoque de tendencia y repetición, y por qué la sangre se lee con un profesional.",
+    },
+    "waist-and-central-fat": {
+      title: "Cintura y grasa central: por qué la cinta le gana a la báscula",
+      dek: "Dónde almacenas grasa importa más que cuánto pesas. La relación cintura-altura sigue el riesgo que el IMC se pierde.",
+      description:
+        "Por qué la grasa visceral es más dañina que la subcutánea, los umbrales de cintura y de relación cintura-altura, cómo medir de forma constante, y qué predice la adiposidad central para la salud metabólica y cardiovascular.",
+    },
+    "grip-strength-as-a-vital-sign": {
+      title: "Fuerza de prensión: la prueba de longevidad más barata",
+      dek: "Un dinamómetro de mano predice la mortalidad mejor que la presión arterial. La fuerza es un signo vital, no solo una métrica de gimnasio.",
+      description:
+        "Qué representa la fuerza de prensión sobre la fuerza de todo el cuerpo y la sarcopenia, los rangos normativos por edad y sexo, la asociación con la mortalidad del estudio PURE, cómo seguir la tendencia, y cómo la mueve el entrenamiento de fuerza.",
+    },
+    "weather-altitude-and-your-body": {
+      title: "El clima, la altitud y tu cuerpo",
+      dek: "El calor, la altitud y la calidad del aire mueven tu frecuencia cardíaca, tu sueño y tu respiración antes de que lo notes: contexto para las lecturas «raras».",
+      description:
+        "Cómo el calor, la altitud y la contaminación del aire cambian tu frecuencia cardíaca en reposo, tu sueño, tu respiración y tu oxígeno en sangre, por qué esos cambios son información y no avería, y cómo leer tus datos frente al entorno en lugar de en el vacío.",
+    },
   },
 };
 

@@ -341,5 +341,95 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Ces signaux peuvent indiquer une tension durable, mais sans vous en dire la cause, et ils ne remplacent pas ce que vous ressentez. Un stress qui perturbe votre sommeil, votre concentration ou le plaisir des choses ordinaires pendant des semaines mérite d'être abordé avec un médecin ou un professionnel de la santé mentale, quels que soient les chiffres. Si la détresse vous paraît un jour insurmontable ou si vous avez des pensées d'automutilation, contactez sur-le-champ votre numéro d'urgence local ou un service de crise.",
     },
   ],
+  "screening-not-diagnosis": [
+    {
+      q: "Un score élevé au PHQ-9 ou au GAD-7 est-il un diagnostic ?",
+      a: "Non. Ce sont des instruments de dépistage, non des tests diagnostiques. Un score qui franchit son seuil signifie que le dépistage est positif et qu'un échange plus approfondi se justifie, non qu'une affection est confirmée. Même à un seuil de 10 au PHQ-9, environ une personne sur huit dépistée positive n'aura pas de dépression majeure après une évaluation plus complète, et c'est pourquoi un résultat positif est une invitation à en parler à un professionnel plutôt qu'un verdict que vous rendez vous-même.",
+    },
+    {
+      q: "Quel score au PHQ-9 ou au GAD-7 devrait inciter à agir ?",
+      a: "Un total de 10 ou plus est le seuil d'action habituel pour les deux : environ 88 % de sensibilité et de spécificité pour la dépression majeure au PHQ-9, et environ 89 % de sensibilité et 82 % de spécificité pour l'anxiété généralisée au GAD-7. Le WHO-5 signale un bien-être médiocre à 50 % ou en dessous. Ce sont des points de départ pour une évaluation professionnelle, non des étiquettes à vous attribuer.",
+    },
+    {
+      q: "Pourquoi répéter un questionnaire de dépistage plutôt que de le passer une seule fois ?",
+      a: "Une passation unique est un instantané bruité, sensible à la qualité de votre nuit, aux événements récents et à la façon dont les questions tombent ce jour-là. Répétées sur des semaines et des mois, les mêmes questions cotées deviennent une tendance sur laquelle vous et un clinicien pouvez agir, et le WHO-5 est explicitement conçu pour se lire comme un mouvement par rapport à vos propres scores antérieurs, une baisse de 10 points valant comme un changement significatif. La répétition est aussi la façon dont ces outils suivent si un traitement fonctionne.",
+    },
+    {
+      q: "Qu'est-ce que l'item du PHQ-9 sur l'automutilation, et que dois-je faire ?",
+      a: "La neuvième question du PHQ-9 interroge directement sur les pensées qu'il vaudrait mieux être mort ou de se faire du mal, et elle se lit pour elle-même, immédiatement, quel que soit le score total — un score global bas ne l'annule jamais. Toute pensée de ce type, même occasionnelle, est à elle seule une raison de demander de l'aide sur-le-champ : contactez immédiatement votre numéro d'urgence local ou un service de crise. Ces ressentis se soignent et de l'aide existe.",
+    },
+  ],
+  "longevity-labs-explained": [
+    {
+      q: "Pourquoi un bilan lipidique standard ne suffit-il pas ?",
+      a: "Un bilan de base mesure la masse de cholestérol transporté, mais le risque cardiovasculaire suit le nombre de particules athérogènes, or le cholestérol par particule varie d'une personne à l'autre. L'ApoB est un décompte direct des particules et le cholestérol non-HDL un substitut peu coûteux de la même idée, si bien que deux personnes au LDL-C identique peuvent porter un risque très différent. Le bilan de base reste aussi muet sur la Lp(a) et sur l'inflammation.",
+    },
+    {
+      q: "Qu'est-ce que la Lp(a) et pourquoi ne la mesure-t-on qu'une seule fois ?",
+      a: "La lipoprotéine(a) est une particule apparentée au LDL dont le taux est déterminé à environ 80 à 90 pour cent par la génétique et ne bouge guère avec l'alimentation, l'exercice ou les statines courantes. Parce qu'elle est si stable, la recommandation est de la mesurer une fois dans la vie afin de repérer la minorité qui porte un risque cardiovasculaire héréditaire élevé. Un taux élevé ne signifie pas que quelque chose ne va pas dans l'immédiat ; il décale votre risque de base et relève la priorité de tous les leviers que vous pouvez actionner.",
+    },
+    {
+      q: "Que m'indique la hs-CRP, et pourquoi la répéter ?",
+      a: "La CRP ultrasensible lit l'inflammation de bas grade qui accompagne l'athérosclérose, en tertiles cardiovasculaires de moins de 1, de 1 à 3, et de plus de 3 mg/L. Parce que le moindre rhume ou la moindre poussée la déplace, elle se prend comme la moyenne de deux mesures espacées d'au moins deux semaines et à distance de toute maladie, et une valeur supérieure à 10 mg/L est mise de côté comme inflammation aiguë probable, puis reprise. C'est un modificateur de risque superposé à l'image lipidique, non un chiffre autonome.",
+    },
+    {
+      q: "Dois-je interpréter mes résultats de laboratoire moi-même ?",
+      a: "Non. Ces marqueurs interagissent, les bandes des recommandations divergent sur les bords, et une valeur isolée se loge dans une bande de bruit biologique et analytique, si bien que le vrai test d'un changement réel est la valeur de changement de référence au fil de mesures répétées, et non le fait qu'un résultat ait franchi un seuil. Un bilan s'interprète comme un tout, au regard de votre risque et de vos antécédents personnels, par le clinicien qui l'a prescrit. Tenez une valeur hors plage pour une raison de poser une question.",
+    },
+  ],
+  "waist-and-central-fat": [
+    {
+      q: "Pourquoi le tour de taille compte-t-il plus que le poids ?",
+      a: "L'endroit où vous stockez la graisse porte plus d'information que votre poids. La graisse viscérale, enroulée autour des organes abdominaux, déverse des acides gras et des signaux inflammatoires qui alimentent l'insulinorésistance, une tension plus élevée et un profil lipidique défavorable, tandis que la graisse sous-cutanée des hanches et des cuisses est largement inerte. Le tour de taille est un substitut simple du compartiment viscéral et prédit le risque cardiométabolique indépendamment de l'IMC.",
+    },
+    {
+      q: "Quelle est la règle du rapport tour de taille/taille ?",
+      a: "Gardez votre tour de taille sous la moitié de votre taille. Elle ne réclame aucun tableau, fonctionne d'une stature, d'un sexe et d'une origine à l'autre là où les seuils de tour de taille fixes échouent, et une vaste méta-analyse l'a trouvée meilleur prédicteur du risque cardiométabolique que l'IMC ou le tour de taille seuls. Un rapport à 0,5 ou au-dessus est le repère pratique pour examiner le reste du tableau.",
+    },
+    {
+      q: "Comment mesurer correctement mon tour de taille ?",
+      a: "Mesurez au point milieu entre votre côte la plus basse et le sommet de l'os de votre hanche, et non au nombril par réflexe, le ruban bien ajusté mais sans comprimer la peau et pris en fin d'expiration normale. Mesurez de la même façon à chaque fois, car une méthode irrégulière invente des changements qui n'existent pas. Un ruban souple employé de façon régulière vaut mieux qu'une balance coûteuse employée sans soin.",
+    },
+    {
+      q: "Les seuils de tour de taille varient-ils selon l'origine ethnique ?",
+      a: "Oui. Les seuils courants de plus de 94 et 102 cm pour les hommes et de plus de 80 et 88 cm pour les femmes ont été tracés en grande partie sur des populations d'origine européenne. Les personnes d'origine sud- et est-asiatique portent un risque cardiométabolique plus élevé à tour de taille plus bas, si bien que les seuils s'abaissent, couramment autour de 90 cm pour les hommes et 80 cm pour les femmes. La règle du rapport tour de taille/taille vaut mieux d'une population à l'autre.",
+    },
+  ],
+  "grip-strength-as-a-vital-sign": [
+    {
+      q: "Pourquoi la force de préhension prédit-elle la santé ?",
+      a: "La poigne est un reflet fidèle, et peu coûteux en effort, de la force du corps entier, de la masse musculaire et du système neuromusculaire qui les anime. Quand ce système décline par le vieillissement, l'inactivité ou la maladie, la poigne décline avec lui, ce qui fait d'une force de préhension en baisse l'un des premiers signes mesurables de la sarcopénie. Dans l'étude PURE portant sur près de 140 000 personnes, elle a prédit la mortalité toutes causes et cardiovasculaire mieux que ne le faisait la tension artérielle systolique.",
+    },
+    {
+      q: "Qu'est-ce qu'une bonne force de préhension pour mon âge ?",
+      a: "La poigne se lit au regard de votre âge et de votre sexe, jamais d'une cible fixe. Elle culmine au début de l'âge adulte (environ 46 à 51 kg pour les hommes et 28 à 31 kg pour les femmes), plafonne dans la trentaine et décline à partir du milieu de la vie, si bien qu'une valeur banale à 30 ans peut être excellente à 70. Les groupes de travail européens signalent une sarcopénie probable en dessous d'environ 27 kg pour les hommes et 16 kg pour les femmes, ce qui est une invitation à une évaluation, non un score de forme physique.",
+    },
+    {
+      q: "Comment mesurer la force de préhension de façon régulière ?",
+      a: "Utilisez le même dynamomètre à chaque fois, assis, le coude plié à angle droit, en prenant deux ou trois serrages maximaux par main avec un court repos et en retenant le meilleur. Surveillez la tendance lissée sur des mois plutôt qu'une mesure isolée : la poigne fléchit avec la fatigue, un entraînement intense récent, une blessure à la main ou simplement un appareil différent, alors comparez ce qui est comparable.",
+    },
+    {
+      q: "Comment améliorer ma force de préhension ?",
+      a: "La poigne et la force du corps entier qu'elle reflète répondent au renforcement musculaire, et non au fait de serrer une balle. Les grandes recommandations d'activité physique préconisent un travail de renforcement de tous les principaux groupes musculaires au moins deux jours par semaine, en parallèle de l'activité aérobie, et c'est le levier le plus fiable pour bâtir et préserver la force tout au long de la vie. Demandez d'abord l'avis d'un clinicien si vous étiez inactif ou souffrez d'une affection pertinente.",
+    },
+  ],
+  "weather-altitude-and-your-body": [
+    {
+      q: "Pourquoi ma fréquence cardiaque au repos est-elle plus élevée par temps chaud ?",
+      a: "Quand vous avez chaud, votre corps envoie le sang vers la peau pour évacuer la chaleur, si bien que le cœur pompe plus fort et plus vite pour maintenir une circulation stable. Une journée chaude ou une chambre surchauffée peut élever la fréquence cardiaque au repos et à l'effort de plusieurs battements sans aucun changement de condition physique. La chaleur fragmente aussi le sommeil, car l'endormissement dépend de la baisse de votre température centrale, qu'une pièce chaude émousse.",
+    },
+    {
+      q: "Une mesure d'oxygène du sang plus basse est-elle normale en altitude ?",
+      a: "Oui. Plus haut, l'air contient la même fraction d'oxygène à une pression plus basse, si bien que chaque inspiration en délivre moins et que l'oxygène du sang baisse — environ 90 pour cent peut être tout à fait normal vers 2 500 m — tandis que la fréquence respiratoire et la fréquence cardiaque s'élèvent pour compenser. En quelques jours, l'acclimatation cale en partie les chiffres. Un mal de tête qui s'aggrave avec des nausées, un essoufflement au repos ou une confusion, c'est autre chose : ce sont des signes d'alerte du mal de l'altitude et une raison de redescendre.",
+    },
+    {
+      q: "La qualité de l'air peut-elle influencer mes mesures de santé ?",
+      a: "Les particules fines, les PM2.5, sont assez petites pour pénétrer profondément dans les poumons et passer dans le sang, et l'exposition est liée à une contrainte cardiorespiratoire accrue, à une inflammation augmentée et à une tension plus élevée, avec un risque qui croît sur toute l'étendue de l'exposition. Un jour de forte pollution, une respiration plus rapide ou un score de récupération moins bon peut avoir une cause extérieure, surtout après y avoir fait de l'exercice.",
+    },
+    {
+      q: "Comment lire mes données quand l'environnement change ?",
+      a: "Consignez le contexte — une canicule, un séjour en altitude, une journée enfumée ou de smog — comme vous consigneriez un dîner tardif ou un entraînement intense, pour qu'une mesure isolée dictée par l'environnement ne soit pas prise pour un problème naissant. Le signal qui mérite l'attention est une dérive durable qui tient une fois les conditions revenues à la normale. Le coup de chaleur et le mal de l'altitude, en revanche, sont des urgences sur lesquelles agir selon ce que vous ressentez, et non d'après un objet connecté.",
+    },
+  ],
 };
 export default FAQ;
