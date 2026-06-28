@@ -291,6 +291,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/*
+          Render-blocking, runs before the body paints: selects the matching
+          /learn locale on first visit (browser language) and honours an
+          explicit switcher choice on return visits, with no flash. Static
+          export has no server/edge layer, so detection lives here. The
+          synchronous (render-blocking) load is deliberate — it must resolve
+          before the body paints, otherwise the wrong language flashes first.
+        */}
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src="/locale-redirect.js" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrg) }}

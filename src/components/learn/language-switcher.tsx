@@ -37,6 +37,7 @@ export function LanguageSwitcher({
             <Link
               href={paths[locale]}
               hrefLang={locale}
+              data-locale-pick={locale}
               aria-current={locale === current ? "true" : undefined}
               className={
                 locale === current
