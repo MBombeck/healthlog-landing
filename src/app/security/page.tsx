@@ -14,7 +14,7 @@ import { SITE_ORIGIN } from "@/content/learn/locales";
 
 const TITLE = "Security & privacy — your data, your server";
 const DESCRIPTION =
-  "How HealthLog protects health data: AES-256-GCM at rest with versioned key rotation, passkeys, Argon2id and two-factor auth, server-side sessions and hashed API tokens, an off-by-default OAuth-scoped AI assistant connector, self-hosting on your own infrastructure, and zero telemetry. Source available.";
+  "How HealthLog protects health data: AES-256-GCM at rest with versioned key rotation, passkeys, Argon2id and two-factor auth, server-side sessions and hashed API tokens, an off-by-default OAuth-scoped AI assistant connector, an encrypted document vault with blind-index search and untrusted-document chat, self-hosting on your own infrastructure, and zero telemetry. Source available.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -82,6 +82,7 @@ const TOC = [
   { id: "auth", label: "Passkeys & passwords" },
   { id: "sessions", label: "Sessions & API tokens" },
   { id: "connector", label: "AI assistant connector" },
+  { id: "documents", label: "Document vault" },
   { id: "dedup", label: "Source-priority dedup" },
   { id: "telemetry", label: "No telemetry" },
   { id: "license", label: "Source available" },
@@ -229,8 +230,8 @@ export default function SecurityPage() {
         >
           <p>
             HealthLog supports passkeys (WebAuthn) as the primary sign-in path —
-            phishing-resistant, with nothing to type and nothing to leak. On
-            iOS that means Face ID or Touch ID against your own server.
+            phishing-resistant, with nothing to type and nothing to leak. On iOS
+            that means Face ID or Touch ID against your own server.
           </p>
           <p>
             Where a password is still needed, it is hashed with Argon2id and
@@ -240,8 +241,8 @@ export default function SecurityPage() {
           <p>
             Two-factor authentication is available with TOTP authenticator apps
             or a WebAuthn security key, and sensitive actions — changing your
-            password among them — require a fresh second-factor check rather than
-            riding on an old session.
+            password among them — require a fresh second-factor check rather
+            than riding on an old session.
           </p>
         </SecuritySection>
 
@@ -278,10 +279,46 @@ export default function SecurityPage() {
           </p>
           <p>
             You mint the connector token yourself, read-only or read-and-write,
-            over an OAuth 2.1 flow with PKCE. The token is bound to the connector
-            surface alone: it can never write or delete over the REST API and can
-            never reach the admin surface. Writes are append-only, idempotent,
-            range-bounded and audited.
+            over an OAuth 2.1 flow with PKCE. The token is bound to the
+            connector surface alone: it can never write or delete over the REST
+            API and can never reach the admin surface. Writes are append-only,
+            idempotent, range-bounded and audited.
+          </p>
+        </SecuritySection>
+
+        <SecuritySection
+          id="documents"
+          label="Document vault"
+          color="green"
+          title="Encrypted, indexed blind, shared on a leash"
+        >
+          <p>
+            The optional document vault keeps your letters, reports and scans
+            encrypted at rest, alongside the rest of your record. It is off
+            until you switch it on, and — as with every AI surface — a document
+            is only sent to an AI provider for the reads you consent to, one
+            document at a time. A local reader keeps the file on your server
+            entirely.
+          </p>
+          <p>
+            Searching inside your documents runs over an encrypted blind index.
+            The index stores tokenised fingerprints of the words, never the
+            readable text, so full-text search works without a plaintext copy of
+            your medical correspondence sitting in the database.
+          </p>
+          <p>
+            A share link is time-boxed and revocable: you set when it expires
+            and you can pull it back at any moment. Photos are stripped of their
+            camera metadata — location included — before a shared copy ever
+            leaves your server, and the QR code simply carries that same
+            short-lived link.
+          </p>
+          <p>
+            Chatting with a document treats that document as untrusted input.
+            The conversation is fenced off from your wider health record and
+            given no tools, so a prompt hidden inside a letter cannot exfiltrate
+            your data or steer the answer. Replies stay grounded in the
+            document, cite what they draw on, and explain rather than diagnose.
           </p>
         </SecuritySection>
 
@@ -341,9 +378,9 @@ export default function SecurityPage() {
             >
               PolyForm Noncommercial License 1.0.0
             </a>
-            , so you can read exactly how your data is handled rather than taking
-            a privacy promise on faith. Self-host it, modify it, and verify the
-            claims on this page against the code itself.
+            , so you can read exactly how your data is handled rather than
+            taking a privacy promise on faith. Self-host it, modify it, and
+            verify the claims on this page against the code itself.
           </p>
         </SecuritySection>
 

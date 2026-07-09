@@ -13,7 +13,7 @@ import { SITE_ORIGIN } from "@/content/learn/locales";
 
 const TITLE = "Features — everything HealthLog tracks";
 const DESCRIPTION =
-  "A full tour of HealthLog: vitals and trends, medication adherence, lab biomarkers and a longevity panel, PHQ-9/GAD-7 wellbeing screening, medical history, inbound documents, FHIR and doctor-report export, an illness journal with Rest Mode, a cited AI Coach, an OAuth-secured MCP server for AI assistants, and device sync — all self-hosted and source available.";
+  "A full tour of HealthLog: vitals and trends, medication adherence, lab biomarkers and a longevity panel, PHQ-9/GAD-7 wellbeing screening, medical history, an encrypted document vault that reads, searches and shares your medical letters, FHIR and doctor-report export, an illness journal with Rest Mode, a cited AI Coach, an OAuth-secured MCP server for AI assistants, and device sync — all self-hosted and source available.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -83,7 +83,7 @@ const TOC = [
   { id: "labs", label: "Labs & biomarkers" },
   { id: "wellbeing", label: "Mental wellbeing" },
   { id: "history", label: "Medical history" },
-  { id: "documents", label: "Inbound documents" },
+  { id: "documents", label: "Document vault" },
   { id: "export", label: "Export & interoperability" },
   { id: "illness", label: "Illness journal & Rest Mode" },
   { id: "cycle", label: "Cycle tracking" },
@@ -214,14 +214,14 @@ export default function FeaturesPage() {
             Schedule medications at fixed times, on a calendar rule (RRULE), on
             rolling intervals, as a cyclic on/off course, as-needed (PRN), or as
             a one-shot injection. Each dose has its own intake window, so a dose
-            counts as taken when you actually take it rather than snapping to the
-            nearest slot.
+            counts as taken when you actually take it rather than snapping to
+            the nearest slot.
           </p>
           <p>
-            Supply tracking watches your remaining count and surfaces a low-stock
-            runway before you run out. A compliance percentage rolls up across
-            your real cadence, reminders escalate when a dose slips, and route of
-            administration is captured per medication.
+            Supply tracking watches your remaining count and surfaces a
+            low-stock runway before you run out. A compliance percentage rolls
+            up across your real cadence, reminders escalate when a dose slips,
+            and route of administration is captured per medication.
           </p>
           <p>
             GLP-1 treatments get a dedicated layer: injection-site rotation, a
@@ -245,9 +245,9 @@ export default function FeaturesPage() {
           <p>
             A longevity panel rounds out the catalogue — ApoB, Lp(a), hs-CRP,
             HbA1c, fasting glucose and insulin, eGFR, GGT, ferritin and the
-            omega-3 index — each with its reference range. Biomarker detail pages
-            match the metric pages: a description, a summary, the chart, the
-            trend, and a one-tap question to the Coach.
+            omega-3 index — each with its reference range. Biomarker detail
+            pages match the metric pages: a description, a summary, the chart,
+            the trend, and a one-tap question to the Coach.
           </p>
         </FeatureSection>
 
@@ -259,8 +259,8 @@ export default function FeaturesPage() {
         >
           <p>
             Opt into PHQ-9 and GAD-7 self-assessments that sit alongside your
-            mood log. They are screening questionnaires for self-awareness, not a
-            diagnosis, and the module is off until you switch it on.
+            mood log. They are screening questionnaires for self-awareness, not
+            a diagnosis, and the module is off until you switch it on.
           </p>
           <p>
             Item answers are encrypted at rest. A non-zero self-harm response
@@ -288,15 +288,52 @@ export default function FeaturesPage() {
 
         <FeatureSection
           id="documents"
-          label="Inbound documents"
+          label="Document vault"
           color="cyan"
-          title="File a letter, review the facts"
+          title="Every letter and scan, in one encrypted place"
         >
           <p>
-            File a doctor&apos;s report or a discharge letter and review the facts it
-            contains before they enter your record. HealthLog transcribes what is
-            written and never interprets it — you decide what stays. The feature
-            is off by default.
+            Keep every doctor&apos;s letter, lab report, discharge summary and
+            scan in one place, encrypted at rest on your own server. Upload a
+            PDF or a photo, tag it, and file it where you can actually find it
+            again — instead of a folder of screenshots and a shoebox of paper.
+            The module is off until you switch it on.
+          </p>
+          <p>
+            The moment a document lands, it is read and made searchable. A local
+            reader stays entirely on your machine, so the file never leaves your
+            server. When you want a richer read — one that handles handwriting
+            and photographed scans — you can let your configured AI provider do
+            it, but only for the documents you consent to, one at a time.
+          </p>
+          <p>
+            Search the words inside your documents, not just their titles.
+            Matching runs over an encrypted blind index, so HealthLog can
+            surface every letter that mentions a marker without ever storing
+            anything readable — the index holds tokens, never your text.
+          </p>
+          <p>
+            Need to hand a document to a clinician? Generate a time-boxed,
+            revocable share link and let them scan the QR code straight from
+            your phone at the desk. It expires on your schedule and can be
+            pulled back at any moment, and photos have their camera metadata —
+            location included — stripped before a shared copy leaves your
+            server.
+          </p>
+          <p>
+            You can also ask a single document a question in plain language and
+            get a grounded, cited answer drawn only from that page. HealthLog
+            treats the document as untrusted input: the conversation is fenced
+            off from the rest of your record and given no tools, so a
+            booby-trapped letter cannot turn the reply against you — and, as
+            everywhere in HealthLog, it explains rather than diagnoses. The{" "}
+            <Link
+              href="/security#documents"
+              className="text-purple hover:text-cyan underline-offset-2 hover:underline"
+            >
+              security model is spelled out on the security page
+            </Link>
+            .
           </p>
         </FeatureSection>
 
@@ -357,10 +394,11 @@ export default function FeaturesPage() {
           title="Never lose track of a check-up"
         >
           <p>
-            Schedule recurring preventive-care and measurement reminders — annual
-            blood work, a week of twice-daily blood pressure — on a rolling
-            cadence or a calendar rule. They auto-resolve once the matching
-            reading lands, so the list stays honest without manual cleanup.
+            Schedule recurring preventive-care and measurement reminders —
+            annual blood work, a week of twice-daily blood pressure — on a
+            rolling cadence or a calendar rule. They auto-resolve once the
+            matching reading lands, so the list stays honest without manual
+            cleanup.
           </p>
         </FeatureSection>
 
@@ -373,12 +411,12 @@ export default function FeaturesPage() {
           <p>
             An optional module records the daily weather, daylight and
             temperature for your location and correlates them against your mood,
-            sleep and vitals — useful for spotting the seasonal patterns a number
-            in isolation hides.
+            sleep and vitals — useful for spotting the seasonal patterns a
+            number in isolation hides.
           </p>
           <p>
-            It is off by default. Set a home location, add dated location periods
-            for travel, and backfill the history once it is on.
+            It is off by default. Set a home location, add dated location
+            periods for travel, and backfill the history once it is on.
           </p>
         </FeatureSection>
 
@@ -396,9 +434,10 @@ export default function FeaturesPage() {
           </p>
           <p>
             Its proactive check-in is warmer and in your language: it greets you
-            by name, keeps to one calm thought, never quotes your own words back,
-            and never arrives two days running. One setting turns the daily
-            suggestions off; another lets the Coach compose the check-in itself.
+            by name, keeps to one calm thought, never quotes your own words
+            back, and never arrives two days running. One setting turns the
+            daily suggestions off; another lets the Coach compose the check-in
+            itself.
           </p>
           <p>
             Pick the provider that fits your privacy and budget: your ChatGPT
@@ -442,14 +481,15 @@ export default function FeaturesPage() {
             Writing is opt-in and confirmed: with a write-scoped token you mint
             yourself, an assistant can log a measurement, a blood-pressure pair
             or a mood entry — previewed first, then confirmed, append-only,
-            idempotent and audited. Installable prompt &quot;skills&quot; cover a
-            doctor-visit summary, a weekly review, a medication check, and
+            idempotent and audited. Installable prompt &quot;skills&quot; cover
+            a doctor-visit summary, a weekly review, a medication check, and
             recovery, glucose, sleep and lab-trend briefs.
           </p>
           <p>
             The whole surface is off by default, behind a module switch, and a
-            connector token is bound to the MCP surface alone — it can never write
-            or delete over the REST API and can never reach the admin surface.
+            connector token is bound to the MCP surface alone — it can never
+            write or delete over the REST API and can never reach the admin
+            surface.
           </p>
         </FeatureSection>
 
@@ -466,9 +506,9 @@ export default function FeaturesPage() {
             on the upload page on any platform.
           </p>
           <p>
-            When several sources log the same day, source-priority dedup resolves
-            them to one canonical reading instead of triple-counting the same
-            step or the same weigh-in.
+            When several sources log the same day, source-priority dedup
+            resolves them to one canonical reading instead of triple-counting
+            the same step or the same weigh-in.
           </p>
         </FeatureSection>
 
@@ -480,8 +520,8 @@ export default function FeaturesPage() {
         >
           <p>
             Reminders and alerts go out over Apple Push Notifications, Web Push
-            (VAPID), Telegram or ntfy, so you can route HealthLog to whatever you
-            already check.
+            (VAPID), Telegram or ntfy, so you can route HealthLog to whatever
+            you already check.
           </p>
         </FeatureSection>
 

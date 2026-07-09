@@ -28,7 +28,8 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://healthlog.dev"),
   title: {
-    default: "HealthLog — Self-Hosted Health Tracking App | Source-Available PWA",
+    default:
+      "HealthLog — Self-Hosted Health Tracking App | Source-Available PWA",
     template: "%s | HealthLog",
   },
   description:
@@ -145,7 +146,7 @@ export default function RootLayout({
       "Longevity lab panel in the biomarker catalogue — ApoB, Lp(a), hs-CRP, HbA1c, fasting glucose and insulin, eGFR, GGT, ferritin, omega-3 index — with reference ranges",
       "Structured, encrypted medical-history records — allergies and family history — included in the health-record export",
       "Optional environmental-context module — daily weather, daylight, and temperature correlated against mood, sleep, and vitals",
-      "Inbound documents — file a doctor's report or discharge letter and review the transcribed facts before they enter your record",
+      "Encrypted document vault (off by default) — store letters, reports and scans encrypted at rest; automatic on-device or per-document consented AI reading; whole-word search over an encrypted blind index; grounded, cited per-document chat; and time-boxed, revocable QR share links with photo metadata stripped",
       "Two-factor authentication (TOTP and WebAuthn) with step-up checks for sensitive actions",
       "Native SwiftUI iOS app (public TestFlight beta) with live two-way Apple Health (HealthKit) sync — steps, weight, blood pressure, glucose, sleep, body composition",
       "Weight, blood pressure, heart rate, body fat, sleep, steps tracking",
@@ -183,7 +184,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped manually
     // until the cross-repo release sync tool lands.
-    softwareVersion: "1.25.0",
+    softwareVersion: "1.27.21",
     license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
     // Landing page is English-only today. The HealthLog app itself is
     // bilingual (EN/DE) — that fact belongs on the app, not the marketing
@@ -250,6 +251,14 @@ export default function RootLayout({
         acceptedAnswer: {
           "@type": "Answer",
           text: "Yes. HealthLog can expose your own record to MCP-compatible assistants such as Claude or ChatGPT over an OAuth-secured Model Context Protocol server. It is off by default and gated behind a module switch; you mint the connector token yourself, read-only or read-and-write, and any write is previewed, confirmed, append-only and audited.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can HealthLog store and search my medical documents?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. An optional, off-by-default document vault keeps your letters, reports and scans encrypted at rest on your own server. Each upload is read and made searchable automatically — by a local reader that never leaves your machine, or, with your per-document consent, by your configured AI provider for a richer read of scans. You can search the words inside your documents over an encrypted blind index that stores nothing readable, ask a single document a grounded and cited question, and share one with a clinician through a time-boxed, revocable QR link with photo metadata stripped.",
         },
       },
       {
