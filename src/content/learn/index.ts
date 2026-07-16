@@ -60,6 +60,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
   { slug: "resting-heart-rate", category: "heart", readingTimeMin: 7, knowledgeSlug: "resting-heart-rate", tags: ["heart rate", "cardiovascular", "recovery", "baseline"] },
   { slug: "heart-rate-variability", category: "heart", readingTimeMin: 8, knowledgeSlug: "hrv", tags: ["HRV", "recovery", "stress", "heart rate"] },
   { slug: "reading-your-blood-pressure", category: "heart", readingTimeMin: 8, knowledgeSlug: "blood-pressure", tags: ["blood pressure", "cardiovascular", "hypertension"] },
+  { slug: "your-ecg-recordings", category: "heart", readingTimeMin: 7, knowledgeSlug: null, tags: ["ECG", "heart rhythm", "atrial fibrillation", "wearables"] },
   { slug: "sleep-consistency", category: "sleep", readingTimeMin: 8, knowledgeSlug: "sleep", tags: ["sleep", "circadian rhythm", "recovery", "routine"] },
   { slug: "respiratory-rate", category: "sleep", readingTimeMin: 6, knowledgeSlug: "respiratory-rate", tags: ["respiratory rate", "breathing", "vital signs"] },
   { slug: "blood-oxygen-spo2", category: "sleep", readingTimeMin: 6, knowledgeSlug: "spo2", tags: ["SpO₂", "blood oxygen", "vital signs", "wearables"] },

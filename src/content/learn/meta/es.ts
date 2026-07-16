@@ -52,6 +52,12 @@ const meta: LearnMeta = {
       description:
         "Cómo leer la presión arterial: qué significan los dos números, las categorías de las guías clínicas, por qué importa la técnica de medición y cuándo las lecturas requieren seguimiento médico.",
     },
+    "your-ecg-recordings": {
+      title: "Cómo leer tus registros de ECG",
+      dek: "Un ECG de un ponible es un trazado eléctrico real, no un diagnóstico. Qué te dicen de verdad la tira y el resultado de una palabra.",
+      description:
+        "Qué registra un ECG de una derivación, qué significa el resultado del propio dispositivo, por qué HealthLog lo muestra sobre una cuadrícula familiar sin interpretarlo, y cuándo un registro merece la mirada de un clínico.",
+    },
     "sleep-consistency": {
       title: "Por qué la regularidad del sueño supera a su duración",
       dek: "Ocho horas a horas aleatorias no es lo mismo que siete con un horario estable. El momento es la señal.",

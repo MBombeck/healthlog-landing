@@ -71,6 +71,24 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Una sola lectura alta no es una emergencia; vuelve a medir tras un minuto. Si se mantiene en 180/120 o más sin síntomas, contacta sin demora con tu profesional de la salud. Si está en 180/120 o más con dolor de pecho, falta de aire, un cambio neurológico o de la visión, o un dolor de cabeza intenso, trátalo como una emergencia y llama a los servicios de urgencias.",
     },
   ],
+  "your-ecg-recordings": [
+    {
+      q: "¿Qué mide en realidad un ECG de una derivación?",
+      a: "Registra un canal de la actividad eléctrica del corazón —la pequeña diferencia de voltaje entre dos puntos del cuerpo— y lo dibuja como una tira de ritmo. Un ECG clínico usa doce de esos canales para ver el corazón desde doce ángulos; un ponible usa uno, suficiente para mostrar el ritmo y la frecuencia, pero una sola vista en lugar del cuadro completo.",
+    },
+    {
+      q: "¿Puede un ECG de reloj diagnosticar una fibrilación auricular o un infarto?",
+      a: "No. Un resultado de fibrilación auricular es un aviso de cribado, no un diagnóstico confirmado: las guías tratan una tira de una derivación de 30 segundos como motivo para buscar un ECG formal, no como su sustituto. Y una sola derivación no puede detectar un infarto en absoluto, porque los cambios que lo señalan aparecen en derivaciones que un registro de muñeca nunca capta. El dolor o la presión en el pecho es una urgencia, muestre lo que muestre el dispositivo.",
+    },
+    {
+      q: "¿HealthLog interpreta mi ECG?",
+      a: "No. HealthLog muestra tu registro importado sobre una cuadrícula de ECG familiar y presenta el resultado que produjo el propio dispositivo de registro, trasladado sin cambios. No lee el trazado, no lo puntúa ni ofrece un diagnóstico propio: la lectura que cuenta es la de un clínico.",
+    },
+    {
+      q: "¿Por qué mi ECG dice «no concluyente»?",
+      a: "Un resultado no concluyente suele significar que la señal no fue lo bastante limpia para clasificarla: un contacto flojo, una mano fría, movimiento durante el registro o una frecuencia fuera de la banda que el algoritmo etiqueta. Es frecuente y rara vez señal de que algo va mal; repítelo con la mano caliente, quieta y con buen contacto. Lecturas no concluyentes persistentes junto con síntomas merecen mencionarse a un clínico.",
+    },
+  ],
   "sleep-consistency": [
     {
       q: "¿Cuántas horas de sueño necesitan realmente los adultos?",

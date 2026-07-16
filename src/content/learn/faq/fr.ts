@@ -71,6 +71,24 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Une mesure élevée isolée n'est pas une urgence ; reprenez-la après une minute. Si elle reste à 180/120 ou au-dessus sans symptômes, contactez rapidement votre professionnel de santé. Si elle atteint 180/120 ou plus avec une douleur thoracique, un essoufflement, un trouble neurologique ou visuel, ou un mal de tête violent, considérez-la comme une urgence et appelez les secours.",
     },
   ],
+  "your-ecg-recordings": [
+    {
+      q: "Que mesure vraiment un ECG à une dérivation ?",
+      a: "Il enregistre un canal de l'activité électrique du cœur — la petite différence de tension entre deux points du corps — et le trace comme une bande de rythme. Un ECG clinique utilise douze de ces canaux pour voir le cœur sous douze angles ; un objet connecté en utilise un, ce qui suffit à montrer le rythme et la fréquence, mais reste une seule vue au lieu du tableau complet.",
+    },
+    {
+      q: "Un ECG de montre peut-il diagnostiquer une fibrillation auriculaire ou un infarctus ?",
+      a: "Non. Un résultat de fibrillation auriculaire est une alerte de dépistage, pas un diagnostic confirmé — les recommandations traitent une bande à une dérivation de 30 secondes comme une raison de chercher un ECG en bonne et due forme, pas comme un substitut. Et une seule dérivation ne peut pas du tout détecter un infarctus, car les changements qui le signalent apparaissent sur des dérivations qu'un enregistrement au poignet ne capte jamais. Une douleur ou une oppression thoracique est une urgence, quoi qu'affiche l'appareil.",
+    },
+    {
+      q: "HealthLog interprète-t-il mon ECG ?",
+      a: "Non. HealthLog affiche votre enregistrement importé sur une grille d'ECG familière et présente le résultat produit par l'appareil d'enregistrement lui-même, repris tel quel. Il ne lit pas le tracé, ne le note pas et ne propose aucun diagnostic propre — la lecture qui compte est celle d'un clinicien.",
+    },
+    {
+      q: "Pourquoi mon ECG indique-t-il « non concluant » ?",
+      a: "Un résultat non concluant signifie le plus souvent que le signal n'était pas assez net pour être classé : un contact lâche, une main froide, un mouvement pendant l'enregistrement ou une fréquence hors de la bande que l'algorithme étiquette. C'est fréquent et rarement le signe que quelque chose ne va pas ; recommencez la main chaude, immobile et avec un bon contact. Des résultats non concluants persistants accompagnés de symptômes méritent d'être signalés à un clinicien.",
+    },
+  ],
   "sleep-consistency": [
     {
       q: "De combien d'heures de sommeil les adultes ont-ils réellement besoin ?",

@@ -699,7 +699,7 @@ const primaryFeatures = [
     icon: <HeartMetricIcon />,
     title: "All vitals at a glance",
     description:
-      "Weight, blood pressure, heart rate, body composition, blood glucose, SpO₂, respiratory rate, sleep, steps and mood — plus grip strength, a pain score and waist measurements. Every reading on one timeline, with personal target ranges, vs-last-month or vs-last-year overlays, and a persistent rollup tier that keeps years of history sub-second.",
+      "Weight, blood pressure, heart rate, body composition, blood glucose, SpO₂, respiratory rate, sleep, steps and mood — plus grip strength, a pain score and waist measurements. More synced signals now read as at-a-glance dashboard tiles too: heart-rate variability, blood oxygen, breathing rate and body composition. Every reading on one timeline, with personal target ranges, vs-last-month or vs-last-year overlays, and a persistent rollup tier that keeps years of history sub-second.",
     color: "purple",
   },
   {
@@ -713,7 +713,7 @@ const primaryFeatures = [
     icon: <BrainIcon />,
     title: "AI Coach grounded in your data",
     description:
-      "A conversational Coach, daily briefing, weekly report and Health Score — every reply cites the exact metric, window and reading count it drew on, with mini-charts pinned underneath. Its proactive check-in is warmer now: it greets you by name, keeps to one calm thought, and never nags. Bring your own provider — your ChatGPT subscription via OpenAI OAuth, your own OpenAI or Anthropic key, or a fully local model that never leaves your network.",
+      "A conversational Coach, daily briefing, weekly report and Health Score — every reply cites the exact metric, window and reading count it drew on, with mini-charts pinned underneath. It also discusses your stored documents in its own view, with its own history, grounded in the document you open. Its proactive check-in is warmer now: it greets you by name, keeps to one calm thought, and never nags. Bring your own provider — your ChatGPT subscription via OpenAI OAuth, your own OpenAI or Anthropic key, or a fully local model that never leaves your network.",
     color: "orange",
   },
 ];

@@ -1,0 +1,56 @@
+Un ECG pris au poignet ou au bout du doigt semble vous tendre un verdict. Trente secondes d'immobilité, un mot à l'écran — *Rythme sinusal* — et le soulagement arrive avant même que vous ayez songé à ce que l'appareil a réellement fait. Mais un ECG à une seule dérivation est un enregistrement, pas un diagnostic. Il capte un tracé électrique authentique de votre battement, et l'appareil y accroche sa propre meilleure supposition en guise d'étiquette. Bien le lire, c'est garder ces deux choses distinctes : le tracé, qui est réel, et l'interprétation, dont les limites méritent d'être connues.
+
+## Ce qu'est vraiment un ECG à une dérivation
+
+![](/learn-img-2/your-ecg-recordings.jpg)
+
+Un ECG clinique utilise douze dérivations : dix électrodes qui lisent l'activité électrique du cœur sous douze angles à la fois. Un objet connecté enregistre une seule dérivation : la petite différence de tension entre deux points de votre corps, généralement un poignet et la main ou le doigt opposé qui ferme le circuit.[^kligfield] Ce seul canal suffit à tracer une bande de rythme nette, et c'est le même signal qu'un cardiologue reconnaîtrait, mais c'est une vue du cœur au lieu de douze.
+
+Chaque battement sur la bande a trois parties. La petite **onde P** est la contraction des oreillettes ; le **complexe QRS**, haut et étroit, est le déclenchement des ventricules — le pic que vous voyez comme le pouls ; et l'**onde T**, arrondie, est la remise à zéro des ventricules pour le battement suivant.[^kligfield] Une succession régulière et régulièrement espacée de P–QRS–T, voilà à quoi ressemble un tracé sans particularité.
+
+## Pourquoi HealthLog montre la grille, pas un diagnostic
+
+HealthLog affiche votre ECG importé sur le papier quadrillé familier dont se sert un clinicien, et présente le résultat **que l'appareil d'enregistrement a lui-même produit** — rien de plus. Il n'interprète pas le tracé, ne le note pas et ne propose aucun diagnostic propre. Le classement que vous voyez est celui de la montre, repris tel quel pour que vous le gardiez avec le reste de votre dossier ; la grille est là pour rendre la bande lisible, pas pour que l'application la lise à votre place.
+
+La grille est une échelle fixe, et c'est ce qui rend tout ECG comparable à tout autre. Aux réglages standard, le tracé avance de **25 mm par seconde sur le papier** et de **10 mm vers le haut par millivolt**.[^kligfield] Chaque petit carré fait donc 0,04 seconde de large, chaque grand bloc de cinq carrés 0,2 seconde, et la hauteur vous indique l'amplitude du signal. Une fois l'échelle connue, l'écart entre les battements *est* la fréquence cardiaque, et la régularité de cet écart est l'essentiel de ce qu'une seule dérivation peut honnêtement montrer.
+
+## Ce que signifie le résultat de l'appareil lui-même
+
+La plupart des objets connectés réduisent leur lecture à un court jeu d'étiquettes homologuées. La formulation diffère selon l'appareil, mais elles se regroupent en quelques significations :
+
+| Ce que l'appareil signale | Ce qu'il dit |
+| --- | --- |
+| Rythme sinusal | Un rythme régulier à fréquence normale, partant du bon endroit |
+| Fibrillation auriculaire | Un rythme irrégulier que l'algorithme a signalé comme possible FA |
+| Fréquence cardiaque élevée ou basse | La fréquence est sortie de la plage que l'algorithme classe |
+| Non concluant | Le signal n'était pas assez net ou clair pour être étiqueté |
+
+Deux d'entre elles appellent de la prudence. Une alerte de **fibrillation auriculaire** est un résultat de dépistage, pas un diagnostic confirmé — les recommandations sont explicites : une bande à une dérivation d'au moins 30 secondes montrant une FA est une raison de chercher un ECG en bonne et due forme, pas un substitut à celui-ci.[^esc] Et **non concluant** est fréquent et le plus souvent anodin : un contact lâche, une main froide, un mouvement ou une fréquence hors de la bande classable le renvoient. Cela veut dire que l'appareil a renoncé à deviner, pas que quelque chose ne va pas.
+
+## Là où une seule dérivation atteint ses limites
+
+L'écart entre une dérivation et douze n'est pas un détail. Un ECG à une dérivation est conçu pour dépister le rythme — surtout la fibrillation auriculaire — et guère plus.[^natrev] Il **ne peut pas détecter un infarctus** : les changements qui le signalent apparaissent sur des dérivations qu'un enregistrement au poignet ne capte jamais, un mot rassurant sur la montre ne dit donc rien d'une artère bouchée. Il passe à côté de la plupart des autres arythmies, donne des faux positifs et des faux négatifs même pour la FA qu'il vise, et n'est en général pas validé chez l'enfant ni chez le jeune adolescent.[^natrev][^esc]
+
+<Aside type="caution">
+**Un résultat d'ECG normal n'est pas un feu vert face à des symptômes thoraciques.** Un enregistrement à une seule dérivation ne peut écarter ni un infarctus ni la plupart des urgences cardiaques. En cas de douleur ou d'oppression thoracique, d'essoufflement, de malaise ou de douleur irradiant vers le bras, la mâchoire ou le dos, traitez-le comme une urgence et appelez les secours — quoi qu'ait dit la montre. Un résultat d'appareil, normal ou non, n'est jamais une raison d'attendre.[^natrev]
+</Aside>
+
+## Quand un enregistrement mérite l'œil d'un clinicien
+
+L'ECG à une dérivation gagne sa place comme moyen de *capter* quelque chose et de le porter à un professionnel, pas de le trancher soi-même. Quelques situations méritent d'agir :
+
+- Une **alerte répétée de fibrillation auriculaire**, surtout avec des palpitations, un essoufflement ou des vertiges — apportez les bandes enregistrées à un clinicien, qui pourra confirmer par un ECG complet.[^esc]
+- **Des symptômes avec un résultat « normal » ou non concluant** — ce que vous ressentez l'emporte sur l'étiquette, à chaque fois.
+- Un enregistrement pris **pendant** un symptôme que vous parvenez rarement à saisir — c'est là qu'un ECG au poignet est réellement utile, en donnant à un clinicien un tracé d'un moment qui serait autrement passé sans être enregistré.
+
+Les enregistrements conservés valent surtout comme historique. Un tracé de la minute précise où votre cœur s'est emballé, une consultation programmée peut rarement le reproduire, et le ranger avec le reste de votre dossier — plutôt que prisonnier d'une seule application — est l'intérêt pratique.
+
+## Le tableau d'ensemble
+
+Un ECG à une dérivation est un vrai signal médical lu par une fenêtre étroite. Le tracé est honnête ; le résultat en un mot est une aide au dépistage aux contours nets. Traité ainsi — comme une incitation à poser une question et un document à remettre le moment venu — il est réellement utile. Traité comme un diagnostic, il revendique bien plus qu'une seule dérivation ne peut porter.
+
+Ceci est une information générale, non un avis médical, et n'interprète pas votre enregistrement. Pour tout ce qu'un tracé soulève, la lecture qui compte est celle d'un clinicien.
+
+[^kligfield]: Théorie des dérivations de l'ECG, les composantes P/QRS/T et l'échelle standard du papier (25 mm/s et 10 mm/mV) — Kligfield P, et al., « Recommendations for the Standardization and Interpretation of the Electrocardiogram », *Circulation*, 2007. https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.106.180200
+[^esc]: Une bande d'ECG à une dérivation de ≥30 secondes montrant une fibrillation auriculaire appuie le dépistage, mais le diagnostic exige un ECG en bonne et due forme — Hindricks G, et al., « 2020 ESC Guidelines for the diagnosis and management of atrial fibrillation », *European Heart Journal*, 2021. https://academic.oup.com/eurheartj/article/42/5/373/5899003
+[^natrev]: Portée et limites de l'ECG grand public à une dérivation — dépistage du rythme, incapacité à détecter un infarctus, faux positifs/négatifs et lacunes de validation — Bayoumy K, et al., « Smart wearable devices in cardiovascular care », *Nature Reviews Cardiology*, 2021. https://www.nature.com/articles/s41569-021-00522-7

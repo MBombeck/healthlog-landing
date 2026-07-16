@@ -1,0 +1,56 @@
+EKG zrobione z nadgarstka albo z opuszki palca sprawia wrażenie, jakby wręczało ci wyrok. Trzydzieści sekund bezruchu, jedno słowo na ekranie — *Rytm zatokowy* — i ulga przychodzi, zanim jeszcze pomyślisz, co urządzenie właściwie zrobiło. Ale jednoodprowadzeniowe EKG to zapis, nie diagnoza. Rejestruje prawdziwy elektryczny ślad twojego uderzenia serca, a urządzenie dokleja do niego własne najlepsze przypuszczenie jako etykietę. Dobre czytanie oznacza rozdzielenie tych dwóch rzeczy: śladu, który jest rzeczywisty, i interpretacji, której granice warto znać.
+
+## Czym naprawdę jest jednoodprowadzeniowe EKG
+
+![](/learn-img-2/your-ecg-recordings.jpg)
+
+Kliniczne EKG korzysta z dwunastu odprowadzeń — dziesięć elektrod odczytuje aktywność elektryczną serca z dwunastu kątów naraz. Urządzenie noszone rejestruje jedno odprowadzenie: małą różnicę napięcia między dwoma punktami ciała, zwykle jednym nadgarstkiem i przeciwną dłonią lub palcem domykającym obwód.[^kligfield] Ten jeden kanał wystarcza, by nakreślić czysty pasek rytmu, i jest to ten sam sygnał, który rozpoznałby kardiolog, ale to jeden widok serca zamiast dwunastu.
+
+Każde uderzenie na pasku ma trzy części. Mały **załamek P** to skurcz przedsionków; wysoki, wąski **zespół QRS** to wyzwolenie komór — iglica, którą widzisz jako tętno; a zaokrąglony **załamek T** to powrót komór do stanu wyjściowego przed kolejnym uderzeniem.[^kligfield] Równy, regularnie rozstawiony ciąg P–QRS–T tak właśnie wygląda zapis bez odchyleń.
+
+## Dlaczego HealthLog pokazuje siatkę, a nie diagnozę
+
+HealthLog przedstawia twoje zaimportowane EKG na znajomym papierze w kratkę, z którego odczytuje klinicysta, i wyświetla wynik, **który wytworzyło samo urządzenie rejestrujące** — nic więcej. Nie interpretuje śladu, nie ocenia go ani nie proponuje własnej diagnozy. Klasyfikacja, którą widzisz, pochodzi z zegarka i jest przenoszona bez zmian, byś mógł trzymać ją obok reszty swojej kartoteki; siatka jest po to, by pasek był czytelny, a nie po to, by aplikacja czytała go za ciebie.
+
+Siatka to stała skala, i to właśnie czyni każde EKG porównywalnym z każdym innym. Przy ustawieniach standardowych ślad przesuwa się o **25 mm na sekundę po papierze** i o **10 mm w górę na miliwolt**.[^kligfield] Każdy mały kwadracik ma więc 0,04 sekundy szerokości, każdy duży blok pięciu kwadracików 0,2 sekundy, a wysokość mówi o amplitudzie sygnału. Gdy znasz skalę, odstęp między uderzeniami *jest* częstością rytmu serca, a regularność tego odstępu to niemal wszystko, co jedno odprowadzenie może uczciwie pokazać.
+
+## Co oznacza wynik samego urządzenia
+
+Większość urządzeń noszonych sprowadza swój odczyt do krótkiego, dopuszczonego zestawu etykiet. Brzmienie różni się zależnie od sprzętu, ale grupują się w kilka znaczeń:
+
+| Co zgłasza urządzenie | Co przez to mówi |
+| --- | --- |
+| Rytm zatokowy | Regularny rytm o prawidłowej częstości, o właściwym pochodzeniu |
+| Migotanie przedsionków | Nieregularny rytm, który algorytm oznaczył jako możliwe AF |
+| Wysoka lub niska częstość rytmu | Częstość wypadła poza zakres, który algorytm klasyfikuje |
+| Niejednoznaczny | Sygnał nie był dość czysty ani wyraźny, by go zaklasyfikować |
+
+Dwa z nich wymagają ostrożności. Sygnał **migotania przedsionków** to wynik przesiewowy, nie potwierdzona diagnoza — wytyczne mówią wprost, że pasek jednoodprowadzeniowy trwający co najmniej 30 sekund i pokazujący AF jest powodem, by poszukać formalnego EKG, a nie jego zamiennikiem.[^esc] A **niejednoznaczny** jest częsty i zwykle niewinny: luźny kontakt, zimna dłoń, ruch lub częstość poza dającym się sklasyfikować pasmem — wszystkie go zwracają. Oznacza, że urządzenie powstrzymało się od zgadywania, a nie że coś jest nie tak.
+
+## Gdzie jedno odprowadzenie zawodzi
+
+Różnica między jednym odprowadzeniem a dwunastoma to nie drobiazg. Jednoodprowadzeniowe EKG powstało, by przesiewać rytm — przede wszystkim migotanie przedsionków — i niewiele poza tym.[^natrev] **Nie potrafi wykryć zawału**: zmiany, które go sygnalizują, ujawniają się w odprowadzeniach, których zapis z nadgarstka nigdy nie uchwyci, więc uspokajające słowo na zegarku nie mówi nic o zatkanej tętnicy. Umyka mu większość innych arytmii, daje wyniki fałszywie dodatnie i fałszywie ujemne nawet dla AF, na które jest nastrojone, i zwykle nie jest walidowane u dzieci ani młodszej młodzieży.[^natrev][^esc]
+
+<Aside type="caution">
+**Prawidłowy wynik EKG nie jest zielonym światłem przy objawach z klatki piersiowej.** Zapis jednoodprowadzeniowy nie wyklucza ani zawału, ani większości nagłych stanów kardiologicznych. Przy bólu lub ucisku w klatce, duszności, omdleniu albo bólu promieniującym do ramienia, żuchwy lub pleców potraktuj to jako nagły przypadek i wezwij pomoc — bez względu na to, co powiedział zegarek. Wynik urządzenia, prawidłowy czy nie, nigdy nie jest powodem, by czekać.[^natrev]
+</Aside>
+
+## Kiedy zapis zasługuje na oko klinicysty
+
+Jednoodprowadzeniowe EKG zasługuje na swoje miejsce jako sposób, by coś *uchwycić* i zanieść to do specjalisty, a nie by rozstrzygać samodzielnie. Kilka sytuacji warto potraktować działaniem:
+
+- **Powtarzający się sygnał migotania przedsionków**, zwłaszcza z kołataniem serca, dusznością lub zawrotami głowy — zanieś zapisane paski do klinicysty, który może potwierdzić pełnym EKG.[^esc]
+- **Objawy przy wyniku „prawidłowym" lub niejednoznacznym** — to, jak się czujesz, waży więcej niż etykieta, za każdym razem.
+- Zapis uchwycony **w trakcie** objawu, który rzadko udaje ci się złapać — właśnie tu EKG z nadgarstka jest naprawdę przydatne, dając klinicyście ślad z chwili, która inaczej minęłaby bez zarejestrowania.
+
+Zapisane rejestracje są najcenniejsze jako historia. Ślad z dokładnej minuty, gdy serce ci przyspieszyło, to coś, czego zaplanowana wizyta rzadko potrafi odtworzyć, a przechowanie go razem z resztą kartoteki — zamiast uwięzionego w jednej aplikacji — jest praktycznym sensem.
+
+## Szerszy obraz
+
+Jednoodprowadzeniowe EKG to prawdziwy sygnał medyczny odczytany przez wąskie okno. Ślad jest uczciwy; jednowyrazowy wynik to pomoc przesiewowa o wyraźnych granicach. Traktowany tak — jako bodziec, by zadać pytanie, i zapis do przekazania, gdy to robisz — jest naprawdę użyteczny. Traktowany jak diagnoza, rości sobie znacznie więcej, niż jedno odprowadzenie może udźwignąć.
+
+To są ogólne informacje, nie porada medyczna, i nie interpretują twojego zapisu. Dla wszystkiego, co ślad podnosi, liczy się odczyt klinicysty.
+
+[^kligfield]: Teoria odprowadzeń EKG, składowe załamków P/QRS/T oraz standardowa skala papieru (25 mm/s i 10 mm/mV) — Kligfield P, et al., "Recommendations for the Standardization and Interpretation of the Electrocardiogram", *Circulation*, 2007. https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.106.180200
+[^esc]: Pasek EKG z jednego odprowadzenia trwający ≥30 sekund i pokazujący migotanie przedsionków wspiera badanie przesiewowe, ale do diagnozy wymagane jest formalne EKG — Hindricks G, et al., "2020 ESC Guidelines for the diagnosis and management of atrial fibrillation", *European Heart Journal*, 2021. https://academic.oup.com/eurheartj/article/42/5/373/5899003
+[^natrev]: Zakres i granice konsumenckiego EKG jednoodprowadzeniowego — nacisk na przesiew rytmu, niezdolność do wykrycia zawału, wyniki fałszywie dodatnie/ujemne oraz luki walidacyjne — Bayoumy K, et al., "Smart wearable devices in cardiovascular care", *Nature Reviews Cardiology*, 2021. https://www.nature.com/articles/s41569-021-00522-7

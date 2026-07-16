@@ -1,0 +1,56 @@
+Un ECG preso dal polso o dal polpastrello sembra consegnarti un verdetto. Trenta secondi di immobilità, una parola sullo schermo — *Ritmo sinusale* — e il sollievo arriva prima ancora che tu abbia pensato a cosa il dispositivo abbia davvero fatto. Ma un ECG a una sola derivazione è una registrazione, non una diagnosi. Cattura un tracciato elettrico autentico del tuo battito, e il dispositivo vi attacca la propria ipotesi migliore come etichetta. Leggerlo bene significa tenere separate queste due cose: il tracciato, che è reale, e l'interpretazione, che ha limiti che vale la pena conoscere.
+
+## Che cos'è davvero un ECG a una derivazione
+
+![](/learn-img-2/your-ecg-recordings.jpg)
+
+Un ECG clinico usa dodici derivazioni: dieci elettrodi che leggono l'attività elettrica del cuore da dodici angolazioni insieme. Un dispositivo indossabile registra una sola derivazione: la piccola differenza di tensione tra due punti del corpo, di solito un polso e la mano o il dito opposto che chiude il circuito.[^kligfield] Quel singolo canale basta a disegnare una striscia di ritmo pulita, ed è lo stesso segnale che un cardiologo riconoscerebbe, ma è una veduta del cuore invece di dodici.
+
+Ogni battito sulla striscia ha tre parti. La piccola **onda P** è la contrazione degli atri; il **complesso QRS**, alto e stretto, è la scarica dei ventricoli — il picco che vedi come polso; e l'**onda T**, arrotondata, è il ripristino dei ventricoli per il battito successivo.[^kligfield] Una successione regolare e uniformemente distanziata di P–QRS–T è l'aspetto di un tracciato senza reperti.
+
+## Perché HealthLog mostra la griglia, non una diagnosi
+
+HealthLog rappresenta il tuo ECG importato sulla familiare carta quadrettata da cui legge un clinico, e mostra il risultato **prodotto dal dispositivo di registrazione stesso** — nulla di più. Non interpreta il tracciato, non lo valuta e non offre una diagnosi propria. La classificazione che vedi è quella dell'orologio, riportata invariata perché tu la conservi accanto al resto della tua cartella; la griglia c'è per rendere la striscia leggibile, non perché l'app la legga al posto tuo.
+
+La griglia è una scala fissa, ed è ciò che rende ogni ECG confrontabile con qualsiasi altro. Con le impostazioni standard, il tracciato avanza di **25 mm al secondo sulla carta** e di **10 mm verso l'alto per millivolt**.[^kligfield] Così ogni quadratino è largo 0,04 secondi, ogni blocco grande di cinque quadratini 0,2 secondi, e l'altezza ti dice l'ampiezza del segnale. Una volta nota la scala, la distanza tra i battiti *è* la frequenza cardiaca, e la regolarità di quella distanza è quasi tutto ciò che una sola derivazione può mostrare onestamente.
+
+## Cosa significa il risultato del dispositivo stesso
+
+La maggior parte degli indossabili riduce la propria lettura a un breve insieme approvato di etichette. La formulazione cambia da dispositivo a dispositivo, ma si raggruppa in pochi significati:
+
+| Ciò che il dispositivo segnala | Ciò che sta dicendo |
+| --- | --- |
+| Ritmo sinusale | Un ritmo regolare a frequenza normale, con origine dove deve |
+| Fibrillazione atriale | Un ritmo irregolare che l'algoritmo ha segnalato come possibile FA |
+| Frequenza cardiaca alta o bassa | La frequenza è uscita dall'intervallo che l'algoritmo classifica |
+| Non conclusivo | Il segnale non era abbastanza pulito o chiaro da etichettare |
+
+Due di esse richiedono attenzione. Un avviso di **fibrillazione atriale** è un esito di screening, non una diagnosi confermata: le linee guida sono esplicite nel dire che una striscia a una derivazione di almeno 30 secondi che mostri FA è un motivo per cercare un ECG formale, non un suo sostituto.[^esc] E **non conclusivo** è frequente e di solito innocuo: un contatto lasco, una mano fredda, il movimento o una frequenza fuori dalla banda classificabile lo restituiscono. Significa che il dispositivo ha rinunciato a indovinare, non che qualcosa non va.
+
+## Dove una sola derivazione non basta
+
+La distanza tra una derivazione e dodici non è un dettaglio. Un ECG a una derivazione è fatto per fare screening del ritmo — soprattutto la fibrillazione atriale — e poco altro.[^natrev] **Non può rilevare un infarto**: le alterazioni che lo segnalano compaiono su derivazioni che una registrazione al polso non cattura mai, quindi una parola rassicurante sull'orologio non dice nulla di un'arteria ostruita. Manca la maggior parte delle altre aritmie, dà falsi positivi e falsi negativi persino per la FA su cui è tarato, e in genere non è validato nei bambini né negli adolescenti più giovani.[^natrev][^esc]
+
+<Aside type="caution">
+**Un esito ECG normale non è un via libera davanti a sintomi toracici.** Una registrazione a una sola derivazione non può escludere un infarto né la maggior parte delle emergenze cardiache. In caso di dolore o oppressione al petto, fiato corto, svenimento o dolore che si irradia al braccio, alla mascella o alla schiena, trattalo come un'emergenza e chiama i soccorsi — qualunque cosa abbia detto l'orologio. Un esito del dispositivo, normale o no, non è mai un motivo per aspettare.[^natrev]
+</Aside>
+
+## Quando una registrazione merita l'occhio di un clinico
+
+L'ECG a una derivazione si guadagna il suo posto come modo per *cogliere* qualcosa e portarlo a un professionista, non per risolverlo da soli. Alcune situazioni meritano di agire:
+
+- Un **avviso ripetuto di fibrillazione atriale**, soprattutto con palpitazioni, fiato corto o capogiro — porta le strisce salvate a un clinico, che può confermare con un ECG completo.[^esc]
+- **Sintomi con un esito «normale» o non conclusivo** — come ti senti conta più dell'etichetta, ogni volta.
+- Una registrazione presa **durante** un sintomo che raramente riesci a catturare — è qui che un ECG al polso è davvero utile, dando a un clinico un tracciato di un momento che altrimenti sarebbe passato senza essere registrato.
+
+Le registrazioni salvate valgono soprattutto come storico. Un tracciato del minuto esatto in cui il cuore ti è andato in accelerazione è qualcosa che una visita programmata raramente può riprodurre, e conservarlo insieme al resto della cartella — invece che intrappolato in una sola app — è il punto pratico.
+
+## Il quadro d'insieme
+
+Un ECG a una derivazione è un segnale medico reale letto attraverso una finestra stretta. Il tracciato è onesto; l'esito di una parola è un aiuto allo screening dai contorni netti. Trattato così — come una spinta a porre una domanda e come un documento da consegnare quando lo fai — è davvero utile. Trattato come una diagnosi, pretende molto più di quanto una sola derivazione possa reggere.
+
+Queste sono informazioni generali, non un consiglio medico, e non interpretano la tua registrazione. Per tutto ciò che un tracciato solleva, la lettura che conta è quella di un clinico.
+
+[^kligfield]: Teoria delle derivazioni dell'ECG, le componenti P/QRS/T e la scala standard della carta (25 mm/s e 10 mm/mV) — Kligfield P, et al., «Recommendations for the Standardization and Interpretation of the Electrocardiogram», *Circulation*, 2007. https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.106.180200
+[^esc]: Una striscia di ECG a una derivazione di ≥30 secondi che mostri fibrillazione atriale sostiene lo screening, ma per la diagnosi serve un ECG formale — Hindricks G, et al., «2020 ESC Guidelines for the diagnosis and management of atrial fibrillation», *European Heart Journal*, 2021. https://academic.oup.com/eurheartj/article/42/5/373/5899003
+[^natrev]: Portata e limiti dell'ECG di consumo a una derivazione — focus sullo screening del ritmo, incapacità di rilevare un infarto, falsi positivi/negativi e lacune di validazione — Bayoumy K, et al., «Smart wearable devices in cardiovascular care», *Nature Reviews Cardiology*, 2021. https://www.nature.com/articles/s41569-021-00522-7

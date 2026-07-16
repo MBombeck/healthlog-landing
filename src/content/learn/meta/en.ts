@@ -52,6 +52,12 @@ const meta: LearnMeta = {
       description:
         "How to read blood pressure: what the two numbers mean, the guideline categories, why measurement technique matters, and when readings warrant medical follow-up.",
     },
+    "your-ecg-recordings": {
+      title: "Reading your ECG recordings",
+      dek: "A wearable ECG is a real electrical trace, not a diagnosis. What the strip — and the one-word result — actually tell you.",
+      description:
+        "What a single-lead ECG records, what the device's own result means, why HealthLog shows it on a familiar grid without interpreting it, and when a recording is worth a clinician's eye.",
+    },
     "sleep-consistency": {
       title: "Why sleep consistency beats sleep duration",
       dek: "Eight hours at random times isn't the same as seven on a steady schedule. The timing is the signal.",

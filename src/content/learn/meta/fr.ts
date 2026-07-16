@@ -52,6 +52,12 @@ const meta: LearnMeta = {
       description:
         "Comment lire la tension artérielle : ce que signifient les deux nombres, les catégories des recommandations, pourquoi la technique de mesure compte, et quand une mesure justifie un suivi médical.",
     },
+    "your-ecg-recordings": {
+      title: "Lire vos enregistrements d'ECG",
+      dek: "Un ECG d'objet connecté est un vrai tracé électrique, pas un diagnostic. Ce que la bande — et le résultat en un mot — vous disent réellement.",
+      description:
+        "Ce qu'enregistre un ECG à une dérivation, ce que signifie le résultat de l'appareil, pourquoi HealthLog l'affiche sur une grille familière sans l'interpréter, et quand un enregistrement mérite l'œil d'un clinicien.",
+    },
     "sleep-consistency": {
       title: "Pourquoi la régularité du sommeil prime sur sa durée",
       dek: "Huit heures à des horaires aléatoires ne valent pas sept heures sur un rythme stable. C'est le moment qui fait le signal.",

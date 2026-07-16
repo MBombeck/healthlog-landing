@@ -182,7 +182,17 @@ export default function FeaturesPage() {
           <p>
             Newer signals slot in the same way, each with its own detail page,
             reference range and trend: grip strength, a 0–10 pain score, and
-            waist circumference with waist-to-height ratio.
+            waist circumference with waist-to-height ratio. Single-lead ECG
+            recordings synced from a compatible watch land here too, drawn on a
+            familiar ECG grid with the recording device&apos;s own result kept
+            unchanged — HealthLog shows the trace, it does not interpret or
+            diagnose it.
+          </p>
+          <p>
+            The dashboard surfaces more of what your devices already sync:
+            heart-rate variability, blood oxygen (SpO₂), breathing rate and body
+            composition each read as an at-a-glance tile alongside the core
+            vitals, and you can show, hide and reorder every one.
           </p>
           <p>
             Behind the charts sits a persistent rollup tier that pre-aggregates
@@ -438,6 +448,13 @@ export default function FeaturesPage() {
             back, and never arrives two days running. One setting turns the
             daily suggestions off; another lets the Coach compose the check-in
             itself.
+          </p>
+          <p>
+            The Coach also talks about your documents. Open a stored letter,
+            report or scan and ask it questions in its own document view, with
+            its own separate history — the conversation stays grounded in that
+            document, which is treated as untrusted input rather than
+            instructions.
           </p>
           <p>
             Pick the provider that fits your privacy and budget: your ChatGPT
