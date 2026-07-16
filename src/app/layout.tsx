@@ -152,12 +152,15 @@ export default function RootLayout({
       "Weight, blood pressure, heart rate, body fat, sleep, steps tracking",
       "Body composition: total body water + bone mass via Withings auto-sync",
       "Pulse oximetry (SpO₂) tracking with personalisable target bands for COPD / chronic respiratory users",
+      "Single-lead ECG recordings imported from a compatible watch and shown on a familiar ECG grid, with the recording device's own result preserved unchanged — HealthLog stores and displays the trace, it does not interpret or diagnose it",
+      "Dashboard tiles for more of your synced signals — heart-rate variability, blood oxygen (SpO₂), breathing rate and body composition surface as at-a-glance tiles alongside the core vitals",
       "Blood glucose tracking with fasting/postprandial/random/bedtime contexts",
       "Medication management with compliance analytics and reminders",
       "Mood tracking with 5-point scale and tags",
       "AI-powered health insights via OpenAI (BYOK or admin-shared key), Anthropic Claude, your ChatGPT subscription (one-click device-code Codex flow, no API plan needed), or local OpenAI-compatible providers (Ollama, LM Studio, vLLM)",
       "Multi-provider fallback chain — providers retry in user-defined order on hard failure, with last-working provider cached per user",
       "AI Coach drawer with streaming chat and encrypted conversation history — same provider chain as AI Insights, source-chip provenance per turn, per-user daily token budget",
+      "Coach discusses your stored documents in its own document view, with its own separate history — grounded in the document, which is treated as untrusted input",
       "Personal Health Score (composite 0–100 with three bands) drawn from blood-pressure target rate, weight-trend alignment, mood stability, and medication compliance",
       "Daily Briefing card and printable weekly report at /insights/report/[week]",
       "Per-recommendation explainability with rationale (window + comparison + deviation), pinned mini-chart of the data window, and was-this-helpful feedback",
@@ -184,7 +187,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped manually
     // until the cross-repo release sync tool lands.
-    softwareVersion: "1.27.33",
+    softwareVersion: "1.28.52",
     license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
     // Landing page is English-only today. The HealthLog app itself is
     // bilingual (EN/DE) — that fact belongs on the app, not the marketing

@@ -1,0 +1,56 @@
+An ECG taken from your wrist or fingertip feels like it hands you a verdict. Thirty seconds of stillness, a word on the screen — *Sinus rhythm* — and the relief lands before you've thought about what the device actually did. But a single-lead ECG is a recording, not a diagnosis. It captures a genuine electrical trace of your heartbeat, and the device attaches its own best guess at a label. Reading it well means keeping those two things apart: the trace, which is real, and the interpretation, which has limits worth knowing.
+
+## What a single-lead ECG actually is
+
+![](/learn-img-2/your-ecg-recordings.jpg)
+
+A clinical ECG uses twelve leads — ten electrodes reading the heart's electrical activity from twelve angles at once. A wearable records a single lead: the small voltage difference between two points on your body, usually one wrist and the opposite hand or finger completing the circuit.[^kligfield] That one channel is enough to draw a clean rhythm strip, and it is the same signal a cardiologist would recognise, but it is one view of the heart rather than twelve.
+
+Each heartbeat on the strip has three parts. The small **P wave** is the atria contracting; the tall, narrow **QRS complex** is the ventricles firing — the spike you see as the pulse; and the rounded **T wave** is the ventricles resetting for the next beat.[^kligfield] A steady, evenly spaced run of P–QRS–T is what an unremarkable trace looks like.
+
+## Why HealthLog shows the grid, not a diagnosis
+
+HealthLog renders your imported ECG on the familiar squared paper a clinician reads from, and displays the result **the recording device itself produced** — nothing more. It does not interpret the trace, score it, or offer a diagnosis of its own. The classification you see is the watch's, carried across unchanged so you can keep it alongside the rest of your record; the grid is there so the strip is legible, not so the app can read it for you.
+
+The grid is a fixed scale, which is what makes any ECG comparable to any other. At the standard settings, the trace moves **25 mm across the page per second** and **10 mm up the page per millivolt**.[^kligfield] So each small square is 0.04 seconds wide, each large (five-square) block is 0.2 seconds, and the height tells you the signal's amplitude. Once you know the scale, the spacing between beats *is* the heart rate, and the regularity of that spacing is most of what a single lead can honestly show.
+
+## What the device's own result means
+
+Most wearables reduce their reading to a short, cleared set of labels. The wording differs by device, but they cluster into a few meanings:
+
+| What the device reports | What it is saying |
+| --- | --- |
+| Sinus rhythm | A regular rhythm at a normal rate, originating where it should |
+| Atrial fibrillation | An irregular rhythm the algorithm flagged as possible AFib |
+| High or low heart rate | The rate fell outside the range the algorithm will classify |
+| Inconclusive | The signal wasn't clean or clear enough to label |
+
+Two of these deserve care. An **atrial fibrillation** flag is a screening result, not a confirmed diagnosis — clinical guidelines are explicit that a single-lead tracing of at least 30 seconds showing AFib is a reason to seek a formal ECG, not a substitute for one.[^esc] And **inconclusive** is common and usually innocent: a loose contact, a cold hand, movement, or a rate outside the classifiable band will all return it. It means the device declined to guess, not that something is wrong.
+
+## Where a single lead falls short
+
+The gap between one lead and twelve is not a detail. A single-lead ECG is built to screen for rhythm — chiefly atrial fibrillation — and little else.[^natrev] It **cannot detect a heart attack**: the changes that signal one show up across leads a wrist recording never captures, so a reassuring word on a watch says nothing about a blocked artery. It misses most other arrhythmias, gives false positives and false negatives even for the AFib it is tuned to find, and is generally not validated in children or younger teenagers.[^natrev][^esc]
+
+<Aside type="caution">
+**A normal ECG result is not an all-clear for chest symptoms.** A single-lead recording cannot rule out a heart attack or most cardiac emergencies. If you have chest pain or pressure, breathlessness, fainting, or pain spreading to the arm, jaw or back, treat it as urgent and call emergency services — whatever the watch said. A device result, normal or not, is never a reason to wait.[^natrev]
+</Aside>
+
+## When a recording is worth a clinician's eye
+
+The single-lead ECG earns its place as a way to *catch* something and bring it to a professional, not to settle it yourself. A few situations are worth acting on:
+
+- A **repeated atrial-fibrillation flag**, especially with palpitations, breathlessness or lightheadedness — bring the saved strips to a clinician, who can confirm with a full ECG.[^esc]
+- **Symptoms with a "normal" or inconclusive result** — how you feel outranks the label every time.
+- A recording captured **during** a symptom you rarely manage to catch — this is where a wrist ECG is genuinely useful, giving a clinician a trace from a moment that would otherwise have passed unrecorded.
+
+Saved recordings are most valuable as history. A trace from the exact minute your heart was racing is something a scheduled clinic visit can rarely reproduce, and having it stored with the rest of your record — rather than trapped in a single app — is the practical point.
+
+## The bigger picture
+
+A single-lead ECG is a real medical signal read through a narrow window. The trace is honest; the one-word result is a screening aid with clear edges. Treated that way — as a prompt to ask a question, and a record to hand over when you do — it is genuinely useful. Treated as a diagnosis, it claims far more than one lead can support.
+
+This is general information, not medical advice, and it does not interpret your recording. For anything a trace raises, the reading that matters is a clinician's.
+
+[^kligfield]: ECG lead theory, the P/QRS/T waveform components, and the standard paper scale (25 mm/s and 10 mm/mV) — Kligfield P, et al., "Recommendations for the Standardization and Interpretation of the Electrocardiogram," *Circulation*, 2007. https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.106.180200
+[^esc]: A single-lead ECG tracing of ≥30 seconds showing atrial fibrillation supports screening but a formal ECG is required for diagnosis — Hindricks G, et al., "2020 ESC Guidelines for the diagnosis and management of atrial fibrillation," *European Heart Journal*, 2021. https://academic.oup.com/eurheartj/article/42/5/373/5899003
+[^natrev]: Scope and limits of consumer single-lead ECG — rhythm screening focus, inability to detect myocardial infarction, false positives/negatives and validation gaps — Bayoumy K, et al., "Smart wearable devices in cardiovascular care," *Nature Reviews Cardiology*, 2021. https://www.nature.com/articles/s41569-021-00522-7

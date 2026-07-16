@@ -71,6 +71,24 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Una singola lettura alta non è un'emergenza; rimisura dopo un minuto. Se resta a 180/120 o oltre ma senza sintomi, contatta presto il tuo medico. Se è 180/120 o più con dolore al petto, fiato corto, un cambiamento neurologico o della vista, o un forte mal di testa, trattala come un'emergenza e chiama il numero unico per le emergenze.",
     },
   ],
+  "your-ecg-recordings": [
+    {
+      q: "Cosa misura davvero un ECG a una derivazione?",
+      a: "Registra un canale dell'attività elettrica del cuore — la piccola differenza di tensione tra due punti del corpo — e lo disegna come una striscia di ritmo. Un ECG clinico usa dodici di questi canali per vedere il cuore da dodici angolazioni; un indossabile ne usa uno, sufficiente a mostrare il ritmo e la frequenza, ma è una sola veduta invece del quadro completo.",
+    },
+    {
+      q: "Un ECG da orologio può diagnosticare una fibrillazione atriale o un infarto?",
+      a: "No. Un esito di fibrillazione atriale è un avviso di screening, non una diagnosi confermata: le linee guida trattano una striscia a una derivazione di 30 secondi come motivo per cercare un ECG formale, non come un suo sostituto. E una sola derivazione non può affatto rilevare un infarto, perché le alterazioni che lo segnalano compaiono su derivazioni che una registrazione al polso non cattura mai. Il dolore o l'oppressione al petto è un'emergenza, qualunque cosa mostri il dispositivo.",
+    },
+    {
+      q: "HealthLog interpreta il mio ECG?",
+      a: "No. HealthLog mostra la registrazione importata su una familiare griglia ECG e presenta l'esito prodotto dal dispositivo di registrazione stesso, riportato invariato. Non legge il tracciato, non lo valuta e non offre una diagnosi propria: la lettura che conta è quella di un clinico.",
+    },
+    {
+      q: "Perché il mio ECG dice «non conclusivo»?",
+      a: "Un esito non conclusivo di solito significa che il segnale non era abbastanza pulito da classificare: un contatto lasco, una mano fredda, il movimento durante la registrazione o una frequenza fuori dalla banda che l'algoritmo etichetta. È frequente e raramente segno che qualcosa non va; ripetilo con la mano calda, ferma e con buon contatto. Esiti non conclusivi persistenti insieme a sintomi meritano di essere riferiti a un clinico.",
+    },
+  ],
   "sleep-consistency": [
     {
       q: "Di quante ore di sonno hanno davvero bisogno gli adulti?",

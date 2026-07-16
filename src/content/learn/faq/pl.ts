@@ -71,6 +71,24 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Pojedynczy wysoki odczyt to jeszcze nie stan nagły — zmierz ponownie po minucie. Jeśli bez żadnych objawów wciąż wynosi 180/120 lub więcej, niezwłocznie skontaktuj się z lekarzem. Jeśli sięga 180/120 lub więcej i towarzyszy mu ból w klatce piersiowej, duszność, objaw neurologiczny lub zaburzenie widzenia albo silny ból głowy, potraktuj to jak stan nagły i wezwij pogotowie.",
     },
   ],
+  "your-ecg-recordings": [
+    {
+      q: "Co właściwie mierzy jednoodprowadzeniowe EKG?",
+      a: "Rejestruje jeden kanał aktywności elektrycznej serca — małą różnicę napięcia między dwoma punktami ciała — i kreśli go jako pasek rytmu. Kliniczne EKG używa dwunastu takich kanałów, by zobaczyć serce z dwunastu kątów; urządzenie noszone używa jednego, co wystarcza, by pokazać rytm i częstość, ale jest jednym widokiem zamiast pełnego obrazu.",
+    },
+    {
+      q: "Czy EKG z zegarka może zdiagnozować migotanie przedsionków albo zawał?",
+      a: "Nie. Wynik migotania przedsionków to sygnał przesiewowy, nie potwierdzona diagnoza — wytyczne traktują 30-sekundowy pasek z jednego odprowadzenia jako powód, by poszukać formalnego EKG, a nie jego zamiennik. A jedno odprowadzenie w ogóle nie potrafi wykryć zawału, bo zmiany, które go sygnalizują, pojawiają się w odprowadzeniach, których zapis z nadgarstka nigdy nie uchwyci. Ból lub ucisk w klatce piersiowej to nagły przypadek, bez względu na to, co pokazuje urządzenie.",
+    },
+    {
+      q: "Czy HealthLog interpretuje moje EKG?",
+      a: "Nie. HealthLog pokazuje twój zaimportowany zapis na znajomej siatce EKG i wyświetla wynik wytworzony przez samo urządzenie rejestrujące, przeniesiony bez zmian. Nie czyta śladu, nie ocenia go ani nie proponuje własnej diagnozy — odczyt, który się liczy, należy do klinicysty.",
+    },
+    {
+      q: "Dlaczego moje EKG pokazuje „niejednoznaczny”?",
+      a: "Wynik niejednoznaczny zwykle oznacza, że sygnał nie był dość czysty, by go sklasyfikować: luźny kontakt, zimna dłoń, ruch podczas zapisu albo częstość poza pasmem, które algorytm etykietuje. Jest częsty i rzadko oznacza, że coś jest nie tak; powtórz go z ciepłą, nieruchomą dłonią i dobrym kontaktem ze skórą. Uporczywie niejednoznaczne wyniki wraz z objawami warto wspomnieć klinicyście.",
+    },
+  ],
   "sleep-consistency": [
     {
       q: "Ile godzin snu naprawdę potrzebują dorośli?",

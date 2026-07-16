@@ -1,0 +1,56 @@
+Un ECG tomado desde la muñeca o la yema del dedo parece entregarte un veredicto. Treinta segundos de quietud, una palabra en la pantalla —*Ritmo sinusal*— y el alivio llega antes de que hayas pensado en lo que el dispositivo realmente hizo. Pero un ECG de una sola derivación es un registro, no un diagnóstico. Capta un trazado eléctrico genuino de tu latido, y el dispositivo le añade su propia mejor conjetura como etiqueta. Leerlo bien significa mantener esas dos cosas separadas: el trazado, que es real, y la interpretación, que tiene límites que conviene conocer.
+
+## Qué es realmente un ECG de una derivación
+
+![](/learn-img-2/your-ecg-recordings.jpg)
+
+Un ECG clínico usa doce derivaciones: diez electrodos que leen la actividad eléctrica del corazón desde doce ángulos a la vez. Un dispositivo ponible registra una sola derivación: la pequeña diferencia de voltaje entre dos puntos de tu cuerpo, normalmente una muñeca y la mano o el dedo opuestos que cierran el circuito.[^kligfield] Ese único canal basta para dibujar una tira de ritmo limpia, y es la misma señal que un cardiólogo reconocería, pero es una vista del corazón en lugar de doce.
+
+Cada latido en la tira tiene tres partes. La pequeña **onda P** es la contracción de las aurículas; el **complejo QRS**, alto y estrecho, es el disparo de los ventrículos —el pico que ves como el pulso—; y la **onda T**, redondeada, es el reinicio de los ventrículos para el siguiente latido.[^kligfield] Una sucesión regular y uniformemente espaciada de P–QRS–T es el aspecto de un trazado sin hallazgos.
+
+## Por qué HealthLog muestra la cuadrícula, no un diagnóstico
+
+HealthLog representa tu ECG importado sobre el papel cuadriculado familiar del que lee un clínico, y muestra el resultado **que el propio dispositivo de registro produjo**, nada más. No interpreta el trazado, no lo puntúa ni ofrece un diagnóstico propio. La clasificación que ves es la del reloj, trasladada sin cambios para que la conserves junto al resto de tu historial; la cuadrícula está ahí para que la tira sea legible, no para que la aplicación la lea por ti.
+
+La cuadrícula es una escala fija, y eso es lo que hace comparable un ECG con cualquier otro. Con los ajustes estándar, el trazado avanza **25 mm por segundo sobre el papel** y **10 mm hacia arriba por milivoltio**.[^kligfield] Así, cada cuadro pequeño mide 0,04 segundos de ancho, cada bloque grande de cinco cuadros mide 0,2 segundos, y la altura te dice la amplitud de la señal. Una vez que conoces la escala, el espacio entre latidos *es* la frecuencia cardíaca, y la regularidad de ese espacio es casi todo lo que una sola derivación puede mostrar con honestidad.
+
+## Qué significa el resultado del propio dispositivo
+
+La mayoría de los ponibles reducen su lectura a un conjunto corto y autorizado de etiquetas. La redacción varía según el dispositivo, pero se agrupan en unos pocos significados:
+
+| Lo que informa el dispositivo | Lo que está diciendo |
+| --- | --- |
+| Ritmo sinusal | Un ritmo regular a frecuencia normal, con el origen donde debe |
+| Fibrilación auricular | Un ritmo irregular que el algoritmo marcó como posible FA |
+| Frecuencia cardíaca alta o baja | La frecuencia quedó fuera del rango que el algoritmo clasifica |
+| No concluyente | La señal no fue lo bastante limpia o clara para etiquetarla |
+
+Dos de ellas merecen cuidado. Un aviso de **fibrilación auricular** es un resultado de cribado, no un diagnóstico confirmado: las guías clínicas son explícitas en que una tira de una derivación de al menos 30 segundos que muestre FA es un motivo para buscar un ECG formal, no un sustituto de él.[^esc] Y **no concluyente** es frecuente y por lo general inocente: un contacto flojo, una mano fría, el movimiento o una frecuencia fuera de la banda clasificable lo devuelven. Significa que el dispositivo se abstuvo de conjeturar, no que algo vaya mal.
+
+## Dónde se queda corta una sola derivación
+
+La distancia entre una derivación y doce no es un detalle. Un ECG de una derivación está hecho para cribar el ritmo —sobre todo la fibrilación auricular— y poco más.[^natrev] **No puede detectar un infarto**: los cambios que lo señalan aparecen en derivaciones que un registro de muñeca nunca capta, así que una palabra tranquilizadora en el reloj no dice nada sobre una arteria obstruida. Se le escapan la mayoría de las demás arritmias, da falsos positivos y falsos negativos incluso para la FA que busca, y en general no está validado en niños ni en adolescentes jóvenes.[^natrev][^esc]
+
+<Aside type="caution">
+**Un resultado de ECG normal no da vía libre ante síntomas torácicos.** Un registro de una sola derivación no puede descartar un infarto ni la mayoría de las urgencias cardíacas. Ante dolor o presión en el pecho, falta de aire, desmayo o dolor que se irradia al brazo, la mandíbula o la espalda, trátalo como urgente y llama a los servicios de emergencia, dijera lo que dijera el reloj. Un resultado del dispositivo, normal o no, nunca es motivo para esperar.[^natrev]
+</Aside>
+
+## Cuándo un registro merece la mirada de un clínico
+
+El ECG de una derivación gana su lugar como forma de *captar* algo y llevarlo a un profesional, no de resolverlo por tu cuenta. Algunas situaciones merecen acción:
+
+- Un **aviso repetido de fibrilación auricular**, sobre todo con palpitaciones, falta de aire o mareo: lleva las tiras guardadas a un clínico, que puede confirmar con un ECG completo.[^esc]
+- **Síntomas con un resultado «normal» o no concluyente**: cómo te sientes pesa más que la etiqueta, siempre.
+- Un registro captado **durante** un síntoma que rara vez llegas a atrapar: aquí es donde un ECG de muñeca resulta genuinamente útil, al dar a un clínico un trazado de un momento que de otro modo habría pasado sin registrar.
+
+Los registros guardados valen sobre todo como historial. Un trazado del minuto exacto en que tu corazón se aceleró es algo que una visita programada rara vez puede reproducir, y guardarlo junto al resto de tu historial —en lugar de atrapado en una sola aplicación— es lo que importa en la práctica.
+
+## El panorama completo
+
+Un ECG de una derivación es una señal médica real leída a través de una ventana estrecha. El trazado es honesto; el resultado de una palabra es una ayuda de cribado con bordes nítidos. Tratado así —como un empujón para hacer una pregunta y un registro que entregar al hacerla— es genuinamente útil. Tratado como un diagnóstico, reclama mucho más de lo que una sola derivación puede sostener.
+
+Esto es información general, no consejo médico, y no interpreta tu registro. Para cualquier cosa que un trazado plantee, la lectura que cuenta es la de un clínico.
+
+[^kligfield]: Teoría de las derivaciones del ECG, los componentes de la onda P/QRS/T y la escala estándar del papel (25 mm/s y 10 mm/mV) — Kligfield P, et al., «Recommendations for the Standardization and Interpretation of the Electrocardiogram», *Circulation*, 2007. https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.106.180200
+[^esc]: Una tira de ECG de una derivación de ≥30 segundos que muestre fibrilación auricular respalda el cribado, pero para el diagnóstico se requiere un ECG formal — Hindricks G, et al., «2020 ESC Guidelines for the diagnosis and management of atrial fibrillation», *European Heart Journal*, 2021. https://academic.oup.com/eurheartj/article/42/5/373/5899003
+[^natrev]: Alcance y límites del ECG de una derivación de consumo —enfoque en el cribado del ritmo, incapacidad para detectar un infarto, falsos positivos/negativos y lagunas de validación— Bayoumy K, et al., «Smart wearable devices in cardiovascular care», *Nature Reviews Cardiology*, 2021. https://www.nature.com/articles/s41569-021-00522-7

@@ -1,0 +1,56 @@
+Ein EKG vom Handgelenk oder von der Fingerkuppe fühlt sich an, als reiche es dir ein Urteil. Dreißig Sekunden Stille, ein Wort auf dem Display – *Sinusrhythmus* – und die Erleichterung ist da, bevor du darüber nachgedacht hast, was das Gerät eigentlich getan hat. Doch ein Einkanal-EKG ist eine Aufzeichnung, keine Diagnose. Es hält eine echte elektrische Spur deines Herzschlags fest, und das Gerät hängt seine eigene beste Vermutung als Etikett daran. Es gut zu lesen heißt, diese beiden Dinge auseinanderzuhalten: die Spur, die real ist, und die Deutung, die ihre Grenzen hat.
+
+## Was ein Einkanal-EKG wirklich ist
+
+![](/learn-img-2/your-ecg-recordings.jpg)
+
+Ein klinisches EKG nutzt zwölf Ableitungen – zehn Elektroden, die die elektrische Aktivität des Herzens aus zwölf Blickwinkeln zugleich erfassen. Ein Wearable zeichnet eine einzige Ableitung auf: die kleine Spannungsdifferenz zwischen zwei Punkten deines Körpers, meist einem Handgelenk und der gegenüberliegenden Hand oder einem Finger, der den Stromkreis schließt.[^kligfield] Dieser eine Kanal reicht, um einen sauberen Rhythmusstreifen zu zeichnen, und es ist dasselbe Signal, das eine Kardiologin wiedererkennen würde – aber es ist ein Blick auf das Herz statt zwölf.
+
+Jeder Herzschlag auf dem Streifen hat drei Teile. Die kleine **P-Welle** ist die Kontraktion der Vorhöfe; der hohe, schmale **QRS-Komplex** ist das Feuern der Herzkammern – die Zacke, die du als Puls siehst; und die runde **T-Welle** ist das Zurücksetzen der Kammern für den nächsten Schlag.[^kligfield] Ein gleichmäßiger, regelmäßig verteilter Ablauf aus P–QRS–T ist das, wie eine unauffällige Spur aussieht.
+
+## Warum HealthLog das Raster zeigt, nicht eine Diagnose
+
+HealthLog stellt dein importiertes EKG auf dem vertrauten Karopapier dar, von dem eine Ärztin abliest, und zeigt das Ergebnis, **das das Aufzeichnungsgerät selbst erzeugt hat** – nicht mehr. Es deutet die Spur nicht, bewertet sie nicht und stellt keine eigene Diagnose. Die Einordnung, die du siehst, stammt von der Uhr und wird unverändert übernommen, damit du sie neben dem Rest deiner Aufzeichnungen behalten kannst; das Raster ist da, damit der Streifen lesbar ist, nicht damit die App ihn für dich liest.
+
+Das Raster ist ein fester Maßstab, und genau das macht jedes EKG mit jedem anderen vergleichbar. Bei den Standardeinstellungen läuft die Spur mit **25 mm pro Sekunde über das Papier** und **10 mm nach oben pro Millivolt**.[^kligfield] Jedes kleine Kästchen ist also 0,04 Sekunden breit, jeder große Block aus fünf Kästchen 0,2 Sekunden, und die Höhe verrät dir die Amplitude des Signals. Sobald du den Maßstab kennst, *ist* der Abstand zwischen den Schlägen die Herzfrequenz, und die Regelmäßigkeit dieses Abstands ist das meiste, was eine einzige Ableitung ehrlich zeigen kann.
+
+## Was das Ergebnis des Geräts bedeutet
+
+Die meisten Wearables reduzieren ihre Ablesung auf eine kurze, zugelassene Auswahl an Etiketten. Der Wortlaut unterscheidet sich je nach Gerät, doch sie gruppieren sich in wenige Bedeutungen:
+
+| Was das Gerät meldet | Was es damit sagt |
+| --- | --- |
+| Sinusrhythmus | Ein regelmäßiger Rhythmus in normaler Frequenz, vom richtigen Ursprung |
+| Vorhofflimmern | Ein unregelmäßiger Rhythmus, den der Algorithmus als mögliches Vorhofflimmern markiert hat |
+| Hohe oder niedrige Herzfrequenz | Die Frequenz lag außerhalb des Bereichs, den der Algorithmus einordnet |
+| Nicht eindeutig | Das Signal war nicht sauber oder klar genug für ein Etikett |
+
+Zwei davon verlangen Sorgfalt. Ein **Vorhofflimmern**-Hinweis ist ein Screening-Ergebnis, keine gesicherte Diagnose – Leitlinien sind eindeutig, dass ein Einkanal-Streifen von mindestens 30 Sekunden mit Vorhofflimmern ein Anlass ist, ein förmliches EKG zu suchen, kein Ersatz dafür.[^esc] Und **nicht eindeutig** ist häufig und meist harmlos: ein loser Kontakt, eine kalte Hand, Bewegung oder eine Frequenz außerhalb des einordbaren Bandes führen alle dazu. Es heißt, dass das Gerät auf eine Vermutung verzichtet hat, nicht dass etwas nicht stimmt.
+
+## Wo eine einzige Ableitung an Grenzen stößt
+
+Der Abstand zwischen einer Ableitung und zwölf ist keine Kleinigkeit. Ein Einkanal-EKG ist dafür gebaut, den Rhythmus zu screenen – vor allem Vorhofflimmern – und wenig darüber hinaus.[^natrev] Es **kann keinen Herzinfarkt erkennen**: die Veränderungen, die einen anzeigen, zeigen sich über Ableitungen, die eine Handgelenksaufzeichnung nie erfasst, ein beruhigendes Wort auf der Uhr sagt also nichts über eine verstopfte Arterie. Es übersieht die meisten anderen Herzrhythmusstörungen, liefert falsch-positive und falsch-negative Ergebnisse selbst für das Vorhofflimmern, auf das es abgestimmt ist, und ist bei Kindern und jüngeren Jugendlichen in der Regel nicht validiert.[^natrev][^esc]
+
+<Aside type="caution">
+**Ein normales EKG-Ergebnis ist bei Brustbeschwerden keine Entwarnung.** Eine Einkanal-Aufzeichnung kann einen Herzinfarkt oder die meisten kardialen Notfälle nicht ausschließen. Bei Brustschmerz oder -druck, Atemnot, Ohnmacht oder in Arm, Kiefer oder Rücken ausstrahlendem Schmerz behandle es als Notfall und rufe den Rettungsdienst – ganz gleich, was die Uhr gesagt hat. Ein Geräteergebnis, normal oder nicht, ist nie ein Grund zu warten.[^natrev]
+</Aside>
+
+## Wann eine Aufzeichnung in ärztliche Hände gehört
+
+Das Einkanal-EKG verdient seinen Platz als Weg, etwas *aufzufangen* und zu einer Fachperson zu bringen, nicht um es selbst zu klären. Einige Situationen sind ein Handeln wert:
+
+- Ein **wiederholter Vorhofflimmern-Hinweis**, besonders mit Herzstolpern, Atemnot oder Schwindel – bring die gespeicherten Streifen zu einer Ärztin, die mit einem vollständigen EKG bestätigen kann.[^esc]
+- **Beschwerden bei „normalem“ oder nicht eindeutigem Ergebnis** – wie du dich fühlst, wiegt jedes Mal schwerer als das Etikett.
+- Eine Aufzeichnung, die **während** eines Symptoms entstand, das du sonst selten einfängst – genau hier ist ein Handgelenks-EKG wirklich nützlich und gibt einer Ärztin eine Spur aus einem Moment, der sonst unaufgezeichnet vergangen wäre.
+
+Gespeicherte Aufzeichnungen sind als Verlauf am wertvollsten. Eine Spur aus genau der Minute, in der dein Herz raste, kann ein geplanter Praxistermin selten reproduzieren, und sie zusammen mit dem Rest deiner Aufzeichnungen abzulegen – statt in einer einzigen App gefangen – ist der praktische Punkt.
+
+## Das größere Bild
+
+Ein Einkanal-EKG ist ein echtes medizinisches Signal, gelesen durch ein schmales Fenster. Die Spur ist ehrlich; das Ein-Wort-Ergebnis ist eine Screening-Hilfe mit klaren Kanten. So behandelt – als Anstoß, eine Frage zu stellen, und als Aufzeichnung, die man dabei übergibt – ist es wirklich nützlich. Als Diagnose behandelt, beansprucht es weit mehr, als eine einzige Ableitung tragen kann.
+
+Dies sind allgemeine Informationen, kein medizinischer Rat, und sie deuten deine Aufzeichnung nicht. Für alles, was eine Spur aufwirft, zählt die Lesart einer Ärztin.
+
+[^kligfield]: EKG-Ableitungstheorie, die Wellenkomponenten P/QRS/T und der Standard-Papiermaßstab (25 mm/s und 10 mm/mV) – Kligfield P, et al., „Recommendations for the Standardization and Interpretation of the Electrocardiogram“, *Circulation*, 2007. https://www.ahajournals.org/doi/10.1161/CIRCULATIONAHA.106.180200
+[^esc]: Ein Einkanal-EKG-Streifen von ≥30 Sekunden mit Vorhofflimmern stützt das Screening, doch für die Diagnose ist ein förmliches EKG erforderlich – Hindricks G, et al., „2020 ESC Guidelines for the diagnosis and management of atrial fibrillation“, *European Heart Journal*, 2021. https://academic.oup.com/eurheartj/article/42/5/373/5899003
+[^natrev]: Umfang und Grenzen des Einkanal-EKG für Verbraucher – Fokus auf Rhythmus-Screening, Unfähigkeit, einen Herzinfarkt zu erkennen, falsch-positive/negative Ergebnisse und Validierungslücken – Bayoumy K, et al., „Smart wearable devices in cardiovascular care“, *Nature Reviews Cardiology*, 2021. https://www.nature.com/articles/s41569-021-00522-7

@@ -52,6 +52,12 @@ const meta: LearnMeta = {
       description:
         "Come leggere la pressione: cosa significano i due numeri, le categorie delle linee guida, perché la tecnica di misurazione conta e quando le letture richiedono un controllo medico.",
     },
+    "your-ecg-recordings": {
+      title: "Leggere le tue registrazioni ECG",
+      dek: "Un ECG da indossabile è un vero tracciato elettrico, non una diagnosi. Cosa ti dicono davvero la striscia e l'esito di una parola.",
+      description:
+        "Cosa registra un ECG a una derivazione, cosa significa l'esito del dispositivo, perché HealthLog lo mostra su una griglia familiare senza interpretarlo, e quando una registrazione merita l'occhio di un clinico.",
+    },
     "sleep-consistency": {
       title: "Perché la regolarità del sonno batte la durata",
       dek: "Otto ore a orari sempre diversi non valgono come sette a orari regolari. È l'orario il vero segnale.",

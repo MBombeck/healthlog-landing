@@ -52,6 +52,12 @@ const meta: LearnMeta = {
       description:
         "So liest du den Blutdruck: was die beiden Zahlen bedeuten, die Leitlinienkategorien, warum die Messtechnik entscheidend ist und wann Werte eine ärztliche Abklärung erfordern.",
     },
+    "your-ecg-recordings": {
+      title: "Deine EKG-Aufzeichnungen lesen",
+      dek: "Ein EKG vom Wearable ist eine echte elektrische Spur, keine Diagnose. Was der Streifen – und das Ein-Wort-Ergebnis – wirklich sagen.",
+      description:
+        "Was ein Einkanal-EKG aufzeichnet, was das Ergebnis des Geräts bedeutet, warum HealthLog es auf einem vertrauten Raster zeigt, ohne es zu deuten, und wann eine Aufzeichnung in ärztliche Hände gehört.",
+    },
     "sleep-consistency": {
       title: "Warum Regelmäßigkeit beim Schlaf zählt — mehr als die Dauer",
       dek: "Acht Stunden zu wechselnden Zeiten sind nicht dasselbe wie sieben nach festem Rhythmus. Das Timing ist das Signal.",

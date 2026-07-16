@@ -71,6 +71,24 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "A single high reading is not an emergency; re-measure after a minute. If it stays at or above 180/120 without symptoms, contact your health professional promptly. If it is 180/120 or higher with chest pain, breathlessness, a neurological or vision change, or a severe headache, treat it as an emergency and call emergency services.",
     },
   ],
+  "your-ecg-recordings": [
+    {
+      q: "What does a single-lead ECG actually measure?",
+      a: "It records one channel of your heart's electrical activity — the small voltage difference between two points on your body — and draws it as a rhythm strip. A clinical ECG uses twelve such channels to see the heart from twelve angles; a wearable uses one, which is enough to show the rhythm and the rate but is a single view rather than the full picture.",
+    },
+    {
+      q: "Can a watch ECG diagnose atrial fibrillation or a heart attack?",
+      a: "No. An atrial-fibrillation result is a screening flag, not a confirmed diagnosis — guidelines treat a 30-second single-lead tracing as a reason to seek a formal ECG, not a replacement for one. And a single lead cannot detect a heart attack at all, because the changes that signal one appear on leads a wrist recording never captures. Chest pain or pressure is an emergency regardless of what the device shows.",
+    },
+    {
+      q: "Does HealthLog interpret my ECG?",
+      a: "No. HealthLog shows your imported recording on a familiar ECG grid and displays the result the recording device itself produced, carried across unchanged. It does not read the trace, score it, or offer a diagnosis of its own — the interpretation that matters is a clinician's.",
+    },
+    {
+      q: "Why does my ECG say 'inconclusive'?",
+      a: "An inconclusive result usually means the signal wasn't clean enough to classify — a loose contact, a cold hand, movement during the recording, or a heart rate outside the band the algorithm will label. It is common and rarely a sign that something is wrong; retake it warm, still and with good skin contact. Persistent inconclusive readings alongside symptoms are worth mentioning to a clinician.",
+    },
+  ],
   "sleep-consistency": [
     {
       q: "How many hours of sleep do adults actually need?",

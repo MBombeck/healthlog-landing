@@ -71,6 +71,24 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Ein einzelner hoher Wert ist kein Notfall; miss nach einer Minute erneut. Bleibt er bei 180/120 oder darüber ohne Symptome, wende dich umgehend an deine Fachperson. Liegt er bei 180/120 oder höher zusammen mit Brustschmerz, Atemnot, einer neurologischen oder Sehveränderung oder starken Kopfschmerzen, behandle es als Notfall und ruf den Rettungsdienst.",
     },
   ],
+  "your-ecg-recordings": [
+    {
+      q: "Was misst ein Einkanal-EKG eigentlich?",
+      a: "Es zeichnet einen Kanal der elektrischen Herzaktivität auf – die kleine Spannungsdifferenz zwischen zwei Punkten des Körpers – und stellt sie als Rhythmusstreifen dar. Ein klinisches EKG nutzt zwölf solcher Kanäle, um das Herz aus zwölf Blickwinkeln zu sehen; ein Wearable nutzt einen, was genügt, um Rhythmus und Frequenz zu zeigen, aber ein einzelner Blick ist statt des vollen Bildes.",
+    },
+    {
+      q: "Kann ein Uhren-EKG Vorhofflimmern oder einen Herzinfarkt diagnostizieren?",
+      a: "Nein. Ein Vorhofflimmern-Ergebnis ist ein Screening-Hinweis, keine gesicherte Diagnose – Leitlinien behandeln einen 30-Sekunden-Einkanal-Streifen als Anlass, ein förmliches EKG zu suchen, nicht als Ersatz dafür. Und eine einzige Ableitung kann einen Herzinfarkt überhaupt nicht erkennen, weil die verräterischen Veränderungen auf Ableitungen erscheinen, die eine Handgelenksaufzeichnung nie erfasst. Brustschmerz oder -druck ist immer ein Notfall, gleich was das Gerät zeigt.",
+    },
+    {
+      q: "Deutet HealthLog mein EKG?",
+      a: "Nein. HealthLog zeigt deine importierte Aufzeichnung auf einem vertrauten EKG-Raster und stellt das Ergebnis dar, das das Aufzeichnungsgerät selbst erzeugt hat, unverändert übernommen. Es liest die Spur nicht, bewertet sie nicht und stellt keine eigene Diagnose – die Lesart, die zählt, ist die einer Ärztin.",
+    },
+    {
+      q: "Warum sagt mein EKG „nicht eindeutig“?",
+      a: "Ein nicht eindeutiges Ergebnis heißt meist, dass das Signal nicht sauber genug zum Einordnen war – ein loser Kontakt, eine kalte Hand, Bewegung während der Aufzeichnung oder eine Herzfrequenz außerhalb des einordbaren Bandes. Es ist häufig und selten ein Zeichen, dass etwas nicht stimmt; wiederhole es warm, ruhig und mit gutem Hautkontakt. Anhaltend nicht eindeutige Werte samt Beschwerden sind eine Erwähnung bei einer Ärztin wert.",
+    },
+  ],
   "sleep-consistency": [
     {
       q: "Wie viele Stunden Schlaf brauchen Erwachsene wirklich?",

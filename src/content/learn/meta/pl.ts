@@ -52,6 +52,12 @@ const meta: LearnMeta = {
       description:
         "Jak odczytywać ciśnienie krwi: co oznaczają dwie liczby, jakie są kategorie z wytycznych, dlaczego technika pomiaru ma znaczenie i kiedy wyniki wymagają kontroli lekarskiej.",
     },
+    "your-ecg-recordings": {
+      title: "Jak czytać swoje zapisy EKG",
+      dek: "EKG z urządzenia noszonego to prawdziwy ślad elektryczny, nie diagnoza. Co naprawdę mówią pasek i jednowyrazowy wynik.",
+      description:
+        "Co rejestruje jednoodprowadzeniowe EKG, co oznacza wynik samego urządzenia, dlaczego HealthLog pokazuje go na znajomej siatce, nie interpretując go, i kiedy zapis zasługuje na oko klinicysty.",
+    },
     "sleep-consistency": {
       title: "Dlaczego regularność snu liczy się bardziej niż jego długość",
       dek: "Osiem godzin o przypadkowych porach to nie to samo co siedem przy stałym rytmie. To pora niesie sygnał.",
