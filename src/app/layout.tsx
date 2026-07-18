@@ -154,6 +154,13 @@ export default function RootLayout({
       "Pulse oximetry (SpO₂) tracking with personalisable target bands for COPD / chronic respiratory users",
       "Single-lead ECG recordings imported from a compatible watch and shown on a familiar ECG grid, with the recording device's own result preserved unchanged — HealthLog stores and displays the trace, it does not interpret or diagnose it",
       "Dashboard tiles for more of your synced signals — heart-rate variability, blood oxygen (SpO₂), breathing rate and body composition surface as at-a-glance tiles alongside the core vitals",
+      "Today view — a daily companion at the top of the dashboard: a health score that finalises once last night's sleep syncs, the day's briefing, a short 'worth a look' list, and a coach check-in when a plan is due; reads the digest prepared overnight and never generates on open",
+      "Optional once-a-day morning summary notification, off by default and opt-in per channel, carrying the day's read when sleep is in",
+      "Milestones — calm markers for states you've reached (a steady stretch in your target range, a new personal best), not streaks to keep, so there is nothing to break and nothing to nag",
+      "Intraday heart rate — your pulse drawn across the whole day, with a careful 'elevated at rest' note when it stays high while you are still, framed as possible tension and never a verdict",
+      "Nutrition and vitamins — a water tile with quick-add amounts and a Nutrients page for hydration, caffeine and the vitamins and minerals your device records, each against its reference daily intake as context; dietary intake and hydration flow in from Apple Health",
+      "Metrics catalog — an 'All metrics' view listing every signal HealthLog can track and which device supplies each, so a metric you have no data for stays out of your daily views but is still discoverable in one place",
+      "Read-only assistant connector (MCP) covering your metric series, nutrition and vitamins, the intraday pulse curve, stored single-lead ECG recordings, sleep, workouts, labs, correlations, baselines and the preventive-care due-list — OAuth-secured, off by default, and unable to reach the admin surface or write over REST",
       "Blood glucose tracking with fasting/postprandial/random/bedtime contexts",
       "Medication management with compliance analytics and reminders",
       "Mood tracking with 5-point scale and tags",
@@ -187,7 +194,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped manually
     // until the cross-repo release sync tool lands.
-    softwareVersion: "1.28.52",
+    softwareVersion: "1.30.4",
     license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
     // Landing page is English-only today. The HealthLog app itself is
     // bilingual (EN/DE) — that fact belongs on the app, not the marketing

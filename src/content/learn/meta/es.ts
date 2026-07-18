@@ -58,6 +58,25 @@ const meta: LearnMeta = {
       description:
         "Qué registra un ECG de una derivación, qué significa el resultado del propio dispositivo, por qué HealthLog lo muestra sobre una cuadrícula familiar sin interpretarlo, y cuándo un registro merece la mirada de un clínico.",
     },
+    "resting-heart-rate-through-the-day": {
+      title: "Tu frecuencia cardíaca en reposo a lo largo del día",
+      dek: "Un número por la mañana te dice hasta qué punto puede bajar tu corazón al ralentí. La curva de todo el día te dice cómo pasa su día.",
+      description:
+        "Qué muestra una curva de frecuencia cardíaca intradía, por qué una subida sostenida en reposo puede ser una señal temprana mientras que un solo pico es ruido, y cómo leer tu suelo en reposo como una tendencia de forma física a lo largo de semanas.",
+    },
+    "heart-rate-recovery": {
+      title:
+        "Recuperación de la frecuencia cardíaca: lo rápido que baja tu corazón",
+      dek: "La mayoría de las cifras de forma física premian lo fuerte que te exiges. Esta premia lo rápido que puedes parar.",
+      description:
+        "Qué mide la recuperación de la frecuencia cardíaca, por qué la rápida caída del primer minuto refleja el tono vagal, qué significan los umbrales clínicos, y cómo leer tu propia recuperación posterior al ejercicio como una tendencia de forma física.",
+    },
+    "wrist-temperature-at-night": {
+      title: "La temperatura de la muñeca como señal nocturna",
+      dek: "La temperatura nocturna de un dispositivo ponible no es una lectura de termómetro. Es una desviación de tu propia línea base, y ahí está lo útil.",
+      description:
+        "Qué puede y qué no puede decirte una tendencia nocturna de la temperatura de la piel de la muñeca: desviaciones relativas frente a tu línea base, señales de fase del ciclo y de enfermedad temprana, y por qué nunca puede confirmar una fiebre.",
+    },
     "sleep-consistency": {
       title: "Por qué la regularidad del sueño supera a su duración",
       dek: "Ocho horas a horas aleatorias no es lo mismo que siete con un horario estable. El momento es la señal.",

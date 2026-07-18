@@ -58,6 +58,24 @@ const meta: LearnMeta = {
       description:
         "Co rejestruje jednoodprowadzeniowe EKG, co oznacza wynik samego urządzenia, dlaczego HealthLog pokazuje go na znajomej siatce, nie interpretując go, i kiedy zapis zasługuje na oko klinicysty.",
     },
+    "resting-heart-rate-through-the-day": {
+      title: "Twoje tętno spoczynkowe w ciągu dnia",
+      dek: "Jedna poranna liczba mówi ci, jak nisko twoje serce potrafi pracować na jałowym biegu. Krzywa całego dnia mówi, jak spędza swój dzień.",
+      description:
+        "Co pokazuje śróddobowa krzywa tętna, dlaczego utrzymujący się wzrost w spoczynku może być wczesnym sygnałem, podczas gdy pojedynczy skok to szum, i jak czytać swoją podłogę spoczynkową jako trend formy na przestrzeni tygodni.",
+    },
+    "heart-rate-recovery": {
+      title: "Regeneracja tętna: jak szybko twoje serce schodzi w dół",
+      dek: "Większość liczb dotyczących formy nagradza to, jak mocno się przyciskasz. Ta nagradza to, jak szybko potrafisz się zatrzymać.",
+      description:
+        "Co mierzy regeneracja tętna, dlaczego szybki spadek w pierwszej minucie odzwierciedla napięcie nerwu błędnego, co oznaczają kliniczne wartości graniczne i jak czytać swoją powysiłkową regenerację jako trend formy.",
+    },
+    "wrist-temperature-at-night": {
+      title: "Temperatura nadgarstka jako nocny sygnał",
+      dek: "Nocna temperatura z urządzenia noszonego to nie odczyt termometru. To odchylenie od twojej własnej linii bazowej — i to jest ta użyteczna część.",
+      description:
+        "Co nocny trend temperatury skóry nadgarstka może, a czego nie może ci powiedzieć: względne odchylenia od twojej linii bazowej, sygnały fazy cyklu i wczesnej choroby oraz dlaczego nigdy nie potwierdzi gorączki.",
+    },
     "sleep-consistency": {
       title: "Dlaczego regularność snu liczy się bardziej niż jego długość",
       dek: "Osiem godzin o przypadkowych porach to nie to samo co siedem przy stałym rytmie. To pora niesie sygnał.",

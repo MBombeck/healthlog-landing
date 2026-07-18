@@ -78,7 +78,9 @@ function FeatureSection({
 }
 
 const TOC = [
+  { id: "today", label: "Today — a daily companion" },
   { id: "vitals", label: "Vitals & trends" },
+  { id: "nutrition", label: "Nutrition & vitamins" },
   { id: "medication", label: "Medication & adherence" },
   { id: "labs", label: "Labs & biomarkers" },
   { id: "wellbeing", label: "Mental wellbeing" },
@@ -167,6 +169,39 @@ export default function FeaturesPage() {
         </nav>
 
         <FeatureSection
+          id="today"
+          label="Today — a daily companion"
+          color="purple"
+          title="A day that meets you where you are"
+        >
+          <p>
+            The dashboard opens on a Today view: a health score, the day&apos;s
+            lead read, and a short &quot;worth a look&quot; list — a dose window
+            that&apos;s open, an integration to reconnect, a check-up coming due
+            — each a single tap to the right place. The familiar tiles and
+            charts sit just below.
+          </p>
+          <p>
+            It reads the insight prepared overnight, so it loads instantly and
+            never generates anything on open. When last night&apos;s sleep
+            hasn&apos;t synced yet it says so plainly, and the score finalises
+            on its own the moment the sleep data lands — rather than showing you
+            a stale or empty number. A coach check-in surfaces here when a plan
+            is due for a look-back: keep, adjust, or let go, in one tap. An
+            optional once-a-day morning notification carries the same read to
+            whichever channel you use, off until you turn it on.
+          </p>
+          <p>
+            Reaching a steady stretch in your target range, or a new personal
+            best, is marked as a quiet <strong>milestone</strong> — a state
+            you&apos;ve reached, not a streak to keep, so there is nothing to
+            break and nothing to nag. A new ECG or a milestone can be dismissed
+            from the rail once you&apos;ve seen it; the cards that need an
+            action stay until you act.
+          </p>
+        </FeatureSection>
+
+        <FeatureSection
           id="vitals"
           label="Vitals & trends"
           color="purple"
@@ -195,6 +230,21 @@ export default function FeaturesPage() {
             vitals, and you can show, hide and reorder every one.
           </p>
           <p>
+            Heart rate is drawn across the whole day, not just as a single
+            resting number, so you can watch it settle and climb. When it stays
+            elevated while you&apos;re at rest and not moving, Today notes it
+            plainly as possible tension — carefully, and never as a verdict. A
+            day navigator steps back through recent days; the fine-grained
+            history is kept for 90 days, and older days show the coarser hourly
+            shape.
+          </p>
+          <p>
+            A quiet <strong>All metrics</strong> view lists everything HealthLog
+            can track and which device supplies each — so a signal you have no
+            data for stays out of your daily views but is still discoverable in
+            one place.
+          </p>
+          <p>
             Behind the charts sits a persistent rollup tier that pre-aggregates
             history, so years of readings stay sub-second instead of grinding
             through every row on every load.
@@ -212,6 +262,29 @@ export default function FeaturesPage() {
               reads from.
             </p>
           </div>
+        </FeatureSection>
+
+        <FeatureSection
+          id="nutrition"
+          label="Nutrition & vitamins"
+          color="green"
+          title="Hydration and micronutrients, with a home"
+        >
+          <p>
+            Your fluid intake and the vitamins and minerals your device records
+            get a place of their own. A water tile on the dashboard shows the
+            day&apos;s total with quick-add amounts; a Nutrients page shows
+            hydration over the last month, caffeine when you record it, and the
+            vitamins and minerals you actually have data for — each against its
+            reference daily intake where that applies, shown as context, never
+            as a verdict.
+          </p>
+          <p>
+            Manual water entries and device-synced totals coexist instead of
+            overwriting each other, and dietary intake and hydration flow in
+            from Apple Health. Sparse logging is never read as a deficiency. The
+            module is off until you switch it on.
+          </p>
         </FeatureSection>
 
         <FeatureSection
@@ -488,11 +561,14 @@ export default function FeaturesPage() {
             Claude, ChatGPT and others — over a standard, OAuth-secured Model
             Context Protocol server, remote over <code>/mcp</code> or as a local
             stdio command. A connected assistant can read your metric series,
-            glucose, sleep, workouts, medication compliance and schedule, labs,
-            correlations, baselines, recovery, illness, cycle and the
-            preventive-care due-list — every value carrying its unit and
-            reference range, with an honest &quot;no data&quot; instead of a
-            fabricated zero.
+            nutrition and vitamins, the intraday pulse curve, your stored
+            single-lead ECG recordings, glucose, sleep, workouts, medication
+            compliance and schedule, labs, correlations, baselines, recovery,
+            illness, cycle and the preventive-care due-list — every value
+            carrying its unit and reference range, with an honest &quot;no
+            data&quot; instead of a fabricated zero. A signal is only readable
+            once it has been named for the connector, so the mental-health
+            screeners and the environmental module stay off it by construction.
           </p>
           <p>
             Writing is opt-in and confirmed: with a write-scoped token you mint

@@ -449,5 +449,59 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Log the context — a heatwave, a trip to altitude, a smoky or smoggy day — the same way you would log a late dinner or a hard workout, so a single environment-driven reading isn't mistaken for a developing problem. The signal worth attending to is a sustained drift that holds once conditions return to normal. Heat illness and altitude illness, though, are emergencies to act on by how you feel, not by a wearable.",
     },
   ],
+  "resting-heart-rate-through-the-day": [
+    {
+      q: "What does an intraday heart-rate curve show that a single resting number doesn't?",
+      a: "It shows how your heart behaves, not just how low it can idle. Heart rate follows a daily rhythm — lowest in deep sleep, rising before you wake, higher and more variable through the active day — with movement, meals, caffeine and stress laid on top. Seeing the whole curve is what lets you tell a rate that is up because you climbed the stairs from a rate that is up while you are sitting still.",
+    },
+    {
+      q: "What does 'elevated at rest' actually mean?",
+      a: "It means your heart rate is sitting above your usual resting floor while you are still and not exerting yourself. A brief rise after activity, caffeine or stress is normal. What carries information is a resting floor that stays several beats above your own two-to-four-week baseline for a day or more — which can flag illness, strain or poor sleep, and reads most clearly when heart rate variability drops and sleep suffers at the same time.",
+    },
+    {
+      q: "Is a single high patch on the curve something to worry about?",
+      a: "Almost never on its own. A warm room, a hard effort, a stressful hour or a heavy meal all lift the line briefly. The meaning lives in a sustained shift over days, and in two or three signals leaning the same way, not in any one spike.",
+    },
+    {
+      q: "Can the intraday curve diagnose a heart problem?",
+      a: "No. It is a wellness view. It can show that your heart is beating fast or unusually, but not why. An irregular pulse, or a resting rate that stays high with breathlessness, chest discomfort, light-headedness or fainting, is a prompt to see a clinician — and only an ECG can confirm a rhythm problem.",
+    },
+  ],
+  "heart-rate-recovery": [
+    {
+      q: "What is heart-rate recovery?",
+      a: "It is how quickly your heart rate falls after you stop exercising, usually reported as the number of beats it drops in the first minute. That first-minute fall is driven mainly by your parasympathetic nervous system — the vagal 'brake' — switching back on. A faster drop tends to track with better cardiovascular fitness; a sluggish one means the body stays revved after the work is done.",
+    },
+    {
+      q: "What is a good heart-rate recovery number?",
+      a: "The well-known cutoffs come from standardised exercise tests: a first-minute fall of 12 beats or fewer marked higher long-term risk in one large treadmill study, and about 22 beats or fewer at two minutes in a standing-recovery protocol. Those are clinical-test thresholds, not targets for a workout in the park. The honest use of a wearable's number is your own trend after similar efforts, not a fixed line.",
+    },
+    {
+      q: "Why was my recovery slower today?",
+      a: "On any given day a slower recovery can mean a hot afternoon, a dehydrating effort, a poor night, alcohol the evening before, or simply the hardest session you have done in a while. Beta-blockers and some other medications blunt every heart-rate response, including this one. A single slow reading means little; a persistent decline is what is worth attention.",
+    },
+    {
+      q: "Isn't heart-rate recovery the same as heart-rate reserve?",
+      a: "No — they just sound alike. Heart-rate recovery is the post-exercise drop described here. Heart-rate reserve is the gap between your resting and maximum heart rates, used to set training zones. They measure different things.",
+    },
+  ],
+  "wrist-temperature-at-night": [
+    {
+      q: "Is my wearable's temperature reading my actual body temperature?",
+      a: "No. It is a skin measurement at the wrist, reported as a deviation from your own multi-night baseline rather than an absolute degree. Peripheral skin temperature runs cooler and swings more than core temperature, shaped by blood flow, the room and your bedding. There is no authoritative clinical reference range for a wrist deviation — the 'normal' band a device draws is defined by the maker and is a relative cue only.",
+    },
+    {
+      q: "Why do devices measure temperature overnight?",
+      a: "Because you are still, warm under the covers and in a fairly steady environment for hours, which makes the skin reading its most stable and comparable from night to night. It is read as tonight versus your own baseline, not as a number you could compare to a fever threshold.",
+    },
+    {
+      q: "Can a wrist-temperature trend tell me I have a fever?",
+      a: "No. It cannot confirm a fever, which is defined against a measured temperature — oral 38.0 °C (100.4 °F) or above — and needs a thermometer. A device deviation that looks high is a reason to take a real reading, not a substitute for one. It also cannot tell you why a night was warm: illness, a stuffy room, alcohol and a late workout all read much the same on the wrist.",
+    },
+    {
+      q: "What can the trend usefully show?",
+      a: "Read as a relative signal, a small sustained rise over a night or two can be an early, non-specific illness prompt, especially alongside a rising resting heart rate and a falling heart rate variability. For anyone who menstruates, a steady shift across part of the month often mirrors the luteal-phase rise in temperature. It is a trend against your own nights, honest about how little a single night means.",
+    },
+  ],
 };
 export default FAQ;

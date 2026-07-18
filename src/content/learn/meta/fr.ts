@@ -58,6 +58,25 @@ const meta: LearnMeta = {
       description:
         "Ce qu'enregistre un ECG à une dérivation, ce que signifie le résultat de l'appareil, pourquoi HealthLog l'affiche sur une grille familière sans l'interpréter, et quand un enregistrement mérite l'œil d'un clinicien.",
     },
+    "resting-heart-rate-through-the-day": {
+      title: "Votre fréquence cardiaque au repos au fil de la journée",
+      dek: "Un chiffre du matin vous dit à quel point votre cœur peut tourner au ralenti. La courbe d'une journée entière vous dit comment il passe sa journée.",
+      description:
+        "Ce que montre une courbe de fréquence cardiaque au cours de la journée, pourquoi une hausse durable au repos peut être un signal précoce quand un pic isolé n'est que du bruit, et comment lire votre plancher au repos comme une tendance de forme physique sur des semaines.",
+    },
+    "heart-rate-recovery": {
+      title:
+        "La récupération de la fréquence cardiaque : à quelle vitesse votre cœur redescend",
+      dek: "La plupart des chiffres de forme récompensent la force avec laquelle vous poussez. Celui-ci récompense la vitesse à laquelle vous pouvez vous arrêter.",
+      description:
+        "Ce que mesure la récupération de la fréquence cardiaque, pourquoi la chute rapide de la première minute reflète le tonus vagal, ce que signifient les seuils cliniques, et comment lire votre propre récupération après l'effort comme une tendance de forme physique.",
+    },
+    "wrist-temperature-at-night": {
+      title: "La température au poignet comme signal nocturne",
+      dek: "La température nocturne d'un objet connecté n'est pas une mesure de thermomètre. C'est un écart par rapport à votre propre référence — et c'est là qu'est l'utile.",
+      description:
+        "Ce qu'une tendance nocturne de température cutanée au poignet peut et ne peut pas vous dire : écarts relatifs par rapport à votre référence, signaux de phase du cycle et de maladie précoce, et pourquoi elle ne peut jamais confirmer une fièvre.",
+    },
     "sleep-consistency": {
       title: "Pourquoi la régularité du sommeil prime sur sa durée",
       dek: "Huit heures à des horaires aléatoires ne valent pas sept heures sur un rythme stable. C'est le moment qui fait le signal.",

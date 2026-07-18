@@ -58,6 +58,25 @@ const meta: LearnMeta = {
       description:
         "Cosa registra un ECG a una derivazione, cosa significa l'esito del dispositivo, perché HealthLog lo mostra su una griglia familiare senza interpretarlo, e quando una registrazione merita l'occhio di un clinico.",
     },
+    "resting-heart-rate-through-the-day": {
+      title: "La tua frequenza cardiaca a riposo durante il giorno",
+      dek: "Un numero mattutino ti dice quanto in basso il tuo cuore può girare al minimo. La curva dell'intera giornata ti dice come trascorre la giornata.",
+      description:
+        "Cosa mostra una curva della frequenza cardiaca infragiornaliera, perché un rialzo sostenuto a riposo può essere un segnale precoce mentre un singolo picco è rumore, e come leggere il tuo pavimento a riposo come andamento della forma fisica nell'arco di settimane.",
+    },
+    "heart-rate-recovery": {
+      title:
+        "Recupero della frequenza cardiaca: quanto in fretta il cuore scende",
+      dek: "La maggior parte dei numeri sulla forma fisica premia quanto forte spingi. Questo premia quanto in fretta riesci a fermarti.",
+      description:
+        "Cosa misura il recupero della frequenza cardiaca, perché il rapido calo del primo minuto riflette il tono vagale, cosa significano i valori soglia clinici e come leggere il tuo recupero dopo lo sforzo come andamento della forma fisica.",
+    },
+    "wrist-temperature-at-night": {
+      title: "La temperatura al polso come segnale notturno",
+      dek: "La temperatura notturna di un indossabile non è la lettura di un termometro. È uno scostamento dalla tua stessa linea di base — ed è questa la parte utile.",
+      description:
+        "Cosa può e cosa non può dirti un andamento notturno della temperatura cutanea al polso: scostamenti relativi dalla tua linea di base, segnali di fase del ciclo e di malattia precoce, e perché non può mai confermare una febbre.",
+    },
     "sleep-consistency": {
       title: "Perché la regolarità del sonno batte la durata",
       dek: "Otto ore a orari sempre diversi non valgono come sette a orari regolari. È l'orario il vero segnale.",
