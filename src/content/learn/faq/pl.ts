@@ -449,5 +449,59 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Zapisuj kontekst — falę upałów, wyjazd na wysokość, dzień zadymiony lub smogowy — tak samo, jak zapisałbyś późną kolację czy ciężki trening, żeby pojedynczy odczyt napędzany otoczeniem nie został wzięty za rozwijający się problem. Sygnałem wartym uwagi jest utrzymujący się dryf, który trzyma się po powrocie warunków do normy. Choroba cieplna i choroba wysokościowa to jednak stany nagłe, na które reaguje się po tym, jak się czujesz, a nie po wskazaniu urządzenia noszonego.",
     },
   ],
+  "resting-heart-rate-through-the-day": [
+    {
+      q: "Co pokazuje śróddobowa krzywa tętna, czego nie pokaże pojedyncza liczba spoczynkowa?",
+      a: "Pokazuje, jak zachowuje się twoje serce, a nie tylko jak nisko potrafi pracować na jałowym biegu. Tętno podąża za rytmem dobowym — najniższe w głębokim śnie, rosnące przed przebudzeniem, wyższe i bardziej zmienne przez aktywny dzień — a na to nakładają się ruch, posiłki, kofeina i stres. To widok całej krzywej pozwala odróżnić tempo wysokie dlatego, że wszedłeś po schodach, od tempa wysokiego, gdy siedzisz nieruchomo.",
+    },
+    {
+      q: "Co właściwie znaczy „podwyższone w spoczynku”?",
+      a: "Znaczy, że twoje tętno utrzymuje się powyżej twojej zwykłej podłogi spoczynkowej, gdy jesteś nieruchomy i się nie wysilasz. Krótki wzrost po aktywności, kofeinie czy stresie jest normalny. Informację niesie podłoga spoczynkowa, która pozostaje kilka uderzeń powyżej twojej własnej dwu- do czterotygodniowej linii bazowej przez dzień lub dłużej — co może sygnalizować chorobę, obciążenie lub zły sen i najwyraźniej odczytuje się, gdy zmienność rytmu serca spada, a sen jednocześnie cierpi.",
+    },
+    {
+      q: "Czy pojedynczy wysoki odcinek na krzywej to powód do niepokoju?",
+      a: "Prawie nigdy sam w sobie. Ciepły pokój, ciężki wysiłek, stresująca godzina czy obfity posiłek — wszystko to na krótko podnosi linię. Znaczenie kryje się w utrzymującym się przesunięciu przez kilka dni oraz w dwóch czy trzech sygnałach przechylających się w tę samą stronę, a nie w którymkolwiek pojedynczym skoku.",
+    },
+    {
+      q: "Czy śróddobowa krzywa może zdiagnozować problem z sercem?",
+      a: "Nie. To widok wellness. Może pokazać, że twoje serce bije szybko lub nietypowo, ale nie dlaczego. Nieregularny puls albo tętno spoczynkowe, które pozostaje wysokie wraz z dusznością, dyskomfortem w klatce piersiowej, zawrotami głowy czy omdleniem, to powód, by udać się do lekarza — a potwierdzić problem z rytmem może wyłącznie EKG.",
+    },
+  ],
+  "heart-rate-recovery": [
+    {
+      q: "Czym jest regeneracja tętna?",
+      a: "To jak szybko twoje tętno opada po tym, jak przestajesz ćwiczyć, zwykle podawane jako liczba uderzeń, o którą spada w pierwszej minucie. Ten spadek w pierwszej minucie napędza głównie twój przywspółczulny układ nerwowy — „hamulec” nerwu błędnego — który włącza się z powrotem. Szybszy spadek zwykle idzie w parze z lepszą wydolnością sercowo-naczyniową; ospały oznacza, że ciało pozostaje rozpędzone, gdy praca już się skończyła.",
+    },
+    {
+      q: "Jaka wartość regeneracji tętna jest dobra?",
+      a: "Znane wartości graniczne pochodzą ze standaryzowanych prób wysiłkowych: spadek w pierwszej minucie o 12 uderzeń lub mniej wyróżniał wyższe długoterminowe ryzyko w jednym dużym badaniu na bieżni, a około 22 uderzeń lub mniej po dwóch minutach w protokole z regeneracją w staniu. To progi z testów klinicznych, a nie cele dla treningu w parku. Uczciwym użyciem liczby z urządzenia noszonego jest twój własny trend po zbliżonych wysiłkach, a nie stała granica.",
+    },
+    {
+      q: "Dlaczego moja regeneracja była dziś wolniejsza?",
+      a: "W danym dniu wolniejsza regeneracja może oznaczać gorące popołudnie, odwadniający wysiłek, kiepską noc, alkohol poprzedniego wieczoru albo po prostu najtwardszą jednostkę od dłuższego czasu. Beta-blokery i niektóre inne leki tłumią każdą reakcję tętna, także tę. Pojedynczy wolny odczyt znaczy niewiele; uwagi wart jest uporczywy spadek.",
+    },
+    {
+      q: "Czy regeneracja tętna to nie to samo co rezerwa tętna?",
+      a: "Nie — po prostu brzmią podobnie. Regeneracja tętna to opisany tutaj powysiłkowy spadek. Rezerwa tętna to odstęp między tętnem spoczynkowym a maksymalnym, używany do wyznaczania stref treningowych. Mierzą różne rzeczy.",
+    },
+  ],
+  "wrist-temperature-at-night": [
+    {
+      q: "Czy odczyt temperatury z mojego urządzenia noszonego to moja rzeczywista temperatura ciała?",
+      a: "Nie. To pomiar skóry na nadgarstku, podawany jako odchylenie od twojej własnej wielonocnej linii bazowej, a nie bezwzględna liczba stopni. Obwodowa temperatura skóry biegnie chłodniej i waha się mocniej niż temperatura rdzenia, kształtowana przez przepływ krwi, pokój i pościel. Nie istnieje żaden miarodajny kliniczny zakres odniesienia dla odchylenia na nadgarstku — „normalne” pasmo, które rysuje urządzenie, definiuje producent i jest to jedynie wskazówka względna.",
+    },
+    {
+      q: "Dlaczego urządzenia mierzą temperaturę przez noc?",
+      a: "Ponieważ jesteś nieruchomy, ciepły pod kołdrą i przez wiele godzin w dość stałym otoczeniu, co czyni odczyt skóry najbardziej stabilnym i porównywalnym z nocy na noc. Odczytuje się go jako dzisiejszą noc względem twojej własnej linii bazowej, a nie jako liczbę, którą można porównać z progiem gorączki.",
+    },
+    {
+      q: "Czy trend temperatury nadgarstka może mi powiedzieć, że mam gorączkę?",
+      a: "Nie. Nie potrafi potwierdzić gorączki, która jest definiowana względem zmierzonej temperatury — doustnie 38,0 °C (100,4 °F) lub powyżej — i wymaga termometru. Odchylenie urządzenia, które wygląda wysoko, to powód, by wykonać prawdziwy pomiar, a nie jego zamiennik. Nie potrafi też powiedzieć, dlaczego noc była ciepła: choroba, duszny pokój, alkohol i późny trening odczytują się na nadgarstku niemal tak samo.",
+    },
+    {
+      q: "Co trend może użytecznie pokazać?",
+      a: "Odczytany jako sygnał względny, niewielki utrzymujący się wzrost przez noc czy dwie może być wczesnym, niespecyficznym sygnałem choroby, zwłaszcza wraz z rosnącym tętnem spoczynkowym i spadającą zmiennością rytmu serca. Dla każdej osoby, która miesiączkuje, stałe przesunięcie w części miesiąca często odzwierciedla wzrost temperatury w fazie lutealnej. To trend względem twoich własnych nocy, uczciwy co do tego, jak mało znaczy pojedyncza noc.",
+    },
+  ],
 };
 export default FAQ;

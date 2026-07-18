@@ -58,6 +58,24 @@ const meta: LearnMeta = {
       description:
         "Was ein Einkanal-EKG aufzeichnet, was das Ergebnis des Geräts bedeutet, warum HealthLog es auf einem vertrauten Raster zeigt, ohne es zu deuten, und wann eine Aufzeichnung in ärztliche Hände gehört.",
     },
+    "resting-heart-rate-through-the-day": {
+      title: "Deine Ruheherzfrequenz über den Tag",
+      dek: "Eine Morgenzahl sagt dir, wie tief dein Herz im Leerlauf schlägt. Die Tageskurve sagt dir, wie es seinen Tag verbringt.",
+      description:
+        "Was eine Tages-Herzfrequenzkurve zeigt, warum ein anhaltender Anstieg in Ruhe ein frühes Signal sein kann, während ein einzelner Ausschlag Rauschen ist, und wie du deinen Ruheboden über Wochen als Fitnesstrend liest.",
+    },
+    "heart-rate-recovery": {
+      title: "Herzfrequenz-Erholung: wie schnell dein Herz herunterkommt",
+      dek: "Die meisten Fitnesszahlen belohnen, wie hart du pushst. Diese belohnt, wie schnell du aufhören kannst.",
+      description:
+        "Was die Herzfrequenz-Erholung misst, warum der schnelle Abfall in der ersten Minute die vagale Aktivität widerspiegelt, was die klinischen Grenzwerte bedeuten und wie du deine eigene Erholung nach dem Sport als Fitnesstrend liest.",
+    },
+    "wrist-temperature-at-night": {
+      title: "Handgelenkstemperatur als nächtliches Signal",
+      dek: "Die nächtliche Temperatur eines Wearables ist keine Thermometerablesung. Sie ist eine Abweichung von deiner eigenen Grundlinie – und das ist der nützliche Teil.",
+      description:
+        "Was ein nächtlicher Trend der Handgelenks-Hauttemperatur dir sagen kann und was nicht: relative Abweichungen von deiner Grundlinie, Zyklusphasen- und frühe Krankheitssignale, und warum er nie ein Fieber bestätigen kann.",
+    },
     "sleep-consistency": {
       title: "Warum Regelmäßigkeit beim Schlaf zählt — mehr als die Dauer",
       dek: "Acht Stunden zu wechselnden Zeiten sind nicht dasselbe wie sieben nach festem Rhythmus. Das Timing ist das Signal.",

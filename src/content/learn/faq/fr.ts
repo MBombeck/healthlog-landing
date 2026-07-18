@@ -449,5 +449,59 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Consignez le contexte — une canicule, un séjour en altitude, une journée enfumée ou de smog — comme vous consigneriez un dîner tardif ou un entraînement intense, pour qu'une mesure isolée dictée par l'environnement ne soit pas prise pour un problème naissant. Le signal qui mérite l'attention est une dérive durable qui tient une fois les conditions revenues à la normale. Le coup de chaleur et le mal de l'altitude, en revanche, sont des urgences sur lesquelles agir selon ce que vous ressentez, et non d'après un objet connecté.",
     },
   ],
+  "resting-heart-rate-through-the-day": [
+    {
+      q: "Que montre une courbe de fréquence cardiaque au cours de la journée qu'un seul chiffre au repos ne montre pas ?",
+      a: "Elle montre comment votre cœur se comporte, pas seulement à quel point il peut tourner au ralenti. La fréquence cardiaque suit un rythme quotidien — la plus basse en sommeil profond, en hausse avant votre réveil, plus haute et plus fluctuante durant la journée active — avec le mouvement, les repas, la caféine et le stress qui se superposent. Voir toute la courbe est ce qui vous permet de distinguer une fréquence haute parce que vous avez monté l'escalier d'une fréquence haute alors que vous êtes assis sans bouger.",
+    },
+    {
+      q: "Que signifie vraiment « élevée au repos » ?",
+      a: "Cela signifie que votre fréquence cardiaque se tient au-dessus de votre plancher habituel au repos alors que vous êtes immobile et sans effort. Une brève montée après une activité, la caféine ou le stress est normale. Ce qui porte de l'information, c'est un plancher au repos qui reste plusieurs battements au-dessus de votre propre référence sur deux à quatre semaines pendant un jour ou plus — ce qui peut signaler une maladie, une surcharge ou un mauvais sommeil, et se lit le plus clairement quand la variabilité de la fréquence cardiaque baisse et que le sommeil se dégrade en même temps.",
+    },
+    {
+      q: "Une seule phase haute sur la courbe est-elle un motif d'inquiétude ?",
+      a: "Presque jamais à elle seule. Une pièce chaude, un effort intense, une heure stressante ou un repas copieux font tous monter la ligne brièvement. Le sens se loge dans un décalage durable sur plusieurs jours, et dans deux ou trois signaux qui penchent dans le même sens, pas dans un pic isolé.",
+    },
+    {
+      q: "La courbe au cours de la journée peut-elle diagnostiquer un problème cardiaque ?",
+      a: "Non. C'est une vue de bien-être. Elle peut montrer que votre cœur bat vite ou de façon inhabituelle, mais pas pourquoi. Un pouls irrégulier, ou une fréquence au repos qui reste haute avec un essoufflement, une gêne thoracique, des étourdissements ou des évanouissements, est un motif pour consulter un clinicien — et seul un ECG peut confirmer un trouble du rythme.",
+    },
+  ],
+  "heart-rate-recovery": [
+    {
+      q: "Qu'est-ce que la récupération de la fréquence cardiaque ?",
+      a: "C'est la vitesse à laquelle votre fréquence cardiaque chute après l'arrêt de l'exercice, généralement rapportée comme le nombre de battements dont elle baisse dans la première minute. Cette chute de la première minute est principalement pilotée par votre système nerveux parasympathique — le « frein » vagal — qui se réenclenche. Une chute plus rapide a tendance à aller de pair avec une meilleure forme cardiovasculaire ; une chute lente signifie que le corps reste emballé une fois le travail terminé.",
+    },
+    {
+      q: "Qu'est-ce qu'un bon chiffre de récupération de la fréquence cardiaque ?",
+      a: "Les seuils bien connus proviennent de tests d'effort standardisés : une chute à la première minute de 12 battements ou moins marquait un risque plus élevé à long terme dans une vaste étude sur tapis roulant, et environ 22 battements ou moins à deux minutes dans un protocole de récupération debout. Ce sont des seuils de tests cliniques, pas des cibles pour un entraînement dans le parc. L'usage honnête du chiffre d'un objet connecté est votre propre tendance après des efforts semblables, pas une limite fixe.",
+    },
+    {
+      q: "Pourquoi ma récupération était-elle plus lente aujourd'hui ?",
+      a: "Un jour donné, une récupération plus lente peut signifier un après-midi chaud, un effort déshydratant, une mauvaise nuit, l'alcool de la veille au soir, ou simplement la séance la plus dure que vous ayez faite depuis un moment. Les bêtabloquants et certains autres médicaments émoussent toute réaction de la fréquence cardiaque, celle-ci comprise. Une seule mesure lente signifie peu de chose ; c'est un déclin durable qui mérite l'attention.",
+    },
+    {
+      q: "La récupération de la fréquence cardiaque n'est-elle pas la même chose que la réserve de fréquence cardiaque ?",
+      a: "Non — les deux se ressemblent juste au nom. La récupération de la fréquence cardiaque est la chute après l'effort décrite ici. La réserve de fréquence cardiaque est l'écart entre votre fréquence de repos et votre fréquence maximale, utilisée pour définir les zones d'entraînement. Elles mesurent des choses différentes.",
+    },
+  ],
+  "wrist-temperature-at-night": [
+    {
+      q: "La valeur de température de mon objet connecté est-elle ma vraie température corporelle ?",
+      a: "Non. C'est une mesure de peau au poignet, rapportée comme un écart par rapport à votre propre référence sur plusieurs nuits plutôt qu'un degré absolu. La température cutanée périphérique est plus fraîche et fluctue davantage que la température centrale, façonnée par la circulation sanguine, la pièce et votre literie. Il n'existe pas de plage de référence clinique faisant autorité pour un écart au poignet — la bande « normale » qu'un appareil trace est définie par le fabricant et n'est qu'un repère relatif.",
+    },
+    {
+      q: "Pourquoi les appareils mesurent-ils la température pendant la nuit ?",
+      a: "Parce que vous êtes immobile, au chaud sous les couvertures et dans un environnement assez stable pendant des heures, ce qui rend la mesure de peau la plus stable et la plus comparable d'une nuit à l'autre. Elle se lit comme la nuit d'aujourd'hui face à votre propre référence, pas comme un chiffre que vous pourriez comparer à un seuil de fièvre.",
+    },
+    {
+      q: "Une tendance de température au poignet peut-elle me dire que j'ai de la fièvre ?",
+      a: "Non. Elle ne peut pas confirmer une fièvre, qui se définit face à une température mesurée — 38,0 °C (100,4 °F) par voie orale ou plus — et exige un thermomètre. Un écart d'appareil qui paraît élevé est une raison de prendre une vraie mesure, pas un substitut à celle-ci. Elle ne peut pas non plus vous dire pourquoi une nuit a été chaude : une maladie, une chambre étouffante, l'alcool et un entraînement tardif se lisent presque de la même façon au poignet.",
+    },
+    {
+      q: "Que peut utilement montrer la tendance ?",
+      a: "Lue comme un signal relatif, une petite hausse durable sur une ou deux nuits peut être un signe de maladie précoce et non spécifique, surtout aux côtés d'une fréquence cardiaque au repos en hausse et d'une variabilité de la fréquence cardiaque en baisse. Pour toute personne qui a ses règles, un décalage régulier sur une partie du mois reflète souvent la hausse de température de la phase lutéale. C'est une tendance face à vos propres nuits, honnête sur le peu que signifie une seule nuit.",
+    },
+  ],
 };
 export default FAQ;

@@ -449,5 +449,59 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Anota el contexto —una ola de calor, un viaje a la altitud, un día con humo o esmog— igual que anotarías una cena tardía o un entrenamiento duro, para que una sola lectura impulsada por el entorno no se confunda con un problema que se está gestando. La señal que merece la pena atender es una deriva sostenida que se mantiene una vez que las condiciones vuelven a la normalidad. La enfermedad por calor y la de altitud, sin embargo, son emergencias sobre las que actuar según cómo te sientes, no según un dispositivo.",
     },
   ],
+  "resting-heart-rate-through-the-day": [
+    {
+      q: "¿Qué muestra una curva de frecuencia cardíaca intradía que un solo número en reposo no muestra?",
+      a: "Muestra cómo se comporta tu corazón, no solo hasta qué punto puede bajar al ralentí. La frecuencia cardíaca sigue un ritmo diario —más baja en el sueño profundo, subiendo antes de que despiertes, más alta y más variable a lo largo del día activo—, con el movimiento, las comidas, la cafeína y el estrés superpuestos encima. Ver la curva entera es lo que te permite distinguir una frecuencia que está alta porque subiste la escalera de una frecuencia que está alta mientras estás sentado sin moverte.",
+    },
+    {
+      q: "¿Qué significa de verdad «elevada en reposo»?",
+      a: "Significa que tu frecuencia cardíaca se sitúa por encima de tu suelo en reposo habitual mientras estás quieto y sin esforzarte. Una subida breve tras la actividad, la cafeína o el estrés es normal. Lo que lleva información es un suelo en reposo que se mantiene varios latidos por encima de tu propia línea base de dos a cuatro semanas durante un día o más, lo que puede señalar enfermedad, sobrecarga o mal sueño, y se lee con más claridad cuando la variabilidad de la frecuencia cardíaca cae y el sueño se resiente al mismo tiempo.",
+    },
+    {
+      q: "¿Es motivo de preocupación un solo tramo alto en la curva?",
+      a: "Casi nunca por sí solo. Una habitación cálida, un esfuerzo duro, una hora estresante o una comida copiosa elevan la línea brevemente. El significado vive en un cambio sostenido a lo largo de días, y en dos o tres señales inclinándose en la misma dirección, no en un pico aislado.",
+    },
+    {
+      q: "¿Puede la curva intradía diagnosticar un problema cardíaco?",
+      a: "No. Es una vista de bienestar. Puede mostrar que tu corazón late rápido o de forma inusual, pero no por qué. Un pulso irregular, o una frecuencia en reposo que se mantiene alta con falta de aire, molestias en el pecho, mareo o desmayo, es un motivo para acudir a un clínico, y solo un ECG puede confirmar un problema de ritmo.",
+    },
+  ],
+  "heart-rate-recovery": [
+    {
+      q: "¿Qué es la recuperación de la frecuencia cardíaca?",
+      a: "Es lo rápido que cae tu frecuencia cardíaca después de que dejas de hacer ejercicio, normalmente expresada como el número de latidos que baja en el primer minuto. Esa caída del primer minuto la impulsa sobre todo tu sistema nervioso parasimpático —el «freno» vagal— al volver a activarse. Una caída más rápida tiende a ir de la mano de una mejor forma cardiovascular; una lenta significa que el cuerpo sigue revolucionado una vez terminado el trabajo.",
+    },
+    {
+      q: "¿Qué es un buen número de recuperación de la frecuencia cardíaca?",
+      a: "Los umbrales más conocidos provienen de pruebas de esfuerzo estandarizadas: una caída en el primer minuto de 12 latidos o menos marcó un mayor riesgo a largo plazo en un gran estudio en cinta, y unos 22 latidos o menos a los dos minutos en un protocolo de recuperación de pie. Esos son umbrales de prueba clínica, no objetivos para un entrenamiento en el parque. El uso honesto del número de un dispositivo ponible es tu propia tendencia tras esfuerzos similares, no una línea fija.",
+    },
+    {
+      q: "¿Por qué mi recuperación fue más lenta hoy?",
+      a: "En un día cualquiera, una recuperación más lenta puede significar una tarde calurosa, un esfuerzo que deshidrata, una mala noche, alcohol la víspera o, sencillamente, la sesión más dura que has hecho en un tiempo. Los betabloqueantes y algunos otros medicamentos amortiguan toda respuesta de la frecuencia cardíaca, incluida esta. Una sola lectura lenta significa poco; un descenso persistente es lo que merece atención.",
+    },
+    {
+      q: "¿No es la recuperación de la frecuencia cardíaca lo mismo que la reserva de frecuencia cardíaca?",
+      a: "No, solo suenan parecido. La recuperación de la frecuencia cardíaca es el descenso posterior al ejercicio que se describe aquí. La reserva de frecuencia cardíaca es la distancia entre tu frecuencia en reposo y la máxima, usada para fijar las zonas de entrenamiento. Miden cosas distintas.",
+    },
+  ],
+  "wrist-temperature-at-night": [
+    {
+      q: "¿Es la lectura de temperatura de mi dispositivo ponible mi temperatura corporal real?",
+      a: "No. Es una medición de la piel en la muñeca, informada como una desviación de tu propia línea base de varias noches, no como un grado absoluto. La temperatura de la piel periférica corre más fría y oscila más que la temperatura central, moldeada por el flujo sanguíneo, la habitación y tu ropa de cama. No existe un rango de referencia clínico autorizado para una desviación de la muñeca: la banda «normal» que un dispositivo dibuja la define el fabricante y es solo una pista relativa.",
+    },
+    {
+      q: "¿Por qué los dispositivos miden la temperatura durante la noche?",
+      a: "Porque estás quieto, caliente bajo las mantas y en un entorno bastante estable durante horas, lo que hace que la lectura de la piel sea la más estable y comparable de una noche a otra. Se lee como la noche de hoy frente a tu propia línea base, no como un número que pudieras comparar con un umbral de fiebre.",
+    },
+    {
+      q: "¿Puede una tendencia de temperatura de la muñeca decirme que tengo fiebre?",
+      a: "No. No puede confirmar una fiebre, que se define frente a una temperatura medida —oral de 38,0 °C (100,4 °F) o superior— y necesita un termómetro. Una desviación del dispositivo que parece alta es una razón para tomar una lectura real, no un sustituto de ella. Tampoco puede decirte por qué una noche fue cálida: la enfermedad, una habitación cargada, el alcohol y un entrenamiento tardío se leen casi igual en la muñeca.",
+    },
+    {
+      q: "¿Qué puede mostrar de forma útil la tendencia?",
+      a: "Leída como una señal relativa, una pequeña subida sostenida durante una o dos noches puede ser un aviso temprano e inespecífico de enfermedad, sobre todo junto con una frecuencia cardíaca en reposo al alza y una variabilidad de la frecuencia cardíaca a la baja. Para quien menstrúa, un cambio constante durante parte del mes a menudo refleja la subida de temperatura de la fase lútea. Es una tendencia frente a tus propias noches, honesta sobre lo poco que significa una sola noche.",
+    },
+  ],
 };
 export default FAQ;

@@ -449,5 +449,59 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Protokolliere den Kontext — eine Hitzewelle, eine Reise in die Höhe, einen rauchigen oder smogigen Tag — genauso, wie du ein spätes Abendessen oder ein hartes Training protokollieren würdest, sodass ein einzelner umweltbedingter Wert nicht mit einem sich entwickelnden Problem verwechselt wird. Das Signal, dem Beachtung gebührt, ist eine anhaltende Verschiebung, die bestehen bleibt, sobald die Bedingungen wieder normal sind. Hitzeerkrankung und Höhenkrankheit sind allerdings Notfälle, auf die du danach reagierst, wie du dich fühlst, nicht nach einem Wearable.",
     },
   ],
+  "resting-heart-rate-through-the-day": [
+    {
+      q: "Was zeigt eine Tages-Herzfrequenzkurve, das eine einzelne Ruhezahl nicht zeigt?",
+      a: "Sie zeigt, wie sich dein Herz verhält, nicht nur, wie tief es im Leerlauf schlagen kann. Die Herzfrequenz folgt einem Tagesrhythmus – am tiefsten im Tiefschlaf, ansteigend vor dem Aufwachen, höher und schwankender über den aktiven Tag –, mit Bewegung, Mahlzeiten, Koffein und Stress obendrauf. Die ganze Kurve zu sehen ist das, was dir erlaubt, eine Frequenz, die oben ist, weil du die Treppe gestiegen bist, von einer zu unterscheiden, die oben ist, während du still sitzt.",
+    },
+    {
+      q: "Was bedeutet „erhöht in Ruhe“ eigentlich?",
+      a: "Es bedeutet, dass deine Herzfrequenz über deinem üblichen Ruheboden liegt, während du still bist und dich nicht anstrengst. Ein kurzer Anstieg nach Aktivität, Koffein oder Stress ist normal. Information trägt ein Ruheboden, der einen Tag oder länger mehrere Schläge über deiner eigenen Zwei- bis Vier-Wochen-Grundlinie bleibt – was Krankheit, Belastung oder schlechten Schlaf melden kann und sich am klarsten liest, wenn zugleich die Herzfrequenzvariabilität fällt und der Schlaf leidet.",
+    },
+    {
+      q: "Ist eine einzelne hohe Phase auf der Kurve ein Grund zur Sorge?",
+      a: "Für sich allein fast nie. Ein warmer Raum, eine harte Anstrengung, eine stressige Stunde oder eine schwere Mahlzeit heben die Linie kurz an. Die Bedeutung liegt in einer anhaltenden Verschiebung über Tage und in zwei oder drei Signalen, die sich in dieselbe Richtung neigen, nicht in einem einzelnen Ausschlag.",
+    },
+    {
+      q: "Kann die Tageskurve ein Herzproblem diagnostizieren?",
+      a: "Nein. Sie ist eine Wellness-Ansicht. Sie kann zeigen, dass dein Herz schnell oder ungewöhnlich schlägt, aber nicht warum. Ein unregelmäßiger Puls oder eine Ruhefrequenz, die mit Atemnot, Brustbeschwerden, Schwindel oder Ohnmacht hoch bleibt, ist ein Anlass, eine Ärztin aufzusuchen – und nur ein EKG kann ein Rhythmusproblem bestätigen.",
+    },
+  ],
+  "heart-rate-recovery": [
+    {
+      q: "Was ist die Herzfrequenz-Erholung?",
+      a: "Sie ist, wie schnell deine Herzfrequenz fällt, nachdem du mit dem Training aufhörst, meist angegeben als Zahl der Schläge, um die sie in der ersten Minute sinkt. Dieser Fall in der ersten Minute wird hauptsächlich von deinem parasympathischen Nervensystem angetrieben – der vagalen „Bremse“ –, die wieder einschaltet. Ein schnellerer Abfall geht tendenziell mit besserer kardiovaskulärer Fitness einher; ein träger heißt, dass der Körper hochgefahren bleibt, nachdem die Arbeit getan ist.",
+    },
+    {
+      q: "Was ist ein guter Wert für die Herzfrequenz-Erholung?",
+      a: "Die bekannten Grenzwerte stammen aus standardisierten Belastungstests: Ein Abfall in der ersten Minute von 12 Schlägen oder weniger markierte in einer großen Laufbandstudie ein höheres Langzeitrisiko, und etwa 22 Schläge oder weniger nach zwei Minuten in einem Protokoll mit stehender Erholung. Das sind Schwellen aus klinischen Tests, keine Ziele für ein Training im Park. Der ehrliche Gebrauch der Zahl eines Wearables ist dein eigener Trend nach ähnlichen Anstrengungen, keine feste Grenze.",
+    },
+    {
+      q: "Warum war meine Erholung heute langsamer?",
+      a: "An einem beliebigen Tag kann eine langsamere Erholung einen heißen Nachmittag, eine entwässernde Anstrengung, eine schlechte Nacht, Alkohol am Vorabend oder schlicht die härteste Einheit seit Langem bedeuten. Betablocker und einige andere Medikamente dämpfen jede Herzfrequenzreaktion, auch diese. Ein einzelner langsamer Wert bedeutet wenig; ein anhaltender Rückgang ist es, der Beachtung verdient.",
+    },
+    {
+      q: "Ist die Herzfrequenz-Erholung nicht dasselbe wie die Herzfrequenzreserve?",
+      a: "Nein – sie klingen nur ähnlich. Die Herzfrequenz-Erholung ist der hier beschriebene Abfall nach der Belastung. Die Herzfrequenzreserve ist der Abstand zwischen deiner Ruhe- und deiner Maximalfrequenz, mit dem Trainingszonen festgelegt werden. Sie messen Verschiedenes.",
+    },
+  ],
+  "wrist-temperature-at-night": [
+    {
+      q: "Ist der Temperaturwert meines Wearables meine tatsächliche Körpertemperatur?",
+      a: "Nein. Es ist eine Hautmessung am Handgelenk, gemeldet als Abweichung von deiner eigenen Mehrnächte-Grundlinie statt als absolutes Grad. Die periphere Hauttemperatur läuft kühler und schwankt stärker als die Kerntemperatur, geformt von Durchblutung, Raum und Bettzeug. Es gibt keinen maßgeblichen klinischen Referenzbereich für eine Handgelenksabweichung – das „normale“ Band, das ein Gerät zieht, ist vom Hersteller definiert und ist nur ein relativer Hinweis.",
+    },
+    {
+      q: "Warum messen Geräte die Temperatur über Nacht?",
+      a: "Weil du still, warm unter der Decke und stundenlang in einer ziemlich gleichmäßigen Umgebung bist, was die Hautmessung am stabilsten und von Nacht zu Nacht am vergleichbarsten macht. Sie wird als heutige Nacht gegen deine eigene Grundlinie gelesen, nicht als Zahl, die du mit einer Fieberschwelle vergleichen könntest.",
+    },
+    {
+      q: "Kann ein Handgelenkstemperatur-Trend mir sagen, dass ich Fieber habe?",
+      a: "Nein. Er kann kein Fieber bestätigen, das gegen eine gemessene Temperatur definiert ist – oral 38,0 °C (100,4 °F) oder darüber – und ein Thermometer braucht. Eine Geräteabweichung, die hoch aussieht, ist ein Grund, eine echte Messung vorzunehmen, kein Ersatz dafür. Er kann dir auch nicht sagen, warum eine Nacht warm war: Krankheit, ein stickiges Zimmer, Alkohol und eine späte Einheit lesen sich am Handgelenk fast gleich.",
+    },
+    {
+      q: "Was kann der Trend nützlich zeigen?",
+      a: "Als relatives Signal gelesen, kann ein kleiner anhaltender Anstieg über ein bis zwei Nächte ein früher, unspezifischer Krankheitshinweis sein, besonders neben einer steigenden Ruheherzfrequenz und einer fallenden Herzfrequenzvariabilität. Für alle, die menstruieren, spiegelt eine stetige Verschiebung über einen Teil des Monats oft den Temperaturanstieg der Lutealphase wider. Es ist ein Trend gegen deine eigenen Nächte, ehrlich darüber, wie wenig eine einzelne Nacht bedeutet.",
+    },
+  ],
 };
 export default FAQ;

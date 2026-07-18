@@ -449,5 +449,59 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Annota il contesto — un'ondata di calore, un viaggio in quota, una giornata fumosa o smoggosa — allo stesso modo in cui annoteresti una cena tardiva o un allenamento intenso, così che una singola lettura guidata dall'ambiente non venga scambiata per un problema in via di sviluppo. Il segnale a cui prestare attenzione è una deriva sostenuta che persiste una volta che le condizioni tornano alla normalità. La patologia da calore e quella da altitudine, però, sono emergenze su cui agire in base a come ti senti, non in base a un dispositivo indossabile.",
     },
   ],
+  "resting-heart-rate-through-the-day": [
+    {
+      q: "Cosa mostra una curva della frequenza cardiaca infragiornaliera che un singolo numero a riposo non mostra?",
+      a: "Mostra come si comporta il tuo cuore, non solo quanto in basso può girare al minimo. La frequenza cardiaca segue un ritmo quotidiano — più bassa nel sonno profondo, in salita prima che tu ti svegli, più alta e più variabile durante la giornata attiva — con movimento, pasti, caffeina e stress sovrapposti. Vedere l'intera curva è ciò che ti permette di distinguere una frequenza alta perché hai salito le scale da una frequenza alta mentre stai seduto immobile.",
+    },
+    {
+      q: 'Cosa significa davvero "elevata a riposo"?',
+      a: "Significa che la tua frequenza cardiaca si colloca sopra il tuo consueto pavimento a riposo mentre sei immobile e non ti stai sforzando. Un breve rialzo dopo attività, caffeina o stress è normale. Ciò che porta informazione è un pavimento a riposo che resta diversi battiti sopra la tua linea di base di due-quattro settimane per un giorno o più — cosa che può segnalare malattia, sovraccarico o sonno scadente, e si legge più chiaramente quando la variabilità della frequenza cardiaca cala e il sonno ne risente nello stesso momento.",
+    },
+    {
+      q: "Una singola fase alta sulla curva è motivo di preoccupazione?",
+      a: "Quasi mai da sola. Una stanza calda, uno sforzo intenso, un'ora stressante o un pasto pesante sollevano tutti la linea brevemente. Il significato vive in uno spostamento sostenuto lungo i giorni, e in due o tre segnali che pendono nella stessa direzione, non in un singolo picco.",
+    },
+    {
+      q: "La curva infragiornaliera può diagnosticare un problema cardiaco?",
+      a: "No. È una vista di benessere. Può mostrare che il tuo cuore batte veloce o in modo insolito, ma non perché. Un polso irregolare, o una frequenza a riposo che resta alta con affanno, fastidio al petto, capogiri o svenimenti, è un motivo per rivolgersi a un clinico — e solo un ECG può confermare un problema di ritmo.",
+    },
+  ],
+  "heart-rate-recovery": [
+    {
+      q: "Cos'è il recupero della frequenza cardiaca?",
+      a: 'È quanto in fretta la tua frequenza cardiaca cala dopo che smetti di allenarti, di solito riportato come il numero di battiti di cui scende nel primo minuto. Quel calo del primo minuto è guidato soprattutto dal tuo sistema nervoso parasimpatico — il "freno" vagale — che si riaccende. Un calo più rapido tende ad accompagnarsi a una migliore forma cardiovascolare; uno lento significa che il corpo resta su di giri dopo che il lavoro è finito.',
+    },
+    {
+      q: "Qual è un buon numero di recupero della frequenza cardiaca?",
+      a: "I valori soglia più noti provengono da test da sforzo standardizzati: un calo nel primo minuto di 12 battiti o meno segnalava un rischio a lungo termine più alto in un ampio studio al tapis roulant, e circa 22 battiti o meno a due minuti in un protocollo di recupero in piedi. Quelle sono soglie di test clinici, non obiettivi per un allenamento al parco. L'uso onesto del numero di un indossabile è il tuo andamento personale dopo sforzi simili, non una soglia fissa.",
+    },
+    {
+      q: "Perché oggi il mio recupero è stato più lento?",
+      a: "In un giorno qualsiasi un recupero più lento può significare un pomeriggio caldo, uno sforzo disidratante, una brutta notte, l'alcol la sera prima, o semplicemente la sessione più dura che hai fatto da un po'. I betabloccanti e alcuni altri farmaci attenuano ogni risposta della frequenza cardiaca, inclusa questa. Una singola lettura lenta significa poco; è un declino persistente a meritare attenzione.",
+    },
+    {
+      q: "Il recupero della frequenza cardiaca non è la stessa cosa della riserva di frequenza cardiaca?",
+      a: "No — hanno solo un nome simile. Il recupero della frequenza cardiaca è il calo dopo lo sforzo descritto qui. La riserva di frequenza cardiaca è il divario tra la tua frequenza a riposo e quella massima, usato per impostare le zone di allenamento. Misurano cose diverse.",
+    },
+  ],
+  "wrist-temperature-at-night": [
+    {
+      q: "La lettura di temperatura del mio indossabile è la mia effettiva temperatura corporea?",
+      a: 'No. È una misura cutanea al polso, riportata come scostamento dalla tua stessa linea di base costruita su più notti, non come un grado assoluto. La temperatura cutanea periferica corre più fredda e oscilla di più rispetto alla temperatura interna, plasmata dal flusso sanguigno, dalla stanza e dalle tue coperte. Non esiste un intervallo di riferimento clinico autorevole per uno scostamento al polso — la fascia "normale" che un dispositivo traccia è definita dal produttore ed è soltanto un indizio relativo.',
+    },
+    {
+      q: "Perché i dispositivi misurano la temperatura durante la notte?",
+      a: "Perché sei immobile, caldo sotto le coperte e per ore in un ambiente abbastanza costante, il che rende la lettura cutanea la più stabile e confrontabile da notte a notte. Viene letta come la notte di oggi rispetto alla tua stessa linea di base, non come un numero che potresti confrontare con una soglia febbrile.",
+    },
+    {
+      q: "Un andamento della temperatura al polso può dirmi che ho la febbre?",
+      a: "No. Non può confermare la febbre, che è definita rispetto a una temperatura misurata — orale 38,0 °C (100,4 °F) o superiore — e richiede un termometro. Uno scostamento del dispositivo che sembra alto è un motivo per prendere una lettura reale, non un suo sostituto. Non può nemmeno dirti perché una notte è stata calda: malattia, una stanza soffocante, l'alcol e un allenamento tardivo si leggono quasi allo stesso modo al polso.",
+    },
+    {
+      q: "Cosa può mostrare utilmente l'andamento?",
+      a: "Letto come segnale relativo, un rialzo piccolo e sostenuto per una o due notti può essere un primo, aspecifico segnale di malattia, specie insieme a una frequenza cardiaca a riposo in salita e a una variabilità della frequenza cardiaca in calo. Per chiunque abbia il ciclo, uno spostamento costante lungo una parte del mese spesso rispecchia il rialzo di temperatura della fase luteale. È un andamento rispetto alle tue stesse notti, onesto su quanto poco significhi una singola notte.",
+    },
+  ],
 };
 export default FAQ;

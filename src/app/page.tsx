@@ -699,7 +699,7 @@ const primaryFeatures = [
     icon: <HeartMetricIcon />,
     title: "All vitals at a glance",
     description:
-      "Weight, blood pressure, heart rate, body composition, blood glucose, SpO₂, respiratory rate, sleep, steps and mood — plus grip strength, a pain score and waist measurements. More synced signals now read as at-a-glance dashboard tiles too: heart-rate variability, blood oxygen, breathing rate and body composition. Every reading on one timeline, with personal target ranges, vs-last-month or vs-last-year overlays, and a persistent rollup tier that keeps years of history sub-second.",
+      "Weight, blood pressure, heart rate, body composition, blood glucose, SpO₂, respiratory rate, sleep, steps and mood — plus grip strength, a pain score and waist measurements. More synced signals now read as at-a-glance dashboard tiles too: heart-rate variability, blood oxygen, breathing rate and body composition. Heart rate is drawn across the whole day, and an All-metrics view lists everything HealthLog can track. Every reading on one timeline, with personal target ranges, vs-last-month or vs-last-year overlays, and a persistent rollup tier that keeps years of history sub-second.",
     color: "purple",
   },
   {
@@ -719,6 +719,27 @@ const primaryFeatures = [
 ];
 
 const secondaryFeatures = [
+  {
+    icon: <CalendarIcon />,
+    title: "A Today view that meets your day",
+    description:
+      "The dashboard opens on a health score, the day's lead read and a short 'worth a look' list — each a single tap away. It reads the digest prepared overnight, so it loads instantly, and the score finalises the moment last night's sleep syncs. A coach check-in surfaces when a plan is due, and an optional once-a-day morning note carries the read to your channel of choice.",
+    color: "purple",
+  },
+  {
+    icon: <HeartMetricIcon />,
+    title: "Intraday pulse & quiet milestones",
+    description:
+      "See your heart rate settle and climb across the whole day, with a careful 'elevated at rest' note when it stays high while you're still — never a verdict. Reaching a steady stretch in range or a new personal best is marked as a milestone: a state you've reached, not a streak to keep, so there's nothing to break and nothing to nag.",
+    color: "pink",
+  },
+  {
+    icon: <FlaskIcon />,
+    title: "Hydration & vitamins",
+    description:
+      "A water tile with quick-add amounts and a Nutrients page for hydration, caffeine and the vitamins and minerals your device records — each against its reference daily intake as context, never a verdict. Dietary intake and hydration flow in from Apple Health; sparse logging is never read as a deficiency. Off until you switch it on.",
+    color: "green",
+  },
   {
     icon: <PillIcon />,
     title: "Built for injectables",
@@ -786,7 +807,7 @@ const secondaryFeatures = [
     icon: <PlugIcon />,
     title: "Connect your record to AI assistants",
     description:
-      "An OAuth-secured Model Context Protocol server lets MCP-compatible assistants — Claude, ChatGPT and others — read your record and, with a write-scoped token you mint, log a measurement after you confirm. Off by default; you stay in control of the connector token.",
+      "An OAuth-secured Model Context Protocol server lets MCP-compatible assistants — Claude, ChatGPT and others — read your record, now including nutrition and vitamins, the intraday pulse curve and your stored ECG recordings, and, with a write-scoped token you mint, log a measurement after you confirm. A signal is readable only once it's named for the connector. Off by default; you stay in control of the connector token.",
     color: "cyan",
   },
   {

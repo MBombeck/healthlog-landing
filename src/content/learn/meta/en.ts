@@ -58,6 +58,24 @@ const meta: LearnMeta = {
       description:
         "What a single-lead ECG records, what the device's own result means, why HealthLog shows it on a familiar grid without interpreting it, and when a recording is worth a clinician's eye.",
     },
+    "resting-heart-rate-through-the-day": {
+      title: "Your resting heart rate through the day",
+      dek: "One morning number tells you how low your heart can idle. The whole-day curve tells you how it spends its day.",
+      description:
+        "What an intraday heart-rate curve shows, why a sustained rise at rest can be an early signal while a single spike is noise, and how to read your resting floor as a fitness trend over weeks.",
+    },
+    "heart-rate-recovery": {
+      title: "Heart-rate recovery: how fast your heart comes down",
+      dek: "Most fitness numbers reward how hard you push. This one rewards how quickly you can stop.",
+      description:
+        "What heart-rate recovery measures, why the fast first-minute fall reflects vagal tone, what the clinical cutoffs mean, and how to read your own post-exercise recovery as a fitness trend.",
+    },
+    "wrist-temperature-at-night": {
+      title: "Wrist temperature as a nightly signal",
+      dek: "A wearable's overnight temperature isn't a thermometer reading. It's a deviation from your own baseline — and that's the useful part.",
+      description:
+        "What an overnight wrist skin-temperature trend can and cannot tell you: relative deviations from your baseline, cycle-phase and early-illness signals, and why it can never confirm a fever.",
+    },
     "sleep-consistency": {
       title: "Why sleep consistency beats sleep duration",
       dek: "Eight hours at random times isn't the same as seven on a steady schedule. The timing is the signal.",
