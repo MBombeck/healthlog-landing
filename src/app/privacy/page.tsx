@@ -699,6 +699,18 @@ export default function PrivacyPage() {
             </li>
             <li>
               <span className="text-text-primary font-medium">
+                Right to withdraw consent (Art. 7 (3))
+              </span>{" "}
+              — the AI features run on explicit consent, and that consent is
+              withdrawable on the same surface that grants it, under{" "}
+              <em className="not-italic">Settings → AI</em>. Withdrawal takes
+              effect immediately: the consent gate fails closed without an
+              active receipt, so every AI surface falls back to its no-consent
+              state. Withdrawing deletes nothing already recorded — that is the
+              erasure path above.
+            </li>
+            <li>
+              <span className="text-text-primary font-medium">
                 Right to data portability (Art. 20)
               </span>{" "}
               — the JSON export under{" "}

@@ -387,7 +387,10 @@ export default function FeaturesPage() {
             reader stays entirely on your machine, so the file never leaves your
             server. When you want a richer read — one that handles handwriting
             and photographed scans — you can let your configured AI provider do
-            it, but only for the documents you consent to, one at a time.
+            it, but only for the documents you consent to. Leave automatic
+            reading off and that is one document at a time, on the action you
+            tap; switch it on and it also works through the documents already in
+            your vault, which it never used to do.
           </p>
           <p>
             Search the words inside your documents, not just their titles.

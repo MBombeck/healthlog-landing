@@ -254,14 +254,23 @@ export default function SecurityPage() {
         >
           <p>
             Sessions live server-side in PostgreSQL rather than in a token a
-            client could replay. API tokens are stored as keyed HMAC-SHA-256
-            hashes, never as plaintext, so a database read alone never yields a
-            usable token.
+            client could replay. The session cookie carries a purpose-generated
+            random secret and only its keyed HMAC-SHA-256 hash is stored, so the
+            value in the browser exists nowhere on the server. API tokens are
+            held the same way — never as plaintext, so a database read alone
+            never yields a usable credential.
           </p>
           <p>
             Devices each get their own refresh token with one-time-use rotation.
             If a rotated token is ever reused, that signals theft, and the
-            device&apos;s token family is revoked rather than left live.
+            device&apos;s token family is revoked rather than left live. The
+            device list identifies each device by an opaque handle that is
+            useless as a login.
+          </p>
+          <p>
+            An API token reaches only what its scope names. A token minted for
+            one purpose is refused by every endpoint that has not declared it,
+            and the refusal is audited.
           </p>
         </SecuritySection>
 
@@ -296,9 +305,12 @@ export default function SecurityPage() {
             The optional document vault keeps your letters, reports and scans
             encrypted at rest, alongside the rest of your record. It is off
             until you switch it on, and — as with every AI surface — a document
-            is only sent to an AI provider for the reads you consent to, one
-            document at a time. A local reader keeps the file on your server
-            entirely.
+            is only sent to an AI provider for a read you consented to. By
+            default that is one document at a time, on the action you tap.
+            Automatic reading is a separate, off-by-default switch; turning it
+            on is standing consent, and every document it reaches still
+            re-checks that consent and your daily budget. A local reader keeps
+            the file on your server entirely.
           </p>
           <p>
             Searching inside your documents runs over an encrypted blind index.
