@@ -692,6 +692,32 @@ function SearchIcon() {
   );
 }
 
+function SharedAccessIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
+      <circle cx="9" cy="8" r="3.25" stroke="currentColor" strokeWidth="1.5" />
+      <path
+        d="M3.5 19.5a5.5 5.5 0 0 1 11 0"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M16.5 5.5a3.25 3.25 0 0 1 0 5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M17.5 14.6a5.5 5.5 0 0 1 3 4.9"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 /* ── Feature Data ───────────────────────────────── */
 
 const primaryFeatures = [
@@ -788,6 +814,13 @@ const secondaryFeatures = [
     description:
       "Your data leaves the way it came in: CSV, JSON, a localized doctor-report PDF, and a FHIR R4 bundle (Patient, Observation, MedicationStatement, MedicationAdministration, Coverage) for a clinician's system.",
     color: "green",
+  },
+  {
+    icon: <SharedAccessIcon />,
+    title: "Look after a family member's record",
+    description:
+      "Give another account on your instance read access to your record. Both of you keep your own password and your own second factor; nobody signs in as anybody else. The invitation gives them nothing until they accept, they can read the record and change nothing in it, and either side can end it at any moment. Access ends on their next request rather than their next login. You see who has access and which days they opened it.",
+    color: "cyan",
   },
   {
     icon: <FileIcon />,
@@ -962,6 +995,11 @@ const faqs = [
     question: "Can HealthLog store and search my medical documents?",
     answer:
       "Yes. An optional, off-by-default document vault keeps your letters, reports and scans encrypted at rest on your own server. Each upload is read and made searchable automatically — by a local reader that never leaves your machine, or, with your per-document consent, by your configured AI provider for a richer read of scans. You can search the words inside your documents over an encrypted blind index that stores nothing readable, ask a single document a grounded and cited question, and share one with a clinician through a time-boxed, revocable QR link with photo metadata stripped.",
+  },
+  {
+    question: "Can I let a family member see my health record?",
+    answer:
+      "Yes, if they have an account on the same instance. You send them an invitation from Settings, and it gives them nothing until they accept it. Once accepted they can read your record and change nothing in it, and they cannot reach your password, your second factor, your connected services, your notification channels, your exports or the sharing controls themselves. Either side can end the access at any time, and it ends on their next request rather than their next login. You can see who has access, when they accepted, and which days they opened your record. This is a grant between two accounts, so nobody ever shares a login.",
   },
   {
     question: "Is HealthLog a medical device?",

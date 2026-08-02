@@ -13,7 +13,7 @@ import { SITE_ORIGIN } from "@/content/learn/locales";
 
 const TITLE = "Features — everything HealthLog tracks";
 const DESCRIPTION =
-  "A full tour of HealthLog: vitals and trends, medication adherence, lab biomarkers and a longevity panel, PHQ-9/GAD-7 wellbeing screening, medical history, an encrypted document vault that reads, searches and shares your medical letters, FHIR and doctor-report export, an illness journal with Rest Mode, a cited AI Coach, an OAuth-secured MCP server for AI assistants, and device sync — all self-hosted and source available.";
+  "A full tour of HealthLog: vitals and trends, medication adherence, lab biomarkers and a longevity panel, PHQ-9/GAD-7 wellbeing screening, medical history, an encrypted document vault that reads, searches and shares your medical letters, FHIR and doctor-report export, read access you can give a family member and take back, an illness journal with Rest Mode, a cited AI Coach, an OAuth-secured MCP server for AI assistants, and device sync — all self-hosted and source available.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -87,6 +87,7 @@ const TOC = [
   { id: "history", label: "Medical history" },
   { id: "documents", label: "Document vault" },
   { id: "export", label: "Export & interoperability" },
+  { id: "sharing", label: "Shared access" },
   { id: "illness", label: "Illness journal & Rest Mode" },
   { id: "cycle", label: "Cycle tracking" },
   { id: "preventive", label: "Preventive-care reminders" },
@@ -438,6 +439,45 @@ export default function FeaturesPage() {
             The FHIR bundle covers Patient, Observation, MedicationStatement,
             MedicationAdministration and Coverage resources — the structured
             spine of your record in a standard format, no proprietary lock-in.
+          </p>
+        </FeatureSection>
+
+        <FeatureSection
+          id="sharing"
+          label="Shared access"
+          color="cyan"
+          title="Look after somebody without borrowing their password"
+        >
+          <p>
+            You can give another account on your instance read access to your
+            record. A partner keeping an eye on your blood pressure, an adult
+            child watching a parent&apos;s medication, whichever way round it
+            runs in your household. Both people keep their own account, their
+            own password and their own second factor. Nobody signs in as anybody
+            else.
+          </p>
+          <p>
+            The invitation gives them nothing until they accept it. Once they
+            do, your record appears in their own menu, and a strip across the
+            top of every page names whose record they are reading with a button
+            back to their own. Either side can end it at any moment, and it ends
+            on their very next request rather than at their next login. If they
+            have your record open when you end it, that browser lands back in
+            their own account.
+          </p>
+          <p>
+            They can read the record and change nothing in it. The account
+            around the record is not part of the deal either: no credentials, no
+            connected services, no notification channels, no exports, no share
+            links, and no way to pass the access on or widen it. Those are
+            refusals the server makes, not screens that happen to be hidden.
+          </p>
+          <p>
+            You can see what the access is being used for. A panel lists who has
+            access, when they accepted and when they last opened your record,
+            with a day by day view of which days somebody else was in it. Ending
+            access does not erase the record of it, so &quot;who had access, and
+            between which dates&quot; stays answerable afterwards.
           </p>
         </FeatureSection>
 

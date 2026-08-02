@@ -148,6 +148,7 @@ export default function RootLayout({
       "Optional environmental-context module — daily weather, daylight, and temperature correlated against mood, sleep, and vitals",
       "Encrypted document vault (off by default) — store letters, reports and scans encrypted at rest; automatic on-device or per-document consented AI reading; whole-word search over an encrypted blind index; grounded, cited per-document chat; and time-boxed, revocable QR share links with photo metadata stripped",
       "Two-factor authentication (TOTP and WebAuthn) with step-up checks for sensitive actions",
+      "Shared access between two accounts on one instance: give a family member read access to your record without sharing a login. The invitation confers nothing until accepted, the delegate can read and never write, credentials, integrations, notification channels and exports stay out of reach, and either side can end the access with effect on the delegate's next request",
       "Native SwiftUI iOS app (public TestFlight beta) with live two-way Apple Health (HealthKit) sync — steps, weight, blood pressure, glucose, sleep, body composition",
       "Weight, blood pressure, heart rate, body fat, sleep, steps tracking",
       "Body composition: total body water + bone mass via Withings auto-sync",
@@ -269,6 +270,14 @@ export default function RootLayout({
         acceptedAnswer: {
           "@type": "Answer",
           text: "Yes. An optional, off-by-default document vault keeps your letters, reports and scans encrypted at rest on your own server. Each upload is read and made searchable automatically — by a local reader that never leaves your machine, or, with your per-document consent, by your configured AI provider for a richer read of scans. You can search the words inside your documents over an encrypted blind index that stores nothing readable, ask a single document a grounded and cited question, and share one with a clinician through a time-boxed, revocable QR link with photo metadata stripped.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I let a family member see my health record?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, if they have an account on the same instance. You send them an invitation from Settings, and it gives them nothing until they accept it. Once accepted they can read your record and change nothing in it, and they cannot reach your password, your second factor, your connected services, your notification channels, your exports or the sharing controls themselves. Either side can end the access at any time, and it ends on their next request rather than their next login. You can see who has access, when they accepted, and which days they opened your record. This is a grant between two accounts, so nobody ever shares a login.",
         },
       },
       {

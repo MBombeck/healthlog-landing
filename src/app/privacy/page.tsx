@@ -319,6 +319,15 @@ export default function PrivacyPage() {
             backup target).
           </p>
           <p>
+            A user may also give another account on the same instance read
+            access to their own record. That disclosure happens only on the
+            user&apos;s own instruction, only once the other person has accepted
+            it, is read-only, stays inside the same server, and can be withdrawn
+            by either party at any time with effect on the recipient&apos;s next
+            request. It adds no recipient outside the instance and no
+            sub-processor.
+          </p>
+          <p>
             For a self-hosted install, the operator is the data controller in
             the GDPR sense. The reference instance below describes the
             maintainer&apos;s own deployment; private installations follow the

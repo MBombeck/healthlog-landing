@@ -14,7 +14,7 @@ import { SITE_ORIGIN } from "@/content/learn/locales";
 
 const TITLE = "Security & privacy — your data, your server";
 const DESCRIPTION =
-  "How HealthLog protects health data: AES-256-GCM at rest with versioned key rotation, passkeys, Argon2id and two-factor auth, server-side sessions and hashed API tokens, an off-by-default OAuth-scoped AI assistant connector, an encrypted document vault with blind-index search and untrusted-document chat, self-hosting on your own infrastructure, and zero telemetry. Source available.";
+  "How HealthLog protects health data: AES-256-GCM at rest with versioned key rotation, passkeys, Argon2id and two-factor auth, server-side sessions and hashed API tokens, revocable read access between two accounts that is refused by default on every route, an off-by-default OAuth-scoped AI assistant connector, an encrypted document vault with blind-index search and untrusted-document chat, self-hosting on your own infrastructure, and zero telemetry. Source available.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -81,6 +81,7 @@ const TOC = [
   { id: "encryption", label: "Encryption at rest" },
   { id: "auth", label: "Passkeys & passwords" },
   { id: "sessions", label: "Sessions & API tokens" },
+  { id: "sharing", label: "Shared access" },
   { id: "connector", label: "AI assistant connector" },
   { id: "documents", label: "Document vault" },
   { id: "dedup", label: "Source-priority dedup" },
@@ -271,6 +272,46 @@ export default function SecurityPage() {
             An API token reaches only what its scope names. A token minted for
             one purpose is refused by every endpoint that has not declared it,
             and the refusal is audited.
+          </p>
+        </SecuritySection>
+
+        <SecuritySection
+          id="sharing"
+          label="Shared access"
+          color="cyan"
+          title="A grant between two accounts, refused by default"
+        >
+          <p>
+            One account can give another account on the same instance read
+            access to its record. It is a grant, never a shared login: both
+            people keep their own password and their own second factor, and the
+            permission is a row the server checks rather than a credential
+            anybody hands over.
+          </p>
+          <p>
+            The grant is read from the database on every single request, so
+            there is no cached verdict to wait out and revocation lands on the
+            delegate&apos;s next request rather than at their next login. An
+            invitation confers nothing until the person named on it accepts, and
+            an unaccepted or lapsed grant fails the same check a revoked one
+            does.
+          </p>
+          <p>
+            Every route in the product refuses while a session is acting on
+            another account. A route becomes reachable only by declaring itself
+            safe to serve under a grant, and the set of declared routes is
+            frozen by a test, so a new endpoint cannot quietly widen what a
+            delegate reaches. Credentials, connected services, notification
+            channels, exports, clinician links and the sharing controls
+            themselves are all outside that set, which is why a delegate can
+            neither widen their own access nor pass it on nor leave behind a
+            door that outlives their revocation.
+          </p>
+          <p>
+            Ending access stamps the grant rather than deleting it, so who had
+            access and between which dates stays answerable. What no product can
+            do is take back what somebody already read, and nothing in HealthLog
+            pretends otherwise.
           </p>
         </SecuritySection>
 
