@@ -319,6 +319,25 @@ export default function PrivacyPage() {
             backup target).
           </p>
           <p>
+            A user may also give another account on the same instance access to
+            their own record. That disclosure happens only on the user&apos;s own
+            instruction, only once the other person has accepted it, only at the
+            level the invitation named, stays inside the same server, and can be
+            withdrawn by either party at any time with effect on the
+            recipient&apos;s next request. It adds no recipient outside the
+            instance and no sub-processor.
+          </p>
+          <p>
+            The higher of the two levels lets the recipient add entries to the
+            record from a closed list. It does not let them change or remove
+            anything already recorded, and it does not widen what they may read.
+            Entries made that way are stored as the record owner&apos;s own data,
+            since they describe the owner rather than the person who entered
+            them, and the identity of that person is retained in the audit log,
+            which the owner can inspect and which is deleted on the
+            instance&apos;s configured audit-retention schedule.
+          </p>
+          <p>
             For a self-hosted install, the operator is the data controller in
             the GDPR sense. The reference instance below describes the
             maintainer&apos;s own deployment; private installations follow the
@@ -696,6 +715,18 @@ export default function PrivacyPage() {
               </span>{" "}
               — request an administrative suspension by opening a GDPR issue
               (see section 12).
+            </li>
+            <li>
+              <span className="text-text-primary font-medium">
+                Right to withdraw consent (Art. 7 (3))
+              </span>{" "}
+              — the AI features run on explicit consent, and that consent is
+              withdrawable on the same surface that grants it, under{" "}
+              <em className="not-italic">Settings → AI</em>. Withdrawal takes
+              effect immediately: the consent gate fails closed without an
+              active receipt, so every AI surface falls back to its no-consent
+              state. Withdrawing deletes nothing already recorded — that is the
+              erasure path above.
             </li>
             <li>
               <span className="text-text-primary font-medium">

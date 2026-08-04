@@ -13,7 +13,7 @@ import { SITE_ORIGIN } from "@/content/learn/locales";
 
 const TITLE = "Features — everything HealthLog tracks";
 const DESCRIPTION =
-  "A full tour of HealthLog: vitals and trends, medication adherence, lab biomarkers and a longevity panel, PHQ-9/GAD-7 wellbeing screening, medical history, an encrypted document vault that reads, searches and shares your medical letters, FHIR and doctor-report export, an illness journal with Rest Mode, a cited AI Coach, an OAuth-secured MCP server for AI assistants, and device sync — all self-hosted and source available.";
+  "A full tour of HealthLog: vitals and trends, medication adherence, lab biomarkers and a longevity panel, PHQ-9/GAD-7 wellbeing screening, medical history, an encrypted document vault that reads, searches and shares your medical letters, FHIR and doctor-report export, access you can give a family member and take back, to read your record or to read it and add to it, an illness journal with Rest Mode, a cited AI Coach, an OAuth-secured MCP server for AI assistants, and device sync — all self-hosted and source available.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -87,6 +87,7 @@ const TOC = [
   { id: "history", label: "Medical history" },
   { id: "documents", label: "Document vault" },
   { id: "export", label: "Export & interoperability" },
+  { id: "sharing", label: "Shared access" },
   { id: "illness", label: "Illness journal & Rest Mode" },
   { id: "cycle", label: "Cycle tracking" },
   { id: "preventive", label: "Preventive-care reminders" },
@@ -387,7 +388,10 @@ export default function FeaturesPage() {
             reader stays entirely on your machine, so the file never leaves your
             server. When you want a richer read — one that handles handwriting
             and photographed scans — you can let your configured AI provider do
-            it, but only for the documents you consent to, one at a time.
+            it, but only for the documents you consent to. Leave automatic
+            reading off and that is one document at a time, on the action you
+            tap; switch it on and it also works through the documents already in
+            your vault, which it never used to do.
           </p>
           <p>
             Search the words inside your documents, not just their titles.
@@ -435,6 +439,75 @@ export default function FeaturesPage() {
             The FHIR bundle covers Patient, Observation, MedicationStatement,
             MedicationAdministration and Coverage resources — the structured
             spine of your record in a standard format, no proprietary lock-in.
+          </p>
+        </FeatureSection>
+
+        <FeatureSection
+          id="sharing"
+          label="Shared access"
+          color="cyan"
+          title="Look after somebody without borrowing their password"
+        >
+          <p>
+            You can give another account on your instance access to your record.
+            A partner keeping an eye on your blood pressure, an adult child
+            watching a parent&apos;s medication, whichever way round it runs in
+            your household. Both people keep their own account, their own
+            password and their own second factor. Nobody signs in as anybody
+            else.
+          </p>
+          <p>
+            The invitation gives them nothing until they accept it, and it names
+            what they may do. One level lets them read your record. The other
+            lets them read it and add to it, because usually the reason to share
+            a record is that a second person is doing something about it. Somebody
+            takes the reading, somebody watches the evening dose go down, and
+            read-only access made them watch that happen and then ask you to type
+            it in.
+          </p>
+          <p>
+            Adding is a list, not a permission, and the list is the whole of it:
+            a reading, a lab result, a biomarker to track, an illness entry, a
+            value on a metric you already keep, a side effect against a drug, a
+            medication, and marking a dose taken or skipped. Every one of those
+            makes something new. Changing or deleting what is already in your
+            record is yours alone at either level, including an entry they added
+            a minute ago with a typo in it, and so is deferring one of your
+            reminders. They tell you, and you fix it.
+          </p>
+          <p>
+            What they add is stored as yours, because a blood-pressure reading is
+            a fact about your body and who held the cuff is a fact about an
+            evening. Their name is in the audit trail rather than on the row, so
+            your record reads the same either way and &quot;who put this
+            here&quot; still has an answer months later.
+          </p>
+          <p>
+            The account around the record is not part of the deal at either
+            level: no credentials, no connected services, no notification
+            channels, no exports, no share links, and no way to pass the access
+            on or widen it. Those are refusals the server makes rather than
+            screens that happen to be hidden, and a control your record will not
+            accept is simply not there, because a button that exists and does not
+            work teaches somebody the product is broken.
+          </p>
+          <p>
+            You can see what the access is being used for. A panel lists who has
+            access and at which level, when they accepted, when they last opened
+            your record, which days somebody else was in it and what they added
+            while they were, down to an attempt that was refused. You are told at
+            the time when somebody marks one of your doses. An invitation can name
+            the day the access lapses, and either side can end it sooner, with
+            effect on their very next request rather than at their next login. If
+            they have your record open when you end it, that browser lands back
+            in their own account.
+          </p>
+          <p>
+            Ending access does not erase the record of it, so &quot;who had
+            access, and between which dates&quot; stays answerable afterwards.
+            What it is not is an undo: entries somebody added stay, because they
+            are yours, in your record, and every one of them was named to you at
+            the moment it was written.
           </p>
         </FeatureSection>
 

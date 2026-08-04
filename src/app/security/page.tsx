@@ -14,7 +14,7 @@ import { SITE_ORIGIN } from "@/content/learn/locales";
 
 const TITLE = "Security & privacy — your data, your server";
 const DESCRIPTION =
-  "How HealthLog protects health data: AES-256-GCM at rest with versioned key rotation, passkeys, Argon2id and two-factor auth, server-side sessions and hashed API tokens, an off-by-default OAuth-scoped AI assistant connector, an encrypted document vault with blind-index search and untrusted-document chat, self-hosting on your own infrastructure, and zero telemetry. Source available.";
+  "How HealthLog protects health data: AES-256-GCM at rest with versioned key rotation, passkeys, Argon2id and two-factor auth, server-side sessions and hashed API tokens, revocable access between two accounts at a read or an add-only level, refused by default on every route, an off-by-default OAuth-scoped AI assistant connector, an encrypted document vault with blind-index search and untrusted-document chat, self-hosting on your own infrastructure, and zero telemetry. Source available.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -81,6 +81,7 @@ const TOC = [
   { id: "encryption", label: "Encryption at rest" },
   { id: "auth", label: "Passkeys & passwords" },
   { id: "sessions", label: "Sessions & API tokens" },
+  { id: "sharing", label: "Shared access" },
   { id: "connector", label: "AI assistant connector" },
   { id: "documents", label: "Document vault" },
   { id: "dedup", label: "Source-priority dedup" },
@@ -254,14 +255,85 @@ export default function SecurityPage() {
         >
           <p>
             Sessions live server-side in PostgreSQL rather than in a token a
-            client could replay. API tokens are stored as keyed HMAC-SHA-256
-            hashes, never as plaintext, so a database read alone never yields a
-            usable token.
+            client could replay. The session cookie carries a purpose-generated
+            random secret and only its keyed HMAC-SHA-256 hash is stored, so the
+            value in the browser exists nowhere on the server. API tokens are
+            held the same way — never as plaintext, so a database read alone
+            never yields a usable credential.
           </p>
           <p>
             Devices each get their own refresh token with one-time-use rotation.
             If a rotated token is ever reused, that signals theft, and the
-            device&apos;s token family is revoked rather than left live.
+            device&apos;s token family is revoked rather than left live. The
+            device list identifies each device by an opaque handle that is
+            useless as a login.
+          </p>
+          <p>
+            An API token reaches only what its scope names. A token minted for
+            one purpose is refused by every endpoint that has not declared it,
+            and the refusal is audited.
+          </p>
+        </SecuritySection>
+
+        <SecuritySection
+          id="sharing"
+          label="Shared access"
+          color="cyan"
+          title="A grant between two accounts, refused by default"
+        >
+          <p>
+            One account can give another account on the same instance access to
+            its record. It is a grant, never a shared login: both people keep
+            their own password and their own second factor, and the permission is
+            a row the server checks rather than a credential anybody hands over.
+          </p>
+          <p>
+            The grant is read from the database on every single request, so
+            there is no cached verdict to wait out and revocation lands on the
+            delegate&apos;s next request rather than at their next login. An
+            invitation confers nothing until the person named on it accepts, and
+            an unaccepted or lapsed grant fails the same check a revoked one
+            does.
+          </p>
+          <p>
+            Every route in the product refuses while a session is acting on
+            another account. A route becomes reachable only by declaring which
+            mode it serves under a grant, and both declared sets are frozen by a
+            test, so a new endpoint cannot quietly widen what a delegate reaches.
+            Credentials, connected services, notification channels, exports,
+            clinician links and the sharing controls themselves are all outside
+            those sets, which is why a delegate can neither widen their own
+            access nor pass it on nor leave behind a door that outlives their
+            revocation.
+          </p>
+          <p>
+            A grant carries a level, and the write level is deliberately small.
+            Fifty-two route modules serve a shared record. Nine of them accept a
+            write, and every one of those creates a row rather than touching one
+            that already exists. Editing, deleting, restoring and importing
+            declare nothing and therefore refuse, which is why they stay with the
+            owner even on a row the delegate wrote a minute earlier. An unsafe
+            method on a route that declared itself readable counts as a write
+            whatever the route intended, so a read-level grant refuses it and a
+            route cannot widen itself by gaining a verb.
+          </p>
+          <p>
+            A delegate&apos;s entry is stored under the record owner, and nothing
+            marks the row as second-hand, because the reading is a fact about the
+            owner&apos;s body. Authorship rides the audit trail instead, which is
+            where that question is actually asked, and the owner sees each entry
+            named as it happens rather than finding it later. The cost is stated
+            rather than hidden: the audit window bounds how long &quot;who
+            entered this&quot; is answerable, and the entry outlives the name
+            attached to it.
+          </p>
+          <p>
+            Ending access stamps the grant rather than deleting it, so who had
+            access and between which dates stays answerable. What no product can
+            do is take back what somebody already read, and nothing in HealthLog
+            pretends otherwise. Entries a delegate added stay as well, which is
+            the same honesty rather than a gap: a revocation that quietly deleted
+            health data would be the worse behaviour.
           </p>
         </SecuritySection>
 
@@ -296,9 +368,12 @@ export default function SecurityPage() {
             The optional document vault keeps your letters, reports and scans
             encrypted at rest, alongside the rest of your record. It is off
             until you switch it on, and — as with every AI surface — a document
-            is only sent to an AI provider for the reads you consent to, one
-            document at a time. A local reader keeps the file on your server
-            entirely.
+            is only sent to an AI provider for a read you consented to. By
+            default that is one document at a time, on the action you tap.
+            Automatic reading is a separate, off-by-default switch; turning it
+            on is standing consent, and every document it reaches still
+            re-checks that consent and your daily budget. A local reader keeps
+            the file on your server entirely.
           </p>
           <p>
             Searching inside your documents runs over an encrypted blind index.
