@@ -148,7 +148,7 @@ export default function RootLayout({
       "Optional environmental-context module — daily weather, daylight, and temperature correlated against mood, sleep, and vitals",
       "Encrypted document vault (off by default) — store letters, reports and scans encrypted at rest; automatic on-device or per-document consented AI reading; whole-word search over an encrypted blind index; grounded, cited per-document chat; and time-boxed, revocable QR share links with photo metadata stripped",
       "Two-factor authentication (TOTP and WebAuthn) with step-up checks for sensitive actions",
-      "Shared access between two accounts on one instance: give a family member read access to your record without sharing a login. The invitation confers nothing until accepted, the delegate can read and never write, credentials, integrations, notification channels and exports stay out of reach, and either side can end the access with effect on the delegate's next request",
+      "Shared access between two accounts on one instance: give a family member access to your record without sharing a login, to read it or to read it and add to it. The invitation confers nothing until accepted and names the level; adding covers a closed list of new entries, while changing, deleting, restoring and importing stay with the owner at both levels; a delegate's entry is stored as the owner's, with authorship in the audit trail and a feed of what was contributed; credentials, integrations, notification channels and exports stay out of reach; an invitation can name the day the access lapses, and either side can end it sooner with effect on the delegate's next request",
       "Native SwiftUI iOS app (public TestFlight beta) with live two-way Apple Health (HealthKit) sync — steps, weight, blood pressure, glucose, sleep, body composition",
       "Weight, blood pressure, heart rate, body fat, sleep, steps tracking",
       "Body composition: total body water + bone mass via Withings auto-sync",
@@ -195,7 +195,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped manually
     // until the cross-repo release sync tool lands.
-    softwareVersion: "1.30.34",
+    softwareVersion: "1.36.1",
     license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
     // Landing page is English-only today. The HealthLog app itself is
     // bilingual (EN/DE) — that fact belongs on the app, not the marketing
@@ -277,7 +277,7 @@ export default function RootLayout({
         name: "Can I let a family member see my health record?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes, if they have an account on the same instance. You send them an invitation from Settings, and it gives them nothing until they accept it. Once accepted they can read your record and change nothing in it, and they cannot reach your password, your second factor, your connected services, your notification channels, your exports or the sharing controls themselves. Either side can end the access at any time, and it ends on their next request rather than their next login. You can see who has access, when they accepted, and which days they opened your record. This is a grant between two accounts, so nobody ever shares a login.",
+          text: "Yes, if they have an account on the same instance. You send them an invitation from Settings and it gives them nothing until they accept it. The invitation names a level: they can read your record, or read it and add to it. Adding covers a short, closed list of entries, a reading, a lab result, a biomarker, an illness entry, a value on a metric you track, a side effect against a drug, a medication, and marking a dose taken or skipped. Changing or deleting anything already in your record is yours alone at either level, including an entry they added a minute ago, and so is deferring one of your reminders. What they add is stored as yours, because it is a fact about your body, with their name in the audit trail rather than on the row, and you see everything they contributed in the same panel that lists who has access. They can never reach your password, your second factor, your connected services, your notification channels, your exports or the sharing controls themselves. An invitation can name the day the access lapses, and either side can end it sooner, with effect on their next request rather than their next login. This is a grant between two accounts, so nobody ever shares a login.",
         },
       },
       {

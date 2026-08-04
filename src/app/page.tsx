@@ -819,7 +819,7 @@ const secondaryFeatures = [
     icon: <SharedAccessIcon />,
     title: "Look after a family member's record",
     description:
-      "Give another account on your instance read access to your record. Both of you keep your own password and your own second factor; nobody signs in as anybody else. The invitation gives them nothing until they accept, they can read the record and change nothing in it, and either side can end it at any moment. Access ends on their next request rather than their next login. You see who has access and which days they opened it.",
+      "Give another account on your instance access to your record: to read it, or to read it and add to it. Both of you keep your own password and your own second factor; nobody signs in as anybody else. The invitation gives them nothing until they accept, and it names the level. Adding covers a short, closed list of entries, and changing or deleting what is already there is yours alone at either level. Every entry they make is stored as yours, with their name in the trail rather than on the row. You see who has access, what they added, and which days they opened it, and either side can end it at any moment.",
     color: "cyan",
   },
   {
@@ -999,7 +999,7 @@ const faqs = [
   {
     question: "Can I let a family member see my health record?",
     answer:
-      "Yes, if they have an account on the same instance. You send them an invitation from Settings, and it gives them nothing until they accept it. Once accepted they can read your record and change nothing in it, and they cannot reach your password, your second factor, your connected services, your notification channels, your exports or the sharing controls themselves. Either side can end the access at any time, and it ends on their next request rather than their next login. You can see who has access, when they accepted, and which days they opened your record. This is a grant between two accounts, so nobody ever shares a login.",
+      "Yes, if they have an account on the same instance. You send them an invitation from Settings and it gives them nothing until they accept it. The invitation names a level: they can read your record, or read it and add to it. Adding covers a short, closed list of entries, a reading, a lab result, a biomarker, an illness entry, a value on a metric you track, a side effect against a drug, a medication, and marking a dose taken or skipped. Changing or deleting anything already in your record is yours alone at either level, including an entry they added a minute ago, and so is deferring one of your reminders. What they add is stored as yours, because it is a fact about your body, with their name in the audit trail rather than on the row, and you see everything they contributed in the same panel that lists who has access. They can never reach your password, your second factor, your connected services, your notification channels, your exports or the sharing controls themselves. An invitation can name the day the access lapses, and either side can end it sooner, with effect on their next request rather than their next login. This is a grant between two accounts, so nobody ever shares a login.",
   },
   {
     question: "Is HealthLog a medical device?",

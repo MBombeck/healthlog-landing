@@ -14,7 +14,7 @@ import { SITE_ORIGIN } from "@/content/learn/locales";
 
 const TITLE = "Security & privacy — your data, your server";
 const DESCRIPTION =
-  "How HealthLog protects health data: AES-256-GCM at rest with versioned key rotation, passkeys, Argon2id and two-factor auth, server-side sessions and hashed API tokens, revocable read access between two accounts that is refused by default on every route, an off-by-default OAuth-scoped AI assistant connector, an encrypted document vault with blind-index search and untrusted-document chat, self-hosting on your own infrastructure, and zero telemetry. Source available.";
+  "How HealthLog protects health data: AES-256-GCM at rest with versioned key rotation, passkeys, Argon2id and two-factor auth, server-side sessions and hashed API tokens, revocable access between two accounts at a read or an add-only level, refused by default on every route, an off-by-default OAuth-scoped AI assistant connector, an encrypted document vault with blind-index search and untrusted-document chat, self-hosting on your own infrastructure, and zero telemetry. Source available.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -282,11 +282,10 @@ export default function SecurityPage() {
           title="A grant between two accounts, refused by default"
         >
           <p>
-            One account can give another account on the same instance read
-            access to its record. It is a grant, never a shared login: both
-            people keep their own password and their own second factor, and the
-            permission is a row the server checks rather than a credential
-            anybody hands over.
+            One account can give another account on the same instance access to
+            its record. It is a grant, never a shared login: both people keep
+            their own password and their own second factor, and the permission is
+            a row the server checks rather than a credential anybody hands over.
           </p>
           <p>
             The grant is read from the database on every single request, so
@@ -298,20 +297,43 @@ export default function SecurityPage() {
           </p>
           <p>
             Every route in the product refuses while a session is acting on
-            another account. A route becomes reachable only by declaring itself
-            safe to serve under a grant, and the set of declared routes is
-            frozen by a test, so a new endpoint cannot quietly widen what a
-            delegate reaches. Credentials, connected services, notification
-            channels, exports, clinician links and the sharing controls
-            themselves are all outside that set, which is why a delegate can
-            neither widen their own access nor pass it on nor leave behind a
-            door that outlives their revocation.
+            another account. A route becomes reachable only by declaring which
+            mode it serves under a grant, and both declared sets are frozen by a
+            test, so a new endpoint cannot quietly widen what a delegate reaches.
+            Credentials, connected services, notification channels, exports,
+            clinician links and the sharing controls themselves are all outside
+            those sets, which is why a delegate can neither widen their own
+            access nor pass it on nor leave behind a door that outlives their
+            revocation.
+          </p>
+          <p>
+            A grant carries a level, and the write level is deliberately small.
+            Fifty-two route modules serve a shared record. Nine of them accept a
+            write, and every one of those creates a row rather than touching one
+            that already exists. Editing, deleting, restoring and importing
+            declare nothing and therefore refuse, which is why they stay with the
+            owner even on a row the delegate wrote a minute earlier. An unsafe
+            method on a route that declared itself readable counts as a write
+            whatever the route intended, so a read-level grant refuses it and a
+            route cannot widen itself by gaining a verb.
+          </p>
+          <p>
+            A delegate&apos;s entry is stored under the record owner, and nothing
+            marks the row as second-hand, because the reading is a fact about the
+            owner&apos;s body. Authorship rides the audit trail instead, which is
+            where that question is actually asked, and the owner sees each entry
+            named as it happens rather than finding it later. The cost is stated
+            rather than hidden: the audit window bounds how long &quot;who
+            entered this&quot; is answerable, and the entry outlives the name
+            attached to it.
           </p>
           <p>
             Ending access stamps the grant rather than deleting it, so who had
             access and between which dates stays answerable. What no product can
             do is take back what somebody already read, and nothing in HealthLog
-            pretends otherwise.
+            pretends otherwise. Entries a delegate added stay as well, which is
+            the same honesty rather than a gap: a revocation that quietly deleted
+            health data would be the worse behaviour.
           </p>
         </SecuritySection>
 

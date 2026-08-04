@@ -319,13 +319,23 @@ export default function PrivacyPage() {
             backup target).
           </p>
           <p>
-            A user may also give another account on the same instance read
-            access to their own record. That disclosure happens only on the
-            user&apos;s own instruction, only once the other person has accepted
-            it, is read-only, stays inside the same server, and can be withdrawn
-            by either party at any time with effect on the recipient&apos;s next
-            request. It adds no recipient outside the instance and no
-            sub-processor.
+            A user may also give another account on the same instance access to
+            their own record. That disclosure happens only on the user&apos;s own
+            instruction, only once the other person has accepted it, only at the
+            level the invitation named, stays inside the same server, and can be
+            withdrawn by either party at any time with effect on the
+            recipient&apos;s next request. It adds no recipient outside the
+            instance and no sub-processor.
+          </p>
+          <p>
+            The higher of the two levels lets the recipient add entries to the
+            record from a closed list. It does not let them change or remove
+            anything already recorded, and it does not widen what they may read.
+            Entries made that way are stored as the record owner&apos;s own data,
+            since they describe the owner rather than the person who entered
+            them, and the identity of that person is retained in the audit log,
+            which the owner can inspect and which is deleted on the
+            instance&apos;s configured audit-retention schedule.
           </p>
           <p>
             For a self-hosted install, the operator is the data controller in
