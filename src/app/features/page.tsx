@@ -88,6 +88,7 @@ const TOC = [
   { id: "documents", label: "Document vault" },
   { id: "export", label: "Export & interoperability" },
   { id: "sharing", label: "Shared access" },
+  { id: "managed", label: "Managed profiles" },
   { id: "illness", label: "Illness journal & Rest Mode" },
   { id: "cycle", label: "Cycle tracking" },
   { id: "preventive", label: "Preventive-care reminders" },
@@ -458,8 +459,8 @@ export default function FeaturesPage() {
           </p>
           <p>
             The invitation gives them nothing until they accept it, and it names
-            what they may do. One level lets them read your record. The other
-            lets them read it and add to it, because usually the reason to share
+            what they may do. Read lets them open your record and change nothing
+            in it. Write lets them add to it, because usually the reason to share
             a record is that a second person is doing something about it. Somebody
             takes the reading, somebody watches the evening dose go down, and
             read-only access made them watch that happen and then ask you to type
@@ -468,12 +469,45 @@ export default function FeaturesPage() {
           <p>
             Adding is a list, not a permission, and the list is the whole of it:
             a reading, a lab result, a biomarker to track, an illness entry, a
-            value on a metric you already keep, a side effect against a drug, a
-            medication, and marking a dose taken or skipped. Every one of those
-            makes something new. Changing or deleting what is already in your
-            record is yours alone at either level, including an entry they added
-            a minute ago with a typo in it, and so is deferring one of your
-            reminders. They tell you, and you fix it.
+            side effect against a drug, a medication, and marking a dose taken or
+            skipped, one at a time or by clearing everything due at once. Every
+            one of those makes something new, and nothing on the list touches
+            what is already recorded, including an entry the person added a
+            minute ago with a typo in it. They tell you, and you fix it.
+          </p>
+          <p>
+            The third level is for the person who is keeping the record rather
+            than contributing to it, and keeping a record means fixing the row
+            that is wrong. Manage adds changing and removing entries, including
+            ones you wrote yourself, recording your health background, and
+            reading the insights your record generated. Offering it asks for your
+            second factor, so it happens in a browser and never by accident, and
+            everything a manager does is recorded under their own name with a
+            verb that says what it was rather than &quot;made a change&quot;.
+          </p>
+          <p>
+            An invitation can also open part of your record instead of all of it.
+            Eight sections: readings, medications, lab results, health
+            background, illness, mood and mind, cycle, documents. Everything you
+            do not pick stays closed, and a section you held back is refused
+            exactly the way a record you never shared would be, so the shape of
+            what you kept is not visible from outside either. Two things the
+            screen tells you rather than leaving you to find out. A section
+            carries whatever was written in it, so notes and names inside one can
+            mention any other part of your health, and a document can contain
+            anything at all. And the dashboard overview, the health score and the
+            daily digest appear only when the whole record is shared, because a
+            figure drawn from part of a record still reads as a figure about the
+            person.
+          </p>
+          <p>
+            Managing always covers the whole record, for the same reason: a level
+            that can rewrite entries, over a slice whose notes can be about any
+            other slice, is a boundary nobody can honestly draw. And a level or a
+            scope is fixed when the invitation is written. Nothing raises a grant
+            somebody has already accepted, because that would change what they
+            agreed to without asking them again. The way up is a new invitation
+            they accept.
           </p>
           <p>
             What they add is stored as yours, because a blood-pressure reading is
@@ -483,24 +517,26 @@ export default function FeaturesPage() {
             here&quot; still has an answer months later.
           </p>
           <p>
-            The account around the record is not part of the deal at either
-            level: no credentials, no connected services, no notification
-            channels, no exports, no share links, and no way to pass the access
-            on or widen it. Those are refusals the server makes rather than
-            screens that happen to be hidden, and a control your record will not
-            accept is simply not there, because a button that exists and does not
-            work teaches somebody the product is broken.
+            The account around the record is not part of the deal at any level:
+            no credentials, no connected services, no notification channels, no
+            module and threshold settings, no exports, no share links, and no way
+            to pass the access on or widen it. Those are refusals the server
+            makes rather than screens that happen to be hidden, and a control
+            your record will not accept is simply not there, because a button
+            that exists and does not work teaches somebody the product is broken.
           </p>
           <p>
             You can see what the access is being used for. A panel lists who has
-            access and at which level, when they accepted, when they last opened
-            your record, which days somebody else was in it and what they added
-            while they were, down to an attempt that was refused. You are told at
-            the time when somebody marks one of your doses. An invitation can name
-            the day the access lapses, and either side can end it sooner, with
-            effect on their very next request rather than at their next login. If
-            they have your record open when you end it, that browser lands back
-            in their own account.
+            access, at which level and over which sections, when they accepted,
+            when they last opened your record, which days somebody else was in it
+            and what they did while they were, down to an attempt that was
+            refused. It says how far back it can see rather than implying it goes
+            forever, and it says when it is showing you the most recent activity
+            rather than all of it. You are told at the time when somebody marks
+            one of your doses. An invitation can name the day the access lapses,
+            and either side can end it sooner, with effect on their very next
+            request rather than at their next login. If they have your record
+            open when you end it, that browser lands back in their own account.
           </p>
           <p>
             Ending access does not erase the record of it, so &quot;who had
@@ -508,6 +544,62 @@ export default function FeaturesPage() {
             What it is not is an undo: entries somebody added stay, because they
             are yours, in your record, and every one of them was named to you at
             the moment it was written.
+          </p>
+        </FeatureSection>
+
+        <FeatureSection
+          id="managed"
+          label="Managed profiles"
+          color="green"
+          title="A record for somebody who never signs in"
+        >
+          <p>
+            A grant runs between two accounts, and that covers half of looking
+            after somebody. The other half is the person who has no account to
+            begin with and never will: a child, or somebody in your care. Giving
+            them a login they will never use, so that you can hold its password,
+            would recreate the shared-login problem the whole feature exists to
+            avoid.
+          </p>
+          <p>
+            So a managed profile is a health record with no credentials. No
+            password, no passkey, no second factor, and no way to gain one. You
+            give it a name, optionally a real date of birth, and the language and
+            timezone its own days and reminders are measured in. Nothing is
+            invented from a year you did not give. Creating it asks for your
+            second factor, and you become its first guardian in the same step, so
+            there is no moment where the record exists and nobody is looking
+            after it.
+          </p>
+          <p>
+            You can invite a second guardian, who accepts the invitation the way
+            any other is accepted. That is worth doing before you need it,
+            because the record can never be left with nobody: the last guardian
+            cannot hand it back and cannot be removed, and the screen says so
+            where the refusal happens rather than after the fact. An invited
+            guardian counts only once they accept. The way out, if you are alone
+            with a profile, is to add somebody else or to delete it. Deleting is
+            a real ending and it is offered plainly, because being allowed to end
+            a record and being allowed to walk away from one are different
+            permissions and only the first is safe.
+          </p>
+          <p>
+            Its reminders reach the people looking after it, since a record with
+            no login has no phone and no chat of its own. Medication and
+            measurement reminders, safety-floor alerts and low-stock alerts go to
+            the guardians, each in their own language and over the channels they
+            had already chosen, and the message names whose record it is about.
+            It carries no buttons: a lock screen is a poor place to decide
+            something about another person&apos;s medication, so opening the app
+            takes you through the ordinary switch into that record. One guardian
+            turning their own reminders off does not silence the others.
+          </p>
+          <p>
+            A guardian keeps the profile&apos;s own settings too: its modules,
+            its units, its language and timezone, its thresholds and its
+            notification preferences, read and written as that record&apos;s
+            settings rather than as yours. Your own screens stay in your own
+            language while you do it.
           </p>
         </FeatureSection>
 

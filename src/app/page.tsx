@@ -718,6 +718,26 @@ function SharedAccessIcon() {
   );
 }
 
+function ManagedProfileIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
+      <circle cx="9.5" cy="7.5" r="3" stroke="currentColor" strokeWidth="1.5" />
+      <path
+        d="M4 19a5.5 5.5 0 0 1 11 0"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M18.5 10.2 21.5 11.4v3.1c0 1.9-1.2 3.6-3 4.3-1.8-.7-3-2.4-3-4.3v-3.1l3-1.2Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 /* ── Feature Data ───────────────────────────────── */
 
 const primaryFeatures = [
@@ -819,8 +839,15 @@ const secondaryFeatures = [
     icon: <SharedAccessIcon />,
     title: "Look after a family member's record",
     description:
-      "Give another account on your instance access to your record: to read it, or to read it and add to it. Both of you keep your own password and your own second factor; nobody signs in as anybody else. The invitation gives them nothing until they accept, and it names the level. Adding covers a short, closed list of entries, and changing or deleting what is already there is yours alone at either level. Every entry they make is stored as yours, with their name in the trail rather than on the row. You see who has access, what they added, and which days they opened it, and either side can end it at any moment.",
+      "Give another account on your instance access to your record: to read it, to read it and add to it, or to manage it, which can also correct and remove what is already there. Both of you keep your own password and your own second factor; nobody signs in as anybody else. The invitation gives them nothing until they accept, and it names the parts of the record it opens as well as the level, so you can hand somebody your medications without handing them your mood entries. Everything they do is listed for you with a verb that says what it was, and either side can end the access at any moment.",
     color: "cyan",
+  },
+  {
+    icon: <ManagedProfileIcon />,
+    title: "A record for somebody who doesn't sign in",
+    description:
+      "A child, or a person you care for, can have a health record with no login and no e-mail address of its own. You look after it as its guardian, in its own language and timezone, and you can invite a second guardian so it never rests on one person. Its reminders reach the people looking after it rather than a phone it doesn't have, each in their own language, naming whose record it is about. The record can't be left with nobody: the last guardian may delete it, and may not simply walk away from it.",
+    color: "green",
   },
   {
     icon: <FileIcon />,
@@ -999,7 +1026,12 @@ const faqs = [
   {
     question: "Can I let a family member see my health record?",
     answer:
-      "Yes, if they have an account on the same instance. You send them an invitation from Settings and it gives them nothing until they accept it. The invitation names a level: they can read your record, or read it and add to it. Adding covers a short, closed list of entries, a reading, a lab result, a biomarker, an illness entry, a value on a metric you track, a side effect against a drug, a medication, and marking a dose taken or skipped. Changing or deleting anything already in your record is yours alone at either level, including an entry they added a minute ago, and so is deferring one of your reminders. What they add is stored as yours, because it is a fact about your body, with their name in the audit trail rather than on the row, and you see everything they contributed in the same panel that lists who has access. They can never reach your password, your second factor, your connected services, your notification channels, your exports or the sharing controls themselves. An invitation can name the day the access lapses, and either side can end it sooner, with effect on their next request rather than their next login. This is a grant between two accounts, so nobody ever shares a login.",
+      "Yes, if they have an account on the same instance. You send them an invitation from Settings and it gives them nothing until they accept it. The invitation names a level: they can read your record, read it and add to it, or manage it, which can also correct and remove what is already recorded. It also names how much of the record it opens. You can pick from readings, medications, lab results, health background, illness, mood and mind, cycle and documents, and everything you do not pick stays closed and is refused exactly the way a record you never shared would be. Managing always covers the whole record, because a note in one section can be about any other. Deferring one of your reminders, and overturning a dose you have already decided, stay with you at every level. What somebody adds is stored as yours, because it is a fact about your body, with their name in the audit trail rather than on the row, and the activity panel names each act with a verb that says what it was. They can never reach your password, your second factor, your connected services, your notification channels, your exports or the sharing controls themselves. An invitation can name the day the access lapses, and either side can end it sooner, with effect on their next request rather than their next login. This is a grant between two accounts, so nobody ever shares a login.",
+  },
+  {
+    question: "Can I keep a record for my child, or for somebody I care for?",
+    answer:
+      "Yes. A managed profile is a health record for a person who does not sign in at all. It has no password and no e-mail address, and it never gains one. You give it a name, optionally a date of birth, and the language and timezone its own days and reminders are measured in, and you become its first guardian in the same step, so the record is never left unattended. You can invite a second guardian, who accepts the way any invitation is accepted. Its reminders reach the people looking after it rather than a phone it does not have: medication and measurement reminders, safety-floor and low-stock alerts all go to the guardians, each in their own language, naming whose record they are about. The record can never be left with nobody, so the last guardian may delete the profile but may not hand it back. Creating one asks for your second factor.",
   },
   {
     question: "Is HealthLog a medical device?",

@@ -322,20 +322,42 @@ export default function PrivacyPage() {
             A user may also give another account on the same instance access to
             their own record. That disclosure happens only on the user&apos;s own
             instruction, only once the other person has accepted it, only at the
-            level the invitation named, stays inside the same server, and can be
-            withdrawn by either party at any time with effect on the
-            recipient&apos;s next request. It adds no recipient outside the
-            instance and no sub-processor.
+            level the invitation named and only over the parts of the record it
+            named, stays inside the same server, and can be withdrawn by either
+            party at any time with effect on the recipient&apos;s next request.
+            Neither the level nor the extent can be raised on an access already
+            granted; a wider access requires a new invitation, accepted again. It
+            adds no recipient outside the instance and no sub-processor.
           </p>
           <p>
-            The higher of the two levels lets the recipient add entries to the
-            record from a closed list. It does not let them change or remove
-            anything already recorded, and it does not widen what they may read.
-            Entries made that way are stored as the record owner&apos;s own data,
-            since they describe the owner rather than the person who entered
-            them, and the identity of that person is retained in the audit log,
-            which the owner can inspect and which is deleted on the
-            instance&apos;s configured audit-retention schedule.
+            The second level lets the recipient add entries to the record from a
+            closed list, and does not let them change or remove anything already
+            recorded. The third lets them change and remove entries as well,
+            including ones the record owner made, and record the health
+            background held with the record. No level widens what the recipient
+            may read beyond the parts the invitation named, and no level reaches
+            the account around the record: credentials, second factor, connected
+            services, API tokens, notification routing, module and threshold
+            configuration, exports, and who else has access all stay with the
+            account holder. Entries made under an access are stored as the record
+            owner&apos;s own data, since they describe the owner rather than the
+            person who entered them, and the identity of that person is retained
+            in the audit log, which the owner can inspect and which is deleted on
+            the instance&apos;s configured audit-retention schedule. The
+            interface states that retention period to the owner rather than
+            implying an unlimited one.
+          </p>
+          <p>
+            An instance may also hold a record for a person who has no account of
+            their own, such as a child or somebody in the user&apos;s care. Such
+            a record has no login, no e-mail address and no authentication
+            credential of any kind, and it is administered by one or more
+            guardians who each hold an access of the third level over it. Data in
+            it is processed on the same basis and on the same infrastructure as
+            any other record on the instance. Notifications it generates are
+            delivered to its guardians on the channels those guardians have
+            themselves enabled, because the record has no contact channel of its
+            own. Deleting the record erases the data held in it.
           </p>
           <p>
             For a self-hosted install, the operator is the data controller in

@@ -308,14 +308,58 @@ export default function SecurityPage() {
           </p>
           <p>
             A grant carries a level, and the write level is deliberately small.
-            Fifty-two route modules serve a shared record. Nine of them accept a
-            write, and every one of those creates a row rather than touching one
-            that already exists. Editing, deleting, restoring and importing
-            declare nothing and therefore refuse, which is why they stay with the
-            owner even on a row the delegate wrote a minute earlier. An unsafe
-            method on a route that declared itself readable counts as a write
-            whatever the route intended, so a read-level grant refuses it and a
-            route cannot widen itself by gaining a verb.
+            Every route it admits creates a row rather than touching one that
+            already exists. Editing, deleting, restoring and importing declare
+            nothing and therefore refuse, which is why they stay with the owner
+            even on a row the delegate wrote a minute earlier. An unsafe method
+            on a route that declared itself readable counts as a write whatever
+            the route intended, so a read-level grant refuses it and a route
+            cannot widen itself by gaining a verb.
+          </p>
+          <p>
+            The third level, manage, is the one that can revise a record, and it
+            stops on the same line the other two do: record content on one side,
+            account configuration on the other. It never reaches the login, the
+            second factor, provider connections, API tokens, notification
+            routing, module and threshold settings, or who else has access.
+            Offering it resolves a fresh second factor through the browser
+            session, which is why it cannot be offered from a token at all, and
+            every act a manager performs lands in the owner&apos;s activity view
+            under the manager&apos;s own name with a verb that names it.
+          </p>
+          <p>
+            A grant can also be narrower than the whole record. An invitation
+            names the sections it opens, and a section that was not named is
+            refused exactly the way a record nobody shared is. Those section
+            names are a sharing vocabulary and never the instance&apos;s module
+            vocabulary, permanently and on purpose: &quot;the owner turned this
+            part of the product on&quot; and &quot;the owner opened this part of
+            their record to that person&quot; are unrelated questions, and the
+            day the two share a spelling is the day one starts implying the
+            other in the dangerous direction. A stored scope never grows by
+            release either, since it holds the keys the owner ticked and a key
+            that did not exist then cannot be among them. A new section is a
+            consent question rather than a schema question.
+          </p>
+          <p>
+            Every refusal a delegate can earn is the same status and the same
+            bytes: a record nobody shared, an account that does not exist, a
+            section the grant does not open, a write on a read grant. A
+            distinguishable refusal would be an account-enumeration oracle for
+            anybody holding a login on the instance. The reason is not lost, it
+            is routed: it reaches the record owner&apos;s activity view and the
+            operator&apos;s audit trail rather than the person who was refused.
+          </p>
+          <p>
+            A browser session that has entered somebody else&apos;s record also
+            asserts which record it believes it is in, on every request. A
+            request naming a record the session has left is refused, and the tab
+            recovers by re-reading who it is. That closes the window where a
+            second tab, left open on the record you had just switched away from,
+            went on reading and writing there. A session that has never opened
+            another record carries nothing and is unaffected, and neither is a
+            client authenticating with a token, since those name the record on
+            the request itself and never held a selector that could go stale.
           </p>
           <p>
             A delegate&apos;s entry is stored under the record owner, and nothing
@@ -334,6 +378,19 @@ export default function SecurityPage() {
             pretends otherwise. Entries a delegate added stay as well, which is
             the same honesty rather than a gap: a revocation that quietly deleted
             health data would be the worse behaviour.
+          </p>
+          <p>
+            A record that exists for somebody with no login of their own follows
+            every rule above, because a guardian relationship is a manage grant
+            with the profile as the grantor rather than a new kind of
+            permission. It adds one rule of its own, which runs the other way: a
+            record with nobody behind it may never be left with nobody looking
+            after it. The last guardian cannot hand it back and cannot be
+            removed, and that floor holds on every path that could breach it,
+            including a guardian deleting their own account and an
+            instance-level data wipe, rather than only on the button that looks
+            like it would. The way to end such a record is to delete it, on
+            purpose.
           </p>
         </SecuritySection>
 
