@@ -92,6 +92,7 @@ const TOC = [
   { id: "illness", label: "Illness journal & Rest Mode" },
   { id: "cycle", label: "Cycle tracking" },
   { id: "preventive", label: "Preventive-care reminders" },
+  { id: "visits", label: "Doctor visits" },
   { id: "environment", label: "Environmental context" },
   { id: "coach", label: "AI Coach" },
   { id: "assistants", label: "AI assistants & MCP" },
@@ -223,6 +224,15 @@ export default function FeaturesPage() {
             felt. Each is an optional 0 to 10 slider, the quick face check-in
             still saves in a tap, and every dimension you answer trends over
             seven, thirty or ninety days.
+          </p>
+          <p>
+            Once there are enough days to say something honest, the mood record
+            can also show what a day would have looked like on your own past
+            patterns, and how far the day you recorded sits from it. It is a
+            second reading beside your own rating, never a replacement for it: it
+            carries the number of days it rests on and a range rather than a
+            single figure, names which of the things you recorded weighed most,
+            and stays silent below a floor of days rather than guessing.
           </p>
           <p>
             Newer signals slot in the same way, each with its own detail page,
@@ -660,6 +670,32 @@ export default function FeaturesPage() {
             rolling cadence or a calendar rule. They auto-resolve once the
             matching reading lands, so the list stays honest without manual
             cleanup.
+          </p>
+        </FeatureSection>
+
+        <FeatureSection
+          id="visits"
+          label="Doctor visits"
+          color="orange"
+          title="The appointment, and everything it touched"
+        >
+          <p>
+            Appointments and the practices behind them have their own section. A
+            visit records what kind it was, when it happened, its status, an
+            optional practice from a contact list you keep, and an encrypted
+            note. It links to the lab results, documents and illness episodes it
+            concerned, and those links point at the originals rather than copying
+            them, so a later correction in the source shows through.
+          </p>
+          <p>
+            A preventive-care check-up is closed by recording the visit that
+            fulfilled it, and a planned visit sets a reminder the server
+            re-anchors when you move the date and clears when the visit happens
+            or is cancelled. It fires once, never nags, and carries no done
+            button, because an appointment is not a task you tick off. The
+            section shares under the same access model as the rest of the record
+            and appears in the doctor-report PDF as a visit list you can leave
+            out.
           </p>
         </FeatureSection>
 
