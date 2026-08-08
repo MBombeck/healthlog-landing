@@ -196,7 +196,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped manually
     // until the cross-repo release sync tool lands.
-    softwareVersion: "1.37.0",
+    softwareVersion: "1.37.1",
     license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
     // Landing page is English-only today. The HealthLog app itself is
     // bilingual (EN/DE) — that fact belongs on the app, not the marketing

@@ -217,6 +217,14 @@ export default function FeaturesPage() {
             month or last year so a change reads at a glance.
           </p>
           <p>
+            A mood entry records five separate answers rather than one number:
+            how pleasant the day felt, how much strain it carried, how much
+            energy there was, how connected you were, and how able to act you
+            felt. Each is an optional 0 to 10 slider, the quick face check-in
+            still saves in a tap, and every dimension you answer trends over
+            seven, thirty or ninety days.
+          </p>
+          <p>
             Newer signals slot in the same way, each with its own detail page,
             reference range and trend: grip strength, a 0–10 pain score, and
             waist circumference with waist-to-height ratio. Single-lead ECG
@@ -324,8 +332,13 @@ export default function FeaturesPage() {
           <p>
             Enter lab results against a biomarker catalogue that carries
             reference ranges, so each value lands in or out of range on entry.
-            Group related markers into panels, and watch every biomarker trend
-            across draws instead of reading isolated numbers off a PDF.
+            A result read from a lab report keeps the reference range printed
+            on that report, and the printed range decides the verdict, because
+            that is the range your physician evaluates against. The chart
+            shows it as a second band, and the catalogue stays the fallback
+            for values without one. Group related markers into panels, and
+            watch every biomarker trend across draws instead of reading
+            isolated numbers off a PDF.
           </p>
           <p>
             A longevity panel rounds out the catalogue — ApoB, Lp(a), hs-CRP,
