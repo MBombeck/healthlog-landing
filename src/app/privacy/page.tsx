@@ -658,6 +658,13 @@ export default function PrivacyPage() {
               policyUrl="https://www.cloudflare.com/privacypolicy/"
             />
             <SubProcessor
+              name="ip-api.com (Unizeto-hosted geolocation API)"
+              role="Places the IP address of a sign-in on a map, so the security page can show you where your sessions came from. Nobody enables this: it runs on every sign-in the instance cannot place from a local database, and this instance has no local database mounted, so every sign-in reaches it. An operator can switch it off entirely with IP_GEO_LOOKUP_DISABLED=1, or mount MaxMind's GeoLite2 files and keep the lookup on the host."
+              data="The IP address of the sign-in, and nothing else. No account identifier, no session, no health data."
+              location="Provider-operated infrastructure. The free endpoint publishes no data-processing agreement."
+              policyUrl="https://ip-api.com/docs/legal"
+            />
+            <SubProcessor
               name="Hetzner Online GmbH"
               role="Hardware host for the application server and the PostgreSQL database."
               data="Disk and network traffic between the operator-controlled virtual machines and the public internet."
