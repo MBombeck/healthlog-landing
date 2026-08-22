@@ -691,8 +691,11 @@ export default function PrivacyPage() {
             <li>
               Retention: account data is retained until the user requests
               erasure (see section 7) or the account is administratively
-              closed. Audit logs are retained for 90 days; server access logs
-              for 14 days.
+              closed. Audit logs are retained for 365 days; server access logs
+              for 14 days. This page said 90 days for the audit log until
+              August 2026, which was never what the software did: 365 days is
+              the built-in default, and every operator sets their own window
+              with <code>AUDIT_LOG_RETENTION_DAYS</code>.
             </li>
             <li>
               Deletion: the account-deletion endpoint cascades through every
