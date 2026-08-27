@@ -1198,15 +1198,15 @@ export default function Home() {
               {[
                 {
                   src: "/screenshots/ios/ios-dashboard.webp",
-                  alt: "HealthLog iOS app home screen with the Apple Health connection card, Health Score ring, today's medication compliance, and weight and blood-pressure tiles",
+                  alt: "HealthLog iOS home screen with today's medication compliance ring and weight, blood-pressure, and pulse tiles",
                 },
                 {
-                  src: "/screenshots/ios/ios-insights.webp",
-                  alt: "HealthLog iOS Insights screen with the Coach prompt, Health Score, BMI, and a blood-pressure target band",
+                  src: "/screenshots/ios/ios-medications.webp",
+                  alt: "HealthLog iOS medications screen with active medications, 7-day and 30-day compliance bars, next-intake times, and taken or skipped actions",
                 },
                 {
-                  src: "/screenshots/ios/ios-medication-detail.webp",
-                  alt: "HealthLog iOS medication detail screen showing 30-day compliance, a 14-day adherence strip, last dose, and intake history",
+                  src: "/screenshots/ios/ios-sharing.webp",
+                  alt: "HealthLog iOS share screen for a clinician link: choosing included data, a time range, and the output form",
                 },
               ].map((shot, i) => (
                 <div
