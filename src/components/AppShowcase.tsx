@@ -36,11 +36,11 @@ const screens: Screen[] = [
     accent: "#bd93f9",
   },
   {
-    src: "/screenshots/desktop-trends-opt.webp",
-    alt: "HealthLog trend charts for medication adherence, sleep duration, and daily step count",
-    kicker: "Trends",
-    title: "A shift you can spot in a second",
-    body: "Clean-line charts for every metric — adherence, sleep, steps and more — each one overlaid with last month and last year, so the direction is obvious at a glance.",
+    src: "/screenshots/desktop-coach-opt.webp",
+    alt: "HealthLog AI Coach answering a question about the last 30 days of blood pressure readings in plain language",
+    kicker: "AI Coach",
+    title: "Ask your record a question",
+    body: "The Coach reads your own data and answers in plain language: what changed, what stayed in range, what deserves a closer look. Bring your own key, run a local model, or leave AI off entirely.",
     accent: "#50fa7b",
   },
   {
