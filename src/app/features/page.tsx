@@ -807,10 +807,11 @@ export default function FeaturesPage() {
           title="Bring your devices and services"
         >
           <p>
-            Sync from Withings, WHOOP, Oura, Polar, Fitbit (via Google Health)
-            and Nightscout. Apple Health connects two-way through the native iOS
-            app and HealthKit, and you can also drop an Apple Health export.zip
-            on the upload page on any platform.
+            Sync from Withings, WHOOP, Oura, Polar, Strava, Fitbit (classic
+            OAuth or the Google Health API) and Nightscout. Apple Health
+            connects two-way through the native iOS app and HealthKit, and you
+            can also drop an Apple Health export.zip on the upload page on any
+            platform.
           </p>
           <p>
             When several sources log the same day, source-priority dedup

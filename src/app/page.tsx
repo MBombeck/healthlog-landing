@@ -196,34 +196,6 @@ function FileIcon({ className = "w-6 h-6" }: { className?: string }) {
   );
 }
 
-function SyncIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
-      <path
-        d="M23 4v6h-6"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M1 20v-6h6"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 function FlaskIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
@@ -587,59 +559,6 @@ function PlugIcon() {
   );
 }
 
-function ClipboardIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
-      <path
-        d="M9 2h6a1 1 0 0 1 1 1v2H8V3a1 1 0 0 1 1-1z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <line
-        x1="8"
-        y1="11"
-        x2="16"
-        y2="11"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <line
-        x1="8"
-        y1="15"
-        x2="13"
-        y2="15"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function CloudIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
-      <path
-        d="M17.5 19a4.5 4.5 0 0 0 .5-8.97 6 6 0 0 0-11.64-1.6A4 4 0 0 0 6.5 19h11z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 function VaultIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
@@ -675,23 +594,6 @@ function VaultIcon() {
   );
 }
 
-function SearchIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
-      <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.5" />
-      <line
-        x1="16.5"
-        y1="16.5"
-        x2="21"
-        y2="21"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
 function SharedAccessIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
@@ -718,192 +620,88 @@ function SharedAccessIcon() {
   );
 }
 
-function ManagedProfileIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
-      <circle cx="9.5" cy="7.5" r="3" stroke="currentColor" strokeWidth="1.5" />
-      <path
-        d="M4 19a5.5 5.5 0 0 1 11 0"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M18.5 10.2 21.5 11.4v3.1c0 1.9-1.2 3.6-3 4.3-1.8-.7-3-2.4-3-4.3v-3.1l3-1.2Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 /* ── Feature Data ───────────────────────────────── */
 
 const primaryFeatures = [
   {
     icon: <HeartMetricIcon />,
-    title: "All vitals at a glance",
+    title: "Every vital on one timeline",
     description:
-      "Weight, blood pressure, heart rate, body composition, blood glucose, SpO₂, respiratory rate, sleep, steps and mood — plus grip strength, a pain score and waist measurements. More synced signals now read as at-a-glance dashboard tiles too: heart-rate variability, blood oxygen, breathing rate and body composition. Heart rate is drawn across the whole day, and an All-metrics view lists everything HealthLog can track. Every reading on one timeline, with personal target ranges, vs-last-month or vs-last-year overlays, and a persistent rollup tier that keeps years of history sub-second.",
+      "Weight, blood pressure, heart rate, glucose, sleep, body composition and two dozen more, from every device you own. Personal target ranges and last-year overlays put each reading in context. Years of history load in under a second.",
     color: "purple",
   },
   {
     icon: <PillIcon />,
-    title: "Never miss a dose again",
+    title: "Medication, done properly",
     description:
-      "Fixed times, flexible intervals, cyclic on/off courses, as-needed or one-off injections — schedule any regimen and set per-dose intake windows. Supply tracking warns you before you run out, reminders escalate when a dose slips, and injectables carry site rotation and dose-titration history.",
+      "Fixed times, flexible intervals, cyclic courses, as-needed doses: schedule any regimen. Supply tracking warns before you run out, and reminders escalate when a dose slips. Injectables carry site rotation, dose titration and a pen inventory.",
     color: "cyan",
   },
   {
     icon: <BrainIcon />,
-    title: "AI Coach grounded in your data",
+    title: "A Coach that cites its sources",
     description:
-      "A conversational Coach, daily briefing, weekly report and Health Score — every reply cites the exact metric, window and reading count it drew on, with mini-charts pinned underneath. It also discusses your stored documents in its own view, with its own history, grounded in the document you open. Its proactive check-in is warmer now: it greets you by name, keeps to one calm thought, and never nags. Bring your own provider — your ChatGPT subscription via OpenAI OAuth, your own OpenAI or Anthropic key, or a fully local model that never leaves your network.",
+      "Ask about your numbers, and every answer names the metric, the window and the reading count it drew on, chart attached. Use your own OpenAI or Anthropic key, your ChatGPT subscription, or a local model that never leaves your network.",
     color: "orange",
   },
 ];
 
 const secondaryFeatures = [
   {
-    icon: <CalendarIcon />,
-    title: "A Today view that meets your day",
-    description:
-      "The dashboard opens on a health score, the day's lead read and a short 'worth a look' list — each a single tap away. It reads the digest prepared overnight, so it loads instantly, and the score finalises the moment last night's sleep syncs. A coach check-in surfaces when a plan is due, and an optional once-a-day morning note carries the read to your channel of choice.",
-    color: "purple",
-  },
-  {
-    icon: <HeartMetricIcon />,
-    title: "Intraday pulse & quiet milestones",
-    description:
-      "See your heart rate settle and climb across the whole day, with a careful 'elevated at rest' note when it stays high while you're still — never a verdict. Reaching a steady stretch in range or a new personal best is marked as a milestone: a state you've reached, not a streak to keep, so there's nothing to break and nothing to nag.",
-    color: "pink",
-  },
-  {
     icon: <FlaskIcon />,
-    title: "Hydration & vitamins",
+    title: "Labs & biomarkers",
     description:
-      "A water tile with quick-add amounts and a Nutrients page for hydration, caffeine and the vitamins and minerals your device records — each against its reference daily intake as context, never a verdict. Dietary intake and hydration flow in from Apple Health; sparse logging is never read as a deficiency. Off until you switch it on.",
+      "Blood work lands against a reference-range catalogue, grouped into panels and trended over years. A longevity panel from ApoB to the omega-3 index is built in.",
     color: "green",
   },
   {
-    icon: <PillIcon />,
-    title: "Built for injectables",
+    icon: <VaultIcon />,
+    title: "Encrypted document vault",
     description:
-      "GLP-1 and other injections get site-rotation tracking, a dose-titration timeline, pen inventory and a side-effect logbook — not just a checkbox.",
+      "Doctor's letters, reports and scans, encrypted at rest and searchable without storing anything readable. Ask a document a question, get a cited answer.",
     color: "cyan",
   },
   {
-    icon: <SyncIcon />,
-    title: "Apple Health import",
+    icon: <FileIcon />,
+    title: "Doctor report & export",
     description:
-      "Drop your iOS export.zip on the upload page — a streaming parser folds multi-GB archives into the same timeline, idempotent on the archive's checksum.",
-    color: "purple",
-  },
-  {
-    icon: <FlaskIcon />,
-    title: "Lab results & biomarkers",
-    description:
-      "Log blood work against a biomarker catalogue with reference ranges, group results into panels, and watch every marker trend over time. A longevity panel covers ApoB, Lp(a), hs-CRP, HbA1c, fasting glucose and insulin, eGFR, GGT, ferritin and the omega-3 index.",
+      "A localized PDF for the next appointment, a FHIR R4 bundle for the clinician's system, CSV and JSON for yourself. Your data leaves the way it came in.",
     color: "green",
   },
   {
-    icon: <HeartMetricIcon />,
-    title: "Illness & condition journal",
+    icon: <SharedAccessIcon />,
+    title: "Shared & family records",
     description:
-      "Track acute illnesses, chronic conditions and flares with a daily symptom log. An active episode turns on Rest Mode, which softens nudges and reframes your score instead of penalising it.",
+      "Let a partner read or manage your record, and keep records for children who don't sign in themselves. Every access is listed, and either side can end it at any time.",
+    color: "cyan",
+  },
+  {
+    icon: <MoodIcon />,
+    title: "Mood & mental wellbeing",
+    description:
+      "A five-point mood log correlated against sleep and activity, with optional PHQ-9 and GAD-7 check-ins. Encrypted, and screening rather than diagnosis.",
     color: "pink",
   },
   {
     icon: <MoodIcon />,
     title: "Cycle tracking",
     description:
-      "Symptothermal cycle tracking with period logging, symptoms and a careful prediction model. Discreet by design, and off unless you switch it on.",
+      "Symptothermal tracking with a careful prediction model. Discreet by design, and off until you switch it on.",
     color: "pink",
   },
   {
     icon: <CalendarIcon />,
     title: "Preventive-care reminders",
     description:
-      "Schedule recurring check-ups and measurements — annual blood work, a week of twice-daily blood pressure — on a rolling cadence or a calendar rule. They resolve themselves once the reading lands.",
+      "Annual blood work, a week of twice-daily blood pressure: recurring check-ups on their own cadence, resolving themselves once the reading lands.",
     color: "orange",
-  },
-  {
-    icon: <FileIcon />,
-    title: "Export everything",
-    description:
-      "Your data leaves the way it came in: CSV, JSON, a localized doctor-report PDF, and a FHIR R4 bundle (Patient, Observation, MedicationStatement, MedicationAdministration, Coverage) for a clinician's system.",
-    color: "green",
-  },
-  {
-    icon: <SharedAccessIcon />,
-    title: "Look after a family member's record",
-    description:
-      "Give another account on your instance access to your record: to read it, to read it and add to it, or to manage it, which can also correct and remove what is already there. Both of you keep your own password and your own second factor; nobody signs in as anybody else. The invitation gives them nothing until they accept, and it names the parts of the record it opens as well as the level, so you can hand somebody your medications without handing them your mood entries. Everything they do is listed for you with a verb that says what it was, and either side can end the access at any moment.",
-    color: "cyan",
-  },
-  {
-    icon: <ManagedProfileIcon />,
-    title: "A record for somebody who doesn't sign in",
-    description:
-      "A child, or a person you care for, can have a health record with no login and no e-mail address of its own. You look after it as its guardian, in its own language and timezone, and you can invite a second guardian so it never rests on one person. Its reminders reach the people looking after it rather than a phone it doesn't have, each in their own language, naming whose record it is about. The record can't be left with nobody: the last guardian may delete it, and may not simply walk away from it.",
-    color: "green",
-  },
-  {
-    icon: <FileIcon />,
-    title: "Customizable dashboard",
-    description:
-      "Show, hide and reorder every widget. Reset to defaults anytime — your data is never touched.",
-    color: "purple",
-  },
-  {
-    icon: <MoodIcon />,
-    title: "Mood tracking",
-    description:
-      "A five-point scale with tags and notes, correlated against sleep, activity and the rest of your timeline.",
-    color: "pink",
   },
   {
     icon: <PlugIcon />,
-    title: "Connect your record to AI assistants",
+    title: "AI assistants via MCP",
     description:
-      "An OAuth-secured Model Context Protocol server lets MCP-compatible assistants — Claude, ChatGPT and others — read your record, now including nutrition and vitamins, the intraday pulse curve and your stored ECG recordings, and, with a write-scoped token you mint, log a measurement after you confirm. A signal is readable only once it's named for the connector. Off by default; you stay in control of the connector token.",
+      "Connect Claude or ChatGPT to your record over an OAuth-secured MCP server. Off by default, and it reads only the signals you name.",
     color: "cyan",
-  },
-  {
-    icon: <ClipboardIcon />,
-    title: "Mental-wellbeing check-ins",
-    description:
-      "Optional PHQ-9 and GAD-7 self-assessments sit alongside your mood log — screening, never a diagnosis. Answers are encrypted, and a non-zero self-harm response surfaces calm, local crisis-support contacts.",
-    color: "purple",
-  },
-  {
-    icon: <FileIcon />,
-    title: "Medical history",
-    description:
-      "Structured, encrypted allergy and family-history records, gathered in one place and included in the health-record export. Yours to keep, never interpreted for you.",
-    color: "green",
-  },
-  {
-    icon: <CloudIcon />,
-    title: "Environmental context",
-    description:
-      "An optional module pulls daily weather, daylight and temperature for your location and correlates them against your mood, sleep and vitals. Off by default, with a home location and backfill.",
-    color: "orange",
-  },
-  {
-    icon: <VaultIcon />,
-    title: "Encrypted document vault",
-    description:
-      "Keep every doctor's letter, report and scan in one place, encrypted at rest. Each upload is read and made searchable automatically — by a local reader that never leaves your server, or, with your per-document consent, by your own AI provider for a richer read of scans. Off by default.",
-    color: "cyan",
-  },
-  {
-    icon: <SearchIcon />,
-    title: "Search, ask and share documents",
-    description:
-      "Find a word across years of letters over an encrypted blind index that stores nothing readable. Ask a single document a plain-language question and get a grounded, cited answer. Hand a clinician a time-boxed, revocable link by QR — with photo metadata stripped.",
-    color: "green",
   },
 ];
 
@@ -911,42 +709,45 @@ const integrations = [
   {
     name: "Withings",
     blurb:
-      "Scales, blood-pressure monitors and watches sync automatically over OAuth, with a webhook for near-real-time updates.",
+      "Scales, blood-pressure monitors and watches over OAuth, with webhooks for near-real-time updates.",
     color: "cyan",
   },
   {
     name: "Apple Health",
     blurb:
-      "Two-way sync through the native iOS app — readings flow both directions onto one timeline, no cloud middleman.",
+      "Two-way sync through the native iOS app, plus full-history import from an export.zip.",
     color: "purple",
   },
   {
     name: "WHOOP",
     blurb:
-      "Recovery, sleep and strain pulled in over OAuth and reconciled against your other sources.",
+      "Recovery, sleep and strain over OAuth, reconciled against your other sources.",
     color: "green",
   },
   {
     name: "Oura",
-    blurb:
-      "Sleep, readiness and activity from the ring, landing on the same timeline as everything else.",
+    blurb: "Sleep, readiness and activity from the ring.",
     color: "pink",
   },
   {
     name: "Polar",
-    blurb:
-      "Workouts and heart-rate data sync straight from your Polar account.",
+    blurb: "Workouts and heart rate straight from your Polar account.",
     color: "orange",
   },
   {
-    name: "Fitbit",
-    blurb: "Steps, sleep and activity through the Google Health connection.",
+    name: "Fitbit & Pixel Watch",
+    blurb:
+      "Classic Fitbit OAuth, or the Google Health API through your own Google Cloud client.",
     color: "cyan",
   },
   {
+    name: "Strava",
+    blurb: "Runs and rides from your Strava account, synced over OAuth.",
+    color: "orange",
+  },
+  {
     name: "Nightscout",
-    blurb:
-      "Continuous glucose pulled straight from your own Nightscout instance.",
+    blurb: "Continuous glucose straight from your own Nightscout instance.",
     color: "purple",
   },
 ];
@@ -979,14 +780,14 @@ const techItems = [
 ];
 
 const privacyChecks = [
-  "No cloud dependency — runs entirely on your own server",
+  "No cloud dependency: runs entirely on your own server",
   "No telemetry, no analytics, no tracking scripts",
   "AES-256-GCM encryption for all sensitive data at rest",
   "API tokens stored as keyed HMAC-SHA-256 hashes, never in plaintext",
-  "Passkey authentication — phishing-resistant, no password leaks",
+  "Passkey authentication, phishing-resistant by design",
   "Password fallback with Argon2id hashing and strength validation",
   "Withings OAuth tokens encrypted in the database",
-  "Source available — every single line of code is auditable",
+  "Source available: every single line of code is auditable",
 ];
 
 // Kept verbatim in sync with the FAQPage JSON-LD in src/app/layout.tsx —
@@ -996,12 +797,12 @@ const faqs = [
   {
     question: "Is HealthLog free?",
     answer:
-      "Yes, for noncommercial use. HealthLog is source available under the PolyForm Noncommercial 1.0.0 licence. You run it on your own server with a single docker compose up — there is no subscription and no paid tier.",
+      "Yes, for noncommercial use. HealthLog is source available under the PolyForm Noncommercial 1.0.0 licence. You run it on your own server with a single docker compose up. There is no subscription and no paid tier.",
   },
   {
     question: "Does HealthLog sync with Apple Health?",
     answer:
-      "Yes. The native SwiftUI iOS app (public TestFlight beta) keeps Apple Health (HealthKit) in two-way sync — steps, weight, blood pressure, blood glucose, sleep, and body composition flow straight to your own server. On any platform you can also drop an Apple Health export.zip on the upload page.",
+      "Yes. The native SwiftUI iOS app (open source, public TestFlight beta) keeps Apple Health (HealthKit) in two-way sync: steps, weight, blood pressure, blood glucose, sleep, and body composition flow straight to your own server. On any platform you can also drop an Apple Health export.zip on the upload page.",
   },
   {
     question: "Where is my health data stored?",
@@ -1011,7 +812,7 @@ const faqs = [
   {
     question: "Which devices and services does HealthLog integrate with?",
     answer:
-      "Withings devices (Body+, BPM Connect, ScanWatch) sync over OAuth2 with near-real-time webhooks, and Apple Health syncs live through the iOS app or via export import. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
+      "Withings, WHOOP, Oura, Polar, Fitbit, Strava and Nightscout sync over OAuth or your own endpoints, and Apple Health syncs live through the iOS app or via export import. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
   },
   {
     question: "Can I connect HealthLog to an AI assistant?",
@@ -1021,7 +822,7 @@ const faqs = [
   {
     question: "Can HealthLog store and search my medical documents?",
     answer:
-      "Yes. An optional, off-by-default document vault keeps your letters, reports and scans encrypted at rest on your own server. Each upload is read and made searchable automatically — by a local reader that never leaves your machine, or, with your per-document consent, by your configured AI provider for a richer read of scans. You can search the words inside your documents over an encrypted blind index that stores nothing readable, ask a single document a grounded and cited question, and share one with a clinician through a time-boxed, revocable QR link with photo metadata stripped.",
+      "Yes. An optional, off-by-default document vault keeps your letters, reports and scans encrypted at rest on your own server. Each upload is read and made searchable automatically, by a local reader that never leaves your machine, or, with your per-document consent, by your configured AI provider for a richer read of scans. You can search the words inside your documents over an encrypted blind index that stores nothing readable, ask a single document a grounded and cited question, and share one with a clinician through a time-boxed, revocable QR link with photo metadata stripped.",
   },
   {
     question: "Can I let a family member see my health record?",
@@ -1191,11 +992,10 @@ export default function Home() {
           </h1>
 
           <p className="text-text-secondary text-lg sm:text-xl md:text-[1.35rem] max-w-2xl mx-auto mb-14 leading-[1.7] font-light tracking-[-0.01em]">
-            The self-hosted health tracking app that gives you full control.
-            Weight, blood pressure, glucose, medications, mood — encrypted on
-            your own server. Syncs live with Apple Health on iOS and with
-            Withings, WHOOP, Oura, Polar, Fitbit and Nightscout on any device.
-            Source available.
+            The self-hosted health tracker. Weight, blood pressure, glucose,
+            medications, mood: encrypted on your own server, synced from Apple
+            Health, Withings, WHOOP, Oura, Polar, Fitbit, Strava and
+            Nightscout. Source available.
           </p>
 
           <nav
@@ -1260,8 +1060,8 @@ export default function Home() {
                 </span>
               </h2>
               <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-                From daily measurements to lab panels, medication schedules and
-                cited AI reports — HealthLog covers your whole health workflow.
+                Daily readings, lab panels, medication schedules, cited AI
+                answers. The whole workflow, on your server.
               </p>
             </div>
 
@@ -1340,27 +1140,18 @@ export default function Home() {
             {/* Extra capability badges */}
             <div className="reveal mt-12 flex flex-wrap justify-center gap-3">
               {[
-                "Clean-line charts with per-chart overlays",
-                "Persistent rollup tier for sub-second reads",
-                "Glucose mg/dL ↔ mmol/L",
-                "FHIR R4 export",
+                "ECG import & rhythm overview",
                 "GLP-1 injectable support",
-                "MCP connector · OAuth-secured",
-                "Encrypted document vault",
-                "Document search · blind index",
+                "FHIR R4 export",
+                "Glucose mg/dL ↔ mmol/L",
+                "Illness journal & Rest Mode",
+                "Environmental context",
                 "Time-boxed share links · QR",
-                "PHQ-9 · GAD-7 screening",
-                "Longevity lab panel",
-                "Grip strength · pain · waist",
-                "Two-factor auth · TOTP & passkey",
+                "Passkeys & two-factor auth",
                 "Offline-capable PWA",
                 "Telegram · ntfy · Web Push · APNs",
-                "Passkey sign-in",
-                "Native iOS app (TestFlight beta)",
-                "40 achievements to unlock",
-                "6 languages · EN/DE/ES/FR/IT/PL",
-                "S3 off-host backups",
-                "Docker-ready",
+                "6 languages",
+                "Docker-ready · S3 backups",
               ].map((item) => (
                 <span
                   key={item}
@@ -1395,11 +1186,11 @@ export default function Home() {
                 straight to your server.
               </h2>
               <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-                A native SwiftUI client, in public beta on TestFlight, keeps
-                Apple Health in two-way sync with your own instance — no cloud
-                middleman. Steps, weight, blood pressure, glucose, sleep and
-                body composition flow both ways and land on the same timeline as
-                every other reading.
+                A native SwiftUI client, open source and in public beta on
+                TestFlight, keeps Apple Health in two-way sync with your own
+                instance. No cloud middleman: readings land on the same
+                timeline as everything else, and the app can even run
+                standalone without a server.
               </p>
             </div>
 
@@ -1439,7 +1230,7 @@ export default function Home() {
                   Live HealthKit sync
                 </div>
                 <div className="text-sm text-text-secondary leading-relaxed">
-                  Two-way Apple Health sync — steps, weight, blood pressure,
+                  Two-way Apple Health sync: steps, weight, blood pressure,
                   glucose, sleep and body composition, written directly to your
                   instance.
                 </div>
@@ -1459,7 +1250,7 @@ export default function Home() {
                 </div>
                 <div className="text-sm text-text-secondary leading-relaxed">
                   Local medication reminders with take / skip actions, the AI
-                  Coach, and the doctor-report export — all on the phone.
+                  Coach, and the doctor-report export, all on the phone.
                 </div>
               </div>
             </div>
@@ -1476,13 +1267,13 @@ export default function Home() {
                 <ArrowIcon />
               </a>
               <a
-                href="https://docs.healthlog.dev/integrations/apple-health/"
+                href="https://github.com/MBombeck/healthlog-iOS"
                 className="cta-secondary group"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <BookIcon className="w-5 h-5" />
-                <span>Apple Health docs</span>
+                <GitHubIcon className="w-5 h-5" />
+                <span>View the source</span>
               </a>
             </div>
           </div>
@@ -1510,7 +1301,7 @@ export default function Home() {
               <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
                 Connect your devices over OAuth and every reading lands on one
                 timeline. When several sources log the same day, they collapse
-                into a single canonical value — no double-counting.
+                into a single canonical value, with no double-counting.
               </p>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -1558,7 +1349,7 @@ export default function Home() {
               </h2>
               <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
                 Half your numbers live in one app, the rest are scattered across
-                your watch, your ring, your scale and a handful of services —
+                your watch, your ring, your scale and a handful of services:
                 each a closed silo behind its own subscription. HealthLog pulls
                 them onto a single timeline you own, and keeps them there for
                 good.
@@ -1574,7 +1365,7 @@ export default function Home() {
                 </h3>
                 <p className="text-text-secondary text-xs leading-[1.7]">
                   Steps, blood pressure, sleep, glucose and mood from any
-                  connected device land together — deduplicated to a single
+                  connected device land together, deduplicated to a single
                   canonical reading per day, whatever the source.
                 </p>
               </div>
@@ -1588,7 +1379,7 @@ export default function Home() {
                 <p className="text-text-secondary text-xs leading-[1.7]">
                   When a subscription lapses or a service shuts down, your
                   history stays. Everything lives on your own server and exports
-                  in full — no lock-in, no expiry.
+                  in full. No lock-in, no expiry.
                 </p>
               </div>
               <div
@@ -1600,7 +1391,7 @@ export default function Home() {
                 </h3>
                 <p className="text-text-secondary text-xs leading-[1.7]">
                   Every feature is reachable over a documented REST API with
-                  scoped tokens — log a dose, pull your readings, wire HealthLog
+                  scoped tokens: log a dose, pull your readings, wire HealthLog
                   into your own scripts. The full contract ships as OpenAPI.
                 </p>
               </div>
@@ -1613,7 +1404,7 @@ export default function Home() {
                 </h3>
                 <p className="text-text-secondary text-xs leading-[1.7]">
                   With the data finally side by side, the AI Coach connects what
-                  separate apps never could — how your sleep moves your resting
+                  separate apps never could: how your sleep moves your resting
                   heart rate, how a medication change tracks with your blood
                   pressure.
                 </p>
@@ -1971,7 +1762,7 @@ export default function Home() {
             </h2>
             <p className="reveal text-text-secondary text-base sm:text-lg max-w-lg mx-auto leading-relaxed mb-12">
               Explore the full app with pre-populated data. No signup, no
-              installation — just click and explore.
+              installation. Just click and explore.
             </p>
 
             <DemoCredentials />
