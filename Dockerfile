@@ -40,7 +40,7 @@ RUN echo 'server { \
     add_header X-Frame-Options "DENY" always; \
     add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always; \
     add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()" always; \
-    add_header Content-Security-Policy "default-src '"'"'self'"'"'; img-src '"'"'self'"'"' data:; style-src '"'"'self'"'"' '"'"'unsafe-inline'"'"'; font-src '"'"'self'"'"'; script-src '"'"'self'"'"' '"'"'unsafe-inline'"'"'; connect-src '"'"'self'"'"'; frame-ancestors '"'"'none'"'"'; base-uri '"'"'self'"'"'; form-action '"'"'self'"'"'" always; \
+    add_header Content-Security-Policy "default-src '"'"'self'"'"'; img-src '"'"'self'"'"' data:; style-src '"'"'self'"'"' '"'"'unsafe-inline'"'"'; font-src '"'"'self'"'"'; script-src '"'"'self'"'"' '"'"'unsafe-inline'"'"' https://umami.bombeck.io; connect-src '"'"'self'"'"' https://umami.bombeck.io; frame-ancestors '"'"'none'"'"'; base-uri '"'"'self'"'"'; form-action '"'"'self'"'"'" always; \
     \
     location = /.well-known/apple-app-site-association { \
         default_type application/json; \

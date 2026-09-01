@@ -22,7 +22,7 @@ import { SITE_ORIGIN } from "@/content/learn/locales";
  */
 
 const POLICY_VERSION = "1.4.32";
-const LAST_UPDATED = "2026-05-16";
+const LAST_UPDATED = "2026-08-31";
 
 const TITLE = "Privacy Policy";
 const DESCRIPTION =
@@ -189,9 +189,17 @@ export default function PrivacyPage() {
               <li>
                 <a
                   className="hover:text-purple hover:underline"
+                  href="#website-analytics"
+                >
+                  3. This website (healthlog.dev)
+                </a>
+              </li>
+              <li>
+                <a
+                  className="hover:text-purple hover:underline"
                   href="#data-we-collect"
                 >
-                  3. Data collected
+                  4. Data collected
                 </a>
               </li>
               <li>
@@ -199,7 +207,7 @@ export default function PrivacyPage() {
                   className="hover:text-purple hover:underline"
                   href="#purpose"
                 >
-                  4. Why each category is collected
+                  5. Why each category is collected
                 </a>
               </li>
               <li>
@@ -207,7 +215,7 @@ export default function PrivacyPage() {
                   className="hover:text-purple hover:underline"
                   href="#sub-processors"
                 >
-                  5. Third-party sub-processors
+                  6. Third-party sub-processors
                 </a>
               </li>
               <li>
@@ -215,12 +223,12 @@ export default function PrivacyPage() {
                   className="hover:text-purple hover:underline"
                   href="#storage"
                 >
-                  6. Storage, encryption, retention
+                  7. Storage, encryption, retention
                 </a>
               </li>
               <li>
                 <a className="hover:text-purple hover:underline" href="#rights">
-                  7. Your rights (GDPR Art. 15-22)
+                  8. Your rights (GDPR Art. 15-22)
                 </a>
               </li>
               <li>
@@ -228,7 +236,7 @@ export default function PrivacyPage() {
                   className="hover:text-purple hover:underline"
                   href="#medical-boundary"
                 >
-                  8. Medical-device boundary (EU MDR)
+                  9. Medical-device boundary (EU MDR)
                 </a>
               </li>
               <li>
@@ -236,7 +244,7 @@ export default function PrivacyPage() {
                   className="hover:text-purple hover:underline"
                   href="#apple-categories"
                 >
-                  9. Apple App Store privacy categories
+                  10. Apple App Store privacy categories
                 </a>
               </li>
               <li>
@@ -244,7 +252,7 @@ export default function PrivacyPage() {
                   className="hover:text-purple hover:underline"
                   href="#children"
                 >
-                  10. Children
+                  11. Children
                 </a>
               </li>
               <li>
@@ -252,7 +260,7 @@ export default function PrivacyPage() {
                   className="hover:text-purple hover:underline"
                   href="#changes"
                 >
-                  11. Changes to this policy
+                  12. Changes to this policy
                 </a>
               </li>
               <li>
@@ -260,7 +268,7 @@ export default function PrivacyPage() {
                   className="hover:text-purple hover:underline"
                   href="#contact"
                 >
-                  12. Contact
+                  13. Contact
                 </a>
               </li>
             </ol>
@@ -299,7 +307,9 @@ export default function PrivacyPage() {
               io.bombeck.healthlog
             </code>
             ). It covers the web application version {POLICY_VERSION} and the
-            iOS application version 0.3 and later.
+            iOS application version 0.3 and later. Section 3 covers this
+            marketing website, healthlog.dev, which is operated separately from
+            the application.
           </p>
           <p>
             Self-hosted deployments controlled by a different operator are
@@ -368,7 +378,45 @@ export default function PrivacyPage() {
           </p>
         </Section>
 
-        <Section id="data-we-collect" title="3. Data collected">
+        <Section
+          id="website-analytics"
+          title="3. This website (healthlog.dev)"
+        >
+          <p>
+            This marketing website is operated separately from the application
+            described above and stores nothing on the visitor&apos;s device: no
+            cookies, no local storage, no advertising or cross-site
+            identifiers, and therefore no consent banner.
+          </p>
+          <p>
+            Aggregate visit statistics are collected with{" "}
+            <a
+              href="https://umami.is"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-purple hover:text-cyan underline-offset-2 hover:underline"
+            >
+              Umami
+            </a>
+            , a cookieless analytics tool running on the maintainer&apos;s own
+            server; no analytics data reaches a third-party provider. Recorded
+            per visit are the page address, the referring address, browser,
+            operating system, device type and country. Visitors are counted
+            through a hash that is re-salted every day, so the raw IP address is
+            never stored and no visitor can be identified or followed from one
+            day to the next. Legal basis: GDPR Art. 6 (1) (f), the legitimate
+            interest in knowing which pages are actually read. Because nothing
+            is read from or written to the visitor&apos;s device, consent under
+            TTDSG § 25 is not required.
+          </p>
+          <p>
+            The application itself is unaffected: HealthLog ships no analytics
+            SDK and no telemetry, and an instance you host yourself never
+            contacts this website.
+          </p>
+        </Section>
+
+        <Section id="data-we-collect" title="4. Data collected">
           <p>
             HealthLog records observations the user enters themselves and the
             health signals the user has explicitly connected through a
@@ -550,7 +598,7 @@ export default function PrivacyPage() {
           </ul>
         </Section>
 
-        <Section id="purpose" title="4. Why each category is collected">
+        <Section id="purpose" title="5. Why each category is collected">
           <ul className="list-disc space-y-2 pl-5">
             <li>
               <span className="text-text-primary font-medium">
@@ -599,7 +647,7 @@ export default function PrivacyPage() {
           </ul>
         </Section>
 
-        <Section id="sub-processors" title="5. Third-party sub-processors">
+        <Section id="sub-processors" title="6. Third-party sub-processors">
           <p>
             The following providers may process personal data on behalf of the
             maintainer-operated instance. The list is exhaustive for the
@@ -674,7 +722,7 @@ export default function PrivacyPage() {
           </ul>
         </Section>
 
-        <Section id="storage" title="6. Storage, encryption, retention">
+        <Section id="storage" title="7. Storage, encryption, retention">
           <ul className="list-disc space-y-1 pl-5">
             <li>
               Primary data store: PostgreSQL on a Hetzner-hosted server in
@@ -714,7 +762,7 @@ export default function PrivacyPage() {
           </ul>
         </Section>
 
-        <Section id="rights" title="7. Your rights (GDPR Art. 15-22)">
+        <Section id="rights" title="8. Your rights (GDPR Art. 15-22)">
           <ul className="list-disc space-y-2 pl-5">
             <li>
               <span className="text-text-primary font-medium">
@@ -791,7 +839,7 @@ export default function PrivacyPage() {
 
         <Section
           id="medical-boundary"
-          title="8. Medical-device boundary (EU MDR 2017/745, MDCG 2021-24)"
+          title="9. Medical-device boundary (EU MDR 2017/745, MDCG 2021-24)"
         >
           <p>
             HealthLog is{" "}
@@ -818,7 +866,7 @@ export default function PrivacyPage() {
 
         <Section
           id="apple-categories"
-          title="9. Apple App Store privacy categories"
+          title="10. Apple App Store privacy categories"
         >
           <p>
             The iOS application&apos;s Privacy Nutrition Labels in App Store
@@ -893,7 +941,7 @@ export default function PrivacyPage() {
           </ul>
         </Section>
 
-        <Section id="children" title="10. Children">
+        <Section id="children" title="11. Children">
           <p>
             HealthLog is not directed at children under the age of 16. The
             application should not be used by anyone under 16 without
@@ -903,7 +951,7 @@ export default function PrivacyPage() {
           </p>
         </Section>
 
-        <Section id="changes" title="11. Changes to this policy">
+        <Section id="changes" title="12. Changes to this policy">
           <p>
             This document is version-stamped at the top. Material changes are
             summarised in the in-app release notes and on the public
@@ -912,7 +960,7 @@ export default function PrivacyPage() {
           </p>
         </Section>
 
-        <Section id="contact" title="12. Contact">
+        <Section id="contact" title="13. Contact">
           <p>
             For privacy questions and data-subject requests, open a public
             issue at{" "}

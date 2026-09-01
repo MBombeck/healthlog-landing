@@ -354,6 +354,20 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
         />
+        {/*
+          Umami analytics — self-hosted on apps-01, cookieless: it stores
+          nothing on the visitor's device, so TTDSG § 25 needs no consent
+          banner. `data-domains` pins reporting to the production host, which
+          keeps `next dev` sessions and any fork of this public repo out of
+          the numbers. The nginx CSP in the Dockerfile allow-lists this origin
+          in both script-src and connect-src — the tag is inert without it.
+        */}
+        <script
+          defer
+          src="https://umami.bombeck.io/script.js"
+          data-website-id="39687b2b-d976-4b05-9bfb-a88fff2745e4"
+          data-domains="healthlog.dev"
+        />
       </head>
       <body
         className={`${plusJakarta.variable} ${dmSans.variable} ${jetbrainsMono.variable} antialiased`}
