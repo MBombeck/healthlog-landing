@@ -357,14 +357,17 @@ export default function RootLayout({
         {/*
           Umami analytics — self-hosted on apps-01, cookieless: it stores
           nothing on the visitor's device, so TTDSG § 25 needs no consent
-          banner. `data-domains` pins reporting to the production host, which
+          banner. The script is served under a custom name and posts to a
+          custom endpoint (TRACKER_SCRIPT_NAME / COLLECT_API_ENDPOINT on the
+          Umami service), because the default `script.js` and `/api/send`
+          sit on common filter lists and a blocked tag counts nobody. `data-domains` pins reporting to the production host, which
           keeps `next dev` sessions and any fork of this public repo out of
           the numbers. The nginx CSP in the Dockerfile allow-lists this origin
           in both script-src and connect-src — the tag is inert without it.
         */}
         <script
           defer
-          src="https://umami.bombeck.io/script.js"
+          src="https://umami.bombeck.io/insight.js"
           data-website-id="39687b2b-d976-4b05-9bfb-a88fff2745e4"
           data-domains="healthlog.dev"
         />
