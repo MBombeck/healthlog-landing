@@ -1,3 +1,39 @@
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
+
+overrides:
+  # CVE-2026-73646 / CVE-2026-69153: an attacker-controlled sourceMappingURL in a
+  # CSS comment makes PostCSS read an arbitrary .map file off disk. Also carries
+  # the unescaped `</style>` stringify fix (CVE-2026-41305).
+  "postcss@<8.5.23": "^8.5.26"
+  # CVE-2026-67213 / CVE-2026-67214 / CVE-2026-73086: the non-secure generators
+  # spin forever on a zero or negative size, plus an integer wraparound.
+  "nanoid@<3.3.18": "^3.3.18"
+  # CVE-2026-59869 / CVE-2026-53550: merge-key chains and !!omap resolution burn
+  # quadratic CPU while parsing.
+  "js-yaml@<4.3.1": "^4.3.2"
+  # CVE-2026-73088 / CVE-2026-73089: the query cache never evicts, and untrusted
+  # browserslist-stats.json can write through the prototype.
+  "browserslist@<4.28.7": "^4.28.8"
+  # CVE-2026-69152 / CVE-2026-14257 / CVE-2026-13149: brace expansion grows
+  # without bound and takes the process down with it. Two majors sit in the tree,
+  # so both need a floor.
+  "brace-expansion@<1.1.18": "^1.1.18"
+  "brace-expansion@>=4.0.0 <5.0.9": "^5.0.9"
+  # CVE-2026-33228 / CVE-2026-32141: prototype pollution and unbounded recursion
+  # in parse(). Reaches us through the ESLint cache.
+  "flatted@<3.4.2": "^3.4.4"
+  # CVE-2026-33671 / CVE-2026-33672: ReDoS via extglob quantifiers, and method
+  # injection in POSIX character classes that silently mismatches globs.
+  "picomatch@<2.3.2": "^2.3.2"
+  "picomatch@>=4.0.0 <4.0.4": "^4.0.7"
+  # CVE-2026-33327 / CVE-2026-33328 / CVE-2026-35590 / CVE-2026-35591: libvips
+  # flaws inherited by sharp < 0.35.0. Our direct devDependency is already past
+  # it; a transitive copy under the build toolchain is not.
+  "sharp@<0.35.0": "^0.35.4"
+  # CVE-2026-49356: arbitrary file read via a sourceMappingURL comment.
+  "@babel/core@<=7.29.0": "^7.29.7"
+  # Recursive copy follows symlinked files and pulls data in from outside the
+  # source tree. Arrives under ESLint.
+  "@humanfs/node@<0.16.8": "^0.16.8"
