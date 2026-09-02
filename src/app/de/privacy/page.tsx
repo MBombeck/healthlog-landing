@@ -760,9 +760,12 @@ export default function DatenschutzSeite() {
             nie im Klartext.
           </li>
           <li>
-            Sicherungen: täglich, verschlüsselt, 30 Tage aufbewahrt in einem
-            S3-kompatiblen Objektspeicher mit eigener Verschlüsselung im
-            Ruhezustand.
+            Sicherungen: Die Anwendung bringt eine eigene verschlüsselte
+            Off-Host-Sicherung mit, die unter einem vom Datenbankschlüssel
+            getrennten Schlüssel auf ein S3-kompatibles Ziel schreibt. Sie ist
+            optional und auf der Referenzinstanz nicht eingerichtet. Was auf
+            Ebene des Servers oder des Hosters gesichert wird, ist nicht
+            Gegenstand dieser Erklärung.
           </li>
           <li>
             Aufbewahrung: Kontodaten bleiben, bis Sie die Löschung verlangen
@@ -780,8 +783,9 @@ export default function DatenschutzSeite() {
             Tabellen, darunter Gesundheitsbeobachtungen, Sitzungen,
             Sicherheitsprotokoll, Token von Anbindungen, Abonnements für
             Benachrichtigungen, Coach-Unterhaltungen, Angaben und Vorsätze,
-            Erfolge und hochgeladene Dateien. Die Löschung wirkt sofort;
-            Sicherungen laufen im oben genannten 30-Tage-Fenster aus.
+            Erfolge und hochgeladene Dateien. Die Löschung wirkt sofort, und
+            da die Referenzinstanz keine eigene Off-Host-Sicherung vorhält, gibt
+            es keine solche Kopie, aus der die Daten zurückkehren könnten.
           </li>
         </ul>
       </Section>
@@ -813,8 +817,7 @@ export default function DatenschutzSeite() {
               Einstellungen → Konto → Konto löschen
             </em>
             . Die Aktion greift sofort durch alle nutzerbezogenen Tabellen;
-            Sicherungen laufen im in Abschnitt 7 beschriebenen 30-Tage-Fenster
-            aus.
+            wie mit Sicherungen umgegangen wird, steht in Abschnitt 7.
           </li>
           <li>
             <span className="text-text-primary font-medium">

@@ -744,8 +744,11 @@ export default function PrivacyPage() {
             plaintext.
           </li>
           <li>
-            Backups: daily, encrypted, retained for 30 days on an S3-compatible
-            object store with its own encryption-at-rest layer.
+            Backups: the application brings its own encrypted off-host backup,
+            written to an S3-compatible target under a key separate from the
+            database. It is optional and is not set up on the reference
+            instance. What the server or the hosting provider backs up at their
+            own level is not part of this policy.
           </li>
           <li>
             Retention: account data is retained until the user requests erasure
@@ -761,8 +764,9 @@ export default function PrivacyPage() {
             user-scoped table, including health observations, sessions, audit
             log, integration tokens, notification subscriptions, Coach
             conversations, facts and plans, achievements and uploaded files.
-            Deletion is immediate; backups age out under the 30-day window
-            above.
+            Deletion is immediate, and because the reference instance keeps no
+            off-host backup of its own, there is no such copy for the data to
+            come back from.
           </li>
         </ul>
       </Section>
@@ -788,8 +792,8 @@ export default function PrivacyPage() {
               Right to erasure (Art. 17)
             </span>
             : <em className="not-italic">Settings → Account → Delete account</em>
-            . The action cascades immediately through user-scoped tables;
-            backups age out within the 30-day window described in section 7.
+            . The action cascades immediately through user-scoped tables; see
+            section 7 for how backups are handled.
           </li>
           <li>
             <span className="text-text-primary font-medium">
