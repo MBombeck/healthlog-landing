@@ -9,6 +9,12 @@ import {
   learnArticlePath,
   learnHubPath,
 } from "@/content/learn/locales";
+import {
+  LAST_UPDATED as PRIVACY_UPDATED,
+  PRIVACY_PATH_DE,
+  PRIVACY_PATH_EN,
+  privacyHreflang,
+} from "@/content/privacy/meta";
 
 // Static export: emit a build-time sitemap.xml. /learn entries derive from the
 // article manifest × locales, so new guides and languages appear automatically.
@@ -21,7 +27,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_ORIGIN}/`, lastModified: LAST_MODIFIED, changeFrequency: "weekly", priority: 1.0 },
     { url: `${SITE_ORIGIN}/features`, lastModified: LAST_MODIFIED, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_ORIGIN}/security`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_ORIGIN}/privacy`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${SITE_ORIGIN}${PRIVACY_PATH_EN}`, lastModified: PRIVACY_UPDATED, changeFrequency: "monthly", priority: 0.5, alternates: { languages: privacyHreflang() } },
+    { url: `${SITE_ORIGIN}${PRIVACY_PATH_DE}`, lastModified: PRIVACY_UPDATED, changeFrequency: "monthly", priority: 0.4, alternates: { languages: privacyHreflang() } },
     { url: `${SITE_ORIGIN}/support`, lastModified: LAST_MODIFIED, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE_ORIGIN}/imprint`, lastModified: LAST_MODIFIED, changeFrequency: "yearly", priority: 0.3 },
   ];
