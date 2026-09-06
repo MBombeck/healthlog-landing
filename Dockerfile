@@ -26,8 +26,12 @@ COPY --from=builder /app/out /usr/share/nginx/html
 # track, site/tracking-config): the browser only ever talks to healthlog.dev,
 # the CSP stays at 'self' and ad-block host lists do not apply. `resolver` is
 # required because proxy_pass uses a variable (re-resolves the Cloudflare IP
-# instead of pinning it at startup); Set-Cookie is stripped so the analytics
-# host can never set state on the visitor's device.
+# instead of pinning it at startup); `^~` keeps the regex asset location
+# (\.js$) from hijacking /insight/script.js. The Cloudflare hop headers
+# (CDN-Loop, CF-*) are cleared because healthlog.dev itself sits behind
+# Cloudflare and the analytics host is Cloudflare-proxied too - a forwarded
+# CDN-Loop header would otherwise be rejected as a proxy loop. Set-Cookie is
+# stripped so the analytics host can never set state on the visitor's device.
 #
 # The `/.well-known/apple-app-site-association` exact-match block runs
 # before the generic `/` catch-all so Apple's CDN fetch lands on the
@@ -54,7 +58,7 @@ RUN echo 'server { \
         add_header Cache-Control "public, max-age=3600"; \
     } \
     \
-    location /insight/ { \
+    location ^~ /insight/ { \
         resolver 1.1.1.1 1.0.0.1 valid=300s ipv6=off; \
         set $rybbit https://rybbit.bombeck.io; \
         rewrite ^/insight/(.*)$ /api/$1 break; \
@@ -64,6 +68,12 @@ RUN echo 'server { \
         proxy_set_header Host rybbit.bombeck.io; \
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; \
         proxy_set_header X-Forwarded-Proto https; \
+        proxy_set_header CDN-Loop ""; \
+        proxy_set_header CF-Connecting-IP ""; \
+        proxy_set_header CF-Ray ""; \
+        proxy_set_header CF-Visitor ""; \
+        proxy_set_header CF-IPCountry ""; \
+        proxy_set_header CF-Warp-Tag-Id ""; \
         proxy_pass_request_headers on; \
         proxy_hide_header Set-Cookie; \
         proxy_ignore_headers Set-Cookie; \
