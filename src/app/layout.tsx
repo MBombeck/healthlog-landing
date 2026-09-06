@@ -355,21 +355,24 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
         />
         {/*
-          Umami analytics — self-hosted on apps-01, cookieless: it stores
-          nothing on the visitor's device, so TTDSG § 25 needs no consent
-          banner. The script is served under a custom name and posts to a
-          custom endpoint (TRACKER_SCRIPT_NAME / COLLECT_API_ENDPOINT on the
-          Umami service), because the default `script.js` and `/api/send`
-          sit on common filter lists and a blocked tag counts nobody. `data-domains` pins reporting to the production host, which
-          keeps `next dev` sessions and any fork of this public repo out of
-          the numbers. The nginx CSP in the Dockerfile allow-lists this origin
-          in both script-src and connect-src — the tag is inert without it.
+          Rybbit analytics — self-hosted on ops-01 (rybbit.bombeck.io),
+          cookieless: it stores nothing on the visitor's device, so
+          TTDSG § 25 needs no consent banner. Visitors are counted through a
+          daily re-salted hash; session replay, error capture, form and
+          click tracking are disabled server-side for this site.
+          The script and its collect endpoint are served first-party under
+          /insight/ — nginx in the Dockerfile proxies that prefix to the
+          Rybbit API, because third-party analytics hosts sit on common
+          filter lists and a blocked tag counts nobody. The tracker derives
+          its API base from the script URL (everything before /script.js),
+          so the path must keep that suffix. The nginx CSP allow-lists only
+          'self' for script-src and connect-src — nothing leaves for a
+          third-party origin.
         */}
         <script
           defer
-          src="https://umami.bombeck.io/insight.js"
-          data-website-id="39687b2b-d976-4b05-9bfb-a88fff2745e4"
-          data-domains="healthlog.dev"
+          src="/insight/script.js"
+          data-site-id="2"
         />
       </head>
       <body

@@ -215,13 +215,17 @@ export default function PrivacyPage() {
         </p>
         <p>
           Aggregate visit statistics are collected with{" "}
-          <ExternalLink href="https://umami.is">Umami</ExternalLink>, a
-          cookieless analytics tool running on the maintainer&apos;s own server;
-          no analytics data reaches a third-party provider. Recorded per visit
-          are the page address, the referring address, browser, operating
-          system, device type and country. Visitors are counted through a hash
-          that is re-salted every day, so the raw IP address is never stored and
-          no visitor can be identified or followed from one day to the next.
+          <ExternalLink href="https://rybbit.com">Rybbit</ExternalLink>, an
+          open-source, cookieless analytics tool running on the
+          maintainer&apos;s own server; no analytics data reaches a third-party
+          provider. The tracking script and its collection endpoint are served
+          from this website&apos;s own address. Recorded per visit are the page
+          address, the referring address, browser, operating system, device
+          type, country and region. Visitors are counted through a hash that is
+          re-salted every day, so the raw IP address is never stored and no
+          visitor can be identified or followed from one day to the next.
+          Session recording, error capture and form or click tracking are
+          switched off for this site.
           Legal basis: GDPR Art. 6 (1) (f), the legitimate interest in knowing
           which pages are actually read. Because nothing is read from or written
           to the visitor&apos;s device, consent under TTDSG § 25 is not
@@ -229,8 +233,8 @@ export default function PrivacyPage() {
         </p>
         <p>
           The application ships no third-party analytics SDK and no telemetry.
-          The reference instance serves the same cookieless Umami script through
-          its own origin and forwards the events server-side to the
+          The reference instance serves a cookieless Umami script through its
+          own origin and forwards the events server-side to the
           maintainer&apos;s Umami installation, so the analytics host never sees
           a request from the visitor&apos;s browser. An instance you host
           yourself has this switched off until its operator turns it on, and it

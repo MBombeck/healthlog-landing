@@ -22,6 +22,13 @@ COPY --from=builder /app/out /usr/share/nginx/html
 
 # Custom nginx config for SPA.
 #
+# `/insight/` is a first-party proxy for the Rybbit tracker (script.js,
+# track, site/tracking-config): the browser only ever talks to healthlog.dev,
+# the CSP stays at 'self' and ad-block host lists do not apply. `resolver` is
+# required because proxy_pass uses a variable (re-resolves the Cloudflare IP
+# instead of pinning it at startup); Set-Cookie is stripped so the analytics
+# host can never set state on the visitor's device.
+#
 # The `/.well-known/apple-app-site-association` exact-match block runs
 # before the generic `/` catch-all so Apple's CDN fetch lands on the
 # Next.js-emitted JSON file with the correct `application/json`
@@ -40,11 +47,27 @@ RUN echo 'server { \
     add_header X-Frame-Options "DENY" always; \
     add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always; \
     add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()" always; \
-    add_header Content-Security-Policy "default-src '"'"'self'"'"'; img-src '"'"'self'"'"' data:; style-src '"'"'self'"'"' '"'"'unsafe-inline'"'"'; font-src '"'"'self'"'"'; script-src '"'"'self'"'"' '"'"'unsafe-inline'"'"' https://umami.bombeck.io; connect-src '"'"'self'"'"' https://umami.bombeck.io; frame-ancestors '"'"'none'"'"'; base-uri '"'"'self'"'"'; form-action '"'"'self'"'"'" always; \
+    add_header Content-Security-Policy "default-src '"'"'self'"'"'; img-src '"'"'self'"'"' data:; style-src '"'"'self'"'"' '"'"'unsafe-inline'"'"'; font-src '"'"'self'"'"'; script-src '"'"'self'"'"' '"'"'unsafe-inline'"'"'; connect-src '"'"'self'"'"'; frame-ancestors '"'"'none'"'"'; base-uri '"'"'self'"'"'; form-action '"'"'self'"'"'" always; \
     \
     location = /.well-known/apple-app-site-association { \
         default_type application/json; \
         add_header Cache-Control "public, max-age=3600"; \
+    } \
+    \
+    location /insight/ { \
+        resolver 1.1.1.1 1.0.0.1 valid=300s ipv6=off; \
+        set $rybbit https://rybbit.bombeck.io; \
+        rewrite ^/insight/(.*)$ /api/$1 break; \
+        proxy_pass $rybbit; \
+        proxy_ssl_server_name on; \
+        proxy_ssl_name rybbit.bombeck.io; \
+        proxy_set_header Host rybbit.bombeck.io; \
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; \
+        proxy_set_header X-Forwarded-Proto https; \
+        proxy_pass_request_headers on; \
+        proxy_hide_header Set-Cookie; \
+        proxy_ignore_headers Set-Cookie; \
+        client_max_body_size 1m; \
     } \
     \
     location / { \

@@ -219,14 +219,17 @@ export default function DatenschutzSeite() {
         </p>
         <p>
           Aggregierte Besuchszahlen werden mit{" "}
-          <ExternalLink href="https://umami.is">Umami</ExternalLink> erhoben,
-          einem cookiefreien Analysewerkzeug auf dem eigenen Server des
-          Betreibers; es gelangen keine Analysedaten zu einem Dritten. Erfasst
-          werden je Besuch die Seitenadresse, die verweisende Adresse, Browser,
-          Betriebssystem, Gerätetyp und Land. Besucher werden über einen Hash
-          gezählt, dessen Salt täglich neu gesetzt wird; die rohe IP-Adresse
-          wird also nie gespeichert, und niemand lässt sich identifizieren oder
-          über den Tag hinaus verfolgen. Rechtsgrundlage: Art. 6 Abs. 1 lit. f
+          <ExternalLink href="https://rybbit.com">Rybbit</ExternalLink> erhoben,
+          einem quelloffenen, cookiefreien Analysewerkzeug auf dem eigenen
+          Server des Betreibers; es gelangen keine Analysedaten zu einem
+          Dritten. Das Mess-Skript und sein Erfassungsendpunkt werden über die
+          eigene Adresse dieser Website ausgeliefert. Erfasst werden je Besuch
+          die Seitenadresse, die verweisende Adresse, Browser, Betriebssystem,
+          Gerätetyp, Land und Region. Besucher werden über einen Hash gezählt,
+          dessen Salt täglich neu gesetzt wird; die rohe IP-Adresse wird also
+          nie gespeichert, und niemand lässt sich identifizieren oder über den
+          Tag hinaus verfolgen. Sitzungsaufzeichnung, Fehlererfassung sowie
+          Formular- und Klick-Tracking sind für diese Website abgeschaltet. Rechtsgrundlage: Art. 6 Abs. 1 lit. f
           DSGVO, das berechtigte Interesse daran zu wissen, welche Seiten
           tatsächlich gelesen werden. Da nichts auf Ihrem Gerät gelesen oder
           gespeichert wird, ist eine Einwilligung nach § 25 TTDSG nicht
@@ -234,7 +237,7 @@ export default function DatenschutzSeite() {
         </p>
         <p>
           Die Anwendung selbst enthält kein Analyse-SDK eines Dritten und keine
-          Telemetrie. Die Referenzinstanz liefert dasselbe cookiefreie
+          Telemetrie. Die Referenzinstanz liefert ein cookiefreies
           Umami-Skript über ihre eigene Adresse aus und leitet die Ereignisse
           serverseitig an die Umami-Installation des Betreibers weiter, sodass
           der Analyse-Host keine Anfrage aus Ihrem Browser sieht. Bei einer
