@@ -30,7 +30,9 @@ COPY --from=builder /app/out /usr/share/nginx/html
 # (\.js$) from hijacking /insight/script.js. The Cloudflare hop headers
 # (CDN-Loop, CF-*) are cleared because healthlog.dev itself sits behind
 # Cloudflare and the analytics host is Cloudflare-proxied too - a forwarded
-# CDN-Loop header would otherwise be rejected as a proxy loop. Set-Cookie is
+# CDN-Loop header would otherwise be rejected as a proxy loop. The resolver
+# is Docker's embedded DNS (127.0.0.11); the host blocks direct queries to
+# public resolvers from containers. Set-Cookie is
 # stripped so the analytics host can never set state on the visitor's device.
 #
 # The `/.well-known/apple-app-site-association` exact-match block runs
@@ -59,7 +61,7 @@ RUN echo 'server { \
     } \
     \
     location ^~ /insight/ { \
-        resolver 1.1.1.1 1.0.0.1 valid=300s ipv6=off; \
+        resolver 127.0.0.11 valid=300s ipv6=off; \
         set $rybbit https://rybbit.bombeck.io; \
         rewrite ^/insight/(.*)$ /api/$1 break; \
         proxy_pass $rybbit; \
