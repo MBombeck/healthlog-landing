@@ -34,8 +34,10 @@ COPY --from=builder /app/out /usr/share/nginx/html
 # is Docker's embedded DNS (127.0.0.11); the host blocks direct queries to
 # public resolvers from containers. X-Forwarded-For carries the visitor IP
 # from Cloudflare's CF-Connecting-IP (the tunnel's own forwarded chain only
-# holds internal addresses); Rybbit's first-party-proxy mode trusts it for
-# the country/region lookup and then hashes it away. Set-Cookie is
+# holds internal addresses) - both as X-Forwarded-For and X-Real-IP, because
+# the analytics host's own reverse proxy rewrites X-Real-IP to the last hop
+# and Rybbit reads X-Real-IP first. Rybbit uses it for the country/region
+# lookup and then hashes it away. Set-Cookie is
 # stripped so the analytics host can never set state on the visitor's device.
 #
 # The `/.well-known/apple-app-site-association` exact-match block runs
@@ -74,6 +76,7 @@ RUN echo 'server { \
         set $visitor_ip $remote_addr; \
         if ($http_cf_connecting_ip) { set $visitor_ip $http_cf_connecting_ip; } \
         proxy_set_header X-Forwarded-For $visitor_ip; \
+        proxy_set_header X-Real-IP $visitor_ip; \
         proxy_set_header X-Forwarded-Proto https; \
         proxy_set_header CDN-Loop ""; \
         proxy_set_header CF-Connecting-IP ""; \
