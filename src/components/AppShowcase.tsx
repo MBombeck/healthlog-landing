@@ -2,6 +2,14 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import type { StaticImageData } from "next/image";
+// Static imports so each capture ships under a content-hashed URL. A plain
+// /screenshots/... path kept the old file alive in the CDN cache for hours
+// after a replacement; a hashed path changes with the bytes.
+import dashboardShot from "../../public/screenshots/desktop-dashboard-opt.webp";
+import medicationsShot from "../../public/screenshots/desktop-medications-opt.webp";
+import coachShot from "../../public/screenshots/desktop-coach-opt.webp";
+import measurementsShot from "../../public/screenshots/desktop-measurements-opt.webp";
 
 /* Sticky scroll-reveal: the browser frame stays pinned in the centre of the
    viewport while the captions scroll past on the left, and the screenshot
@@ -20,15 +28,15 @@ type Screen = {
 
 const screens: Screen[] = [
   {
-    src: "/screenshots/desktop-dashboard-opt.webp",
-    alt: "HealthLog dashboard showing weight, blood pressure, pulse, and mood metric tiles with weight and BMI trend charts",
+    src: dashboardShot,
+    alt: "HealthLog dashboard with the daily briefing, a health score of 88, and metric tiles for weight, blood pressure, pulse, heart-rate variability and oxygen saturation",
     kicker: "Dashboard",
     title: "Your whole day, the second you open it",
     body: "Weight, blood pressure, pulse and mood sit up top, your weight and BMI trends right below. Reorder, resize or hide each card — every tile is yours to arrange.",
     accent: "#8be9fd",
   },
   {
-    src: "/screenshots/desktop-medications-opt.webp",
+    src: medicationsShot,
     alt: "HealthLog medication management with 7-day and 30-day compliance rings, next-intake times, and per-medication take or skip actions",
     kicker: "Medications",
     title: "Adherence you can actually see",
@@ -36,7 +44,7 @@ const screens: Screen[] = [
     accent: "#bd93f9",
   },
   {
-    src: "/screenshots/desktop-coach-opt.webp",
+    src: coachShot,
     alt: "HealthLog AI Coach answering a question about the last 30 days of blood pressure readings in plain language",
     kicker: "AI Coach",
     title: "Ask your record a question",
@@ -44,8 +52,8 @@ const screens: Screen[] = [
     accent: "#50fa7b",
   },
   {
-    src: "/screenshots/desktop-measurements-opt.webp",
-    alt: "HealthLog measurements list showing weight, glucose, oxygen saturation, blood pressure, and steps with Withings and Apple Health source badges",
+    src: measurementsShot,
+    alt: "HealthLog measurements list showing blood glucose readings badged with their Nightscout and Apple Health source badges",
     kicker: "Measurements",
     title: "One timeline, every source",
     body: "Manual entries, Withings devices and Apple Health all land on the same list, each reading badged with where it came from. When several sources log the same day, they collapse into one canonical value — no double-counting.",
