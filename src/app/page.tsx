@@ -627,7 +627,7 @@ const primaryFeatures = [
     icon: <HeartMetricIcon />,
     title: "Every vital on one timeline",
     description:
-      "Weight, blood pressure, heart rate, glucose, sleep, body composition and two dozen more, from every device you own. Personal target ranges and last-year overlays put each reading in context. Years of history load in under a second.",
+      "Weight, blood pressure, heart rate, glucose, sleep, body composition and two dozen more, from every device you own. Personal target ranges and last-year overlays put each reading in context.",
     color: "purple",
   },
   {
@@ -802,7 +802,7 @@ const faqs = [
   {
     question: "Does HealthLog sync with Apple Health?",
     answer:
-      "Yes. The native SwiftUI iOS app (open source, public TestFlight beta) keeps Apple Health (HealthKit) in two-way sync: steps, weight, blood pressure, blood glucose, sleep, and body composition flow straight to your own server. On any platform you can also drop an Apple Health export.zip on the upload page.",
+      "Yes. The native SwiftUI iOS app (source on GitHub, public TestFlight beta) keeps Apple Health (HealthKit) in two-way sync: steps, weight, blood pressure, blood glucose, sleep, and body composition flow straight to your own server. On any platform you can also drop an Apple Health export.zip on the upload page.",
   },
   {
     question: "Where is my health data stored?",
@@ -1186,8 +1186,8 @@ export default function Home() {
                 straight to your server.
               </h2>
               <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-                A native SwiftUI client, open source and in public beta on
-                TestFlight, keeps Apple Health in two-way sync with your own
+                A native SwiftUI client, with its source on GitHub and in
+                public beta on TestFlight, keeps Apple Health in two-way sync with your own
                 instance. No cloud middleman: readings land on the same
                 timeline as everything else, and the app can even run
                 standalone without a server.
