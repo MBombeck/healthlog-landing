@@ -18,7 +18,7 @@ import measurementsShot from "../../public/screenshots/desktop-measurements-opt.
    No animation library — CSS `position: sticky` + one IntersectionObserver. */
 
 type Screen = {
-  src: string;
+  src: StaticImageData;
   alt: string;
   kicker: string;
   title: string;
@@ -125,7 +125,7 @@ export function AppShowcase() {
         <div>
           {screens.map((s, i) => (
             <div
-              key={s.src}
+              key={s.kicker}
               ref={(el) => {
                 captionRefs.current[i] = el;
               }}
@@ -164,7 +164,7 @@ export function AppShowcase() {
                 <div className="relative aspect-[1600/785] overflow-hidden bg-[#282a36]">
                   {screens.map((s, i) => (
                     <div
-                      key={s.src}
+                      key={s.kicker}
                       className="absolute inset-0 transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                       style={{ opacity: i === active ? 1 : 0 }}
                       aria-hidden={i !== active}
@@ -187,7 +187,7 @@ export function AppShowcase() {
               <div className="absolute -left-6 top-1/2 hidden -translate-y-1/2 flex-col gap-2 xl:flex">
                 {screens.map((s, i) => (
                   <span
-                    key={s.src}
+                    key={s.kicker}
                     className="h-6 w-0.5 rounded-full transition-all duration-500"
                     style={{
                       backgroundColor:
@@ -204,7 +204,7 @@ export function AppShowcase() {
       {/* ── Mobile / tablet: stacked frames with captions ─────── */}
       <div className="flex flex-col gap-14 lg:hidden">
         {screens.map((s) => (
-          <div key={s.src}>
+          <div key={s.kicker}>
             <div className="mb-5">
               <span
                 className="section-label mb-3 w-fit"
