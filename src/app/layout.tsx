@@ -63,6 +63,13 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://healthlog.dev",
+    // The home page exists in English only; the learn articles carry their
+    // own per-locale alternates. Naming the language here keeps crawlers from
+    // guessing, and x-default points them at the same page.
+    languages: {
+      en: "https://healthlog.dev",
+      "x-default": "https://healthlog.dev",
+    },
     types: {
       "application/rss+xml": `${SITE_ORIGIN}/learn/feed.xml`,
     },
