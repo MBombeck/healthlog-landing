@@ -587,9 +587,11 @@ export default function FeaturesPage() {
           <p>
             So a managed profile is a health record with no credentials. No
             password, no passkey, no second factor, and no way to gain one. You
-            give it a name, optionally a real date of birth, and the language and
-            timezone its own days and reminders are measured in. Nothing is
-            invented from a year you did not give. Creating it asks for your
+            give it a name, optionally a real date of birth and a gender, and the
+            language and timezone its own days and reminders are measured in.
+            Nothing is invented from a year you did not give, and a guardian can
+            change any of the five later behind the same second factor that
+            created the record. Creating it asks for your
             second factor, and you become its first guardian in the same step, so
             there is no moment where the record exists and nobody is looking
             after it.

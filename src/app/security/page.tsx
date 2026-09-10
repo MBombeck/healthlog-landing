@@ -339,7 +339,12 @@ export default function SecurityPage() {
             other in the dangerous direction. A stored scope never grows by
             release either, since it holds the keys the owner ticked and a key
             that did not exist then cannot be among them. A new section is a
-            consent question rather than a schema question.
+            consent question rather than a schema question. The two stay
+            separate words for separate questions, and the scope does one thing
+            to the modules: it hides them. A delegate scoped to your readings is
+            told nothing about whether you track your cycle, run the screeners
+            or keep an illness journal, because the answer would be a fact about
+            you that the grant never opened.
           </p>
           <p>
             Every refusal a delegate can earn is the same status and the same
