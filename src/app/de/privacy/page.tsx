@@ -308,7 +308,9 @@ export default function DatenschutzSeite() {
           bleiben auf Ihrem Gerät und in Ihrem iCloud-gestützten Health-Speicher;
           die iOS-Anwendung kopiert die einschlägigen Datensätze in Ihr
           HealthLog-Konto, damit die Weboberfläche dieselben Verläufe zeigen
-          kann.
+          kann. Diese iCloud-Synchronisierung ist Apples eigenes
+          HealthKit-Verhalten, nicht etwas, das HealthLog tut — Abschnitt 7
+          nennt, was HealthLog selbst in iCloud ablegt und was nicht.
         </p>
         <p>
           Schreibzugriff wird für eine Teilmenge angefragt (Körpermasse,
@@ -358,12 +360,62 @@ export default function DatenschutzSeite() {
 
         <SubHeading>4.6 KI-Coach und Insights</SubHeading>
         <p>
-          Wenn Sie den Coach aktivieren und einen Sprachmodell-Anbieter
-          einrichten, sendet HealthLog auf Anforderung ein Kontextpaket an
-          diesen Anbieter. Das Paket enthält aus den obigen Daten abgeleiteten
+          Der KI-Coach ist ausgeschaltet, bis Sie ihn unter{" "}
+          <em className="not-italic">Einstellungen → KI</em> aktivieren und
+          zustimmen; vor dieser Zustimmung wird nichts aus diesem Abschnitt
+          oder dem nächsten irgendwohin gesendet. Ist er aktiv, erreicht
+          HealthLog ein Sprachmodell auf einem von drei Wegen, und die
+          Einstellungen nennen das konkrete Ziel, bevor die erste Anfrage an
+          diesen Anbieter hinausgeht.
+        </p>
+        <p>
+          <span className="text-text-primary font-medium">
+            Serverseitig vermittelter Weg.
+          </span>{" "}
+          Wählen Sie einen Anbieter, den die Instanz in Ihrem Auftrag
+          betreibt — Anthropic Claude, einen vom Betreiber hinterlegten
+          OpenAI-Schlüssel, Ihr eigenes verknüpftes ChatGPT-Konto, ein
+          selbst gehostetes lokales Modell oder ein vom Betreiber
+          eingerichtetes generisches OpenAI-kompatibles Relais —, sendet
+          HealthLog das Kontextpaket zunächst an den HealthLog-Server, der es
+          an diesen Anbieter weiterleitet. Was der jeweilige Anbieter damit
+          tut, steht in Abschnitt 6.
+        </p>
+        <p>
+          <span className="text-text-primary font-medium">
+            BYO-Key-Direktweg.
+          </span>{" "}
+          Hinterlegen Sie stattdessen unter{" "}
+          <em className="not-italic">Einstellungen → KI → Anbieter</em> einen
+          eigenen API-Schlüssel, sendet die iOS-App das Kontextpaket direkt
+          vom Telefon aus an OpenAI, Anthropic, Google Gemini oder eine
+          HTTPS-Adresse, die Sie selbst eingeben (jeden
+          OpenAI-kompatiblen <Code>/chat/completions</Code>-Endpunkt, etwa ein
+          selbst gehostetes Gateway) — ohne den Umweg über den
+          HealthLog-Server. Der API-Schlüssel bleibt in der Keychain des
+          Geräts und wird weder zum HealthLog-Server hochgeladen noch
+          protokolliert. Jeder Anbieter bleibt so lange ausgeschaltet, bis Sie
+          sowohl einen Schlüssel dafür hinterlegt als auch die
+          KI-Zustimmung dafür bestätigt haben.
+        </p>
+        <p>
+          <span className="text-text-primary font-medium">
+            Geräteinterner Weg.
+          </span>{" "}
+          Auf einem iPhone mit Apple Intelligence können das Daily Briefing
+          und kurze Coach-Antworten stattdessen mit Apples geräteinternen
+          Foundation Models laufen. In diesem Modus verlassen weder der
+          Gesundheitskontext noch die Antwort des Modells das Telefon.
+        </p>
+        <p>
+          Bei beiden Wegen, die das Gerät verlassen, sind die gesendeten
+          Kategorien identisch: aus den Daten dieses Abschnitts abgeleiteter
           Gesundheitskontext (Aggregate, jüngste Beobachtungen, Zielbereiche,
-          optional Medikationskontext) und wird für jede Anfrage neu gebildet.
-          Was der jeweilige Anbieter damit tut, steht in Abschnitt 6.
+          optional Medikationskontext) sowie Ihre Eingabe, jeweils frisch für
+          jede Anfrage gebildet. Zustimmung und Anbieterwahl lassen sich
+          jederzeit einzeln unter{" "}
+          <em className="not-italic">Einstellungen → KI</em> widerrufen; siehe
+          Abschnitt 8.
         </p>
         <p>
           Coach-Unterhaltungen werden auf der Instanz gespeichert. Jede
@@ -392,7 +444,39 @@ export default function DatenschutzSeite() {
           Gesprächszustand vor. Das hat die Software nie so gemacht.
         </p>
 
-        <SubHeading>4.7 Geräte- und Integrationsdaten</SubHeading>
+        <SubHeading>4.7 Dokumenten-KI und Laborbeleg-Scan</SubHeading>
+        <p>
+          <span className="text-text-primary font-medium">
+            Das schnelle Erfassen per Laborbeleg-Scan bleibt auf dem Gerät.
+          </span>{" "}
+          Fotografieren Sie einen Laborbefund oder ein Medikamentenetikett, um
+          Werte schnell zu erfassen, erfasst VisionKit die Seite und Apples
+          geräteinternes Vision-Framework (<Code>VNRecognizeTextRequest</Code>)
+          liest den Text; weder das Foto noch der erkannte Text werden
+          irgendwohin gesendet. Sie prüfen und korrigieren jede erkannte Zeile,
+          bevor etwas gespeichert wird, und nur die Zeilen, die Sie behalten,
+          werden in Ihr eigenes HealthLog-Konto geschrieben — genauso wie ein
+          von Hand eingetragener Wert. An diesem Ablauf ist kein KI-Anbieter
+          und keine Zustimmungsabfrage beteiligt, weil er das Gerät nie
+          verlässt.
+        </p>
+        <p>
+          <span className="text-text-primary font-medium">
+            Vorschläge, Zusammenfassungen und der dokumentbezogene Chat
+            verlassen das Gerät und sind wie der Coach abgesichert.
+          </span>{" "}
+          Haben Sie ein Dokument gespeichert und die KI-Zustimmung erteilt,
+          können Sie HealthLog um einen Ablage-Vorschlag, eine Zusammenfassung
+          oder einen auf dieses eine Dokument begrenzten Chat bitten. Das läuft
+          über den oben beschriebenen serverseitig vermittelten Weg: der
+          gespeicherte Text des Dokuments (aus dem Scan/der OCR oder einer
+          hochgeladenen Datei) geht für diese eine Anfrage oder diesen einen
+          Chat-Zug an den bei der Instanz eingerichteten Anbieter, und eine
+          begründete Antwort kommt zurückgestreamt. Zu einem Dokument wird
+          nichts gesendet, bevor Sie die entsprechende Funktion öffnen.
+        </p>
+
+        <SubHeading>4.8 Geräte- und Integrationsdaten</SubHeading>
         <ul className="list-disc space-y-1 pl-5">
           <li>
             Eine Gerätekennung (zufällige UUID, auf dem Gerät erzeugt, im
@@ -422,7 +506,7 @@ export default function DatenschutzSeite() {
           </li>
         </ul>
 
-        <SubHeading>4.8 Sicherheit und Protokolle</SubHeading>
+        <SubHeading>4.9 Sicherheit und Protokolle</SubHeading>
         <ul className="list-disc space-y-1 pl-5">
           <li>
             Anmeldeereignisse: erfolgreiche und fehlgeschlagene Anmeldung,
@@ -442,7 +526,7 @@ export default function DatenschutzSeite() {
           </li>
         </ul>
 
-        <SubHeading>4.9 Nicht erhobene Daten</SubHeading>
+        <SubHeading>4.10 Nicht erhobene Daten</SubHeading>
         <ul className="list-disc space-y-1 pl-5">
           <li>
             Keine Werbekennungen Dritter, keine Fingerabdrücke, keine
@@ -529,7 +613,10 @@ export default function DatenschutzSeite() {
         <p>
           Die folgenden Anbieter können personenbezogene Daten im Auftrag der
           Referenzinstanz verarbeiten. Die Liste ist für den veröffentlichten
-          Funktionsumfang abschließend. Alles unter &quot;verbundene Geräte und
+          Funktionsumfang abschließend, auch für den generischen
+          BYO-Key-Endpunkt: der Eintrag dazu beschreibt den Mechanismus statt
+          einer festen Firma — das tatsächliche Ziel ist die HTTPS-Adresse, die
+          Sie selbst eingeben. Alles unter &quot;verbundene Geräte und
           Dienste&quot; sowie jeder KI-Anbieter wird nur für eine Funktion
           eingesetzt, die Sie ausdrücklich eingeschaltet haben; die
           Passwortprüfung, die Ortsangabe zur Anmeldung und die Einträge zur
@@ -541,7 +628,7 @@ export default function DatenschutzSeite() {
           <SubProcessor
             labels={LABELS}
             name="Anthropic, PBC"
-            role="Anbieter für KI-Coach und Insights, wenn Sie in den Einstellungen Anthropic Claude wählen. Setzt Ihre ausdrückliche KI-Einwilligung voraus."
+            role="Anbieter für KI-Coach und Insights, wenn Sie Anthropic Claude wählen. Erreicht entweder über den serverseitig vermittelten Weg oder direkt aus der iOS-App, wenn Sie unter dem BYO-Key-Direktweg (Einstellungen → KI → Anbieter) einen eigenen Anthropic-Schlüssel hinterlegen — im Direktfall berührt die Anfrage den HealthLog-Server nicht. Setzt in beiden Fällen Ihre ausdrückliche KI-Einwilligung voraus."
             data="Coach-Kontextpaket (Gesundheitskontext) und die Züge der Unterhaltung, für die Dauer der Anfrage."
             location="Vereinigte Staaten. Anthropic nennt ein Aufbewahrungsfenster von 30 Tagen zur Missbrauchskontrolle."
             policyUrl="https://www.anthropic.com/legal/privacy"
@@ -549,7 +636,7 @@ export default function DatenschutzSeite() {
           <SubProcessor
             labels={LABELS}
             name="OpenAI, L.L.C. (API-Schlüssel)"
-            role="Alternativer Anbieter für KI-Coach und Insights, wenn Sie ein OpenAI-Modell wählen. Setzt Ihre ausdrückliche KI-Einwilligung voraus."
+            role="Alternativer Anbieter für KI-Coach und Insights, wenn Sie ein OpenAI-Modell wählen. Erreicht entweder über den serverseitig vermittelten Weg oder direkt aus der iOS-App unter dem BYO-Key-Direktweg, der den HealthLog-Server nicht berührt. Setzt in beiden Fällen Ihre ausdrückliche KI-Einwilligung voraus."
             data="Coach-Kontextpaket in derselben Form wie bei Anthropic."
             location="Vereinigte Staaten. Die Aufbewahrung richtet sich nach der für den hinterlegten API-Schlüssel geltenden Regelung von OpenAI."
             policyUrl="https://openai.com/policies/privacy-policy"
@@ -557,10 +644,26 @@ export default function DatenschutzSeite() {
           <SubProcessor
             labels={LABELS}
             name="OpenAI, L.L.C. (ChatGPT-Konto)"
-            role="Dritter Weg zu einem Modell: statt eines API-Schlüssels melden Sie sich an Ihrem eigenen ChatGPT-Konto an, und HealthLog spricht im Namen dieses Kontos mit dem ChatGPT-Backend. Die Anmeldung selbst läuft über auth.openai.com. Setzt Ihre ausdrückliche KI-Einwilligung voraus."
+            role="Dritter, nur serverseitig vermittelter Weg zu einem Modell: statt eines API-Schlüssels melden Sie sich an Ihrem eigenen ChatGPT-Konto an, und HealthLog spricht im Namen dieses Kontos mit dem ChatGPT-Backend. Die Anmeldung selbst läuft über auth.openai.com. Setzt Ihre ausdrückliche KI-Einwilligung voraus."
             data="Die OAuth-Token dieses ChatGPT-Kontos (verschlüsselt auf der Instanz gespeichert), die Kennung des ChatGPT-Kontos sowie dasselbe Coach-Kontextpaket und dieselben Gesprächszüge wie oben."
             location="Vereinigte Staaten. Die Nutzung fällt unter die Bedingungen Ihres eigenen ChatGPT-Tarifs."
             policyUrl="https://openai.com/policies/privacy-policy"
+          />
+          <SubProcessor
+            labels={LABELS}
+            name="Google LLC (Gemini API, BYO-Key)"
+            role="Anbieter für KI-Coach und Insights, wenn Sie unter dem BYO-Key-Direktweg (Einstellungen → KI → Anbieter) einen eigenen Google-Gemini-Schlüssel hinterlegen. Die Anfrage geht direkt von der iOS-App an Gemini und berührt den HealthLog-Server nicht. Setzt Ihre ausdrückliche KI-Einwilligung voraus. Getrennt vom Eintrag Google Health zur Gerätesynchronisation weiter unten."
+            data="Dasselbe Kontextpaket und dieselben Gesprächszüge wie bei den anderen BYO-Anbietern, für die Dauer der Anfrage."
+            location="Vereinigte Staaten und weitere Länder, in denen Google Infrastruktur betreibt."
+            policyUrl="https://policies.google.com/privacy"
+          />
+          <SubProcessor
+            labels={LABELS}
+            name="Selbst angegebener OpenAI-kompatibler Endpunkt (BYO-Key-Direktweg)"
+            role="Anbieter für KI-Coach und Insights, wenn Sie den BYO-Key-Direktweg auf eine eigene HTTPS-Adresse richten (einen beliebigen OpenAI-kompatiblen /chat/completions-Endpunkt, etwa ein selbst gehostetes Gateway). Das ist keine Firma: die Adresse ist die, die Sie eingeben, und die Anfrage geht direkt von der iOS-App dorthin, nie über den HealthLog-Server. Setzt Ihre ausdrückliche KI-Einwilligung voraus."
+            data="Dasselbe Kontextpaket und dieselben Gesprächszüge wie bei den anderen BYO-Anbietern, gesendet an die von Ihnen eingerichtete Adresse. Ein API-Schlüssel ist optional; wird einer hinterlegt, geht er nur an diese Adresse."
+            location="Wo auch immer der eingerichtete Endpunkt liegt. Es werden nur https://-Adressen akzeptiert; eine reine http://-Angabe weist die App ab, bevor eine Anfrage gebaut wird."
+            policyUrl="https://github.com/MBombeck/HealthLog"
           />
           <SubProcessor
             labels={LABELS}
@@ -746,6 +849,23 @@ export default function DatenschutzSeite() {
 
       <Section id="storage" title="7. Speicherung, Verschlüsselung, Aufbewahrung">
         <ul className="list-disc space-y-1 pl-5">
+          <li>
+            <span className="text-text-primary font-medium">
+              Kein iCloud, kein CloudKit.
+            </span>{" "}
+            HealthLog legt eigene Daten nicht in iCloud oder CloudKit ab: nicht
+            die Server-Datenbank, nicht die lokalen Gesundheits-Caches oder den
+            Offline-Ausgang der iOS-App, nicht EKG- oder Trainings-Daten, nicht
+            den KI-Verlauf-Cache, nicht die Datenbank des
+            Medikamentenerinnerungs-Planers und nicht die Gesundheits-Schnappschüsse
+            für Widget oder Watch. Lokale, gesundheitsbezogene Speicher auf dem
+            Gerät nutzen geschützten App-/App-Gruppen-Speicher, schalten
+            CloudKit dort ab, wo das Framework die Option bietet, und sind von
+            der Gerätesicherung ausgeschlossen. Apple Health kann
+            HealthKit-Daten separat über Apples eigene iCloud-Steuerung
+            synchronisieren (Abschnitt 4.3) — das ist Apple-seitiges
+            HealthKit-Verhalten, keine iCloud-Speicherung durch HealthLog.
+          </li>
           <li>
             Primärer Datenspeicher: PostgreSQL auf einem Server bei Hetzner in
             Deutschland. Datenträger verschlüsselt. Sensible Spalten

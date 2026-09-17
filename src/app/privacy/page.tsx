@@ -305,7 +305,9 @@ export default function PrivacyPage() {
           remains on the user&apos;s device and the user&apos;s iCloud-backed
           Health store; the iOS application copies relevant samples to the
           user&apos;s HealthLog account so the web surface can render the same
-          trends.
+          trends. That iCloud sync is Apple&apos;s own HealthKit behaviour, not
+          something HealthLog does — section 7 states what HealthLog itself
+          does and does not put in iCloud.
         </p>
         <p>
           Write access is requested for a subset (body mass, blood-pressure
@@ -354,12 +356,56 @@ export default function PrivacyPage() {
 
         <SubHeading>4.6 AI Coach and Insights</SubHeading>
         <p>
-          When the user enables the Coach surface and configures a
-          language-model provider, HealthLog sends a snapshot bundle to that
-          provider on demand. The bundle contains health context derived from
-          the data above (aggregates, recent observations, target ranges,
-          optional medication context) and is built fresh for each request. See
-          section 6 for what each provider does with the data.
+          The AI Coach is off until the user turns it on under{" "}
+          <em className="not-italic">Settings → AI</em> and grants consent;
+          nothing in this subsection or the next is sent anywhere before that.
+          Once enabled, HealthLog reaches a language model through one of three
+          paths, and the settings screen names the exact destination before the
+          first request for that provider goes out.
+        </p>
+        <p>
+          <span className="text-text-primary font-medium">
+            Server-managed path.
+          </span>{" "}
+          If the user picks a provider the instance operates on their behalf —
+          Anthropic Claude, an OpenAI API key held by the operator, the
+          user&apos;s own linked ChatGPT account, a self-hosted local model, or
+          an operator-configured generic OpenAI-compatible relay — HealthLog
+          sends the snapshot bundle to the HealthLog server first, and the
+          server forwards it to that provider. See section 6 for what each
+          provider does with the data.
+        </p>
+        <p>
+          <span className="text-text-primary font-medium">
+            BYO-key direct path.
+          </span>{" "}
+          If the user instead adds their own API key under{" "}
+          <em className="not-italic">Settings → AI → Providers</em>, the iOS
+          application sends the snapshot bundle straight from the phone to
+          OpenAI, Anthropic, Google Gemini, or an HTTPS address the user types
+          in themselves (any OpenAI-compatible <Code>/chat/completions</Code>{" "}
+          host, such as a self-hosted gateway) — never through the HealthLog
+          server. The API key lives in the device Keychain and is never
+          uploaded to the HealthLog server or written to a log. Each provider
+          stays off until the user has both supplied a key for it and
+          confirmed AI consent for it.
+        </p>
+        <p>
+          <span className="text-text-primary font-medium">
+            On-device path.
+          </span>{" "}
+          On an iPhone that supports Apple Intelligence, the Daily Briefing and
+          quick Coach replies can run against Apple&apos;s on-device Foundation
+          Models instead of a cloud provider. In that mode the health context
+          and the model&apos;s reply never leave the phone.
+        </p>
+        <p>
+          In both off-device paths, the categories sent are the same: health
+          context derived from the data in this section (aggregates, recent
+          observations, target ranges, optional medication context) and the
+          user&apos;s prompt, built fresh for each request. Consent and the
+          provider selection can be withdrawn per provider at any time under{" "}
+          <em className="not-italic">Settings → AI</em>; see section 8.
         </p>
         <p>
           Coach conversations are stored on the instance. Each message is held
@@ -386,7 +432,37 @@ export default function PrivacyPage() {
           software did.
         </p>
 
-        <SubHeading>4.7 Device and integration metadata</SubHeading>
+        <SubHeading>4.7 Document AI and lab-document scanning</SubHeading>
+        <p>
+          <span className="text-text-primary font-medium">
+            Quick-entry lab scanning stays on the device.
+          </span>{" "}
+          When the user photographs a lab report or a medication label to add
+          results quickly, VisionKit captures the page and Apple&apos;s
+          on-device Vision framework (<Code>VNRecognizeTextRequest</Code>)
+          reads the text; nothing about the photo or the recognised text is
+          sent anywhere. The user reviews and edits every extracted row before
+          anything is saved, and only the rows the user keeps are written to
+          their own HealthLog account, the same way a manually typed entry
+          would be. No AI provider and no consent gate is involved in this
+          flow, because it never leaves the device.
+        </p>
+        <p>
+          <span className="text-text-primary font-medium">
+            Document suggest, summary and per-document chat are off-device and
+            gated the same way as the Coach.
+          </span>{" "}
+          Once the user has stored a document and turned on AI consent, they
+          may ask HealthLog to suggest filing details, summarise a document, or
+          open a chat scoped to that one document. These go through the
+          server-managed path described above: the document&apos;s stored text
+          (from the scan/OCR or an uploaded file) is sent to the instance&apos;s
+          configured provider for that one request or chat turn, and a grounded
+          answer is streamed back. Nothing about a document is sent until the
+          user opens the corresponding affordance.
+        </p>
+
+        <SubHeading>4.8 Device and integration metadata</SubHeading>
         <ul className="list-disc space-y-1 pl-5">
           <li>
             A device identifier (random UUID generated client-side, stored in
@@ -414,7 +490,7 @@ export default function PrivacyPage() {
           </li>
         </ul>
 
-        <SubHeading>4.8 Security and audit</SubHeading>
+        <SubHeading>4.9 Security and audit</SubHeading>
         <ul className="list-disc space-y-1 pl-5">
           <li>
             Authentication events: login success / failure, passkey
@@ -434,7 +510,7 @@ export default function PrivacyPage() {
           </li>
         </ul>
 
-        <SubHeading>4.9 Data not collected</SubHeading>
+        <SubHeading>4.10 Data not collected</SubHeading>
         <ul className="list-disc space-y-1 pl-5">
           <li>
             No third-party advertising identifiers, fingerprints, or cross-app
@@ -519,18 +595,21 @@ export default function PrivacyPage() {
         <p>
           The following providers may process personal data on behalf of the
           maintainer-operated instance. The list is exhaustive for the released
-          feature set. Everything under &quot;connected devices and
-          services&quot; and every AI provider is engaged only for a feature the
-          user has explicitly enabled; the password-breach check, the sign-in
-          geolocation and the infrastructure entries are operator defaults that
-          apply without a per-user choice. Self-hosted instances run by other
-          operators may use a different set.
+          feature set, including the generic BYO-key endpoint case, where the
+          named row below covers the mechanism rather than one fixed company —
+          the actual destination is whatever HTTPS address the user enters.
+          Everything under &quot;connected devices and services&quot; and every
+          AI provider is engaged only for a feature the user has explicitly
+          enabled; the password-breach check, the sign-in geolocation and the
+          infrastructure entries are operator defaults that apply without a
+          per-user choice. Self-hosted instances run by other operators may use
+          a different set.
         </p>
         <ul className="grid gap-3">
           <SubProcessor
             labels={LABELS}
             name="Anthropic, PBC"
-            role="AI Coach and Insights provider when the user selects Anthropic Claude in settings. Requires the user's explicit AI consent."
+            role="AI Coach and Insights provider when the user selects Anthropic Claude. Reached either through the server-managed relay, or directly from the iOS app when the user adds their own Anthropic key under the BYO-key direct path (Settings → AI → Providers) — in the direct case the request never touches the HealthLog server. Requires the user's explicit AI consent either way."
             data="Coach snapshot bundle (health-data context) and the turns of the conversation, for the duration of the request."
             location="United States. Anthropic states a 30-day retention window for abuse-monitoring."
             policyUrl="https://www.anthropic.com/legal/privacy"
@@ -538,7 +617,7 @@ export default function PrivacyPage() {
           <SubProcessor
             labels={LABELS}
             name="OpenAI, L.L.C. (API key)"
-            role="Alternative AI Coach and Insights provider when the user selects an OpenAI model in settings. Requires the user's explicit AI consent."
+            role="Alternative AI Coach and Insights provider when the user selects an OpenAI model. Reached either through the server-managed relay, or directly from the iOS app under the BYO-key direct path, which never touches the HealthLog server. Requires the user's explicit AI consent either way."
             data="Coach snapshot bundle, same shape as the Anthropic variant."
             location="United States. Retention governed by OpenAI's policy applicable to the configured API key."
             policyUrl="https://openai.com/policies/privacy-policy"
@@ -546,10 +625,26 @@ export default function PrivacyPage() {
           <SubProcessor
             labels={LABELS}
             name="OpenAI, L.L.C. (ChatGPT account)"
-            role="Third way to reach a model: instead of an API key, the user signs in to their own ChatGPT account and HealthLog talks to the ChatGPT backend on that account's behalf. The sign-in itself runs against auth.openai.com. Requires the user's explicit AI consent."
+            role="Third way to reach a model, server-managed only: instead of an API key, the user signs in to their own ChatGPT account and HealthLog talks to the ChatGPT backend on that account's behalf. The sign-in itself runs against auth.openai.com. Requires the user's explicit AI consent."
             data="The OAuth tokens of that ChatGPT account (encrypted at rest on the instance), the ChatGPT account identifier, and the same Coach snapshot bundle and conversation turns as above."
             location="United States. Usage falls under the terms of the user's own ChatGPT plan."
             policyUrl="https://openai.com/policies/privacy-policy"
+          />
+          <SubProcessor
+            labels={LABELS}
+            name="Google LLC (Gemini API, BYO key)"
+            role="AI Coach and Insights provider when the user adds their own Google Gemini key under the BYO-key direct path (Settings → AI → Providers). The request goes straight from the iOS app to Gemini and never touches the HealthLog server. Requires the user's explicit AI consent. Separate from the Google Health device-sync entry below."
+            data="The same snapshot bundle and conversation turns as the other BYO providers, for the duration of the request."
+            location="United States and other countries where Google operates infrastructure."
+            policyUrl="https://policies.google.com/privacy"
+          />
+          <SubProcessor
+            labels={LABELS}
+            name="User-specified OpenAI-compatible endpoint (BYO-key direct)"
+            role="AI Coach and Insights provider when the user points the BYO-key direct path at their own HTTPS address (any OpenAI-compatible /chat/completions host, such as a self-hosted gateway). This is not a company: the address is the one the user enters, and the request goes straight from the iOS app to it, never through the HealthLog server. Requires the user's explicit AI consent."
+            data="The same snapshot bundle and conversation turns as the other BYO providers, sent to whichever address the user configured. An API key is optional; when supplied it is sent only to that address."
+            location="Wherever the user points the endpoint. Only https:// addresses are accepted; the app rejects a plain http:// entry before any request is built."
+            policyUrl="https://github.com/MBombeck/HealthLog"
           />
           <SubProcessor
             labels={LABELS}
@@ -732,6 +827,22 @@ export default function PrivacyPage() {
 
       <Section id="storage" title="7. Storage, encryption, retention">
         <ul className="list-disc space-y-1 pl-5">
+          <li>
+            <span className="text-text-primary font-medium">
+              No iCloud or CloudKit.
+            </span>{" "}
+            HealthLog does not put its own data in iCloud or CloudKit: not the
+            server database, not the iOS app&apos;s local health caches or
+            offline outbox, not ECG or workout payloads, not the AI transcript
+            cache, not the medication-reminder scheduler database, and not the
+            widget or watch health snapshots. Local, health-bearing stores on
+            the device use protected app/application-group storage, turn
+            CloudKit off where the framework offers the option, and are
+            excluded from device backup. Apple Health can separately sync
+            HealthKit data through Apple&apos;s own iCloud controls (section
+            4.3) — that is Apple-managed HealthKit behaviour, not HealthLog
+            storing anything in iCloud.
+          </li>
           <li>
             Primary data store: PostgreSQL on a Hetzner-hosted server in
             Germany. Disk encrypted at rest. Sensitive columns (authentication
