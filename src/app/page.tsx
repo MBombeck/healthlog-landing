@@ -797,12 +797,12 @@ const faqs = [
   {
     question: "Is HealthLog free?",
     answer:
-      "Yes, for noncommercial use. HealthLog is source available under the PolyForm Noncommercial 1.0.0 licence. You run it on your own server with a single docker compose up. There is no subscription and no paid tier.",
+      "Yes, for noncommercial use. HealthLog is source available under the PolyForm Noncommercial 1.0.0 licence. You run it on your own server with a single docker compose up. There is no subscription and no paid tier. The iPhone app is a small one-time purchase on the App Store; the TestFlight beta and a copy you build yourself are free.",
   },
   {
     question: "Does HealthLog sync with Apple Health?",
     answer:
-      "Yes. The native SwiftUI iOS app (source on GitHub, public TestFlight beta) keeps Apple Health (HealthKit) in two-way sync: steps, weight, blood pressure, blood glucose, sleep, and body composition flow straight to your own server. On any platform you can also drop an Apple Health export.zip on the upload page.",
+      "Yes. The native SwiftUI iOS app (on the App Store, source on GitHub) keeps Apple Health (HealthKit) in two-way sync: steps, weight, blood pressure, blood glucose, sleep, and body composition flow straight to your own server. On any platform you can also drop an Apple Health export.zip on the upload page.",
   },
   {
     question: "Where is my health data stored?",
@@ -1186,11 +1186,11 @@ export default function Home() {
                 straight to your server.
               </h2>
               <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-                A native SwiftUI client, with its source on GitHub and in
-                public beta on TestFlight, keeps Apple Health in two-way sync with your own
+                The native SwiftUI app is on the App Store, with its source on
+                GitHub. It keeps Apple Health in two-way sync with your own
                 instance. No cloud middleman: readings land on the same
-                timeline as everything else, and the app can even run
-                standalone without a server.
+                timeline as everything else. The app needs your own HealthLog
+                server, or the demo for a first look.
               </p>
             </div>
 
@@ -1237,10 +1237,11 @@ export default function Home() {
               </div>
               <div className="glass-card p-5">
                 <div className="text-xs font-mono text-purple mb-1.5 uppercase tracking-wider">
-                  Sign in with a passkey
+                  Sign in like on the web
                 </div>
                 <div className="text-sm text-text-secondary leading-relaxed">
-                  Face ID / Touch ID passkey sign-in, with per-device
+                  Your instance&apos;s own login page opens in the app, so
+                  passkeys and password managers work, with per-device
                   refresh-token rotation against your own server.
                 </div>
               </div>
@@ -1257,13 +1258,13 @@ export default function Home() {
 
             <div className="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://testflight.apple.com/join/bucuTBpa"
+                href="https://apps.apple.com/app/id6769501341"
                 className="cta-button group"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <AppleIcon className="w-5 h-5 relative z-10" />
-                <span>Join the TestFlight beta</span>
+                <span>Get it on the App Store</span>
                 <ArrowIcon />
               </a>
               <a
@@ -1520,7 +1521,7 @@ export default function Home() {
                       />
                       <ComparisonRow
                         feature="Native iOS app"
-                        values={["Public beta", "Native", "Native", "Native"]}
+                        values={["App Store", "Native", "Native", "Native"]}
                         highlights={[true, null, null, null]}
                       />
                       <ComparisonRow
@@ -1768,8 +1769,8 @@ export default function Home() {
             <DemoCredentials />
 
             <p className="reveal text-text-tertiary text-xs font-mono">
-              Resets automatically — feel free to add, edit, and delete
-              anything.
+              Read-only: a year of synthetic data to browse. Changes are
+              not saved. Works in the iPhone app too.
             </p>
           </div>
         </section>

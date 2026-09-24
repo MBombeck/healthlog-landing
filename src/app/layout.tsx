@@ -157,7 +157,7 @@ export default function RootLayout({
       "Two-factor authentication (TOTP and WebAuthn) with step-up checks for sensitive actions",
       "Shared access between two accounts on one instance: give a family member access to your record without sharing a login, to read it, to read it and add to it, or to manage it. The invitation confers nothing until accepted and names both the level and the sections of the record it opens (readings, medications, lab results, health background, illness, mood and mind, cycle, documents), with everything unpicked refused exactly as an unshared record is; managing always covers the whole record; deferring the owner's reminders and overturning a recorded dose stay with the owner at every level; a delegate's entry is stored as the owner's, with authorship in the audit trail and an activity feed that names each act by verb; credentials, integrations, notification channels, module and threshold configuration and exports stay out of reach; an invitation can name the day the access lapses, and either side can end it sooner with effect on the delegate's next request",
       "Managed profiles: a health record for somebody who does not sign in at all, such as a child or a person in your care. No login and no e-mail address, its own language and timezone, guardians who look after it at the manage level, reminders that reach the guardians rather than the record, and a floor that keeps the last guardian from leaving it unattended",
-      "Native SwiftUI iOS app (public TestFlight beta) with live two-way Apple Health (HealthKit) sync — steps, weight, blood pressure, glucose, sleep, body composition",
+      "Native SwiftUI iOS app (on the App Store) with live two-way Apple Health (HealthKit) sync — steps, weight, blood pressure, glucose, sleep, body composition",
       "Weight, blood pressure, heart rate, body fat, sleep, steps tracking",
       "Body composition: total body water + bone mass via Withings auto-sync",
       "Pulse oximetry (SpO₂) tracking with personalisable target bands for COPD / chronic respiratory users",
@@ -237,7 +237,7 @@ export default function RootLayout({
         name: "Is HealthLog free?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes, for noncommercial use. HealthLog is source available under the PolyForm Noncommercial 1.0.0 licence. You run it on your own server with a single docker compose up — there is no subscription and no paid tier.",
+          text: "Yes, for noncommercial use. HealthLog is source available under the PolyForm Noncommercial 1.0.0 licence. You run it on your own server with a single docker compose up. There is no subscription and no paid tier. The iPhone app is a small one-time purchase on the App Store; the TestFlight beta and a copy you build yourself are free.",
         },
       },
       {
@@ -245,7 +245,7 @@ export default function RootLayout({
         name: "Does HealthLog sync with Apple Health?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. The native SwiftUI iOS app (public TestFlight beta) keeps Apple Health (HealthKit) in two-way sync — steps, weight, blood pressure, blood glucose, sleep, and body composition flow straight to your own server. On any platform you can also drop an Apple Health export.zip on the upload page.",
+          text: "Yes. The native SwiftUI iOS app (on the App Store) keeps Apple Health (HealthKit) in two-way sync — steps, weight, blood pressure, blood glucose, sleep, and body composition flow straight to your own server. On any platform you can also drop an Apple Health export.zip on the upload page.",
         },
       },
       {
