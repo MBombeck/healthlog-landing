@@ -6,14 +6,14 @@ import { SITE_ORIGIN } from "@/content/learn/locales";
 /**
  * Legal notice / Impressum for the marketing site.
  *
- * Provider identification under § 5 TMG and § 18 Abs. 2 MStV for the
+ * Provider identification under § 5 DDG and § 18 Abs. 2 MStV for the
  * German-operated site. Self-contained — no auth shell — inheriting the dark
  * Dracula visual language from `globals.css`, matching `/privacy`.
  */
 
 const TITLE = "Imprint";
 const DESCRIPTION =
-  "Legal notice (Impressum) for HealthLog under § 5 TMG and § 18 Abs. 2 MStV.";
+  "Legal notice (Impressum) for HealthLog under § 5 DDG and § 18 Abs. 2 MStV.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -93,7 +93,7 @@ export default function ImprintPage() {
             Imprint
           </h1>
           <p className="text-text-secondary text-sm leading-relaxed">
-            Provider identification under § 5 of the German Telemedia Act (TMG)
+            Provider identification under § 5 of the German Digital Services Act (DDG)
             and § 18 Abs. 2 of the Interstate Media Treaty (MStV).
           </p>
         </div>
