@@ -54,7 +54,7 @@ export function TerminalBlock({ commands }: { commands: string }) {
         </div>
         <div className="flex items-center gap-1.5 text-text-tertiary text-[10px] font-mono">
           {copiedField === "terminal" ? (
-            <span className="flex items-center gap-1 text-green"><CopyCheckIcon /> Kopiert</span>
+            <span className="flex items-center gap-1 text-green"><CopyCheckIcon /> Copied</span>
           ) : (
             <span className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"><ClipboardIcon /> Copy</span>
           )}

@@ -14,7 +14,7 @@ import { SITE_ORIGIN } from "@/content/learn/locales";
 
 const TITLE = "Security & privacy — your data, your server";
 const DESCRIPTION =
-  "How HealthLog protects health data: AES-256-GCM at rest with versioned key rotation, passkeys, Argon2id and two-factor auth, server-side sessions and hashed API tokens, revocable access between two accounts at a read or an add-only level, refused by default on every route, an off-by-default OAuth-scoped AI assistant connector, an encrypted document vault with blind-index search and untrusted-document chat, self-hosting on your own infrastructure, and zero telemetry. Source available.";
+  "How HealthLog protects health data: AES-256-GCM at rest with versioned key rotation, passkeys, Argon2id and two-factor auth, server-side sessions and hashed API tokens, revocable access between two accounts at a read or an add-only level, refused by default on every route, an off-by-default OAuth-scoped AI assistant connector, an encrypted document vault with blind-index search and untrusted-document chat, self-hosting on your own infrastructure, and no usage telemetry. Source available.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -85,7 +85,7 @@ const TOC = [
   { id: "connector", label: "AI assistant connector" },
   { id: "documents", label: "Document vault" },
   { id: "dedup", label: "Source-priority dedup" },
-  { id: "telemetry", label: "No telemetry" },
+  { id: "telemetry", label: "No usage telemetry" },
   { id: "license", label: "Source available" },
 ];
 
@@ -130,7 +130,8 @@ export default function SecurityPage() {
           <p className="text-text-secondary text-base leading-relaxed md:text-lg">
             Health data is about as sensitive as personal data gets, so
             HealthLog is built so that it stays on infrastructure you control,
-            encrypted at rest, with no central HealthLog cloud to leak from.
+            with its sensitive text encrypted at rest and no central HealthLog
+            cloud to leak from.
             Here is exactly how that works.
           </p>
         </div>
@@ -166,9 +167,18 @@ export default function SecurityPage() {
           <p>
             HealthLog runs on your own infrastructure. There is no central
             HealthLog cloud, no shared multi-tenant database, and no analytics
-            back-end watching from the side. Nothing leaves your server unless
-            you explicitly turn on an outbound integration like a sync provider,
+            back-end watching from the side. Health data leaves your server
+            only when you turn on an outbound integration like a sync provider,
             an AI provider, or a notification channel.
+          </p>
+          <p>
+            Out of the box the server makes three requests that carry no health
+            data: a Have I Been Pwned range query when a password is set, a
+            check of the GitHub releases API for a newer version, and a location
+            lookup for sign-in addresses the optional GeoLite2 databases cannot
+            place. Each has an off-switch: <code>PASSWORD_BREACH_CHECK_DISABLED</code>,{" "}
+            <code>UPDATE_CHECK_DISABLED</code> and{" "}
+            <code>IP_GEO_LOOKUP_DISABLED</code>.
           </p>
           <p>
             Deployment is a single Docker setup backed by PostgreSQL. Run it as
@@ -197,10 +207,15 @@ export default function SecurityPage() {
           title="AES-256-GCM with versioned keys"
         >
           <p>
-            Sensitive fields are encrypted at the column level with AES-256-GCM,
-            using a key kept separate from the database. Integration secrets,
-            tokens and other sensitive values never sit in the database as
-            plaintext.
+            Notes and other free text, documents with their extracted text and
+            summaries, questionnaire answers, AI-written text, Coach
+            conversations, allergy reactions and family-history notes, and every
+            OAuth token and provider key are encrypted at the column level with
+            AES-256-GCM, using a key kept separate from the database. API tokens
+            are stored only as keyed hashes. Measurement and lab values,
+            medication names, mood scores and allergy and condition names are
+            stored unencrypted so they can be queried and charted; protect the
+            database volume and its backups like the host itself.
           </p>
           <p>
             Keys are versioned, so you can rotate them online without a
@@ -435,7 +450,7 @@ export default function SecurityPage() {
             Automatic reading is a separate, off-by-default switch; turning it
             on is standing consent, and every document it reaches still
             re-checks that consent and your daily budget. A local reader keeps
-            the file on your server entirely.
+            the file on your server and in your own browser.
           </p>
           <p>
             Searching inside your documents runs over an encrypted blind index.
@@ -487,15 +502,19 @@ export default function SecurityPage() {
 
         <SecuritySection
           id="telemetry"
-          label="No telemetry"
+          label="No usage telemetry"
           color="green"
           title="Nothing watching over your shoulder"
         >
           <p>
-            HealthLog ships no telemetry, no analytics SDK, and no third-party
+            HealthLog ships no usage telemetry, no analytics SDK, and no third-party
             trackers. There are no advertising identifiers and no cross-app
-            tracking. The instance does not phone home, because there is no home
-            to phone.
+            tracking, and no central HealthLog server to report to. Page
+            statistics and error reports exist only if the operator connects
+            their own Umami or GlitchTip installation. The only default outbound
+            requests are the password breach check, the update check and the
+            sign-in location lookup, none carrying health data, and each can be
+            switched off.
           </p>
         </SecuritySection>
 

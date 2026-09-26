@@ -641,7 +641,7 @@ const primaryFeatures = [
     icon: <BrainIcon />,
     title: "A Coach that cites its sources",
     description:
-      "Ask about your numbers, and every answer names the metric, the window and the reading count it drew on, chart attached. Use your own OpenAI or Anthropic key, your ChatGPT subscription, or a local model that never leaves your network.",
+      "Ask about your numbers, and every answer names the metric, the window and the reading count it drew on, chart attached. Use your own OpenAI or Anthropic key, your ChatGPT subscription, or a local model, so AI requests stay on your network.",
     color: "orange",
   },
 ];
@@ -679,7 +679,7 @@ const secondaryFeatures = [
     icon: <MoodIcon />,
     title: "Mood & mental wellbeing",
     description:
-      "A five-point mood log correlated against sleep and activity, with optional PHQ-9 and GAD-7 check-ins. Encrypted, and screening rather than diagnosis.",
+      "A five-point mood log correlated against sleep and activity, with optional PHQ-9 and GAD-7 check-ins whose answers are encrypted at rest. Screening, not diagnosis.",
     color: "pink",
   },
   {
@@ -780,9 +780,10 @@ const techItems = [
 ];
 
 const privacyChecks = [
-  "No cloud dependency: runs entirely on your own server",
-  "No telemetry, no analytics, no tracking scripts",
-  "AES-256-GCM encryption for all sensitive data at rest",
+  "No central cloud: runs on your own server",
+  "No usage telemetry and no third-party analytics SDK",
+  "Three default outbound checks without health data (password breach, update, sign-in location), each with an off-switch",
+  "AES-256-GCM encryption at rest for notes, documents, questionnaire answers, Coach conversations and tokens",
   "API tokens stored as keyed HMAC-SHA-256 hashes, never in plaintext",
   "Passkey authentication, phishing-resistant by design",
   "Password fallback with Argon2id hashing and strength validation",
@@ -807,7 +808,7 @@ const faqs = [
   {
     question: "Where is my health data stored?",
     answer:
-      "Entirely on your own infrastructure. HealthLog is self-hosted on PostgreSQL, with all sensitive fields encrypted at rest using AES-256-GCM. There is no cloud dependency, no telemetry, and no third-party analytics.",
+      "Entirely on your own infrastructure. HealthLog is self-hosted on PostgreSQL, with notes, documents, questionnaire answers, Coach conversations and tokens encrypted at rest using AES-256-GCM. Measurement values, lab values, medication names and mood scores are stored unencrypted so they can be queried and charted. There is no usage telemetry and no third-party analytics.",
   },
   {
     question: "Which devices and services does HealthLog integrate with?",
@@ -822,7 +823,7 @@ const faqs = [
   {
     question: "Can HealthLog store and search my medical documents?",
     answer:
-      "Yes. An optional, off-by-default document vault keeps your letters, reports and scans encrypted at rest on your own server. Each upload is read and made searchable automatically, by a local reader that never leaves your machine, or, with your per-document consent, by your configured AI provider for a richer read of scans. You can search the words inside your documents over an encrypted blind index that stores nothing readable, ask a single document a grounded and cited question, and share one with a clinician through a time-boxed, revocable QR link with photo metadata stripped.",
+      "Yes. An optional, off-by-default document vault keeps your letters, reports and scans encrypted at rest on your own server. Each upload is read and made searchable automatically, by a local reader that runs on your server or in your own browser, or, with your per-document consent, by your configured AI provider for a richer read of scans. You can search the words inside your documents over an encrypted blind index that stores nothing readable, ask a single document a grounded and cited question, and share one with a clinician through a time-boxed, revocable QR link with photo metadata stripped.",
   },
   {
     question: "Can I let a family member see my health record?",
@@ -844,9 +845,11 @@ const faqs = [
 const terminalCommands = `git clone https://github.com/MBombeck/HealthLog.git
 cd HealthLog
 cp .env.example .env
-echo "POSTGRES_PASSWORD=$(openssl rand -base64 24)" >> .env
-echo "ENCRYPTION_KEY=$(openssl rand -hex 32)"       >> .env
-echo "API_TOKEN_HMAC_KEY=$(openssl rand -hex 32)"   >> .env
+echo "POSTGRES_PASSWORD=$(openssl rand -hex 32)"   >> .env
+echo "ENCRYPTION_KEY=$(openssl rand -hex 32)"      >> .env
+echo "API_TOKEN_HMAC_KEY=$(openssl rand -hex 32)"  >> .env
+# Plain HTTP (LAN, NAS, Tailscale) only; omit behind HTTPS:
+echo "SESSION_COOKIE_SECURE=false"                 >> .env
 docker compose up -d`;
 
 /* ── Comparison Row ─────────────────────────────── */
@@ -993,7 +996,7 @@ export default function Home() {
 
           <p className="text-text-secondary text-lg sm:text-xl md:text-[1.35rem] max-w-2xl mx-auto mb-14 leading-[1.7] font-light tracking-[-0.01em]">
             The self-hosted health tracker. Weight, blood pressure, glucose,
-            medications, mood: encrypted on your own server, synced from Apple
+            medications, mood: on your own server, synced from Apple
             Health, Withings, WHOOP, Oura, Polar, Fitbit, Strava and
             Nightscout. Source available.
           </p>
@@ -1150,7 +1153,7 @@ export default function Home() {
                 "Passkeys & two-factor auth",
                 "Offline-capable PWA",
                 "Telegram · ntfy · Web Push · APNs",
-                "6 languages",
+                "7 languages",
                 "Docker-ready · S3 backups",
               ].map((item) => (
                 <span
@@ -1800,6 +1803,12 @@ export default function Home() {
             </p>
 
             <TerminalBlock commands={terminalCommands} />
+            <p className="text-text-tertiary text-sm max-w-lg mx-auto leading-relaxed -mt-6 mb-4">
+              On a plain-HTTP host, SESSION_COOKIE_SECURE=false is required:
+              without it the browser drops the session cookie and sign-in
+              fails. Behind an HTTPS reverse proxy, leave it out and set
+              APP_URL and NEXT_PUBLIC_APP_URL to the public address instead.
+            </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
               <a
