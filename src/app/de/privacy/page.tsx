@@ -30,7 +30,7 @@ import {
 
 const TITLE = "Datenschutzerklärung";
 const DESCRIPTION =
-  "Wie HealthLog mit Gesundheitsdaten umgeht: Auftragsverarbeiter, Betroffenenrechte nach DSGVO und die Abgrenzung zum Medizinprodukt nach EU-MDR.";
+  "Was beim Besuch von healthlog.dev geschieht und wie die Software HealthLog mit Gesundheitsdaten umgeht: externe Dienste, Verschlüsselung, Betroffenenrechte nach DSGVO und die Abgrenzung zum Medizinprodukt nach EU-MDR.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -70,7 +70,7 @@ const TOC = [
   { href: "#website-analytics", label: "3. Diese Website (healthlog.dev)" },
   { href: "#data-we-collect", label: "4. Erhobene Daten" },
   { href: "#purpose", label: "5. Warum jede Kategorie erhoben wird" },
-  { href: "#sub-processors", label: "6. Auftragsverarbeiter" },
+  { href: "#sub-processors", label: "6. Externe Dienste, die die Software ansprechen kann" },
   { href: "#storage", label: "7. Speicherung, Verschlüsselung, Aufbewahrung" },
   { href: "#rights", label: "8. Ihre Rechte (Art. 15 bis 22 DSGVO)" },
   {
@@ -128,18 +128,25 @@ export default function DatenschutzSeite() {
           veröffentlicht.
         </p>
         <p>
-          Diese Erklärung gilt für die vom Betreiber selbst geführte
-          Referenzinstanz und für die zugehörige iOS-Anwendung{" "}
-          <em className="text-text-primary not-italic">HealthLog for iOS</em>{" "}
-          (Bundle-Kennung <Code>io.bombeck.healthlog</Code>). Sie deckt die
-          Webanwendung in Fassung {POLICY_VERSION} sowie die iOS-Anwendung ab
-          Version 0.3 ab. Abschnitt 3 behandelt diese Website, healthlog.dev,
-          die getrennt von der Anwendung betrieben wird.
+          HealthLog ist Software, kein gehosteter Dienst. Der Entwickler hostet
+          keine Gesundheitsakten anderer Personen, und es gibt keinen zentralen
+          HealthLog-Server, der Daten aus den installierten Instanzen empfängt.
+          Wer eine Instanz betreibt, entscheidet, welche Daten sie hält und
+          welche externen Dienste sie nutzt, und ist für diese Daten
+          verantwortlich.
         </p>
         <p>
-          Für selbst gehostete Installationen unter fremder Kontrolle gilt die
-          Datenschutzerklärung des jeweiligen Betreibers; dieses Dokument gilt
-          nur für die Referenzinstanz.
+          Diese Seite hat zwei Teile. Abschnitt 3 behandelt diese Website,
+          healthlog.dev, die der Entwickler betreibt und verantwortet. Die
+          Abschnitte 2 und 4 bis 11 beschreiben, was die Software mit
+          personenbezogenen Daten tut, in der Webanwendung ab Fassung{" "}
+          {POLICY_VERSION} und in der zugehörigen iOS-Anwendung{" "}
+          <em className="text-text-primary not-italic">HealthLog for iOS</em>{" "}
+          (Bundle-Kennung <Code>io.bombeck.healthlog</Code>) ab Version 0.3,
+          damit Nutzerinnen und Nutzer sehen, was eine Instanz tut, und
+          Betreiber eine Grundlage für ihre eigene Datenschutzerklärung haben.
+          Fragen zu Daten in einer bestimmten Instanz richten Sie an deren
+          Betreiber.
         </p>
       </Section>
 
@@ -148,11 +155,16 @@ export default function DatenschutzSeite() {
           HealthLog läuft auf Infrastruktur, die der Betreiber kontrolliert. Es
           gibt keine zentrale HealthLog-Cloud, keine gemeinsame
           Mandantendatenbank und kein Analyse-Backend eines Dritten. Wer
-          HealthLog auf dem eigenen Server installiert, dessen Daten verlassen
-          diesen Server nur, wenn der Betreiber ausdrücklich eine ausgehende
-          Verbindung einrichtet (einen KI-Anbieter, eine Geräteanbindung, einen
-          Telegram-Bot, ntfy, Push-Benachrichtigungen, ein externes Backup-Ziel).
-          Abschnitt 6 führt jedes dieser Ziele auf.
+          HealthLog auf dem eigenen Server installiert, dessen Gesundheitsdaten
+          verlassen diesen Server nur, wenn der Betreiber oder die Nutzerin
+          bzw. der Nutzer ausdrücklich eine ausgehende Verbindung einrichtet
+          (einen KI-Anbieter, eine Geräteanbindung, einen Telegram-Bot, ntfy,
+          Push-Benachrichtigungen, ein externes Backup-Ziel). In der
+          Voreinstellung sendet der Server außerdem einen Hash-Anfang neuer
+          Passwörter an Have I Been Pwned, fragt die GitHub-Releases-API nach
+          der aktuellen Version und ermittelt den Ort von Anmelde-Adressen;
+          keine dieser Anfragen enthält Gesundheitsdaten, und jede lässt sich
+          abschalten. Abschnitt 6 führt jedes dieser Ziele auf.
         </p>
         <p>
           Sie können außerdem einem anderen Konto auf derselben Instanz Zugriff
@@ -202,28 +214,62 @@ export default function DatenschutzSeite() {
           gehaltenen Daten.
         </p>
         <p>
-          Bei einer selbst gehosteten Installation ist der Betreiber
-          Verantwortlicher im Sinne der DSGVO. Der folgende Text beschreibt die
-          eigene Instanz des Projektbetreibers; private Installationen folgen
-          derselben Architektur, aber mit den Aufbewahrungs- und
-          Auftragsverarbeiter-Entscheidungen ihres jeweiligen Betreibers.
+          Der Betreiber einer Instanz ist Verantwortlicher im Sinne der DSGVO.
+          Die Software setzt Voreinstellungen, die unten beschrieben sind; der
+          Betreiber wählt den Server, die Aufbewahrungsfristen, die Sicherungen
+          und die eingeschalteten externen Dienste.
         </p>
       </Section>
 
       <Section id="website-analytics" title="3. Diese Website (healthlog.dev)">
         <p>
-          Diese Website wird getrennt von der oben beschriebenen Anwendung
-          betrieben und speichert nichts auf Ihrem Gerät: keine Cookies, keinen
-          lokalen Speicher, keine Werbe- oder seitenübergreifenden Kennungen und
-          daher auch kein Einwilligungsbanner.
+          Diese Website betreibt der Entwickler; Name und Postanschrift stehen im{" "}
+          <Link
+            href="/imprint"
+            className="text-purple hover:text-cyan underline-offset-2 hover:underline"
+          >
+            Impressum
+          </Link>
+          . Sie besteht aus statischen Seiten. Sie setzt keine Cookies und
+          keine Werbe- oder seitenübergreifenden Kennungen und zeigt daher kein
+          Einwilligungsbanner. Das Einzige, was sie auf Ihrem Gerät speichert,
+          ist eine ausdrückliche Sprachwahl über den Umschalter der Ratgeber;
+          sie liegt im lokalen Speicher des Browsers, damit die Wahl beim
+          nächsten Besuch gilt. Sie wird nur geschrieben, wenn Sie diese Wahl
+          treffen, und dient nur dieser Funktion; nach § 25 Abs. 2 TDDDG ist
+          dafür keine Einwilligung nötig.
+        </p>
+        <p>
+          Die Seiten werden von einem Server ausgeliefert, den der Entwickler
+          betreibt. Anfragen erreichen ihn über{" "}
+          <ExternalLink href="https://www.cloudflare.com/de-de/privacypolicy/">
+            Cloudflare
+          </ExternalLink>
+          , das die DNS-Auflösung der Domain übernimmt und als Reverse Proxy vor
+          der Website steht. Cloudflare verarbeitet daher jede Anfrage an diese
+          Website, einschließlich IP-Adresse, angefragter Adresse und der
+          Anfragekopfzeilen des Browsers, in seinem weltweiten Netz.
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO, das berechtigte
+          Interesse an einer zuverlässigen Auslieferung der Website und ihrem
+          Schutz vor Angriffen.
+        </p>
+        <p>
+          Schriften und Bilder gehören zur Website selbst und werden von ihrer
+          eigenen Adresse geladen. Keine Schrift, kein Skript und kein Bild
+          kommt aus einem fremden Auslieferungsnetz, und die
+          Content-Security-Policy der Seiten erlaubt für Skripte, Stile,
+          Schriften und Verbindungen nur die eigene Adresse dieser Website.
         </p>
         <p>
           Aggregierte Besuchszahlen werden mit{" "}
           <ExternalLink href="https://rybbit.com">Rybbit</ExternalLink> erhoben,
-          einem quelloffenen, cookiefreien Analysewerkzeug auf dem eigenen
-          Server des Betreibers; es gelangen keine Analysedaten zu einem
-          Dritten. Das Mess-Skript und sein Erfassungsendpunkt werden über die
-          eigene Adresse dieser Website ausgeliefert. Erfasst werden je Besuch
+          einem quelloffenen, cookiefreien Analysewerkzeug auf einem Server,
+          den der Entwickler betreibt; kein Analyseanbieter erhält die Daten.
+          Das Mess-Skript und sein Erfassungsendpunkt werden über die eigene
+          Adresse dieser Website unter <Code>/insight/</Code> ausgeliefert, und
+          die Website leitet die Ereignisse an den Analyseserver weiter, wie
+          jede andere Anfrage über Cloudflare. Die IP-Adresse wird dabei
+          weitergegeben, damit Land und Region bestimmt werden können. Erfasst werden je Besuch
           die Seitenadresse, die verweisende Adresse, Browser, Betriebssystem,
           Gerätetyp, Land und Region. Besucher werden über einen Hash gezählt,
           dessen Salt täglich neu gesetzt wird; die rohe IP-Adresse wird also
@@ -231,18 +277,20 @@ export default function DatenschutzSeite() {
           Tag hinaus verfolgen. Sitzungsaufzeichnung, Fehlererfassung sowie
           Formular- und Klick-Tracking sind für diese Website abgeschaltet. Rechtsgrundlage: Art. 6 Abs. 1 lit. f
           DSGVO, das berechtigte Interesse daran zu wissen, welche Seiten
-          tatsächlich gelesen werden. Da nichts auf Ihrem Gerät gelesen oder
-          gespeichert wird, ist eine Einwilligung nach § 25 TTDSG nicht
+          tatsächlich gelesen werden. Da die Messung nichts auf Ihrem Gerät
+          liest oder speichert, ist eine Einwilligung nach § 25 TDDDG nicht
           erforderlich.
         </p>
         <p>
-          Die Anwendung selbst enthält kein Analyse-SDK eines Dritten und keine
-          Telemetrie. Die Referenzinstanz liefert ein cookiefreies
-          Umami-Skript über ihre eigene Adresse aus und leitet die Ereignisse
-          serverseitig an die Umami-Installation des Betreibers weiter, sodass
-          der Analyse-Host keine Anfrage aus Ihrem Browser sieht. Bei einer
-          selbst gehosteten Instanz ist das abgeschaltet, bis der Betreiber es
-          einschaltet, und sie nimmt nie Verbindung zu dieser Website auf.
+          Wenn Sie an die Kontaktadresse in Abschnitt 13 schreiben, werden die
+          Nachricht und Ihre E-Mail-Adresse aufbewahrt, um Ihnen zu antworten
+          und das Anliegen weiterzuverfolgen. Rechtsgrundlage: Art. 6 Abs. 1
+          lit. f DSGVO, das berechtigte Interesse an der Beantwortung, oder lit.
+          b, wenn es um einen Kauf der iOS-Anwendung geht.
+        </p>
+        <p>
+          Nichts auf dieser Website verbindet sich mit einer HealthLog-Instanz,
+          und keine HealthLog-Instanz nimmt Verbindung zu dieser Website auf.
         </p>
       </Section>
 
@@ -430,15 +478,18 @@ export default function DatenschutzSeite() {
             Aufbewahrt zur Sicherheitsanalyse.
           </li>
           <li>
-            Server-Zugriffsprotokolle: Zeitpunkt, angefragter Pfad,
-            Statuscode, User-Agent, IP-Adresse. 14 Tage aufbewahrt für
-            Missbrauchsbegrenzung und Fehlersuche.
+            Anfrageprotokolle: Zeitpunkt, angefragter Pfad, Statuscode,
+            User-Agent und IP-Adresse, bereinigt um Geheimnisse, in die
+            Protokollausgabe des Servers geschrieben für Anfragebegrenzung und
+            Fehlersuche. Wie lange sie aufbewahrt werden, hängt von der
+            Protokolleinrichtung des Betreibers ab.
           </li>
           <li>
             Die IP-Adresse einer Anmeldung wird zu einer groben Ortsangabe und
             einem Netzbetreiber aufgelöst, damit die Sicherheitsseite zeigen
-            kann, woher Ihre Sitzungen kamen. Auf der Referenzinstanz ist diese
-            Auflösung eine ausgehende Abfrage; siehe Abschnitt 6.
+            kann, woher Ihre Sitzungen kamen. Sofern der Betreiber nicht die
+            Offline-Datenbanken GeoLite2 bereitstellt, ist diese Auflösung eine
+            ausgehende Abfrage; siehe Abschnitt 6.
           </li>
         </ul>
 
@@ -459,15 +510,22 @@ export default function DatenschutzSeite() {
           </li>
           <li>Keine Kennungen sozialer Netzwerke, kein Auslesen von Kontakten.</li>
           <li>
-            Keine Produktanalyse durch Dritte. Die Anwendung liefert kein
-            Analyse-SDK für den Browser aus, und die in Abschnitt 3 beschriebene
-            optionale Umami-Statistik geht an eine Installation, die der
-            Betreiber selbst führt.
+            Keine Produktanalyse durch Dritte und keine Nutzungstelemetrie. Die
+            Anwendung enthält kein Analyse-SDK. Ein Betreiber kann eine eigene
+            Umami-Installation für Seitenstatistiken anbinden: Die Instanz
+            liefert dann ein cookiefreies Umami-Skript über ihre eigene Adresse
+            aus und leitet die Ereignisse an diese Installation weiter. Das ist
+            abgeschaltet, bis der Betreiber es einschaltet.
           </li>
         </ul>
       </Section>
 
       <Section id="purpose" title="5. Warum jede Kategorie erhoben wird">
+        <p>
+          Die Zwecke sind die, für die die Software gebaut ist. Die genannten
+          Rechtsgrundlagen sind die, die nach der DSGVO zu diesen Zwecken
+          passen; auf sie stützt sich der Betreiber der jeweiligen Instanz.
+        </p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
             <span className="text-text-primary font-medium">Anmeldedaten</span>:
@@ -510,8 +568,8 @@ export default function DatenschutzSeite() {
             : Konten gegen das Ausprobieren geleakter Zugangsdaten schützen und
             Ihnen erlauben, eine fremde Sitzung zu erkennen. Rechtsgrundlage:
             Art. 6 Abs. 1 lit. f DSGVO, berechtigtes Interesse am sicheren
-            Betrieb des Dienstes. Beides sind Voreinstellungen des Betreibers
-            und keine Nutzerentscheidung; beides kann der Betreiber abschalten.
+            Betrieb des Dienstes. Beides sind Voreinstellungen und keine
+            Nutzerentscheidung; beides kann der Betreiber abschalten.
           </li>
           <li>
             <span className="text-text-primary font-medium">Wetterkontext</span>
@@ -525,17 +583,22 @@ export default function DatenschutzSeite() {
         </ul>
       </Section>
 
-      <Section id="sub-processors" title="6. Auftragsverarbeiter">
+      <Section
+        id="sub-processors"
+        title="6. Externe Dienste, die die Software ansprechen kann"
+      >
         <p>
-          Die folgenden Anbieter können personenbezogene Daten im Auftrag der
-          Referenzinstanz verarbeiten. Die Liste ist für den veröffentlichten
-          Funktionsumfang abschließend. Alles unter &quot;verbundene Geräte und
-          Dienste&quot; sowie jeder KI-Anbieter wird nur für eine Funktion
-          eingesetzt, die Sie ausdrücklich eingeschaltet haben; die
-          Passwortprüfung, die Ortsangabe zur Anmeldung und die Einträge zur
-          Infrastruktur sind Voreinstellungen des Betreibers, die ohne
-          Einzelentscheidung gelten. Selbst gehostete Instanzen anderer
-          Betreiber können eine andere Auswahl verwenden.
+          Die folgenden externen Dienste erhalten personenbezogene Daten von
+          einer Instanz, wenn die zugehörige Funktion genutzt wird. Die Liste
+          ist für den veröffentlichten Funktionsumfang abschließend. Jedes
+          verbundene Gerät oder jeder verbundene Dienst und jeder KI-Anbieter
+          wird nur für eine Funktion eingesetzt, die ausdrücklich eingeschaltet
+          wurde, und die Off-Host-Sicherung nur, wenn der Betreiber sie
+          einrichtet. Die Passwortprüfung, die Aktualisierungsprüfung und die
+          Ortsangabe zur Anmeldung sind Voreinstellungen, die ohne
+          Einzelentscheidung gelten; der Betreiber kann jede davon abschalten.
+          Wo eine Instanz läuft und welchen Hoster sie nutzt, entscheidet der
+          Betreiber und legt es in seiner eigenen Erklärung offen.
         </p>
         <ul className="grid gap-3">
           <SubProcessor
@@ -669,18 +732,18 @@ export default function DatenschutzSeite() {
           <SubProcessor
             labels={LABELS}
             name="Have I Been Pwned (Range-API für geleakte Passwörter)"
-            role="Prüft ein neues Passwort gegen bekannte Leak-Sammlungen, wenn ein Konto angelegt wird, wenn Sie Ihr Passwort ändern und wenn eine Administratorin oder ein Administrator es zurücksetzt. Niemand schaltet das ein: Es ist eine Voreinstellung des Betreibers. Die Prüfung ist fehlertolerant, ein nicht erreichbarer Dienst blockiert also nie eine Passwortänderung."
+            role="Prüft ein neues Passwort gegen bekannte Leak-Sammlungen, wenn ein Konto angelegt wird, wenn Sie Ihr Passwort ändern und wenn eine Administratorin oder ein Administrator es zurücksetzt. Niemand schaltet das ein: Es ist eine Voreinstellung, die ein Betreiber mit PASSWORD_BREACH_CHECK_DISABLED=1 abschalten kann. Die Prüfung ist fehlertolerant, ein nicht erreichbarer Dienst blockiert also nie eine Passwortänderung."
             data="Die ersten fünf Zeichen des SHA-1-Hashes des Passworts, sonst nichts. Die übrigen 35 Zeichen werden auf dem Server verglichen, sodass weder der vollständige Hash noch das Passwort die Instanz verlässt; die Anfrage verlangt Auffüllbytes, damit die Antwortgröße nicht verrät, welcher Bereich abgefragt wurde. Eine Kontokennung wird nicht gesendet."
             location="Infrastruktur des Anbieters."
             policyUrl="https://haveibeenpwned.com/Privacy"
           />
           <SubProcessor
             labels={LABELS}
-            name="ip-api.com (Ortsangabe zur Anmeldung)"
-            role="Ordnet der IP-Adresse einer Anmeldung einen groben Ort zu, damit die Sicherheitsseite zeigen kann, woher Ihre Sitzungen kamen. Niemand schaltet das ein: Es läuft für jede Anmeldung, die die Instanz nicht aus einer lokalen Datenbank zuordnen kann. Auf der Referenzinstanz liegt derzeit keine lokale Datenbank vor, also erreicht jede Anmeldung den Anbieter. Ein Betreiber kann das mit IP_GEO_LOOKUP_DISABLED=1 ganz abschalten, mit IP_GEO_LOOKUP_URL einen anderen Anbieter einsetzen (die schlüssellose Voreinstellung ist ipwho.is) oder die unten genannten Offline-Datenbanken bereitstellen und die Zuordnung auf dem eigenen Server halten."
+            name="ipwho.is oder der vom Betreiber gesetzte Anbieter (Ortsangabe zur Anmeldung)"
+            role="Ordnet der IP-Adresse einer Anmeldung einen groben Ort zu, damit die Sicherheitsseite zeigen kann, woher Ihre Sitzungen kamen. Niemand schaltet das ein: Es läuft für jede Anmeldung, die die Instanz nicht aus einer lokalen Datenbank zuordnen kann. Ein Betreiber kann das mit IP_GEO_LOOKUP_DISABLED=1 ganz abschalten, mit IP_GEO_LOOKUP_URL einen anderen Anbieter wie ip-api.com einsetzen oder die unten genannten Offline-Datenbanken bereitstellen und die Zuordnung auf dem eigenen Server halten."
             data="Die IP-Adresse der Anmeldung, sonst nichts. Keine Kontokennung, keine Sitzung, keine Gesundheitsdaten."
-            location="Infrastruktur des Anbieters. Für den kostenlosen Endpunkt gibt es keinen veröffentlichten Auftragsverarbeitungsvertrag."
-            policyUrl="https://ip-api.com/docs/legal"
+            location="Infrastruktur des Anbieters. Für den kostenlosen voreingestellten Endpunkt gibt es keinen veröffentlichten Auftragsverarbeitungsvertrag."
+            policyUrl="https://ipwho.is/"
           />
           <SubProcessor
             labels={LABELS}
@@ -701,58 +764,49 @@ export default function DatenschutzSeite() {
           <SubProcessor
             labels={LABELS}
             name="GitHub, Inc."
-            role="Hosting des öffentlichen Quelltext-Repositorys und des Issue-Trackers, der als alternativer Support-Kanal dient. Die Aktualisierungsprüfung in der Anwendung fragt zudem die GitHub-Releases-API nach der aktuellen Version."
-            data="Inhalte von Issues und freiwillig angehängte Dateien. Bitte keine personenbezogenen Daten in öffentliche Issues schreiben; ein nicht öffentlicher Weg wird in der ersten Antwort angeboten. Die Aktualisierungsprüfung sendet keine Kontodaten."
+            role="Aktualisierungsprüfung: Die Instanz fragt die GitHub-Releases-API nach der aktuellen Version, höchstens einmal am Tag je Browser, wenn ein angemeldetes Konto die Seite „Über“ oder die Admin-Übersicht öffnet. Ein Betreiber kann das mit UPDATE_CHECK_DISABLED=1 abschalten. GitHub hostet außerdem das öffentliche Quelltext-Repository und den in Abschnitt 13 genannten Issue-Tracker."
+            data="Die IP-Adresse des Servers und eine Anfrage nach der neuesten Version. Keine Kontodaten und keine Gesundheitsdaten."
             location="Vereinigte Staaten."
             policyUrl="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement"
           />
           <SubProcessor
             labels={LABELS}
-            name="Cloudflare, Inc."
-            role="Autoritative DNS-Auflösung für die Zone healthlog.dev."
-            data="Quell-IP-Adresse und User-Agent zum Zeitpunkt der DNS-Auflösung."
-            location="Vereinigte Staaten; das übliche globale Anycast-Netz von Cloudflare."
-            policyUrl="https://www.cloudflare.com/privacypolicy/"
-          />
-          <SubProcessor
-            labels={LABELS}
-            name="Hetzner Online GmbH"
-            role="Hardware-Hoster für Anwendungsserver und PostgreSQL-Datenbank."
-            data="Datenträger- und Netzverkehr zwischen den vom Betreiber kontrollierten virtuellen Maschinen und dem öffentlichen Internet."
-            location="Deutschland (Europäische Union). Sämtliche Anwendungsdaten der Referenzinstanz liegen auf Hetzner-Infrastruktur unter deutscher Rechtsordnung."
-            policyUrl="https://www.hetzner.com/de/legal/privacy-policy"
+            name="Off-Host-Sicherungsspeicher (Adresse vom Betreiber)"
+            role="Optionale nächtliche Sicherung aller Konten in einen S3-kompatiblen Bucket, etwa AWS S3, Cloudflare R2 oder einen selbst betriebenen MinIO-Server. Ausgeschaltet, bis der Betreiber die BACKUP_*-Umgebungsvariablen setzt."
+            data="Eine Kopie der Akte jedes Kontos, vor dem Hochladen auf der Instanz mit AES-256-GCM unter einem vom Datenbankschlüssel getrennten Schlüssel verschlüsselt. Der Speicheranbieter besitzt keinen Schlüssel, der sie lesen kann."
+            location="Wo der Bucket des Betreibers liegt."
+            policyUrl="https://docs.healthlog.dev"
           />
         </ul>
         <p>
-          Fehlerberichte der Referenzinstanz gehen an eine
-          GlitchTip-Installation, die der Betreiber auf derselben Infrastruktur
-          führt, nicht an einen fremden Anbieter für Fehlerauswertung. Ein
-          Bericht enthält die Fehlermeldung und den Aufrufstapel, den
-          angefragten Pfad, den User-Agent und eine Anfragekennung, jeweils
-          durch eine Bereinigungsstufe geführt, die Geheimnisse entfernt.
-          Gesundheitsdaten enthält er nicht.
-        </p>
-        <p>
-          Die Software unterstützt weitere ausgehende Ziele, die die
-          Referenzinstanz nicht nutzt: das Ausliefern der strukturierten
-          Protokolle an einen Loki-Endpunkt, den Versand von
+          Die Software unterstützt weitere ausgehende Ziele, die jeweils aus
+          bleiben, bis ein Betreiber sie einrichtet: Fehlerberichte an eine
+          GlitchTip-Installation (Fehlermeldung und Aufrufstapel, angefragter
+          Pfad, User-Agent und eine Anfragekennung, durch eine
+          Bereinigungsstufe geführt, die Geheimnisse entfernt, und ohne
+          Gesundheitsdaten), Seitenstatistiken an eine Umami-Installation, die
+          strukturierten Protokolle an einen Loki-Endpunkt,
           Benachrichtigungs-E-Mails über ein SMTP-Relay und die Anmeldung über
-          einen OpenID-Connect-Identitätsanbieter. Jedes davon bleibt aus, bis
-          ein Betreiber es einrichtet, und bei einer selbst gehosteten
-          Installation ist das dessen Entscheidung und dessen Sache, sie
-          offenzulegen.
+          einen OpenID-Connect-Identitätsanbieter. Welche davon eine Instanz
+          nutzt, entscheidet der Betreiber und legt es selbst offen.
         </p>
       </Section>
 
       <Section id="storage" title="7. Speicherung, Verschlüsselung, Aufbewahrung">
         <ul className="list-disc space-y-1 pl-5">
           <li>
-            Primärer Datenspeicher: PostgreSQL auf einem Server bei Hetzner in
-            Deutschland. Datenträger verschlüsselt. Sensible Spalten
-            (Anmeldetoken, Geheimnisse von Anbindungen, Coach-Unterhaltungen und
-            das daraus abgeleitete Gedächtnis) sind zusätzlich spaltenweise mit
-            AES-256-GCM verschlüsselt, unter einem vom Datenbankschlüssel
-            getrennten Schlüssel.
+            Primärer Datenspeicher: PostgreSQL auf dem Server des Betreibers.
+            Sensible Spalten sind einzeln mit AES-256-GCM verschlüsselt, unter
+            einem von der Datenbank getrennten Schlüssel: Geheimnisse von
+            Anbindungen und Anbieterschlüssel, Notizen und andere Freitexte,
+            Dokumente samt extrahiertem Text und Zusammenfassungen, Antworten in
+            Fragebögen, KI-geschriebene Texte, Coach-Unterhaltungen und das
+            daraus abgeleitete Gedächtnis, Allergiereaktionen und Notizen zur
+            Familienanamnese. Mess- und Laborwerte, Medikamentennamen,
+            Stimmungswerte sowie Namen von Allergenen und Erkrankungen liegen
+            unverschlüsselt vor, damit sie abgefragt und dargestellt werden
+            können. Ob der Datenträger selbst verschlüsselt ist, entscheidet der
+            Betreiber.
           </li>
           <li>
             Verschlüsselungsschlüssel sind versioniert und im laufenden Betrieb
@@ -763,19 +817,23 @@ export default function DatenschutzSeite() {
             nie im Klartext.
           </li>
           <li>
-            Sicherungen: Die Anwendung bringt eine eigene verschlüsselte
-            Off-Host-Sicherung mit, die unter einem vom Datenbankschlüssel
-            getrennten Schlüssel auf ein S3-kompatibles Ziel schreibt. Sie ist
-            optional und auf der Referenzinstanz nicht eingerichtet. Was auf
-            Ebene des Servers oder des Hosters gesichert wird, ist nicht
-            Gegenstand dieser Erklärung.
+            Sicherungen: Die Anwendung hält jede Woche eine verschlüsselte
+            Kopie jedes Kontos in ihrer eigenen Datenbank. Sie kann außerdem
+            jede Nacht eine verschlüsselte Off-Host-Sicherung unter einem vom
+            Datenbankschlüssel getrennten Schlüssel auf ein S3-kompatibles Ziel
+            schreiben, sobald der Betreiber sie über die
+            BACKUP_*-Umgebungsvariablen einrichtet. Wie lange Off-Host-Kopien
+            bestehen, bestimmt die Lebenszyklusregel des Buckets des Betreibers.
+            Was auf Ebene des Servers oder des Hosters gesichert wird, liegt
+            außerhalb der Software und beim Betreiber.
           </li>
           <li>
             Aufbewahrung: Kontodaten bleiben, bis Sie die Löschung verlangen
             (siehe Abschnitt 8) oder das Konto administrativ geschlossen wird.
-            Sicherheitsprotokolle werden 365 Tage aufbewahrt,
-            Server-Zugriffsprotokolle 14 Tage, Zustellversuche von
-            Benachrichtigungen 90 Tage. Bis August 2026 stand hier eine Frist
+            Sicherheitsprotokolle werden in der Voreinstellung 365 Tage
+            aufbewahrt, Zustellversuche von Benachrichtigungen 90 Tage,
+            Anfrageprotokolle so lange, wie die Protokolleinrichtung des
+            Betreibers sie hält. Bis August 2026 stand hier eine Frist
             von 90 Tagen für das Sicherheitsprotokoll, was die Software nie so
             gemacht hat: 365 Tage sind die eingebaute Voreinstellung, und jeder
             Betreiber setzt seine eigene Frist mit{" "}
@@ -786,9 +844,11 @@ export default function DatenschutzSeite() {
             Tabellen, darunter Gesundheitsbeobachtungen, Sitzungen,
             Sicherheitsprotokoll, Token von Anbindungen, Abonnements für
             Benachrichtigungen, Coach-Unterhaltungen, Angaben und Vorsätze,
-            Erfolge und hochgeladene Dateien. Die Löschung wirkt sofort, und
-            da die Referenzinstanz keine eigene Off-Host-Sicherung vorhält, gibt
-            es keine solche Kopie, aus der die Daten zurückkehren könnten.
+            Erfolge, hochgeladene Dateien und die wöchentlichen Kopien in der
+            Datenbank. Die Löschung wirkt in der laufenden Datenbank sofort. Hat
+            der Betreiber Off-Host-Sicherungen eingerichtet, löscht ein
+            Hintergrundauftrag nach der Löschung die Kopien des Kontos aus dem
+            Bucket und versucht es jede Nacht erneut, bis keine mehr übrig ist.
           </li>
         </ul>
       </Section>
@@ -862,9 +922,10 @@ export default function DatenschutzSeite() {
             <span className="text-text-primary font-medium">
               Beschwerderecht
             </span>
-            : bei der Bundesbeauftragten oder dem Bundesbeauftragten für den
-            Datenschutz und die Informationsfreiheit (BfDI) auf Bundesebene oder
-            bei der Aufsichtsbehörde Ihres gewöhnlichen Aufenthalts.
+            : bei der Aufsichtsbehörde Ihres gewöhnlichen Aufenthalts oder der
+            für den Betreiber der Instanz zuständigen Behörde. Für diese Website
+            gehört dazu die Bundesbeauftragte oder der Bundesbeauftragte für den
+            Datenschutz und die Informationsfreiheit (BfDI) auf Bundesebene.
           </li>
         </ul>
       </Section>
@@ -993,25 +1054,33 @@ export default function DatenschutzSeite() {
 
       <Section id="contact" title="13. Kontakt">
         <p>
-          Für Datenschutzfragen und Anträge nach Art. 15 bis 22 DSGVO schreiben
-          Sie an{" "}
+          Anliegen zu Daten in einer HealthLog-Instanz richten Sie an deren
+          Betreiber, der über diese Daten verfügt. Der Entwickler hat keinen
+          Zugang zu Instanzen, die andere betreiben.
+        </p>
+        <p>
+          Für Datenschutzfragen zu dieser Website, zur Software oder zur
+          iOS-Anwendung schreiben Sie an{" "}
           <a
             href="mailto:support@healthlog.dev?subject=DSGVO-Anfrage"
             className="text-purple hover:text-cyan underline-offset-2 hover:underline"
           >
             support@healthlog.dev
           </a>
-          . Nennen Sie darin, welches Recht Sie geltend machen, und die
-          E-Mail-Adresse des betroffenen Kontos. Dieses Postfach erreicht den
-          Betreiber der Referenzinstanz unmittelbar und ist der richtige Weg für
-          alles, was personenbezogene Daten enthält.
+          . Dieses Postfach erreicht den Entwickler unmittelbar und ist der
+          richtige Weg für alles, was personenbezogene Daten enthält.
         </p>
         <p>
           Alternativ können Sie ein Anliegen als öffentliches Issue unter{" "}
           <ExternalLink href="https://github.com/MBombeck/HealthLog/issues">
             github.com/MBombeck/HealthLog/issues
           </ExternalLink>{" "}
-          einstellen. Schreiben Sie dort keine personenbezogenen Daten hinein;
+          einstellen. GitHub, Inc. betreibt den Issue-Tracker unter seiner
+          eigenen{" "}
+          <ExternalLink href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement">
+            Datenschutzerklärung
+          </ExternalLink>
+          . Schreiben Sie dort keine personenbezogenen Daten hinein;
           ein nicht öffentlicher Weg für den eigentlichen Austausch wird in der
           ersten Antwort angeboten.
         </p>

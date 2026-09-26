@@ -39,7 +39,7 @@ import {
 
 const TITLE = "Privacy Policy";
 const DESCRIPTION =
-  "How HealthLog handles personal-health data, sub-processors, GDPR rights, and the EU MDR medical-device boundary.";
+  "What happens when you visit healthlog.dev, and how the HealthLog software handles personal-health data: outside services, encryption, GDPR rights, and the EU MDR medical-device boundary.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -79,7 +79,7 @@ const TOC = [
   { href: "#website-analytics", label: "3. This website (healthlog.dev)" },
   { href: "#data-we-collect", label: "4. Data collected" },
   { href: "#purpose", label: "5. Why each category is collected" },
-  { href: "#sub-processors", label: "6. Third-party sub-processors" },
+  { href: "#sub-processors", label: "6. Outside services the software can contact" },
   { href: "#storage", label: "7. Storage, encryption, retention" },
   { href: "#rights", label: "8. Your rights (GDPR Art. 15-22)" },
   { href: "#medical-boundary", label: "9. Medical-device boundary (EU MDR)" },
@@ -131,18 +131,23 @@ export default function PrivacyPage() {
           .
         </p>
         <p>
-          This policy applies to the maintainer-operated reference instance and
-          the companion iOS application{" "}
-          <em className="text-text-primary not-italic">HealthLog for iOS</em>{" "}
-          (bundle identifier <Code>io.bombeck.healthlog</Code>). It covers the
-          web application version {POLICY_VERSION} and the iOS application
-          version 0.3 and later. Section 3 covers this marketing website,
-          healthlog.dev, which is operated separately from the application.
+          HealthLog is software, not a hosted service. The maintainer does not
+          host anybody&apos;s health records, and there is no central HealthLog
+          server that receives data from the instances people install. Whoever
+          runs an instance decides which data it holds and which outside
+          services it uses, and is the controller for that data.
         </p>
         <p>
-          Self-hosted deployments controlled by a different operator are
-          governed by that operator&apos;s own privacy policy; the document
-          below applies to the maintainer-operated instance only.
+          This page has two parts. Section 3 covers this website,
+          healthlog.dev, which the maintainer runs and is responsible for.
+          Sections 2 and 4 to 11 describe what the software does with personal
+          data, in the web application version {POLICY_VERSION} and the
+          companion iOS application{" "}
+          <em className="text-text-primary not-italic">HealthLog for iOS</em>{" "}
+          (bundle identifier <Code>io.bombeck.healthlog</Code>) version 0.3 and
+          later, so that a user can see what an instance does and an operator
+          has a basis for their own privacy policy. Questions about data held in
+          a particular instance go to the operator of that instance.
         </p>
       </Section>
 
@@ -151,10 +156,14 @@ export default function PrivacyPage() {
           HealthLog runs on infrastructure the operator controls. There is no
           central HealthLog cloud, no shared multi-tenant database, and no
           third-party analytics back-end. When somebody installs HealthLog on
-          their own server, no data leaves that server unless the operator
-          explicitly configures an outbound integration (an AI provider, a
-          device sync, a Telegram bot, ntfy, push notifications, an off-host
-          backup target). Section 6 lists every such destination.
+          their own server, no health data leaves that server unless the
+          operator or the user explicitly configures an outbound integration
+          (an AI provider, a device sync, a Telegram bot, ntfy, push
+          notifications, an off-host backup target). By default the server
+          also sends a password hash prefix to Have I Been Pwned, asks the
+          GitHub releases API for the current version, and looks up the
+          location of sign-in addresses; none of these carries health data, and
+          each can be switched off. Section 6 lists every such destination.
         </p>
         <p>
           A user may also give another account on the same instance access to
@@ -198,28 +207,61 @@ export default function PrivacyPage() {
           own. Deleting the record erases the data held in it.
         </p>
         <p>
-          For a self-hosted install, the operator is the data controller in the
-          GDPR sense. The reference instance below describes the
-          maintainer&apos;s own deployment; private installations follow the
-          same architecture but with the operator&apos;s own retention and
-          sub-processor choices.
+          The operator of an instance is the data controller in the GDPR sense.
+          The software sets defaults, described below; the operator chooses the
+          server, the retention periods, the backups and which outside services
+          are switched on.
         </p>
       </Section>
 
       <Section id="website-analytics" title="3. This website (healthlog.dev)">
         <p>
-          This marketing website is operated separately from the application
-          described above and stores nothing on the visitor&apos;s device: no
-          cookies, no local storage, no advertising or cross-site identifiers,
-          and therefore no consent banner.
+          This website is run by the maintainer, whose name and postal address
+          are on the{" "}
+          <Link
+            href="/imprint"
+            className="text-purple hover:text-cyan underline-offset-2 hover:underline"
+          >
+            imprint
+          </Link>
+          . It is a set of static pages. It sets no cookies and no
+          advertising or cross-site identifiers, and therefore shows no consent
+          banner. The only thing it stores on the visitor&apos;s device is an
+          explicit language choice made with the switcher on the guides, kept
+          in the browser&apos;s local storage so the choice holds on the next
+          visit. It is written only when you make that choice and serves only
+          that function, so under TDDDG § 25 (2) it needs no consent.
+        </p>
+        <p>
+          The pages are served from a server the maintainer runs. Requests reach
+          it through{" "}
+          <ExternalLink href="https://www.cloudflare.com/privacypolicy/">
+            Cloudflare
+          </ExternalLink>
+          , which provides DNS for the domain and sits in front of the website
+          as a reverse proxy. Cloudflare therefore processes every request to
+          this website, including the IP address, the requested address and the
+          browser&apos;s request headers, on its global network. Legal basis:
+          GDPR Art. 6 (1) (f), the legitimate interest in delivering the
+          website reliably and protecting it against attacks.
+        </p>
+        <p>
+          Fonts and images are part of the website itself and load from its own
+          address. No font, script or image is fetched from a third-party
+          content network, and the page&apos;s content security policy only
+          allows this website&apos;s own address for scripts, styles, fonts and
+          connections.
         </p>
         <p>
           Aggregate visit statistics are collected with{" "}
           <ExternalLink href="https://rybbit.com">Rybbit</ExternalLink>, an
-          open-source, cookieless analytics tool running on the
-          maintainer&apos;s own server; no analytics data reaches a third-party
-          provider. The tracking script and its collection endpoint are served
-          from this website&apos;s own address. Recorded per visit are the page
+          open-source, cookieless analytics tool running on a server the
+          maintainer runs; no analytics provider receives the data. The
+          tracking script and its collection endpoint are served from this
+          website&apos;s own address under <Code>/insight/</Code>, and the
+          website forwards the events to the analytics server, passing through
+          Cloudflare like any other request. The visitor&apos;s IP address is
+          forwarded so the country and region can be derived. Recorded per visit are the page
           address, the referring address, browser, operating system, device
           type, country and region. Visitors are counted through a hash that is
           re-salted every day, so the raw IP address is never stored and no
@@ -227,18 +269,20 @@ export default function PrivacyPage() {
           Session recording, error capture and form or click tracking are
           switched off for this site.
           Legal basis: GDPR Art. 6 (1) (f), the legitimate interest in knowing
-          which pages are actually read. Because nothing is read from or written
-          to the visitor&apos;s device, consent under TTDSG § 25 is not
-          required.
+          which pages are actually read. Because the analytics read nothing from and
+          write nothing to the visitor&apos;s device, consent under TDDDG § 25
+          is not required.
         </p>
         <p>
-          The application ships no third-party analytics SDK and no telemetry.
-          The reference instance serves a cookieless Umami script through its
-          own origin and forwards the events server-side to the
-          maintainer&apos;s Umami installation, so the analytics host never sees
-          a request from the visitor&apos;s browser. An instance you host
-          yourself has this switched off until its operator turns it on, and it
-          never contacts this website.
+          If you write to the contact address in section 13, the message and
+          your e-mail address are kept to answer you and to follow up on the
+          request. Legal basis: GDPR Art. 6 (1) (f), the legitimate interest in
+          answering the message, or (b) where it concerns a purchase of the iOS
+          application.
+        </p>
+        <p>
+          Nothing on this website connects to a HealthLog instance, and no
+          HealthLog instance contacts this website.
         </p>
       </Section>
 
@@ -422,15 +466,17 @@ export default function PrivacyPage() {
             security forensics.
           </li>
           <li>
-            Server access logs: timestamp, request path, status code,
-            user-agent, IP address. Retained for 14 days for abuse-rate limiting
-            and debugging.
+            Request logs: timestamp, request path, status code, user-agent and
+            IP address, with secrets removed, written to the server&apos;s log
+            output for rate limiting and debugging. How long they are kept
+            depends on the operator&apos;s log setup.
           </li>
           <li>
             The IP address of a sign-in is resolved to a coarse location and
             network operator so the security page can show the user where their
-            sessions came from. On the reference instance that resolution is an
-            outbound lookup; see section 6.
+            sessions came from. Unless the operator supplies the offline
+            GeoLite2 databases, that resolution is an outbound lookup; see
+            section 6.
           </li>
         </ul>
 
@@ -448,14 +494,22 @@ export default function PrivacyPage() {
           </li>
           <li>No social-network identifiers or contact-list scrapes.</li>
           <li>
-            No third-party product analytics. The application ships no
-            client-side analytics SDK, and the optional Umami statistics
-            described in section 3 go to an installation the operator runs.
+            No third-party product analytics and no usage telemetry. The
+            application ships no analytics SDK. An operator can connect their
+            own Umami installation for page statistics: the instance then serves
+            a cookieless Umami script from its own address and forwards the
+            events to that installation. It is off until the operator turns it
+            on.
           </li>
         </ul>
       </Section>
 
       <Section id="purpose" title="5. Why each category is collected">
+        <p>
+          The purposes are the ones the software is built for. The legal bases
+          given are the ones that match those purposes under the GDPR; the
+          operator of an instance is the one who relies on them.
+        </p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
             <span className="text-text-primary font-medium">
@@ -496,8 +550,8 @@ export default function PrivacyPage() {
             : protecting accounts against credential stuffing and letting a user
             recognise a session that is not theirs. Legal basis: GDPR Art. 6 (1)
             (f) legitimate interest in operating the service securely. Both are
-            operator defaults rather than user choices, and both can be switched
-            off by the operator.
+            defaults rather than user choices, and both can be switched off by
+            the operator.
           </li>
           <li>
             <span className="text-text-primary font-medium">
@@ -517,14 +571,16 @@ export default function PrivacyPage() {
 
       <Section id="sub-processors" title="6. Third-party sub-processors">
         <p>
-          The following providers may process personal data on behalf of the
-          maintainer-operated instance. The list is exhaustive for the released
-          feature set. Everything under &quot;connected devices and
-          services&quot; and every AI provider is engaged only for a feature the
-          user has explicitly enabled; the password-breach check, the sign-in
-          geolocation and the infrastructure entries are operator defaults that
-          apply without a per-user choice. Self-hosted instances run by other
-          operators may use a different set.
+          The following outside services receive personal data from an
+          instance when the matching feature is in use. The list is exhaustive
+          for the released feature set. Every connected device or service and
+          every AI provider is used only for a feature the user has explicitly
+          enabled, and the off-host backup only when the operator configures
+          it. The password-breach check, the update check and the sign-in
+          geolocation are defaults that apply without a per-user choice, and
+          the operator can switch each of them off. Where an instance runs, and
+          which hosting provider it uses, is the operator&apos;s choice and part
+          of the operator&apos;s own disclosure.
         </p>
         <ul className="grid gap-3">
           <SubProcessor
@@ -658,18 +714,18 @@ export default function PrivacyPage() {
           <SubProcessor
             labels={LABELS}
             name="Have I Been Pwned (Pwned Passwords range API)"
-            role="Checks a new password against known breach corpora when an account is registered, when a user changes their password, and when an administrator resets one. Nobody enables this: it is an operator default. The check is fail-open, so an unreachable service never blocks a password change."
+            role="Checks a new password against known breach corpora when an account is registered, when a user changes their password, and when an administrator resets one. Nobody enables this: it is a default, which an operator can switch off with PASSWORD_BREACH_CHECK_DISABLED=1. The check is fail-open, so an unreachable service never blocks a password change."
             data="The first five characters of the SHA-1 hash of the password, and nothing else. The remaining 35 characters are compared on the server, so neither the full hash nor the password leaves the instance, and the request asks for padding so the response size does not reveal which bucket was queried. No account identifier is sent."
             location="Provider-operated infrastructure."
             policyUrl="https://haveibeenpwned.com/Privacy"
           />
           <SubProcessor
             labels={LABELS}
-            name="ip-api.com (sign-in geolocation)"
-            role="Places the IP address of a sign-in on a map, so the security page can show the user where their sessions came from. Nobody enables this: it runs for every sign-in the instance cannot place from a local database. The reference instance currently has no local database in place, so every sign-in reaches the provider. An operator can switch it off entirely with IP_GEO_LOOKUP_DISABLED=1, point IP_GEO_LOOKUP_URL at another provider (the keyless default is ipwho.is), or supply the offline databases below and keep the lookup on the host."
+            name="ipwho.is, or the provider the operator sets (sign-in geolocation)"
+            role="Places the IP address of a sign-in on a map, so the security page can show the user where their sessions came from. Nobody enables this: it runs for every sign-in the instance cannot place from a local database. An operator can switch it off entirely with IP_GEO_LOOKUP_DISABLED=1, point IP_GEO_LOOKUP_URL at another provider such as ip-api.com, or supply the offline databases below and keep the lookup on the host."
             data="The IP address of the sign-in, and nothing else. No account identifier, no session, no health data."
-            location="Provider-operated infrastructure. The free endpoint publishes no data-processing agreement."
-            policyUrl="https://ip-api.com/docs/legal"
+            location="Provider-operated infrastructure. The free default endpoint publishes no data-processing agreement."
+            policyUrl="https://ipwho.is/"
           />
           <SubProcessor
             labels={LABELS}
@@ -690,42 +746,29 @@ export default function PrivacyPage() {
           <SubProcessor
             labels={LABELS}
             name="GitHub, Inc."
-            role="Hosting of the public source repository and the issue tracker used as an alternative support channel. The in-app update check also asks the GitHub releases API which version is current."
-            data="Issue contents and any voluntary attachments. Avoid posting personal data in public issues; a private channel is offered after the first response. The update check sends no account data."
+            role="Update check: the instance asks the GitHub releases API which version is current, at most once a day per browser, when a signed-in user opens the About page or the admin overview. An operator can switch it off with UPDATE_CHECK_DISABLED=1. GitHub also hosts the public source repository and the issue tracker described in section 13."
+            data="The server's IP address and a request for the latest release. No account data and no health data."
             location="United States."
             policyUrl="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
           />
           <SubProcessor
             labels={LABELS}
-            name="Cloudflare, Inc."
-            role="Authoritative DNS for the healthlog.dev zone."
-            data="Source IP address and user-agent at DNS resolution time."
-            location="United States; Cloudflare's standard global anycast network."
-            policyUrl="https://www.cloudflare.com/privacypolicy/"
-          />
-          <SubProcessor
-            labels={LABELS}
-            name="Hetzner Online GmbH"
-            role="Hardware host for the application server and the PostgreSQL database."
-            data="Disk and network traffic between the operator-controlled virtual machines and the public internet."
-            location="Germany (European Union). All HealthLog application data on the reference instance lives on Hetzner-hosted infrastructure under German jurisdiction."
-            policyUrl="https://www.hetzner.com/legal/privacy-policy"
+            name="Off-host backup storage (address supplied by the operator)"
+            role="Optional nightly backup of every account to an S3-compatible bucket, such as AWS S3, Cloudflare R2 or a MinIO server the operator runs. Off until the operator sets the BACKUP_* environment variables."
+            data="A copy of each account's record, encrypted on the instance with AES-256-GCM under a key separate from the database key before it is uploaded. The storage provider holds no key that can read it."
+            location="Wherever the operator's bucket is hosted."
+            policyUrl="https://docs.healthlog.dev"
           />
         </ul>
         <p>
-          Error reports from the reference instance go to a GlitchTip
-          installation the maintainer runs on the same infrastructure, not to a
-          third-party error-tracking vendor. A report carries the error message
-          and stack trace, the request path, the user-agent and a request
-          identifier, passed through a redaction step that strips secrets; it
-          carries no health data.
-        </p>
-        <p>
-          The software supports further outbound destinations that the reference
-          instance does not use: shipping the structured logs to a Loki endpoint,
-          sending notification e-mail through an SMTP relay, and delegating
-          login to an OpenID Connect identity provider. Each is off unless an
-          operator configures it, and on a self-hosted install it is that
+          The software supports further outbound destinations, each off unless
+          an operator configures it: error reports to a GlitchTip installation
+          (the error message and stack trace, the request path, the user-agent
+          and a request identifier, passed through a redaction step that strips
+          secrets, and no health data), page statistics to an Umami
+          installation, the structured logs to a Loki endpoint, notification
+          e-mail through an SMTP relay, and sign-in through an OpenID Connect
+          identity provider. Which of them an instance uses is the
           operator&apos;s choice and their disclosure to make.
         </p>
       </Section>
@@ -733,11 +776,16 @@ export default function PrivacyPage() {
       <Section id="storage" title="7. Storage, encryption, retention">
         <ul className="list-disc space-y-1 pl-5">
           <li>
-            Primary data store: PostgreSQL on a Hetzner-hosted server in
-            Germany. Disk encrypted at rest. Sensitive columns (authentication
-            tokens, integration secrets, Coach conversations and the memory
-            derived from them) are individually encrypted at the column level
-            using AES-256-GCM with a key separate from the database key.
+            Primary data store: PostgreSQL on the operator&apos;s server.
+            Sensitive columns are individually encrypted at the column level
+            using AES-256-GCM with a key separate from the database: integration
+            secrets and provider keys, notes and other free text, documents with
+            their extracted text and summaries, questionnaire answers,
+            AI-written text, Coach conversations and the memory derived from
+            them, allergy reactions and family-history notes. Measurement and
+            lab values, medication names, mood scores and allergy and condition
+            names are stored unencrypted so they can be queried and charted.
+            Whether the disk itself is encrypted is up to the operator.
           </li>
           <li>
             Encryption keys are versioned and rotatable online without a
@@ -748,17 +796,21 @@ export default function PrivacyPage() {
             plaintext.
           </li>
           <li>
-            Backups: the application brings its own encrypted off-host backup,
-            written to an S3-compatible target under a key separate from the
-            database. It is optional and is not set up on the reference
-            instance. What the server or the hosting provider backs up at their
-            own level is not part of this policy.
+            Backups: the application keeps a weekly encrypted copy of each
+            account in its own database. It can also write an encrypted
+            off-host backup every night to an S3-compatible target, under a key
+            separate from the database key, once the operator configures it
+            through the BACKUP_* environment variables. How long off-host copies
+            live is set by the lifecycle rule of the operator&apos;s bucket.
+            What the server or the hosting provider backs up at their own level
+            is outside the software and up to the operator.
           </li>
           <li>
             Retention: account data is retained until the user requests erasure
             (see section 8) or the account is administratively closed. Audit
-            logs are retained for 365 days; server access logs for 14 days;
-            notification-delivery attempts for 90 days. This page said 90 days
+            logs are retained for 365 days by default; notification-delivery
+            attempts for 90 days; request logs as long as the operator&apos;s
+            log setup keeps them. This page said 90 days
             for the audit log until August 2026, which was never what the
             software did: 365 days is the built-in default, and every operator
             sets their own window with <Code>AUDIT_LOG_RETENTION_DAYS</Code>.
@@ -767,10 +819,11 @@ export default function PrivacyPage() {
             Deletion: the account-deletion endpoint cascades through every
             user-scoped table, including health observations, sessions, audit
             log, integration tokens, notification subscriptions, Coach
-            conversations, facts and plans, achievements and uploaded files.
-            Deletion is immediate, and because the reference instance keeps no
-            off-host backup of its own, there is no such copy for the data to
-            come back from.
+            conversations, facts and plans, achievements, uploaded files and
+            the weekly copies in the database. Deletion is immediate in the live
+            database. Where the operator has configured off-host backups, a
+            background job deletes the account&apos;s copies from the bucket
+            after the deletion, and retries every night until none is left.
           </li>
         </ul>
       </Section>
@@ -839,9 +892,11 @@ export default function PrivacyPage() {
             <span className="text-text-primary font-medium">
               Right to lodge a complaint
             </span>
-            : with the Federal Commissioner for Data Protection and Freedom of
-            Information (BfDI) for the German federal level, or with the
-            data-protection authority of the user&apos;s habitual residence.
+            : with the data-protection authority of the user&apos;s habitual
+            residence, or the one responsible for the operator of the instance.
+            For this website, that includes the Federal Commissioner for Data
+            Protection and Freedom of Information (BfDI) at the German federal
+            level.
           </li>
         </ul>
       </Section>
@@ -963,23 +1018,30 @@ export default function PrivacyPage() {
 
       <Section id="contact" title="13. Contact">
         <p>
-          For privacy questions and data-subject requests under GDPR Art. 15 to
-          22, write to{" "}
+          Requests about data held in a HealthLog instance go to the operator of
+          that instance, who controls it. The maintainer has no access to
+          instances run by other people.
+        </p>
+        <p>
+          For privacy questions about this website, the software or the iOS
+          application, write to{" "}
           <a
             href="mailto:support@healthlog.dev?subject=GDPR%20request"
             className="text-purple hover:text-cyan underline-offset-2 hover:underline"
           >
             support@healthlog.dev
           </a>
-          . State which right you are exercising and the email address of the
-          account concerned. This mailbox reaches the operator of the reference
-          instance directly and is the route to use for anything containing
-          personal data.
+          . This mailbox reaches the maintainer directly and is the route to
+          use for anything containing personal data.
         </p>
         <p>
           As an alternative, a request can be raised as a public issue at{" "}
           <ExternalLink href="https://github.com/MBombeck/HealthLog/issues">
             github.com/MBombeck/HealthLog/issues
+          </ExternalLink>
+          . GitHub, Inc. hosts the issue tracker under its own{" "}
+          <ExternalLink href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">
+            privacy statement
           </ExternalLink>
           . Do not include personal data in a public issue; a private channel
           for the actual exchange is provided in the first response.
