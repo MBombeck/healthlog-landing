@@ -241,7 +241,12 @@ export default function DatenschutzSeite() {
         </p>
         <p>
           Die Seiten werden von einem Server ausgeliefert, den der Entwickler
-          betreibt. Anfragen erreichen ihn über{" "}
+          bei der{" "}
+          <ExternalLink href="https://www.hetzner.com/de/legal/privacy-policy">
+            Hetzner Online GmbH
+          </ExternalLink>{" "}
+          in Nürnberg mietet; Hetzner ist Hoster dieser Website. Anfragen
+          erreichen ihn über{" "}
           <ExternalLink href="https://www.cloudflare.com/de-de/privacypolicy/">
             Cloudflare
           </ExternalLink>
@@ -280,6 +285,19 @@ export default function DatenschutzSeite() {
           tatsächlich gelesen werden. Da die Messung nichts auf Ihrem Gerät
           liest oder speichert, ist eine Einwilligung nach § 25 TDDDG nicht
           erforderlich.
+        </p>
+        <p>
+          Derselbe Server betreibt hinter derselben Cloudflare-Einrichtung zwei
+          weitere Seiten. docs.healthlog.dev ist die statische Dokumentation.
+          Sie nutzt keine Webanalyse und keine Cookies; sie speichert eine
+          Wahl zwischen hellem und dunklem Design sowie den gewählten Reiter in
+          Codebeispielen im lokalen Speicher des Browsers. demo.healthlog.dev
+          ist eine öffentliche Demo-Instanz der Software, angemeldet mit
+          gemeinsamen Demo-Zugangsdaten und gefüllt mit erzeugten
+          Beispieldaten. Sie arbeitet wie jede in den Abschnitten 4 bis 7
+          beschriebene Instanz; eine Anmeldung legt also eine Sitzung und einen
+          Protokolleintrag in der eigenen Datenbank der Demo auf diesem Server
+          an. Geben Sie dort keine echten Gesundheitsdaten ein.
         </p>
         <p>
           Wenn Sie an die Kontaktadresse in Abschnitt 13 schreiben, werden die

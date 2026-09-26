@@ -233,7 +233,11 @@ export default function PrivacyPage() {
           that function, so under TDDDG § 25 (2) it needs no consent.
         </p>
         <p>
-          The pages are served from a server the maintainer runs. Requests reach
+          The pages are served from a server the maintainer rents from{" "}
+          <ExternalLink href="https://www.hetzner.com/legal/privacy-policy">
+            Hetzner Online GmbH
+          </ExternalLink>{" "}
+          in Nuremberg, Germany, which acts as hosting provider. Requests reach
           it through{" "}
           <ExternalLink href="https://www.cloudflare.com/privacypolicy/">
             Cloudflare
@@ -272,6 +276,18 @@ export default function PrivacyPage() {
           which pages are actually read. Because the analytics read nothing from and
           write nothing to the visitor&apos;s device, consent under TDDDG § 25
           is not required.
+        </p>
+        <p>
+          The same server, behind the same Cloudflare setup, also runs two
+          related sites. docs.healthlog.dev is the static documentation. It
+          uses no analytics and no cookies; it keeps a light or dark theme
+          choice, and the tab you picked in code examples, in the
+          browser&apos;s local storage. demo.healthlog.dev is a public demo
+          instance of the software, signed in with shared demo credentials and
+          filled with generated sample data. It works like any instance
+          described in sections 4 to 7, so signing in creates a session and an
+          audit entry in the demo&apos;s own database on that server. Do not
+          enter real health data there.
         </p>
         <p>
           If you write to the contact address in section 13, the message and
