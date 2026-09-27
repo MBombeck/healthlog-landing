@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s | HealthLog",
   },
   description:
-    "Self-hosted health tracker. Native iOS app with live Apple Health (HealthKit) two-way sync, Withings device sync, multi-provider AI insights, and a client-side doctor-report PDF. AES-256-GCM encrypted. Docker deploy in minutes. Free for noncommercial use, source available.",
+    "Self-hosted health tracker. Native iOS app with live Apple Health (HealthKit) two-way sync, Withings device sync, multi-provider AI insights, and a doctor-report PDF generated on your server. Notes, documents and tokens encrypted with AES-256-GCM. Docker deploy in minutes. Free for noncommercial use, source available.",
   keywords: [
     "self-hosted health tracker",
     "health tracking app",
@@ -134,7 +134,7 @@ export default function RootLayout({
     applicationCategory: "HealthApplication",
     operatingSystem: "iOS, Web, Docker",
     description:
-      "Self-hosted health tracker. Native iOS app with live Apple Health (HealthKit) two-way sync, Withings device sync, multi-provider AI insights, medication compliance, and a client-side doctor-report PDF. AES-256-GCM encrypted. Free for noncommercial use, source available.",
+      "Self-hosted health tracker. Native iOS app with live Apple Health (HealthKit) two-way sync, Withings device sync, multi-provider AI insights, medication compliance, and a doctor-report PDF generated on your server. Notes, documents and tokens encrypted with AES-256-GCM. Free for noncommercial use, source available.",
     offers: {
       "@type": "Offer",
       price: "0",
@@ -151,9 +151,9 @@ export default function RootLayout({
       "Mental-wellbeing self-assessments (PHQ-9 and GAD-7) — opt-in screening, not diagnosis, with encrypted answers and locale-aware crisis-support contacts",
       "Grip strength, a 0–10 pain score, waist circumference and waist-to-height ratio, and respiratory rate as first-class tracked signals",
       "Longevity lab panel in the biomarker catalogue — ApoB, Lp(a), hs-CRP, HbA1c, fasting glucose and insulin, eGFR, GGT, ferritin, omega-3 index — with reference ranges",
-      "Structured, encrypted medical-history records — allergies and family history — included in the health-record export",
+      "Structured medical-history records for allergies and family history, with reactions and notes encrypted at rest, included in the health-record export",
       "Optional environmental-context module — daily weather, daylight, and temperature correlated against mood, sleep, and vitals",
-      "Encrypted document vault (off by default) — store letters, reports and scans encrypted at rest; automatic on-device or per-document consented AI reading; whole-word search over an encrypted blind index; grounded, cited per-document chat; and time-boxed, revocable QR share links with photo metadata stripped",
+      "Encrypted document vault (off by default) — store letters, reports and scans encrypted at rest; automatic reading by a local reader on your server, or by your AI provider with per-document consent; whole-word search over an encrypted blind index; grounded, cited per-document chat; and time-boxed, revocable QR share links with photo metadata stripped",
       "Two-factor authentication (TOTP and WebAuthn) with step-up checks for sensitive actions",
       "Shared access between two accounts on one instance: give a family member access to your record without sharing a login, to read it, to read it and add to it, or to manage it. The invitation confers nothing until accepted and names both the level and the sections of the record it opens (readings, medications, lab results, health background, illness, mood and mind, cycle, documents), with everything unpicked refused exactly as an unshared record is; managing always covers the whole record; deferring the owner's reminders and overturning a recorded dose stay with the owner at every level; a delegate's entry is stored as the owner's, with authorship in the audit trail and an activity feed that names each act by verb; credentials, integrations, notification channels, module and threshold configuration and exports stay out of reach; an invitation can name the day the access lapses, and either side can end it sooner with effect on the delegate's next request",
       "Managed profiles: a health record for somebody who does not sign in at all, such as a child or a person in your care. No login and no e-mail address, its own language and timezone, guardians who look after it at the manage level, reminders that reach the guardians rather than the record, and a floor that keeps the last guardian from leaving it unattended",
@@ -169,7 +169,7 @@ export default function RootLayout({
       "Intraday heart rate — your pulse drawn across the whole day, with a careful 'elevated at rest' note when it stays high while you are still, framed as possible tension and never a verdict",
       "Nutrition and vitamins — a water tile with quick-add amounts and a Nutrients page for hydration, caffeine and the vitamins and minerals your device records, each against its reference daily intake as context; dietary intake and hydration flow in from Apple Health",
       "Metrics catalog — an 'All metrics' view listing every signal HealthLog can track and which device supplies each, so a metric you have no data for stays out of your daily views but is still discoverable in one place",
-      "Read-only assistant connector (MCP) covering your metric series, nutrition and vitamins, the intraday pulse curve, stored single-lead ECG recordings, sleep, workouts, labs, correlations, baselines and the preventive-care due-list — OAuth-secured, off by default, and unable to reach the admin surface or write over REST",
+      "Assistant connector (MCP) covering your metric series, nutrition and vitamins, the intraday pulse curve, stored single-lead ECG recordings, sleep, workouts, labs, correlations, baselines and the preventive-care due-list. Read-only by default, with an optional write scope that logs measurements, blood pressure and mood through a confirm step, append-only. OAuth-secured, off by default, and unable to reach the admin surface",
       "Blood glucose tracking with fasting/postprandial/random/bedtime contexts",
       "Medication management with compliance analytics and reminders",
       "Mood tracking with 5-point scale and tags",
@@ -178,7 +178,7 @@ export default function RootLayout({
       "AI Coach drawer with streaming chat and encrypted conversation history — same provider chain as AI Insights, source-chip provenance per turn, per-user daily token budget",
       "Coach discusses your stored documents in its own document view, with its own separate history — grounded in the document, which is treated as untrusted input",
       "Personal Health Score (composite 0–100 with three bands) built from up to seven pillars across five areas of health, each graded against a published reference band (ESH, ADA, NICE, NSF, validated screeners, the laboratory's own ranges); scores from one area up and says how many areas it rests on",
-      "Daily Briefing card and printable weekly report at /insights/report/[week]",
+      "Daily Briefing card",
       "Per-recommendation explainability with rationale (window + comparison + deviation), pinned mini-chart of the data window, and was-this-helpful feedback",
       "Server-computed 0–100 confidence score per recommendation (sample size + recency + signal strength) — no model-claimed values",
       "Medical-reference grounding — every normative recommendation cites a curated guideline (ESH, ESC, ACC/AHA, WHO, DGE) with source links",
@@ -188,26 +188,26 @@ export default function RootLayout({
       "Comparison overlays — toggle vs. last month / vs. last year on every chart, tile, and the AI insights surface",
       "Personal health targets that override guideline defaults, audit-logged per change",
       "Customizable dashboard — show, hide, and reorder every widget",
-      "Doctor report PDF generation, locale-aware (EN/DE), with optional AI summary",
+      "Doctor report PDF generated on the server in the user's language, with a computed summary of the period",
       "Withings device synchronization (Body+, BPM Connect, ScanWatch)",
       "Native API clients with Bearer + refresh-token rotation and Idempotency-Key support",
-      "Off-host weekly encrypted backups to any S3-compatible bucket, with download / upload / restore from the admin panel and full audit-log trail",
+      "Nightly encrypted off-host backups to any S3-compatible bucket, configured through BACKUP_* environment variables, with status, download, upload and restore in the admin panel and a full audit-log trail",
       "Worker / web split for scaling beyond a single container",
       "Versioned encryption keys with online rotation",
-      "AES-256-GCM encryption for all sensitive data",
+      "AES-256-GCM encryption at rest for notes and other free text, documents, questionnaire answers, AI-written text, Coach conversations, and tokens and provider keys",
       "Passkey (WebAuthn) authentication",
       "Offline-capable Progressive Web App",
       "CSV and JSON data export",
       "Telegram, ntfy, and Web Push notifications",
     ],
     screenshot: "https://healthlog.dev/og-image.png",
-    // Tracks the latest stable HealthLog server release. Bumped manually
-    // until the cross-repo release sync tool lands.
-    softwareVersion: "1.38.1",
+    // Tracks the latest stable HealthLog server release. Bumped by hand with
+    // each release.
+    softwareVersion: "1.39.3",
     license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
-    // Landing page is English-only today. The HealthLog app itself is
-    // bilingual (EN/DE) — that fact belongs on the app, not the marketing
-    // page. Re-add "de" here once a German landing variant ships.
+    // The landing page is English-only today (the /learn guides and the
+    // privacy policy have their own locales). The app itself ships in seven
+    // languages; that fact belongs in the feature copy, not here.
     inLanguage: "en",
     downloadUrl: "https://github.com/MBombeck/HealthLog",
     installUrl: "https://docs.healthlog.dev",
@@ -253,7 +253,7 @@ export default function RootLayout({
         name: "Where is my health data stored?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Entirely on your own infrastructure. HealthLog is self-hosted on PostgreSQL, with all sensitive fields encrypted at rest using AES-256-GCM. There is no cloud dependency, no telemetry, and no third-party analytics.",
+          text: "Entirely on your own infrastructure. HealthLog is self-hosted on PostgreSQL, with notes, documents, questionnaire answers, Coach conversations and tokens encrypted at rest using AES-256-GCM. Measurement values, lab values, medication names and mood scores are stored unencrypted so they can be queried and charted. There is no usage telemetry and no third-party analytics.",
         },
       },
       {
@@ -277,7 +277,7 @@ export default function RootLayout({
         name: "Can HealthLog store and search my medical documents?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. An optional, off-by-default document vault keeps your letters, reports and scans encrypted at rest on your own server. Each upload is read and made searchable automatically — by a local reader that never leaves your machine, or, with your per-document consent, by your configured AI provider for a richer read of scans. You can search the words inside your documents over an encrypted blind index that stores nothing readable, ask a single document a grounded and cited question, and share one with a clinician through a time-boxed, revocable QR link with photo metadata stripped.",
+          text: "Yes. An optional, off-by-default document vault keeps your letters, reports and scans encrypted at rest on your own server. Each upload is read and made searchable automatically — by a local reader that runs on your server or in your own browser, or, with your per-document consent, by your configured AI provider for a richer read of scans. You can search the words inside your documents over an encrypted blind index that stores nothing readable, ask a single document a grounded and cited question, and share one with a clinician through a time-boxed, revocable QR link with photo metadata stripped.",
         },
       },
       {
@@ -364,7 +364,7 @@ export default function RootLayout({
         {/*
           Rybbit analytics — self-hosted on ops-01 (rybbit.bombeck.io),
           cookieless: it stores nothing on the visitor's device, so
-          TTDSG § 25 needs no consent banner. Visitors are counted through a
+          TDDDG § 25 needs no consent banner. Visitors are counted through a
           daily re-salted hash; session replay, error capture, form and
           click tracking are disabled server-side for this site.
           The script and its collect endpoint are served first-party under

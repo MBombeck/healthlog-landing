@@ -144,8 +144,8 @@ export default function FeaturesPage() {
             HealthLog brings every health signal you care about onto one
             timeline, on a server you control. Below is the full picture: the
             metrics, the medication engine, lab work, the export formats a
-            clinician can actually open, and the cited AI Coach. No cloud, no
-            telemetry, source available.
+            clinician can actually open, and the cited AI Coach. No central cloud,
+            no usage telemetry, source available.
           </p>
         </div>
 
@@ -387,10 +387,11 @@ export default function FeaturesPage() {
         >
           <p>
             Record allergies and family history as structured entries gathered
-            under a single Medical history section, encrypted at rest, and
-            included in the health-record export. It is your record to keep —
-            HealthLog stores what you enter and never interprets it into a
-            diagnosis.
+            under a single Medical history section and included in the
+            health-record export. Allergy reactions and notes and
+            family-history notes are encrypted at rest. It is your record to
+            keep: HealthLog stores what you enter and never interprets it into
+            a diagnosis.
           </p>
         </FeatureSection>
 
@@ -409,10 +410,10 @@ export default function FeaturesPage() {
           </p>
           <p>
             The moment a document lands, it is read and made searchable. A local
-            reader stays entirely on your machine, so the file never leaves your
-            server. When you want a richer read — one that handles handwriting
-            and photographed scans — you can let your configured AI provider do
-            it, but only for the documents you consent to. Leave automatic
+            reader extracts the text on your server, or in your own browser for
+            photos, so the file goes to no outside service. When you want a
+            richer read, one that handles handwriting and photographed scans,
+            you can let your configured AI provider do it, but only for the documents you consent to. Leave automatic
             reading off and that is one document at a time, on the action you
             tap; switch it on and it also works through the documents already in
             your vault, which it never used to do.
@@ -748,8 +749,8 @@ export default function FeaturesPage() {
           <p>
             Pick the provider that fits your privacy and budget: your ChatGPT
             subscription, an OpenAI key, an Anthropic (Claude) key, or a fully
-            local OpenAI-compatible model running on Ollama, LM Studio or vLLM
-            that never leaves your network.
+            local OpenAI-compatible model running on Ollama, LM Studio or vLLM,
+            so AI requests stay on your network.
           </p>
           <div className="glass-card overflow-hidden p-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -842,8 +843,8 @@ export default function FeaturesPage() {
           title="Localized, with a little momentum"
         >
           <p>
-            The interface ships in six languages — German, English, Spanish,
-            French, Italian and Polish. Along the way, 40 achievements give
+            The interface ships in seven languages: English, German, Spanish,
+            French, Italian, Polish and Korean. Along the way, 63 achievements give
             consistent tracking a bit of momentum without turning your health
             into a game you can lose.
           </p>
@@ -864,10 +865,13 @@ export default function FeaturesPage() {
           </p>
           <p>
             And it stays yours. Everything lives on infrastructure you control,
-            with sensitive fields encrypted at rest and no telemetry phoning
-            home. Nothing leaves your server unless you turn on an integration,
-            an AI provider, the assistant connector or a notification channel —
-            each one off until you choose it.
+            with notes, documents and tokens encrypted at rest and no usage
+            telemetry. Health data leaves your server only when you turn on an
+            integration, an AI provider, the assistant connector or a
+            notification channel, each one off until you choose it. The server
+            makes three small requests of its own: a password breach check, an
+            update check and a sign-in location lookup. None carries health
+            data, and each can be switched off.
           </p>
         </FeatureSection>
 

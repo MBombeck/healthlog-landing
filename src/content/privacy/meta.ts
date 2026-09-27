@@ -9,8 +9,8 @@ import { SITE_ORIGIN } from "@/content/learn/locales";
  * current wording (section 12 of the policy says so). Bump it together with
  * LAST_UPDATED whenever the text changes materially.
  */
-export const POLICY_VERSION = "1.38.1";
-export const LAST_UPDATED = "2026-09-02";
+export const POLICY_VERSION = "1.39.3";
+export const LAST_UPDATED = "2026-09-26";
 
 export const PRIVACY_PATH_EN = "/privacy";
 export const PRIVACY_PATH_DE = "/de/privacy";

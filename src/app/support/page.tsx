@@ -186,7 +186,7 @@ export default function SupportPage() {
               accent="green"
               label="Source"
               title="Want to read the code first?"
-              body="HealthLog is released under the GNU Affero General Public License v3.0. Every line that touches user data is auditable on GitHub."
+              body="HealthLog is source available under the PolyForm Noncommercial License 1.0.0. Every line that touches user data is auditable on GitHub."
               href="https://github.com/MBombeck/HealthLog"
               cta="View the repository"
             />
@@ -241,11 +241,6 @@ export default function SupportPage() {
               product with a paid support plan. Responses are best-effort and
               typically arrive within a few days. Security-related reports
               are prioritised.
-            </p>
-            <p className="text-text-secondary">
-              Outage reports for the maintainer-operated reference instance
-              should also go through GitHub Issues — the same incident review
-              process applies as for code defects.
             </p>
           </div>
         </section>
