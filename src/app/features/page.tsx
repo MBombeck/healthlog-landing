@@ -327,6 +327,12 @@ export default function FeaturesPage() {
             and route of administration is captured per medication.
           </p>
           <p>
+            A medication you take now and then, like an antiviral for a week at
+            a time, keeps each course with its own start and end, and adherence
+            counts every course but never the weeks between them. Categories of
+            your own sit next to the built-in ones and filter the list.
+          </p>
+          <p>
             GLP-1 treatments get a dedicated layer: injection-site rotation, a
             dose-titration history, pen-and-vial inventory, and a side-effect
             logbook against a fixed taxonomy.
@@ -639,6 +645,12 @@ export default function FeaturesPage() {
             Log acute illnesses, chronic conditions, recurring conditions and
             individual flares through a lifecycle, with a daily symptom log
             underneath each episode.
+          </p>
+          <p>
+            Define up to eight symptoms of your own, such as aura, headache or
+            neck tension, and log one in a single step with an intensity from 0
+            to 10. Each becomes its own line in the pattern analysis and the
+            Coach, with or without an open episode.
           </p>
           <p>
             An active episode turns on Rest Mode, which softens nudges and
