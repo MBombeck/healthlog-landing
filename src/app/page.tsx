@@ -634,7 +634,7 @@ const primaryFeatures = [
     icon: <PillIcon />,
     title: "Medication, done properly",
     description:
-      "Fixed times, flexible intervals, cyclic courses, as-needed doses: schedule any regimen. Supply tracking warns before you run out, and reminders escalate when a dose slips. Injectables carry site rotation, dose titration and a pen inventory.",
+      "Fixed times, flexible intervals, cyclic courses, as-needed doses, a drug you take now and then: schedule any regimen. Supply tracking warns before you run out, and reminders escalate when a dose slips. Injectables carry site rotation, dose titration and a pen inventory.",
     color: "cyan",
   },
   {
