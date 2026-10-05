@@ -185,6 +185,11 @@ export default function FeaturesPage() {
             charts sit just below.
           </p>
           <p>
+            The first line says something about your day, from your own
+            readings even without an AI provider, and a short Today list shows
+            what is on: doses taken, an appointment, last night, your vitals.
+          </p>
+          <p>
             It reads the insight prepared overnight, so it loads instantly and
             never generates anything on open. When last night&apos;s sleep
             hasn&apos;t synced yet it says so plainly, and the score finalises
@@ -741,8 +746,8 @@ export default function FeaturesPage() {
           <p>
             The Coach answers from your own numbers and shows its work: each
             reply cites the exact metric, the window it looked at, and how many
-            readings it drew on. It reads as prose first, with the evidence
-            pinned underneath, not as a chatbot guessing.
+            readings it drew on. It reads as prose first, with what it looked
+            at listed just above, not as a chatbot guessing.
           </p>
           <p>
             Its proactive check-in is warmer and in your language: it greets you
