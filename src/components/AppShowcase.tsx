@@ -48,7 +48,7 @@ const screens: Screen[] = [
     alt: "HealthLog AI Coach answering a question about the last 30 days of blood pressure readings in plain language",
     kicker: "AI Coach",
     title: "Ask your record a question",
-    body: "The Coach reads your own data and answers in plain language: what changed, what stayed in range, what deserves a closer look. Bring your own key, run a local model, or leave AI off entirely.",
+    body: "The Coach reads your own data, thinks it through and answers in plain language: what changed, what stayed in range, what deserves a closer look. It remembers what you tell it, with your say over what it keeps. Bring your own key, run a local model, or leave AI off entirely.",
     accent: "#50fa7b",
   },
   {

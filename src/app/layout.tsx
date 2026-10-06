@@ -175,7 +175,7 @@ export default function RootLayout({
       "Mood tracking with 5-point scale and tags",
       "AI-powered health insights via OpenAI (BYOK or admin-shared key), Anthropic Claude, your ChatGPT subscription (one-click device-code Codex flow, no API plan needed), or local OpenAI-compatible providers (Ollama, LM Studio, vLLM)",
       "Multi-provider fallback chain — providers retry in user-defined order on hard failure, with last-working provider cached per user",
-      "AI Coach drawer with streaming chat and encrypted conversation history — same provider chain as AI Insights, source-chip provenance per turn, per-user daily token budget",
+      "AI Coach with streaming chat and encrypted conversation history: reasons before it answers at a depth each person chooses, shows a live status line of what it is reading, compares two periods or two metrics in one chart, asks when a question is ambiguous, and remembers what you tell it with an undo, keeping health details only after you agree; same provider chain as AI Insights, per-user daily token budget",
       "Coach discusses your stored documents in its own document view, with its own separate history — grounded in the document, which is treated as untrusted input",
       "Personal Health Score (composite 0–100 with three bands) built from up to seven pillars across five areas of health, each graded against a published reference band (ESH, ADA, NICE, NSF, validated screeners, the laboratory's own ranges); scores from one area up and says how many areas it rests on",
       "Daily Briefing card",

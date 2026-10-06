@@ -639,9 +639,9 @@ const primaryFeatures = [
   },
   {
     icon: <BrainIcon />,
-    title: "A Coach that cites its sources",
+    title: "A Coach that thinks it through",
     description:
-      "Ask about your numbers, and every answer names the metric, the window and the reading count it drew on, chart attached. Use your own OpenAI or Anthropic key, your ChatGPT subscription, or a local model, so AI requests stay on your network.",
+      "Ask about your numbers and the Coach takes its time: it reads the series it needs, compares them, and a quiet line shows what it is doing meanwhile. Every answer names what it drew on, chart attached. It asks when your question could mean two things, and remembers what you tell it, health details only once you agree. Use your own key, your ChatGPT subscription or a local model.",
     color: "orange",
   },
 ];

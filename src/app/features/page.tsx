@@ -144,7 +144,7 @@ export default function FeaturesPage() {
             HealthLog brings every health signal you care about onto one
             timeline, on a server you control. Below is the full picture: the
             metrics, the medication engine, lab work, the export formats a
-            clinician can actually open, and the cited AI Coach. No central cloud,
+            clinician can actually open, and an AI Coach that cites its data. No central cloud,
             no usage telemetry, source available.
           </p>
         </div>
@@ -741,13 +741,32 @@ export default function FeaturesPage() {
           id="coach"
           label="AI Coach"
           color="orange"
-          title="Every claim cites its data"
+          title="Thinks first, then answers from your data"
         >
           <p>
             The Coach answers from your own numbers and shows its work: each
             reply cites the exact metric, the window it looked at, and how many
-            readings it drew on. It reads as prose first, with what it looked
-            at listed just above, not as a chatbot guessing.
+            readings it drew on. With a model that can reason, it thinks before
+            it answers, as deeply as you choose. A question about why something
+            changed gets the time to look at several series and line them up,
+            and a comparison of two months or two metrics comes back as one
+            chart.
+          </p>
+          <p>
+            While it works, a single quiet line above the answer says what it is
+            doing, such as reading your blood pressure over the last 90 days.
+            When it is done, the line settles into
+            a short summary you can tap to see the steps and the reasoning
+            behind them. Nothing opens by itself.
+          </p>
+          <p>
+            When a question could mean two things, it asks once, with a few
+            suggested replies. If you would rather not answer, it goes with the
+            likelier reading and says which one it assumed. It also remembers
+            what you tell it about your goals and preferences, says so with an
+            undo right there, and keeps anything about your health only after
+            you agree. You can read, edit and delete everything it knows in the
+            Coach settings.
           </p>
           <p>
             Its proactive check-in is warmer and in your language: it greets you
