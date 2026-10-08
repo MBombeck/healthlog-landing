@@ -80,6 +80,7 @@ function FeatureSection({
 const TOC = [
   { id: "today", label: "Today — a daily companion" },
   { id: "vitals", label: "Vitals & trends" },
+  { id: "day", label: "Day view & timeline" },
   { id: "nutrition", label: "Nutrition & vitamins" },
   { id: "medication", label: "Medication & adherence" },
   { id: "labs", label: "Labs & biomarkers" },
@@ -287,6 +288,46 @@ export default function FeaturesPage() {
               reads from.
             </p>
           </div>
+        </FeatureSection>
+
+        <FeatureSection
+          id="day"
+          label="Day view & timeline"
+          color="cyan"
+          title="Open any day, see the whole record"
+        >
+          <p>
+            Every date in the app opens its day. Tap a point on a chart, a cell
+            in a calendar or a date in a list, and the day appears over the page
+            you are on: docked beside it on a wide screen, as a sheet on a
+            phone. It shows the value you came from, your readings that day
+            against your own usual range, what ran through the day (a
+            medication, an illness, a cycle phase) and what happened in order
+            of the clock, each row linking to its record. Step to the previous
+            or next day without closing it, and Back takes you where you were.
+          </p>
+          <p>
+            Before a planned doctor visit, the visit lists what changed since
+            the last one, such as dose changes and readings that stood out,
+            each date opening its day, with a doctor report for exactly that
+            stretch.
+          </p>
+          <p>
+            The timeline is an optional module for the long view. Conditions,
+            allergies, medications with their dose changes and pauses,
+            vaccinations, visits and procedures, lab results and documents sit
+            on one time axis, zoomable from years down to weeks, with up to
+            three value lines below as monthly means. On a phone it reads as a
+            chronicle, newest first. You can add life events too, such as a
+            move, a new job or a birth, dated to the day, the month or the
+            year. They stay yours alone: they are not shared with anyone you
+            gave access to and never go to an AI model.
+          </p>
+          <p>
+            When you switch the module on, a coverage check shows which parts
+            of your record carry enough for a timeline, which are thin and
+            which are empty, with one link per gap to fill it in.
+          </p>
         </FeatureSection>
 
         <FeatureSection
@@ -598,7 +639,7 @@ export default function FeaturesPage() {
           </p>
           <p>
             So a managed profile is a health record with no credentials. No
-            password, no passkey, no second factor, and no way to gain one. You
+            password, no passkey and no second factor of its own. You
             give it a name, optionally a real date of birth and a gender, and the
             language and timezone its own days and reminders are measured in.
             Nothing is invented from a year you did not give, and a guardian can
@@ -612,13 +653,24 @@ export default function FeaturesPage() {
             You can invite a second guardian, who accepts the invitation the way
             any other is accepted. That is worth doing before you need it,
             because the record can never be left with nobody: the last guardian
-            cannot hand it back and cannot be removed, and the screen says so
+            cannot simply walk away from it and cannot be removed, and the screen says so
             where the refusal happens rather than after the fact. An invited
             guardian counts only once they accept. The way out, if you are alone
             with a profile, is to add somebody else or to delete it. Deleting is
             a real ending and it is offered plainly, because being allowed to end
             a record and being allowed to walk away from one are different
             permissions and only the first is safe.
+          </p>
+          <p>
+            A child grows up, and somebody in your care may want to take over.
+            A guardian can then hand the profile over: HealthLog makes a
+            one-time link, shown once with a QR code, valid for one, seven or
+            fourteen days. The person opens it, chooses a username, an e-mail
+            address and a password, and the record becomes their own account
+            with all of its history; nothing is copied or moved. For each
+            guardian you propose whether their access ends, drops to reading
+            only or stays at managing, and the new owner makes the final call on the
+            first screen after signing in.
           </p>
           <p>
             Its reminders reach the people looking after it, since a record with
@@ -723,17 +775,32 @@ export default function FeaturesPage() {
           id="environment"
           label="Environmental context"
           color="orange"
-          title="What the weather was doing"
+          title="What the weather and the air were doing"
         >
           <p>
-            An optional module records the daily weather, daylight and
-            temperature for your location and correlates them against your mood,
-            sleep and vitals — useful for spotting the seasonal patterns a
-            number in isolation hides.
+            An optional module records each day&apos;s weather, daylight and
+            temperature for your location, and next to them the air quality
+            (fine particles, ozone and more), the pollen count and the UV
+            index. Pollen depends on the region: the European air-quality model
+            carries it, the global one does not. The data comes from Open-Meteo
+            and the Copernicus Atmosphere Monitoring Service, credited next to
+            the values. A small note on the dashboard mentions a day with high
+            pollen, a warm night or very poor air, and stays quiet otherwise.
+          </p>
+          <p>
+            These days are correlated against your mood, sleep and vitals. Two
+            things that both follow the seasons, like temperature and blood
+            pressure, line up whether or not one affects the other, so the
+            season and the long-term trend are taken out of both before
+            anything is compared. What remains is the day-to-day effect, if
+            there is one.
           </p>
           <p>
             It is off by default. Set a home location, add dated location
-            periods for travel, and backfill the history once it is on.
+            periods for travel, and backfill the history once it is on. Only a
+            coarse, city-level position is kept, and it is stored encrypted.
+            Air quality has its own switch in the module&apos;s settings, and
+            whoever runs the server can turn it off for everyone.
           </p>
         </FeatureSection>
 
@@ -851,6 +918,17 @@ export default function FeaturesPage() {
             connects two-way through the native iOS app and HealthKit, and you
             can also drop an Apple Health export.zip on the upload page on any
             platform.
+          </p>
+          <p>
+            There is no native Android app; HealthLog runs as a web app you
+            install from the browser. What your Android phone and watch record
+            comes in through Health Connect: export your data from Health
+            Connect to a cloud folder, then upload that file on the import page
+            in Settings. Steps, heart rate, sleep, workouts, cycle days and
+            more arrive with their history, and apps you already connect to
+            HealthLog directly are left out, so nothing counts twice. It is an
+            import rather than a live sync, so you repeat it when you want newer
+            data.
           </p>
           <p>
             When several sources log the same day, source-priority dedup

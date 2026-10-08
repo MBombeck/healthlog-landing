@@ -152,7 +152,7 @@ export default function RootLayout({
       "Grip strength, a 0–10 pain score, waist circumference and waist-to-height ratio, and respiratory rate as first-class tracked signals",
       "Longevity lab panel in the biomarker catalogue — ApoB, Lp(a), hs-CRP, HbA1c, fasting glucose and insulin, eGFR, GGT, ferritin, omega-3 index — with reference ranges",
       "Structured medical-history records for allergies and family history, with reactions and notes encrypted at rest, included in the health-record export",
-      "Optional environmental-context module — daily weather, daylight, and temperature correlated against mood, sleep, and vitals",
+      "Optional environment module, off by default: daily weather, daylight and temperature plus air quality, pollen and UV for each day, correlated against mood, sleep and vitals after the season and the trend are taken out; home and travel locations are stored encrypted, and Open-Meteo and Copernicus are credited next to the values",
       "Encrypted document vault (off by default) — store letters, reports and scans encrypted at rest; automatic reading by a local reader on your server, or by your AI provider with per-document consent; whole-word search over an encrypted blind index; grounded, cited per-document chat; and time-boxed, revocable QR share links with photo metadata stripped",
       "Two-factor authentication (TOTP and WebAuthn) with step-up checks for sensitive actions",
       "Shared access between two accounts on one instance: give a family member access to your record without sharing a login, to read it, to read it and add to it, or to manage it. The invitation confers nothing until accepted and names both the level and the sections of the record it opens (readings, medications, lab results, health background, illness, mood and mind, cycle, documents), with everything unpicked refused exactly as an unshared record is; managing always covers the whole record; deferring the owner's reminders and overturning a recorded dose stay with the owner at every level; a delegate's entry is stored as the owner's, with authorship in the audit trail and an activity feed that names each act by verb; credentials, integrations, notification channels, module and threshold configuration and exports stay out of reach; an invitation can name the day the access lapses, and either side can end it sooner with effect on the delegate's next request",
@@ -196,6 +196,9 @@ export default function RootLayout({
       "Versioned encryption keys with online rotation",
       "AES-256-GCM encryption at rest for notes and other free text, documents, questionnaire answers, AI-written text, Coach conversations, and tokens and provider keys",
       "Passkey (WebAuthn) authentication",
+      "Day view: tap a day on any chart, list or calendar to see everything it held, readings against your usual range, doses, symptoms and events in order of the clock",
+      "Optional timeline module: conditions, medications, vaccinations, visits, labs, documents and life events on one time axis, with a coverage check that shows where the record is thin",
+      "Health Connect import for Android: upload a Health Connect export and its history arrives, with apps you already connect directly left out",
       "Offline-capable Progressive Web App",
       "CSV and JSON data export",
       "Telegram, ntfy, and Web Push notifications",
@@ -203,7 +206,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped by hand with
     // each release.
-    softwareVersion: "1.39.3",
+    softwareVersion: "1.42.0",
     license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
     // The landing page is English-only today (the /learn guides and the
     // privacy policy have their own locales). The app itself ships in seven
@@ -261,7 +264,7 @@ export default function RootLayout({
         name: "Which devices and services does HealthLog integrate with?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Withings devices (Body+, BPM Connect, ScanWatch) sync over OAuth2 with near-real-time webhooks, and Apple Health syncs live through the iOS app or via export import. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
+          text: "Withings devices (Body+, BPM Connect, ScanWatch) sync over OAuth2 with near-real-time webhooks, and Apple Health syncs live through the iOS app or via export import. On Android you can import a Health Connect export. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
         },
       },
       {
@@ -293,7 +296,15 @@ export default function RootLayout({
         name: "Can I keep a record for my child, or for somebody I care for?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. A managed profile is a health record for a person who does not sign in at all. It has no password and no e-mail address, and it never gains one. You give it a name, optionally a date of birth, and the language and timezone its own days and reminders are measured in, and you become its first guardian in the same step, so the record is never left unattended. You can invite a second guardian, who accepts the way any invitation is accepted. Its reminders reach the people looking after it rather than a phone it does not have: medication and measurement reminders, safety-floor and low-stock alerts all go to the guardians, each in their own language, naming whose record they are about. The record can never be left with nobody, so the last guardian may delete the profile but may not hand it back. Creating one asks for your second factor.",
+          text: "Yes. A managed profile is a health record for a person who does not sign in at all. It has no password and no e-mail address of its own. When the person is ready to look after it themselves, a guardian can hand the profile over with a one-time link, and it becomes their own account with all of its history, while they decide who keeps access. You give it a name, optionally a date of birth, and the language and timezone its own days and reminders are measured in, and you become its first guardian in the same step, so the record is never left unattended. You can invite a second guardian, who accepts the way any invitation is accepted. Its reminders reach the people looking after it rather than a phone it does not have: medication and measurement reminders, safety-floor and low-stock alerts all go to the guardians, each in their own language, naming whose record they are about. The record can never be left with nobody, so the last guardian may delete the profile but may not simply walk away from it. Creating one asks for your second factor.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is there an Android app?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Not a native one. HealthLog is a web app you can install to your home screen from the browser, and it runs on Android like on any other platform. For what your phone and watch record, Health Connect is the way in: export your data from Health Connect to a cloud folder, then upload that file on the import page in HealthLog's settings. Steps, heart rate, sleep, workouts and more arrive with their history, and apps you already connect to HealthLog directly are left out so nothing counts twice. It is an import rather than a live sync, so you repeat it when you want newer data.",
         },
       },
       {
