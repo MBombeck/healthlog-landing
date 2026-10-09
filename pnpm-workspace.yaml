@@ -19,8 +19,10 @@ overrides:
   # CVE-2026-69152 / CVE-2026-14257 / CVE-2026-13149: brace expansion grows
   # without bound and takes the process down with it. Two majors sit in the tree,
   # so both need a floor.
-  "brace-expansion@<1.1.18": "^1.1.18"
-  "brace-expansion@>=4.0.0 <5.0.9": "^5.0.9"
+  # CVE-2026-102277 (quadratic-time `{a},b}` rewrite) raised both floors
+  # to 1.1.21 and 5.0.12.
+  "brace-expansion@<1.1.21": "^1.1.21"
+  "brace-expansion@>=4.0.0 <5.0.12": "^5.0.12"
   # CVE-2026-33228 / CVE-2026-32141: prototype pollution and unbounded recursion
   # in parse(). Reaches us through the ESLint cache.
   "flatted@<3.4.2": "^3.4.4"
@@ -30,8 +32,12 @@ overrides:
   "picomatch@>=4.0.0 <4.0.4": "^4.0.7"
   # CVE-2026-33327 / CVE-2026-33328 / CVE-2026-35590 / CVE-2026-35591: libvips
   # flaws inherited by sharp < 0.35.0. Our direct devDependency is already past
-  # it; a transitive copy under the build toolchain is not.
-  "sharp@<0.35.0": "^0.35.4"
+  # it; a transitive copy under the build toolchain is not. GHSA-wq5f-xc86-pv6w
+  # (CVE-2026-96889, the bundled librsvg) raised the floor to 0.35.5.
+  "sharp@<0.35.5": "^0.35.5"
+  # CVE-2026-93749: quadratic-time parsing of crafted source maps. Arrives under
+  # postcss and the Tailwind build; build-time only.
+  "source-map-js@<1.2.2": "^1.2.2"
   # CVE-2026-49356: arbitrary file read via a sourceMappingURL comment.
   "@babel/core@<=7.29.0": "^7.29.7"
   # Recursive copy follows symlinked files and pulls data in from outside the
