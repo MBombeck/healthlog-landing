@@ -648,6 +648,20 @@ const primaryFeatures = [
 
 const secondaryFeatures = [
   {
+    icon: <CalendarIcon />,
+    title: "Any day, and the whole record",
+    description:
+      "Tap a day on a chart, a list or a calendar and see everything it held: your readings against your usual range, doses, symptoms, workouts and what happened when. An optional timeline lays conditions, medications, vaccinations, visits, labs and life events on one time axis.",
+    color: "purple",
+  },
+  {
+    icon: <CalendarIcon />,
+    title: "Air quality, pollen & UV",
+    description:
+      "Next to the weather, the optional environment module records air quality, pollen and UV for each day. Correlations take the season out first, so a summer is not mistaken for a pattern. Your location is stored encrypted.",
+    color: "orange",
+  },
+  {
     icon: <FlaskIcon />,
     title: "Labs & biomarkers",
     description:
@@ -750,6 +764,12 @@ const integrations = [
     blurb: "Continuous glucose straight from your own Nightscout instance.",
     color: "purple",
   },
+  {
+    name: "Health Connect",
+    blurb:
+      "On Android, export from Health Connect and upload the file. Your history comes in, and apps you already connected directly are skipped.",
+    color: "green",
+  },
 ];
 
 const colorMap: Record<string, { bg: string; text: string }> = {
@@ -813,7 +833,7 @@ const faqs = [
   {
     question: "Which devices and services does HealthLog integrate with?",
     answer:
-      "Withings, WHOOP, Oura, Polar, Fitbit, Strava and Nightscout sync over OAuth or your own endpoints, and Apple Health syncs live through the iOS app or via export import. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
+      "Withings, WHOOP, Oura, Polar, Fitbit, Strava and Nightscout sync over OAuth or your own endpoints, and Apple Health syncs live through the iOS app or via export import. On Android you can import a Health Connect export. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
   },
   {
     question: "Can I connect HealthLog to an AI assistant?",
@@ -833,7 +853,12 @@ const faqs = [
   {
     question: "Can I keep a record for my child, or for somebody I care for?",
     answer:
-      "Yes. A managed profile is a health record for a person who does not sign in at all. It has no password and no e-mail address, and it never gains one. You give it a name, optionally a date of birth and a gender, and the language and timezone its own days and reminders are measured in, and you become its first guardian in the same step, so the record is never left unattended. A guardian can change any of those later, behind the same second factor. You can invite a second guardian, who accepts the way any invitation is accepted. Its reminders reach the people looking after it rather than a phone it does not have: medication and measurement reminders, safety-floor and low-stock alerts all go to the guardians, each in their own language, naming whose record they are about. The record can never be left with nobody, so the last guardian may delete the profile but may not hand it back. Creating one asks for your second factor.",
+      "Yes. A managed profile is a health record for a person who does not sign in at all. It has no password and no e-mail address of its own. When the person is ready to look after it themselves, a guardian can hand the profile over with a one-time link, and it becomes their own account with all of its history, while they decide who keeps access. You give it a name, optionally a date of birth and a gender, and the language and timezone its own days and reminders are measured in, and you become its first guardian in the same step, so the record is never left unattended. A guardian can change any of those later, behind the same second factor. You can invite a second guardian, who accepts the way any invitation is accepted. Its reminders reach the people looking after it rather than a phone it does not have: medication and measurement reminders, safety-floor and low-stock alerts all go to the guardians, each in their own language, naming whose record they are about. The record can never be left with nobody, so the last guardian may delete the profile but may not simply walk away from it. Creating one asks for your second factor.",
+  },
+  {
+    question: "Is there an Android app?",
+    answer:
+      "Not a native one. HealthLog is a web app you can install to your home screen from the browser, and it runs on Android like on any other platform. For what your phone and watch record, Health Connect is the way in: export your data from Health Connect to a cloud folder, then upload that file on the import page in HealthLog's settings. Steps, heart rate, sleep, workouts and more arrive with their history, and apps you already connect to HealthLog directly are left out so nothing counts twice. It is an import rather than a live sync, so you repeat it when you want newer data.",
   },
   {
     question: "Is HealthLog a medical device?",
@@ -1148,7 +1173,8 @@ export default function Home() {
                 "FHIR R4 export",
                 "Glucose mg/dL ↔ mmol/L",
                 "Illness journal & Rest Mode",
-                "Environmental context",
+                "Air quality, pollen & UV",
+                "Health Connect import",
                 "Time-boxed share links · QR",
                 "Passkeys & two-factor auth",
                 "Offline-capable PWA",
