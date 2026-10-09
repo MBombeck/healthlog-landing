@@ -316,8 +316,9 @@ export default function FeaturesPage() {
             The timeline is an optional module for the long view. Conditions,
             allergies, medications with their dose changes and pauses,
             vaccinations, visits and procedures, lab results and documents sit
-            on one time axis, zoomable from years down to weeks, with up to
-            three value lines below as monthly means. On a phone it reads as a
+            on one time axis, zoomable from years down to weeks or any range
+            you pick, with as many of your values as you like below, averaged
+            by quarter, month or week. On a phone it reads as a
             chronicle, newest first. You can add life events too, such as a
             move, a new job or a birth, dated to the day, the month or the
             year. They stay yours alone: they are not shared with anyone you
