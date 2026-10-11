@@ -81,6 +81,7 @@ const TOC = [
   { id: "today", label: "Today — a daily companion" },
   { id: "vitals", label: "Vitals & trends" },
   { id: "day", label: "Day view & timeline" },
+  { id: "search", label: "Search your record" },
   { id: "nutrition", label: "Nutrition & vitamins" },
   { id: "medication", label: "Medication & adherence" },
   { id: "labs", label: "Labs & biomarkers" },
@@ -332,6 +333,29 @@ export default function FeaturesPage() {
         </FeatureSection>
 
         <FeatureSection
+          id="search"
+          label="Search your record"
+          color="cyan"
+          title="Find anything you ever recorded"
+        >
+          <p>
+            The command palette (⌘K, Ctrl K, or the magnifier at the top)
+            finds pages and settings, and it searches your own record:
+            visits and procedures, conditions, documents including the text
+            read from them, vaccinations, lab results, medications, symptoms,
+            workouts and the notes on mood entries, readings and illness days.
+            Each hit opens the entry where it lives.
+          </p>
+          <p>
+            Case and accents do not matter, and umlauts can be typed as ae, oe
+            or ue. On a record with years in it the search goes newest first
+            and says so when it did not reach the oldest entries. What you type
+            travels in the body of the request, so it never shows up in an
+            address bar, a proxy log or the server&apos;s own log.
+          </p>
+        </FeatureSection>
+
+        <FeatureSection
           id="nutrition"
           label="Nutrition & vitamins"
           color="green"
@@ -378,6 +402,14 @@ export default function FeaturesPage() {
             a time, keeps each course with its own start and end, and adherence
             counts every course but never the weeks between them. Categories of
             your own sit next to the built-in ones and filter the list.
+          </p>
+          <p>
+            Some things you take every day without fail, like supplements in
+            the evening. Such a medication can record its doses by itself: from
+            the moment you switch it on, each scheduled dose is marked as taken
+            at its time, with stock and adherence updated as if you had tapped
+            it. It sends no reminders, never fills in the days before you
+            switched it on, and anything you log or skip by hand always wins.
           </p>
           <p>
             GLP-1 treatments get a dedicated layer: injection-site rotation, a
@@ -946,8 +978,23 @@ export default function FeaturesPage() {
         >
           <p>
             Reminders and alerts go out over Apple Push Notifications, Web Push
-            (VAPID), Telegram or ntfy, so you can route HealthLog to whatever
-            you already check.
+            (VAPID), Telegram, ntfy, e-mail or a webhook to Discord, Slack,
+            Gotify, Home Assistant or n8n, so you can route HealthLog to
+            whatever you already check.
+          </p>
+          <p>
+            Every notification leads somewhere. Tap the mood reminder and the
+            mood entry opens; the morning briefing opens the dashboard, a
+            medication reminder your medications, a failing sync the
+            integrations page. On ntfy the mood reminder also carries
+            three buttons, good, okay and bad, so you can answer without
+            opening anything. Each works once, and only for a few hours.
+          </p>
+          <p>
+            You decide how much a notification says. By default it names the
+            topic and shows no health figures, so nothing personal sits on a
+            lock screen. Switch on the detailed version and the morning
+            briefing tells you the score itself.
           </p>
         </FeatureSection>
 
