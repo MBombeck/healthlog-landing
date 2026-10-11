@@ -219,6 +219,40 @@ function FlaskIcon() {
   );
 }
 
+function SearchIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
+      <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="1.5" />
+      <path
+        d="M16 16l4.5 4.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function BellIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
+      <path
+        d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15L6 16z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M10 20.5a2 2 0 0 0 4 0"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 function CalendarIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" aria-hidden="true">
@@ -634,7 +668,7 @@ const primaryFeatures = [
     icon: <PillIcon />,
     title: "Medication, done properly",
     description:
-      "Fixed times, flexible intervals, cyclic courses, as-needed doses, a drug you take now and then: schedule any regimen. Supply tracking warns before you run out, and reminders escalate when a dose slips. Injectables carry site rotation, dose titration and a pen inventory.",
+      "Fixed times, flexible intervals, cyclic courses, as-needed doses, a drug you take now and then: schedule any regimen. Supply tracking warns before you run out, and reminders escalate when a dose slips. A supplement you never miss can record itself. Injectables carry site rotation, dose titration and a pen inventory.",
     color: "cyan",
   },
   {
@@ -647,6 +681,20 @@ const primaryFeatures = [
 ];
 
 const secondaryFeatures = [
+  {
+    icon: <SearchIcon />,
+    title: "Search your whole record",
+    description:
+      "Press ⌘K and type: visits and procedures, conditions, documents down to their text, vaccinations, lab results, medications, symptoms, workouts and your notes. Every hit opens where the entry lives, and the search text never lands in a log.",
+    color: "cyan",
+  },
+  {
+    icon: <BellIcon />,
+    title: "Notifications that lead somewhere",
+    description:
+      "Tap a reminder and you land on the right page, on every channel. Answer the mood check-in straight from ntfy. By default a notification names its topic and shows no health figures on your lock screen.",
+    color: "purple",
+  },
   {
     icon: <CalendarIcon />,
     title: "Any day, and the whole record",
@@ -1175,6 +1223,7 @@ export default function Home() {
                 "Illness journal & Rest Mode",
                 "Air quality, pollen & UV",
                 "Health Connect import",
+                "Record search with ⌘K",
                 "Time-boxed share links · QR",
                 "Passkeys & two-factor auth",
                 "Offline-capable PWA",

@@ -201,12 +201,14 @@ export default function RootLayout({
       "Health Connect import for Android: upload a Health Connect export and its history arrives, with apps you already connect directly left out",
       "Offline-capable Progressive Web App",
       "CSV and JSON data export",
-      "Telegram, ntfy, and Web Push notifications",
+      "Notifications over Apple Push, Web Push, Telegram, ntfy, e-mail and webhooks; each one opens the page it is about, the mood reminder can be answered from ntfy, and no health figures appear on a lock screen unless you allow them",
+      "Record search in the command palette (⌘K): visits, conditions, documents down to their text, vaccinations, lab results, medications, symptoms, workouts and notes, matched regardless of case and accents",
+      "Medications that record their own doses: from the moment it is switched on, each scheduled dose is marked as taken, without reminders and never over a dose logged by hand",
     ],
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped by hand with
     // each release.
-    softwareVersion: "1.42.0",
+    softwareVersion: "1.42.2",
     license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
     // The landing page is English-only today (the /learn guides and the
     // privacy policy have their own locales). The app itself ships in seven
