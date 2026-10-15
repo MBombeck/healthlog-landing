@@ -3,7 +3,7 @@
 //   node scripts/optimize-screens.mjs <capture-dir>
 //
 // <capture-dir> holds `dark/<name>.png` and `light/<name>.png`, captured from
-// the demo at 1600x785 CSS px (phones at 390x844) with device scale 2. Every
+// the demo at 1680x1050 CSS px (phones at 390x844) with device scale 2. Every
 // capture becomes AVIF and WebP at a few widths under public/screenshots/app/,
 // named with a hash of the source bytes, so a recapture always ships under new
 // URLs and no CDN keeps serving the old picture. The manifest the pages read
@@ -37,7 +37,7 @@ const names = (await readdir(join(src, "dark")))
 const manifest = {};
 for (const name of names) {
   const phone = name.startsWith("phone-");
-  const widths = phone ? [390, 780] : [1000, 1600, 2400];
+  const widths = phone ? [390, 780] : [960, 1680, 2400];
   const entry = { width: 0, height: 0, dark: {}, light: {} };
   for (const theme of THEMES) {
     const file = join(src, theme, `${name}.png`);

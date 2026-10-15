@@ -13,9 +13,9 @@ import { SITE_ORIGIN } from "@/content/learn/locales";
  * top bar linking home, and a footer that links back. Server component.
  */
 
-const TITLE = "Features — everything HealthLog tracks";
+const TITLE = "Features: everything HealthLog tracks";
 const DESCRIPTION =
-  "A full tour of HealthLog: vitals and trends, medication adherence, lab biomarkers and a longevity panel, PHQ-9/GAD-7 wellbeing screening, medical history, an encrypted document vault that reads, searches and shares your medical letters, FHIR and doctor-report export, access you can give a family member and take back, to read your record or to read it and add to it, an illness journal with Rest Mode, a cited AI Coach, an OAuth-secured MCP server for AI assistants, and device sync — all self-hosted and source available.";
+  "Everything HealthLog tracks, in one list: vitals, medications, labs, documents, visits, the day view and timeline, record search, an optional AI Coach, sharing and export, device sync, and what it takes to run it on your own server.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -39,90 +39,138 @@ export const metadata: Metadata = {
   },
 };
 
-/* ── small presentational helpers ─────────────────── */
+/* ── data ─────────────────────────────────────────── */
 
-const LABEL_COLORS: Record<string, string> = {
-  purple: "text-purple border-purple/15 bg-purple/[0.03]",
-  cyan: "text-cyan border-cyan/15 bg-cyan/[0.03]",
-  pink: "text-pink border-pink/15 bg-pink/[0.03]",
-  green: "text-green border-green/15 bg-green/[0.03]",
-  orange: "text-orange border-orange/15 bg-orange/[0.03]",
+type Item = [title: string, line: string];
+type Group = {
+  id: string;
+  title: string;
+  color: string;
+  items: Item[];
+  shot?: { name: AppScreenName; alt: string; caption: string };
 };
 
-function FeatureSection({
-  id,
-  label,
-  color,
-  title,
-  shots,
-  children,
-}: {
-  id: string;
-  label: string;
-  color: keyof typeof LABEL_COLORS | string;
-  title: string;
-  shots?: { name: AppScreenName; alt: string; caption: string }[];
-  children: React.ReactNode;
-}) {
-  return (
-    <section id={id} className="scroll-mt-24 space-y-4 sm:scroll-mt-28">
-      <span
-        className={`section-label inline-block ${LABEL_COLORS[color] ?? LABEL_COLORS.purple}`}
-      >
-        {label}
-      </span>
-      <h2 className="font-display text-text-primary text-2xl font-bold tracking-[-0.02em] md:text-3xl">
-        {title}
-      </h2>
-      <div className="text-text-secondary space-y-4 text-sm leading-relaxed md:text-base">
-        {children}
-      </div>
-      {shots?.map((shot) => (
-        <figure key={shot.name} className="pt-4 md:-mx-16 lg:-mx-28">
-          <BrowserFrame>
-            <div className="relative aspect-[1600/785] overflow-hidden bg-[#282a36]">
-              <AppScreen
-                name={shot.name}
-                alt={shot.alt}
-                sizes="(max-width: 768px) 100vw, 960px"
-                className="h-full w-full object-contain object-top"
-              />
-            </div>
-          </BrowserFrame>
-          <figcaption className="text-text-tertiary mt-3 text-center text-xs">
-            {shot.caption}
-          </figcaption>
-        </figure>
-      ))}
-    </section>
-  );
-}
-
-const TOC = [
-  { id: "today", label: "Today — a daily companion" },
-  { id: "vitals", label: "Vitals & trends" },
-  { id: "day", label: "Day view & timeline" },
-  { id: "search", label: "Search your record" },
-  { id: "nutrition", label: "Nutrition & vitamins" },
-  { id: "medication", label: "Medication & adherence" },
-  { id: "labs", label: "Labs & biomarkers" },
-  { id: "wellbeing", label: "Mental wellbeing" },
-  { id: "history", label: "Medical history" },
-  { id: "documents", label: "Document vault" },
-  { id: "export", label: "Export & interoperability" },
-  { id: "sharing", label: "Shared access" },
-  { id: "managed", label: "Managed profiles" },
-  { id: "illness", label: "Illness journal & Rest Mode" },
-  { id: "cycle", label: "Cycle tracking" },
-  { id: "preventive", label: "Preventive-care reminders" },
-  { id: "visits", label: "Doctor visits" },
-  { id: "environment", label: "Environmental context" },
-  { id: "coach", label: "AI Coach" },
-  { id: "assistants", label: "AI assistants & MCP" },
-  { id: "integrations", label: "Integrations" },
-  { id: "notifications", label: "Notifications" },
-  { id: "languages", label: "Languages & achievements" },
-  { id: "scope", label: "What HealthLog is — and isn't" },
+const groups: Group[] = [
+  {
+    id: "every-day",
+    title: "Every day",
+    color: "#8be9fd",
+    items: [
+      ["Today", "A health score, the day's lead read and what needs a look, prepared overnight."],
+      ["Vitals and trends", "Weight, blood pressure, heart rate, glucose, SpO₂, sleep, steps and more, each against your own target range."],
+      ["Heart rate through the day", "The whole curve, not one resting number. Fine detail is kept for 90 days."],
+      ["ECG", "Single-lead recordings from a compatible watch, shown on an ECG grid and never interpreted."],
+      ["Mood", "A one-tap face or five optional sliders, trended over 7, 30 and 90 days."],
+      ["Mental wellbeing", "WHO-5, PHQ-9 and GAD-7 self-checks. Off until you switch them on, answers encrypted."],
+      ["Cycle", "Symptothermal tracking with a careful forecast. Off until you switch it on."],
+      ["Nutrition", "Water, caffeine, vitamins and minerals from Apple Health, as context rather than a verdict."],
+      ["Weather and air", "Weather, air quality, pollen and UV for your city, compared with your days after the season is taken out."],
+    ],
+  },
+  {
+    id: "medications",
+    title: "Medications",
+    color: "#50fa7b",
+    items: [
+      ["Any schedule", "Fixed times, calendar rules, rolling intervals, cyclic courses, as needed or a single dose."],
+      ["Doses that log themselves", "For a supplement you never miss. Anything you log or skip by hand wins."],
+      ["Adherence and stock", "Compliance over 7 and 30 days, and a warning before you run out."],
+      ["Courses and categories", "Each course counted on its own, your own categories next to the built-in ones."],
+      ["GLP-1", "Injection-site rotation, dose titration, pen inventory and a side-effect log."],
+    ],
+    shot: {
+      name: "medications",
+      alt: "HealthLog medication cards filed by category, with a supplement recorded automatically, adherence over 7 and 30 days, and take or skip actions",
+      caption: "The supplement on the left records itself every evening.",
+    },
+  },
+  {
+    id: "record",
+    title: "Your record",
+    color: "#ffb86c",
+    items: [
+      ["Lab results", "Each value on its reference range, the range printed on the report first, converted into one unit with the printed value kept."],
+      ["Longevity panel", "ApoB, Lp(a), hs-CRP, HbA1c, insulin, eGFR, the omega-3 index and more."],
+      ["Illness journal", "Episodes with daily symptoms, up to eight symptoms of your own, and a Rest Mode while you recover."],
+      ["Medical history", "Allergies and family history as structured, encrypted entries."],
+      ["Doctor visits", "Each visit linked to the lab results, documents and episodes it concerned."],
+      ["Vaccinations", "Every shot in one record, also on the timeline."],
+      ["Check-up reminders", "Recurring reminders that close themselves when the matching reading or visit lands."],
+      ["Document vault", "Letters and scans encrypted at rest, read on your server and searchable without storing readable text."],
+    ],
+    shot: {
+      name: "labs",
+      alt: "HealthLog lab results, each value on its reference range with a small trend, fasting glucose and vitamin D converted from SI units",
+      caption: "Fasting glucose and vitamin D were printed in mmol/L and nmol/L.",
+    },
+  },
+  {
+    id: "understand",
+    title: "Find and understand",
+    color: "#ff79c6",
+    items: [
+      ["Day view", "Any date opens its day beside the page you are on, or as a sheet on a phone."],
+      ["Timeline", "Conditions, medications, vaccinations, visits, labs and life events on one axis, from years down to weeks."],
+      ["Record search", "⌘K finds visits, conditions, document text, lab results, medications, workouts and your own notes."],
+      ["AI Coach", "Answers from your own numbers and shows the steps it took. It asks when a question is ambiguous and remembers health details only with your consent."],
+      ["AI providers", "Your ChatGPT subscription, an OpenAI or Anthropic key, a local model on Ollama, LM Studio or vLLM, or none."],
+      ["Correlations", "Sleep, mood, vitals and the weather side by side, without double-counting the season."],
+    ],
+    shot: {
+      name: "search",
+      alt: "HealthLog search with the query ramipril, showing the medication and three visits whose notes mention it",
+      caption: "One search, four hits: the medication and three visit notes.",
+    },
+  },
+  {
+    id: "share",
+    title: "Share and export",
+    color: "#bd93f9",
+    items: [
+      ["Doctor report", "A localised PDF, rendered on your server, for the stretch you choose."],
+      ["FHIR R4", "An export bundle and a read-only API a clinician's system can take in."],
+      ["CSV and JSON", "Everything, for your own analysis."],
+      ["Share links", "Time-boxed and revocable, with a QR code to scan at the desk."],
+      ["Shared access", "Another account can read, add to or manage your record, whole or by section, until either side ends it."],
+      ["Managed profiles", "A record for a child or someone in your care, with guardians and a hand-over link."],
+      ["MCP for AI assistants", "Claude, ChatGPT and others read your record over OAuth. Writes are previewed and confirmed."],
+    ],
+  },
+  {
+    id: "connect",
+    title: "Connect",
+    color: "#8be9fd",
+    items: [
+      ["Withings, WHOOP, Oura, Polar, Strava", "OAuth sync, Withings with webhooks."],
+      ["Fitbit and Pixel Watch", "Through the Google Health API and your own Google Cloud client."],
+      ["Nightscout", "Continuous glucose from your own instance."],
+      ["Apple Health", "Live two-way sync in the iPhone app, or an export.zip with your full history."],
+      ["Health Connect", "Upload an export. Apps you already connect directly are skipped."],
+      ["Garmin", "Through Apple Health or Health Connect."],
+      ["Source priority", "Per metric, you pick which source counts when two report the same day."],
+      ["Notifications", "Push, Telegram, ntfy, e-mail or a webhook. A tap opens the right page."],
+    ],
+    shot: {
+      name: "sources",
+      alt: "HealthLog source priority settings ranking Apple Health, Withings and manual entry for steps, with the winning source for each other metric",
+      caption: "Source priority. The other readings stay stored.",
+    },
+  },
+  {
+    id: "run",
+    title: "Run it",
+    color: "#50fa7b",
+    items: [
+      ["One docker compose up", "App and PostgreSQL. All state lives in one database volume."],
+      ["Backups", "Encrypted nightly backups to any S3-compatible bucket, if you want them."],
+      ["Encryption", "AES-256-GCM for notes, documents, answers and keys, with key rotation. Values stay queryable."],
+      ["Sign-in", "Passkeys, password with 2FA, or OpenID Connect single sign-on."],
+      ["No telemetry", "Three small checks (update, password breach, sign-in location), none with health data, each can be switched off."],
+      ["API", "A documented REST API with scoped tokens and an OpenAPI 3.1 contract."],
+      ["Languages", "English, German, Spanish, French, Italian, Polish and Korean."],
+      ["Not a medical device", "HealthLog shows and explains your data. It does not diagnose."],
+    ],
+  },
 ];
 
 export default function FeaturesPage() {
@@ -177,971 +225,91 @@ export default function FeaturesPage() {
 
       <main
         id="main-content"
-        className="relative z-10 mx-auto max-w-3xl space-y-14 px-4 py-12 md:px-6 md:py-20"
+        className="relative z-10 mx-auto max-w-5xl space-y-20 px-4 py-12 md:px-6 md:py-20"
       >
-        {/* Intro */}
-        <div className="space-y-4">
+        <div className="max-w-3xl space-y-4">
           <p className="text-text-tertiary font-mono text-xs tracking-[0.2em] uppercase">
             Features
           </p>
-          <h1 className="font-display text-text-primary text-3xl font-extrabold tracking-[-0.03em] md:text-5xl">
-            Everything HealthLog tracks
+          <h1 className="font-display text-text-primary text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
+            Everything HealthLog does
           </h1>
           <p className="text-text-secondary text-base leading-relaxed md:text-lg">
-            HealthLog brings every health signal you care about onto one
-            timeline, on a server you control. Below is the full picture: the
-            metrics, the medication engine, lab work, the export formats a
-            clinician can actually open, and an AI Coach that cites its data. No central cloud,
-            no usage telemetry, source available.
+            One line each. The{" "}
+            <a
+              className="text-purple hover:underline"
+              href="https://docs.healthlog.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              docs
+            </a>{" "}
+            have the detail, the{" "}
+            <Link className="text-purple hover:underline" href="/security">
+              security page
+            </Link>{" "}
+            the threat model.
           </p>
+          <nav aria-label="Feature groups" className="flex flex-wrap gap-2 pt-2">
+            {groups.map((g) => (
+              <a
+                key={g.id}
+                href={`#${g.id}`}
+                className="text-text-secondary hover:text-text-primary rounded-full border border-[rgba(98,114,164,0.18)] px-3 py-1.5 text-xs transition-colors"
+              >
+                {g.title}
+              </a>
+            ))}
+          </nav>
         </div>
 
-        {/* Table of contents */}
-        <nav
-          aria-label="Features contents"
-          className="glass-card rounded-md p-5"
-        >
-          <ol className="grid grid-cols-1 gap-1.5 text-sm sm:grid-cols-2">
-            {TOC.map((item, i) => (
-              <li key={item.id}>
-                <a
-                  className="text-text-secondary hover:text-purple hover:underline"
-                  href={`#${item.id}`}
-                >
-                  <span className="text-text-tertiary font-mono text-xs">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>{" "}
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ol>
-        </nav>
-
-        <FeatureSection
-          id="today"
-          label="Today — a daily companion"
-          color="purple"
-          title="A day that meets you where you are"
-          shots={[
-            {
-              name: "dashboard",
-              alt: "HealthLog dashboard with a health score of 90, today's doses, last night's sleep, an upcoming appointment and the vital tiles",
-              caption: "The dashboard of the public demo.",
-            },
-          ]}
-        >
-          <p>
-            The dashboard opens on a Today view: a health score, the day&apos;s
-            lead read, and a short &quot;worth a look&quot; list — a dose window
-            that&apos;s open, an integration to reconnect, a check-up coming due
-            — each a single tap to the right place. The familiar tiles and
-            charts sit just below.
-          </p>
-          <p>
-            The first line says something about your day, from your own
-            readings even without an AI provider, and a short Today list shows
-            what is on: doses taken, an appointment, last night, your vitals.
-          </p>
-          <p>
-            It reads the insight prepared overnight, so it loads instantly and
-            never generates anything on open. When last night&apos;s sleep
-            hasn&apos;t synced yet it says so plainly, and the score finalises
-            on its own the moment the sleep data lands — rather than showing you
-            a stale or empty number. A coach check-in surfaces here when a plan
-            is due for a look-back: keep, adjust, or let go, in one tap. An
-            optional once-a-day morning notification carries the same read to
-            whichever channel you use, off until you turn it on.
-          </p>
-          <p>
-            Reaching a steady stretch in your target range, or a new personal
-            best, is marked as a quiet <strong>milestone</strong> — a state
-            you&apos;ve reached, not a streak to keep, so there is nothing to
-            break and nothing to nag. A new ECG or a milestone can be dismissed
-            from the rail once you&apos;ve seen it; the cards that need an
-            action stay until you act.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="vitals"
-          label="Vitals & trends"
-          color="purple"
-          title="Every reading on one timeline"
-          shots={[
-            {
-              name: "measurements",
-              alt: "HealthLog measurements list with each reading badged by type and by the source it came from",
-              caption: "Every reading in one list, badged with its source.",
-            },
-          ]}
-        >
-          <p>
-            Weight, blood pressure, heart rate, body composition, blood glucose,
-            SpO₂, respiratory rate, sleep, steps and mood all share a single
-            timeline. Each metric carries your own target ranges rather than
-            generic defaults, and the charts overlay this period against last
-            month or last year so a change reads at a glance.
-          </p>
-          <p>
-            A mood entry records five separate answers rather than one number:
-            how pleasant the day felt, how much strain it carried, how much
-            energy there was, how connected you were, and how able to act you
-            felt. Each is an optional 0 to 10 slider, the quick face check-in
-            still saves in a tap, and every dimension you answer trends over
-            seven, thirty or ninety days.
-          </p>
-          <p>
-            Once there are enough days to say something honest, the mood record
-            can also show what a day would have looked like on your own past
-            patterns, and how far the day you recorded sits from it. It is a
-            second reading beside your own rating, never a replacement for it: it
-            carries the number of days it rests on and a range rather than a
-            single figure, names which of the things you recorded weighed most,
-            and stays silent below a floor of days rather than guessing.
-          </p>
-          <p>
-            Newer signals slot in the same way, each with its own detail page,
-            reference range and trend: grip strength, a 0–10 pain score, and
-            waist circumference with waist-to-height ratio. Single-lead ECG
-            recordings synced from a compatible watch land here too, drawn on a
-            familiar ECG grid with the recording device&apos;s own result kept
-            unchanged — HealthLog shows the trace, it does not interpret or
-            diagnose it.
-          </p>
-          <p>
-            The dashboard surfaces more of what your devices already sync:
-            heart-rate variability, blood oxygen (SpO₂), breathing rate and body
-            composition each read as an at-a-glance tile alongside the core
-            vitals, and you can show, hide and reorder every one.
-          </p>
-          <p>
-            Heart rate is drawn across the whole day, not just as a single
-            resting number, so you can watch it settle and climb. When it stays
-            elevated while you&apos;re at rest and not moving, Today notes it
-            plainly as possible tension — carefully, and never as a verdict. A
-            day navigator steps back through recent days; the fine-grained
-            history is kept for 90 days, and older days show the coarser hourly
-            shape.
-          </p>
-          <p>
-            A quiet <strong>All metrics</strong> view lists everything HealthLog
-            can track and which device supplies each — so a signal you have no
-            data for stays out of your daily views but is still discoverable in
-            one place.
-          </p>
-          <p>
-            Behind the charts sits a persistent rollup tier that pre-aggregates
-            history, so years of readings stay sub-second instead of grinding
-            through every row on every load.
-          </p>
-          <div className="glass-card overflow-hidden p-3">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/diagrams/01-data-flow.svg"
-              alt="Diagram of how readings flow from manual entry and connected sources through ingest endpoints and a source-priority resolver into one canonical timeline"
-              loading="lazy"
-              className="h-auto w-full rounded-md"
-            />
-            <p className="text-text-tertiary mt-3 px-1 text-xs leading-relaxed">
-              How a reading flows from its source to the timeline every surface
-              reads from.
-            </p>
-          </div>
-        </FeatureSection>
-
-        <FeatureSection
-          id="day"
-          label="Day view & timeline"
-          color="cyan"
-          title="Open any day, see the whole record"
-          shots={[
-            {
-              name: "day-panel",
-              alt: "A day docked beside the HealthLog blood-pressure chart: the medications running that day and each value against the 30 days before",
-              caption: "A day docked at the side, from 1280 px wide.",
-            },
-            {
-              name: "timeline",
-              alt: "HealthLog timeline with lanes for life events, conditions, medications, vaccinations, labs and cycle above three value lines",
-              caption: "The timeline over three months.",
-            },
-          ]}
-        >
-          <p>
-            Every date in the app opens its day. Tap a point on a chart, a cell
-            in a calendar or a date in a list, and the day appears over the page
-            you are on: docked beside it on a wide screen, as a sheet on a
-            phone. It shows the value you came from, your readings that day
-            against your own usual range, what ran through the day (a
-            medication, an illness, a cycle phase) and what happened in order
-            of the clock, each row linking to its record. Step to the previous
-            or next day without closing it, and Back takes you where you were.
-          </p>
-          <p>
-            Before a planned doctor visit, the visit lists what changed since
-            the last one, such as dose changes and readings that stood out,
-            each date opening its day, with a doctor report for exactly that
-            stretch.
-          </p>
-          <p>
-            The timeline is an optional module for the long view. Conditions,
-            allergies, medications with their dose changes and pauses,
-            vaccinations, visits and procedures, lab results and documents sit
-            on one time axis, zoomable from years down to weeks or any range
-            you pick, with as many of your values as you like below, averaged
-            by quarter, month or week. On a phone it reads as a
-            chronicle, newest first. You can add life events too, such as a
-            move, a new job or a birth, dated to the day, the month or the
-            year. They stay yours alone: they are not shared with anyone you
-            gave access to and never go to an AI model.
-          </p>
-          <p>
-            When you switch the module on, a coverage check shows which parts
-            of your record carry enough for a timeline, which are thin and
-            which are empty, with one link per gap to fill it in.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="search"
-          label="Search your record"
-          color="cyan"
-          title="Find anything you ever recorded"
-          shots={[
-            {
-              name: "search",
-              alt: "HealthLog search with the query ramipril, showing the medication and three visits whose notes mention it",
-              caption: "Search with ⌘K: one medication and three visit notes.",
-            },
-          ]}
-        >
-          <p>
-            The command palette (⌘K, Ctrl K, or the magnifier at the top)
-            finds pages and settings, and it searches your own record:
-            visits and procedures, conditions, documents including the text
-            read from them, vaccinations, lab results, medications, symptoms,
-            workouts and the notes on mood entries, readings and illness days.
-            Each hit opens the entry where it lives.
-          </p>
-          <p>
-            Case and accents do not matter, and umlauts can be typed as ae, oe
-            or ue. On a record with years in it the search goes newest first
-            and says so when it did not reach the oldest entries. What you type
-            travels in the body of the request, so it never shows up in an
-            address bar, a proxy log or the server&apos;s own log.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="nutrition"
-          label="Nutrition & vitamins"
-          color="green"
-          title="Hydration and micronutrients, with a home"
-        >
-          <p>
-            Your fluid intake and the vitamins and minerals your device records
-            get a place of their own. A water tile on the dashboard shows the
-            day&apos;s total with quick-add amounts; a Nutrients page shows
-            hydration over the last month, caffeine when you record it, and the
-            vitamins and minerals you actually have data for — each against its
-            reference daily intake where that applies, shown as context, never
-            as a verdict.
-          </p>
-          <p>
-            Manual water entries and device-synced totals coexist instead of
-            overwriting each other, and dietary intake and hydration flow in
-            from Apple Health. Sparse logging is never read as a deficiency. The
-            module is off until you switch it on.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="medication"
-          label="Medication & adherence"
-          color="cyan"
-          title="Any regimen, tracked precisely"
-          shots={[
-            {
-              name: "medications",
-              alt: "HealthLog medication cards with categories, a supplement recorded automatically, adherence over 7 and 30 days and take or skip actions",
-              caption: "Medications filed by category. The supplement records itself.",
-            },
-          ]}
-        >
-          <p>
-            Schedule medications at fixed times, on a calendar rule (RRULE), on
-            rolling intervals, as a cyclic on/off course, as-needed (PRN), or as
-            a one-shot injection. Each dose has its own intake window, so a dose
-            counts as taken when you actually take it rather than snapping to
-            the nearest slot.
-          </p>
-          <p>
-            Supply tracking watches your remaining count and surfaces a
-            low-stock runway before you run out. A compliance percentage rolls
-            up across your real cadence, reminders escalate when a dose slips,
-            and route of administration is captured per medication.
-          </p>
-          <p>
-            A medication you take now and then, like an antiviral for a week at
-            a time, keeps each course with its own start and end, and adherence
-            counts every course but never the weeks between them. Categories of
-            your own sit next to the built-in ones and filter the list.
-          </p>
-          <p>
-            Some things you take every day without fail, like supplements in
-            the evening. Such a medication can record its doses by itself: from
-            the moment you switch it on, each scheduled dose is marked as taken
-            at its time, with stock and adherence updated as if you had tapped
-            it. It sends no reminders, never fills in the days before you
-            switched it on, and anything you log or skip by hand always wins.
-          </p>
-          <p>
-            GLP-1 treatments get a dedicated layer: injection-site rotation, a
-            dose-titration history, pen-and-vial inventory, and a side-effect
-            logbook against a fixed taxonomy.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="labs"
-          label="Labs & biomarkers"
-          color="green"
-          title="Blood work that trends over time"
-          shots={[
-            {
-              name: "labs",
-              alt: "HealthLog lab results on their reference ranges with a trend per marker and a glucose value converted from mmol/L",
-              caption: "Lab results on their ranges. Fasting glucose was printed in mmol/L.",
-            },
-          ]}
-        >
-          <p>
-            Enter lab results against a biomarker catalogue that carries
-            reference ranges, so each value lands in or out of range on entry.
-            A result read from a lab report keeps the reference range printed
-            on that report, and the printed range decides the verdict, because
-            that is the range your physician evaluates against. The chart
-            shows it as a second band, and the catalogue stays the fallback
-            for values without one. Group related markers into panels, and
-            watch every biomarker trend across draws instead of reading
-            isolated numbers off a PDF.
-          </p>
-          <p>
-            A longevity panel rounds out the catalogue — ApoB, Lp(a), hs-CRP,
-            HbA1c, fasting glucose and insulin, eGFR, GGT, ferritin and the
-            omega-3 index — each with its reference range. Biomarker detail
-            pages match the metric pages: a description, a summary, the chart,
-            the trend, and a one-tap question to the Coach.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="wellbeing"
-          label="Mental wellbeing"
-          color="purple"
-          title="Screening, never a diagnosis"
-        >
-          <p>
-            Opt into PHQ-9 and GAD-7 self-assessments that sit alongside your
-            mood log. They are screening questionnaires for self-awareness, not
-            a diagnosis, and the module is off until you switch it on.
-          </p>
-          <p>
-            Item answers are encrypted at rest. A non-zero self-harm response
-            surfaces calm, locale-aware crisis-support contacts rather than a
-            silent score. Your answers stay out of the AI Coach, the assistant
-            connector and exports by default — only the scores export, and only
-            once you enable the module.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="history"
-          label="Medical history"
-          color="green"
-          title="Allergies and family history, structured"
-        >
-          <p>
-            Record allergies and family history as structured entries gathered
-            under a single Medical history section and included in the
-            health-record export. Allergy reactions and notes and
-            family-history notes are encrypted at rest. It is your record to
-            keep: HealthLog stores what you enter and never interprets it into
-            a diagnosis.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="documents"
-          label="Document vault"
-          color="cyan"
-          title="Every letter and scan, in one encrypted place"
-        >
-          <p>
-            Keep every doctor&apos;s letter, lab report, discharge summary and
-            scan in one place, encrypted at rest on your own server. Upload a
-            PDF or a photo, tag it, and file it where you can actually find it
-            again — instead of a folder of screenshots and a shoebox of paper.
-            The module is off until you switch it on.
-          </p>
-          <p>
-            The moment a document lands, it is read and made searchable. A local
-            reader extracts the text on your server, or in your own browser for
-            photos, so the file goes to no outside service. When you want a
-            richer read, one that handles handwriting and photographed scans,
-            you can let your configured AI provider do it, but only for the documents you consent to. Leave automatic
-            reading off and that is one document at a time, on the action you
-            tap; switch it on and it also works through the documents already in
-            your vault, which it never used to do.
-          </p>
-          <p>
-            Search the words inside your documents, not just their titles.
-            Matching runs over an encrypted blind index, so HealthLog can
-            surface every letter that mentions a marker without ever storing
-            anything readable — the index holds tokens, never your text.
-          </p>
-          <p>
-            Need to hand a document to a clinician? Generate a time-boxed,
-            revocable share link and let them scan the QR code straight from
-            your phone at the desk. It expires on your schedule and can be
-            pulled back at any moment, and photos have their camera metadata —
-            location included — stripped before a shared copy leaves your
-            server.
-          </p>
-          <p>
-            You can also ask a single document a question in plain language and
-            get a grounded, cited answer drawn only from that page. HealthLog
-            treats the document as untrusted input: the conversation is fenced
-            off from the rest of your record and given no tools, so a
-            booby-trapped letter cannot turn the reply against you — and, as
-            everywhere in HealthLog, it explains rather than diagnoses. The{" "}
-            <Link
-              href="/security#documents"
-              className="text-purple hover:text-cyan underline-offset-2 hover:underline"
+        {groups.map((g) => (
+          <section
+            key={g.id}
+            id={g.id}
+            aria-labelledby={`${g.id}-heading`}
+            className="scroll-mt-24"
+          >
+            <h2
+              id={`${g.id}-heading`}
+              className="font-display text-text-primary mb-6 flex items-center gap-3 text-2xl font-bold tracking-[-0.02em] md:text-3xl"
             >
-              security model is spelled out on the security page
-            </Link>
-            .
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="export"
-          label="Export & interoperability"
-          color="green"
-          title="Your data leaves the way it came in"
-        >
-          <p>
-            Export to CSV or JSON for your own analysis, generate a localized
-            doctor-report PDF to bring to an appointment, or hand a clinician a
-            FHIR R4 bundle their system can ingest directly.
-          </p>
-          <p>
-            The FHIR bundle covers Patient, Observation, MedicationStatement,
-            MedicationAdministration and Coverage resources — the structured
-            spine of your record in a standard format, no proprietary lock-in.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="sharing"
-          label="Shared access"
-          color="cyan"
-          title="Look after somebody without borrowing their password"
-        >
-          <p>
-            You can give another account on your instance access to your record.
-            A partner keeping an eye on your blood pressure, an adult child
-            watching a parent&apos;s medication, whichever way round it runs in
-            your household. Both people keep their own account, their own
-            password and their own second factor. Nobody signs in as anybody
-            else.
-          </p>
-          <p>
-            The invitation gives them nothing until they accept it, and it names
-            what they may do. Read lets them open your record and change nothing
-            in it. Write lets them add to it, because usually the reason to share
-            a record is that a second person is doing something about it. Somebody
-            takes the reading, somebody watches the evening dose go down, and
-            read-only access made them watch that happen and then ask you to type
-            it in.
-          </p>
-          <p>
-            Adding is a list, not a permission, and the list is the whole of it:
-            a reading, a lab result, a biomarker to track, an illness entry, a
-            side effect against a drug, a medication, and marking a dose taken or
-            skipped, one at a time or by clearing everything due at once. Every
-            one of those makes something new, and nothing on the list touches
-            what is already recorded, including an entry the person added a
-            minute ago with a typo in it. They tell you, and you fix it.
-          </p>
-          <p>
-            The third level is for the person who is keeping the record rather
-            than contributing to it, and keeping a record means fixing the row
-            that is wrong. Manage adds changing and removing entries, including
-            ones you wrote yourself, recording your health background, and
-            reading the insights your record generated. Offering it asks for your
-            second factor, so it happens in a browser and never by accident, and
-            everything a manager does is recorded under their own name with a
-            verb that says what it was rather than &quot;made a change&quot;.
-          </p>
-          <p>
-            An invitation can also open part of your record instead of all of it.
-            Eight sections: readings, medications, lab results, health
-            background, illness, mood and mind, cycle, documents. Everything you
-            do not pick stays closed, and a section you held back is refused
-            exactly the way a record you never shared would be, so the shape of
-            what you kept is not visible from outside either. Two things the
-            screen tells you rather than leaving you to find out. A section
-            carries whatever was written in it, so notes and names inside one can
-            mention any other part of your health, and a document can contain
-            anything at all. And the dashboard overview, the health score and the
-            daily digest appear only when the whole record is shared, because a
-            figure drawn from part of a record still reads as a figure about the
-            person.
-          </p>
-          <p>
-            Managing always covers the whole record, for the same reason: a level
-            that can rewrite entries, over a slice whose notes can be about any
-            other slice, is a boundary nobody can honestly draw. And a level or a
-            scope is fixed when the invitation is written. Nothing raises a grant
-            somebody has already accepted, because that would change what they
-            agreed to without asking them again. The way up is a new invitation
-            they accept.
-          </p>
-          <p>
-            What they add is stored as yours, because a blood-pressure reading is
-            a fact about your body and who held the cuff is a fact about an
-            evening. Their name is in the audit trail rather than on the row, so
-            your record reads the same either way and &quot;who put this
-            here&quot; still has an answer months later.
-          </p>
-          <p>
-            The account around the record is not part of the deal at any level:
-            no credentials, no connected services, no notification channels, no
-            module and threshold settings, no exports, no share links, and no way
-            to pass the access on or widen it. Those are refusals the server
-            makes rather than screens that happen to be hidden, and a control
-            your record will not accept is simply not there, because a button
-            that exists and does not work teaches somebody the product is broken.
-          </p>
-          <p>
-            You can see what the access is being used for. A panel lists who has
-            access, at which level and over which sections, when they accepted,
-            when they last opened your record, which days somebody else was in it
-            and what they did while they were, down to an attempt that was
-            refused. It says how far back it can see rather than implying it goes
-            forever, and it says when it is showing you the most recent activity
-            rather than all of it. You are told at the time when somebody marks
-            one of your doses. An invitation can name the day the access lapses,
-            and either side can end it sooner, with effect on their very next
-            request rather than at their next login. If they have your record
-            open when you end it, that browser lands back in their own account.
-          </p>
-          <p>
-            Ending access does not erase the record of it, so &quot;who had
-            access, and between which dates&quot; stays answerable afterwards.
-            What it is not is an undo: entries somebody added stay, because they
-            are yours, in your record, and every one of them was named to you at
-            the moment it was written.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="managed"
-          label="Managed profiles"
-          color="green"
-          title="A record for somebody who never signs in"
-        >
-          <p>
-            A grant runs between two accounts, and that covers half of looking
-            after somebody. The other half is the person who has no account to
-            begin with and never will: a child, or somebody in your care. Giving
-            them a login they will never use, so that you can hold its password,
-            would recreate the shared-login problem the whole feature exists to
-            avoid.
-          </p>
-          <p>
-            So a managed profile is a health record with no credentials. No
-            password, no passkey and no second factor of its own. You
-            give it a name, optionally a real date of birth and a gender, and the
-            language and timezone its own days and reminders are measured in.
-            Nothing is invented from a year you did not give, and a guardian can
-            change any of the five later behind the same second factor that
-            created the record. Creating it asks for your
-            second factor, and you become its first guardian in the same step, so
-            there is no moment where the record exists and nobody is looking
-            after it.
-          </p>
-          <p>
-            You can invite a second guardian, who accepts the invitation the way
-            any other is accepted. That is worth doing before you need it,
-            because the record can never be left with nobody: the last guardian
-            cannot simply walk away from it and cannot be removed, and the screen says so
-            where the refusal happens rather than after the fact. An invited
-            guardian counts only once they accept. The way out, if you are alone
-            with a profile, is to add somebody else or to delete it. Deleting is
-            a real ending and it is offered plainly, because being allowed to end
-            a record and being allowed to walk away from one are different
-            permissions and only the first is safe.
-          </p>
-          <p>
-            A child grows up, and somebody in your care may want to take over.
-            A guardian can then hand the profile over: HealthLog makes a
-            one-time link, shown once with a QR code, valid for one, seven or
-            fourteen days. The person opens it, chooses a username, an e-mail
-            address and a password, and the record becomes their own account
-            with all of its history; nothing is copied or moved. For each
-            guardian you propose whether their access ends, drops to reading
-            only or stays at managing, and the new owner makes the final call on the
-            first screen after signing in.
-          </p>
-          <p>
-            Its reminders reach the people looking after it, since a record with
-            no login has no phone and no chat of its own. Medication and
-            measurement reminders, safety-floor alerts and low-stock alerts go to
-            the guardians, each in their own language and over the channels they
-            had already chosen, and the message names whose record it is about.
-            It carries no buttons: a lock screen is a poor place to decide
-            something about another person&apos;s medication, so opening the app
-            takes you through the ordinary switch into that record. One guardian
-            turning their own reminders off does not silence the others.
-          </p>
-          <p>
-            A guardian keeps the profile&apos;s own settings too: its modules,
-            its units, its language and timezone, its thresholds and its
-            notification preferences, read and written as that record&apos;s
-            settings rather than as yours. Your own screens stay in your own
-            language while you do it.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="illness"
-          label="Illness journal & Rest Mode"
-          color="pink"
-          title="Track an episode without being punished for it"
-        >
-          <p>
-            Log acute illnesses, chronic conditions, recurring conditions and
-            individual flares through a lifecycle, with a daily symptom log
-            underneath each episode.
-          </p>
-          <p>
-            Define up to eight symptoms of your own, such as aura, headache or
-            neck tension, and log one in a single step with an intensity from 0
-            to 10. Each becomes its own line in the pattern analysis and the
-            Coach, with or without an open episode.
-          </p>
-          <p>
-            An active episode turns on Rest Mode, which softens nudges and
-            reframes your score rather than penalising you for a week spent
-            recovering. Being unwell should never read as a failure on your own
-            dashboard.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="cycle"
-          label="Cycle tracking"
-          color="pink"
-          title="Symptothermal, discreet, opt-in"
-        >
-          <p>
-            Symptothermal cycle tracking with period logging, symptoms and a
-            careful prediction model. It is off until you switch it on, and
-            discreet by design once it is.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="preventive"
-          label="Preventive-care reminders"
-          color="orange"
-          title="Never lose track of a check-up"
-        >
-          <p>
-            Schedule recurring preventive-care and measurement reminders —
-            annual blood work, a week of twice-daily blood pressure — on a
-            rolling cadence or a calendar rule. They auto-resolve once the
-            matching reading lands, so the list stays honest without manual
-            cleanup.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="visits"
-          label="Doctor visits"
-          color="orange"
-          title="The appointment, and everything it touched"
-        >
-          <p>
-            Appointments and the practices behind them have their own section. A
-            visit records what kind it was, when it happened, its status, an
-            optional practice from a contact list you keep, and an encrypted
-            note. It links to the lab results, documents and illness episodes it
-            concerned, and those links point at the originals rather than copying
-            them, so a later correction in the source shows through.
-          </p>
-          <p>
-            A preventive-care check-up is closed by recording the visit that
-            fulfilled it, and a planned visit sets a reminder the server
-            re-anchors when you move the date and clears when the visit happens
-            or is cancelled. It fires once, never nags, and carries no done
-            button, because an appointment is not a task you tick off. The
-            section shares under the same access model as the rest of the record
-            and appears in the doctor-report PDF as a visit list you can leave
-            out.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="environment"
-          label="Environmental context"
-          color="orange"
-          title="What the weather and the air were doing"
-        >
-          <p>
-            An optional module records each day&apos;s weather, daylight and
-            temperature for your location, and next to them the air quality
-            (fine particles, ozone and more), the pollen count and the UV
-            index. Pollen depends on the region: the European air-quality model
-            carries it, the global one does not. The data comes from Open-Meteo
-            and the Copernicus Atmosphere Monitoring Service, credited next to
-            the values. A small note on the dashboard mentions a day with high
-            pollen, a warm night or very poor air, and stays quiet otherwise.
-          </p>
-          <p>
-            These days are correlated against your mood, sleep and vitals. Two
-            things that both follow the seasons, like temperature and blood
-            pressure, line up whether or not one affects the other, so the
-            season and the long-term trend are taken out of both before
-            anything is compared. What remains is the day-to-day effect, if
-            there is one.
-          </p>
-          <p>
-            It is off by default. Set a home location, add dated location
-            periods for travel, and backfill the history once it is on. Only a
-            coarse, city-level position is kept, and it is stored encrypted.
-            Air quality has its own switch in the module&apos;s settings, and
-            whoever runs the server can turn it off for everyone.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="coach"
-          label="AI Coach"
-          color="orange"
-          title="Thinks first, then answers from your data"
-          shots={[
-            {
-              name: "coach",
-              alt: "HealthLog Coach answering a question about the week's recovery, its steps folded above the answer",
-              caption: "A Coach answer with its steps folded above it.",
-            },
-          ]}
-        >
-          <p>
-            The Coach answers from your own numbers and shows its work: each
-            reply cites the exact metric, the window it looked at, and how many
-            readings it drew on. With a model that can reason, it thinks before
-            it answers, as deeply as you choose. A question about why something
-            changed gets the time to look at several series and line them up,
-            and a comparison of two months or two metrics comes back as one
-            chart.
-          </p>
-          <p>
-            While it works, a single quiet line above the answer says what it is
-            doing, such as reading your blood pressure over the last 90 days.
-            When it is done, the line settles into
-            a short summary you can tap to see the steps and the reasoning
-            behind them. Nothing opens by itself.
-          </p>
-          <p>
-            When a question could mean two things, it asks once, with a few
-            suggested replies. If you would rather not answer, it goes with the
-            likelier reading and says which one it assumed. It also remembers
-            what you tell it about your goals and preferences, says so with an
-            undo right there, and keeps anything about your health only after
-            you agree. You can read, edit and delete everything it knows in the
-            Coach settings.
-          </p>
-          <p>
-            Its proactive check-in is warmer and in your language: it greets you
-            by name, keeps to one calm thought, never quotes your own words
-            back, and never arrives two days running. One setting turns the
-            daily suggestions off; another lets the Coach compose the check-in
-            itself.
-          </p>
-          <p>
-            The Coach also talks about your documents. Open a stored letter,
-            report or scan and ask it questions in its own document view, with
-            its own separate history — the conversation stays grounded in that
-            document, which is treated as untrusted input rather than
-            instructions.
-          </p>
-          <p>
-            Pick the provider that fits your privacy and budget: your ChatGPT
-            subscription, an OpenAI key, an Anthropic (Claude) key, or a fully
-            local OpenAI-compatible model running on Ollama, LM Studio or vLLM,
-            so AI requests stay on your network.
-          </p>
-          <div className="glass-card overflow-hidden p-3">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/diagrams/02-coach-pipeline.svg"
-              alt="Diagram of the AI Coach pipeline: a health-data snapshot becomes a prompt, runs through a multi-provider chain, and returns a schema-validated, cited response"
-              loading="lazy"
-              className="h-auto w-full rounded-md"
-            />
-            <p className="text-text-tertiary mt-3 px-1 text-xs leading-relaxed">
-              Snapshot to prompt to multi-provider chain to a parsed, cited
-              answer.
-            </p>
-          </div>
-        </FeatureSection>
-
-        <FeatureSection
-          id="assistants"
-          label="AI assistants & MCP"
-          color="cyan"
-          title="Connect your record to an assistant"
-        >
-          <p>
-            HealthLog can expose your own record to MCP-compatible assistants —
-            Claude, ChatGPT and others — over a standard, OAuth-secured Model
-            Context Protocol server, remote over <code>/mcp</code> or as a local
-            stdio command. A connected assistant can read your metric series,
-            nutrition and vitamins, the intraday pulse curve, your stored
-            single-lead ECG recordings, glucose, sleep, workouts, medication
-            compliance and schedule, labs, correlations, baselines, recovery,
-            illness, cycle and the preventive-care due-list — every value
-            carrying its unit and reference range, with an honest &quot;no
-            data&quot; instead of a fabricated zero. A signal is only readable
-            once it has been named for the connector, so the mental-health
-            screeners and the environmental module stay off it by construction.
-          </p>
-          <p>
-            Writing is opt-in and confirmed: with a write-scoped token you mint
-            yourself, an assistant can log a measurement, a blood-pressure pair
-            or a mood entry — previewed first, then confirmed, append-only,
-            idempotent and audited. Installable prompt &quot;skills&quot; cover
-            a doctor-visit summary, a weekly review, a medication check, and
-            recovery, glucose, sleep and lab-trend briefs.
-          </p>
-          <p>
-            The whole surface is off by default, behind a module switch, and a
-            connector token is bound to the MCP surface alone — it can never
-            write or delete over the REST API and can never reach the admin
-            surface.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="integrations"
-          label="Integrations"
-          color="cyan"
-          title="Bring your devices and services"
-          shots={[
-            {
-              name: "sources",
-              alt: "HealthLog source priority settings ranking Apple Health, Withings and manual entry for steps",
-              caption: "Source priority: which source counts when two report the same day.",
-            },
-          ]}
-        >
-          <p>
-            Sync from Withings, WHOOP, Oura, Polar, Strava, Fitbit (classic
-            OAuth or the Google Health API) and Nightscout. Apple Health
-            connects two-way through the native iOS app and HealthKit, and you
-            can also drop an Apple Health export.zip on the upload page on any
-            platform.
-          </p>
-          <p>
-            There is no native Android app; HealthLog runs as a web app you
-            install from the browser. What your Android phone and watch record
-            comes in through Health Connect: export your data from Health
-            Connect to a cloud folder, then upload that file on the import page
-            in Settings. Steps, heart rate, sleep, workouts, cycle days and
-            more arrive with their history, and apps you already connect to
-            HealthLog directly are left out, so nothing counts twice. It is an
-            import rather than a live sync, so you repeat it when you want newer
-            data.
-          </p>
-          <p>
-            When several sources log the same day, source-priority dedup
-            resolves them to one canonical reading instead of triple-counting
-            the same step or the same weigh-in.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="notifications"
-          label="Notifications"
-          color="purple"
-          title="Reach you wherever you are"
-        >
-          <p>
-            Reminders and alerts go out over Apple Push Notifications, Web Push
-            (VAPID), Telegram, ntfy, e-mail or a webhook to Discord, Slack,
-            Gotify, Home Assistant or n8n, so you can route HealthLog to
-            whatever you already check.
-          </p>
-          <p>
-            Every notification leads somewhere. Tap the mood reminder and the
-            mood entry opens; the morning briefing opens the dashboard, a
-            medication reminder your medications, a failing sync the
-            integrations page. On ntfy the mood reminder also carries
-            three buttons, good, okay and bad, so you can answer without
-            opening anything. Each works once, and only for a few hours.
-          </p>
-          <p>
-            You decide how much a notification says. By default it names the
-            topic and shows no health figures, so nothing personal sits on a
-            lock screen. Switch on the detailed version and the morning
-            briefing tells you the score itself.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="languages"
-          label="Languages & achievements"
-          color="green"
-          title="Localized, with a little momentum"
-        >
-          <p>
-            The interface ships in seven languages: English, German, Spanish,
-            French, Italian, Polish and Korean. Along the way, 63 achievements give
-            consistent tracking a bit of momentum without turning your health
-            into a game you can lose.
-          </p>
-        </FeatureSection>
-
-        <FeatureSection
-          id="scope"
-          label="What HealthLog is — and isn't"
-          color="green"
-          title="A tool you own, not a verdict"
-        >
-          <p>
-            HealthLog is a personal health-tracking tool, not a medical device,
-            and it does not diagnose. The screening questionnaires are for
-            self-awareness, and the AI Coach summarises and explains your own
-            data rather than giving medical advice. For any medical decision,
-            talk to a qualified clinician.
-          </p>
-          <p>
-            And it stays yours. Everything lives on infrastructure you control,
-            with notes, documents and tokens encrypted at rest and no usage
-            telemetry. Health data leaves your server only when you turn on an
-            integration, an AI provider, the assistant connector or a
-            notification channel, each one off until you choose it. The server
-            makes three small requests of its own: a password breach check, an
-            update check and a sign-in location lookup. None carries health
-            data, and each can be switched off.
-          </p>
-        </FeatureSection>
+              <span
+                className="h-6 w-1 rounded-full"
+                style={{ backgroundColor: g.color }}
+                aria-hidden="true"
+              />
+              {g.title}
+            </h2>
+            <dl className="grid grid-cols-1 gap-x-10 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
+              {g.items.map(([title, line]) => (
+                <div key={title}>
+                  <dt className="font-display text-text-primary text-sm font-semibold">
+                    {title}
+                  </dt>
+                  <dd className="text-text-secondary mt-1 text-sm leading-relaxed">
+                    {line}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            {g.shot && (
+              <figure className="mt-10">
+                <BrowserFrame>
+                  <AppScreen
+                    name={g.shot.name}
+                    alt={g.shot.alt}
+                    sizes="(max-width: 1024px) 100vw, 1024px"
+                    className="block h-auto w-full"
+                  />
+                </BrowserFrame>
+                <figcaption className="text-text-tertiary mt-3 text-center text-xs">
+                  {g.shot.caption}
+                </figcaption>
+              </figure>
+            )}
+          </section>
+        ))}
 
         {/* CTAs */}
         <section className="border-t border-[rgba(98,114,164,0.08)] pt-12">
@@ -1157,14 +325,9 @@ export default function FeaturesPage() {
             >
               <span>View on GitHub</span>
             </a>
-            <a
-              href="https://demo.healthlog.dev"
-              className="cta-secondary group"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link href="/#demo" className="cta-secondary group">
               <span>Try the live demo</span>
-            </a>
+            </Link>
             <a
               href="https://docs.healthlog.dev"
               className="cta-secondary group"
