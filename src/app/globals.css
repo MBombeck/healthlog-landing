@@ -663,6 +663,81 @@ body {
 }
 
 
+/* ── Phone body around a 390 px capture ────────── */
+.phone-device {
+  --phone-bg: #282a36;
+  --phone-fg: #f8f8f2;
+  position: relative;
+  border-radius: 2.9rem;
+  padding: 0.55rem;
+  background: linear-gradient(155deg, #3a3c4e 0%, #17181f 45%, #2a2b38 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.6),
+    0 30px 60px -20px rgba(0, 0, 0, 0.7),
+    0 0 60px rgba(189, 147, 249, 0.08);
+}
+@media (prefers-color-scheme: light) {
+  .phone-device {
+    --phone-bg: #f3f2f5;
+    --phone-fg: #1d1b23;
+  }
+}
+.phone-screen {
+  overflow: hidden;
+  border-radius: 2.35rem;
+  background: var(--phone-bg);
+}
+.phone-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.phone-status {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 2.4rem;
+  padding: 0 1.4rem 0 1.6rem;
+  color: var(--phone-fg);
+  background: var(--phone-bg);
+}
+.phone-time {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.phone-island {
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  width: 32%;
+  height: 1.25rem;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #000;
+}
+.phone-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.phone-home {
+  display: flex;
+  justify-content: center;
+  padding: 0.45rem 0 0.5rem;
+  background: var(--phone-bg);
+}
+.phone-home span {
+  width: 36%;
+  height: 0.28rem;
+  border-radius: 999px;
+  background: var(--phone-fg);
+  opacity: 0.85;
+}
+
 /* ── Reduced Motion ─────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   html {

@@ -70,29 +70,29 @@
       "avif": [
         {
           "w": 960,
-          "src": "/screenshots/app/dashboard-dark-960.9fd30437.avif"
+          "src": "/screenshots/app/dashboard-dark-960.9a98ddb4.avif"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/dashboard-dark-1680.9fd30437.avif"
+          "src": "/screenshots/app/dashboard-dark-1680.9a98ddb4.avif"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/dashboard-dark-2400.9fd30437.avif"
+          "src": "/screenshots/app/dashboard-dark-2400.9a98ddb4.avif"
         }
       ],
       "webp": [
         {
           "w": 960,
-          "src": "/screenshots/app/dashboard-dark-960.9fd30437.webp"
+          "src": "/screenshots/app/dashboard-dark-960.9a98ddb4.webp"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/dashboard-dark-1680.9fd30437.webp"
+          "src": "/screenshots/app/dashboard-dark-1680.9a98ddb4.webp"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/dashboard-dark-2400.9fd30437.webp"
+          "src": "/screenshots/app/dashboard-dark-2400.9a98ddb4.webp"
         }
       ]
     },
@@ -100,29 +100,29 @@
       "avif": [
         {
           "w": 960,
-          "src": "/screenshots/app/dashboard-light-960.5ab27e8c.avif"
+          "src": "/screenshots/app/dashboard-light-960.9899377b.avif"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/dashboard-light-1680.5ab27e8c.avif"
+          "src": "/screenshots/app/dashboard-light-1680.9899377b.avif"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/dashboard-light-2400.5ab27e8c.avif"
+          "src": "/screenshots/app/dashboard-light-2400.9899377b.avif"
         }
       ],
       "webp": [
         {
           "w": 960,
-          "src": "/screenshots/app/dashboard-light-960.5ab27e8c.webp"
+          "src": "/screenshots/app/dashboard-light-960.9899377b.webp"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/dashboard-light-1680.5ab27e8c.webp"
+          "src": "/screenshots/app/dashboard-light-1680.9899377b.webp"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/dashboard-light-2400.5ab27e8c.webp"
+          "src": "/screenshots/app/dashboard-light-2400.9899377b.webp"
         }
       ]
     }
@@ -134,29 +134,29 @@
       "avif": [
         {
           "w": 960,
-          "src": "/screenshots/app/day-panel-dark-960.a48dc683.avif"
+          "src": "/screenshots/app/day-panel-dark-960.db238306.avif"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/day-panel-dark-1680.a48dc683.avif"
+          "src": "/screenshots/app/day-panel-dark-1680.db238306.avif"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/day-panel-dark-2400.a48dc683.avif"
+          "src": "/screenshots/app/day-panel-dark-2400.db238306.avif"
         }
       ],
       "webp": [
         {
           "w": 960,
-          "src": "/screenshots/app/day-panel-dark-960.a48dc683.webp"
+          "src": "/screenshots/app/day-panel-dark-960.db238306.webp"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/day-panel-dark-1680.a48dc683.webp"
+          "src": "/screenshots/app/day-panel-dark-1680.db238306.webp"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/day-panel-dark-2400.a48dc683.webp"
+          "src": "/screenshots/app/day-panel-dark-2400.db238306.webp"
         }
       ]
     },
@@ -164,29 +164,29 @@
       "avif": [
         {
           "w": 960,
-          "src": "/screenshots/app/day-panel-light-960.fe3cc9df.avif"
+          "src": "/screenshots/app/day-panel-light-960.1a3f5488.avif"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/day-panel-light-1680.fe3cc9df.avif"
+          "src": "/screenshots/app/day-panel-light-1680.1a3f5488.avif"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/day-panel-light-2400.fe3cc9df.avif"
+          "src": "/screenshots/app/day-panel-light-2400.1a3f5488.avif"
         }
       ],
       "webp": [
         {
           "w": 960,
-          "src": "/screenshots/app/day-panel-light-960.fe3cc9df.webp"
+          "src": "/screenshots/app/day-panel-light-960.1a3f5488.webp"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/day-panel-light-1680.fe3cc9df.webp"
+          "src": "/screenshots/app/day-panel-light-1680.1a3f5488.webp"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/day-panel-light-2400.fe3cc9df.webp"
+          "src": "/screenshots/app/day-panel-light-2400.1a3f5488.webp"
         }
       ]
     }
@@ -198,29 +198,29 @@
       "avif": [
         {
           "w": 960,
-          "src": "/screenshots/app/labs-dark-960.db894855.avif"
+          "src": "/screenshots/app/labs-dark-960.8c2a281d.avif"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/labs-dark-1680.db894855.avif"
+          "src": "/screenshots/app/labs-dark-1680.8c2a281d.avif"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/labs-dark-2400.db894855.avif"
+          "src": "/screenshots/app/labs-dark-2400.8c2a281d.avif"
         }
       ],
       "webp": [
         {
           "w": 960,
-          "src": "/screenshots/app/labs-dark-960.db894855.webp"
+          "src": "/screenshots/app/labs-dark-960.8c2a281d.webp"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/labs-dark-1680.db894855.webp"
+          "src": "/screenshots/app/labs-dark-1680.8c2a281d.webp"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/labs-dark-2400.db894855.webp"
+          "src": "/screenshots/app/labs-dark-2400.8c2a281d.webp"
         }
       ]
     },
@@ -228,29 +228,29 @@
       "avif": [
         {
           "w": 960,
-          "src": "/screenshots/app/labs-light-960.88503c06.avif"
+          "src": "/screenshots/app/labs-light-960.b9d9e019.avif"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/labs-light-1680.88503c06.avif"
+          "src": "/screenshots/app/labs-light-1680.b9d9e019.avif"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/labs-light-2400.88503c06.avif"
+          "src": "/screenshots/app/labs-light-2400.b9d9e019.avif"
         }
       ],
       "webp": [
         {
           "w": 960,
-          "src": "/screenshots/app/labs-light-960.88503c06.webp"
+          "src": "/screenshots/app/labs-light-960.b9d9e019.webp"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/labs-light-1680.88503c06.webp"
+          "src": "/screenshots/app/labs-light-1680.b9d9e019.webp"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/labs-light-2400.88503c06.webp"
+          "src": "/screenshots/app/labs-light-2400.b9d9e019.webp"
         }
       ]
     }
@@ -326,21 +326,21 @@
       "avif": [
         {
           "w": 390,
-          "src": "/screenshots/app/phone-dashboard-dark-390.03a44d5f.avif"
+          "src": "/screenshots/app/phone-dashboard-dark-390.0dd8deef.avif"
         },
         {
           "w": 780,
-          "src": "/screenshots/app/phone-dashboard-dark-780.03a44d5f.avif"
+          "src": "/screenshots/app/phone-dashboard-dark-780.0dd8deef.avif"
         }
       ],
       "webp": [
         {
           "w": 390,
-          "src": "/screenshots/app/phone-dashboard-dark-390.03a44d5f.webp"
+          "src": "/screenshots/app/phone-dashboard-dark-390.0dd8deef.webp"
         },
         {
           "w": 780,
-          "src": "/screenshots/app/phone-dashboard-dark-780.03a44d5f.webp"
+          "src": "/screenshots/app/phone-dashboard-dark-780.0dd8deef.webp"
         }
       ]
     },
@@ -348,21 +348,21 @@
       "avif": [
         {
           "w": 390,
-          "src": "/screenshots/app/phone-dashboard-light-390.306e9225.avif"
+          "src": "/screenshots/app/phone-dashboard-light-390.538d7203.avif"
         },
         {
           "w": 780,
-          "src": "/screenshots/app/phone-dashboard-light-780.306e9225.avif"
+          "src": "/screenshots/app/phone-dashboard-light-780.538d7203.avif"
         }
       ],
       "webp": [
         {
           "w": 390,
-          "src": "/screenshots/app/phone-dashboard-light-390.306e9225.webp"
+          "src": "/screenshots/app/phone-dashboard-light-390.538d7203.webp"
         },
         {
           "w": 780,
-          "src": "/screenshots/app/phone-dashboard-light-780.306e9225.webp"
+          "src": "/screenshots/app/phone-dashboard-light-780.538d7203.webp"
         }
       ]
     }
@@ -374,21 +374,21 @@
       "avif": [
         {
           "w": 390,
-          "src": "/screenshots/app/phone-day-dark-390.96d9e630.avif"
+          "src": "/screenshots/app/phone-day-dark-390.92224629.avif"
         },
         {
           "w": 780,
-          "src": "/screenshots/app/phone-day-dark-780.96d9e630.avif"
+          "src": "/screenshots/app/phone-day-dark-780.92224629.avif"
         }
       ],
       "webp": [
         {
           "w": 390,
-          "src": "/screenshots/app/phone-day-dark-390.96d9e630.webp"
+          "src": "/screenshots/app/phone-day-dark-390.92224629.webp"
         },
         {
           "w": 780,
-          "src": "/screenshots/app/phone-day-dark-780.96d9e630.webp"
+          "src": "/screenshots/app/phone-day-dark-780.92224629.webp"
         }
       ]
     },
@@ -396,21 +396,21 @@
       "avif": [
         {
           "w": 390,
-          "src": "/screenshots/app/phone-day-light-390.c002ff6d.avif"
+          "src": "/screenshots/app/phone-day-light-390.d94dcb04.avif"
         },
         {
           "w": 780,
-          "src": "/screenshots/app/phone-day-light-780.c002ff6d.avif"
+          "src": "/screenshots/app/phone-day-light-780.d94dcb04.avif"
         }
       ],
       "webp": [
         {
           "w": 390,
-          "src": "/screenshots/app/phone-day-light-390.c002ff6d.webp"
+          "src": "/screenshots/app/phone-day-light-390.d94dcb04.webp"
         },
         {
           "w": 780,
-          "src": "/screenshots/app/phone-day-light-780.c002ff6d.webp"
+          "src": "/screenshots/app/phone-day-light-780.d94dcb04.webp"
         }
       ]
     }
@@ -422,29 +422,29 @@
       "avif": [
         {
           "w": 960,
-          "src": "/screenshots/app/search-dark-960.05681b5b.avif"
+          "src": "/screenshots/app/search-dark-960.6457912c.avif"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/search-dark-1680.05681b5b.avif"
+          "src": "/screenshots/app/search-dark-1680.6457912c.avif"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/search-dark-2400.05681b5b.avif"
+          "src": "/screenshots/app/search-dark-2400.6457912c.avif"
         }
       ],
       "webp": [
         {
           "w": 960,
-          "src": "/screenshots/app/search-dark-960.05681b5b.webp"
+          "src": "/screenshots/app/search-dark-960.6457912c.webp"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/search-dark-1680.05681b5b.webp"
+          "src": "/screenshots/app/search-dark-1680.6457912c.webp"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/search-dark-2400.05681b5b.webp"
+          "src": "/screenshots/app/search-dark-2400.6457912c.webp"
         }
       ]
     },
@@ -452,29 +452,29 @@
       "avif": [
         {
           "w": 960,
-          "src": "/screenshots/app/search-light-960.18a8dc92.avif"
+          "src": "/screenshots/app/search-light-960.e5da58a2.avif"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/search-light-1680.18a8dc92.avif"
+          "src": "/screenshots/app/search-light-1680.e5da58a2.avif"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/search-light-2400.18a8dc92.avif"
+          "src": "/screenshots/app/search-light-2400.e5da58a2.avif"
         }
       ],
       "webp": [
         {
           "w": 960,
-          "src": "/screenshots/app/search-light-960.18a8dc92.webp"
+          "src": "/screenshots/app/search-light-960.e5da58a2.webp"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/search-light-1680.18a8dc92.webp"
+          "src": "/screenshots/app/search-light-1680.e5da58a2.webp"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/search-light-2400.18a8dc92.webp"
+          "src": "/screenshots/app/search-light-2400.e5da58a2.webp"
         }
       ]
     }
@@ -550,29 +550,29 @@
       "avif": [
         {
           "w": 960,
-          "src": "/screenshots/app/timeline-dark-960.75f10a15.avif"
+          "src": "/screenshots/app/timeline-dark-960.246b6ffd.avif"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/timeline-dark-1680.75f10a15.avif"
+          "src": "/screenshots/app/timeline-dark-1680.246b6ffd.avif"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/timeline-dark-2400.75f10a15.avif"
+          "src": "/screenshots/app/timeline-dark-2400.246b6ffd.avif"
         }
       ],
       "webp": [
         {
           "w": 960,
-          "src": "/screenshots/app/timeline-dark-960.75f10a15.webp"
+          "src": "/screenshots/app/timeline-dark-960.246b6ffd.webp"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/timeline-dark-1680.75f10a15.webp"
+          "src": "/screenshots/app/timeline-dark-1680.246b6ffd.webp"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/timeline-dark-2400.75f10a15.webp"
+          "src": "/screenshots/app/timeline-dark-2400.246b6ffd.webp"
         }
       ]
     },
@@ -580,29 +580,29 @@
       "avif": [
         {
           "w": 960,
-          "src": "/screenshots/app/timeline-light-960.a08f745c.avif"
+          "src": "/screenshots/app/timeline-light-960.fa2ef150.avif"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/timeline-light-1680.a08f745c.avif"
+          "src": "/screenshots/app/timeline-light-1680.fa2ef150.avif"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/timeline-light-2400.a08f745c.avif"
+          "src": "/screenshots/app/timeline-light-2400.fa2ef150.avif"
         }
       ],
       "webp": [
         {
           "w": 960,
-          "src": "/screenshots/app/timeline-light-960.a08f745c.webp"
+          "src": "/screenshots/app/timeline-light-960.fa2ef150.webp"
         },
         {
           "w": 1680,
-          "src": "/screenshots/app/timeline-light-1680.a08f745c.webp"
+          "src": "/screenshots/app/timeline-light-1680.fa2ef150.webp"
         },
         {
           "w": 2400,
-          "src": "/screenshots/app/timeline-light-2400.a08f745c.webp"
+          "src": "/screenshots/app/timeline-light-2400.fa2ef150.webp"
         }
       ]
     }

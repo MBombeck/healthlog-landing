@@ -6,6 +6,7 @@ import { DemoPopupLink } from "@/components/DemoPopupLink";
 import { TerminalBlock } from "@/components/TerminalBlock";
 import { AppScreen } from "@/components/AppScreen";
 import { BrowserFrame } from "@/components/BrowserFrame";
+import { PhoneFrame } from "@/components/PhoneFrame";
 
 /* ── SVG Icons ──────────────────────────────────── */
 
@@ -822,15 +823,26 @@ export default function Home() {
                 your server. On Android, or anywhere else, install the web app
                 from the browser.
               </p>
-              <a
-                href="https://apps.apple.com/app/id6769501341"
-                className="cta-secondary group"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <AppleIcon className="h-5 w-5" />
-                <span>App Store</span>
-              </a>
+              <div className="flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap">
+                <a
+                  href="https://apps.apple.com/app/id6769501341"
+                  className="cta-secondary group"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <AppleIcon className="h-5 w-5" />
+                  <span>Get it on the App Store</span>
+                </a>
+                <a
+                  href="https://testflight.apple.com/join/bucuTBpa"
+                  className="cta-secondary group"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <AppleIcon className="h-5 w-5" />
+                  <span>Join the TestFlight beta</span>
+                </a>
+              </div>
             </div>
             <div className="grid grid-cols-2 gap-4 sm:gap-6">
               {(
@@ -847,14 +859,16 @@ export default function Home() {
               ).map((shot, i) => (
                 <div
                   key={shot.name}
-                  className={`reveal reveal-delay-${i + 1} phone-frame overflow-hidden`}
+                  className={`reveal reveal-delay-${i + 1}`}
                 >
-                  <AppScreen
-                    name={shot.name}
-                    alt={shot.alt}
-                    sizes="(max-width: 768px) 45vw, 260px"
-                    className="block h-auto w-full"
-                  />
+                  <PhoneFrame>
+                    <AppScreen
+                      name={shot.name}
+                      alt={shot.alt}
+                      sizes="(max-width: 768px) 45vw, 260px"
+                      className="block h-auto w-full"
+                    />
+                  </PhoneFrame>
                 </div>
               ))}
             </div>
