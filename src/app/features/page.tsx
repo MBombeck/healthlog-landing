@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { AppScreen, type AppScreenName } from "@/components/AppScreen";
+import { BrowserFrame } from "@/components/BrowserFrame";
 import { SITE_ORIGIN } from "@/content/learn/locales";
 
 /**
@@ -52,12 +54,14 @@ function FeatureSection({
   label,
   color,
   title,
+  shots,
   children,
 }: {
   id: string;
   label: string;
   color: keyof typeof LABEL_COLORS | string;
   title: string;
+  shots?: { name: AppScreenName; alt: string; caption: string }[];
   children: React.ReactNode;
 }) {
   return (
@@ -73,6 +77,23 @@ function FeatureSection({
       <div className="text-text-secondary space-y-4 text-sm leading-relaxed md:text-base">
         {children}
       </div>
+      {shots?.map((shot) => (
+        <figure key={shot.name} className="pt-4 md:-mx-16 lg:-mx-28">
+          <BrowserFrame>
+            <div className="relative aspect-[1600/785] overflow-hidden bg-[#282a36]">
+              <AppScreen
+                name={shot.name}
+                alt={shot.alt}
+                sizes="(max-width: 768px) 100vw, 960px"
+                className="h-full w-full object-contain object-top"
+              />
+            </div>
+          </BrowserFrame>
+          <figcaption className="text-text-tertiary mt-3 text-center text-xs">
+            {shot.caption}
+          </figcaption>
+        </figure>
+      ))}
     </section>
   );
 }
@@ -121,12 +142,36 @@ export default function FeaturesPage() {
           >
             HealthLog
           </Link>
-          <Link
-            href="/security"
-            className="text-text-tertiary hover:text-text-primary inline-flex min-h-11 items-center text-sm transition-colors"
-          >
-            Security
-          </Link>
+          <nav aria-label="Primary" className="flex items-center gap-4 md:gap-5">
+            <Link
+              href="/#demo"
+              className="text-text-tertiary hover:text-text-primary inline-flex min-h-11 items-center text-sm transition-colors"
+            >
+              Demo
+            </Link>
+            <Link
+              href="/security"
+              className="text-text-tertiary hover:text-text-primary inline-flex min-h-11 items-center text-sm transition-colors"
+            >
+              Security
+            </Link>
+            <a
+              href="https://docs.healthlog.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-text-tertiary hover:text-text-primary inline-flex min-h-11 items-center text-sm transition-colors"
+            >
+              Docs
+            </a>
+            <a
+              href="https://github.com/MBombeck/HealthLog"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-text-tertiary hover:text-text-primary hidden min-h-11 items-center text-sm transition-colors sm:inline-flex"
+            >
+              GitHub
+            </a>
+          </nav>
         </div>
       </header>
 
@@ -178,6 +223,13 @@ export default function FeaturesPage() {
           label="Today — a daily companion"
           color="purple"
           title="A day that meets you where you are"
+          shots={[
+            {
+              name: "dashboard",
+              alt: "HealthLog dashboard with a health score of 90, today's doses, last night's sleep, an upcoming appointment and the vital tiles",
+              caption: "The dashboard of the public demo.",
+            },
+          ]}
         >
           <p>
             The dashboard opens on a Today view: a health score, the day&apos;s
@@ -216,6 +268,13 @@ export default function FeaturesPage() {
           label="Vitals & trends"
           color="purple"
           title="Every reading on one timeline"
+          shots={[
+            {
+              name: "measurements",
+              alt: "HealthLog measurements list with each reading badged by type and by the source it came from",
+              caption: "Every reading in one list, badged with its source.",
+            },
+          ]}
         >
           <p>
             Weight, blood pressure, heart rate, body composition, blood glucose,
@@ -296,6 +355,18 @@ export default function FeaturesPage() {
           label="Day view & timeline"
           color="cyan"
           title="Open any day, see the whole record"
+          shots={[
+            {
+              name: "day-panel",
+              alt: "A day docked beside the HealthLog blood-pressure chart: the medications running that day and each value against the 30 days before",
+              caption: "A day docked at the side, from 1280 px wide.",
+            },
+            {
+              name: "timeline",
+              alt: "HealthLog timeline with lanes for life events, conditions, medications, vaccinations, labs and cycle above three value lines",
+              caption: "The timeline over three months.",
+            },
+          ]}
         >
           <p>
             Every date in the app opens its day. Tap a point on a chart, a cell
@@ -337,6 +408,13 @@ export default function FeaturesPage() {
           label="Search your record"
           color="cyan"
           title="Find anything you ever recorded"
+          shots={[
+            {
+              name: "search",
+              alt: "HealthLog search with the query ramipril, showing the medication and three visits whose notes mention it",
+              caption: "Search with ⌘K: one medication and three visit notes.",
+            },
+          ]}
         >
           <p>
             The command palette (⌘K, Ctrl K, or the magnifier at the top)
@@ -383,6 +461,13 @@ export default function FeaturesPage() {
           label="Medication & adherence"
           color="cyan"
           title="Any regimen, tracked precisely"
+          shots={[
+            {
+              name: "medications",
+              alt: "HealthLog medication cards with categories, a supplement recorded automatically, adherence over 7 and 30 days and take or skip actions",
+              caption: "Medications filed by category. The supplement records itself.",
+            },
+          ]}
         >
           <p>
             Schedule medications at fixed times, on a calendar rule (RRULE), on
@@ -423,6 +508,13 @@ export default function FeaturesPage() {
           label="Labs & biomarkers"
           color="green"
           title="Blood work that trends over time"
+          shots={[
+            {
+              name: "labs",
+              alt: "HealthLog lab results on their reference ranges with a trend per marker and a glucose value converted from mmol/L",
+              caption: "Lab results on their ranges. Fasting glucose was printed in mmol/L.",
+            },
+          ]}
         >
           <p>
             Enter lab results against a biomarker catalogue that carries
@@ -842,6 +934,13 @@ export default function FeaturesPage() {
           label="AI Coach"
           color="orange"
           title="Thinks first, then answers from your data"
+          shots={[
+            {
+              name: "coach",
+              alt: "HealthLog Coach answering a question about the week's recovery, its steps folded above the answer",
+              caption: "A Coach answer with its steps folded above it.",
+            },
+          ]}
         >
           <p>
             The Coach answers from your own numbers and shows its work: each
@@ -944,6 +1043,13 @@ export default function FeaturesPage() {
           label="Integrations"
           color="cyan"
           title="Bring your devices and services"
+          shots={[
+            {
+              name: "sources",
+              alt: "HealthLog source priority settings ranking Apple Health, Withings and manual entry for steps",
+              caption: "Source priority: which source counts when two report the same day.",
+            },
+          ]}
         >
           <p>
             Sync from Withings, WHOOP, Oura, Polar, Strava, Fitbit (classic

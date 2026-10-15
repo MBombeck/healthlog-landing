@@ -1,24 +1,18 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import type { StaticImageData } from "next/image";
-// Static imports so each capture ships under a content-hashed URL. A plain
-// /screenshots/... path kept the old file alive in the CDN cache for hours
-// after a replacement; a hashed path changes with the bytes.
-import dashboardShot from "../../public/screenshots/desktop-dashboard-opt.webp";
-import medicationsShot from "../../public/screenshots/desktop-medications-opt.webp";
-import coachShot from "../../public/screenshots/desktop-coach-opt.webp";
-import measurementsShot from "../../public/screenshots/desktop-measurements-opt.webp";
+import { AppScreen, type AppScreenName } from "./AppScreen";
+import { BrowserFrame } from "./BrowserFrame";
 
 /* Sticky scroll-reveal: the browser frame stays pinned in the centre of the
    viewport while the captions scroll past on the left, and the screenshot
    cross-fades to match the caption crossing the centre line. The captions are
    real DOM text (indexable, accessible); the dim/active state is opacity only.
-   No animation library — CSS `position: sticky` + one IntersectionObserver. */
+   No animation library: CSS `position: sticky` + one IntersectionObserver.
+   Each capture follows the visitor's colour scheme (see AppScreen). */
 
 type Screen = {
-  src: StaticImageData;
+  name: AppScreenName;
   alt: string;
   kicker: string;
   title: string;
@@ -28,65 +22,62 @@ type Screen = {
 
 const screens: Screen[] = [
   {
-    src: dashboardShot,
-    alt: "HealthLog dashboard with the daily briefing, a health score of 88, and metric tiles for weight, blood pressure, pulse, heart-rate variability and oxygen saturation",
-    kicker: "Dashboard",
-    title: "Your whole day, the second you open it",
-    body: "Weight, blood pressure, pulse and mood sit up top, your weight and BMI trends right below. Reorder, resize or hide each card — every tile is yours to arrange.",
+    name: "day-panel",
+    alt: "HealthLog blood-pressure chart with one day marked, and that day opened in a panel docked on the right: the medications running that day and eight values, each against the 30 days before",
+    kicker: "Any day",
+    title: "Open a day beside whatever you are looking at",
+    body: "Tap a day on a chart, a list or the calendar strip and it docks at the side: what was running, every reading against your usual range, the doses and what happened. Step to the day before or after without losing the page you came from.",
     accent: "#8be9fd",
   },
   {
-    src: medicationsShot,
-    alt: "HealthLog medication management with 7-day and 30-day compliance rings, next-intake times, and per-medication take or skip actions",
-    kicker: "Medications",
-    title: "Adherence you can actually see",
-    body: "Today's doses, 7- and 30-day compliance rings, and the next intake time for each medication. Mark a dose taken or skipped in a single tap — supply, streaks and your compliance rate update on the spot.",
+    name: "timeline",
+    alt: "HealthLog timeline over three months with lanes for life events, conditions, medications, vaccinations, labs and cycle above blood pressure, weight and resting heart rate",
+    kicker: "Timeline",
+    title: "Years of your record on one axis",
+    body: "Medications, conditions, vaccinations, lab draws, visits and life events in lanes, with your values drawn underneath. Zoom from all years down to a few weeks and see what changed when.",
     accent: "#bd93f9",
   },
   {
-    src: coachShot,
-    alt: "HealthLog AI Coach answering a question about the last 30 days of blood pressure readings in plain language",
-    kicker: "AI Coach",
-    title: "Ask your record a question",
-    body: "The Coach reads your own data, thinks it through and answers in plain language: what changed, what stayed in range, what deserves a closer look. It remembers what you tell it, with your say over what it keeps. Bring your own key, run a local model, or leave AI off entirely.",
+    name: "search",
+    alt: "HealthLog search palette with the query ramipril, listing the medication and three doctor visits whose notes mention it, with the matching word highlighted",
+    kicker: "Search",
+    title: "Find anything you ever wrote down",
+    body: "Press ⌘K and type. Visits, conditions, documents down to their text, vaccinations, lab results, medications, workouts and your own notes, each hit opening where it lives.",
+    accent: "#ff79c6",
+  },
+  {
+    name: "medications",
+    alt: "HealthLog medications filed by category, with a supplement that records itself, next and last intake, 7- and 30-day adherence and take or skip actions",
+    kicker: "Medications",
+    title: "Doses, adherence and supplements that log themselves",
+    body: "Each medication shows its next and last dose and how well you kept to it over 7 and 30 days. File them by category, and let a supplement you never miss record itself every evening.",
     accent: "#50fa7b",
   },
   {
-    src: measurementsShot,
-    alt: "HealthLog measurements list showing blood glucose readings badged with their Nightscout and Apple Health source badges",
-    kicker: "Measurements",
-    title: "One timeline, every source",
-    body: "Manual entries, Withings devices and Apple Health all land on the same list, each reading badged with where it came from. When several sources log the same day, they collapse into one canonical value — no double-counting.",
-    accent: "#ff79c6",
+    name: "labs",
+    alt: "HealthLog lab results with each value placed on its reference range, a small trend per marker, and a glucose reading converted from mmol/L",
+    kicker: "Labs",
+    title: "Blood work against its range, in one unit",
+    body: "Every marker sits on its reference range with its trend beside it. A report printed in another unit is converted on entry, and the value as printed stays next to it.",
+    accent: "#ffb86c",
+  },
+  {
+    name: "coach",
+    alt: "HealthLog Coach answering how the week's recovery went, with the steps it took folded above the answer and earlier conversations listed on the right",
+    kicker: "AI Coach",
+    title: "Ask your record a question",
+    body: "The Coach reads your own data, shows the steps it took and answers in plain language. Bring your own key, run a local model, or leave AI off entirely: everything else works without it.",
+    accent: "#bd93f9",
+  },
+  {
+    name: "sources",
+    alt: "HealthLog source priority settings ranking Apple Health, Withings and manual entry for steps, with the winning source shown for each other metric",
+    kicker: "Integrations",
+    title: "Every source, one value per day",
+    body: "Apple Health, Withings, WHOOP, Oura, Polar, Fitbit, Strava, Nightscout and your own entries. When two report the same metric on the same day, you decide which one counts. The others stay stored.",
+    accent: "#8be9fd",
   },
 ];
-
-/* Browser chrome shared by the sticky frame and the mobile stack. */
-function BrowserFrame({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="showcase-frame w-full">
-      <div className="showcase-frame-inner">
-        {/* Browser chrome */}
-        <div className="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 border-b border-[rgba(98,114,164,0.12)] bg-[#1a1b26]">
-          <div className="flex gap-1.5 flex-shrink-0">
-            <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#ff5555] opacity-60" />
-            <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#ffb86c] opacity-60" />
-            <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#50fa7b] opacity-60" />
-          </div>
-          <div className="flex-1 flex justify-center min-w-0">
-            <div className="flex items-center gap-1.5 px-3 sm:px-4 py-1 rounded-md bg-[rgba(68,71,90,0.4)] max-w-[280px] w-full">
-              <svg viewBox="0 0 16 16" fill="none" className="w-3 h-3 text-text-tertiary flex-shrink-0 hidden sm:block" aria-hidden="true">
-                <path d="M8 1a4 4 0 0 0-4 4v3H3a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1h-1V5a4 4 0 0 0-4-4z" stroke="currentColor" strokeWidth="1.2" />
-              </svg>
-              <span className="text-[10px] font-mono text-text-tertiary tracking-wide truncate">healthlog.yourserver.io</span>
-            </div>
-          </div>
-        </div>
-        {children}
-      </div>
-    </div>
-  );
-}
 
 export function AppShowcase() {
   const [active, setActive] = useState(0);
@@ -125,7 +116,7 @@ export function AppShowcase() {
         <div>
           {screens.map((s, i) => (
             <div
-              key={s.kicker}
+              key={s.name}
               ref={(el) => {
                 captionRefs.current[i] = el;
               }}
@@ -164,19 +155,16 @@ export function AppShowcase() {
                 <div className="relative aspect-[1600/785] overflow-hidden bg-[#282a36]">
                   {screens.map((s, i) => (
                     <div
-                      key={s.kicker}
+                      key={s.name}
                       className="absolute inset-0 transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                       style={{ opacity: i === active ? 1 : 0 }}
                       aria-hidden={i !== active}
                     >
-                      <Image
-                        src={s.src}
+                      <AppScreen
+                        name={s.name}
                         alt={s.alt}
-                        fill
                         sizes="(max-width: 1024px) 0px, 860px"
-                        className="object-contain object-top"
-                        priority={i === 0}
-                        quality={90}
+                        className="h-full w-full object-contain object-top"
                       />
                     </div>
                   ))}
@@ -187,7 +175,7 @@ export function AppShowcase() {
               <div className="absolute -left-6 top-1/2 hidden -translate-y-1/2 flex-col gap-2 xl:flex">
                 {screens.map((s, i) => (
                   <span
-                    key={s.kicker}
+                    key={s.name}
                     className="h-6 w-0.5 rounded-full transition-all duration-500"
                     style={{
                       backgroundColor:
@@ -204,7 +192,7 @@ export function AppShowcase() {
       {/* ── Mobile / tablet: stacked frames with captions ─────── */}
       <div className="flex flex-col gap-14 lg:hidden">
         {screens.map((s) => (
-          <div key={s.kicker}>
+          <div key={s.name}>
             <div className="mb-5">
               <span
                 className="section-label mb-3 w-fit"
@@ -225,13 +213,11 @@ export function AppShowcase() {
             </div>
             <BrowserFrame>
               <div className="relative aspect-[1600/785] overflow-hidden bg-[#282a36]">
-                <Image
-                  src={s.src}
+                <AppScreen
+                  name={s.name}
                   alt={s.alt}
-                  fill
                   sizes="100vw"
-                  className="object-contain object-top"
-                  quality={90}
+                  className="h-full w-full object-contain object-top"
                 />
               </div>
             </BrowserFrame>

@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { EcgMonitor } from "@/components/EcgMonitor";
-import { ScrollIndicator, ScrollRevealObserver } from "@/components/HeroClient";
+import { ScrollRevealObserver } from "@/components/HeroClient";
 import { DemoCredentials } from "@/components/DemoCredentials";
 import { DemoPopupLink } from "@/components/DemoPopupLink";
 import { TerminalBlock } from "@/components/TerminalBlock";
 import { AppShowcase } from "@/components/AppShowcase";
+import { AppScreen } from "@/components/AppScreen";
+import { BrowserFrame } from "@/components/BrowserFrame";
 import { CATEGORY_COLOR, LEARN_ARTICLES } from "@/content/learn";
 import { getMeta } from "@/content/learn/meta";
 import { LearnImage } from "@/components/learn/learn-image";
@@ -1020,6 +1021,12 @@ export default function Home() {
             >
               FAQ
             </a>
+            <a
+              href="#demo"
+              className="text-text-tertiary hover:text-text-primary inline-flex min-h-11 items-center text-sm transition-colors"
+            >
+              Demo
+            </a>
             <Link
               href="/learn"
               target="_blank"
@@ -1043,16 +1050,15 @@ export default function Home() {
       {/* ─── HERO ─────────────────────────────────── */}
       <header
         id="main-content"
-        className="relative min-h-screen min-h-[100dvh] flex flex-col items-center justify-center px-4 sm:px-6 overflow-hidden"
+        className="relative flex flex-col items-center overflow-hidden px-4 pt-16 pb-20 sm:px-6 sm:pt-24 md:pt-28 md:pb-28"
         role="banner"
       >
         <div className="aurora" />
         <div className="aurora-pink" />
         <div className="grid-pattern" />
-        <EcgMonitor />
 
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h1 className="font-display font-extrabold text-[2.25rem] sm:text-6xl md:text-[5.5rem] leading-[1.05] tracking-[-0.03em] mb-8">
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          <h1 className="font-display font-extrabold text-[2.5rem] sm:text-6xl md:text-[5rem] leading-[1.05] tracking-[-0.03em] mb-6">
             <span className="text-text-primary">Your Health.</span>
             <br />
             <span
@@ -1067,35 +1073,58 @@ export default function Home() {
             </span>
           </h1>
 
-          <p className="text-text-secondary text-lg sm:text-xl md:text-[1.35rem] max-w-2xl mx-auto mb-14 leading-[1.7] font-light tracking-[-0.01em]">
-            The self-hosted health tracker. Weight, blood pressure, glucose,
-            medications, mood: on your own server, synced from Apple
-            Health, Withings, WHOOP, Oura, Polar, Fitbit, Strava and
-            Nightscout. Source available.
+          <p className="text-text-secondary text-lg sm:text-xl md:text-[1.3rem] max-w-2xl mx-auto mb-4 leading-[1.6] font-light tracking-[-0.01em]">
+            A self-hosted health record. Readings from Apple Health, Withings,
+            WHOOP, Oura and more land on one timeline, next to your
+            medications, lab results and doctor visits.
+          </p>
+          <p className="text-text-tertiary font-mono text-xs sm:text-[13px] tracking-wide mb-10">
+            Runs on Docker, AI optional, source available, free for noncommercial use
           </p>
 
           <nav
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
             aria-label="Primary actions"
           >
+            <a href="#demo" className="cta-button group">
+              <PlayIcon className="w-5 h-5 relative z-10" />
+              <span>Try the live demo</span>
+              <ArrowIcon />
+            </a>
             <a
               href="https://github.com/MBombeck/HealthLog"
-              className="cta-button group"
+              className="cta-secondary group"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <GitHubIcon className="w-5 h-5 relative z-10" />
-              <span>View on GitHub</span>
-              <ArrowIcon />
+              <GitHubIcon className="w-5 h-5" />
+              <span>GitHub</span>
             </a>
-            <Link href="/learn" className="cta-secondary group">
+            <a
+              href="https://docs.healthlog.dev"
+              className="cta-secondary group"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <BookIcon className="w-5 h-5" />
-              <span>Learn about your metrics</span>
-            </Link>
+              <span>Docs</span>
+            </a>
           </nav>
         </div>
 
-        <ScrollIndicator />
+        <div className="hero-shot relative z-10 mx-auto mt-14 w-full max-w-6xl sm:mt-20">
+          <BrowserFrame>
+            <div className="relative aspect-[1600/785] overflow-hidden bg-[#282a36]">
+              <AppScreen
+                name="dashboard"
+                alt="HealthLog dashboard: a health score of 90, the day's medications, last night's sleep and cycle day, an upcoming appointment, and tiles for weight, blood pressure, resting heart rate, heart-rate variability and oxygen saturation"
+                sizes="(max-width: 1200px) 100vw, 1152px"
+                priority
+                className="h-full w-full object-contain object-top"
+              />
+            </div>
+          </BrowserFrame>
+        </div>
       </header>
 
       {/* ─── APP MOCKUP ───────────────────────────── */}
@@ -1108,6 +1137,66 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
             <div className="reveal">
               <AppShowcase />
+            </div>
+          </div>
+        </section>
+
+        {/* ─── ON THE PHONE ─────────────────────────── */}
+        <section
+          id="mobile"
+          className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow"
+          aria-labelledby="mobile-heading"
+        >
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-14">
+              <div className="reveal flex justify-center mb-6">
+                <span className="section-label text-pink border-pink/15 bg-pink/[0.03]">
+                  On the phone
+                </span>
+              </div>
+              <h2
+                id="mobile-heading"
+                className="reveal font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.02em] text-text-primary mb-5"
+              >
+                The same record in your pocket
+              </h2>
+              <p className="reveal text-text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                Open your instance in the phone&apos;s browser and add it to
+                the home screen: it runs as an app, on Android as well as
+                iPhone. A day opens as a sheet from the bottom, and logging a
+                dose is one tap.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 max-w-3xl mx-auto">
+              {(
+                [
+                  {
+                    name: "phone-dashboard",
+                    alt: "HealthLog on a phone: the dashboard with a health score of 90, the day's medications, last night's sleep and an upcoming appointment",
+                  },
+                  {
+                    name: "phone-medications",
+                    alt: "HealthLog on a phone: medication cards with categories, a supplement recorded automatically, adherence bars and a Taken button",
+                  },
+                  {
+                    name: "phone-day",
+                    alt: "HealthLog on a phone: a day opened as a bottom sheet, with the medications running that day and blood pressure and resting heart rate against their usual range",
+                  },
+                ] as const
+              ).map((shot, i) => (
+                <div
+                  key={shot.name}
+                  className={`reveal reveal-delay-${i + 1} phone-frame relative overflow-hidden`}
+                >
+                  <AppScreen
+                    name={shot.name}
+                    alt={shot.alt}
+                    sizes="(max-width: 768px) 31vw, 240px"
+                    className="block h-auto w-full"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -1383,7 +1472,7 @@ export default function Home() {
                 into a single canonical value, with no double-counting.
               </p>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {integrations.map((it, i) => {
                 const colors = colorMap[it.color];
                 return (
@@ -1824,7 +1913,8 @@ export default function Home() {
 
         {/* ─── LIVE DEMO ─────────────────────────────── */}
         <section
-          className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow"
+          id="demo"
+          className="relative py-24 sm:py-32 md:py-40 px-4 sm:px-6 section-glow scroll-mt-20"
           aria-labelledby="demo-heading"
         >
           <div className="max-w-3xl mx-auto text-center">
@@ -1847,8 +1937,8 @@ export default function Home() {
             <DemoCredentials />
 
             <p className="reveal text-text-tertiary text-xs font-mono">
-              Read-only: a year of synthetic data to browse. Changes are
-              not saved. Works in the iPhone app too.
+              Read-only: years of made-up data to browse. Changes are not
+              saved. Works in the iPhone app too.
             </p>
           </div>
         </section>
