@@ -1,0 +1,610 @@
+{
+  "coach": {
+    "width": 3360,
+    "height": 2100,
+    "dark": {
+      "avif": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/coach-dark-960.46f28f04.avif"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/coach-dark-1680.46f28f04.avif"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/coach-dark-2400.46f28f04.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/coach-dark-960.46f28f04.webp"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/coach-dark-1680.46f28f04.webp"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/coach-dark-2400.46f28f04.webp"
+        }
+      ]
+    },
+    "light": {
+      "avif": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/coach-light-960.3ce10e02.avif"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/coach-light-1680.3ce10e02.avif"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/coach-light-2400.3ce10e02.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/coach-light-960.3ce10e02.webp"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/coach-light-1680.3ce10e02.webp"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/coach-light-2400.3ce10e02.webp"
+        }
+      ]
+    }
+  },
+  "dashboard": {
+    "width": 3360,
+    "height": 2100,
+    "dark": {
+      "avif": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/dashboard-dark-960.9a98ddb4.avif"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/dashboard-dark-1680.9a98ddb4.avif"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/dashboard-dark-2400.9a98ddb4.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/dashboard-dark-960.9a98ddb4.webp"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/dashboard-dark-1680.9a98ddb4.webp"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/dashboard-dark-2400.9a98ddb4.webp"
+        }
+      ]
+    },
+    "light": {
+      "avif": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/dashboard-light-960.9899377b.avif"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/dashboard-light-1680.9899377b.avif"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/dashboard-light-2400.9899377b.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/dashboard-light-960.9899377b.webp"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/dashboard-light-1680.9899377b.webp"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/dashboard-light-2400.9899377b.webp"
+        }
+      ]
+    }
+  },
+  "day-panel": {
+    "width": 3360,
+    "height": 2100,
+    "dark": {
+      "avif": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/day-panel-dark-960.db238306.avif"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/day-panel-dark-1680.db238306.avif"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/day-panel-dark-2400.db238306.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/day-panel-dark-960.db238306.webp"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/day-panel-dark-1680.db238306.webp"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/day-panel-dark-2400.db238306.webp"
+        }
+      ]
+    },
+    "light": {
+      "avif": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/day-panel-light-960.1a3f5488.avif"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/day-panel-light-1680.1a3f5488.avif"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/day-panel-light-2400.1a3f5488.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/day-panel-light-960.1a3f5488.webp"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/day-panel-light-1680.1a3f5488.webp"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/day-panel-light-2400.1a3f5488.webp"
+        }
+      ]
+    }
+  },
+  "labs": {
+    "width": 3360,
+    "height": 2100,
+    "dark": {
+      "avif": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/labs-dark-960.8c2a281d.avif"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/labs-dark-1680.8c2a281d.avif"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/labs-dark-2400.8c2a281d.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/labs-dark-960.8c2a281d.webp"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/labs-dark-1680.8c2a281d.webp"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/labs-dark-2400.8c2a281d.webp"
+        }
+      ]
+    },
+    "light": {
+      "avif": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/labs-light-960.b9d9e019.avif"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/labs-light-1680.b9d9e019.avif"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/labs-light-2400.b9d9e019.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/labs-light-960.b9d9e019.webp"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/labs-light-1680.b9d9e019.webp"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/labs-light-2400.b9d9e019.webp"
+        }
+      ]
+    }
+  },
+  "medications": {
+    "width": 3360,
+    "height": 2100,
+    "dark": {
+      "avif": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/medications-dark-960.597f0d08.avif"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/medications-dark-1680.597f0d08.avif"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/medications-dark-2400.597f0d08.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/medications-dark-960.597f0d08.webp"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/medications-dark-1680.597f0d08.webp"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/medications-dark-2400.597f0d08.webp"
+        }
+      ]
+    },
+    "light": {
+      "avif": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/medications-light-960.2aba123a.avif"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/medications-light-1680.2aba123a.avif"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/medications-light-2400.2aba123a.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/medications-light-960.2aba123a.webp"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/medications-light-1680.2aba123a.webp"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/medications-light-2400.2aba123a.webp"
+        }
+      ]
+    }
+  },
+  "phone-dashboard": {
+    "width": 780,
+    "height": 1688,
+    "dark": {
+      "avif": [
+        {
+          "w": 390,
+          "src": "/screenshots/app/phone-dashboard-dark-390.0dd8deef.avif"
+        },
+        {
+          "w": 780,
+          "src": "/screenshots/app/phone-dashboard-dark-780.0dd8deef.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 390,
+          "src": "/screenshots/app/phone-dashboard-dark-390.0dd8deef.webp"
+        },
+        {
+          "w": 780,
+          "src": "/screenshots/app/phone-dashboard-dark-780.0dd8deef.webp"
+        }
+      ]
+    },
+    "light": {
+      "avif": [
+        {
+          "w": 390,
+          "src": "/screenshots/app/phone-dashboard-light-390.538d7203.avif"
+        },
+        {
+          "w": 780,
+          "src": "/screenshots/app/phone-dashboard-light-780.538d7203.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 390,
+          "src": "/screenshots/app/phone-dashboard-light-390.538d7203.webp"
+        },
+        {
+          "w": 780,
+          "src": "/screenshots/app/phone-dashboard-light-780.538d7203.webp"
+        }
+      ]
+    }
+  },
+  "phone-day": {
+    "width": 780,
+    "height": 1688,
+    "dark": {
+      "avif": [
+        {
+          "w": 390,
+          "src": "/screenshots/app/phone-day-dark-390.92224629.avif"
+        },
+        {
+          "w": 780,
+          "src": "/screenshots/app/phone-day-dark-780.92224629.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 390,
+          "src": "/screenshots/app/phone-day-dark-390.92224629.webp"
+        },
+        {
+          "w": 780,
+          "src": "/screenshots/app/phone-day-dark-780.92224629.webp"
+        }
+      ]
+    },
+    "light": {
+      "avif": [
+        {
+          "w": 390,
+          "src": "/screenshots/app/phone-day-light-390.d94dcb04.avif"
+        },
+        {
+          "w": 780,
+          "src": "/screenshots/app/phone-day-light-780.d94dcb04.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 390,
+          "src": "/screenshots/app/phone-day-light-390.d94dcb04.webp"
+        },
+        {
+          "w": 780,
+          "src": "/screenshots/app/phone-day-light-780.d94dcb04.webp"
+        }
+      ]
+    }
+  },
+  "search": {
+    "width": 3360,
+    "height": 2100,
+    "dark": {
+      "avif": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/search-dark-960.6457912c.avif"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/search-dark-1680.6457912c.avif"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/search-dark-2400.6457912c.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/search-dark-960.6457912c.webp"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/search-dark-1680.6457912c.webp"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/search-dark-2400.6457912c.webp"
+        }
+      ]
+    },
+    "light": {
+      "avif": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/search-light-960.e5da58a2.avif"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/search-light-1680.e5da58a2.avif"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/search-light-2400.e5da58a2.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/search-light-960.e5da58a2.webp"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/search-light-1680.e5da58a2.webp"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/search-light-2400.e5da58a2.webp"
+        }
+      ]
+    }
+  },
+  "sources": {
+    "width": 3360,
+    "height": 2100,
+    "dark": {
+      "avif": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/sources-dark-960.415105b8.avif"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/sources-dark-1680.415105b8.avif"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/sources-dark-2400.415105b8.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/sources-dark-960.415105b8.webp"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/sources-dark-1680.415105b8.webp"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/sources-dark-2400.415105b8.webp"
+        }
+      ]
+    },
+    "light": {
+      "avif": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/sources-light-960.e2944245.avif"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/sources-light-1680.e2944245.avif"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/sources-light-2400.e2944245.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/sources-light-960.e2944245.webp"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/sources-light-1680.e2944245.webp"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/sources-light-2400.e2944245.webp"
+        }
+      ]
+    }
+  },
+  "timeline": {
+    "width": 3360,
+    "height": 2100,
+    "dark": {
+      "avif": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/timeline-dark-960.246b6ffd.avif"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/timeline-dark-1680.246b6ffd.avif"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/timeline-dark-2400.246b6ffd.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/timeline-dark-960.246b6ffd.webp"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/timeline-dark-1680.246b6ffd.webp"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/timeline-dark-2400.246b6ffd.webp"
+        }
+      ]
+    },
+    "light": {
+      "avif": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/timeline-light-960.fa2ef150.avif"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/timeline-light-1680.fa2ef150.avif"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/timeline-light-2400.fa2ef150.avif"
+        }
+      ],
+      "webp": [
+        {
+          "w": 960,
+          "src": "/screenshots/app/timeline-light-960.fa2ef150.webp"
+        },
+        {
+          "w": 1680,
+          "src": "/screenshots/app/timeline-light-1680.fa2ef150.webp"
+        },
+        {
+          "w": 2400,
+          "src": "/screenshots/app/timeline-light-2400.fa2ef150.webp"
+        }
+      ]
+    }
+  }
+}
