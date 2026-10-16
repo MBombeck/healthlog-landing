@@ -208,7 +208,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image.png",
     // Tracks the latest stable HealthLog server release. Bumped by hand with
     // each release.
-    softwareVersion: "1.42.2",
+    softwareVersion: "1.43.0",
     license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
     // The landing page is English-only today (the /learn guides and the
     // privacy policy have their own locales). The app itself ships in seven
