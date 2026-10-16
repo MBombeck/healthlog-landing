@@ -31,18 +31,6 @@ export function AppScreen({
   const fallback = s.dark.webp[Math.min(1, s.dark.webp.length - 1)];
   return (
     <picture>
-      <source
-        media="(prefers-color-scheme: light)"
-        type="image/avif"
-        srcSet={srcSet(s.light.avif)}
-        sizes={sizes}
-      />
-      <source
-        media="(prefers-color-scheme: light)"
-        type="image/webp"
-        srcSet={srcSet(s.light.webp)}
-        sizes={sizes}
-      />
       <source type="image/avif" srcSet={srcSet(s.dark.avif)} sizes={sizes} />
       <source type="image/webp" srcSet={srcSet(s.dark.webp)} sizes={sizes} />
       <img

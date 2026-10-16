@@ -677,12 +677,6 @@ body {
     0 30px 60px -20px rgba(0, 0, 0, 0.7),
     0 0 60px rgba(189, 147, 249, 0.08);
 }
-@media (prefers-color-scheme: light) {
-  .phone-device {
-    --phone-bg: #f3f2f5;
-    --phone-fg: #1d1b23;
-  }
-}
 .phone-screen {
   overflow: hidden;
   border-radius: 2.35rem;
