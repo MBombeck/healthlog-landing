@@ -497,7 +497,7 @@ const everythingElse: { group: string; items: [string, string][] }[] = [
     items: [
       ["watch", "Withings, WHOOP, Oura, Polar"],
       ["watch", "Fitbit and Pixel Watch"],
-      ["link", "Strava and Nightscout"],
+      ["link", "Strava, Nightscout, Dawarich"],
       ["phone", "Health Connect import"],
       ["watch", "Garmin via Apple or Google Health"],
       ["bell", "Push, Telegram, ntfy, e-mail"],
@@ -527,7 +527,7 @@ const faqs = [
   {
     question: "Which devices and services does HealthLog integrate with?",
     answer:
-      "Withings, WHOOP, Oura, Polar, Fitbit, Strava and Nightscout sync over OAuth or your own endpoints, and Apple Health syncs live through the iOS app or via export import. On Android you can import a Health Connect export. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
+      "Withings, WHOOP, Oura, Polar, Fitbit, Strava, Nightscout and Dawarich sync over OAuth or your own endpoints, and Apple Health syncs live through the iOS app or via export import. On Android you can import a Health Connect export. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
   },
   {
     question: "Can I connect HealthLog to an AI assistant?",
