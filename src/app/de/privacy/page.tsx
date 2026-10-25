@@ -18,6 +18,7 @@ import {
   SubProcessor,
   type SubProcessorLabels,
 } from "@/components/privacy/privacy-layout";
+import { AnalyticsSettingsButton } from "@/components/analytics-consent";
 
 /**
  * Deutsche Fassung der Datenschutzerklaerung (/de/privacy).
@@ -70,7 +71,10 @@ const TOC = [
   { href: "#website-analytics", label: "3. Diese Website (healthlog.dev)" },
   { href: "#data-we-collect", label: "4. Erhobene Daten" },
   { href: "#purpose", label: "5. Warum jede Kategorie erhoben wird" },
-  { href: "#sub-processors", label: "6. Externe Dienste, die die Software ansprechen kann" },
+  {
+    href: "#sub-processors",
+    label: "6. Externe Dienste, die die Software ansprechen kann",
+  },
   { href: "#storage", label: "7. Speicherung, Verschlüsselung, Aufbewahrung" },
   { href: "#rights", label: "8. Ihre Rechte (Art. 15 bis 22 DSGVO)" },
   {
@@ -156,9 +160,9 @@ export default function DatenschutzSeite() {
           gibt keine zentrale HealthLog-Cloud, keine gemeinsame
           Mandantendatenbank und kein Analyse-Backend eines Dritten. Wer
           HealthLog auf dem eigenen Server installiert, dessen Gesundheitsdaten
-          verlassen diesen Server nur, wenn der Betreiber oder die Nutzerin
-          bzw. der Nutzer ausdrücklich eine ausgehende Verbindung einrichtet
-          (einen KI-Anbieter, eine Geräteanbindung, einen Telegram-Bot, ntfy,
+          verlassen diesen Server nur, wenn der Betreiber oder die Nutzerin bzw.
+          der Nutzer ausdrücklich eine ausgehende Verbindung einrichtet (einen
+          KI-Anbieter, eine Geräteanbindung, einen Telegram-Bot, ntfy,
           Push-Benachrichtigungen, ein externes Backup-Ziel). In der
           Voreinstellung sendet der Server außerdem einen Hash-Anfang neuer
           Passwörter an Have I Been Pwned, fragt die GitHub-Releases-API nach
@@ -223,21 +227,24 @@ export default function DatenschutzSeite() {
 
       <Section id="website-analytics" title="3. Diese Website (healthlog.dev)">
         <p>
-          Diese Website betreibt der Entwickler; Name und Postanschrift stehen im{" "}
+          Diese Website betreibt der Entwickler; Name und Postanschrift stehen
+          im{" "}
           <Link
             href="/imprint"
             className="text-purple hover:text-cyan underline-offset-2 hover:underline"
           >
             Impressum
           </Link>
-          . Sie besteht aus statischen Seiten. Sie setzt keine Cookies und
-          keine Werbe- oder seitenübergreifenden Kennungen und zeigt daher kein
-          Einwilligungsbanner. Das Einzige, was sie auf Ihrem Gerät speichert,
-          ist eine ausdrückliche Sprachwahl über den Umschalter der Ratgeber;
-          sie liegt im lokalen Speicher des Browsers, damit die Wahl beim
-          nächsten Besuch gilt. Sie wird nur geschrieben, wenn Sie diese Wahl
-          treffen, und dient nur dieser Funktion; nach § 25 Abs. 2 TDDDG ist
-          dafür keine Einwilligung nötig.
+          . Sie besteht aus statischen Seiten. Sie setzt keine Cookies und keine
+          Werbe- oder seitenübergreifenden Kennungen. Ohne Ihre Einwilligung
+          legt sie nur zwei Einträge im lokalen Speicher des Browsers ab, die
+          jeweils für etwas nötig sind, das Sie selbst angestoßen haben, und
+          deshalb nach § 25 Abs. 2 Nr. 2 TDDDG keine Einwilligung brauchen: eine
+          ausdrückliche Sprachwahl über den Umschalter der Ratgeber, die nur
+          geschrieben wird, wenn Sie diese Wahl treffen, damit sie beim nächsten
+          Besuch gilt, und Ihre Antwort auf die unten beschriebene Frage zur
+          Webanalyse (<Code>hl-analytics-consent</Code>), damit die Frage nicht
+          auf jeder Seite neu gestellt wird.
         </p>
         <p>
           Die Seiten werden von einem Server ausgeliefert, den der Entwickler
@@ -254,9 +261,9 @@ export default function DatenschutzSeite() {
           der Website steht. Cloudflare verarbeitet daher jede Anfrage an diese
           Website, einschließlich IP-Adresse, angefragter Adresse und der
           Anfragekopfzeilen des Browsers, in seinem weltweiten Netz.
-          Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO, das berechtigte
-          Interesse an einer zuverlässigen Auslieferung der Website und ihrem
-          Schutz vor Angriffen.
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO, das berechtigte Interesse
+          an einer zuverlässigen Auslieferung der Website und ihrem Schutz vor
+          Angriffen.
         </p>
         <p>
           Schriften und Bilder gehören zur Website selbst und werden von ihrer
@@ -266,38 +273,99 @@ export default function DatenschutzSeite() {
           Schriften und Verbindungen nur die eigene Adresse dieser Website.
         </p>
         <p>
-          Aggregierte Besuchszahlen werden mit{" "}
-          <ExternalLink href="https://rybbit.com">Rybbit</ExternalLink> erhoben,
-          einem quelloffenen, cookiefreien Analysewerkzeug auf einem Server,
-          den der Entwickler betreibt; kein Analyseanbieter erhält die Daten.
-          Das Mess-Skript und sein Erfassungsendpunkt werden über die eigene
-          Adresse dieser Website unter <Code>/insight/</Code> ausgeliefert, und
-          die Website leitet die Ereignisse an den Analyseserver weiter, wie
-          jede andere Anfrage über Cloudflare. Die IP-Adresse wird dabei
-          weitergegeben, damit Land und Region bestimmt werden können. Erfasst werden je Besuch
-          die Seitenadresse, die verweisende Adresse, Browser, Betriebssystem,
-          Gerätetyp, Land und Region. Besucher werden über einen Hash gezählt,
-          dessen Salt täglich neu gesetzt wird; die rohe IP-Adresse wird also
-          nie gespeichert, und niemand lässt sich identifizieren oder über den
-          Tag hinaus verfolgen. Sitzungsaufzeichnung, Fehlererfassung sowie
-          Formular- und Klick-Tracking sind für diese Website abgeschaltet. Rechtsgrundlage: Art. 6 Abs. 1 lit. f
-          DSGVO, das berechtigte Interesse daran zu wissen, welche Seiten
-          tatsächlich gelesen werden. Da die Messung nichts auf Ihrem Gerät
-          liest oder speichert, ist eine Einwilligung nach § 25 TDDDG nicht
-          erforderlich.
+          Besuche werden mit{" "}
+          <ExternalLink href="https://rybbit.com">Rybbit</ExternalLink>{" "}
+          gemessen, einem quelloffenen Analysewerkzeug auf einem Server, den der
+          Entwickler betreibt, und nur, wenn Sie zustimmen. Beim ersten Besuch
+          fragt ein Hinweis am unteren Seitenrand danach. Zustimmen und Ablehnen
+          sind gleichwertig dargestellt, nichts ist vorausgewählt. Solange Sie
+          nicht zustimmen, ist das Mess-Skript nicht Teil der Seite: Es wird
+          nicht geladen, es wird nichts gesendet, und für die Webanalyse wird
+          nichts auf Ihrem Gerät gespeichert. Lehnen Sie ab, bleibt es dabei.
+        </p>
+        <p>
+          Stimmen Sie zu, lädt die Seite das Mess-Skript über die eigene Adresse
+          dieser Website unter <Code>/insight/</Code>, und die Website leitet
+          die Ereignisse an den Analyseserver weiter, wie jede andere Anfrage
+          über Cloudflare. Kein Analyseanbieter erhält die Daten. Ab dann
+        </p>
+        <ul className="list-disc space-y-1 pl-5">
+          <li>
+            speichert das Skript eine zufällige Besucherkennung im lokalen
+            Speicher des Browsers (<Code>rybbit-visitor-id</Code>), damit
+            spätere Besuche mit demselben Browser als derselbe Besucher gezählt
+            werden. Sie bleibt, bis Sie die Einwilligung widerrufen oder die
+            Daten dieser Website im Browser löschen;
+          </li>
+          <li>
+            erfasst es jeden Seitenaufruf, auch Seitenwechsel ohne Neuladen: die
+            Seitenadresse mit ihren URL-Parametern (etwa Kampagnenkennungen wie{" "}
+            <Code>utm_source</Code>), den Seitentitel, die verweisende Adresse,
+            Browser, Betriebssystem, Gerätetyp, Bildschirmgröße, Browsersprache,
+            Land und Region sowie die Ladezeit der Seite;
+          </li>
+          <li>
+            erfasst es Klicks auf Schaltflächen und auf Links zu anderen
+            Websites, mit der Beschriftung der Schaltfläche oder der Zieladresse
+            des Links;
+          </li>
+          <li>
+            erfasst es, wenn Text kopiert wird, mit dem kopierten Text
+            (höchstens 500 Zeichen);
+          </li>
+          <li>
+            erfasst es, wenn ein Formular abgeschickt oder ein Formularfeld
+            geändert wird, mit Name und Art des Formulars oder Feldes, aber nie
+            mit dem, was Sie eingegeben haben. Passwortfelder bleiben ganz außen
+            vor;
+          </li>
+          <li>
+            erfasst es Skriptfehler auf der Seite, mit Fehlermeldung und der
+            Stelle im Code, an der er auftrat;
+          </li>
+          <li>
+            zeichnet es die Sitzung auf: eine Nachbildung der Seite, wie Sie sie
+            gesehen haben, mit Scrollen, Mausbewegungen und Klicks, damit sich
+            der Besuch abspielen lässt. Was Sie in ein Formularfeld eingeben,
+            wird verdeckt und nie aufgezeichnet.
+          </li>
+        </ul>
+        <p>
+          Ihre IP-Adresse wird weitergegeben, damit Land und Region bestimmt
+          werden können. Sie wird nicht gespeichert; das Speichern von
+          IP-Adressen ist für diese Website abgeschaltet. Die Daten bleiben auf
+          dem Analyseserver des Entwicklers und dienen nur dazu zu sehen, welche
+          Seiten gelesen werden und wo die Website Fehler hat.
+        </p>
+        <p>
+          Rechtsgrundlage: Ihre Einwilligung, Art. 6 Abs. 1 lit. a DSGVO, und
+          für das Speichern der Besucherkennung auf Ihrem Gerät und ihr Auslesen
+          § 25 Abs. 1 TDDDG. Sie können die Einwilligung jederzeit mit Wirkung
+          für die Zukunft widerrufen: Öffnen Sie die{" "}
+          <AnalyticsSettingsButton className="text-purple hover:text-cyan cursor-pointer underline underline-offset-2">
+            Analyse-Einstellungen
+          </AnalyticsSettingsButton>{" "}
+          (auch am Ende jeder Seite) und wählen Sie Ablehnen. Die Seite löscht
+          dann die Besucherkennung und lädt ohne das Skript neu. Löschen Sie die
+          Daten dieser Website im Browser, sind Besucherkennung und Ihre Wahl
+          ebenfalls entfernt; Sie werden dann erneut gefragt. Der Widerruf
+          berührt nicht die Rechtmäßigkeit dessen, was vorher erfasst wurde.
         </p>
         <p>
           Derselbe Server betreibt hinter derselben Cloudflare-Einrichtung zwei
           weitere Seiten. docs.healthlog.dev ist die statische Dokumentation.
-          Sie nutzt keine Webanalyse und keine Cookies; sie speichert eine
-          Wahl zwischen hellem und dunklem Design sowie den gewählten Reiter in
-          Codebeispielen im lokalen Speicher des Browsers. demo.healthlog.dev
-          ist eine öffentliche Demo-Instanz der Software, angemeldet mit
-          gemeinsamen Demo-Zugangsdaten und gefüllt mit erzeugten
-          Beispieldaten. Sie arbeitet wie jede in den Abschnitten 4 bis 7
-          beschriebene Instanz; eine Anmeldung legt also eine Sitzung und einen
-          Protokolleintrag in der eigenen Datenbank der Demo auf diesem Server
-          an. Geben Sie dort keine echten Gesundheitsdaten ein.
+          Sie setzt keine Cookies; sie speichert eine Wahl zwischen hellem und
+          dunklem Design sowie den gewählten Reiter in Codebeispielen im lokalen
+          Speicher des Browsers. Sie fragt getrennt von dieser Website nach
+          ihrer eigenen Einwilligung zur Webanalyse und erfasst mit Einwilligung
+          dasselbe wie oben beschrieben; das Mess-Skript lädt sie dabei direkt
+          vom Analyseserver unter rybbit.bombeck.io. demo.healthlog.dev ist eine
+          öffentliche Demo-Instanz der Software, angemeldet mit gemeinsamen
+          Demo-Zugangsdaten und gefüllt mit erzeugten Beispieldaten. Sie
+          arbeitet wie jede in den Abschnitten 4 bis 7 beschriebene Instanz;
+          eine Anmeldung legt also eine Sitzung und einen Protokolleintrag in
+          der eigenen Datenbank der Demo auf diesem Server an. Geben Sie dort
+          keine echten Gesundheitsdaten ein.
         </p>
         <p>
           Wenn Sie an die Kontaktadresse in Abschnitt 13 schreiben, werden die
@@ -365,16 +433,15 @@ export default function DatenschutzSeite() {
         <p>
           Wenn Sie der iOS-Anwendung Lesezugriff auf Apple HealthKit erteilen,
           liest HealthLog Datensätze zu einer festen Liste von Kennungen
-          (Körpermasse, Körperfettanteil, Körpertemperatur, Blutdruck
-          systolisch und diastolisch, Blutzucker, Sauerstoffsättigung,
-          Herzfrequenz, Ruhepuls, Herzratenvariabilität SDNN, VO₂max,
-          Schrittzahl, Aktivitätsenergie, Etagen, Geh- und Laufstrecke,
-          Umgebungs- und Kopfhörer-Lautstärke, Zeit im Tageslicht sowie
-          Schlafanalyse mit voller Phasengenauigkeit). Die HealthKit-Daten
-          bleiben auf Ihrem Gerät und in Ihrem iCloud-gestützten Health-Speicher;
-          die iOS-Anwendung kopiert die einschlägigen Datensätze in Ihr
-          HealthLog-Konto, damit die Weboberfläche dieselben Verläufe zeigen
-          kann.
+          (Körpermasse, Körperfettanteil, Körpertemperatur, Blutdruck systolisch
+          und diastolisch, Blutzucker, Sauerstoffsättigung, Herzfrequenz,
+          Ruhepuls, Herzratenvariabilität SDNN, VO₂max, Schrittzahl,
+          Aktivitätsenergie, Etagen, Geh- und Laufstrecke, Umgebungs- und
+          Kopfhörer-Lautstärke, Zeit im Tageslicht sowie Schlafanalyse mit
+          voller Phasengenauigkeit). Die HealthKit-Daten bleiben auf Ihrem Gerät
+          und in Ihrem iCloud-gestützten Health-Speicher; die iOS-Anwendung
+          kopiert die einschlägigen Datensätze in Ihr HealthLog-Konto, damit die
+          Weboberfläche dieselben Verläufe zeigen kann.
         </p>
         <p>
           Schreibzugriff wird für eine Teilmenge angefragt (Körpermasse,
@@ -400,9 +467,9 @@ export default function DatenschutzSeite() {
           Health (Aktivität und Fitness, Gesundheitswerte und Messungen, Schlaf,
           Profil), Oura (Tageswerte und Profil), Polar (die Lesebereiche von
           Accesslink), Strava (Aktivitäten, auch als privat markierte) und
-          Nightscout (Sensor-Glukosewerte von Ihrer eigenen
-          Nightscout-Instanz). Eine Verbindung lässt sich in HealthLog und beim
-          Anbieter widerrufen; danach wird nichts mehr abgerufen.
+          Nightscout (Sensor-Glukosewerte von Ihrer eigenen Nightscout-Instanz).
+          Eine Verbindung lässt sich in HealthLog und beim Anbieter widerrufen;
+          danach wird nichts mehr abgerufen.
         </p>
 
         <SubHeading>4.5 Medikamente</SubHeading>
@@ -526,7 +593,9 @@ export default function DatenschutzSeite() {
             nur, wenn Sie eine Strecke anhängen, und das Umweltmodul speichert
             nur einen groben Heimatort).
           </li>
-          <li>Keine Kennungen sozialer Netzwerke, kein Auslesen von Kontakten.</li>
+          <li>
+            Keine Kennungen sozialer Netzwerke, kein Auslesen von Kontakten.
+          </li>
           <li>
             Keine Produktanalyse durch Dritte und keine Nutzungstelemetrie. Die
             Anwendung enthält kein Analyse-SDK. Ein Betreiber kann eine eigene
@@ -595,7 +664,9 @@ export default function DatenschutzSeite() {
             setzen, für die Nutzer, die das Umweltmodul einschalten.
           </li>
           <li>
-            <span className="text-text-primary font-medium">Produktanalyse</span>
+            <span className="text-text-primary font-medium">
+              Produktanalyse
+            </span>
             : findet durch Dritte nicht statt.
           </li>
         </ul>
@@ -800,17 +871,20 @@ export default function DatenschutzSeite() {
           Die Software unterstützt weitere ausgehende Ziele, die jeweils aus
           bleiben, bis ein Betreiber sie einrichtet: Fehlerberichte an eine
           GlitchTip-Installation (Fehlermeldung und Aufrufstapel, angefragter
-          Pfad, User-Agent und eine Anfragekennung, durch eine
-          Bereinigungsstufe geführt, die Geheimnisse entfernt, und ohne
-          Gesundheitsdaten), Seitenstatistiken an eine Umami-Installation, die
-          strukturierten Protokolle an einen Loki-Endpunkt,
-          Benachrichtigungs-E-Mails über ein SMTP-Relay und die Anmeldung über
-          einen OpenID-Connect-Identitätsanbieter. Welche davon eine Instanz
-          nutzt, entscheidet der Betreiber und legt es selbst offen.
+          Pfad, User-Agent und eine Anfragekennung, durch eine Bereinigungsstufe
+          geführt, die Geheimnisse entfernt, und ohne Gesundheitsdaten),
+          Seitenstatistiken an eine Umami-Installation, die strukturierten
+          Protokolle an einen Loki-Endpunkt, Benachrichtigungs-E-Mails über ein
+          SMTP-Relay und die Anmeldung über einen
+          OpenID-Connect-Identitätsanbieter. Welche davon eine Instanz nutzt,
+          entscheidet der Betreiber und legt es selbst offen.
         </p>
       </Section>
 
-      <Section id="storage" title="7. Speicherung, Verschlüsselung, Aufbewahrung">
+      <Section
+        id="storage"
+        title="7. Speicherung, Verschlüsselung, Aufbewahrung"
+      >
         <ul className="list-disc space-y-1 pl-5">
           <li>
             Primärer Datenspeicher: PostgreSQL auf dem Server des Betreibers.
@@ -835,9 +909,9 @@ export default function DatenschutzSeite() {
             nie im Klartext.
           </li>
           <li>
-            Sicherungen: Die Anwendung hält jede Woche eine verschlüsselte
-            Kopie jedes Kontos in ihrer eigenen Datenbank. Sie kann außerdem
-            jede Nacht eine verschlüsselte Off-Host-Sicherung unter einem vom
+            Sicherungen: Die Anwendung hält jede Woche eine verschlüsselte Kopie
+            jedes Kontos in ihrer eigenen Datenbank. Sie kann außerdem jede
+            Nacht eine verschlüsselte Off-Host-Sicherung unter einem vom
             Datenbankschlüssel getrennten Schlüssel auf ein S3-kompatibles Ziel
             schreiben, sobald der Betreiber sie über die
             BACKUP_*-Umgebungsvariablen einrichtet. Wie lange Off-Host-Kopien
@@ -851,9 +925,9 @@ export default function DatenschutzSeite() {
             Sicherheitsprotokolle werden in der Voreinstellung 365 Tage
             aufbewahrt, Zustellversuche von Benachrichtigungen 90 Tage,
             Anfrageprotokolle so lange, wie die Protokolleinrichtung des
-            Betreibers sie hält. Bis August 2026 stand hier eine Frist
-            von 90 Tagen für das Sicherheitsprotokoll, was die Software nie so
-            gemacht hat: 365 Tage sind die eingebaute Voreinstellung, und jeder
+            Betreibers sie hält. Bis August 2026 stand hier eine Frist von 90
+            Tagen für das Sicherheitsprotokoll, was die Software nie so gemacht
+            hat: 365 Tage sind die eingebaute Voreinstellung, und jeder
             Betreiber setzt seine eigene Frist mit{" "}
             <Code>AUDIT_LOG_RETENTION_DAYS</Code>.
           </li>
@@ -897,8 +971,8 @@ export default function DatenschutzSeite() {
             <em className="not-italic">
               Einstellungen → Konto → Konto löschen
             </em>
-            . Die Aktion greift sofort durch alle nutzerbezogenen Tabellen;
-            wie mit Sicherungen umgegangen wird, steht in Abschnitt 7.
+            . Die Aktion greift sofort durch alle nutzerbezogenen Tabellen; wie
+            mit Sicherungen umgegangen wird, steht in Abschnitt 7.
           </li>
           <li>
             <span className="text-text-primary font-medium">
@@ -1098,9 +1172,9 @@ export default function DatenschutzSeite() {
           <ExternalLink href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement">
             Datenschutzerklärung
           </ExternalLink>
-          . Schreiben Sie dort keine personenbezogenen Daten hinein;
-          ein nicht öffentlicher Weg für den eigentlichen Austausch wird in der
-          ersten Antwort angeboten.
+          . Schreiben Sie dort keine personenbezogenen Daten hinein; ein nicht
+          öffentlicher Weg für den eigentlichen Austausch wird in der ersten
+          Antwort angeboten.
         </p>
         <p>
           Allgemeine Supportfragen gehören auf die{" "}

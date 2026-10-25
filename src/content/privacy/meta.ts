@@ -10,7 +10,7 @@ import { SITE_ORIGIN } from "@/content/learn/locales";
  * LAST_UPDATED whenever the text changes materially.
  */
 export const POLICY_VERSION = "1.39.3";
-export const LAST_UPDATED = "2026-09-26";
+export const LAST_UPDATED = "2026-10-25";
 
 export const PRIVACY_PATH_EN = "/privacy";
 export const PRIVACY_PATH_DE = "/de/privacy";

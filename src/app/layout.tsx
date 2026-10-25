@@ -385,7 +385,8 @@ export default function RootLayout({
           Rybbit analytics (self-hosted, served first-party under /insight/,
           proxied to the Rybbit API by nginx in the Dockerfile) is NOT part
           of the exported HTML. The site config enables session replay,
-          error, outbound and URL-parameter tracking and the tracker keeps a
+          clicks, copy, form, error, outbound and URL-parameter tracking (see
+          analytics-consent.tsx for the full set) and the tracker keeps a
           persistent visitor id in local storage, so it needs consent under
           TDDDG § 25 (1). AnalyticsConsent injects the script only after the
           visitor accepts; until then nothing loads and nothing is stored.

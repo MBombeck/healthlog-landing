@@ -18,6 +18,7 @@ import {
   SubProcessor,
   type SubProcessorLabels,
 } from "@/components/privacy/privacy-layout";
+import { AnalyticsSettingsButton } from "@/components/analytics-consent";
 
 /**
  * Public privacy policy for the marketing site (English).
@@ -79,11 +80,17 @@ const TOC = [
   { href: "#website-analytics", label: "3. This website (healthlog.dev)" },
   { href: "#data-we-collect", label: "4. Data collected" },
   { href: "#purpose", label: "5. Why each category is collected" },
-  { href: "#sub-processors", label: "6. Outside services the software can contact" },
+  {
+    href: "#sub-processors",
+    label: "6. Outside services the software can contact",
+  },
   { href: "#storage", label: "7. Storage, encryption, retention" },
   { href: "#rights", label: "8. Your rights (GDPR Art. 15-22)" },
   { href: "#medical-boundary", label: "9. Medical-device boundary (EU MDR)" },
-  { href: "#apple-categories", label: "10. Apple App Store privacy categories" },
+  {
+    href: "#apple-categories",
+    label: "10. Apple App Store privacy categories",
+  },
   { href: "#children", label: "11. Children" },
   { href: "#changes", label: "12. Changes to this policy" },
   { href: "#contact", label: "13. Contact" },
@@ -138,11 +145,10 @@ export default function PrivacyPage() {
           services it uses, and is the controller for that data.
         </p>
         <p>
-          This page has two parts. Section 3 covers this website,
-          healthlog.dev, which the maintainer runs and is responsible for.
-          Sections 2 and 4 to 11 describe what the software does with personal
-          data, in the web application version {POLICY_VERSION} and the
-          companion iOS application{" "}
+          This page has two parts. Section 3 covers this website, healthlog.dev,
+          which the maintainer runs and is responsible for. Sections 2 and 4 to
+          11 describe what the software does with personal data, in the web
+          application version {POLICY_VERSION} and the companion iOS application{" "}
           <em className="text-text-primary not-italic">HealthLog for iOS</em>{" "}
           (bundle identifier <Code>io.bombeck.healthlog</Code>) version 0.3 and
           later, so that a user can see what an instance does and an operator
@@ -157,13 +163,13 @@ export default function PrivacyPage() {
           central HealthLog cloud, no shared multi-tenant database, and no
           third-party analytics back-end. When somebody installs HealthLog on
           their own server, no health data leaves that server unless the
-          operator or the user explicitly configures an outbound integration
-          (an AI provider, a device sync, a Telegram bot, ntfy, push
-          notifications, an off-host backup target). By default the server
-          also sends a password hash prefix to Have I Been Pwned, asks the
-          GitHub releases API for the current version, and looks up the
-          location of sign-in addresses; none of these carries health data, and
-          each can be switched off. Section 6 lists every such destination.
+          operator or the user explicitly configures an outbound integration (an
+          AI provider, a device sync, a Telegram bot, ntfy, push notifications,
+          an off-host backup target). By default the server also sends a
+          password hash prefix to Have I Been Pwned, asks the GitHub releases
+          API for the current version, and looks up the location of sign-in
+          addresses; none of these carries health data, and each can be switched
+          off. Section 6 lists every such destination.
         </p>
         <p>
           A user may also give another account on the same instance access to
@@ -180,10 +186,10 @@ export default function PrivacyPage() {
           The second level lets the recipient add entries to the record from a
           closed list, and does not let them change or remove anything already
           recorded. The third lets them change and remove entries as well,
-          including ones the record owner made, and record the health
-          background held with the record. No level widens what the recipient
-          may read beyond the parts the invitation named, and no level reaches
-          the account around the record: credentials, second factor, connected
+          including ones the record owner made, and record the health background
+          held with the record. No level widens what the recipient may read
+          beyond the parts the invitation named, and no level reaches the
+          account around the record: credentials, second factor, connected
           services, API tokens, notification routing, module and threshold
           configuration, exports, and who else has access all stay with the
           account holder. Entries made under an access are stored as the record
@@ -224,13 +230,15 @@ export default function PrivacyPage() {
           >
             imprint
           </Link>
-          . It is a set of static pages. It sets no cookies and no
-          advertising or cross-site identifiers, and therefore shows no consent
-          banner. The only thing it stores on the visitor&apos;s device is an
-          explicit language choice made with the switcher on the guides, kept
-          in the browser&apos;s local storage so the choice holds on the next
-          visit. It is written only when you make that choice and serves only
-          that function, so under TDDDG § 25 (2) it needs no consent.
+          . It is a set of static pages. It sets no cookies and no advertising
+          or cross-site identifiers. Without your consent it keeps only two
+          entries in the browser&apos;s local storage, each needed for something
+          you asked for and therefore exempt from consent under TDDDG § 25 (2)
+          no. 2: an explicit language choice made with the switcher on the
+          guides, written only when you make that choice so it holds on the next
+          visit, and your answer to the analytics question described below (
+          <Code>hl-analytics-consent</Code>), so the question is not asked again
+          on every page.
         </p>
         <p>
           The pages are served from a server the maintainer rents from{" "}
@@ -246,8 +254,8 @@ export default function PrivacyPage() {
           as a reverse proxy. Cloudflare therefore processes every request to
           this website, including the IP address, the requested address and the
           browser&apos;s request headers, on its global network. Legal basis:
-          GDPR Art. 6 (1) (f), the legitimate interest in delivering the
-          website reliably and protecting it against attacks.
+          GDPR Art. 6 (1) (f), the legitimate interest in delivering the website
+          reliably and protecting it against attacks.
         </p>
         <p>
           Fonts and images are part of the website itself and load from its own
@@ -257,37 +265,93 @@ export default function PrivacyPage() {
           connections.
         </p>
         <p>
-          Aggregate visit statistics are collected with{" "}
+          Visit statistics are collected with{" "}
           <ExternalLink href="https://rybbit.com">Rybbit</ExternalLink>, an
-          open-source, cookieless analytics tool running on a server the
-          maintainer runs; no analytics provider receives the data. The
-          tracking script and its collection endpoint are served from this
+          open-source analytics tool running on a server the maintainer runs,
+          and only if you agree. On your first visit a notice at the bottom of
+          the page asks for that. Accept and Decline carry equal weight and
+          nothing is preselected. Until you accept, the tracking script is not
+          part of the page: it is not loaded, nothing is sent, and nothing is
+          stored on your device for analytics. If you decline, it stays that
+          way.
+        </p>
+        <p>
+          If you accept, the page loads the tracking script from this
           website&apos;s own address under <Code>/insight/</Code>, and the
           website forwards the events to the analytics server, passing through
-          Cloudflare like any other request. The visitor&apos;s IP address is
-          forwarded so the country and region can be derived. Recorded per visit are the page
-          address, the referring address, browser, operating system, device
-          type, country and region. Visitors are counted through a hash that is
-          re-salted every day, so the raw IP address is never stored and no
-          visitor can be identified or followed from one day to the next.
-          Session recording, error capture and form or click tracking are
-          switched off for this site.
-          Legal basis: GDPR Art. 6 (1) (f), the legitimate interest in knowing
-          which pages are actually read. Because the analytics read nothing from and
-          write nothing to the visitor&apos;s device, consent under TDDDG § 25
-          is not required.
+          Cloudflare like any other request. No analytics provider receives the
+          data. From then on the script:
+        </p>
+        <ul className="list-disc space-y-1 pl-5">
+          <li>
+            stores a random visitor id in the browser&apos;s local storage (
+            <Code>rybbit-visitor-id</Code>), so later visits from the same
+            browser are counted as the same visitor. It stays until you withdraw
+            consent or clear this website&apos;s data in the browser.
+          </li>
+          <li>
+            records every page view, including changes of page without a reload:
+            the page address with its URL parameters (for example campaign tags
+            such as <Code>utm_source</Code>), the page title, the referring
+            address, browser, operating system, device type, screen size,
+            browser language, country and region, and how fast the page loaded.
+          </li>
+          <li>
+            records clicks on buttons and on links that lead to other websites,
+            with the button&apos;s label or the link&apos;s target address.
+          </li>
+          <li>
+            records when text is copied, with the copied text (at most 500
+            characters).
+          </li>
+          <li>
+            records when a form is sent or a form field is changed, with the
+            name and type of the form or field but never what you typed.
+            Password fields are left out entirely.
+          </li>
+          <li>
+            records script errors that occur on the page, with the error message
+            and where in the code it happened.
+          </li>
+          <li>
+            records a session replay: a reconstruction of the page as you saw
+            it, with scrolling, mouse movement and clicks, so the visit can be
+            played back. Anything typed into a form field is masked and never
+            recorded.
+          </li>
+        </ul>
+        <p>
+          Your IP address is passed on so the country and region can be derived.
+          It is not stored; storing IP addresses is switched off for this site.
+          The data stays on the maintainer&apos;s analytics server and is used
+          only to see which pages are read and where the website breaks.
+        </p>
+        <p>
+          Legal basis: your consent, GDPR Art. 6 (1) (a), and for storing the
+          visitor id on your device and reading it back, TDDDG § 25 (1). You can
+          withdraw consent at any time with effect for the future: open{" "}
+          <AnalyticsSettingsButton className="text-purple hover:text-cyan cursor-pointer underline underline-offset-2">
+            Analytics settings
+          </AnalyticsSettingsButton>{" "}
+          (also at the bottom of every page) and choose Decline. The page then
+          deletes the visitor id and reloads without the script. Clearing this
+          website&apos;s data in the browser removes the visitor id and your
+          choice as well; you are then asked again. Withdrawal does not affect
+          the lawfulness of what was recorded before it.
         </p>
         <p>
           The same server, behind the same Cloudflare setup, also runs two
-          related sites. docs.healthlog.dev is the static documentation. It
-          uses no analytics and no cookies; it keeps a light or dark theme
-          choice, and the tab you picked in code examples, in the
-          browser&apos;s local storage. demo.healthlog.dev is a public demo
-          instance of the software, signed in with shared demo credentials and
-          filled with generated sample data. It works like any instance
-          described in sections 4 to 7, so signing in creates a session and an
-          audit entry in the demo&apos;s own database on that server. Do not
-          enter real health data there.
+          related sites. docs.healthlog.dev is the static documentation. It sets
+          no cookies; it keeps a light or dark theme choice, and the tab you
+          picked in code examples, in the browser&apos;s local storage. It asks
+          for its own analytics consent, separately from this website, and with
+          consent records the same as described above, loading the script
+          directly from the analytics server at rybbit.bombeck.io.
+          demo.healthlog.dev is a public demo instance of the software, signed
+          in with shared demo credentials and filled with generated sample data.
+          It works like any instance described in sections 4 to 7, so signing in
+          creates a session and an audit entry in the demo&apos;s own database
+          on that server. Do not enter real health data there.
         </p>
         <p>
           If you write to the contact address in section 13, the message and
@@ -305,9 +369,9 @@ export default function PrivacyPage() {
       <Section id="data-we-collect" title="4. Data collected">
         <p>
           HealthLog records observations the user enters themselves and the
-          health signals the user has explicitly connected through a
-          third-party integration. The categories below are exhaustive for the
-          released feature set.
+          health signals the user has explicitly connected through a third-party
+          integration. The categories below are exhaustive for the released
+          feature set.
         </p>
 
         <SubHeading>4.1 Account and authentication</SubHeading>
@@ -381,18 +445,18 @@ export default function PrivacyPage() {
           provider&apos;s own OAuth consent screen. HealthLog stores the OAuth
           refresh and access tokens (encrypted at the column level) and the
           identifier the provider assigns to the account, then pulls the data
-          the granted scope covers: Withings (body weight and composition,
-          blood pressure, blood glucose, body temperature, activity totals,
-          sleep sessions, SpO₂, heart-rate variability, ECG recordings where
+          the granted scope covers: Withings (body weight and composition, blood
+          pressure, blood glucose, body temperature, activity totals, sleep
+          sessions, SpO₂, heart-rate variability, ECG recordings where
           available), WHOOP (recovery, sleep, workouts, cycles, profile, body
           measurements), Fitbit (activity, cardio fitness, heart rate, oxygen
           saturation, respiratory rate, sleep, weight, profile), Google Health
           (activity and fitness, health metrics and measurements, sleep,
           profile), Oura (daily summaries and profile), Polar (the Accesslink
           read collections), Strava (activities, including those marked
-          private), and Nightscout (sensor glucose values from the
-          user&apos;s own Nightscout instance). A connection can be revoked in
-          HealthLog and at the provider; revoking stops further syncing.
+          private), and Nightscout (sensor glucose values from the user&apos;s
+          own Nightscout instance). A connection can be revoked in HealthLog and
+          at the provider; revoking stops further syncing.
         </p>
 
         <SubHeading>4.5 Medications</SubHeading>
@@ -468,9 +532,9 @@ export default function PrivacyPage() {
             connected that notification channel.
           </li>
           <li>
-            Home location for the optional environmental-context module: a
-            place the user picks, stored as coordinates rounded to two decimal
-            places (roughly one kilometre) together with its timezone.
+            Home location for the optional environmental-context module: a place
+            the user picks, stored as coordinates rounded to two decimal places
+            (roughly one kilometre) together with its timezone.
           </li>
         </ul>
 
@@ -587,16 +651,16 @@ export default function PrivacyPage() {
 
       <Section id="sub-processors" title="6. Third-party sub-processors">
         <p>
-          The following outside services receive personal data from an
-          instance when the matching feature is in use. The list is exhaustive
-          for the released feature set. Every connected device or service and
-          every AI provider is used only for a feature the user has explicitly
-          enabled, and the off-host backup only when the operator configures
-          it. The password-breach check, the update check and the sign-in
-          geolocation are defaults that apply without a per-user choice, and
-          the operator can switch each of them off. Where an instance runs, and
-          which hosting provider it uses, is the operator&apos;s choice and part
-          of the operator&apos;s own disclosure.
+          The following outside services receive personal data from an instance
+          when the matching feature is in use. The list is exhaustive for the
+          released feature set. Every connected device or service and every AI
+          provider is used only for a feature the user has explicitly enabled,
+          and the off-host backup only when the operator configures it. The
+          password-breach check, the update check and the sign-in geolocation
+          are defaults that apply without a per-user choice, and the operator
+          can switch each of them off. Where an instance runs, and which hosting
+          provider it uses, is the operator&apos;s choice and part of the
+          operator&apos;s own disclosure.
         </p>
         <ul className="grid gap-3">
           <SubProcessor
@@ -813,30 +877,30 @@ export default function PrivacyPage() {
           </li>
           <li>
             Backups: the application keeps a weekly encrypted copy of each
-            account in its own database. It can also write an encrypted
-            off-host backup every night to an S3-compatible target, under a key
-            separate from the database key, once the operator configures it
-            through the BACKUP_* environment variables. How long off-host copies
-            live is set by the lifecycle rule of the operator&apos;s bucket.
-            What the server or the hosting provider backs up at their own level
-            is outside the software and up to the operator.
+            account in its own database. It can also write an encrypted off-host
+            backup every night to an S3-compatible target, under a key separate
+            from the database key, once the operator configures it through the
+            BACKUP_* environment variables. How long off-host copies live is set
+            by the lifecycle rule of the operator&apos;s bucket. What the server
+            or the hosting provider backs up at their own level is outside the
+            software and up to the operator.
           </li>
           <li>
             Retention: account data is retained until the user requests erasure
             (see section 8) or the account is administratively closed. Audit
             logs are retained for 365 days by default; notification-delivery
             attempts for 90 days; request logs as long as the operator&apos;s
-            log setup keeps them. This page said 90 days
-            for the audit log until August 2026, which was never what the
-            software did: 365 days is the built-in default, and every operator
-            sets their own window with <Code>AUDIT_LOG_RETENTION_DAYS</Code>.
+            log setup keeps them. This page said 90 days for the audit log until
+            August 2026, which was never what the software did: 365 days is the
+            built-in default, and every operator sets their own window with{" "}
+            <Code>AUDIT_LOG_RETENTION_DAYS</Code>.
           </li>
           <li>
             Deletion: the account-deletion endpoint cascades through every
             user-scoped table, including health observations, sessions, audit
             log, integration tokens, notification subscriptions, Coach
-            conversations, facts and plans, achievements, uploaded files and
-            the weekly copies in the database. Deletion is immediate in the live
+            conversations, facts and plans, achievements, uploaded files and the
+            weekly copies in the database. Deletion is immediate in the live
             database. Where the operator has configured off-host backups, a
             background job deletes the account&apos;s copies from the bucket
             after the deletion, and retries every night until none is left.
@@ -864,8 +928,9 @@ export default function PrivacyPage() {
             <span className="text-text-primary font-medium">
               Right to erasure (Art. 17)
             </span>
-            : <em className="not-italic">Settings → Account → Delete account</em>
-            . The action cascades immediately through user-scoped tables; see
+            :{" "}
+            <em className="not-italic">Settings → Account → Delete account</em>.
+            The action cascades immediately through user-scoped tables; see
             section 7 for how backups are handled.
           </li>
           <li>
@@ -959,7 +1024,9 @@ export default function PrivacyPage() {
             : linked to the user; used for app functionality.
           </li>
           <li>
-            <span className="text-text-primary font-medium">Sensitive Info</span>{" "}
+            <span className="text-text-primary font-medium">
+              Sensitive Info
+            </span>{" "}
             (blood pressure, glucose, medications): linked to the user; used for
             app functionality.
           </li>
@@ -1047,8 +1114,8 @@ export default function PrivacyPage() {
           >
             support@healthlog.dev
           </a>
-          . This mailbox reaches the maintainer directly and is the route to
-          use for anything containing personal data.
+          . This mailbox reaches the maintainer directly and is the route to use
+          for anything containing personal data.
         </p>
         <p>
           As an alternative, a request can be raised as a public issue at{" "}

@@ -33,6 +33,9 @@ const OPEN_EVENT = "hl-analytics-consent-open";
 
 const RYBBIT_SRC = "/insight/script.js";
 const RYBBIT_SITE_ID = "2";
+// The site config (Rybbit site 2) has session replay, web vitals, errors,
+// outbound links, URL parameters, button clicks, copy and form interactions
+// on; the banner and privacy section 3 describe exactly that set.
 // What the tracker writes (namespace "rybbit"): the persistent visitor id and
 // an identified-user id in local storage, the replay sampling flag in session
 // storage. Cleared when consent is declined or withdrawn.
@@ -89,7 +92,7 @@ const TEXT = {
   en: {
     lang: "en",
     title: "Analytics",
-    body: "May this site measure your visit? If you agree, it loads Rybbit, analytics on the maintainer's own server. It stores a random visitor id in your browser and records pages viewed, outbound links, errors and a session replay with form input masked. Nothing loads before you choose, and you can change it any time under Analytics settings in the footer.",
+    body: "May this site measure your visit? If you agree, it loads Rybbit, analytics on the maintainer's own server. It stores a random visitor id in your browser and records pages viewed, clicks, copied text, form use without what you type, errors and a session replay with form input masked. Nothing loads before you choose, and you can change it any time under Analytics settings in the footer.",
     privacy: "Privacy policy, section 3",
     privacyHref: "/privacy#website-analytics",
     accept: "Accept",
@@ -103,7 +106,7 @@ const TEXT = {
   de: {
     lang: "de",
     title: "Webanalyse",
-    body: "Darf diese Website Ihren Besuch messen? Dann lädt sie Rybbit, eine Webanalyse auf dem eigenen Server des Entwicklers. Rybbit speichert eine zufällige Besucherkennung im Browser und erfasst aufgerufene Seiten, Klicks auf externe Links, Fehler und eine Sitzungsaufzeichnung mit verdeckten Formulareingaben. Vor Ihrer Wahl lädt nichts, und Sie können sie jederzeit unter Analyse-Einstellungen am Seitenende ändern.",
+    body: "Darf diese Website Ihren Besuch messen? Dann lädt sie Rybbit, eine Webanalyse auf dem eigenen Server des Entwicklers. Rybbit speichert eine zufällige Besucherkennung im Browser und erfasst aufgerufene Seiten, Klicks, kopierten Text, die Nutzung von Formularen ohne Ihre Eingaben, Fehler und eine Sitzungsaufzeichnung mit verdeckten Formulareingaben. Vor Ihrer Wahl lädt nichts, und Sie können sie jederzeit unter Analyse-Einstellungen am Seitenende ändern.",
     privacy: "Datenschutzerklärung, Abschnitt 3",
     privacyHref: "/de/privacy#website-analytics",
     accept: "Zustimmen",
