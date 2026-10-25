@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AnalyticsSettingsButton } from "@/components/analytics-consent";
 
 /**
  * Layout pieces shared by the English (/privacy) and German (/de/privacy)
@@ -228,6 +229,9 @@ export function PrivacyShell({
 
         <footer className="text-text-tertiary mt-12 border-t border-[rgba(98,114,164,0.08)] pt-6 text-xs">
           {footer}
+          <p className="mt-2">
+            <AnalyticsSettingsButton className="hover:text-text-primary cursor-pointer underline-offset-2 hover:underline" />
+          </p>
         </footer>
       </main>
     </div>

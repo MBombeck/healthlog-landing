@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SITE_ORIGIN } from "@/content/learn/locales";
+import { AnalyticsSettingsButton } from "@/components/analytics-consent";
 
 /**
  * Public support landing.
@@ -284,6 +285,9 @@ export default function SupportPage() {
               PolyForm Noncommercial 1.0.0
             </a>
             . Last updated {LAST_UPDATED}.
+          </p>
+          <p className="mt-2">
+            <AnalyticsSettingsButton className="hover:text-text-primary cursor-pointer underline-offset-2 hover:underline" />
           </p>
         </footer>
       </main>

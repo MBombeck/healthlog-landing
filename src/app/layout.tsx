@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
+import { AnalyticsConsent } from "@/components/analytics-consent";
+
 import { SITE_ORIGIN } from "@/content/learn/locales";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -374,31 +376,21 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
         />
-        {/*
-          Rybbit analytics — self-hosted on ops-01 (rybbit.bombeck.io),
-          cookieless: it stores nothing on the visitor's device, so
-          TDDDG § 25 needs no consent banner. Visitors are counted through a
-          daily re-salted hash; session replay, error capture, form and
-          click tracking are disabled server-side for this site.
-          The script and its collect endpoint are served first-party under
-          /insight/ — nginx in the Dockerfile proxies that prefix to the
-          Rybbit API, because third-party analytics hosts sit on common
-          filter lists and a blocked tag counts nobody. The tracker derives
-          its API base from the script URL (everything before /script.js),
-          so the path must keep that suffix. The nginx CSP allow-lists only
-          'self' for script-src and connect-src — nothing leaves for a
-          third-party origin.
-        */}
-        <script
-          defer
-          src="/insight/script.js"
-          data-site-id="2"
-        />
       </head>
       <body
         className={`${plusJakarta.variable} ${dmSans.variable} ${jetbrainsMono.variable} antialiased`}
       >
         {children}
+        {/*
+          Rybbit analytics (self-hosted, served first-party under /insight/,
+          proxied to the Rybbit API by nginx in the Dockerfile) is NOT part
+          of the exported HTML. The site config enables session replay,
+          error, outbound and URL-parameter tracking and the tracker keeps a
+          persistent visitor id in local storage, so it needs consent under
+          TDDDG § 25 (1). AnalyticsConsent injects the script only after the
+          visitor accepts; until then nothing loads and nothing is stored.
+        */}
+        <AnalyticsConsent />
       </body>
     </html>
   );

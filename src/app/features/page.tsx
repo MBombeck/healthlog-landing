@@ -4,6 +4,7 @@ import Link from "next/link";
 import { AppScreen, type AppScreenName } from "@/components/AppScreen";
 import { BrowserFrame } from "@/components/BrowserFrame";
 import { SITE_ORIGIN } from "@/content/learn/locales";
+import { AnalyticsSettingsButton } from "@/components/analytics-consent";
 
 /**
  * Marketing features page.
@@ -365,6 +366,9 @@ export default function FeaturesPage() {
               PolyForm Noncommercial 1.0.0
             </a>
             .
+          </p>
+          <p className="mt-2">
+            <AnalyticsSettingsButton className="hover:text-text-primary cursor-pointer underline-offset-2 hover:underline" />
           </p>
         </footer>
       </main>

@@ -7,6 +7,7 @@ import { TerminalBlock } from "@/components/TerminalBlock";
 import { AppScreen } from "@/components/AppScreen";
 import { BrowserFrame } from "@/components/BrowserFrame";
 import { PhoneFrame } from "@/components/PhoneFrame";
+import { AnalyticsSettingsButton } from "@/components/analytics-consent";
 
 /* ── SVG Icons ──────────────────────────────────── */
 
@@ -100,6 +101,25 @@ function ShieldFooterIcon({ className = "w-4 h-4" }: { className?: string }) {
     >
       <path
         d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function SlidersIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      className={className}
+      aria-hidden="true"
+    >
+      <path
+        d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1M15 4v4M9 10v4M17 16v4"
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
@@ -1066,6 +1086,10 @@ export default function Home() {
               <LifeBuoyIcon className="w-4 h-4" />
               Support
             </Link>
+            <AnalyticsSettingsButton className="flex cursor-pointer items-center gap-1.5 py-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm">
+              <SlidersIcon className="w-4 h-4" />
+              Analytics settings
+            </AnalyticsSettingsButton>
           </div>
         </div>
         <p className="max-w-5xl mx-auto mt-6 text-center text-text-tertiary text-xs font-mono">

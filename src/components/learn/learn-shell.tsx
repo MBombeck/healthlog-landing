@@ -10,6 +10,7 @@ import {
   type Locale,
 } from "@/content/learn/locales";
 import { LanguageSwitcher } from "./language-switcher";
+import { AnalyticsSettingsButton } from "@/components/analytics-consent";
 
 /**
  * Shared chrome for every /learn page (hub + articles), in every language.
@@ -81,6 +82,7 @@ export function LearnShell({
             >
               {ui.allGuides}
             </Link>
+            <AnalyticsSettingsButton className="hover:text-text-primary cursor-pointer transition-colors" />
           </div>
         </div>
       </footer>
