@@ -37,7 +37,11 @@ COPY --from=builder /app/out /usr/share/nginx/html
 # holds internal addresses) - both as X-Forwarded-For and X-Real-IP, because
 # the analytics host's own reverse proxy rewrites X-Real-IP to the last hop
 # and Rybbit reads X-Real-IP first. Rybbit uses it for the country/region
-# lookup and then hashes it away. Set-Cookie is
+# lookup and then hashes it away. The visitor IP is picked with a `map` in
+# http context, not with `if` inside the location: an `if` there moves the
+# request into its own implicit location, which silently dropped both
+# proxy_set_header lines, so every visit was geolocated to this server
+# (Nuremberg). Set-Cookie is
 # stripped so the analytics host can never set state on the visitor's device.
 #
 # The `/.well-known/apple-app-site-association` exact-match block runs
@@ -47,7 +51,11 @@ COPY --from=builder /app/out /usr/share/nginx/html
 # the default `application/octet-stream` and Apple would reject the
 # response. The `default_type` override scopes the content type to that
 # one path; no other request is affected.
-RUN echo 'server { \
+RUN echo 'map $http_cf_connecting_ip $visitor_ip { \
+    "" $remote_addr; \
+    default $http_cf_connecting_ip; \
+} \
+server { \
     listen 80; \
     server_name _; \
     root /usr/share/nginx/html; \
@@ -73,8 +81,6 @@ RUN echo 'server { \
         proxy_ssl_server_name on; \
         proxy_ssl_name rybbit.bombeck.io; \
         proxy_set_header Host rybbit.bombeck.io; \
-        set $visitor_ip $remote_addr; \
-        if ($http_cf_connecting_ip) { set $visitor_ip $http_cf_connecting_ip; } \
         proxy_set_header X-Forwarded-For $visitor_ip; \
         proxy_set_header X-Real-IP $visitor_ip; \
         proxy_set_header X-Forwarded-Proto https; \
