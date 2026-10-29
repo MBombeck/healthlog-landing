@@ -89,7 +89,7 @@ export const metadata: Metadata = {
         url: "https://healthlog.dev/og-image.png",
         width: 1200,
         height: 630,
-        alt: "HealthLog — Self-hosted health tracking dashboard showing weight trends, medication compliance, and mood tracking",
+        alt: "HealthLog dashboard with the health score, today's medications, sleep and cycle, and tiles for weight, blood pressure, resting heart rate, heart-rate variability and mood",
       },
     ],
   },
@@ -268,7 +268,7 @@ export default function RootLayout({
         name: "Which devices and services does HealthLog integrate with?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Withings devices (Body+, BPM Connect, ScanWatch) sync over OAuth2 with near-real-time webhooks, and Apple Health syncs live through the iOS app or via export import. On Android you can import a Health Connect export. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
+          text: "Withings, WHOOP, Oura, Polar, Google Health (Fitbit and Pixel), Strava, Nightscout and Dawarich sync over OAuth or your own endpoints, and Apple Health syncs live through the iOS app or via export import. On Android you can import a Health Connect export. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
         },
       },
       {
