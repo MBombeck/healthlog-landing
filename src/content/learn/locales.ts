@@ -1,4 +1,4 @@
-// Locale configuration for the /learn guides. Mirrors the HealthLog app's six
+// Locale configuration for the /learn guides. Six of the HealthLog app's nine
 // locales. English is the default and lives at the unprefixed /learn; the other
 // five are served under /<lang>/learn.
 

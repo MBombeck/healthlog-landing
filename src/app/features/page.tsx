@@ -169,7 +169,7 @@ const groups: Group[] = [
       ["Sign-in", "Passkeys, password with 2FA, or OpenID Connect single sign-on."],
       ["No telemetry", "Three small checks (update, password breach, sign-in location), none with health data, each can be switched off."],
       ["API", "A documented REST API with scoped tokens and an OpenAPI 3.1 contract."],
-      ["Languages", "English, German, Spanish, French, Italian, Polish and Korean."],
+      ["Languages", "English, German, Spanish, French, Italian, Polish, Korean, Dutch and Brazilian Portuguese."],
       ["Not a medical device", "HealthLog shows and explains your data. It does not diagnose."],
     ],
   },

@@ -733,7 +733,7 @@ export default function DatenschutzSeite() {
           <SubProcessor
             labels={LABELS}
             name="Fitbit (Google LLC)"
-            role="Geräte-Synchronisation, wenn Sie ein Fitbit-Konto verbinden. Angefragter Umfang: Aktivität, kardiorespiratorische Fitness, Herzfrequenz, Sauerstoffsättigung, Atemfrequenz, Schlaf, Gewicht, Profil."
+            role="Geräte-Synchronisation, wenn Sie ein Fitbit-Konto verbinden. Angefragter Umfang: Aktivität, kardiorespiratorische Fitness, Herzfrequenz, Sauerstoffsättigung, Atemfrequenz, Schlaf, Gewicht, Profil. Google schaltet diese Fitbit-Web-API am 30. Oktober 2026 ab; danach ruft HealthLog sie nicht mehr auf, behält die bereits importierten Daten, und Fitbit- und Pixel-Geräte werden über Google Health verbunden."
             data="OAuth-Token, die Fitbit-Nutzerkennung und die von diesem Umfang erfassten Datensätze."
             location="Infrastruktur des Anbieters. Die Anbindung legt keine Region fest."
             policyUrl="https://www.fitbit.com/global/de/legal/privacy-policy"
