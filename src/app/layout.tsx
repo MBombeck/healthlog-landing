@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "https://healthlog.dev/og-image.png",
+        url: "https://healthlog.dev/og-image-source-available.png",
         width: 1200,
         height: 630,
         alt: "HealthLog dashboard with the health score, today's medications, sleep and cycle, and tiles for weight, blood pressure, resting heart rate, heart-rate variability and mood",
@@ -98,7 +98,7 @@ export const metadata: Metadata = {
     title: "HealthLog — Self-Hosted Health Tracking App",
     description:
       "Track weight, blood pressure, glucose, medications, and mood on your own server. Native iOS app with live Apple Health sync. AES-256-GCM encrypted, source available, Docker-ready.",
-    images: ["https://healthlog.dev/og-image.png"],
+    images: ["https://healthlog.dev/og-image-source-available.png"],
   },
   robots: {
     index: true,
@@ -207,7 +207,7 @@ export default function RootLayout({
       "Record search in the command palette (⌘K): visits, conditions, documents down to their text, vaccinations, lab results, medications, symptoms, workouts and notes, matched regardless of case and accents",
       "Medications that record their own doses: from the moment it is switched on, each scheduled dose is marked as taken, without reminders and never over a dose logged by hand",
     ],
-    screenshot: "https://healthlog.dev/og-image.png",
+    screenshot: "https://healthlog.dev/og-image-source-available.png",
     // Tracks the latest stable HealthLog server release. Bumped by hand with
     // each release.
     softwareVersion: "1.43.0",
@@ -332,7 +332,7 @@ export default function RootLayout({
         url: "https://healthlog.dev",
         logo: {
           "@type": "ImageObject",
-          url: "https://healthlog.dev/og-image.png",
+          url: "https://healthlog.dev/og-image-source-available.png",
         },
         sameAs: ["https://github.com/MBombeck/HealthLog"],
       },

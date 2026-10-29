@@ -46,13 +46,13 @@ export async function generateMetadata({
       type: "website",
       siteName: "HealthLog",
       locale: "en_US",
-      images: ["/og-image.png"],
+      images: ["/og-image-source-available.png"],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ["/og-image.png"],
+      images: ["/og-image-source-available.png"],
     },
   };
 }
