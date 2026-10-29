@@ -111,7 +111,7 @@ const groups: Group[] = [
     color: "#ff79c6",
     items: [
       ["Day view", "Any date opens its day beside the page you are on, or as a sheet on a phone."],
-      ["Timeline", "Conditions, medications, vaccinations, visits, labs and life events on one axis, from years down to weeks."],
+      ["Timeline", "Conditions, medications, vaccinations, visits, labs and life events on one axis, from years down to weeks. Your values and lab markers run underneath, each lab reading as measured against its reference range."],
       ["Record search", "⌘K finds visits, conditions, document text, lab results, medications, workouts and your own notes."],
       ["AI Coach", "Answers from your own numbers and shows the steps it took. It asks when a question is ambiguous and remembers health details only with your consent."],
       ["AI providers", "Your ChatGPT subscription, an OpenAI or Anthropic key, a local model on Ollama, LM Studio or vLLM, or none. A frugal, standard or full usage level, within the limit the admin sets."],
