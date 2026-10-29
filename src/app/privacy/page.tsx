@@ -706,7 +706,7 @@ export default function PrivacyPage() {
           <SubProcessor
             labels={LABELS}
             name="Fitbit (Google LLC)"
-            role="Device data sync when the user connects a Fitbit account. Scope requested: activity, cardio fitness, heart rate, oxygen saturation, respiratory rate, sleep, weight, profile. Google turns this Fitbit Web API off on 30 October 2026; from then HealthLog no longer contacts it, keeps what was already imported, and Fitbit and Pixel devices connect through Google Health."
+            role="Device data sync when the user connects a Fitbit account. Scope requested: activity, cardio fitness, heart rate, oxygen saturation, respiratory rate, sleep, weight, profile. Google switched this Fitbit Web API off on 30 October 2026. Since then HealthLog no longer contacts it and keeps what was already imported; Fitbit and Pixel devices connect through Google Health."
             data="OAuth tokens, the Fitbit user identifier, and the records covered by that scope."
             location="Provider-operated infrastructure. The integration does not pin a region."
             policyUrl="https://www.fitbit.com/global/en/legal/privacy-policy"
