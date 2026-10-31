@@ -333,19 +333,16 @@ export default function DatenschutzSeite() {
           weitere Seiten. docs.healthlog.dev ist die statische Dokumentation.
           Sie setzt keine Cookies; sie speichert eine Wahl zwischen hellem und
           dunklem Design sowie den gewählten Reiter in Codebeispielen im lokalen
-          Speicher des Browsers. Sie fragt getrennt von dieser Website nach
-          ihrer eigenen Einwilligung zur Webanalyse. Mit Einwilligung lädt sie
-          das Mess-Skript von Rybbit direkt vom Analyseserver unter
-          rybbit.bombeck.io; es speichert eine zufällige Besucherkennung im
-          Browser und erfasst Seitenaufrufe mit URL-Parametern, Klicks,
-          kopierten Text, Formularnutzung ohne Ihre Eingaben, Fehler und eine
-          Sitzungsaufzeichnung mit verdeckten Formulareingaben, wie ihr eigener
-          Hinweis erklärt. demo.healthlog.dev ist eine öffentliche Demo-Instanz
-          der Software, angemeldet mit gemeinsamen Demo-Zugangsdaten und gefüllt
-          mit erzeugten Beispieldaten. Sie arbeitet wie jede in den Abschnitten
-          4 bis 7 beschriebene Instanz; eine Anmeldung legt also eine Sitzung
-          und einen Protokolleintrag in der eigenen Datenbank der Demo auf
-          diesem Server an. Geben Sie dort keine echten Gesundheitsdaten ein.
+          Speicher des Browsers. Sie zählt Besuche genauso wie oben beschrieben,
+          mit demselben Widerspruch am Seitenende, nur schicken ihre paar Zeilen
+          Code die Ereignisse direkt an den Analyseserver unter
+          rybbit.bombeck.io statt über ihre eigene Adresse. demo.healthlog.dev
+          ist eine öffentliche Demo-Instanz der Software, angemeldet mit
+          gemeinsamen Demo-Zugangsdaten und gefüllt mit erzeugten Beispieldaten.
+          Sie arbeitet wie jede in den Abschnitten 4 bis 7 beschriebene Instanz;
+          eine Anmeldung legt also eine Sitzung und einen Protokolleintrag in
+          der eigenen Datenbank der Demo auf diesem Server an. Geben Sie dort
+          keine echten Gesundheitsdaten ein.
         </p>
         <p>
           Wenn Sie an die Kontaktadresse in Abschnitt 13 schreiben, werden die
