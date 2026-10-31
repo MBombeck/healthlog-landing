@@ -320,18 +320,16 @@ export default function PrivacyPage() {
           The same server, behind the same Cloudflare setup, also runs two
           related sites. docs.healthlog.dev is the static documentation. It sets
           no cookies; it keeps a light or dark theme choice, and the tab you
-          picked in code examples, in the browser&apos;s local storage. It asks
-          for its own analytics consent, separately from this website. With
-          consent it loads Rybbit&apos;s tracking script directly from the
-          analytics server at rybbit.bombeck.io, which stores a random visitor
-          id in the browser and records page views with URL parameters, clicks,
-          copied text, form use without what you type, errors and a session
-          replay with form input masked, as its own notice explains.
-          demo.healthlog.dev is a public demo instance of the software, signed
-          in with shared demo credentials and filled with generated sample data.
-          It works like any instance described in sections 4 to 7, so signing in
-          creates a session and an audit entry in the demo&apos;s own database
-          on that server. Do not enter real health data there.
+          picked in code examples, in the browser&apos;s local storage. It
+          counts visits the same way as described above, with the same objection
+          in its footer, except that its few lines of code send the events
+          directly to the analytics server at rybbit.bombeck.io rather than
+          through its own address. demo.healthlog.dev is a public demo instance
+          of the software, signed in with shared demo credentials and filled
+          with generated sample data. It works like any instance described in
+          sections 4 to 7, so signing in creates a session and an audit entry in
+          the demo&apos;s own database on that server. Do not enter real health
+          data there.
         </p>
         <p>
           If you write to the contact address in section 13, the message and
