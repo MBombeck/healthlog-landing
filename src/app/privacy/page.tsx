@@ -278,8 +278,10 @@ export default function PrivacyPage() {
         <ul className="list-disc space-y-1 pl-5">
           <li>
             a page view, including a change of page without a reload, with the
-            page address without URL parameters, the page title and, for the
-            first page of a visit, the address of the referring website
+            page address without URL parameters except the campaign tags{" "}
+            <Code>ref</Code>, <Code>utm_source</Code>, <Code>utm_medium</Code>{" "}
+            and <Code>utm_campaign</Code>, which say where a link was shared,
+            the page title and, for the first page of a visit, the address of the referring website
             reduced to its domain;
           </li>
           <li>
