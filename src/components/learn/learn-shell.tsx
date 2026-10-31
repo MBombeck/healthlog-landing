@@ -10,7 +10,7 @@ import {
   type Locale,
 } from "@/content/learn/locales";
 import { LanguageSwitcher } from "./language-switcher";
-import { AnalyticsSettingsButton } from "@/components/analytics-consent";
+import { AnalyticsSettingsButton } from "@/components/analytics";
 
 /**
  * Shared chrome for every /learn page (hub + articles), in every language.

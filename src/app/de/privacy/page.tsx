@@ -18,7 +18,7 @@ import {
   SubProcessor,
   type SubProcessorLabels,
 } from "@/components/privacy/privacy-layout";
-import { AnalyticsSettingsButton } from "@/components/analytics-consent";
+import { AnalyticsSettingsButton } from "@/components/analytics";
 
 /**
  * Deutsche Fassung der Datenschutzerklaerung (/de/privacy).
@@ -236,15 +236,15 @@ export default function DatenschutzSeite() {
             Impressum
           </Link>
           . Sie besteht aus statischen Seiten. Sie setzt keine Cookies und keine
-          Werbe- oder seitenübergreifenden Kennungen. Ohne Ihre Einwilligung
-          legt sie nur zwei Einträge im lokalen Speicher des Browsers ab, die
-          jeweils für etwas nötig sind, das Sie selbst angestoßen haben, und
-          deshalb nach § 25 Abs. 2 Nr. 2 TDDDG keine Einwilligung brauchen: eine
-          ausdrückliche Sprachwahl über den Umschalter der Ratgeber, die nur
-          geschrieben wird, wenn Sie diese Wahl treffen, damit sie beim nächsten
-          Besuch gilt, und Ihre Antwort auf die unten beschriebene Frage zur
-          Webanalyse (<Code>hl-analytics-consent</Code>), damit die Frage nicht
-          auf jeder Seite neu gestellt wird.
+          Werbe- oder seitenübergreifenden Kennungen, und sie zählt Besuche,
+          ohne etwas auf Ihrem Gerät zu speichern. Im lokalen Speicher des
+          Browsers legt sie höchstens zwei Einträge ab, die jeweils erst
+          geschrieben werden, wenn Sie etwas anstoßen, und deshalb nach § 25
+          Abs. 2 Nr. 2 TDDDG keine Einwilligung brauchen: eine ausdrückliche
+          Sprachwahl über den Umschalter der Ratgeber, damit sie beim nächsten
+          Besuch gilt, und, wenn Sie die Besuchszählung abschalten, diesen
+          Wunsch (<Code>hl-analytics-optout</Code>), damit er auf jeder Seite
+          gilt.
         </p>
         <p>
           Die Seiten werden von einem Server ausgeliefert, den der Entwickler
@@ -275,81 +275,56 @@ export default function DatenschutzSeite() {
         <p>
           Besuche werden mit{" "}
           <ExternalLink href="https://rybbit.com">Rybbit</ExternalLink>{" "}
-          gemessen, einem quelloffenen Analysewerkzeug auf einem Server, den der
-          Entwickler betreibt, und nur, wenn Sie zustimmen. Beim ersten Besuch
-          fragt ein Hinweis am unteren Seitenrand danach. Zustimmen und Ablehnen
-          sind gleichwertig dargestellt, nichts ist vorausgewählt. Solange Sie
-          nicht zustimmen, ist das Mess-Skript nicht Teil der Seite: Es wird
-          nicht geladen, es wird nichts gesendet, und für die Webanalyse wird
-          nichts auf Ihrem Gerät gespeichert. Lehnen Sie ab, bleibt es dabei.
-        </p>
-        <p>
-          Stimmen Sie zu, lädt die Seite das Mess-Skript über die eigene Adresse
-          dieser Website unter <Code>/insight/</Code>, und die Website leitet
-          die Ereignisse an den Analyseserver weiter, wie jede andere Anfrage
-          über Cloudflare. Kein Analyseanbieter erhält die Daten. Ab dann
+          gezählt, einem quelloffenen Analysewerkzeug auf einem Server, den der
+          Entwickler betreibt. Das Mess-Skript von Rybbit wird nicht verwendet.
+          Stattdessen schicken ein paar Zeilen Code dieser Website zwei Arten
+          von Ereignissen an die eigene Adresse der Website unter{" "}
+          <Code>/insight/</Code>, und die Website leitet sie an den
+          Analyseserver weiter, wie jede andere Anfrage über Cloudflare. Kein
+          Analyseanbieter erhält die Daten. Die Ereignisse sind:
         </p>
         <ul className="list-disc space-y-1 pl-5">
           <li>
-            speichert das Skript eine zufällige Besucherkennung im lokalen
-            Speicher des Browsers (<Code>rybbit-visitor-id</Code>), damit
-            spätere Besuche mit demselben Browser als derselbe Besucher gezählt
-            werden. Sie bleibt, bis Sie die Einwilligung widerrufen oder die
-            Daten dieser Website im Browser löschen;
+            ein Seitenaufruf, auch ein Seitenwechsel ohne Neuladen, mit der
+            Seitenadresse ohne URL-Parameter, dem Seitentitel und, für die
+            erste Seite eines Besuchs, der Adresse der verweisenden Website,
+            gekürzt auf ihre Domain;
           </li>
           <li>
-            erfasst es jeden Seitenaufruf, auch Seitenwechsel ohne Neuladen: die
-            Seitenadresse mit ihren URL-Parametern (etwa Kampagnenkennungen wie{" "}
-            <Code>utm_source</Code>), den Seitentitel, die verweisende Adresse,
-            Browser, Betriebssystem, Gerätetyp, Bildschirmgröße, Browsersprache,
-            Land und Region sowie die Ladezeit der Seite;
-          </li>
-          <li>
-            erfasst es Klicks auf Schaltflächen und auf Links zu anderen
-            Websites, mit der Beschriftung der Schaltfläche oder der Zieladresse
-            des Links;
-          </li>
-          <li>
-            erfasst es, wenn Text kopiert wird, mit dem kopierten Text
-            (höchstens 500 Zeichen);
-          </li>
-          <li>
-            erfasst es, wenn ein Formular abgeschickt oder ein Formularfeld
-            geändert wird, mit Name und Art des Formulars oder Feldes, aber nie
-            mit dem, was Sie eingegeben haben. Passwortfelder bleiben ganz außen
-            vor;
-          </li>
-          <li>
-            erfasst es Skriptfehler auf der Seite, mit Fehlermeldung und der
-            Stelle im Code, an der er auftrat;
-          </li>
-          <li>
-            zeichnet es die Sitzung auf: eine Nachbildung der Seite, wie Sie sie
-            gesehen haben, mit Scrollen, Mausbewegungen und Klicks, damit sich
-            der Besuch abspielen lässt. Was Sie in ein Formularfeld eingeben,
-            wird verdeckt und nie aufgezeichnet.
+            ein Klick auf einen Link, der zu einer anderen Website führt, mit
+            der Zieladresse ohne URL-Parameter.
           </li>
         </ul>
         <p>
-          Ihre IP-Adresse wird weitergegeben, damit Land und Region bestimmt
-          werden können. Sie wird nicht gespeichert; das Speichern von
-          IP-Adressen ist für diese Website abgeschaltet. Die Daten bleiben auf
-          dem Analyseserver des Entwicklers und dienen nur dazu zu sehen, welche
-          Seiten gelesen werden und wo die Website Fehler hat.
+          Der Analyseserver leitet Browser, Betriebssystem und Gerätetyp aus der
+          Browserkennung ab, die Ihr Browser mit jeder Anfrage mitschickt, und
+          Land und Region aus Ihrer IP-Adresse. Die IP-Adresse wird nicht
+          gespeichert; das Speichern von IP-Adressen ist für diese Website
+          abgeschaltet. Um Besucher auseinanderzuhalten, bildet der Server
+          einen kurzen Hashwert aus IP-Adresse und Browserkennung mit einem
+          Schlüssel, der jeden Tag wechselt. Besuche lassen sich deshalb nicht
+          über einen Tag hinaus verknüpfen, und auf Ihrem Gerät wird dafür
+          nichts gebraucht. Es wird kein Cookie gesetzt, für die Zählung nichts
+          im Browser gespeichert oder ausgelesen, und es gibt keine
+          Sitzungsaufzeichnung und keine Erfassung von Klicks innerhalb der
+          Seite, kopiertem Text, Formularnutzung oder Fehlern. Die Daten
+          bleiben auf dem Analyseserver des Entwicklers und dienen nur dazu zu
+          sehen, welche Seiten gelesen werden und welche Links weiterführen.
         </p>
         <p>
-          Rechtsgrundlage: Ihre Einwilligung, Art. 6 Abs. 1 lit. a DSGVO, und
-          für das Speichern der Besucherkennung auf Ihrem Gerät und ihr Auslesen
-          § 25 Abs. 1 TDDDG. Sie können die Einwilligung jederzeit mit Wirkung
-          für die Zukunft widerrufen: Öffnen Sie die{" "}
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO, das berechtigte
+          Interesse daran zu wissen, wie die Website genutzt wird, um sie zu
+          verbessern. Auf Ihrem Gerät wird dafür nichts gespeichert, deshalb
+          wird keine Einwilligung nach § 25 Abs. 1 TDDDG abgefragt. Sie können
+          jederzeit widersprechen (Art. 21 DSGVO): Öffnen Sie die{" "}
           <AnalyticsSettingsButton className="text-purple hover:text-cyan cursor-pointer underline underline-offset-2">
             Analyse-Einstellungen
           </AnalyticsSettingsButton>{" "}
-          (auch am Ende jeder Seite) und wählen Sie Ablehnen. Die Seite löscht
-          dann die Besucherkennung und lädt ohne das Skript neu. Löschen Sie die
-          Daten dieser Website im Browser, sind Besucherkennung und Ihre Wahl
-          ebenfalls entfernt; Sie werden dann erneut gefragt. Der Widerruf
-          berührt nicht die Rechtmäßigkeit dessen, was vorher erfasst wurde.
+          (auch am Ende jeder Seite) und wählen Sie „Nicht mitzählen“. Dieser
+          Wunsch wird wie oben beschrieben in diesem Browser gespeichert; wenn
+          Sie die Daten dieser Website löschen, ist er entfernt. Ein Browser,
+          der Global Privacy Control oder Do Not Track sendet, wird gar nicht
+          gezählt.
         </p>
         <p>
           Derselbe Server betreibt hinter derselben Cloudflare-Einrichtung zwei
@@ -357,9 +332,13 @@ export default function DatenschutzSeite() {
           Sie setzt keine Cookies; sie speichert eine Wahl zwischen hellem und
           dunklem Design sowie den gewählten Reiter in Codebeispielen im lokalen
           Speicher des Browsers. Sie fragt getrennt von dieser Website nach
-          ihrer eigenen Einwilligung zur Webanalyse und erfasst mit Einwilligung
-          dasselbe wie oben beschrieben; das Mess-Skript lädt sie dabei direkt
-          vom Analyseserver unter rybbit.bombeck.io. demo.healthlog.dev ist eine
+          ihrer eigenen Einwilligung zur Webanalyse. Mit Einwilligung lädt sie
+          das Mess-Skript von Rybbit direkt vom Analyseserver unter
+          rybbit.bombeck.io; es speichert eine zufällige Besucherkennung im
+          Browser und erfasst Seitenaufrufe mit URL-Parametern, Klicks,
+          kopierten Text, Formularnutzung ohne Ihre Eingaben, Fehler und eine
+          Sitzungsaufzeichnung mit verdeckten Formulareingaben, wie ihr eigener
+          Hinweis erklärt. demo.healthlog.dev ist eine
           öffentliche Demo-Instanz der Software, angemeldet mit gemeinsamen
           Demo-Zugangsdaten und gefüllt mit erzeugten Beispieldaten. Sie
           arbeitet wie jede in den Abschnitten 4 bis 7 beschriebene Instanz;
