@@ -274,8 +274,8 @@ export default function DatenschutzSeite() {
         </p>
         <p>
           Besuche werden mit{" "}
-          <ExternalLink href="https://rybbit.com">Rybbit</ExternalLink>{" "}
-          gezählt, einem quelloffenen Analysewerkzeug auf einem Server, den der
+          <ExternalLink href="https://rybbit.com">Rybbit</ExternalLink> gezählt,
+          einem quelloffenen Analysewerkzeug auf einem Server, den der
           Entwickler betreibt. Das Mess-Skript von Rybbit wird nicht verwendet.
           Stattdessen schicken ein paar Zeilen Code dieser Website zwei Arten
           von Ereignissen an die eigene Adresse der Website unter{" "}
@@ -289,8 +289,8 @@ export default function DatenschutzSeite() {
             Seitenadresse ohne URL-Parameter außer den Kampagnenkennungen{" "}
             <Code>ref</Code>, <Code>utm_source</Code>, <Code>utm_medium</Code>{" "}
             und <Code>utm_campaign</Code>, die angeben, wo ein Link geteilt
-            wurde, dem Seitentitel und, für die erste Seite eines Besuchs, der Adresse der verweisenden Website,
-            gekürzt auf ihre Domain;
+            wurde, dem Seitentitel und, für die erste Seite eines Besuchs, der
+            Adresse der verweisenden Website, gekürzt auf ihre Domain;
           </li>
           <li>
             ein Klick auf einen Link, der zu einer anderen Website führt, mit
@@ -300,25 +300,25 @@ export default function DatenschutzSeite() {
         <p>
           Der Analyseserver leitet Browser, Betriebssystem und Gerätetyp aus der
           Browserkennung ab, die Ihr Browser mit jeder Anfrage mitschickt, und
-          Land und Region aus Ihrer IP-Adresse. Die IP-Adresse wird nicht
+          Land, Region und Stadt aus Ihrer IP-Adresse. Die IP-Adresse wird nicht
           gespeichert; das Speichern von IP-Adressen ist für diese Website
-          abgeschaltet. Um Besucher auseinanderzuhalten, bildet der Server
-          einen kurzen Hashwert aus IP-Adresse und Browserkennung mit einem
-          Schlüssel, der jeden Tag wechselt. Besuche lassen sich deshalb nicht
-          über einen Tag hinaus verknüpfen, und auf Ihrem Gerät wird dafür
-          nichts gebraucht. Es wird kein Cookie gesetzt, für die Zählung nichts
-          im Browser gespeichert oder ausgelesen, und es gibt keine
+          abgeschaltet. Um Besucher auseinanderzuhalten, bildet der Server einen
+          kurzen Hashwert aus IP-Adresse und Browserkennung mit einem Schlüssel,
+          der jeden Tag wechselt. Besuche lassen sich deshalb nicht über einen
+          Tag hinaus verknüpfen, und auf Ihrem Gerät wird dafür nichts
+          gebraucht. Es wird kein Cookie gesetzt, für die Zählung nichts im
+          Browser gespeichert oder ausgelesen, und es gibt keine
           Sitzungsaufzeichnung und keine Erfassung von Klicks innerhalb der
-          Seite, kopiertem Text, Formularnutzung oder Fehlern. Die Daten
-          bleiben auf dem Analyseserver des Entwicklers und dienen nur dazu zu
-          sehen, welche Seiten gelesen werden und welche Links weiterführen.
+          Seite, kopiertem Text, Formularnutzung oder Fehlern. Die Daten bleiben
+          auf dem Analyseserver des Entwicklers und dienen nur dazu zu sehen,
+          welche Seiten gelesen werden und welche Links weiterführen.
         </p>
         <p>
-          Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO, das berechtigte
-          Interesse daran zu wissen, wie die Website genutzt wird, um sie zu
-          verbessern. Auf Ihrem Gerät wird dafür nichts gespeichert, deshalb
-          wird keine Einwilligung nach § 25 Abs. 1 TDDDG abgefragt. Sie können
-          jederzeit widersprechen (Art. 21 DSGVO): Öffnen Sie die{" "}
+          Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO, das berechtigte Interesse
+          daran zu wissen, wie die Website genutzt wird, um sie zu verbessern.
+          Auf Ihrem Gerät wird dafür nichts gespeichert, deshalb wird keine
+          Einwilligung nach § 25 Abs. 1 TDDDG abgefragt. Sie können jederzeit
+          widersprechen (Art. 21 DSGVO): Öffnen Sie die{" "}
           <AnalyticsSettingsButton className="text-purple hover:text-cyan cursor-pointer underline underline-offset-2">
             Analyse-Einstellungen
           </AnalyticsSettingsButton>{" "}
@@ -340,13 +340,12 @@ export default function DatenschutzSeite() {
           Browser und erfasst Seitenaufrufe mit URL-Parametern, Klicks,
           kopierten Text, Formularnutzung ohne Ihre Eingaben, Fehler und eine
           Sitzungsaufzeichnung mit verdeckten Formulareingaben, wie ihr eigener
-          Hinweis erklärt. demo.healthlog.dev ist eine
-          öffentliche Demo-Instanz der Software, angemeldet mit gemeinsamen
-          Demo-Zugangsdaten und gefüllt mit erzeugten Beispieldaten. Sie
-          arbeitet wie jede in den Abschnitten 4 bis 7 beschriebene Instanz;
-          eine Anmeldung legt also eine Sitzung und einen Protokolleintrag in
-          der eigenen Datenbank der Demo auf diesem Server an. Geben Sie dort
-          keine echten Gesundheitsdaten ein.
+          Hinweis erklärt. demo.healthlog.dev ist eine öffentliche Demo-Instanz
+          der Software, angemeldet mit gemeinsamen Demo-Zugangsdaten und gefüllt
+          mit erzeugten Beispieldaten. Sie arbeitet wie jede in den Abschnitten
+          4 bis 7 beschriebene Instanz; eine Anmeldung legt also eine Sitzung
+          und einen Protokolleintrag in der eigenen Datenbank der Demo auf
+          diesem Server an. Geben Sie dort keine echten Gesundheitsdaten ein.
         </p>
         <p>
           Wenn Sie an die Kontaktadresse in Abschnitt 13 schreiben, werden die

@@ -281,8 +281,8 @@ export default function PrivacyPage() {
             page address without URL parameters except the campaign tags{" "}
             <Code>ref</Code>, <Code>utm_source</Code>, <Code>utm_medium</Code>{" "}
             and <Code>utm_campaign</Code>, which say where a link was shared,
-            the page title and, for the first page of a visit, the address of the referring website
-            reduced to its domain;
+            the page title and, for the first page of a visit, the address of
+            the referring website reduced to its domain;
           </li>
           <li>
             a click on a link that leads to another website, with the target
@@ -290,10 +290,10 @@ export default function PrivacyPage() {
           </li>
         </ul>
         <p>
-          The analytics server derives browser, operating system and device
-          type from the browser identification your browser sends with every
-          request, and country and region from your IP address. Your IP address
-          is not stored; storing IP addresses is switched off for this site. To
+          The analytics server derives browser, operating system and device type
+          from the browser identification your browser sends with every request,
+          and country, region and city from your IP address. Your IP address is
+          not stored; storing IP addresses is switched off for this site. To
           tell visitors apart, the server forms a short hash of IP address and
           browser identification with a key that changes every day, so visits
           cannot be linked from one day to the next and nothing on your device
@@ -306,8 +306,8 @@ export default function PrivacyPage() {
         <p>
           Legal basis: GDPR Art. 6 (1) (f), the legitimate interest in knowing
           how the website is used, so it can be improved. Nothing is stored on
-          your device for this, so no consent under TDDDG § 25 (1) is asked
-          for. You can object at any time (GDPR Art. 21): open{" "}
+          your device for this, so no consent under TDDDG § 25 (1) is asked for.
+          You can object at any time (GDPR Art. 21): open{" "}
           <AnalyticsSettingsButton className="text-purple hover:text-cyan cursor-pointer underline underline-offset-2">
             Analytics settings
           </AnalyticsSettingsButton>{" "}
