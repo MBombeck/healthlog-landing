@@ -24,8 +24,9 @@ import {
  * a visitor by a hash of IP address and user agent salted per day (site
  * setting "saltUserIds"), so visits cannot be linked from one day to the
  * next; the IP address itself is not stored ("trackIp" off). Session replay,
- * clicks, copy, form, error, web-vitals and URL-parameter tracking are off in
- * the site config and nothing here sends them; privacy section 3 describes
+ * clicks, copy, form, error and web-vitals tracking are off in the site
+ * config and nothing here sends them, and of the URL parameters only the
+ * campaign tags in CAMPAIGN_PARAMS are passed on; privacy section 3 describes
  * exactly this set.
  *
  * Legal basis is the legitimate interest in knowing which pages are read
@@ -48,6 +49,9 @@ const CHANGE_EVENT = "hl-analytics-change";
 const OPEN_EVENT = "hl-analytics-open";
 
 const TRACK_URL = "/insight/track";
+// The only URL parameters passed on: campaign tags that say where a link was
+// shared, never anything that could identify a visitor.
+const CAMPAIGN_PARAMS = ["ref", "utm_source", "utm_medium", "utm_campaign"];
 const SITE_ID = "2";
 
 type State = "on" | "off" | "signal";
@@ -113,6 +117,17 @@ function send(event: Record<string, string>) {
   } catch {
     /* counting never breaks the page */
   }
+}
+
+function campaignQuery(): string {
+  const kept = new URLSearchParams();
+  const params = new URLSearchParams(window.location.search);
+  for (const name of CAMPAIGN_PARAMS) {
+    const value = params.get(name);
+    if (value) kept.set(name, value.slice(0, 100));
+  }
+  const q = kept.toString();
+  return q ? `?${q}` : "";
 }
 
 /** Only the referring site's origin, and only when it is another site. */
@@ -197,7 +212,12 @@ export function Analytics() {
     firstView.current = false;
     // Next sets the new page's title just after navigation commits.
     const timer = window.setTimeout(() => {
-      send({ type: "pageview", page_title: document.title, referrer });
+      send({
+        type: "pageview",
+        page_title: document.title,
+        referrer,
+        querystring: campaignQuery(),
+      });
     }, 0);
     return () => window.clearTimeout(timer);
   }, [state, pathname]);

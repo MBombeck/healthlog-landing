@@ -286,8 +286,10 @@ export default function DatenschutzSeite() {
         <ul className="list-disc space-y-1 pl-5">
           <li>
             ein Seitenaufruf, auch ein Seitenwechsel ohne Neuladen, mit der
-            Seitenadresse ohne URL-Parameter, dem Seitentitel und, für die
-            erste Seite eines Besuchs, der Adresse der verweisenden Website,
+            Seitenadresse ohne URL-Parameter außer den Kampagnenkennungen{" "}
+            <Code>ref</Code>, <Code>utm_source</Code>, <Code>utm_medium</Code>{" "}
+            und <Code>utm_campaign</Code>, die angeben, wo ein Link geteilt
+            wurde, dem Seitentitel und, für die erste Seite eines Besuchs, der Adresse der verweisenden Website,
             gekürzt auf ihre Domain;
           </li>
           <li>
