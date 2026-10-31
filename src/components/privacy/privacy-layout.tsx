@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AnalyticsSettingsButton } from "@/components/analytics-consent";
+import { AnalyticsSettingsButton } from "@/components/analytics";
 
 /**
  * Layout pieces shared by the English (/privacy) and German (/de/privacy)

@@ -7,7 +7,7 @@ import { TerminalBlock } from "@/components/TerminalBlock";
 import { AppScreen } from "@/components/AppScreen";
 import { BrowserFrame } from "@/components/BrowserFrame";
 import { PhoneFrame } from "@/components/PhoneFrame";
-import { AnalyticsSettingsButton } from "@/components/analytics-consent";
+import { AnalyticsSettingsButton } from "@/components/analytics";
 
 /* ── SVG Icons ──────────────────────────────────── */
 

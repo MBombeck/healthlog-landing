@@ -4,7 +4,7 @@ import Link from "next/link";
 import { AppScreen, type AppScreenName } from "@/components/AppScreen";
 import { BrowserFrame } from "@/components/BrowserFrame";
 import { SITE_ORIGIN } from "@/content/learn/locales";
-import { AnalyticsSettingsButton } from "@/components/analytics-consent";
+import { AnalyticsSettingsButton } from "@/components/analytics";
 
 /**
  * Marketing features page.

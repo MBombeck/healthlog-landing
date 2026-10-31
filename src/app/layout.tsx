@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-import { AnalyticsConsent } from "@/components/analytics-consent";
+import { Analytics } from "@/components/analytics";
 
 import { SITE_ORIGIN } from "@/content/learn/locales";
 
@@ -382,16 +382,13 @@ export default function RootLayout({
       >
         {children}
         {/*
-          Rybbit analytics (self-hosted, served first-party under /insight/,
-          proxied to the Rybbit API by nginx in the Dockerfile) is NOT part
-          of the exported HTML. The site config enables session replay,
-          clicks, copy, form, error, outbound and URL-parameter tracking (see
-          analytics-consent.tsx for the full set) and the tracker keeps a
-          persistent visitor id in local storage, so it needs consent under
-          TDDDG § 25 (1). AnalyticsConsent injects the script only after the
-          visitor accepts; until then nothing loads and nothing is stored.
+          Visit counting with the self-hosted Rybbit server: page views and
+          outbound-link clicks only, sent first-party to /insight/ (proxied to
+          the Rybbit API by nginx in the Dockerfile). Rybbit's own script is
+          not loaded and nothing is stored on the device for counting, so no
+          consent banner is needed; see analytics.tsx for the full contract.
         */}
-        <AnalyticsConsent />
+        <Analytics />
       </body>
     </html>
   );

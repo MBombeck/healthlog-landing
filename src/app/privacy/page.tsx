@@ -18,7 +18,7 @@ import {
   SubProcessor,
   type SubProcessorLabels,
 } from "@/components/privacy/privacy-layout";
-import { AnalyticsSettingsButton } from "@/components/analytics-consent";
+import { AnalyticsSettingsButton } from "@/components/analytics";
 
 /**
  * Public privacy policy for the marketing site (English).
@@ -231,14 +231,14 @@ export default function PrivacyPage() {
             imprint
           </Link>
           . It is a set of static pages. It sets no cookies and no advertising
-          or cross-site identifiers. Without your consent it keeps only two
-          entries in the browser&apos;s local storage, each needed for something
-          you asked for and therefore exempt from consent under TDDDG § 25 (2)
-          no. 2: an explicit language choice made with the switcher on the
-          guides, written only when you make that choice so it holds on the next
-          visit, and your answer to the analytics question described below (
-          <Code>hl-analytics-consent</Code>), so the question is not asked again
-          on every page.
+          or cross-site identifiers, and it counts visits without storing
+          anything on your device. It keeps at most two entries in the
+          browser&apos;s local storage, each written only when you ask for
+          something and therefore exempt from consent under TDDDG § 25 (2) no.
+          2: an explicit language choice made with the switcher on the guides,
+          so it holds on the next visit, and, if you turn visit counting off,
+          that request (<Code>hl-analytics-optout</Code>), so it holds on every
+          page.
         </p>
         <p>
           The pages are served from a server the maintainer rents from{" "}
@@ -265,88 +265,66 @@ export default function PrivacyPage() {
           connections.
         </p>
         <p>
-          Visit statistics are collected with{" "}
+          Visits are counted with{" "}
           <ExternalLink href="https://rybbit.com">Rybbit</ExternalLink>, an
-          open-source analytics tool running on a server the maintainer runs,
-          and only if you agree. On your first visit a notice at the bottom of
-          the page asks for that. Accept and Decline carry equal weight and
-          nothing is preselected. Until you accept, the tracking script is not
-          part of the page: it is not loaded, nothing is sent, and nothing is
-          stored on your device for analytics. If you decline, it stays that
-          way.
-        </p>
-        <p>
-          If you accept, the page loads the tracking script from this
+          open-source analytics tool running on a server the maintainer runs.
+          Rybbit&apos;s own tracking script is not used. Instead, a few lines of
+          this website&apos;s own code send two kinds of event to the
           website&apos;s own address under <Code>/insight/</Code>, and the
-          website forwards the events to the analytics server, passing through
+          website forwards them to the analytics server, passing through
           Cloudflare like any other request. No analytics provider receives the
-          data. From then on the script:
+          data. The events are:
         </p>
         <ul className="list-disc space-y-1 pl-5">
           <li>
-            stores a random visitor id in the browser&apos;s local storage (
-            <Code>rybbit-visitor-id</Code>), so later visits from the same
-            browser are counted as the same visitor. It stays until you withdraw
-            consent or clear this website&apos;s data in the browser.
+            a page view, including a change of page without a reload, with the
+            page address without URL parameters, the page title and, for the
+            first page of a visit, the address of the referring website
+            reduced to its domain;
           </li>
           <li>
-            records every page view, including changes of page without a reload:
-            the page address with its URL parameters (for example campaign tags
-            such as <Code>utm_source</Code>), the page title, the referring
-            address, browser, operating system, device type, screen size,
-            browser language, country and region, and how fast the page loaded.
-          </li>
-          <li>
-            records clicks on buttons and on links that lead to other websites,
-            with the button&apos;s label or the link&apos;s target address.
-          </li>
-          <li>
-            records when text is copied, with the copied text (at most 500
-            characters).
-          </li>
-          <li>
-            records when a form is sent or a form field is changed, with the
-            name and type of the form or field but never what you typed.
-            Password fields are left out entirely.
-          </li>
-          <li>
-            records script errors that occur on the page, with the error message
-            and where in the code it happened.
-          </li>
-          <li>
-            records a session replay: a reconstruction of the page as you saw
-            it, with scrolling, mouse movement and clicks, so the visit can be
-            played back. Anything typed into a form field is masked and never
-            recorded.
+            a click on a link that leads to another website, with the target
+            address without URL parameters.
           </li>
         </ul>
         <p>
-          Your IP address is passed on so the country and region can be derived.
-          It is not stored; storing IP addresses is switched off for this site.
+          The analytics server derives browser, operating system and device
+          type from the browser identification your browser sends with every
+          request, and country and region from your IP address. Your IP address
+          is not stored; storing IP addresses is switched off for this site. To
+          tell visitors apart, the server forms a short hash of IP address and
+          browser identification with a key that changes every day, so visits
+          cannot be linked from one day to the next and nothing on your device
+          is needed for it. No cookie is set, nothing is stored in or read from
+          your browser for counting, and there are no session replays, no
+          records of clicks within the page, copied text, form use or errors.
           The data stays on the maintainer&apos;s analytics server and is used
-          only to see which pages are read and where the website breaks.
+          only to see which pages are read and which links lead on.
         </p>
         <p>
-          Legal basis: your consent, GDPR Art. 6 (1) (a), and for storing the
-          visitor id on your device and reading it back, TDDDG § 25 (1). You can
-          withdraw consent at any time with effect for the future: open{" "}
+          Legal basis: GDPR Art. 6 (1) (f), the legitimate interest in knowing
+          how the website is used, so it can be improved. Nothing is stored on
+          your device for this, so no consent under TDDDG § 25 (1) is asked
+          for. You can object at any time (GDPR Art. 21): open{" "}
           <AnalyticsSettingsButton className="text-purple hover:text-cyan cursor-pointer underline underline-offset-2">
             Analytics settings
           </AnalyticsSettingsButton>{" "}
-          (also at the bottom of every page) and choose Decline. The page then
-          deletes the visitor id and reloads without the script. Clearing this
-          website&apos;s data in the browser removes the visitor id and your
-          choice as well; you are then asked again. Withdrawal does not affect
-          the lawfulness of what was recorded before it.
+          (also at the bottom of every page) and choose not to be counted. That
+          request is kept in this browser as described above; clearing this
+          website&apos;s data removes it. A browser that sends Global Privacy
+          Control or Do Not Track is not counted at all.
         </p>
         <p>
           The same server, behind the same Cloudflare setup, also runs two
           related sites. docs.healthlog.dev is the static documentation. It sets
           no cookies; it keeps a light or dark theme choice, and the tab you
           picked in code examples, in the browser&apos;s local storage. It asks
-          for its own analytics consent, separately from this website, and with
-          consent records the same as described above, loading the script
-          directly from the analytics server at rybbit.bombeck.io.
+          for its own analytics consent, separately from this website. With
+          consent it loads Rybbit&apos;s tracking script directly from the
+          analytics server at rybbit.bombeck.io, which stores a random visitor
+          id in the browser and records page views with URL parameters, clicks,
+          copied text, form use without what you type, errors and a session
+          replay with form input masked, as its own notice explains.
           demo.healthlog.dev is a public demo instance of the software, signed
           in with shared demo credentials and filled with generated sample data.
           It works like any instance described in sections 4 to 7, so signing in
