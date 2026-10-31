@@ -3,6 +3,7 @@ name: Deploy to edge-01
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 concurrency:
   group: deploy
@@ -11,46 +12,28 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.EDGE01_SSH_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          echo "StrictHostKeyChecking accept-new" >> ~/.ssh/config
-
-      - name: Deploy
+      # Coolify builds the Dockerfile from main itself. The deploy API on edge-01 only accepts
+      # GitHub Actions source ranges and a deploy-only token; no SSH access from CI anymore.
+      - name: Trigger Coolify deploy
         env:
-          HOST: ${{ secrets.EDGE01_HOST }}
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_DEPLOY_TOKEN }}
+          APP_UUID: o8g80o008scc48c884coo0kk
         run: |
-          ssh -o ServerAliveInterval=15 -o ServerAliveCountMax=20 root@$HOST 'bash -s' << 'DEPLOY'
-          set -e
-          COMMIT="${GITHUB_SHA:-latest}"
-          REPO_DIR="/tmp/healthlog-landing"
-          APP_DIR="/data/coolify/applications/o8g80o008scc48c884coo0kk"
-          IMAGE="o8g80o008scc48c884coo0kk:latest"
+          set -euo pipefail
+          resp=$(curl -fsS -X POST -H "Authorization: Bearer ${COOLIFY_TOKEN}" \
+            "https://edge-01.bombeck.io/api/v1/deploy?uuid=${APP_UUID}&force=false")
+          echo "$resp" | jq -r '.deployments[] | "\(.message) (\(.deployment_uuid))"'
 
-          echo "==> Pulling latest code"
-          if [ ! -d "$REPO_DIR/.git" ]; then
-            echo "==> Repo missing — cloning fresh into $REPO_DIR"
-            rm -rf "$REPO_DIR"
-            git clone --depth=1 https://github.com/MBombeck/healthlog-landing.git "$REPO_DIR"
-          fi
-          cd "$REPO_DIR"
-          git fetch origin main
-          git reset --hard origin/main
-
-          echo "==> Building image"
-          docker build --network host --progress=plain -t "$IMAGE" .
-
-          echo "==> Updating compose"
-          sed -i "s|image: '[^']*'|image: '${IMAGE}'|" "$APP_DIR/docker-compose.yaml"
-
-          echo "==> Recreating container"
-          cd "$APP_DIR"
-          docker compose up -d --force-recreate 2>&1
-
-          echo "==> Deploy complete"
-          DEPLOY
+      - name: Wait for the site
+        run: |
+          sleep 90
+          for i in $(seq 1 40); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' https://healthlog.dev/ || true)
+            [ "$code" = 200 ] && { echo "healthlog.dev answers 200"; exit 0; }
+            sleep 15
+          done
+          echo "healthlog.dev did not answer 200 after the deploy" >&2
+          exit 1
