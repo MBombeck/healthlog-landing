@@ -445,6 +445,11 @@ export default function DatenschutzSeite() {
           Profil), Oura (Tageswerte und Profil), Polar (die Lesebereiche von
           Accesslink), Strava (Aktivitäten, auch als privat markierte) und
           Nightscout (Sensor-Glukosewerte von Ihrer eigenen Nightscout-Instanz).
+          Garmin kommt ohne OAuth aus: Sie erstellen in Garmin Connect einen
+          Personal-API-Schlüssel und fügen ihn in HealthLog ein. HealthLog
+          speichert ihn verschlüsselt, schickt ihn nur an den gewählten
+          Garmin-Dienst und ruft Tageswerte, Schlaf, Herzratenvariabilität,
+          Wiegungen, Aktivitäten und eingetragene Periodentage ab.
           Eine Verbindung lässt sich in HealthLog und beim Anbieter widerrufen;
           danach wird nichts mehr abgerufen.
         </p>
@@ -730,6 +735,14 @@ export default function DatenschutzSeite() {
             data="OAuth-Token, die Oura-Nutzerkennung und die von diesem Umfang erfassten Datensätze."
             location="Infrastruktur des Anbieters. Die Anbindung legt keine Region fest."
             policyUrl="https://ouraring.com/privacy-policy"
+          />
+          <SubProcessor
+            labels={LABELS}
+            name="Garmin (Garmin Connect)"
+            role="Geräte-Synchronisation, wenn Sie einen Garmin-Personal-API-Schlüssel einfügen. Nur lesend, stündlicher Abruf."
+            data="Der Personal-API-Schlüssel, damit erzeugte kurzlebige Zugriffstoken sowie Tageswerte, Schlaf, Herzratenvariabilität, Wiegungen, Aktivitäten und eingetragene Periodentage dieses Kontos."
+            location="Infrastruktur des Anbieters: Garmin Connect oder, wenn Sie es wählen, Garmin Connect China."
+            policyUrl="https://www.garmin.com/privacy/"
           />
           <SubProcessor
             labels={LABELS}

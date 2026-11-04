@@ -433,7 +433,11 @@ export default function PrivacyPage() {
           profile), Oura (daily summaries and profile), Polar (the Accesslink
           read collections), Strava (activities, including those marked
           private), and Nightscout (sensor glucose values from the user&apos;s
-          own Nightscout instance). A connection can be revoked in HealthLog and
+          own Nightscout instance). Garmin works without OAuth: the user creates a
+          Personal API key in Garmin Connect and pastes it into HealthLog, which
+          stores it encrypted, sends it only to the Garmin service the user
+          picked, and pulls daily summaries, sleep, heart-rate variability,
+          weigh-ins, activities and logged period days. A connection can be revoked in HealthLog and
           at the provider; revoking stops further syncing.
         </p>
 
@@ -704,6 +708,14 @@ export default function PrivacyPage() {
             data="OAuth tokens, the Oura user identifier, and the records covered by that scope."
             location="Provider-operated infrastructure. The integration does not pin a region."
             policyUrl="https://ouraring.com/privacy-policy"
+          />
+          <SubProcessor
+            labels={LABELS}
+            name="Garmin (Garmin Connect)"
+            role="Device data sync when the user pastes a Garmin Personal API key. Read only, pulled every hour."
+            data="The Personal API key, short-lived access tokens bought with it, and the daily summaries, sleep, heart-rate variability, weigh-ins, activities and logged period days of that account."
+            location="Provider-operated infrastructure: Garmin Connect, or Garmin Connect China if the user picks it."
+            policyUrl="https://www.garmin.com/privacy/"
           />
           <SubProcessor
             labels={LABELS}

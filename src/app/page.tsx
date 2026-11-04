@@ -509,7 +509,7 @@ const everythingElse: { group: string; items: [string, string][] }[] = [
       ["qr", "Share links with a QR code"],
       ["users", "Family access, read or write"],
       ["user", "Records for a child"],
-      ["globe", "9 languages"],
+      ["globe", "10 languages"],
     ],
   },
   {
@@ -519,7 +519,7 @@ const everythingElse: { group: string; items: [string, string][] }[] = [
       ["watch", "Fitbit and Pixel through Google Health"],
       ["link", "Strava, Nightscout, Dawarich"],
       ["phone", "Health Connect import"],
-      ["watch", "Garmin via Apple or Google Health"],
+      ["watch", "Garmin, directly"],
       ["bell", "Push, Telegram, ntfy, e-mail"],
     ],
   },
