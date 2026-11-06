@@ -63,7 +63,7 @@ const groups: Group[] = [
       ["ECG", "Single-lead recordings from a compatible watch, shown on an ECG grid and never interpreted."],
       ["Mood", "A one-tap face or five optional sliders, trended over 7, 30 and 90 days."],
       ["Mental wellbeing", "WHO-5, PHQ-9 and GAD-7 self-checks. Off until you switch them on, answers encrypted."],
-      ["Cycle", "Symptothermal tracking with a careful forecast. Off until you switch it on."],
+      ["Cycle", "Symptothermal tracking with a careful forecast, which you can subscribe to in your own calendar. Off until you switch it on."],
       ["Nutrition", "Water, caffeine, vitamins and minerals from Apple Health and the supplements you take, as context rather than a verdict."],
       ["Weather and air", "Weather, air quality, pollen and UV for your city, compared with your days after the season is taken out."],
     ],
@@ -90,7 +90,7 @@ const groups: Group[] = [
     title: "Your record",
     color: "#ffb86c",
     items: [
-      ["Lab results", "Each value on its reference range, the range printed on the report first, converted into one unit with the printed value kept."],
+      ["Lab results", "Each value on its reference range, the range printed on the report first, converted into one unit with the printed value kept, and grouped by panel if you like."],
       ["Longevity panel", "ApoB, Lp(a), hs-CRP, HbA1c, insulin, eGFR, the omega-3 index and more."],
       ["Illness journal", "Episodes with daily symptoms, up to eight symptoms of your own, and a Rest Mode while you recover."],
       ["Medical history", "Allergies, family history and life circumstances with the AUDIT-C alcohol check, as structured, encrypted entries."],
@@ -111,7 +111,7 @@ const groups: Group[] = [
     color: "#ff79c6",
     items: [
       ["Day view", "Any date opens its day beside the page you are on, or as a sheet on a phone."],
-      ["Timeline", "Conditions, medications, vaccinations, visits, labs and life events on one axis, from years down to weeks. Your values and lab markers run underneath, each lab reading as measured against its reference range."],
+      ["Timeline", "Conditions, medications, vaccinations, visits, labs and life events on one axis, from years down to weeks. Your values, lab markers and your own symptoms run underneath, each lab reading as measured against its reference range."],
       ["Record search", "⌘K finds visits, conditions, document text, lab results, medications, workouts and your own notes."],
       ["AI Coach", "Answers from your own numbers and shows the steps it took. It asks when a question is ambiguous and remembers health details only with your consent."],
       ["AI providers", "Your ChatGPT subscription, an OpenAI or Anthropic key, a local model on Ollama, LM Studio or vLLM, or none. A frugal, standard or full usage level, within the limit the admin sets."],

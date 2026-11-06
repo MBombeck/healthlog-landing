@@ -823,6 +823,14 @@ export default function PrivacyPage() {
           />
           <SubProcessor
             labels={LABELS}
+            name="The calendar service the user subscribes with (optional)"
+            role="Cycle forecast as a calendar subscription, off until the record's owner, or a managed profile's guardian, turns it on. The user adds a private feed link to a calendar app of their choice, such as Google Calendar, Apple iCloud Calendar or Microsoft Outlook, and that service fetches the feed from the instance on its own schedule and keeps a copy. The link can be rotated or turned off at any time; a password change or a deletion request turns it off."
+            data="The estimated start windows of the next cycles and, if the user opts in, past cycles and the fertile window. Event titles are a neutral dot unless the user chooses descriptive titles. No symptoms, notes or other log details, and no account identifier beyond the secret link itself."
+            location="Wherever the chosen calendar service stores calendars. HealthLog does not contact the service; it only answers the service's requests for the feed."
+            policyUrl="https://docs.healthlog.dev/guides/cycle-calendar-feed/"
+          />
+          <SubProcessor
+            labels={LABELS}
             name="Off-host backup storage (address supplied by the operator)"
             role="Optional nightly backup of every account to an S3-compatible bucket, such as AWS S3, Cloudflare R2 or a MinIO server the operator runs. Off until the operator sets the BACKUP_* environment variables."
             data="A copy of each account's record, encrypted on the instance with AES-256-GCM under a key separate from the database key before it is uploaded. The storage provider holds no key that can read it."

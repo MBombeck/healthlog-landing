@@ -850,6 +850,14 @@ export default function DatenschutzSeite() {
           />
           <SubProcessor
             labels={LABELS}
+            name="Der Kalenderdienst, mit dem Sie abonnieren (optional)"
+            role="Zyklusprognose als Kalender-Abo, ausgeschaltet, bis die Person, der die Akte gehört, oder bei einem betreuten Profil die Betreuungsperson es einschaltet. Sie tragen einen privaten Feed-Link in eine Kalender-App Ihrer Wahl ein, etwa Google Kalender, Apple iCloud-Kalender oder Microsoft Outlook. Dieser Dienst holt den Feed in eigenem Takt von der Instanz ab und behält eine Kopie. Der Link lässt sich jederzeit erneuern oder abschalten; eine Passwortänderung oder ein Löschantrag schaltet ihn ab."
+            data="Die geschätzten Startfenster der nächsten Zyklen und, wenn Sie es einschalten, vergangene Zyklen und das fruchtbare Fenster. Termine heißen nur „●“, solange Sie keine beschreibenden Titel wählen. Keine Symptome, Notizen oder andere Einträge, und außer dem geheimen Link selbst keine Kontokennung."
+            location="Wo der gewählte Kalenderdienst Kalender speichert. HealthLog kontaktiert den Dienst nicht, sondern beantwortet nur dessen Abrufe des Feeds."
+            policyUrl="https://docs.healthlog.dev/guides/cycle-calendar-feed/"
+          />
+          <SubProcessor
+            labels={LABELS}
             name="Off-Host-Sicherungsspeicher (Adresse vom Betreiber)"
             role="Optionale nächtliche Sicherung aller Konten in einen S3-kompatiblen Bucket, etwa AWS S3, Cloudflare R2 oder einen selbst betriebenen MinIO-Server. Ausgeschaltet, bis der Betreiber die BACKUP_*-Umgebungsvariablen setzt."
             data="Eine Kopie der Akte jedes Kontos, vor dem Hochladen auf der Instanz mit AES-256-GCM unter einem vom Datenbankschlüssel getrennten Schlüssel verschlüsselt. Der Speicheranbieter besitzt keinen Schlüssel, der sie lesen kann."
