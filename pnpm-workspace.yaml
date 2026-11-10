@@ -43,3 +43,7 @@ overrides:
   # Recursive copy follows symlinked files and pulls data in from outside the
   # source tree. Arrives under ESLint.
   "@humanfs/node@<0.16.8": "^0.16.8"
+  # GHSA-g3hv-75wg-m249: globparts amplification turns a crafted pattern into a
+  # denial of service. Only 11.0.1 carries the fix; typescript-eslint still asks
+  # for ^10, so the floor is lifted here. Arrives under ESLint; lint-time only.
+  "minimatch@>=7.0.0 <11.0.1": "^11.0.1"
