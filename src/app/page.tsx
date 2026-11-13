@@ -321,6 +321,25 @@ function RssIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
+function HeartIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      className={className}
+      aria-hidden="true"
+    >
+      <path
+        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function TagIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <svg
@@ -1050,6 +1069,15 @@ export default function Home() {
             >
               <TagIcon className="w-4 h-4" />
               Releases
+            </a>
+            <a
+              href="https://github.com/sponsors/MBombeck"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 py-1.5 text-text-tertiary hover:text-text-primary transition-colors duration-300 text-sm"
+            >
+              <HeartIcon className="w-4 h-4" />
+              Sponsor
             </a>
             <Link
               href="/learn"
