@@ -143,9 +143,10 @@ export default function RootLayout({
       availability: "https://schema.org/InStock",
     },
     author: {
-      "@type": "Organization",
-      name: "HealthLog",
-      url: "https://github.com/MBombeck/HealthLog",
+      "@type": "Person",
+      name: "Marc-André Bombeck",
+      url: "https://bombeck.io/en/",
+      sameAs: ["https://github.com/MBombeck"],
     },
     featureList: [
       "OAuth-secured Model Context Protocol (MCP) server — connect your own record to MCP-compatible assistants (Claude, ChatGPT, and others); read-only by default, optional confirmed write scope, off until enabled",

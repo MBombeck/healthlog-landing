@@ -1118,7 +1118,14 @@ export default function Home() {
           </div>
         </div>
         <p className="max-w-5xl mx-auto mt-6 text-center text-text-tertiary text-xs font-mono">
-          © 2026 HealthLog ·{" "}
+          © 2026 HealthLog by{" "}
+          <a
+            href="https://bombeck.io/en/"
+            className="hover:text-text-secondary transition-colors"
+          >
+            Marc-André Bombeck
+          </a>{" "}
+          ·{" "}
           <a
             href="https://polyformproject.org/licenses/noncommercial/1.0.0/"
             target="_blank"
