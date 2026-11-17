@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { ScrollRevealObserver } from "@/components/HeroClient";
 import { DemoCredentials } from "@/components/DemoCredentials";
 import { DemoPopupLink } from "@/components/DemoPopupLink";
 import { TerminalBlock } from "@/components/TerminalBlock";
@@ -613,8 +612,6 @@ docker compose up -d`;
 export default function Home() {
   return (
     <div className="relative overflow-x-clip">
-      <ScrollRevealObserver />
-
       <a href="#main-content" className="skip-to-content">
         Skip to content
       </a>
