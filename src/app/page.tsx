@@ -471,7 +471,7 @@ const stories: {
     id: "timeline",
     kicker: "Timeline",
     title: "Every source on one timeline",
-    body: "Apple Health, Withings, WHOOP, Oura, Polar, Google Health, Nightscout and what you type in land on one axis, next to your medications, lab results and visits. When two devices report the same day, you decide which one counts.",
+    body: "Apple Health, Withings, WHOOP, Oura, Polar, Garmin, Google Health, Nightscout and what you type in land on one axis, next to your medications, lab results and visits. When two devices report the same day, you decide which one counts.",
     shot: "timeline",
     alt: "HealthLog timeline over three months with lanes for life events, conditions, medications, vaccinations, labs and cycle above blood pressure, weight and resting heart rate",
   },
@@ -565,7 +565,7 @@ const faqs = [
   {
     question: "Which devices and services does HealthLog integrate with?",
     answer:
-      "Withings, WHOOP, Oura, Polar, Google Health (Fitbit and Pixel), Strava, Nightscout and Dawarich sync over OAuth or your own endpoints, and Apple Health syncs live through the iOS app or via export import. On Android you can import a Health Connect export. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
+      "Withings, WHOOP, Oura, Polar, Garmin, Google Health (Fitbit and Pixel), Strava, Nightscout and Dawarich sync over OAuth or your own endpoints, and Apple Health syncs live through the iOS app or via export import. On Android you can import a Health Connect export. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
   },
   {
     question: "Can I connect HealthLog to an AI assistant?",
@@ -741,7 +741,7 @@ export default function Home() {
           <BrowserFrame>
             <AppScreen
               name="dashboard"
-              alt="HealthLog dashboard: a health score of 90, the day's medications, last night's sleep and cycle day, an upcoming appointment, and tiles for weight, blood pressure, heart rate, oxygen saturation and body composition"
+              alt="HealthLog dashboard: a health score of 88, the day's medications, last night's sleep and cycle day, an upcoming appointment, and tiles for weight, blood pressure, heart rate, oxygen saturation and body composition"
               sizes="(max-width: 1200px) 100vw, 1152px"
               priority
               className="block h-auto w-full"
@@ -885,7 +885,7 @@ export default function Home() {
                 [
                   {
                     name: "phone-dashboard",
-                    alt: "HealthLog on a phone: the dashboard with a health score of 90, the day's medications, last night's sleep and an upcoming appointment",
+                    alt: "HealthLog on a phone: the dashboard with a health score of 88, the day's medications, last night's sleep and an upcoming appointment",
                   },
                   {
                     name: "phone-day",
