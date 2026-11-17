@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useCopy } from "@/components/useCopy";
 
 function CopyCheckIcon() {
   return (
@@ -19,47 +19,52 @@ function ClipboardIcon() {
   );
 }
 
+/**
+ * The install commands with a real copy button. A click anywhere on the block
+ * still copies for pointer users; keyboard and screen-reader users get the
+ * button. On devices without hover the button stays visible.
+ */
 export function TerminalBlock({ commands }: { commands: string }) {
-  const [copiedField, setCopiedField] = useState<string | null>(null);
-  const copyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    return () => {
-      if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
-    };
-  }, []);
-
-  const copyToClipboard = useCallback(async (text: string, field: string) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
-      setCopiedField(field);
-      copyTimeoutRef.current = setTimeout(() => setCopiedField(null), 2000);
-    } catch { /* clipboard not available */ }
-  }, []);
+  const { copied, failed, message, copy } = useCopy();
+  const state = copied === "terminal" ? "copied" : failed === "terminal" ? "failed" : "idle";
 
   return (
     <div
       className="group glass-card terminal-window terminal-copyable p-5 sm:p-6 text-left mb-12 max-w-lg mx-auto relative"
-      onClick={() => copyToClipboard(commands, "terminal")}
-      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); copyToClipboard(commands, "terminal"); } }}
-      role="button"
-      tabIndex={0}
-      aria-label="Copy installation commands"
+      onClick={() => copy(commands, "terminal")}
     >
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-green" />
           <span className="text-[11px] font-mono text-text-tertiary tracking-wide">terminal</span>
         </div>
-        <div className="flex items-center gap-1.5 text-text-tertiary text-[10px] font-mono">
-          {copiedField === "terminal" ? (
-            <span className="flex items-center gap-1 text-green"><CopyCheckIcon /> Copied</span>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            copy(commands, "terminal");
+          }}
+          aria-label="Copy installation commands"
+          className={`flex min-h-6 min-w-6 items-center gap-1.5 text-[10px] font-mono transition-opacity ${
+            state === "idle"
+              ? "text-text-tertiary [@media(hover:hover)]:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
+              : state === "copied"
+                ? "text-green"
+                : "text-pink"
+          }`}
+        >
+          {state === "copied" ? (
+            <><CopyCheckIcon /> Copied</>
+          ) : state === "failed" ? (
+            "Copy failed"
           ) : (
-            <span className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"><ClipboardIcon /> Copy</span>
+            <><ClipboardIcon /> Copy</>
           )}
-        </div>
+        </button>
       </div>
+      <p role="status" className="sr-only">
+        {message}
+      </p>
       <pre className="text-xs sm:text-sm font-mono text-purple leading-[1.8] overflow-x-auto">
         <code>{commands}</code>
       </pre>

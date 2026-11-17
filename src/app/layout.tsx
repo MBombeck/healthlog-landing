@@ -30,12 +30,11 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://healthlog.dev"),
   title: {
-    default:
-      "HealthLog — Self-Hosted Health Tracking App | Source-Available PWA",
+    default: "HealthLog: Self-Hosted Health Tracker and Health Record",
     template: "%s | HealthLog",
   },
   description:
-    "Self-hosted health tracker. Native iOS app with live Apple Health (HealthKit) two-way sync, Withings device sync, multi-provider AI insights, and a doctor-report PDF generated on your server. Notes, documents and tokens encrypted with AES-256-GCM. Docker deploy in minutes. Free for noncommercial use, source available.",
+    "A self-hosted health record: Apple Health, Withings, Garmin, labs, medications and doctor visits on one timeline on your own server. Free for noncommercial use.",
   keywords: [
     "self-hosted health tracker",
     "health tracking app",
@@ -210,7 +209,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image-source-available.png",
     // Tracks the latest stable HealthLog server release. Bumped by hand with
     // each release.
-    softwareVersion: "1.43.0",
+    softwareVersion: "1.47.6",
     license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
     // The landing page is English-only today (the /learn guides and the
     // privacy policy have their own locales). The app itself ships in seven
@@ -223,9 +222,9 @@ export default function RootLayout({
   const jsonLdWebPage = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "HealthLog — Self-Hosted Health Tracking App",
+    name: "HealthLog: Self-Hosted Health Tracker and Health Record",
     description:
-      "Self-hosted health tracking PWA with medication management, mood tracking, AI-powered insights, and Withings integration.",
+      "A self-hosted health record: Apple Health, Withings, Garmin, labs, medications and doctor visits on one timeline on your own server. Free for noncommercial use.",
     url: "https://healthlog.dev",
     inLanguage: "en",
     isPartOf: {
@@ -268,7 +267,7 @@ export default function RootLayout({
         name: "Which devices and services does HealthLog integrate with?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Withings, WHOOP, Oura, Polar, Google Health (Fitbit and Pixel), Strava, Nightscout and Dawarich sync over OAuth or your own endpoints, and Apple Health syncs live through the iOS app or via export import. On Android you can import a Health Connect export. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
+          text: "Withings, WHOOP, Oura, Polar, Garmin, Google Health (Fitbit and Pixel), Strava, Nightscout and Dawarich sync over OAuth or your own endpoints, and Apple Health syncs live through the iOS app or via export import. On Android you can import a Health Connect export. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
         },
       },
       {
@@ -332,7 +331,9 @@ export default function RootLayout({
         url: "https://healthlog.dev",
         logo: {
           "@type": "ImageObject",
-          url: "https://healthlog.dev/og-image-source-available.png",
+          url: "https://healthlog.dev/icon-512.png",
+          width: 512,
+          height: 512,
         },
         sameAs: ["https://github.com/MBombeck/HealthLog"],
       },

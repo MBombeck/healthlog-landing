@@ -102,6 +102,15 @@ body {
   overflow-x: clip;
 }
 
+/* Balanced headings, no orphaned last words in running text. */
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p, li, summary {
+  text-wrap: pretty;
+}
+
 ::selection {
   background: var(--purple-dim);
   color: var(--purple);
@@ -248,24 +257,33 @@ body {
   opacity: 0.6;
 }
 
-/* ── Scroll Reveal ──────────────────────────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
+/* ── Scroll Reveal ──────────────────────────────
+   Decorative, so it is a pure CSS progressive enhancement: content is
+   visible by default (no JavaScript, reduced motion, older browsers,
+   full-page captures) and fades up on a view timeline where supported. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes reveal-in {
+      from {
+        opacity: 0;
+        translate: 0 40px;
+      }
+    }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    .reveal {
+      animation: reveal-in auto cubic-bezier(0.16, 1, 0.3, 1) backwards;
+      animation-timeline: view();
+      animation-range: entry 0% entry 90%;
+    }
 
-.reveal-delay-1 { transition-delay: 0.12s; }
-.reveal-delay-2 { transition-delay: 0.24s; }
-.reveal-delay-3 { transition-delay: 0.36s; }
-.reveal-delay-4 { transition-delay: 0.48s; }
-.reveal-delay-5 { transition-delay: 0.6s; }
+    /* The old time-based stagger, expressed as a later start on the timeline. */
+    .reveal-delay-1 { animation-range: entry 8% entry 95%; }
+    .reveal-delay-2 { animation-range: entry 16% entry 100%; }
+    .reveal-delay-3 { animation-range: entry 24% cover 30%; }
+    .reveal-delay-4 { animation-range: entry 32% cover 32%; }
+    .reveal-delay-5 { animation-range: entry 40% cover 34%; }
+  }
+}
 
 /* ── Tech Badge Scroll ──────────────────────────── */
 .tech-scroll {
@@ -500,6 +518,30 @@ body {
 
 .generate-button:active {
   transform: translateY(0) scale(0.98);
+}
+
+/* ── Demo dialog (native <dialog>) ────────────── */
+.demo-dialog {
+  margin: auto;
+  color: inherit;
+  overflow: visible;
+}
+
+.demo-dialog:hover {
+  transform: none;
+}
+
+/* Both rules: without them, scrolling over the backdrop or inside the
+   dialog scrolls the page behind it. */
+.demo-dialog:modal {
+  overscroll-behavior: contain;
+}
+
+.demo-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+  overscroll-behavior: contain;
 }
 
 /* ── Credential Fields ────────────────────────── */
@@ -755,12 +797,6 @@ body {
 
   .tech-scroll {
     animation: none;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
   }
 
   .glass-card:hover {

@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 
+import { useCopy } from "@/components/useCopy";
+
 /* ── Scramble Decode Hook ─────────────────────────── */
 
 const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*";
@@ -10,6 +12,11 @@ function useScrambleDecode() {
   const intervalsRef = useRef<Set<ReturnType<typeof setInterval>>>(new Set());
 
   const decode = useCallback((target: string, setter: (v: string) => void, durationMs = 800) => {
+    // The scramble is pure decoration: skip it for reduced motion.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setter(target);
+      return;
+    }
     const len = target.length;
     const iterationsPerChar = 10;
     const totalSteps = len * iterationsPerChar;
@@ -91,25 +98,14 @@ export function DemoCredentials() {
   const [credentialsRevealed, setCredentialsRevealed] = useState(false);
   const [displayUser, setDisplayUser] = useState("");
   const [displayPassword, setDisplayPassword] = useState("");
-  const [copiedField, setCopiedField] = useState<string | null>(null);
+  const { copied: copiedField, failed: failedField, message, copy: copyToClipboard } = useCopy();
   const scrambleDecode = useScrambleDecode();
-  const copyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const generateTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     return () => {
-      if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
       if (generateTimeoutRef.current) clearTimeout(generateTimeoutRef.current);
     };
-  }, []);
-
-  const copyToClipboard = useCallback(async (text: string, field: string) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
-      setCopiedField(field);
-      copyTimeoutRef.current = setTimeout(() => setCopiedField(null), 2000);
-    } catch { /* clipboard not available */ }
   }, []);
 
   const handleGenerate = useCallback(() => {
@@ -146,16 +142,16 @@ export function DemoCredentials() {
           </button>
         ) : (
           <div className="space-y-3 credential-enter">
-            <div
-              className="credential-field flex items-center justify-between px-4 py-3 rounded-xl bg-[rgba(15,16,24,0.8)] border border-[rgba(98,114,164,0.08)]"
+            <button
+              type="button"
+              className="credential-field flex w-full items-center justify-between px-4 py-3 rounded-xl bg-[rgba(15,16,24,0.8)] border border-[rgba(98,114,164,0.08)]"
               onClick={() => copyToClipboard("demo", "user")}
-              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); copyToClipboard("demo", "user"); } }}
-              role="button"
-              tabIndex={0}
               aria-label="Copy username: demo"
             >
               <span className="text-xs text-text-tertiary font-mono tracking-wider uppercase">User</span>
-              {copiedField === "user" ? (
+              {failedField === "user" ? (
+                <span className="text-sm font-mono text-pink font-semibold">Copy failed</span>
+              ) : copiedField === "user" ? (
                 <span className="text-sm font-mono text-green font-semibold flex items-center gap-1.5">
                   <CopyCheckIcon /> Copied
                 </span>
@@ -165,17 +161,17 @@ export function DemoCredentials() {
                   <ClipboardIcon />
                 </span>
               )}
-            </div>
-            <div
-              className="credential-field flex items-center justify-between px-4 py-3 rounded-xl bg-[rgba(15,16,24,0.8)] border border-[rgba(98,114,164,0.08)]"
+            </button>
+            <button
+              type="button"
+              className="credential-field flex w-full items-center justify-between px-4 py-3 rounded-xl bg-[rgba(15,16,24,0.8)] border border-[rgba(98,114,164,0.08)]"
               onClick={() => copyToClipboard("demo123demo123", "password")}
-              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); copyToClipboard("demo123demo123", "password"); } }}
-              role="button"
-              tabIndex={0}
               aria-label="Copy password"
             >
               <span className="text-xs text-text-tertiary font-mono tracking-wider uppercase">Password</span>
-              {copiedField === "password" ? (
+              {failedField === "password" ? (
+                <span className="text-sm font-mono text-pink font-semibold">Copy failed</span>
+              ) : copiedField === "password" ? (
                 <span className="text-sm font-mono text-green font-semibold flex items-center gap-1.5">
                   <CopyCheckIcon /> Copied
                 </span>
@@ -185,10 +181,14 @@ export function DemoCredentials() {
                   <ClipboardIcon />
                 </span>
               )}
-            </div>
+            </button>
           </div>
         )}
       </div>
+
+      <p role="status" className="sr-only">
+        {message}
+      </p>
 
       <a
         href="https://demo.healthlog.dev"
