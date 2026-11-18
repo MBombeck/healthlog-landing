@@ -210,7 +210,11 @@ export default function PrivacyPage() {
           any other record on the instance. Notifications it generates are
           delivered to its guardians on the channels those guardians have
           themselves enabled, because the record has no contact channel of its
-          own. Deleting the record erases the data held in it.
+          own. A guardian can also file documents in such a record, have them
+          read and confirm the lab values found in them; the files and values
+          belong to the record, its activity log names the guardian who added
+          or confirmed them, and any AI reading follows the record&apos;s own
+          settings and consent. Deleting the record erases the data held in it.
         </p>
         <p>
           The operator of an instance is the data controller in the GDPR sense.
@@ -390,8 +394,25 @@ export default function PrivacyPage() {
           count, distance, active-energy burned, flights climbed; environmental
           and headphone audio-exposure levels; time in daylight; mood (1-5
           scale) with optional free-text note; workout sessions with an optional
-          GPS route attached manually; and personal records derived
-          automatically from these values.
+          GPS route attached manually; dietary energy, macronutrients (protein,
+          carbohydrates, fat, sugar, fiber), sodium, potassium and alcohol as
+          daily totals, with the user&apos;s own daily targets; entries in the
+          optional seizure diary (seizure type, start and duration, rescue
+          medication given, circumstances, and who logged it); and personal
+          records derived automatically from these values. A food tracker the
+          user sets up may post daily nutrient totals with a measurement token;
+          that token can write to the owner&apos;s own record only and cannot
+          read anything back.
+        </p>
+        <p>
+          Files the user uploads for import are read on the instance and do not
+          reach any outside service: an Apple Health export (including, since
+          version 1.48.0, the lab results among its Health Records clinical
+          records), a Health Connect export, and activity files in the FIT
+          format from a watch or bike computer, whose sessions become workouts
+          with their heart-rate, speed, power and cadence curve and, where the
+          user has switched workout routes on, their GPS track stored encrypted.
+          An uploaded FIT file is deleted as soon as its import ends.
         </p>
 
         <SubHeading>4.3 Apple Health (iOS application)</SubHeading>
@@ -427,8 +448,7 @@ export default function PrivacyPage() {
           pressure, blood glucose, body temperature, activity totals, sleep
           sessions, SpO₂, heart-rate variability, ECG recordings where
           available), WHOOP (recovery, sleep, workouts, cycles, profile, body
-          measurements), Fitbit (activity, cardio fitness, heart rate, oxygen
-          saturation, respiratory rate, sleep, weight, profile), Google Health
+          measurements), Google Health
           (activity and fitness, health metrics and measurements, sleep,
           profile), Oura (daily summaries and profile), Polar (the Accesslink
           read collections), Strava (activities, including those marked
@@ -437,8 +457,14 @@ export default function PrivacyPage() {
           Personal API key in Garmin Connect and pastes it into HealthLog, which
           stores it encrypted, sends it only to the Garmin service the user
           picked, and pulls daily summaries, sleep, heart-rate variability,
-          weigh-ins, activities and logged period days. A connection can be revoked in HealthLog and
-          at the provider; revoking stops further syncing.
+          weigh-ins, activities with the original file of each new activity
+          (for its heart-rate curve) and logged period days. A connection can be
+          revoked in HealthLog and at the provider; revoking stops further
+          syncing. Google switched the Fitbit Web API off on 30 October 2026, and
+          since version 1.48.0 HealthLog has no Fitbit connection and stores no
+          Fitbit tokens or credentials; data imported from Fitbit before then
+          stays in the record. Fitbit and Pixel devices connect through Google
+          Health.
         </p>
 
         <SubHeading>4.5 Medications</SubHeading>
@@ -466,6 +492,14 @@ export default function PrivacyPage() {
           the data above (aggregates, recent observations, target ranges,
           optional medication context) and is built fresh for each request. See
           section 6 for what each provider does with the data.
+        </p>
+        <p>
+          The user can bind each AI task to a named chain of the providers they
+          have set up, for example document reading to a local model only. A
+          task bound to a chain sends data only to the providers in that chain,
+          and stops with a reason when none of them can answer rather than
+          falling back to another provider. Consent and the operator&apos;s
+          switches apply to every chain the same way.
         </p>
         <p>
           Coach conversations are stored on the instance. Each message is held
@@ -687,14 +721,6 @@ export default function PrivacyPage() {
           />
           <SubProcessor
             labels={LABELS}
-            name="Fitbit (Google LLC)"
-            role="Device data sync when the user connects a Fitbit account. Scope requested: activity, cardio fitness, heart rate, oxygen saturation, respiratory rate, sleep, weight, profile. Google switched this Fitbit Web API off on 30 October 2026. Since then HealthLog no longer contacts it and keeps what was already imported; Fitbit and Pixel devices connect through Google Health."
-            data="OAuth tokens, the Fitbit user identifier, and the records covered by that scope."
-            location="Provider-operated infrastructure. The integration does not pin a region."
-            policyUrl="https://www.fitbit.com/global/en/legal/privacy-policy"
-          />
-          <SubProcessor
-            labels={LABELS}
             name="Google LLC (Google Health)"
             role="Device data sync when the user connects Google Health. Scope requested: activity and fitness, health metrics and measurements, sleep, profile, all read-only."
             data="OAuth tokens, the Google account identifier used for the grant, and the records covered by that scope."
@@ -713,7 +739,7 @@ export default function PrivacyPage() {
             labels={LABELS}
             name="Garmin (Garmin Connect)"
             role="Device data sync when the user pastes a Garmin Personal API key. Read only, pulled every hour."
-            data="The Personal API key, short-lived access tokens bought with it, and the daily summaries, sleep, heart-rate variability, weigh-ins, activities and logged period days of that account."
+            data="The Personal API key, short-lived access tokens bought with it, and the daily summaries, sleep, heart-rate variability, weigh-ins, activities (with the original file of each new activity) and logged period days of that account."
             location="Provider-operated infrastructure: Garmin Connect, or Garmin Connect China if the user picks it."
             policyUrl="https://www.garmin.com/privacy/"
           />

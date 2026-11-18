@@ -214,8 +214,13 @@ export default function DatenschutzSeite() {
           Infrastruktur verarbeitet wie jede andere Akte der Instanz.
           Benachrichtigungen aus ihr gehen an die betreuenden Personen über die
           Kanäle, die diese selbst eingerichtet haben, weil die Akte keinen
-          eigenen Kontaktweg besitzt. Das Löschen der Akte löscht die darin
-          gehaltenen Daten.
+          eigenen Kontaktweg besitzt. Eine betreuende Person kann in einer
+          solchen Akte auch Dokumente ablegen, sie lesen lassen und die darin
+          gefundenen Laborwerte bestätigen; Dateien und Werte gehören zur Akte,
+          deren Aktivitätsprotokoll die betreuende Person nennt, die sie
+          hinzugefügt oder bestätigt hat, und jedes Lesen per KI folgt den
+          Einstellungen und Einwilligungen der Akte selbst. Das Löschen der
+          Akte löscht die darin gehaltenen Daten.
         </p>
         <p>
           Der Betreiber einer Instanz ist Verantwortlicher im Sinne der DSGVO.
@@ -402,8 +407,28 @@ export default function DatenschutzSeite() {
           Kernschlaf, Tiefschlaf); Schrittzahl, Distanz, Aktivitätsenergie,
           Etagen; Umgebungs- und Kopfhörer-Lautstärke; Zeit im Tageslicht;
           Stimmung (Skala 1 bis 5) mit optionaler Freitextnotiz;
-          Trainingseinheiten mit optional selbst angehängter GPS-Strecke; sowie
-          persönliche Bestwerte, die daraus automatisch abgeleitet werden.
+          Trainingseinheiten mit optional selbst angehängter GPS-Strecke;
+          Nahrungsenergie, Makronährstoffe (Eiweiß, Kohlenhydrate, Fett,
+          Zucker, Ballaststoffe), Natrium, Kalium und Alkohol als Tagessummen
+          mit Ihren eigenen Tageszielen; Einträge im optionalen
+          Anfallstagebuch (Anfallsart, Beginn und Dauer, gegebene
+          Notfallmedikation, Umstände und wer den Eintrag gemacht hat); sowie
+          persönliche Bestwerte, die daraus automatisch abgeleitet werden. Eine
+          Ernährungs-App, die Sie einrichten, kann Tagessummen mit einem
+          Messwert-Token senden; dieses Token schreibt nur in Ihre eigene Akte
+          und kann nichts zurücklesen.
+        </p>
+        <p>
+          Dateien, die Sie zum Import hochladen, werden auf der Instanz gelesen
+          und erreichen keinen fremden Dienst: ein Apple-Health-Export (seit
+          Version 1.48.0 einschließlich der Laborwerte unter seinen
+          klinischen Datensätzen aus Health Records), ein Health-Connect-Export
+          und Aktivitätsdateien im FIT-Format von einer Uhr oder einem
+          Fahrradcomputer. Deren Einheiten werden zu Trainings mit Herzfrequenz-,
+          Geschwindigkeits-, Leistungs- und Trittfrequenzverlauf und, wenn Sie
+          Trainingsstrecken eingeschaltet haben, mit ihrer verschlüsselt
+          gespeicherten GPS-Strecke. Eine hochgeladene FIT-Datei wird gelöscht,
+          sobald ihr Import endet.
         </p>
 
         <SubHeading>4.3 Apple Health (iOS-Anwendung)</SubHeading>
@@ -438,9 +463,7 @@ export default function DatenschutzSeite() {
           abdeckt: Withings (Gewicht und Körperzusammensetzung, Blutdruck,
           Blutzucker, Körpertemperatur, Aktivitätssummen, Schlafphasen, SpO₂,
           Herzratenvariabilität, EKG-Aufzeichnungen soweit vorhanden), WHOOP
-          (Erholung, Schlaf, Training, Zyklen, Profil, Körpermaße), Fitbit
-          (Aktivität, kardiorespiratorische Fitness, Herzfrequenz,
-          Sauerstoffsättigung, Atemfrequenz, Schlaf, Gewicht, Profil), Google
+          (Erholung, Schlaf, Training, Zyklen, Profil, Körpermaße), Google
           Health (Aktivität und Fitness, Gesundheitswerte und Messungen, Schlaf,
           Profil), Oura (Tageswerte und Profil), Polar (die Lesebereiche von
           Accesslink), Strava (Aktivitäten, auch als privat markierte) und
@@ -449,9 +472,14 @@ export default function DatenschutzSeite() {
           Personal-API-Schlüssel und fügen ihn in HealthLog ein. HealthLog
           speichert ihn verschlüsselt, schickt ihn nur an den gewählten
           Garmin-Dienst und ruft Tageswerte, Schlaf, Herzratenvariabilität,
-          Wiegungen, Aktivitäten und eingetragene Periodentage ab.
+          Wiegungen, Aktivitäten samt der Originaldatei jeder neuen Aktivität
+          (für ihren Herzfrequenzverlauf) und eingetragene Periodentage ab.
           Eine Verbindung lässt sich in HealthLog und beim Anbieter widerrufen;
-          danach wird nichts mehr abgerufen.
+          danach wird nichts mehr abgerufen. Google hat die Fitbit-Web-API am
+          30. Oktober 2026 abgeschaltet; seit Version 1.48.0 hat HealthLog keine
+          Fitbit-Verbindung mehr und speichert keine Fitbit-Token oder
+          -Zugangsdaten. Zuvor aus Fitbit importierte Daten bleiben in der
+          Akte. Fitbit- und Pixel-Geräte werden über Google Health verbunden.
         </p>
 
         <SubHeading>4.5 Medikamente</SubHeading>
@@ -479,6 +507,15 @@ export default function DatenschutzSeite() {
           Gesundheitskontext (Aggregate, jüngste Beobachtungen, Zielbereiche,
           optional Medikationskontext) und wird für jede Anfrage neu gebildet.
           Was der jeweilige Anbieter damit tut, steht in Abschnitt 6.
+        </p>
+        <p>
+          Sie können jede KI-Aufgabe an eine benannte Kette Ihrer eingerichteten
+          Anbieter binden, etwa das Lesen von Dokumenten nur an ein lokales
+          Modell. Eine so gebundene Aufgabe sendet Daten nur an die Anbieter
+          dieser Kette und bricht mit einer Begründung ab, wenn keiner von ihnen
+          antworten kann, statt auf einen anderen Anbieter auszuweichen.
+          Einwilligung und die Schalter des Betreibers gelten für jede Kette
+          gleich.
         </p>
         <p>
           Coach-Unterhaltungen werden auf der Instanz gespeichert. Jede
@@ -714,14 +751,6 @@ export default function DatenschutzSeite() {
           />
           <SubProcessor
             labels={LABELS}
-            name="Fitbit (Google LLC)"
-            role="Geräte-Synchronisation, wenn Sie ein Fitbit-Konto verbinden. Angefragter Umfang: Aktivität, kardiorespiratorische Fitness, Herzfrequenz, Sauerstoffsättigung, Atemfrequenz, Schlaf, Gewicht, Profil. Diese Fitbit-Web-API wurde am 30. Oktober 2026 von Google abgeschaltet. Seitdem ruft HealthLog sie nicht mehr auf und behält die bereits importierten Daten; Fitbit- und Pixel-Geräte werden über Google Health verbunden."
-            data="OAuth-Token, die Fitbit-Nutzerkennung und die von diesem Umfang erfassten Datensätze."
-            location="Infrastruktur des Anbieters. Die Anbindung legt keine Region fest."
-            policyUrl="https://www.fitbit.com/global/de/legal/privacy-policy"
-          />
-          <SubProcessor
-            labels={LABELS}
             name="Google LLC (Google Health)"
             role="Geräte-Synchronisation, wenn Sie Google Health verbinden. Angefragter Umfang: Aktivität und Fitness, Gesundheitswerte und Messungen, Schlaf, Profil, jeweils nur lesend."
             data="OAuth-Token, die Kennung des für die Freigabe genutzten Google-Kontos und die von diesem Umfang erfassten Datensätze."
@@ -740,7 +769,7 @@ export default function DatenschutzSeite() {
             labels={LABELS}
             name="Garmin (Garmin Connect)"
             role="Geräte-Synchronisation, wenn Sie einen Garmin-Personal-API-Schlüssel einfügen. Nur lesend, stündlicher Abruf."
-            data="Der Personal-API-Schlüssel, damit erzeugte kurzlebige Zugriffstoken sowie Tageswerte, Schlaf, Herzratenvariabilität, Wiegungen, Aktivitäten und eingetragene Periodentage dieses Kontos."
+            data="Der Personal-API-Schlüssel, damit erzeugte kurzlebige Zugriffstoken sowie Tageswerte, Schlaf, Herzratenvariabilität, Wiegungen, Aktivitäten (mit der Originaldatei jeder neuen Aktivität) und eingetragene Periodentage dieses Kontos."
             location="Infrastruktur des Anbieters: Garmin Connect oder, wenn Sie es wählen, Garmin Connect China."
             policyUrl="https://www.garmin.com/privacy/"
           />

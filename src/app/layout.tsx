@@ -158,7 +158,7 @@ export default function RootLayout({
       "Encrypted document vault (off by default) — store letters, reports and scans encrypted at rest; automatic reading by a local reader on your server, or by your AI provider with per-document consent; whole-word search over an encrypted blind index; grounded, cited per-document chat; and time-boxed, revocable QR share links with photo metadata stripped",
       "Two-factor authentication (TOTP and WebAuthn) with step-up checks for sensitive actions",
       "Shared access between two accounts on one instance: give a family member access to your record without sharing a login, to read it, to read it and add to it, or to manage it. The invitation confers nothing until accepted and names both the level and the sections of the record it opens (readings, medications, lab results, health background, illness, mood and mind, cycle, documents), with everything unpicked refused exactly as an unshared record is; managing always covers the whole record; deferring the owner's reminders and overturning a recorded dose stay with the owner at every level; a delegate's entry is stored as the owner's, with authorship in the audit trail and an activity feed that names each act by verb; credentials, integrations, notification channels, module and threshold configuration and exports stay out of reach; an invitation can name the day the access lapses, and either side can end it sooner with effect on the delegate's next request",
-      "Managed profiles: a health record for somebody who does not sign in at all, such as a child or a person in your care. No login and no e-mail address, its own language and timezone, guardians who look after it at the manage level, reminders that reach the guardians rather than the record, and a floor that keeps the last guardian from leaving it unattended",
+      "Managed profiles: a health record for somebody who does not sign in at all, such as a child or a person in your care. No login and no e-mail address, its own language and timezone, guardians who look after it at the manage level and can file its documents and confirm its lab values from their own account, reminders that reach the guardians rather than the record, and a floor that keeps the last guardian from leaving it unattended",
       "Native SwiftUI iOS app (on the App Store) with live two-way Apple Health (HealthKit) sync — steps, weight, blood pressure, glucose, sleep, body composition",
       "Weight, blood pressure, heart rate, body fat, sleep, steps tracking",
       "Body composition: total body water + bone mass via Withings auto-sync",
@@ -170,6 +170,10 @@ export default function RootLayout({
       "Milestones — calm markers for states you've reached (a steady stretch in your target range, a new personal best), not streaks to keep, so there is nothing to break and nothing to nag",
       "Intraday heart rate — your pulse drawn across the whole day, with a careful 'elevated at rest' note when it stays high while you are still, framed as possible tension and never a verdict",
       "Nutrition and vitamins — a water tile with quick-add amounts and a Nutrients page for hydration, caffeine and the vitamins and minerals your device records, each against its reference daily intake as context; dietary intake and hydration flow in from Apple Health",
+      "Energy and macronutrients: calories, protein, carbohydrates, fat, sugar, fiber, sodium, potassium and alcohol, with your own daily targets; a food tracker can push its daily totals with a measurement token",
+      "Seizure diary, off by default: a carer's quick log with a running timer, ILAE seizure types, the rescue plan and dose, clusters, and a seizure section in the doctor report",
+      "Lab results from Apple Health's Health Records, imported with the Apple Health export and matched to your existing markers",
+      "Activity file (FIT) import from Garmin, Wahoo, Coros, Polar and Strava exports, with the heart-rate, speed, power and cadence curve of each workout; Garmin activities bring their heart-rate curve on their own",
       "Metrics catalog — an 'All metrics' view listing every signal HealthLog can track and which device supplies each, so a metric you have no data for stays out of your daily views but is still discoverable in one place",
       "Assistant connector (MCP) covering your metric series, nutrition and vitamins, the intraday pulse curve, stored single-lead ECG recordings, sleep, workouts, labs, correlations, baselines and the preventive-care due-list. Read-only by default, with an optional write scope that logs measurements, blood pressure and mood through a confirm step, append-only. OAuth-secured, off by default, and unable to reach the admin surface",
       "Blood glucose tracking with fasting/postprandial/random/bedtime contexts",
@@ -177,6 +181,7 @@ export default function RootLayout({
       "Mood tracking with 5-point scale and tags",
       "AI-powered health insights via OpenAI (BYOK or admin-shared key), Anthropic Claude, your ChatGPT subscription (one-click device-code Codex flow, no API plan needed), or local OpenAI-compatible providers (Ollama, LM Studio, vLLM)",
       "Multi-provider fallback chain — providers retry in user-defined order on hard failure, with last-working provider cached per user",
+      "Named provider chains per AI task, for example documents only to a local model, each entry marked as staying on the machine or leaving it",
       "AI Coach with streaming chat and encrypted conversation history: reasons before it answers at a depth each person chooses, shows a live status line of what it is reading, compares two periods or two metrics in one chart, asks when a question is ambiguous, and remembers what you tell it with an undo, keeping health details only after you agree; same provider chain as AI Insights, per-user daily token budget",
       "Coach discusses your stored documents in its own document view, with its own separate history — grounded in the document, which is treated as untrusted input",
       "Personal Health Score (composite 0–100 with three bands) built from up to seven pillars across five areas of health, each graded against a published reference band (ESH, ADA, NICE, NSF, validated screeners, the laboratory's own ranges); scores from one area up and says how many areas it rests on",
@@ -210,7 +215,7 @@ export default function RootLayout({
     screenshot: "https://healthlog.dev/og-image-source-available.png",
     // Tracks the latest stable HealthLog server release. Bumped by hand with
     // each release.
-    softwareVersion: "1.47.6",
+    softwareVersion: "1.48.0",
     license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
     // The landing page is English-only today (the /learn guides and the
     // privacy policy have their own locales). The app itself ships in seven
@@ -268,7 +273,7 @@ export default function RootLayout({
         name: "Which devices and services does HealthLog integrate with?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Withings, WHOOP, Oura, Polar, Garmin, Google Health (Fitbit and Pixel), Strava, Nightscout and Dawarich sync over OAuth or your own endpoints, and Apple Health syncs live through the iOS app or via export import. On Android you can import a Health Connect export. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
+          text: "Withings, WHOOP, Oura, Polar, Garmin, Google Health (Fitbit and Pixel), Strava, Nightscout and Dawarich sync over OAuth or your own endpoints, and Apple Health syncs live through the iOS app or via export import, lab results from Health Records included. On Android you can import a Health Connect export. Activity files (FIT) from Garmin, Wahoo, Coros, Polar or Strava import directly, and a food tracker can push daily nutrition totals with a measurement token. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
         },
       },
       {

@@ -16,7 +16,7 @@ import { AnalyticsSettingsButton } from "@/components/analytics";
 
 const TITLE = "Features: everything HealthLog tracks";
 const DESCRIPTION =
-  "Everything HealthLog tracks, in one list: vitals, medications, labs, documents, visits, the day view and timeline, record search, an optional AI Coach, sharing and export, device sync, and what it takes to run it on your own server.";
+  "Everything HealthLog tracks, in one list: vitals, nutrition, medications, labs, documents, visits, the day view and timeline, record search, an optional AI Coach, sharing and export, device sync, and what it takes to run it on your own server.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -64,7 +64,8 @@ const groups: Group[] = [
       ["Mood", "A one-tap face or five optional sliders, trended over 7, 30 and 90 days."],
       ["Mental wellbeing", "WHO-5, PHQ-9 and GAD-7 self-checks. Off until you switch them on, answers encrypted."],
       ["Cycle", "Symptothermal tracking with a careful forecast, which you can subscribe to in your own calendar. Off until you switch it on."],
-      ["Nutrition", "Water, caffeine, vitamins and minerals from Apple Health and the supplements you take, as context rather than a verdict."],
+      ["Nutrition", "Energy, protein, carbs, fat, sugar, fiber, sodium, potassium and alcohol next to water, caffeine, vitamins and minerals, from Apple Health and the supplements you take, as context rather than a verdict."],
+      ["Daily targets", "An amount to reach or a limit to stay under for any nutrient, drawn on its chart instead of the reference. A food tracker can push its daily totals with a measurement token."],
       ["Weather and air", "Weather, air quality, pollen and UV for your city, compared with your days after the season is taken out."],
     ],
   },
@@ -90,9 +91,10 @@ const groups: Group[] = [
     title: "Your record",
     color: "#ffb86c",
     items: [
-      ["Lab results", "Each value on its reference range, the range printed on the report first, converted into one unit with the printed value kept, and grouped by panel if you like."],
+      ["Lab results", "Each value on its reference range, the range printed on the report first, converted into one unit with the printed value kept, and grouped by panel if you like. Results from Apple Health's Health Records come in with the Apple Health export."],
       ["Longevity panel", "ApoB, Lp(a), hs-CRP, HbA1c, insulin, eGFR, the omega-3 index and more."],
       ["Illness journal", "Episodes with daily symptoms, up to eight symptoms of your own, and a Rest Mode while you recover."],
+      ["Seizure diary", "For epilepsy, and the carer who keeps the record: a quick log with a running timer, ILAE types, the rescue plan and dose, clusters, and a section in the doctor report. Off until you switch it on."],
       ["Medical history", "Allergies, family history and life circumstances with the AUDIT-C alcohol check, as structured, encrypted entries."],
       ["Doctor visits", "Each visit linked to the medications, lab results, documents, vaccinations and episodes it concerned."],
       ["Vaccinations", "Every shot in one record, also on the timeline."],
@@ -114,7 +116,7 @@ const groups: Group[] = [
       ["Timeline", "Conditions, medications, vaccinations, visits, labs and life events on one axis, from years down to weeks. Your values, lab markers and your own symptoms run underneath, each lab reading as measured against its reference range."],
       ["Record search", "⌘K finds visits, conditions, document text, lab results, medications, workouts and your own notes."],
       ["AI Coach", "Answers from your own numbers and shows the steps it took. It asks when a question is ambiguous and remembers health details only with your consent."],
-      ["AI providers", "Your ChatGPT subscription, an OpenAI or Anthropic key, a local model on Ollama, LM Studio or vLLM, or none. A frugal, standard or full usage level, within the limit the admin sets."],
+      ["AI providers", "Your ChatGPT subscription, an OpenAI or Anthropic key, a local model on Ollama, LM Studio or vLLM, or none. Named chains send each task where you choose, documents only to a local model if you like. A frugal, standard or full usage level, within the limit the admin sets."],
       ["Correlations", "Sleep, mood, vitals and the weather side by side, without double-counting the season."],
     ],
     shot: {
@@ -133,7 +135,7 @@ const groups: Group[] = [
       ["CSV and JSON", "Everything, for your own analysis."],
       ["Share links", "Time-boxed and revocable, with a QR code to scan at the desk."],
       ["Shared access", "Another account can read, add to or manage your record, whole or by section, until either side ends it."],
-      ["Managed profiles", "A record for a child or someone in your care, with guardians and a hand-over link."],
+      ["Managed profiles", "A record for a child or someone in your care, with guardians and a hand-over link. Guardians file its documents and confirm its lab values from their own account."],
       ["MCP for AI assistants", "Claude, ChatGPT and others read your record over OAuth. Writes are previewed and confirmed."],
     ],
   },
@@ -143,12 +145,13 @@ const groups: Group[] = [
     color: "#8be9fd",
     items: [
       ["Withings, WHOOP, Oura, Polar, Strava", "OAuth sync, Withings with webhooks."],
-      ["Garmin", "Directly through Garmin's Personal API, with a key you create in Garmin Connect. Or through Apple Health or Health Connect."],
-      ["Fitbit and Pixel Watch", "Through the Google Health API and your own Google Cloud client."],
+      ["Garmin", "Directly through Garmin's Personal API, with a key you create in Garmin Connect, including the heart-rate curve of each activity. Or through Apple Health or Health Connect."],
+      ["Fitbit and Pixel Watch", "Through the Google Health API and your own Google Cloud client. Google shut the old Fitbit API on 30 October 2026; what you imported from it stays."],
       ["Nightscout", "Continuous glucose from your own instance."],
       ["Dawarich", "Distance, travel days and time away from home from your own instance. No places or coordinates are stored."],
       ["Apple Health", "Live two-way sync in the iPhone app, or an export.zip with your full history."],
       ["Health Connect", "Upload an export. Apps you already connect directly are skipped."],
+      ["Activity files (FIT)", "A .fit file or a Garmin export ZIP from Garmin, Wahoo, Coros, Polar or Strava becomes a workout with its heart-rate, speed, power and cadence curve."],
       ["Source priority", "Per metric, you pick which source counts when two report the same day."],
       ["Notifications", "Push, Telegram, ntfy, e-mail or a webhook. A tap opens the right page."],
     ],
@@ -165,6 +168,7 @@ const groups: Group[] = [
     items: [
       ["One docker compose up", "App and PostgreSQL. All state lives in one database volume."],
       ["Backups", "Encrypted nightly backups to any S3-compatible bucket, if you want them."],
+      ["Years of data", "Accounts with years of dense watch data open quickly."],
       ["Encryption", "AES-256-GCM for notes, documents, answers and keys, with key rotation. Values stay queryable."],
       ["Sign-in", "Passkeys, password with 2FA, or OpenID Connect single sign-on."],
       ["No telemetry", "Three small checks (update, password breach, sign-in location), none with health data, each can be switched off."],

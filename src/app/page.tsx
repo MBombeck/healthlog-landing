@@ -487,7 +487,7 @@ const stories: {
     id: "ai",
     kicker: "AI, optional",
     title: "Ask your record, or don't",
-    body: "The Coach answers from your own numbers and shows the steps it took. Use your own OpenAI or Anthropic key, a local model on Ollama, LM Studio or vLLM, or leave AI off. Everything else works without it.",
+    body: "The Coach answers from your own numbers and shows the steps it took. Use your own OpenAI or Anthropic key, a local model on Ollama, LM Studio or vLLM, or leave AI off, and pick per task which one answers, so documents can stay on a local model. Everything else works without it.",
     shot: "coach",
     alt: "HealthLog Coach answering how the week's recovery went, with its five steps folded above the answer and earlier conversations listed on the right",
   },
@@ -503,6 +503,7 @@ const everythingElse: { group: string; items: [string, string][] }[] = [
       ["drop", "Blood glucose and CGM"],
       ["smile", "Mood and wellbeing check-ins"],
       ["drop", "Cycle tracking"],
+      ["drop", "Energy and macronutrients"],
       ["wind", "Weather, air quality, pollen"],
       ["spark", "Health score and correlations"],
     ],
@@ -514,6 +515,7 @@ const everythingElse: { group: string; items: [string, string][] }[] = [
       ["pill", "Supplements that log themselves"],
       ["flask", "Lab results with unit conversion"],
       ["thermo", "Illness journal and symptoms"],
+      ["activity", "Seizure diary"],
       ["calendar", "Doctor visits and check-ups"],
       ["syringe", "Vaccination record"],
       ["file", "Encrypted document vault"],
@@ -537,6 +539,7 @@ const everythingElse: { group: string; items: [string, string][] }[] = [
       ["watch", "Fitbit and Pixel through Google Health"],
       ["link", "Strava, Nightscout, Dawarich"],
       ["phone", "Health Connect import"],
+      ["file", "FIT files from your watch"],
       ["watch", "Garmin, directly"],
       ["bell", "Push, Telegram, ntfy, e-mail"],
     ],
@@ -565,7 +568,7 @@ const faqs = [
   {
     question: "Which devices and services does HealthLog integrate with?",
     answer:
-      "Withings, WHOOP, Oura, Polar, Garmin, Google Health (Fitbit and Pixel), Strava, Nightscout and Dawarich sync over OAuth or your own endpoints, and Apple Health syncs live through the iOS app or via export import. On Android you can import a Health Connect export. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
+      "Withings, WHOOP, Oura, Polar, Garmin, Google Health (Fitbit and Pixel), Strava, Nightscout and Dawarich sync over OAuth or your own endpoints, and Apple Health syncs live through the iOS app or via export import, lab results from Health Records included. On Android you can import a Health Connect export. Activity files (FIT) from Garmin, Wahoo, Coros, Polar or Strava import directly, and a food tracker can push daily nutrition totals with a measurement token. AI insights run against OpenAI, Anthropic, your ChatGPT subscription, or a local model (Ollama, LM Studio, vLLM).",
   },
   {
     question: "Can I connect HealthLog to an AI assistant?",
