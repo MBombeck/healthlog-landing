@@ -20,7 +20,7 @@ import {
 // article manifest × locales, so new guides and languages appear automatically.
 export const dynamic = "force-static";
 
-const LAST_MODIFIED = "2026-06-19";
+const LAST_MODIFIED = "2026-11-18";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
