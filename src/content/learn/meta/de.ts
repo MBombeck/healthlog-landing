@@ -196,6 +196,18 @@ const meta: LearnMeta = {
       description:
         "Wie Hitze, Höhe und Luftverschmutzung deinen Ruhepuls, deinen Schlaf, deine Atmung und deinen Blutsauerstoff verändern, warum diese Verschiebungen Information statt Fehlfunktion sind und wie du deine Daten gegen die Umgebung liest statt im Vakuum.",
     },
+    "energy-balance-and-your-daily-burn": {
+      title: "Energiebilanz: was dein täglicher Verbrauch dir sagen kann",
+      dek: "Kalorien rein minus Kalorien raus klingt exakt. Beide Seiten sind Schätzungen, und erst als Trend gelesen wird die Bilanz nützlich.",
+      description:
+        "Woraus der gesamte tägliche Energieverbrauch besteht, wie der Ruheumsatz geschätzt wird, wie genau die Kalorienwerte von Wearables sind, warum die protokollierte Aufnahme eher zu niedrig ausfällt, warum das Gewicht der Rechnung hinterherhinkt und wie du deine eigene Energiebilanz als Trend liest.",
+    },
+    "one-dose-two-devices": {
+      title: "Eine Dosis, zwei Geräte",
+      dek: "Wenn Handy, Uhr und Pillendose alle deine Medikamente verfolgen, müssen sie sich einig sein, was genommen wurde, sonst lädt eine Erinnerung zu einer zweiten Dosis ein.",
+      description:
+        "Warum Medikamentenerinnerungen helfen, wie mehrere Geräte, die dasselbe Medikament verfolgen, uneins sein können, was es braucht, damit sie sich bei einer Dosis einig sind, und was du bei einer Dosis tust, bei der du nicht sicher bist, ob du sie genommen hast.",
+    },
   },
 };
 

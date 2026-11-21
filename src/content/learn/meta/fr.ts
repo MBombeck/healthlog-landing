@@ -199,6 +199,18 @@ const meta: LearnMeta = {
       description:
         "Comment la chaleur, l'altitude et la pollution de l'air modifient votre fréquence cardiaque au repos, votre sommeil, votre respiration et votre oxygène du sang, pourquoi ces décalages sont une information plutôt qu'un dysfonctionnement, et comment lire vos données face à l'environnement plutôt que dans le vide.",
     },
+    "energy-balance-and-your-daily-burn": {
+      title: "La balance énergétique : ce que votre dépense quotidienne peut vous dire",
+      dek: "Calories ingérées moins calories dépensées, cela paraît exact. Les deux côtés sont des estimations, et c'est en lisant la balance comme une tendance qu'elle devient utile.",
+      description:
+        "De quoi se compose la dépense énergétique totale quotidienne, comment on estime l'énergie de repos, quelle est la précision des calories affichées par les objets connectés, pourquoi les apports consignés ont tendance à être trop bas, pourquoi le poids suit le calcul avec retard, et comment lire votre propre balance énergétique comme une tendance.",
+    },
+    "one-dose-two-devices": {
+      title: "Une dose, deux appareils",
+      dek: "Quand un téléphone, une montre et un pilulier suivent tous vos médicaments, ils doivent s'accorder sur ce qui a été pris, sinon un rappel invite à une seconde dose.",
+      description:
+        "Pourquoi les rappels de médicaments aident, comment plusieurs appareils qui suivent le même médicament peuvent se contredire, ce qu'il faut pour qu'ils s'accordent sur une dose, et que faire d'une dose dont vous n'êtes pas sûr de l'avoir prise.",
+    },
   },
 };
 

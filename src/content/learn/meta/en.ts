@@ -196,6 +196,18 @@ const meta: LearnMeta = {
       description:
         "How heat, altitude and air pollution change your resting heart rate, sleep, breathing and blood oxygen, why those shifts are information rather than malfunction, and how to read your data against the environment instead of in a vacuum.",
     },
+    "energy-balance-and-your-daily-burn": {
+      title: "Energy balance: what your daily burn can tell you",
+      dek: "Calories in minus calories out sounds exact. Both sides are estimates, and reading the balance as a trend is what makes it useful.",
+      description:
+        "What total daily energy expenditure is made of, how resting energy is estimated, how accurate wearable calorie figures are, why logged intake tends to run low, why weight lags the arithmetic, and how to read your own energy balance as a trend.",
+    },
+    "one-dose-two-devices": {
+      title: "One dose, two devices",
+      dek: "When a phone, a watch and a pill box all track your medication, they have to agree on what was taken, or a reminder invites a second dose.",
+      description:
+        "Why medication reminders help, how several devices that track the same medication can disagree, what it takes for them to agree on a dose, and what to do about a dose you are not sure you took.",
+    },
   },
 };
 

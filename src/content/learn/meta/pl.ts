@@ -196,6 +196,18 @@ const meta: LearnMeta = {
       description:
         "Jak upał, wysokość i zanieczyszczenie powietrza zmieniają Twoje tętno spoczynkowe, sen, oddech i natlenienie krwi, dlaczego te przesunięcia są informacją, a nie usterką, i jak czytać dane względem otoczenia, a nie w próżni.",
     },
+    "energy-balance-and-your-daily-burn": {
+      title: "Bilans energetyczny: co mówi twój dzienny wydatek energii",
+      dek: "Kalorie przyjęte minus kalorie spalone brzmi jak dokładny rachunek. Obie strony to szacunki, a użyteczny staje się dopiero bilans czytany jako trend.",
+      description:
+        "Z czego składa się całkowity dzienny wydatek energetyczny, jak szacuje się energię spoczynkową, jak dokładne są kalorie z urządzeń noszonych, dlaczego zapisane spożycie zwykle wychodzi za nisko, dlaczego waga nie nadąża za rachunkiem i jak czytać własny bilans energetyczny jako trend.",
+    },
+    "one-dose-two-devices": {
+      title: "Jedna dawka, dwa urządzenia",
+      dek: "Gdy telefon, zegarek i pojemnik na leki śledzą twoje leki, muszą się zgadzać co do tego, co zostało przyjęte, inaczej przypomnienie zachęca do drugiej dawki.",
+      description:
+        "Dlaczego przypomnienia o lekach pomagają, jak kilka urządzeń śledzących ten sam lek może się ze sobą nie zgadzać, czego trzeba, by zgadzały się co do dawki, i co zrobić z dawką, co do której nie masz pewności, czy została przyjęta.",
+    },
   },
 };
 

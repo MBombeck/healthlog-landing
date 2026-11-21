@@ -1,0 +1,69 @@
+Vous prenez votre comprimé du matin, touchez « pris » sur votre téléphone et poursuivez votre journée. Vingt minutes plus tard, votre montre, la tablette de votre conjoint ou le pilulier connecté posé sur le plan de travail de la cuisine pense toujours que la dose est due, et le rappel sonne de nouveau. La plupart du temps, vous haussez les épaules et l'ignorez. Un matin chargé, avec la plaquette à moitié vide et aucun souvenir clair des dernières minutes, ce second rappel est exactement la façon dont une seconde dose arrive. Quand plus d'un appareil suit vos médicaments, ils doivent s'accorder sur ce qui a déjà été pris.
+
+## Les rappels fonctionnent, et c'est pour cela qu'ils comptent
+
+![](/learn-img-2/one-dose-two-devices.jpg)
+
+Prendre un traitement au long cours tel qu'il a été prescrit est difficile pour presque tout le monde. L'Organisation mondiale de la santé estime que dans les pays développés, seule la moitié environ des personnes atteintes d'une maladie chronique suivent leur traitement au long cours comme recommandé.[^who2003] De simples rappels aident de façon mesurable. Une méta-analyse de seize essais randomisés a montré que les rappels par SMS doublaient à peu près les chances de prendre ses médicaments comme prescrit, ce que les auteurs traduisent par une observance passant d'environ 50 à environ 68 %.[^thakkar]
+
+C'est la bonne nouvelle, et c'est aussi la raison de prendre au sérieux la conception des rappels. Un rappel est une incitation à agir. S'il se déclenche pour une dose déjà prise, il incite au mauvais geste.
+
+## Comment une double dose arrive
+
+Les erreurs médicamenteuses sont assez fréquentes pour que l'OMS leur consacre un défi mondial pour la sécurité des patients, « Medication Without Harm », et en estime le coût à 42 milliards de dollars US par an.[^whomwh] À l'hôpital, l'essentiel de l'attention porte sur la prescription et la dispensation. À la maison, la personne qui prend le médicament est aussi celle qui tient les registres, souvent à plusieurs endroits à la fois :
+
+- une application de rappel sur le téléphone, dont les notifications sont reproduites sur une montre ;
+- un second appareil, comme une tablette dans la cuisine ou le téléphone d'un proche qui aide pour les rappels ;
+- un pilulier ou distributeur connecté qui enregistre l'ouverture d'un compartiment ;
+- une application de santé qui tient sa propre liste de médicaments.
+
+Chacun d'eux peut savoir quelque chose que les autres ignorent. Si le pilulier enregistre la dose du matin mais que le téléphone n'en est jamais informé, le téléphone vous rappellera comme si de rien n'était. Si vous touchez « pris » deux fois, une fois sur chaque appareil, un système naïf écrit deux doses et votre historique indique désormais que vous avez pris deux comprimés. Aucune de ces situations n'est une défaillance spectaculaire. Toutes deux sont ordinaires, et toutes deux vont dans le même sens : vers un registre, et un rappel, qui ne correspondent plus à ce que vous avez fait.
+
+<Aside type="caution">
+  Si vous n'êtes pas sûr d'avoir déjà pris une dose, n'en prenez pas une autre
+  par simple précaution. Dans l'UE, les notices suivent un modèle comportant une
+  rubrique sur la conduite à tenir après un oubli, et sa formulation type est de
+  ne pas prendre de dose double pour compenser la dose oubliée. En cas de doute,
+  demandez à votre pharmacien ou au prescripteur, et gardez la notice à portée
+  de main.[^ema]
+</Aside>
+
+## Ce que « s'accorder » veut vraiment dire
+
+Pour qu'un ensemble d'appareils s'accorde sur une dose, trois conditions doivent être réunies.
+
+**Il y a un seul registre, pas un par appareil.** Chaque appareil lit et écrit la même liste de doses. Un geste sur le téléphone et une ouverture enregistrée du pilulier arrivent au même endroit, si bien que le prochain appareil qui regarde les voit.
+
+**La même dose signalée deux fois est une seule dose.** Si le pilulier et votre geste disent tous deux « pris » pour la dose de 08:00, c'est le même événement vu deux fois, pas deux comprimés. Un système soigneux reconnaît la répétition et n'enregistre rien de nouveau, plutôt que d'ajouter une seconde entrée ou de réattribuer discrètement le signalement en trop à la dose du soir.
+
+**Les autres appareils en sont informés, et cessent de rappeler.** Dès qu'une dose est enregistrée quelque part, chaque appareil qui allait vous la rappeler devrait retirer ce rappel. Sur un téléphone qui programme ses propres rappels, cela veut dire que le serveur doit le lui dire, parce que le téléphone ne peut pas le savoir autrement.
+
+Le troisième point est celui que l'on remarque. Un rappel qui continue après que vous avez déjà agi n'est pas seulement agaçant ; à la longue, il vous apprend à ignorer les rappels sans les lire, ce qui va à l'encontre de leur raison d'être.
+
+## L'heure fait partie de la dose
+
+L'accord dépend aussi du temps. Une dose prise une heure en avance reste la dose du matin. Une dose prise cinq heures en retard peut être la dose du matin prise en retard, ou une dose en plus, selon le médicament et votre schéma de prise. C'est un jugement sur votre traitement, pas un détail technique, et il vous revient, à vous et à votre prescripteur. Ce qu'un système de suivi peut faire, c'est appliquer la même règle partout, indiquer à quelle dose prévue une entrée sera rattachée avant que vous ne l'enregistriez, et conserver une dose qui n'appartient manifestement pas au schéma comme dose supplémentaire plutôt que de combler un trou en silence.
+
+| Situation                                            | Ce qu'un système soigneux enregistre            |
+| ---------------------------------------------------- | ----------------------------------------------- |
+| Prise notée sur le téléphone, puis sur la montre     | Une dose ; le second signalement ne change rien |
+| Le pilulier s'ouvre, puis vous touchez « pris »      | Une dose, à l'heure du premier signalement      |
+| Prise une heure en avance                            | La dose prévue, à l'heure ou en avance          |
+| Prise de nombreuses heures à l'écart de tout horaire | Une dose supplémentaire, affichée comme telle   |
+| Enregistrée sur un appareil                          | Rappels de cette dose retirés sur les autres    |
+
+## Comment HealthLog s'en charge
+
+Dans HealthLog, chaque appareil et chaque intégration écrit dans le même registre de doses, sur votre propre serveur. Une prise est rattachée à la dose prévue la plus proche le même jour, dans un intervalle de six heures avant ou après, et lorsque cette dose comporte déjà une prise, un second signalement n'écrit rien et l'application indique que la dose était déjà enregistrée. Un pilulier connecté ou un script reçoit la même réponse, avec un champ qui lui indique que la dose avait déjà été prise. Lorsqu'une dose est enregistrée sur le web, dans Telegram ou par une intégration, l'application iPhone l'apprend à sa prochaine synchronisation, et immédiatement si les notifications push sont configurées pour cela : elle retire le rappel qu'elle avait programmé et peut afficher une note discrète indiquant que la dose a été enregistrée ailleurs. Le formulaire de prise indique à quelle dose une entrée est rattachée avant que vous ne l'enregistriez, et une entrée éloignée de tout horaire est conservée comme dose supplémentaire.
+
+Rien de tout cela ne décide quoi que ce soit de votre traitement. Cela garde le registre honnête, pour que le rappel que vous voyez corresponde à la dose qu'il vous reste réellement à prendre.
+
+Ceci est une information générale, non un avis médical. Les questions sur une dose oubliée ou une dose en plus d'un médicament précis relèvent de votre pharmacien ou de votre prescripteur ; en cas d'urgence, ou si vous pensez avoir pris trop d'un médicament, contactez les services d'urgence ou un centre antipoison.
+
+[^who2003]: L'observance des traitements au long cours des maladies chroniques dans les pays développés est en moyenne d'environ 50 %. World Health Organization, "Adherence to long-term therapies: evidence for action," 2003. https://iris.who.int/handle/10665/42682
+
+[^thakkar]: Une méta-analyse de 16 essais randomisés (2 742 patients) a montré que les SMS sur téléphone mobile doublaient à peu près les chances d'observance médicamenteuse (rapport de cotes 2,11), ce qui correspond à une observance passant de 50 à 67,8 %. Thakkar J, et al., "Mobile Telephone Text Messaging for Medication Adherence in Chronic Disease: A Meta-analysis," _JAMA Internal Medicine_, 2016;176(3):340-349. https://doi.org/10.1001/jamainternmed.2015.7667
+
+[^whomwh]: Les pratiques médicamenteuses dangereuses et les erreurs médicamenteuses sont une cause majeure de préjudices évitables dans les soins de santé, avec un coût mondial estimé à 42 milliards de dollars US par an. World Health Organization, "Medication Without Harm," Global Patient Safety Challenge. https://www.who.int/initiatives/medication-without-harm
+
+[^ema]: Le modèle de notice comporte une rubrique sur la conduite à tenir après un oubli, avec la mention type "Do not take a double dose to make up for a forgotten tablet". European Medicines Agency, "QRD product information annotated template (English)," version 10.4. https://www.ema.europa.eu/en/documents/template-form/qrd-product-information-annotated-template-english-version-104_en.pdf

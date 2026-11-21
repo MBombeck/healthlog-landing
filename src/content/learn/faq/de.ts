@@ -503,5 +503,41 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Als relatives Signal gelesen, kann ein kleiner anhaltender Anstieg über ein bis zwei Nächte ein früher, unspezifischer Krankheitshinweis sein, besonders neben einer steigenden Ruheherzfrequenz und einer fallenden Herzfrequenzvariabilität. Für alle, die menstruieren, spiegelt eine stetige Verschiebung über einen Teil des Monats oft den Temperaturanstieg der Lutealphase wider. Es ist ein Trend gegen deine eigenen Nächte, ehrlich darüber, wie wenig eine einzelne Nacht bedeutet.",
     },
   ],
+  "energy-balance-and-your-daily-burn": [
+    {
+      q: "Was ist der TDEE?",
+      a: "Der gesamte tägliche Energieverbrauch: alles, was dein Körper an einem Tag verbrennt. Er hat drei Teile: den Ruheumsatz, der dich in Ruhe am Leben hält und für alle, die nicht sehr aktiv sind, den größten Anteil ausmacht; die Energie, die du für Bewegung aufwendest; und die nahrungsinduzierte Thermogenese, bei gemischter Kost etwa 5 bis 15 Prozent des Tages.",
+    },
+    {
+      q: "Wie genau sind die Kalorienwerte einer Uhr?",
+      a: "Weniger genau als die Herzfrequenzwerte. In einer Laborstudie mit sieben am Handgelenk getragenen Geräten schätzte keines den Energieverbrauch mit einem Fehler unter 20 Prozent, und eine Metaanalyse von 60 Studien ergab, dass die Genauigkeit stark mit der Art der Aktivität schwankt. Vergleiche die aktiven Kalorien eines Geräts mit demselben Gerät über die Zeit und behandle ein neues Gerät als neue Ausgangsbasis.",
+    },
+    {
+      q: "Wie wird der Ruheumsatz ohne Labortest geschätzt?",
+      a: "Meist mit einer Gleichung aus Gewicht, Größe, Alter und Geschlecht. Eine systematische Übersicht fand die Mifflin-St-Jeor-Gleichung als die zuverlässigste der gängigen: Sie sagte den Ruheumsatz bei mehr Menschen als jede andere auf 10 Prozent genau voraus. Für eine einzelne Person ist sie ein guter Ausgangspunkt, keine Messung.",
+    },
+    {
+      q: "Meine Bilanz zeigt ein Defizit, aber mein Gewicht bewegt sich nicht. Warum?",
+      a: "Die üblichen Gründe sind Lücken im Protokoll, weil die Aufnahme eher zu niedrig erfasst wird; Gerätefehler bei den aktiven Kalorien; und die Anpassung des Körpers selbst, denn der Verbrauch sinkt mit dem Gewicht, und das Gewicht reagiert langsam auf eine Änderung der Aufnahme. Über mehrere Wochen ist der Trend deines Gewichts die verlässlichere der beiden Zahlen.",
+    },
+  ],
+  "one-dose-two-devices": [
+    {
+      q: "Warum erinnert mich mein Handy noch, nachdem ich mein Medikament genommen habe?",
+      a: "Weil das Handy es noch nicht weiß. Wurde die Dosis auf einem anderen Gerät, in einer Pillendose oder in einer anderen App festgehalten, hört das Handy erst auf zu erinnern, wenn dieser Eintrag bei ihm ankommt. Ein Aufbau, bei dem jedes Gerät in einen gemeinsamen Eintrag schreibt und die anderen benachrichtigt werden, sobald eine Dosis festgehalten ist, vermeidet die zusätzliche Erinnerung.",
+    },
+    {
+      q: "Ich bin nicht sicher, ob ich meine Dosis schon genommen habe. Soll ich noch eine nehmen?",
+      a: "Nicht sicherheitshalber. Packungsbeilagen in der EU folgen einer Vorlage, deren Standardwortlaut ist, nicht die doppelte Menge einzunehmen, um eine vergessene Dosis nachzuholen, und die Packungsbeilage deines Medikaments sagt, was nach einer vergessenen Dosis zu tun ist. Frag im Zweifel in deiner Apotheke oder bei der verordnenden Person nach.",
+    },
+    {
+      q: "Helfen Medikamentenerinnerungen wirklich?",
+      a: "Ja. Eine Metaanalyse von sechzehn randomisierten Studien ergab, dass Erinnerungen per SMS die Chance, Medikamente wie verordnet zu nehmen, ungefähr verdoppelten, was einem Anstieg der Therapietreue von etwa 50 auf etwa 68 Prozent entspricht. Genau deshalb zählt auch eine Erinnerung für eine schon genommene Dosis: Sie stößt die falsche Handlung an.",
+    },
+    {
+      q: "Was sollte passieren, wenn zwei Geräte dieselbe Dosis melden?",
+      a: "Sie sollte als eine Dosis zählen. Das Öffnen einer Pillendose und ein Tippen auf dem Handy für dieselbe geplante Dosis sind dasselbe Ereignis, zweimal gesehen, deshalb hält ein sorgfältiges System bei der zweiten Meldung nichts Neues fest, statt eine zweite Dosis anzulegen oder sie auf eine spätere zu verschieben.",
+    },
+  ],
 };
 export default FAQ;

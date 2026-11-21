@@ -1,0 +1,75 @@
+Every day your body spends energy, and every day you eat some. Set one against the other and you get a single figure, the energy balance, that sounds like the most useful number in nutrition: a deficit and you lose weight, a surplus and you gain. The idea is sound. The figure you can actually compute from a watch and a food log is softer than it looks, because both sides of the equation are estimates, and one of them is usually the larger error. Read with that in mind, a daily balance becomes a genuinely useful trend. Read as a precise ledger, it misleads.
+
+## What your daily burn is made of
+
+![](/learn-img-2/energy-balance-and-your-daily-burn.jpg)
+
+Total daily energy expenditure, often shortened to TDEE, has three parts.[^westerterp] The largest is **basal or resting metabolism**: the energy that keeps you alive at rest, from your heart and brain to your body temperature. Next is the **energy you spend moving**, from a run to carrying shopping or fidgeting at a desk. The smallest is the **thermic effect of food**, the energy your body uses to digest and store what you eat, which comes to roughly 5 to 15 percent of daily expenditure on a mixed diet.[^westerterp]
+
+International guidance expresses total expenditure as a multiple of basal metabolism, the physical activity level. A sedentary or lightly active lifestyle sits at about 1.4 to 1.7 times basal metabolism, an active one at 1.7 to 2.0, and a vigorous one higher still.[^fao] Turned around, that means that for anyone who is not very active, resting metabolism is more than half of everything they burn in a day, and the workout, however hard it felt, is a smaller slice than intuition suggests.
+
+## Estimating resting energy
+
+Measuring resting metabolism properly needs indirect calorimetry: a mouthpiece or hood that measures the oxygen you use. Almost nobody does that at home, so the usual route is an equation built from weight, height, age and sex. The most widely validated is the **Mifflin-St Jeor** equation, developed in 1990 from measurements in healthy adults.[^mifflin] A systematic review of the common equations found it the most reliable of them: it predicted resting metabolism within 10 percent of the measured value in more people, lean and obese, than any other, with the narrowest error range.[^frankenfield]
+
+"More people than any other" is not "everyone". The same review notes that older adults and several ethnic groups were underrepresented in the data the equations were built and tested on.[^frankenfield] For an individual, the equation is a good starting point, not a measurement.
+
+## Active energy from a wearable
+
+The moving part of the burn is where watches and rings come in, and it is the softest number of the lot. In a laboratory study of seven wrist-worn devices, most measured heart rate well, but **none estimated energy expenditure with an error below 20 percent**, and the error was larger during walking and in people with a higher body mass index.[^shcherbina] A later meta-analysis of 60 validation studies came to a similar conclusion: accuracy varies widely with the type of activity, and adding heart rate to motion sensing helps but does not close the gap.[^odriscoll]
+
+Because the error depends on the device and on what you were doing, the active calories from one watch are best compared with the active calories from the same watch. Switching devices can shift your balance overnight with nothing about you having changed.
+
+<Aside type="note">
+  A sudden jump in your energy balance after a new watch, a firmware update or
+  a different food app is usually the measurement changing, not your body.
+  Compare weeks measured the same way, and treat the first week on a new
+  device as a new baseline.
+</Aside>
+
+## The intake side is the harder one
+
+If active energy is soft, logged intake is often softer. Food logging depends on memory and on guessing portions. In a well-known study of people who reported eating very little yet not losing weight, careful measurement showed that they underreported their food intake by about 47 percent on average and overreported their physical activity by about 51 percent; their metabolism, by contrast, was within 5 percent of what their body composition predicted.[^lichtman] That was a small, specific group, not everyone who keeps a food diary, but the direction of the error is the familiar one: intake tends to be logged low and activity high, which makes a deficit look bigger than it is.
+
+## Why the scale lags the arithmetic
+
+Even a perfectly measured balance would not translate neatly into weight. Expenditure is not fixed. As weight changes, the energy the body spends changes with it, and mathematical models of human metabolism show that weight responds to a sustained change in intake slowly, with half-times of about a year.[^hall] On top of that, the body defends its energy stores after weight loss with what is called adaptive thermogenesis: expenditure falls further than the change in body size alone would explain, which helps explain why keeping weight off is often harder than losing it.[^rosenbaum]
+
+So a steady deficit of a few hundred calories a day does not produce the same loss every week for ever.
+
+## Reading your own balance
+
+Put together, a daily energy balance is most useful when you treat it as a direction rather than a number:
+
+| Question                                    | What the balance can say                                       |
+| ------------------------------------------- | -------------------------------------------------------------- |
+| Am I roughly eating what I burn this month? | A weekly average, read against your weight trend               |
+| Did one day put me over?                    | Very little: one day's error is larger than most real swings   |
+| Why is my weight not moving as predicted?   | Logging gaps, device error and adaptation are the usual causes |
+| Is my metabolism broken?                    | It cannot tell you; that needs measurement and a clinician     |
+
+The most honest check on any energy balance is the slow trend of your weight over several weeks. If the balance says deficit and the weight trend is flat, the measurements are disagreeing, and the weight is usually the one to believe.
+
+## How HealthLog reads it
+
+HealthLog's energy balance card takes what you ate from your nutrient data and subtracts resting plus active energy, day by day. It deliberately leaves a day out rather than guess: a day with no food logged has no balance, because a zero would read as a fast, and a day without active energy has none either, because leaving it out would make a deficit look larger than it was. When no resting reading arrived, it estimates resting energy with the Mifflin-St Jeor equation from your profile and says on how many days it did. The headline is a seven-day average, and the card shows the numbers without telling you what they should be.
+
+This is general information, not medical or dietary advice. Calorie targets, weight loss plans and questions about your metabolism belong with a clinician or a registered dietitian, especially if you have a medical condition, are pregnant, or have a history of disordered eating.
+
+[^westerterp]: Daily energy expenditure consists of basal metabolic rate, diet-induced thermogenesis and the energy cost of physical activity; on a mixed diet at energy balance, diet-induced thermogenesis is 5 to 15 percent of daily energy expenditure. Westerterp KR, "Diet induced thermogenesis," _Nutrition & Metabolism_, 2004;1:5. https://doi.org/10.1186/1743-7075-1-5
+
+[^fao]: Total energy expenditure expressed as basal metabolic rate times physical activity level, with sedentary or light activity at PAL 1.40 to 1.69, active or moderately active at 1.70 to 1.99, and vigorous at 2.00 to 2.40. FAO/WHO/UNU Expert Consultation, "Human energy requirements," FAO Food and Nutrition Technical Report Series 1, 2004. https://www.fao.org/3/y5686e/y5686e00.htm
+
+[^mifflin]: The Mifflin-St Jeor equation for resting energy expenditure, derived from indirect calorimetry in healthy adults. Mifflin MD, St Jeor ST, et al., "A new predictive equation for resting energy expenditure in healthy individuals," _American Journal of Clinical Nutrition_, 1990;51(2):241-247. https://doi.org/10.1093/ajcn/51.2.241
+
+[^frankenfield]: Mifflin-St Jeor predicted resting metabolic rate within 10 percent of measured in more nonobese and obese individuals than other common equations, with the narrowest error range; older adults and US ethnic minorities were underrepresented. Frankenfield D, Roth-Yousey L, Compher C, "Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review," _Journal of the American Dietetic Association_, 2005;105(5):775-789. https://doi.org/10.1016/j.jada.2005.02.005
+
+[^shcherbina]: Seven wrist-worn devices measured heart rate adequately in the laboratory, but no device estimated energy expenditure with an error below 20 percent; error was higher for walking and greater body mass index. Shcherbina A, et al., "Accuracy in Wrist-Worn, Sensor-Based Measurements of Heart Rate and Energy Expenditure in a Diverse Cohort," _Journal of Personalized Medicine_, 2017;7(2):3. https://doi.org/10.3390/jpm7020003
+
+[^odriscoll]: A meta-analysis of 60 validation studies found that energy expenditure estimates from wrist- and arm-worn monitors vary in accuracy with activity type, and that adding heart rate to accelerometry reduces error. O'Driscoll R, et al., "How well do activity monitors estimate energy expenditure? A systematic review and meta-analysis of the validity of current technologies," _British Journal of Sports Medicine_, 2020;54(6):332-340. https://doi.org/10.1136/bjsports-2018-099643
+
+[^lichtman]: In ten people with self-reported diet resistance, intake was underreported by 47 percent and physical activity overreported by 51 percent on average, while total and resting expenditure were within 5 percent of predicted. Lichtman SW, et al., "Discrepancy between self-reported and actual caloric intake and exercise in obese subjects," _New England Journal of Medicine_, 1992;327(27):1893-1898. https://doi.org/10.1056/NEJM199212313272701
+
+[^hall]: A model of adult metabolism that accounts for the adaptation of energy expenditure shows that body weight responds slowly to a change in energy intake, with half-times of about one year. Hall KD, et al., "Quantification of the effect of energy imbalance on bodyweight," _The Lancet_, 2011;378(9793):826-837. https://doi.org/10.1016/S0140-6736(11)60812-X
+
+[^rosenbaum]: After weight loss, coordinated metabolic, behavioural and neuroendocrine responses, termed adaptive thermogenesis, oppose the maintenance of a reduced body weight. Rosenbaum M, Leibel RL, "Adaptive thermogenesis in humans," _International Journal of Obesity_, 2010;34(Suppl 1):S47-S55. https://doi.org/10.1038/ijo.2010.184

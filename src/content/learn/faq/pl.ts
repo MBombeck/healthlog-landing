@@ -503,5 +503,41 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Odczytany jako sygnał względny, niewielki utrzymujący się wzrost przez noc czy dwie może być wczesnym, niespecyficznym sygnałem choroby, zwłaszcza wraz z rosnącym tętnem spoczynkowym i spadającą zmiennością rytmu serca. Dla każdej osoby, która miesiączkuje, stałe przesunięcie w części miesiąca często odzwierciedla wzrost temperatury w fazie lutealnej. To trend względem twoich własnych nocy, uczciwy co do tego, jak mało znaczy pojedyncza noc.",
     },
   ],
+  "energy-balance-and-your-daily-burn": [
+    {
+      q: "Czym jest TDEE?",
+      a: "To całkowity dzienny wydatek energetyczny: wszystko, co twoje ciało spala w ciągu dnia. Ma trzy składniki: metabolizm spoczynkowy, który utrzymuje cię przy życiu w spoczynku i stanowi największą część u każdego, kto nie jest bardzo aktywny; energię zużywaną na ruch; oraz termiczny efekt pożywienia, około 5-15 procent dnia przy mieszanej diecie.",
+    },
+    {
+      q: "Jak dokładne są kalorie podawane przez zegarek?",
+      a: "Mniej dokładne niż pomiary tętna. W badaniu laboratoryjnym siedmiu urządzeń noszonych na nadgarstku żadne nie szacowało wydatku energetycznego z błędem poniżej 20 procent, a metaanaliza 60 badań wykazała, że dokładność mocno zależy od rodzaju aktywności. Porównuj aktywne kalorie z jednego urządzenia z tym samym urządzeniem w czasie, a nowe urządzenie traktuj jako nowy punkt odniesienia.",
+    },
+    {
+      q: "Jak szacuje się energię spoczynkową bez badania laboratoryjnego?",
+      a: "Zwykle za pomocą równania opartego na masie ciała, wzroście, wieku i płci. Przegląd systematyczny uznał równanie Mifflin-St Jeor za najbardziej wiarygodne z popularnych: przewidywało metabolizm spoczynkowy z dokładnością do 10 procent wartości zmierzonej u większej liczby osób niż jakiekolwiek inne. Dla pojedynczej osoby to dobry punkt wyjścia, a nie pomiar.",
+    },
+    {
+      q: "Bilans pokazuje deficyt, ale waga stoi w miejscu. Dlaczego?",
+      a: "Zwykłe przyczyny to luki w zapisach, bo spożycie zapisuje się zwykle za nisko; błąd urządzenia w aktywnych kaloriach; oraz adaptacja samego organizmu, bo wydatek spada wraz z masą ciała, a masa ciała reaguje na zmianę spożycia powoli. Na przestrzeni kilku tygodni trend wagi jest bardziej wiarygodną z tych dwóch liczb.",
+    },
+  ],
+  "one-dose-two-devices": [
+    {
+      q: "Dlaczego telefon wciąż mi przypomina, choć już przyjąłem lek?",
+      a: "Bo telefon jeszcze o tym nie wie. Jeśli dawkę zapisano na innym urządzeniu, w pojemniku na leki albo w innej aplikacji, telefon przestaje przypominać dopiero wtedy, gdy ten zapis do niego dotrze. Konfiguracja, w której każde urządzenie zapisuje do jednego wspólnego rejestru, a pozostałe są powiadamiane o zapisaniu dawki, zapobiega dodatkowemu przypomnieniu.",
+    },
+    {
+      q: "Nie jestem pewien, czy już przyjąłem dawkę. Czy wziąć kolejną?",
+      a: "Nie na wszelki wypadek. Ulotki dla pacjenta w UE są tworzone według wzoru, którego standardowe sformułowanie mówi, by nie stosować dawki podwójnej w celu uzupełnienia pominiętej, a ulotka twojego leku podaje, co zrobić po pominięciu dawki. W razie wątpliwości zapytaj farmaceutę albo lekarza, który przepisał lek.",
+    },
+    {
+      q: "Czy przypomnienia o lekach naprawdę pomagają?",
+      a: "Tak. Metaanaliza szesnastu badań z randomizacją wykazała, że przypomnienia SMS mniej więcej podwajały szanse na przyjmowanie leków zgodnie z zaleceniem, co odpowiada wzrostowi przestrzegania zaleceń z około 50 do około 68 procent. Właśnie dlatego przypomnienie o dawce już przyjętej ma znaczenie: zachęca do złego działania.",
+    },
+    {
+      q: "Co powinno się stać, gdy dwa urządzenia zgłoszą tę samą dawkę?",
+      a: "Powinno to liczyć się jako jedna dawka. Otwarcie pojemnika na leki i stuknięcie w telefonie dla tej samej zaplanowanej dawki to to samo zdarzenie widziane dwa razy, więc staranny system nie zapisuje niczego nowego dla drugiego zgłoszenia, zamiast dodawać drugą dawkę albo przenosić ją na późniejszą.",
+    },
+  ],
 };
 export default FAQ;

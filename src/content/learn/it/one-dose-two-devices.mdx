@@ -1,0 +1,69 @@
+Prendi la compressa del mattino, tocchi "presa" sul telefono e vai avanti con la giornata. Venti minuti dopo il tuo orologio, il tablet del tuo partner o il portapillole smart sul ripiano della cucina pensano ancora che la dose sia da prendere, e il promemoria suona di nuovo. Il più delle volte alzi le spalle e lo chiudi. In una mattina piena, con il blister mezzo vuoto e nessun ricordo chiaro degli ultimi minuti, quel secondo promemoria è proprio il modo in cui nasce una seconda dose. Quando più di un dispositivo tiene traccia dei tuoi farmaci, devono essere d'accordo su ciò che è già stato preso.
+
+## I promemoria funzionano, ed è per questo che contano
+
+![](/learn-img-2/one-dose-two-devices.jpg)
+
+Prendere un farmaco a lungo termine come prescritto è difficile per quasi tutti. L'Organizzazione Mondiale della Sanità stima che nei paesi sviluppati solo circa la metà delle persone con una malattia cronica segua la terapia a lungo termine come raccomandato.[^who2003] Semplici promemoria aiutano in modo misurabile. Una meta-analisi di sedici studi randomizzati ha rilevato che i promemoria via SMS hanno all'incirca raddoppiato le probabilità di prendere i farmaci come prescritto, il che secondo gli autori corrisponde a un'aderenza che sale da circa il 50 a circa il 68 per cento.[^thakkar]
+
+È la buona notizia, ed è anche il motivo per prendere sul serio il modo in cui i promemoria sono progettati. Un promemoria è un invito ad agire. Se scatta per una dose già presa, invita all'azione sbagliata.
+
+## Come nasce una doppia dose
+
+Gli errori di terapia sono abbastanza frequenti che l'OMS dedica loro una sfida globale per la sicurezza dei pazienti, "Medication Without Harm", e ne stima il costo in 42 miliardi di dollari USA all'anno.[^whomwh] Negli ospedali l'attenzione va soprattutto a prescrizione e dispensazione. A casa, chi prende il farmaco è anche chi tiene i registri, spesso in più posti contemporaneamente:
+
+- un'app di promemoria sul telefono, con le notifiche replicate su un orologio;
+- un secondo dispositivo, come un tablet in cucina o il telefono di un familiare che aiuta con i promemoria;
+- un portapillole o un dispenser connesso che registra quando si apre uno scomparto;
+- un'app per la salute che tiene un proprio elenco di farmaci.
+
+Ognuno di questi può sapere qualcosa che gli altri non sanno. Se il portapillole registra la dose del mattino ma il telefono non ne viene mai a conoscenza, il telefono ti ricorderà la dose come se nulla fosse. Se tocchi "presa" due volte, una su ciascun dispositivo, un sistema ingenuo scrive due dosi e la tua cronologia ora dice che hai preso due compresse. Nessuno di questi è un guasto clamoroso. Sono entrambi ordinari, ed entrambi vanno nella stessa direzione: verso un registro, e un promemoria, che non corrispondono più a ciò che hai fatto.
+
+<Aside type="caution">
+  Se non sei sicuro di aver già preso una dose, non prenderne un'altra solo per
+  sicurezza. Nell'UE i foglietti illustrativi seguono un modello con una sezione
+  su cosa fare dopo una dose dimenticata, e la sua formula standard è di non
+  prendere una dose doppia per compensare quella dimenticata. Nel dubbio, chiedi
+  al farmacista o a chi ti ha prescritto il farmaco, e tieni il foglietto dove
+  puoi trovarlo.[^ema]
+</Aside>
+
+## Cosa significa davvero "essere d'accordo"
+
+Perché un insieme di dispositivi sia d'accordo su una dose, devono essere vere tre cose.
+
+**C'è un solo registro, non uno per dispositivo.** Ogni dispositivo legge e scrive lo stesso elenco di dosi. Un tocco sul telefono e un'apertura registrata del portapillole finiscono nello stesso posto, così il dispositivo successivo che guarda le vede.
+
+**La stessa dose segnalata due volte è una dose.** Se il portapillole e il tuo tocco dicono entrambi "presa" per la dose delle 08:00, è lo stesso evento visto due volte, non due compresse. Un sistema accurato riconosce la ripetizione e non registra nulla di nuovo, anziché aggiungere una seconda voce o riassegnare in silenzio la segnalazione in più alla dose della sera.
+
+**Gli altri dispositivi lo vengono a sapere e smettono di ricordartelo.** Appena una dose è registrata da qualche parte, ogni dispositivo che stava per ricordartela dovrebbe ritirare quel promemoria. Su un telefono che pianifica i propri promemoria, questo significa che deve dirglielo il server, perché il telefono non può saperlo in altro modo.
+
+Il terzo punto è quello che le persone notano. Un promemoria che continua dopo che hai già agito non è solo fastidioso; col tempo ti abitua a chiudere i promemoria senza leggerli, il che vanifica lo scopo di averli.
+
+## L'orario fa parte della dose
+
+L'accordo dipende anche dal tempo. Una dose presa con un'ora di anticipo è comunque la dose del mattino. Una dose presa con cinque ore di ritardo può essere la dose del mattino presa tardi, oppure una dose in più, a seconda del farmaco e del tuo schema. È una valutazione sul tuo farmaco, non un dettaglio tecnico, e spetta a te e a chi te lo prescrive. Quello che un sistema di monitoraggio può fare è applicare la stessa regola ovunque, dire per quale dose programmata conterà una voce prima che tu la salvi, e tenere una dose che chiaramente non appartiene allo schema come dose in più anziché colmare in silenzio un vuoto.
+
+| Situazione                                   | Cosa registra un sistema accurato                  |
+| -------------------------------------------- | -------------------------------------------------- |
+| Presa sul telefono, poi sull'orologio        | Una dose; la seconda segnalazione non cambia nulla |
+| Il portapillole si apre, poi tocchi "presa"  | Una dose, con l'orario della prima segnalazione    |
+| Presa con un'ora di anticipo                 | La dose programmata, puntuale o in anticipo        |
+| Presa a molte ore di distanza da ogni orario | Una dose in più, indicata come tale                |
+| Registrata su un dispositivo                 | Promemoria per quella dose ritirati sugli altri    |
+
+## Come lo gestisce HealthLog
+
+In HealthLog ogni dispositivo e ogni integrazione scrive nello stesso registro delle dosi sul tuo server. Un'assunzione viene abbinata alla dose programmata più vicina nello stesso giorno, entro sei ore prima o dopo, e quando quella dose ha già un'assunzione, una seconda segnalazione non scrive nulla e l'app dice che la dose era già registrata. Un portapillole connesso o uno script riceve la stessa risposta, con un campo che gli dice che la dose era già stata presa. Quando una dose viene registrata sul web, in Telegram o tramite un'integrazione, l'app per iPhone lo viene a sapere alla sincronizzazione successiva, e subito se le notifiche push sono configurate per questo: ritira il promemoria che aveva programmato e può mostrare una nota discreta che la dose è stata registrata altrove. Il modulo di assunzione dice per quale dose conta una voce prima che tu la salvi, e una voce lontana da ogni orario di dose viene tenuta come dose in più.
+
+Niente di tutto questo decide qualcosa sulla tua terapia. Tiene onesto il registro, così il promemoria che vedi corrisponde alla dose che devi davvero ancora prendere.
+
+Queste sono informazioni generali, non un parere medico. Le domande su una dose saltata o in più di un farmaco specifico vanno rivolte al farmacista o a chi te lo ha prescritto; in caso di emergenza, o se pensi di aver preso troppo di un farmaco, contatta i servizi di emergenza o un centro antiveleni.
+
+[^who2003]: L'aderenza alle terapie a lungo termine per le malattie croniche nei paesi sviluppati è in media di circa il 50 per cento. World Health Organization, "Adherence to long-term therapies: evidence for action," 2003. https://iris.who.int/handle/10665/42682
+
+[^thakkar]: Una meta-analisi di 16 studi randomizzati (2.742 pazienti) ha rilevato che i messaggi di testo sul cellulare hanno all'incirca raddoppiato le probabilità di aderenza terapeutica (odds ratio 2,11), corrispondenti a un'aderenza che sale dal 50 al 67,8 per cento. Thakkar J, et al., "Mobile Telephone Text Messaging for Medication Adherence in Chronic Disease: A Meta-analysis," _JAMA Internal Medicine_, 2016;176(3):340-349. https://doi.org/10.1001/jamainternmed.2015.7667
+
+[^whomwh]: Pratiche non sicure nella gestione dei farmaci ed errori di terapia sono una delle principali cause di danno evitabile nell'assistenza sanitaria, con un costo globale stimato in 42 miliardi di dollari USA all'anno. World Health Organization, "Medication Without Harm," Global Patient Safety Challenge. https://www.who.int/initiatives/medication-without-harm
+
+[^ema]: Il modello del foglietto illustrativo ha una sezione su cosa fare dopo una dose dimenticata, con la formula standard "Do not take a double dose to make up for a forgotten tablet". European Medicines Agency, "QRD product information annotated template (English)," version 10.4. https://www.ema.europa.eu/en/documents/template-form/qrd-product-information-annotated-template-english-version-104_en.pdf

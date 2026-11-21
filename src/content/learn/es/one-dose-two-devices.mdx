@@ -1,0 +1,68 @@
+Te tomas la pastilla de la mañana, tocas «tomada» en el móvil y sigues con tu día. Veinte minutos después, tu reloj, la tableta de tu pareja o el pastillero inteligente de la encimera de la cocina siguen creyendo que la dosis está pendiente, y el recordatorio vuelve a sonar. La mayoría de las veces te encoges de hombros y lo descartas. Una mañana ajetreada, con el blíster a medio vaciar y sin un recuerdo claro de los últimos minutos, ese segundo recordatorio es exactamente como se produce una segunda dosis. Cuando más de un dispositivo lleva la cuenta de tu medicación, tienen que ponerse de acuerdo sobre lo que ya se ha tomado.
+
+## Los recordatorios funcionan, y por eso importan
+
+![](/learn-img-2/one-dose-two-devices.jpg)
+
+Tomar una medicación de larga duración tal como se ha prescrito es difícil para casi todo el mundo. La Organización Mundial de la Salud estima que en los países desarrollados solo alrededor de la mitad de las personas con una enfermedad crónica siguen su tratamiento de larga duración como se recomienda.[^who2003] Los recordatorios sencillos ayudan de forma medible. Un metaanálisis de dieciséis ensayos aleatorizados encontró que los recordatorios por SMS aproximadamente duplicaban la probabilidad de tomar la medicación como estaba prescrita, lo que los autores traducen en una adherencia que sube de alrededor del 50 a alrededor del 68 %.[^thakkar]
+
+Esa es la buena noticia, y también es la razón para tomarse en serio el diseño de los recordatorios. Un recordatorio es un aviso para actuar. Si salta por una dosis que ya se tomó, avisa para hacer lo que no toca.
+
+## Cómo se produce una dosis doble
+
+Los errores de medicación son lo bastante frecuentes como para que la OMS les dedique un reto mundial de seguridad del paciente, «Medication Without Harm», y estime su coste en 42.000 millones de dólares estadounidenses al año.[^whomwh] En los hospitales, la mayor parte de la atención se centra en la prescripción y la dispensación. En casa, la persona que toma el medicamento es también la que lleva el registro, a menudo en varios sitios a la vez:
+
+- una aplicación de recordatorios en el móvil, con sus notificaciones replicadas en un reloj;
+- un segundo dispositivo, como una tableta en la cocina o el móvil de un familiar que ayuda con los recordatorios;
+- un pastillero o dispensador conectado que registra cuándo se abre un compartimento;
+- una aplicación de salud que lleva su propia lista de medicamentos.
+
+Cada uno de ellos puede saber algo que los demás no saben. Si el pastillero registra la dosis de la mañana pero el móvil nunca se entera, el móvil te lo recordará como si nada hubiera pasado. Si tocas «tomada» dos veces, una en cada dispositivo, un sistema ingenuo escribe dos dosis y tu historial dice ahora que tomaste dos pastillas. Ninguno de estos casos es un fallo espectacular. Los dos son corrientes, y los dos apuntan en la misma dirección: hacia un registro, y un recordatorio, que ya no coinciden con lo que hiciste.
+
+<Aside type="caution">
+  Si no estás seguro de haber tomado ya una dosis, no tomes otra solo por si
+  acaso. En la UE, los prospectos siguen una plantilla con un apartado sobre qué
+  hacer tras olvidar una dosis, y su redacción estándar es no tomar una dosis
+  doble para compensar la olvidada. Si tienes dudas, pregunta a tu farmacéutico
+  o a quien te lo recetó, y guarda el prospecto donde puedas encontrarlo.[^ema]
+</Aside>
+
+## Qué significa de verdad «ponerse de acuerdo»
+
+Para que un conjunto de dispositivos se ponga de acuerdo sobre una dosis, tienen que cumplirse tres cosas.
+
+**Hay un solo registro, no uno por dispositivo.** Todos los dispositivos leen y escriben la misma lista de dosis. Un toque en el móvil y una apertura registrada del pastillero acaban en el mismo sitio, así que el siguiente dispositivo que mire los ve.
+
+**La misma dosis comunicada dos veces es una sola dosis.** Si el pastillero y tu toque dicen ambos «tomada» para la dosis de las 08:00, es el mismo hecho visto dos veces, no dos pastillas. Un sistema cuidadoso reconoce la repetición y no registra nada nuevo, en lugar de añadir una segunda entrada o reasignar discretamente el aviso sobrante a la dosis de la noche.
+
+**Los demás dispositivos se enteran, y dejan de recordar.** En cuanto una dosis queda registrada en cualquier sitio, todos los dispositivos que iban a recordártela deberían retirar ese recordatorio. En un móvil que programa sus propios recordatorios, eso significa que el servidor tiene que decírselo, porque el móvil no puede saberlo de otro modo.
+
+El tercer punto es el que la gente nota. Un recordatorio que sigue sonando después de que ya actuaste no solo molesta; con el tiempo te enseña a descartar los recordatorios sin leerlos, lo que echa por tierra el motivo de tenerlos.
+
+## La hora forma parte de la dosis
+
+El acuerdo también depende del tiempo. Una dosis tomada una hora antes sigue siendo la dosis de la mañana. Una dosis tomada cinco horas tarde puede ser la dosis de la mañana tomada tarde, o puede ser una de más, según el medicamento y tu pauta. Eso es un juicio sobre tu medicación, no un detalle técnico, y os corresponde a ti y a quien te la receta. Lo que un sistema de seguimiento puede hacer es aplicar la misma regla en todas partes, decir a qué dosis programada contará una entrada antes de que la guardes, y conservar una dosis que claramente no pertenece a la pauta como dosis adicional en lugar de rellenar un hueco sin decir nada.
+
+| Situación                                            | Lo que registra un sistema cuidadoso              |
+| ---------------------------------------------------- | ------------------------------------------------- |
+| Tomada en el móvil, luego en el reloj                | Una dosis; el segundo aviso no cambia nada        |
+| Se abre el pastillero, luego tocas «tomada»          | Una dosis, con la hora del primer aviso           |
+| Tomada una hora antes                                | La dosis programada, a tiempo o adelantada        |
+| Tomada muchas horas lejos de cualquier hora de dosis | Una dosis adicional, mostrada como tal            |
+| Registrada en un dispositivo                         | Recordatorios de esa dosis retirados en los demás |
+
+## Cómo lo gestiona HealthLog
+
+En HealthLog, cada dispositivo e integración escribe en el mismo registro de dosis en tu propio servidor. Una toma se asocia a la dosis programada más cercana del mismo día, dentro de seis horas antes o después, y cuando esa dosis ya tiene una toma, un segundo aviso no escribe nada y la aplicación dice que la dosis ya estaba registrada. Un pastillero conectado o un script recibe la misma respuesta, con un campo que le indica que la dosis ya se había tomado. Cuando una dosis se registra en la web, en Telegram o a través de una integración, la aplicación de iPhone se entera en su siguiente sincronización, y al momento si las notificaciones push están configuradas para ello: retira el recordatorio que tenía programado y puede mostrar una nota discreta de que la dosis se registró en otro sitio. El formulario de toma dice a qué dosis cuenta una entrada antes de que la guardes, y una entrada lejos de cualquier hora de dosis se conserva como dosis adicional.
+
+Nada de esto decide nada sobre tu tratamiento. Mantiene el registro honesto, para que el recordatorio que ves coincida con la dosis que de verdad te queda por tomar.
+
+Esto es información general, no consejo médico. Las preguntas sobre una dosis olvidada o de más de un medicamento concreto corresponden a tu farmacéutico o a quien te lo receta; en una urgencia, o si crees que has tomado demasiado de un medicamento, contacta con los servicios de emergencia o con un centro de información toxicológica.
+
+[^who2003]: La adherencia a los tratamientos de larga duración de las enfermedades crónicas en los países desarrollados es de alrededor del 50 % de media. World Health Organization, "Adherence to long-term therapies: evidence for action," 2003. https://iris.who.int/handle/10665/42682
+
+[^thakkar]: Un metaanálisis de 16 ensayos aleatorizados (2742 pacientes) encontró que los mensajes de texto al teléfono móvil aproximadamente duplicaban la probabilidad de adherencia a la medicación (odds ratio 2,11), lo que corresponde a una adherencia que sube del 50 al 67,8 %. Thakkar J, et al., "Mobile Telephone Text Messaging for Medication Adherence in Chronic Disease: A Meta-analysis," _JAMA Internal Medicine_, 2016;176(3):340-349. https://doi.org/10.1001/jamainternmed.2015.7667
+
+[^whomwh]: Las prácticas de medicación inseguras y los errores de medicación son una causa principal de daño evitable en la atención sanitaria, con un coste mundial estimado en 42.000 millones de dólares estadounidenses al año. World Health Organization, "Medication Without Harm," Global Patient Safety Challenge. https://www.who.int/initiatives/medication-without-harm
+
+[^ema]: La plantilla del prospecto tiene un apartado sobre qué hacer tras olvidar una dosis, con la frase estándar "Do not take a double dose to make up for a forgotten tablet". European Medicines Agency, "QRD product information annotated template (English)," version 10.4. https://www.ema.europa.eu/en/documents/template-form/qrd-product-information-annotated-template-english-version-104_en.pdf

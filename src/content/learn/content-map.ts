@@ -38,6 +38,8 @@ export const LEARN_CONTENT: Record<Locale, Record<string, MdxLoader>> = {
     "waist-and-central-fat": () => import("./en/waist-and-central-fat.mdx"),
     "grip-strength-as-a-vital-sign": () => import("./en/grip-strength-as-a-vital-sign.mdx"),
     "weather-altitude-and-your-body": () => import("./en/weather-altitude-and-your-body.mdx"),
+    "energy-balance-and-your-daily-burn": () => import("./en/energy-balance-and-your-daily-burn.mdx"),
+    "one-dose-two-devices": () => import("./en/one-dose-two-devices.mdx"),
   },
   de: {
     "understanding-your-health-metrics": () => import("./de/understanding-your-health-metrics.mdx"),
@@ -68,6 +70,8 @@ export const LEARN_CONTENT: Record<Locale, Record<string, MdxLoader>> = {
     "waist-and-central-fat": () => import("./de/waist-and-central-fat.mdx"),
     "grip-strength-as-a-vital-sign": () => import("./de/grip-strength-as-a-vital-sign.mdx"),
     "weather-altitude-and-your-body": () => import("./de/weather-altitude-and-your-body.mdx"),
+    "energy-balance-and-your-daily-burn": () => import("./de/energy-balance-and-your-daily-burn.mdx"),
+    "one-dose-two-devices": () => import("./de/one-dose-two-devices.mdx"),
   },
   es: {
     "understanding-your-health-metrics": () => import("./es/understanding-your-health-metrics.mdx"),
@@ -98,6 +102,8 @@ export const LEARN_CONTENT: Record<Locale, Record<string, MdxLoader>> = {
     "waist-and-central-fat": () => import("./es/waist-and-central-fat.mdx"),
     "grip-strength-as-a-vital-sign": () => import("./es/grip-strength-as-a-vital-sign.mdx"),
     "weather-altitude-and-your-body": () => import("./es/weather-altitude-and-your-body.mdx"),
+    "energy-balance-and-your-daily-burn": () => import("./es/energy-balance-and-your-daily-burn.mdx"),
+    "one-dose-two-devices": () => import("./es/one-dose-two-devices.mdx"),
   },
   fr: {
     "understanding-your-health-metrics": () => import("./fr/understanding-your-health-metrics.mdx"),
@@ -128,6 +134,8 @@ export const LEARN_CONTENT: Record<Locale, Record<string, MdxLoader>> = {
     "waist-and-central-fat": () => import("./fr/waist-and-central-fat.mdx"),
     "grip-strength-as-a-vital-sign": () => import("./fr/grip-strength-as-a-vital-sign.mdx"),
     "weather-altitude-and-your-body": () => import("./fr/weather-altitude-and-your-body.mdx"),
+    "energy-balance-and-your-daily-burn": () => import("./fr/energy-balance-and-your-daily-burn.mdx"),
+    "one-dose-two-devices": () => import("./fr/one-dose-two-devices.mdx"),
   },
   it: {
     "understanding-your-health-metrics": () => import("./it/understanding-your-health-metrics.mdx"),
@@ -158,6 +166,8 @@ export const LEARN_CONTENT: Record<Locale, Record<string, MdxLoader>> = {
     "waist-and-central-fat": () => import("./it/waist-and-central-fat.mdx"),
     "grip-strength-as-a-vital-sign": () => import("./it/grip-strength-as-a-vital-sign.mdx"),
     "weather-altitude-and-your-body": () => import("./it/weather-altitude-and-your-body.mdx"),
+    "energy-balance-and-your-daily-burn": () => import("./it/energy-balance-and-your-daily-burn.mdx"),
+    "one-dose-two-devices": () => import("./it/one-dose-two-devices.mdx"),
   },
   pl: {
     "understanding-your-health-metrics": () => import("./pl/understanding-your-health-metrics.mdx"),
@@ -188,6 +198,8 @@ export const LEARN_CONTENT: Record<Locale, Record<string, MdxLoader>> = {
     "waist-and-central-fat": () => import("./pl/waist-and-central-fat.mdx"),
     "grip-strength-as-a-vital-sign": () => import("./pl/grip-strength-as-a-vital-sign.mdx"),
     "weather-altitude-and-your-body": () => import("./pl/weather-altitude-and-your-body.mdx"),
+    "energy-balance-and-your-daily-burn": () => import("./pl/energy-balance-and-your-daily-burn.mdx"),
+    "one-dose-two-devices": () => import("./pl/one-dose-two-devices.mdx"),
   },
 };
 

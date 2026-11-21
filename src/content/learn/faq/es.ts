@@ -503,5 +503,41 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Leída como una señal relativa, una pequeña subida sostenida durante una o dos noches puede ser un aviso temprano e inespecífico de enfermedad, sobre todo junto con una frecuencia cardíaca en reposo al alza y una variabilidad de la frecuencia cardíaca a la baja. Para quien menstrúa, un cambio constante durante parte del mes a menudo refleja la subida de temperatura de la fase lútea. Es una tendencia frente a tus propias noches, honesta sobre lo poco que significa una sola noche.",
     },
   ],
+  "energy-balance-and-your-daily-burn": [
+    {
+      q: "¿Qué es el GETD (TDEE)?",
+      a: "El gasto energético total diario: todo lo que tu cuerpo quema en un día. Tiene tres partes: el metabolismo en reposo, que te mantiene con vida en reposo y es la mayor parte para cualquiera que no sea muy activo; la energía que gastas al moverte; y el efecto térmico de los alimentos, entre el 5 y el 15 % del día con una dieta mixta.",
+    },
+    {
+      q: "¿Qué precisión tienen las cifras de calorías de un reloj?",
+      a: "Menos que las de frecuencia cardíaca. En un estudio de laboratorio con siete dispositivos de muñeca, ninguno estimó el gasto energético con un error inferior al 20 %, y un metaanálisis de 60 estudios encontró que la precisión varía mucho según el tipo de actividad. Compara las calorías activas de un dispositivo con las del mismo dispositivo a lo largo del tiempo, y trata un dispositivo nuevo como una nueva línea de base.",
+    },
+    {
+      q: "¿Cómo se estima la energía en reposo sin una prueba de laboratorio?",
+      a: "Normalmente con una ecuación construida a partir del peso, la altura, la edad y el sexo. Una revisión sistemática encontró que la ecuación de Mifflin-St Jeor era la más fiable de las habituales: predecía el metabolismo en reposo con un margen del 10 % respecto al valor medido en más personas que cualquier otra. Es un buen punto de partida para una persona concreta, no una medición.",
+    },
+    {
+      q: "Mi balance dice déficit, pero mi peso no se mueve. ¿Por qué?",
+      a: "Las razones habituales son los huecos en el registro, ya que la ingesta tiende a anotarse baja; el error del dispositivo en las calorías activas; y la propia adaptación del cuerpo, porque el gasto baja a medida que baja el peso y el peso responde despacio a un cambio en la ingesta. A lo largo de varias semanas, la tendencia de tu peso es la más fiable de las dos cifras.",
+    },
+  ],
+  "one-dose-two-devices": [
+    {
+      q: "¿Por qué el móvil me sigue avisando después de haberme tomado la medicación?",
+      a: "Porque el móvil todavía no lo sabe. Si la dosis se registró en otro dispositivo, en un pastillero o en otra aplicación, el móvil solo deja de avisar cuando ese registro le llega. Una configuración en la que todos los dispositivos escriben en un único registro compartido, y a los demás se les informa cuando se registra una dosis, evita el recordatorio de más.",
+    },
+    {
+      q: "No estoy seguro de si ya me he tomado la dosis. ¿Debo tomar otra?",
+      a: "No solo por si acaso. En la UE, los prospectos siguen una plantilla cuya redacción estándar es no tomar una dosis doble para compensar la olvidada, y el prospecto de tu medicamento dice qué hacer tras olvidar una dosis. Si tienes dudas, pregunta a tu farmacéutico o a quien te lo recetó.",
+    },
+    {
+      q: "¿De verdad ayudan los recordatorios de medicación?",
+      a: "Sí. Un metaanálisis de dieciséis ensayos aleatorizados encontró que los recordatorios por SMS aproximadamente duplicaban la probabilidad de tomar la medicación como estaba prescrita, lo que corresponde a una adherencia que sube de alrededor del 50 a alrededor del 68 %. Por eso también importa un recordatorio para una dosis ya tomada: avisa para hacer lo que no toca.",
+    },
+    {
+      q: "¿Qué debería pasar cuando dos dispositivos comunican la misma dosis?",
+      a: "Debería contar como una sola dosis. La apertura de un pastillero y un toque en el móvil para la misma dosis programada son el mismo hecho visto dos veces, así que un sistema cuidadoso no registra nada nuevo con el segundo aviso, en lugar de añadir una segunda dosis o moverla a una posterior.",
+    },
+  ],
 };
 export default FAQ;
