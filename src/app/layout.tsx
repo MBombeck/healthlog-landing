@@ -211,11 +211,16 @@ export default function RootLayout({
       "Notifications over Apple Push, Web Push, Telegram, ntfy, e-mail and webhooks; each one opens the page it is about, the mood reminder can be answered from ntfy, and no health figures appear on a lock screen unless you allow them",
       "Record search in the command palette (⌘K): visits, conditions, documents down to their text, vaccinations, lab results, medications, symptoms, workouts and notes, matched regardless of case and accents",
       "Medications that record their own doses: from the moment it is switched on, each scheduled dose is marked as taken, without reminders and never over a dose logged by hand",
+      "One dose record for every device: a dose taken on the phone, the web, in Telegram or by a connected pill box counts once, a repeat report writes nothing, and the iPhone app withdraws its reminder once it learns of it",
+      "Opt-in push relay for the App Store iPhone app: each notification is encrypted on your own server for one device, and the relay run by the HealthLog project cannot read it",
+      "Daily energy balance: what you ate against resting and active energy, with a seven-day average and no guessed days",
+      "Sleep night timeline with each stage in the order it happened",
+      "Care calendar subscription for booked visits, check-ups and vaccination boosters, and a doctor report filed into your documents every month, quarter or year",
     ],
     screenshot: "https://healthlog.dev/og-image-source-available.png",
     // Tracks the latest stable HealthLog server release. Bumped by hand with
     // each release.
-    softwareVersion: "1.48.0",
+    softwareVersion: "1.49.0",
     license: "https://polyformproject.org/licenses/noncommercial/1.0.0/",
     // The landing page is English-only today (the /learn guides and the
     // privacy policy have their own locales). The app itself ships in seven

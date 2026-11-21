@@ -504,6 +504,7 @@ const everythingElse: { group: string; items: [string, string][] }[] = [
       ["smile", "Mood and wellbeing check-ins"],
       ["drop", "Cycle tracking"],
       ["drop", "Energy and macronutrients"],
+      ["drop", "Daily energy balance"],
       ["wind", "Weather, air quality, pollen"],
       ["spark", "Health score and correlations"],
     ],
@@ -513,10 +514,12 @@ const everythingElse: { group: string; items: [string, string][] }[] = [
     items: [
       ["pill", "Medication schedules and stock"],
       ["pill", "Supplements that log themselves"],
+      ["pill", "One dose, every device"],
       ["flask", "Lab results with unit conversion"],
       ["thermo", "Illness journal and symptoms"],
       ["activity", "Seizure diary"],
       ["calendar", "Doctor visits and check-ups"],
+      ["calendar", "Care dates in your calendar"],
       ["syringe", "Vaccination record"],
       ["file", "Encrypted document vault"],
       ["search", "Record search with ⌘K"],
@@ -542,6 +545,7 @@ const everythingElse: { group: string; items: [string, string][] }[] = [
       ["file", "FIT files from your watch"],
       ["watch", "Garmin, directly"],
       ["bell", "Push, Telegram, ntfy, e-mail"],
+      ["bell", "Encrypted push to the iPhone app"],
     ],
   },
 ];

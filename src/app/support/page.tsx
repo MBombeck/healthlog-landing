@@ -261,6 +261,13 @@ export default function SupportPage() {
               currently deployed version of the user&apos;s own instance.
             </p>
             <p className="text-text-secondary">
+              Releases follow a calendar: a feature release on the first
+              Saturday of each month, and a patch release with fixes on the
+              other Saturdays when there is something to fix. A fix for a
+              security problem, lost data or an install that does not start
+              ships as soon as it is ready, and its notes say why.
+            </p>
+            <p className="text-text-secondary">
               Privacy and data-handling details are covered separately on the{" "}
               <Link
                 href="/privacy"
