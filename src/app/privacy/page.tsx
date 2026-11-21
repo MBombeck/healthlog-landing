@@ -140,9 +140,11 @@ export default function PrivacyPage() {
         <p>
           HealthLog is software, not a hosted service. The maintainer does not
           host anybody&apos;s health records, and there is no central HealthLog
-          server that receives data from the instances people install. Whoever
-          runs an instance decides which data it holds and which outside
-          services it uses, and is the controller for that data.
+          server that receives data from the instances people install. The one
+          service the project runs for instances is the optional push relay
+          (section 6), which carries encrypted notifications it cannot read.
+          Whoever runs an instance decides which data it holds and which
+          outside services it uses, and is the controller for that data.
         </p>
         <p>
           This page has two parts. Section 3 covers this website, healthlog.dev,
@@ -771,9 +773,17 @@ export default function PrivacyPage() {
             labels={LABELS}
             name="Apple, Inc."
             role="HealthKit (on-device store; samples never leave the user's device or iCloud unless the user grants read access to HealthLog) and Apple Push Notification service (when notifications are enabled)."
-            data="HealthKit access is local to the device. APNs receives a device token, the application bundle identifier, and the notification payload."
+            data="HealthKit access is local to the device. APNs receives a device token, the application bundle identifier, and the notification payload. For an app that registered an encryption key, the payload is an envelope encrypted for that device with a neutral text."
             location="United States. HealthKit data lives on the user's device and iCloud-encrypted backups under the user's Apple ID."
             policyUrl="https://www.apple.com/legal/privacy/"
+          />
+          <SubProcessor
+            labels={LABELS}
+            name="HealthLog push relay (push.healthlog.dev)"
+            role="Optional delivery of notifications to the HealthLog iPhone app from the App Store, for an instance without its own Apple push key. Off until the operator of an instance switches it on, and then used only for people who turn it on in the app. Run by the maintainer of the HealthLog project, as an independent controller for the relay's metadata."
+            data="An envelope encrypted on the instance for one device, which the relay cannot open; the device's APNs token while a request is processed, stored only as a keyed hash; the instance's id and public key; and per notification its class, lifetime and time. No health data, names or account data."
+            location="Germany."
+            policyUrl="https://push.healthlog.dev/privacy"
           />
           <SubProcessor
             labels={LABELS}

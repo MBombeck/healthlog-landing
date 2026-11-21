@@ -135,6 +135,9 @@ export default function DatenschutzSeite() {
           HealthLog ist Software, kein gehosteter Dienst. Der Entwickler hostet
           keine Gesundheitsakten anderer Personen, und es gibt keinen zentralen
           HealthLog-Server, der Daten aus den installierten Instanzen empfängt.
+          Der einzige Dienst, den das Projekt für Instanzen betreibt, ist das
+          optionale Push-Relay (Abschnitt 6), das verschlüsselte
+          Benachrichtigungen weiterleitet, die es nicht lesen kann.
           Wer eine Instanz betreibt, entscheidet, welche Daten sie hält und
           welche externen Dienste sie nutzt, und ist für diese Daten
           verantwortlich.
@@ -801,9 +804,17 @@ export default function DatenschutzSeite() {
             labels={LABELS}
             name="Apple, Inc."
             role="HealthKit (Speicher auf dem Gerät; Datensätze verlassen Gerät und iCloud nicht, solange Sie HealthLog keinen Lesezugriff erteilen) und Apple Push Notification service (bei aktivierten Benachrichtigungen)."
-            data="Der HealthKit-Zugriff bleibt lokal auf dem Gerät. APNs erhält ein Gerätetoken, die Bundle-Kennung der Anwendung und den Inhalt der Benachrichtigung."
+            data="Der HealthKit-Zugriff bleibt lokal auf dem Gerät. APNs erhält ein Gerätetoken, die Bundle-Kennung der Anwendung und den Inhalt der Benachrichtigung. Hat die App einen Schlüssel hinterlegt, ist der Inhalt ein für dieses Gerät verschlüsselter Umschlag mit einem neutralen Text."
             location="Vereinigte Staaten. HealthKit-Daten liegen auf Ihrem Gerät und in iCloud-verschlüsselten Sicherungen unter Ihrer Apple-ID."
             policyUrl="https://www.apple.com/legal/privacy/"
+          />
+          <SubProcessor
+            labels={LABELS}
+            name="HealthLog-Push-Relay (push.healthlog.dev)"
+            role="Optionale Zustellung von Benachrichtigungen an die HealthLog-iPhone-App aus dem App Store, für eine Instanz ohne eigenen Apple-Push-Schlüssel. Aus, bis der Betreiber einer Instanz es einschaltet, und dann nur für Personen, die es in der App einschalten. Betrieben vom Entwickler des HealthLog-Projekts als eigenständig Verantwortlicher für die Metadaten des Relays."
+            data="Ein auf der Instanz für ein Gerät verschlüsselter Umschlag, den das Relay nicht öffnen kann; das APNs-Token des Geräts während eine Anfrage verarbeitet wird, gespeichert nur als Hash mit geheimem Schlüssel; Kennung und öffentlicher Schlüssel der Instanz; je Benachrichtigung Art, Lebensdauer und Zeitpunkt. Keine Gesundheitsdaten, Namen oder Kontodaten."
+            location="Deutschland."
+            policyUrl="https://push.healthlog.dev/privacy"
           />
           <SubProcessor
             labels={LABELS}
