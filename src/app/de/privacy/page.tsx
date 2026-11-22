@@ -258,8 +258,9 @@ export default function DatenschutzSeite() {
           <ExternalLink href="https://www.hetzner.com/de/legal/privacy-policy">
             Hetzner Online GmbH
           </ExternalLink>{" "}
-          in Nürnberg mietet; Hetzner ist Hoster dieser Website. Anfragen
-          erreichen ihn über{" "}
+          in Nürnberg mietet; Hetzner ist Hoster dieser Website und verarbeitet
+          Daten im Auftrag auf Grundlage eines Vertrags zur Auftragsverarbeitung
+          (Art. 28 DSGVO). Anfragen erreichen ihn über{" "}
           <ExternalLink href="https://www.cloudflare.com/de-de/privacypolicy/">
             Cloudflare
           </ExternalLink>

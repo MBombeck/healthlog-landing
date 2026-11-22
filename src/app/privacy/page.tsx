@@ -251,8 +251,9 @@ export default function PrivacyPage() {
           <ExternalLink href="https://www.hetzner.com/legal/privacy-policy">
             Hetzner Online GmbH
           </ExternalLink>{" "}
-          in Nuremberg, Germany, which acts as hosting provider. Requests reach
-          it through{" "}
+          in Nuremberg, Germany, which acts as hosting provider and processes
+          data on the maintainer&apos;s behalf under a data processing agreement
+          (Art. 28 GDPR). Requests reach it through{" "}
           <ExternalLink href="https://www.cloudflare.com/privacypolicy/">
             Cloudflare
           </ExternalLink>
