@@ -143,8 +143,8 @@ export default function PrivacyPage() {
           server that receives data from the instances people install. The one
           service the project runs for instances is the optional push relay
           (section 6), which carries encrypted notifications it cannot read.
-          Whoever runs an instance decides which data it holds and which
-          outside services it uses, and is the controller for that data.
+          Whoever runs an instance decides which data it holds and which outside
+          services it uses, and is the controller for that data.
         </p>
         <p>
           This page has two parts. Section 3 covers this website, healthlog.dev,
@@ -214,8 +214,8 @@ export default function PrivacyPage() {
           themselves enabled, because the record has no contact channel of its
           own. A guardian can also file documents in such a record, have them
           read and confirm the lab values found in them; the files and values
-          belong to the record, its activity log names the guardian who added
-          or confirmed them, and any AI reading follows the record&apos;s own
+          belong to the record, its activity log names the guardian who added or
+          confirmed them, and any AI reading follows the record&apos;s own
           settings and consent. Deleting the record erases the data held in it.
         </p>
         <p>
@@ -411,14 +411,14 @@ export default function PrivacyPage() {
           reach any outside service: an Apple Health export (including, since
           version 1.48.0, the lab results among its Health Records clinical
           records), a Health Connect export, a Gadgetbridge database export, a
-          patient record as a FHIR R4 Bundle from a patient portal, and
-          activity files in the FIT format from a watch or bike computer, whose
-          sessions become workouts with their heart-rate, speed, power and
-          cadence curve and, where the user has switched workout routes on,
-          their GPS track stored encrypted. An uploaded Gadgetbridge, FHIR or
-          FIT file is deleted as soon as its import ends. Since version 1.49.0
-          the user can also let the instance fetch the scheduled Health Connect
-          export from a WebDAV or Nextcloud folder the user names (section 6).
+          patient record as a FHIR R4 Bundle from a patient portal, and activity
+          files in the FIT format from a watch or bike computer, whose sessions
+          become workouts with their heart-rate, speed, power and cadence curve
+          and, where the user has switched workout routes on, their GPS track
+          stored encrypted. An uploaded Gadgetbridge, FHIR or FIT file is
+          deleted as soon as its import ends. Since version 1.49.0 the user can
+          also let the instance fetch the scheduled Health Connect export from a
+          WebDAV or Nextcloud folder the user names (section 6).
         </p>
 
         <SubHeading>4.3 Apple Health (iOS application)</SubHeading>
@@ -437,13 +437,12 @@ export default function PrivacyPage() {
           trends.
         </p>
         <p>
-          The iOS application also reads lab results from Apple Health
-          Records, the clinical records a provider makes available in the
-          Health app, but only after the user taps Connect for them in the
-          app and grants read access. The lab results it reads are sent to the
-          user&apos;s own HealthLog instance and nowhere else, and are stored
-          there like any other lab result. The other clinical record types are
-          not read.
+          The iOS application also reads lab results from Apple Health Records,
+          the clinical records a provider makes available in the Health app, but
+          only after the user taps Connect for them in the app and grants read
+          access. The lab results it reads are sent to the user&apos;s own
+          HealthLog instance and nowhere else, and are stored there like any
+          other lab result. The other clinical record types are not read.
         </p>
         <p>
           Write access is requested for a subset (body mass, blood-pressure
@@ -463,23 +462,22 @@ export default function PrivacyPage() {
           pressure, blood glucose, body temperature, activity totals, sleep
           sessions, SpO₂, heart-rate variability, ECG recordings where
           available), WHOOP (recovery, sleep, workouts, cycles, profile, body
-          measurements), Google Health
-          (activity and fitness, health metrics and measurements, sleep,
-          profile), Oura (daily summaries and profile), Polar (the Accesslink
-          read collections), Strava (activities, including those marked
-          private), and Nightscout (sensor glucose values from the user&apos;s
-          own Nightscout instance). Garmin works without OAuth: the user creates a
-          Personal API key in Garmin Connect and pastes it into HealthLog, which
-          stores it encrypted, sends it only to the Garmin service the user
-          picked, and pulls daily summaries, sleep, heart-rate variability,
-          weigh-ins, activities with the original file of each new activity
-          (for its heart-rate curve) and logged period days. A connection can be
-          revoked in HealthLog and at the provider; revoking stops further
-          syncing. Google switched the Fitbit Web API off on 30 October 2026, and
-          since version 1.48.0 HealthLog has no Fitbit connection and stores no
-          Fitbit tokens or credentials; data imported from Fitbit before then
-          stays in the record. Fitbit and Pixel devices connect through Google
-          Health.
+          measurements), Google Health (activity and fitness, health metrics and
+          measurements, sleep, profile), Oura (daily summaries and profile),
+          Polar (the Accesslink read collections), Strava (activities, including
+          those marked private), and Nightscout (sensor glucose values from the
+          user&apos;s own Nightscout instance). Garmin works without OAuth: the
+          user creates a Personal API key in Garmin Connect and pastes it into
+          HealthLog, which stores it encrypted, sends it only to the Garmin
+          service the user picked, and pulls daily summaries, sleep, heart-rate
+          variability, weigh-ins, activities with the original file of each new
+          activity (for its heart-rate curve) and logged period days. A
+          connection can be revoked in HealthLog and at the provider; revoking
+          stops further syncing. Google switched the Fitbit Web API off on 30
+          October 2026, and since version 1.48.0 HealthLog has no Fitbit
+          connection and stores no Fitbit tokens or credentials; data imported
+          from Fitbit before then stays in the record. Fitbit and Pixel devices
+          connect through Google Health.
         </p>
 
         <SubHeading>4.5 Medications</SubHeading>
@@ -501,12 +499,47 @@ export default function PrivacyPage() {
 
         <SubHeading>4.6 AI Coach and Insights</SubHeading>
         <p>
-          When the user enables the Coach surface and configures a
-          language-model provider, HealthLog sends a snapshot bundle to that
-          provider on demand. The bundle contains health context derived from
-          the data above (aggregates, recent observations, target ranges,
-          optional medication context) and is built fresh for each request. See
-          section 6 for what each provider does with the data.
+          The AI features are off until the user turns them on and grants AI
+          consent. Nothing described in this subsection or the next is sent to a
+          language model before that. Once enabled, a model is reached on one of
+          three paths.
+        </p>
+        <p>
+          <span className="text-text-primary font-medium">
+            Through the HealthLog server.
+          </span>
+          The user picks a provider set up on the instance: Anthropic, OpenAI
+          with an API key, the user&apos;s own linked ChatGPT account, a local
+          model, or an OpenAI-compatible endpoint the user or the operator
+          configured. The app or browser sends the request to the HealthLog
+          server, which builds the snapshot bundle and forwards it to that
+          provider.
+        </p>
+        <p>
+          <span className="text-text-primary font-medium">
+            Directly from the iOS app with the user&apos;s own key.
+          </span>
+          In the iOS app the user can instead enter their own API key for
+          OpenAI, Anthropic or Google Gemini, or the HTTPS address of any
+          OpenAI-compatible <Code>/chat/completions</Code> endpoint, such as a
+          self-hosted gateway. The app then sends the request straight from the
+          phone to that provider, not through the HealthLog server. The key is
+          stored in the device Keychain and is never sent to the HealthLog
+          server. Only https:// addresses are accepted.
+        </p>
+        <p>
+          <span className="text-text-primary font-medium">On the device.</span>
+          On an iPhone with Apple Intelligence, the daily briefing and short
+          Coach replies can run on Apple&apos;s on-device Foundation Models. In
+          that mode the health context and the reply stay on the phone.
+        </p>
+        <p>
+          On both paths that leave the device, what is sent is the same: health
+          context derived from the data above (aggregates, recent observations,
+          target ranges, optional medication context) and the user&apos;s
+          prompt, built fresh for each request. See section 6 for what each
+          provider does with the data. Consent and each provider can be
+          withdrawn at any time in the AI settings.
         </p>
         <p>
           The user can bind each AI task to a named chain of the providers they
@@ -541,7 +574,24 @@ export default function PrivacyPage() {
           software did.
         </p>
 
-        <SubHeading>4.7 Device and integration metadata</SubHeading>
+        <SubHeading>4.7 Lab scanning and document AI</SubHeading>
+        <p>
+          Scanning a lab report or a medication label in the iOS app happens on
+          the device. The camera capture and the text recognition use
+          Apple&apos;s on-device Vision framework, and neither the photo nor the
+          recognised text is sent anywhere. The user reviews the recognised
+          lines, and only the values the user saves are written to their
+          HealthLog account, like a value entered by hand. No AI provider is
+          involved in this step.
+        </p>
+        <p>
+          A filing suggestion, a summary or a chat about a stored document is
+          different: it sends the stored text of that document to the AI
+          provider configured on the instance, through the HealthLog server, and
+          only after the user has granted AI consent and asked for it.
+        </p>
+
+        <SubHeading>4.8 Device and integration metadata</SubHeading>
         <ul className="list-disc space-y-1 pl-5">
           <li>
             A device identifier (random UUID generated client-side, stored in
@@ -569,7 +619,7 @@ export default function PrivacyPage() {
           </li>
         </ul>
 
-        <SubHeading>4.8 Security and audit</SubHeading>
+        <SubHeading>4.9 Security and audit</SubHeading>
         <ul className="list-disc space-y-1 pl-5">
           <li>
             Authentication events: login success / failure, passkey
@@ -591,7 +641,7 @@ export default function PrivacyPage() {
           </li>
         </ul>
 
-        <SubHeading>4.9 Data not collected</SubHeading>
+        <SubHeading>4.10 Data not collected</SubHeading>
         <ul className="list-disc space-y-1 pl-5">
           <li>
             No third-party advertising identifiers, fingerprints, or cross-app
@@ -697,7 +747,7 @@ export default function PrivacyPage() {
           <SubProcessor
             labels={LABELS}
             name="Anthropic, PBC"
-            role="AI Coach and Insights provider when the user selects Anthropic Claude in settings. Requires the user's explicit AI consent."
+            role="AI Coach and Insights provider when the user selects Anthropic Claude. Reached through the HealthLog server, or directly from the iOS app when the user enters their own Anthropic key; in that case the request does not pass through the HealthLog server. Requires the user's explicit AI consent."
             data="Coach snapshot bundle (health-data context) and the turns of the conversation, for the duration of the request."
             location="United States. Anthropic states a 30-day retention window for abuse-monitoring."
             policyUrl="https://www.anthropic.com/legal/privacy"
@@ -705,7 +755,7 @@ export default function PrivacyPage() {
           <SubProcessor
             labels={LABELS}
             name="OpenAI, L.L.C. (API key)"
-            role="Alternative AI Coach and Insights provider when the user selects an OpenAI model in settings. Requires the user's explicit AI consent."
+            role="Alternative AI Coach and Insights provider when the user selects an OpenAI model. Reached through the HealthLog server, or directly from the iOS app when the user enters their own OpenAI key. Requires the user's explicit AI consent."
             data="Coach snapshot bundle, same shape as the Anthropic variant."
             location="United States. Retention governed by OpenAI's policy applicable to the configured API key."
             policyUrl="https://openai.com/policies/privacy-policy"
@@ -717,6 +767,22 @@ export default function PrivacyPage() {
             data="The OAuth tokens of that ChatGPT account (encrypted at rest on the instance), the ChatGPT account identifier, and the same Coach snapshot bundle and conversation turns as above."
             location="United States. Usage falls under the terms of the user's own ChatGPT plan."
             policyUrl="https://openai.com/policies/privacy-policy"
+          />
+          <SubProcessor
+            labels={LABELS}
+            name="Google LLC (Gemini API)"
+            role="AI Coach and Insights provider when the user enters their own Google Gemini key in the iOS app. The request goes directly from the iOS app to Gemini and does not pass through the HealthLog server. Requires the user's explicit AI consent. Separate from the Google Health entry below."
+            data="The same snapshot bundle and conversation turns as above, for the duration of the request."
+            location="United States and other countries where Google operates infrastructure."
+            policyUrl="https://policies.google.com/privacy"
+          />
+          <SubProcessor
+            labels={LABELS}
+            name="An OpenAI-compatible endpoint the user names"
+            role="AI Coach and Insights provider when the user points the iOS app, or the instance, at their own OpenAI-compatible HTTPS endpoint, such as a self-hosted gateway. This is not a fixed company: the destination is the address the user enters. Requires the user's explicit AI consent."
+            data="The same snapshot bundle and conversation turns as above, and the API key if the user set one."
+            location="Wherever the configured endpoint runs."
+            policyUrl="https://docs.healthlog.dev/"
           />
           <SubProcessor
             labels={LABELS}
@@ -910,9 +976,9 @@ export default function PrivacyPage() {
         <SubHeading>6.1 The HealthLog push relay</SubHeading>
         <p>
           The push relay at <Code>push.healthlog.dev</Code> delivers
-          notifications from a self-hosted instance to the HealthLog iPhone
-          app from the App Store, which Apple accepts only when they are signed
-          with the key of the account that publishes the app. It is run by the
+          notifications from a self-hosted instance to the HealthLog iPhone app
+          from the App Store, which Apple accepts only when they are signed with
+          the key of the account that publishes the app. It is run by the
           maintainer of the HealthLog project (see the imprint), as an
           independent controller for the relay&apos;s metadata, on a server in
           Germany. Its own privacy notice at{" "}
@@ -924,14 +990,13 @@ export default function PrivacyPage() {
         <p>
           It is opt-in twice. Nothing goes over the relay until the
           administrator of an instance switches it on, which requires accepting
-          the relay terms and confirming that the instance is run privately
-          for a person or a household. After that each person decides on their
-          own iPhone, and only that person&apos;s devices are bound. A person
+          the relay terms and confirming that the instance is run privately for
+          a person or a household. After that each person decides on their own
+          iPhone, and only that person&apos;s devices are bound. A person
           withdraws by turning the relay off in the app, which tells the relay
-          directly and deletes the device&apos;s binding at once, even while
-          the instance is unreachable. An administrator who switches the relay
-          off deletes the instance at the relay together with every device
-          binding.
+          directly and deletes the device&apos;s binding at once, even while the
+          instance is unreachable. An administrator who switches the relay off
+          deletes the instance at the relay together with every device binding.
         </p>
         <p>
           What the relay receives: the device&apos;s APNs token while it
@@ -956,26 +1021,26 @@ export default function PrivacyPage() {
           Activity, and the relay sees nothing of its content.
         </p>
         <p>
-          Apple delivers every notification and sees the device token, the
-          type of push and when it was delivered, and can link the token to an
-          Apple account. Timing is the one thing encryption cannot hide: the
-          moment of a notification can reveal, for example, that a dose was
-          recorded on another device at that moment.
+          Apple delivers every notification and sees the device token, the type
+          of push and when it was delivered, and can link the token to an Apple
+          account. Timing is the one thing encryption cannot hide: the moment of
+          a notification can reveal, for example, that a dose was recorded on
+          another device at that moment.
         </p>
         <p>
           Retention: at rest the relay keeps the token only as a keyed hash. A
           device binding is deleted when the person opts out, when the instance
           removes it or leaves the relay, when Apple reports the token as no
-          longer valid, or after about 13 weeks without a notification. A
-          record of an instance that never delivered a notification is deleted
-          after two days, and one without contact after about 13 weeks. Day
-          counters per instance are kept for 7 days; relay-wide daily totals
-          without any instance or device for 400 days. After a person opts out
-          directly, a keyed hash of the device token and that instance is kept
-          for 365 days, so the instance cannot bind the device again unless the
-          person turns the relay on for it once more. The relay keeps no access
-          log. In the app, &quot;My data at the relay&quot; shows what the
-          relay holds about the device. Questions about the relay go to{" "}
+          longer valid, or after about 13 weeks without a notification. A record
+          of an instance that never delivered a notification is deleted after
+          two days, and one without contact after about 13 weeks. Day counters
+          per instance are kept for 7 days; relay-wide daily totals without any
+          instance or device for 400 days. After a person opts out directly, a
+          keyed hash of the device token and that instance is kept for 365 days,
+          so the instance cannot bind the device again unless the person turns
+          the relay on for it once more. The relay keeps no access log. In the
+          app, &quot;My data at the relay&quot; shows what the relay holds about
+          the device. Questions about the relay go to{" "}
           <a
             href="mailto:privacy@healthlog.dev"
             className="text-purple hover:text-cyan underline-offset-2 hover:underline"
@@ -988,6 +1053,18 @@ export default function PrivacyPage() {
 
       <Section id="storage" title="7. Storage, encryption, retention">
         <ul className="list-disc space-y-1 pl-5">
+          <li>
+            <span className="text-text-primary font-medium">
+              No iCloud, no CloudKit.
+            </span>{" "}
+            HealthLog stores none of its own data in iCloud or CloudKit. The
+            server database stays on the operator&apos;s server. The iOS
+            app&apos;s local stores (caches, the offline queue, Coach messages)
+            are kept in app storage with CloudKit switched off, and sensitive
+            local files are excluded from device backups. Apple Health may sync
+            HealthKit data through the user&apos;s own iCloud settings; that is
+            Apple&apos;s behaviour, not storage by HealthLog.
+          </li>
           <li>
             Primary data store: PostgreSQL on the operator&apos;s server.
             Sensitive columns are individually encrypted at the column level
