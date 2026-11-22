@@ -4,6 +4,7 @@ import { DemoCredentials } from "@/components/DemoCredentials";
 import { DemoPopupLink } from "@/components/DemoPopupLink";
 import { TerminalBlock } from "@/components/TerminalBlock";
 import { AppScreen } from "@/components/AppScreen";
+import { ThemeSplitShot } from "@/components/ThemeSplitShot";
 import { BrowserFrame } from "@/components/BrowserFrame";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { AnalyticsSettingsButton } from "@/components/analytics";
@@ -745,15 +746,14 @@ export default function Home() {
         </div>
 
         <div className="hero-shot relative z-10 mx-auto mt-14 w-full max-w-6xl sm:mt-20">
-          <BrowserFrame>
-            <AppScreen
-              name="dashboard"
-              alt="HealthLog dashboard: a health score of 88, the day's medications, last night's sleep and cycle day, an upcoming appointment, and tiles for weight, blood pressure, heart rate, oxygen saturation and body composition"
-              sizes="(max-width: 1200px) 100vw, 1152px"
-              priority
-              className="block h-auto w-full"
-            />
-          </BrowserFrame>
+          <figure>
+            <BrowserFrame>
+              <ThemeSplitShot alt="The HealthLog dashboard split diagonally between the dark theme (top left) and the light theme (bottom right): today's medications and cycle, the health score ring, worth-a-look cards, and metric tiles with 7-day trends" />
+            </BrowserFrame>
+            <figcaption className="text-text-secondary mt-4 text-center text-sm">
+              Dark or light, or follow your system.
+            </figcaption>
+          </figure>
         </div>
       </header>
 
