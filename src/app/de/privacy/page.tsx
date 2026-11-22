@@ -149,7 +149,7 @@ export default function DatenschutzSeite() {
           personenbezogenen Daten tut, in der Webanwendung ab Fassung{" "}
           {POLICY_VERSION} und in der zugehörigen iOS-Anwendung{" "}
           <em className="text-text-primary not-italic">HealthLog for iOS</em>{" "}
-          (Bundle-Kennung <Code>io.bombeck.healthlog</Code>) ab Version 0.3,
+          (Bundle-Kennung <Code>dev.healthlog.app</Code>) ab Version 0.3,
           damit Nutzerinnen und Nutzer sehen, was eine Instanz tut, und
           Betreiber eine Grundlage für ihre eigene Datenschutzerklärung haben.
           Fragen zu Daten in einer bestimmten Instanz richten Sie an deren
@@ -425,13 +425,17 @@ export default function DatenschutzSeite() {
           Dateien, die Sie zum Import hochladen, werden auf der Instanz gelesen
           und erreichen keinen fremden Dienst: ein Apple-Health-Export (seit
           Version 1.48.0 einschließlich der Laborwerte unter seinen
-          klinischen Datensätzen aus Health Records), ein Health-Connect-Export
-          und Aktivitätsdateien im FIT-Format von einer Uhr oder einem
-          Fahrradcomputer. Deren Einheiten werden zu Trainings mit Herzfrequenz-,
-          Geschwindigkeits-, Leistungs- und Trittfrequenzverlauf und, wenn Sie
-          Trainingsstrecken eingeschaltet haben, mit ihrer verschlüsselt
-          gespeicherten GPS-Strecke. Eine hochgeladene FIT-Datei wird gelöscht,
-          sobald ihr Import endet.
+          klinischen Datensätzen aus Health Records), ein Health-Connect-Export,
+          ein Datenbank-Export aus Gadgetbridge, eine Patientenakte als
+          FHIR-R4-Bundle aus einem Patientenportal und Aktivitätsdateien im FIT-Format
+          von einer Uhr oder einem Fahrradcomputer. Deren Einheiten werden zu
+          Trainings mit Herzfrequenz-, Geschwindigkeits-, Leistungs- und
+          Trittfrequenzverlauf und, wenn Sie Trainingsstrecken eingeschaltet
+          haben, mit ihrer verschlüsselt gespeicherten GPS-Strecke. Eine
+          hochgeladene Gadgetbridge-, FHIR- oder FIT-Datei wird gelöscht, sobald
+          ihr Import endet. Seit Version 1.49.0 können Sie den geplanten
+          Health-Connect-Export auch von der Instanz aus einem WebDAV- oder
+          Nextcloud-Ordner abholen lassen, den Sie selbst angeben (Abschnitt 6).
         </p>
 
         <SubHeading>4.3 Apple Health (iOS-Anwendung)</SubHeading>
@@ -447,6 +451,15 @@ export default function DatenschutzSeite() {
           und in Ihrem iCloud-gestützten Health-Speicher; die iOS-Anwendung
           kopiert die einschlägigen Datensätze in Ihr HealthLog-Konto, damit die
           Weboberfläche dieselben Verläufe zeigen kann.
+        </p>
+        <p>
+          Die iOS-Anwendung liest außerdem Laborwerte aus Apple Health Records,
+          den klinischen Datensätzen, die eine Praxis oder Klinik in der
+          Health-App bereitstellt, aber erst, nachdem Sie in der App dafür auf
+          Verbinden tippen und den Lesezugriff erteilen. Die gelesenen
+          Laborwerte gehen an Ihre eigene HealthLog-Instanz und nirgendwohin
+          sonst und werden dort wie jeder andere Laborwert gespeichert. Andere
+          Arten klinischer Datensätze werden nicht gelesen.
         </p>
         <p>
           Schreibzugriff wird für eine Teilmenge angefragt (Körpermasse,
@@ -802,6 +815,14 @@ export default function DatenschutzSeite() {
           />
           <SubProcessor
             labels={LABELS}
+            name="WebDAV- oder Nextcloud-Server (Adresse von Ihnen angegeben)"
+            role="Optionales Abholen des geplanten Health-Connect-Exports, wenn Sie eine Ordneradresse eintragen. Die Instanz liest etwa alle sechs Stunden und auf Ihren Abruf hin eine Datei aus diesem Ordner. Der Server ist der, den Sie angeben, meist Ihre eigene Nextcloud."
+            data="Der WebDAV-Benutzername und das Passwort oder App-Passwort (auf der Instanz verschlüsselt gespeichert und nur an den Server gesendet, für den es eingetragen wurde) und bei jedem Abruf eine Leseanfrage für die Exportdatei. In den Ordner wird nichts geschrieben."
+            location="Wo Sie diesen Server betreiben."
+            policyUrl="https://docs.healthlog.dev/guides/import-health-connect/"
+          />
+          <SubProcessor
+            labels={LABELS}
             name="Apple, Inc."
             role="HealthKit (Speicher auf dem Gerät; Datensätze verlassen Gerät und iCloud nicht, solange Sie HealthLog keinen Lesezugriff erteilen) und Apple Push Notification service (bei aktivierten Benachrichtigungen)."
             data="Der HealthKit-Zugriff bleibt lokal auf dem Gerät. APNs erhält ein Gerätetoken, die Bundle-Kennung der Anwendung und den Inhalt der Benachrichtigung. Hat die App einen Schlüssel hinterlegt, ist der Inhalt ein für dieses Gerät verschlüsselter Umschlag mit einem neutralen Text."
@@ -812,7 +833,7 @@ export default function DatenschutzSeite() {
             labels={LABELS}
             name="HealthLog-Push-Relay (push.healthlog.dev)"
             role="Optionale Zustellung von Benachrichtigungen an die HealthLog-iPhone-App aus dem App Store, für eine Instanz ohne eigenen Apple-Push-Schlüssel. Aus, bis der Betreiber einer Instanz es einschaltet, und dann nur für Personen, die es in der App einschalten. Betrieben vom Entwickler des HealthLog-Projekts als eigenständig Verantwortlicher für die Metadaten des Relays."
-            data="Ein auf der Instanz für ein Gerät verschlüsselter Umschlag, den das Relay nicht öffnen kann; das APNs-Token des Geräts während eine Anfrage verarbeitet wird, gespeichert nur als Hash mit geheimem Schlüssel; Kennung und öffentlicher Schlüssel der Instanz; je Benachrichtigung Art, Lebensdauer und Zeitpunkt. Keine Gesundheitsdaten, Namen oder Kontodaten."
+            data="Ein auf der Instanz für ein Gerät verschlüsselter Umschlag, den das Relay nicht öffnen kann, und die in Abschnitt 6.1 beschriebenen Zustelldaten. Keine Gesundheitsdaten, Namen oder Kontodaten."
             location="Deutschland."
             policyUrl="https://push.healthlog.dev/privacy"
           />
@@ -891,8 +912,8 @@ export default function DatenschutzSeite() {
           <SubProcessor
             labels={LABELS}
             name="Der Kalenderdienst, mit dem Sie abonnieren (optional)"
-            role="Zyklusprognose als Kalender-Abo, ausgeschaltet, bis die Person, der die Akte gehört, oder bei einem betreuten Profil die Betreuungsperson es einschaltet. Sie tragen einen privaten Feed-Link in eine Kalender-App Ihrer Wahl ein, etwa Google Kalender, Apple iCloud-Kalender oder Microsoft Outlook. Dieser Dienst holt den Feed in eigenem Takt von der Instanz ab und behält eine Kopie. Der Link lässt sich jederzeit erneuern oder abschalten; eine Passwortänderung oder ein Löschantrag schaltet ihn ab."
-            data="Die geschätzten Startfenster der nächsten Zyklen und, wenn Sie es einschalten, vergangene Zyklen und das fruchtbare Fenster. Termine heißen nur „●“, solange Sie keine beschreibenden Titel wählen. Keine Symptome, Notizen oder andere Einträge, und außer dem geheimen Link selbst keine Kontokennung."
+            role="Zyklusprognose und seit Version 1.49.0 gebuchte Termine, fällige Vorsorgeuntersuchungen und Auffrischimpfungen als Kalender-Abos, jedes ausgeschaltet, bis die Person, der die Akte gehört, oder bei einem betreuten Profil die Betreuungsperson es einschaltet. Sie tragen einen privaten Feed-Link in eine Kalender-App Ihrer Wahl ein, etwa Google Kalender, Apple iCloud-Kalender oder Microsoft Outlook. Dieser Dienst holt den Feed in eigenem Takt von der Instanz ab und behält eine Kopie. Der Link lässt sich jederzeit erneuern oder abschalten; eine Passwortänderung oder ein Löschantrag schaltet ihn ab."
+            data="Beim Zyklus-Abo die geschätzten Startfenster der nächsten Zyklen und, wenn Sie es einschalten, vergangene Zyklen und das fruchtbare Fenster. Beim Termin-Abo die Daten gebuchter Termine, Vorsorgeuntersuchungen und Auffrischungen, nie der Grund oder das Ergebnis eines Termins. Termine heißen nur „●“, solange Sie keine beschreibenden Titel wählen. Keine Symptome, Notizen oder andere Einträge, und außer dem geheimen Link selbst keine Kontokennung."
             location="Wo der gewählte Kalenderdienst Kalender speichert. HealthLog kontaktiert den Dienst nicht, sondern beantwortet nur dessen Abrufe des Feeds."
             policyUrl="https://docs.healthlog.dev/guides/cycle-calendar-feed/"
           />
@@ -916,6 +937,90 @@ export default function DatenschutzSeite() {
           SMTP-Relay und die Anmeldung über einen
           OpenID-Connect-Identitätsanbieter. Welche davon eine Instanz nutzt,
           entscheidet der Betreiber und legt es selbst offen.
+        </p>
+
+        <SubHeading>6.1 Das HealthLog-Push-Relay</SubHeading>
+        <p>
+          Das Push-Relay unter <Code>push.healthlog.dev</Code> stellt
+          Benachrichtigungen einer selbst betriebenen Instanz an die
+          HealthLog-iPhone-App aus dem App Store zu. Apple nimmt solche
+          Benachrichtigungen nur an, wenn sie mit dem Schlüssel des Kontos
+          signiert sind, das die App veröffentlicht. Betrieben wird das Relay
+          vom Entwickler des HealthLog-Projekts (siehe Impressum) als
+          eigenständig Verantwortlichem für die Metadaten des Relays, auf einem
+          Server in Deutschland. Maßgeblich ist seine eigene
+          Datenschutzerklärung unter{" "}
+          <ExternalLink href="https://push.healthlog.dev/privacy">
+            push.healthlog.dev/privacy
+          </ExternalLink>
+          ; dieser Abschnitt fasst sie zusammen.
+        </p>
+        <p>
+          Die Zustimmung erfolgt zweimal. Über das Relay geht nichts, bis der
+          Administrator einer Instanz es einschaltet; dafür muss er die
+          Bedingungen des Relays annehmen und bestätigen, dass er die Instanz
+          privat für sich oder seinen Haushalt betreibt. Danach entscheidet jede
+          Person auf ihrem eigenen iPhone, und nur deren Geräte werden
+          angebunden. Sie widerrufen, indem Sie das Relay in der App
+          ausschalten; die App meldet das direkt dem Relay, und die Anbindung
+          des Geräts wird sofort gelöscht, auch wenn die Instanz gerade nicht
+          erreichbar ist. Schaltet der Administrator das Relay aus, wird die
+          Instanz beim Relay mit allen Geräteanbindungen gelöscht.
+        </p>
+        <p>
+          Was das Relay erhält: das APNs-Token des Geräts, während es eine
+          Benachrichtigung weiterleitet, einen Hash des Anbindungsschlüssels,
+          den die App erzeugt hat, Fassung und Tag Ihrer Zustimmung für diese
+          Instanz, Kennung, öffentlichen Schlüssel und gemeldete
+          Softwareversion der Instanz und je Benachrichtigung ihre Art, ihre
+          feste Größe und den Zeitpunkt des Versands. Der Inhalt jeder Mitteilung
+          und jeder Hintergrundbenachrichtigung wird auf der Instanz Ende zu
+          Ende für das eine Gerät verschlüsselt, für das er bestimmt ist, und das
+          Relay hat keinen Schlüssel, der ihn öffnet. Die Adresse der Instanz,
+          und die des Geräts, wenn die App direkt mit dem Relay spricht, wird
+          nur im Arbeitsspeicher gehalten und weder gespeichert noch
+          protokolliert.
+        </p>
+        <p>
+          Eine Live-Aktivität auf dem Sperrbildschirm lässt sich so nicht
+          verschlüsseln. Sie über das Relay von der Instanz aus zu starten und
+          zu aktualisieren, braucht eine zweite, eigene Zustimmung auf dem Gerät
+          und eine Einstellung des Administrators; beides ist ab Werk aus. Mit
+          dieser Zustimmung können das Relay und Apple den angezeigten Zustand
+          jedes Starts und jeder Aktualisierung lesen: den Stand einer Dosis,
+          ihren Countdown und das Zeitformat, nie einen Medikamentennamen, eine
+          Dosis oder freien Text. Ohne sie kann die Instanz eine Live-Aktivität
+          nur beenden, und das Relay sieht nichts von ihrem Inhalt.
+        </p>
+        <p>
+          Apple stellt jede Benachrichtigung zu, sieht das Gerätetoken, die Art
+          der Benachrichtigung und den Zeitpunkt der Zustellung und kann das
+          Token einer Apple-ID zuordnen. Den Zeitpunkt kann keine
+          Verschlüsselung verbergen: Er kann zum Beispiel verraten, dass in
+          diesem Moment auf einem anderen Gerät eine Einnahme erfasst wurde.
+        </p>
+        <p>
+          Speicherdauer: Das Token speichert das Relay nur als Hash mit
+          geheimem Schlüssel. Eine Geräteanbindung wird gelöscht, wenn Sie
+          widerrufen, wenn die Instanz sie entfernt oder das Relay verlässt,
+          wenn Apple das Token als ungültig meldet oder nach etwa 13 Wochen ohne
+          Benachrichtigung. Der Eintrag einer Instanz, die nie etwas zugestellt
+          hat, wird nach zwei Tagen gelöscht, einer ohne Kontakt nach etwa 13
+          Wochen. Tageszähler je Instanz werden 7 Tage aufbewahrt, Tagessummen
+          für das ganze Relay ohne Instanz oder Gerät 400 Tage. Widerrufen Sie
+          direkt in der App, wird ein Hash aus Gerätetoken und Instanz 365 Tage
+          aufbewahrt, damit diese Instanz das Gerät nicht erneut anbinden kann,
+          solange Sie das Relay für sie nicht wieder einschalten. Ein
+          Zugriffsprotokoll führt das Relay nicht. In den Relay-Einstellungen der
+          App sehen Sie, was das Relay über das Gerät gespeichert hat. Fragen zum
+          Relay richten Sie an{" "}
+          <a
+            href="mailto:privacy@healthlog.dev"
+            className="text-purple hover:text-cyan underline-offset-2 hover:underline"
+          >
+            privacy@healthlog.dev
+          </a>
+          .
         </p>
       </Section>
 

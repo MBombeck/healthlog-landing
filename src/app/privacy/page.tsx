@@ -152,7 +152,7 @@ export default function PrivacyPage() {
           11 describe what the software does with personal data, in the web
           application version {POLICY_VERSION} and the companion iOS application{" "}
           <em className="text-text-primary not-italic">HealthLog for iOS</em>{" "}
-          (bundle identifier <Code>io.bombeck.healthlog</Code>) version 0.3 and
+          (bundle identifier <Code>dev.healthlog.app</Code>) version 0.3 and
           later, so that a user can see what an instance does and an operator
           has a basis for their own privacy policy. Questions about data held in
           a particular instance go to the operator of that instance.
@@ -410,11 +410,15 @@ export default function PrivacyPage() {
           Files the user uploads for import are read on the instance and do not
           reach any outside service: an Apple Health export (including, since
           version 1.48.0, the lab results among its Health Records clinical
-          records), a Health Connect export, and activity files in the FIT
-          format from a watch or bike computer, whose sessions become workouts
-          with their heart-rate, speed, power and cadence curve and, where the
-          user has switched workout routes on, their GPS track stored encrypted.
-          An uploaded FIT file is deleted as soon as its import ends.
+          records), a Health Connect export, a Gadgetbridge database export, a
+          patient record as a FHIR R4 Bundle from a patient portal, and
+          activity files in the FIT format from a watch or bike computer, whose
+          sessions become workouts with their heart-rate, speed, power and
+          cadence curve and, where the user has switched workout routes on,
+          their GPS track stored encrypted. An uploaded Gadgetbridge, FHIR or
+          FIT file is deleted as soon as its import ends. Since version 1.49.0
+          the user can also let the instance fetch the scheduled Health Connect
+          export from a WebDAV or Nextcloud folder the user names (section 6).
         </p>
 
         <SubHeading>4.3 Apple Health (iOS application)</SubHeading>
@@ -431,6 +435,15 @@ export default function PrivacyPage() {
           Health store; the iOS application copies relevant samples to the
           user&apos;s HealthLog account so the web surface can render the same
           trends.
+        </p>
+        <p>
+          The iOS application also reads lab results from Apple Health
+          Records, the clinical records a provider makes available in the
+          Health app, but only after the user taps Connect for them in the
+          app and grants read access. The lab results it reads are sent to the
+          user&apos;s own HealthLog instance and nowhere else, and are stored
+          there like any other lab result. The other clinical record types are
+          not read.
         </p>
         <p>
           Write access is requested for a subset (body mass, blood-pressure
@@ -771,6 +784,14 @@ export default function PrivacyPage() {
           />
           <SubProcessor
             labels={LABELS}
+            name="WebDAV or Nextcloud server (address supplied by the user)"
+            role="Optional fetch of the scheduled Health Connect export, when the user enters a folder address. The instance reads one file from that folder about every six hours and when the user asks for it. The server is the one the user names, usually their own Nextcloud."
+            data="The WebDAV user name and the password or app password (encrypted at rest on the instance, sent only to the server it was entered for), and on each fetch a read request for the export file. Nothing is written to the folder."
+            location="Wherever the user hosts that server."
+            policyUrl="https://docs.healthlog.dev/guides/import-health-connect/"
+          />
+          <SubProcessor
+            labels={LABELS}
             name="Apple, Inc."
             role="HealthKit (on-device store; samples never leave the user's device or iCloud unless the user grants read access to HealthLog) and Apple Push Notification service (when notifications are enabled)."
             data="HealthKit access is local to the device. APNs receives a device token, the application bundle identifier, and the notification payload. For an app that registered an encryption key, the payload is an envelope encrypted for that device with a neutral text."
@@ -781,7 +802,7 @@ export default function PrivacyPage() {
             labels={LABELS}
             name="HealthLog push relay (push.healthlog.dev)"
             role="Optional delivery of notifications to the HealthLog iPhone app from the App Store, for an instance without its own Apple push key. Off until the operator of an instance switches it on, and then used only for people who turn it on in the app. Run by the maintainer of the HealthLog project, as an independent controller for the relay's metadata."
-            data="An envelope encrypted on the instance for one device, which the relay cannot open; the device's APNs token while a request is processed, stored only as a keyed hash; the instance's id and public key; and per notification its class, lifetime and time. No health data, names or account data."
+            data="An envelope encrypted on the instance for one device, which the relay cannot open, and the delivery metadata described in section 6.1. No health data, names or account data."
             location="Germany."
             policyUrl="https://push.healthlog.dev/privacy"
           />
@@ -860,8 +881,8 @@ export default function PrivacyPage() {
           <SubProcessor
             labels={LABELS}
             name="The calendar service the user subscribes with (optional)"
-            role="Cycle forecast as a calendar subscription, off until the record's owner, or a managed profile's guardian, turns it on. The user adds a private feed link to a calendar app of their choice, such as Google Calendar, Apple iCloud Calendar or Microsoft Outlook, and that service fetches the feed from the instance on its own schedule and keeps a copy. The link can be rotated or turned off at any time; a password change or a deletion request turns it off."
-            data="The estimated start windows of the next cycles and, if the user opts in, past cycles and the fertile window. Event titles are a neutral dot unless the user chooses descriptive titles. No symptoms, notes or other log details, and no account identifier beyond the secret link itself."
+            role="Cycle forecast, and since version 1.49.0 booked visits, check-ups coming due and vaccination boosters, as calendar subscriptions, each off until the record's owner, or a managed profile's guardian, turns it on. The user adds a private feed link to a calendar app of their choice, such as Google Calendar, Apple iCloud Calendar or Microsoft Outlook, and that service fetches the feed from the instance on its own schedule and keeps a copy. The link can be rotated or turned off at any time; a password change or a deletion request turns it off."
+            data="For the cycle feed, the estimated start windows of the next cycles and, if the user opts in, past cycles and the fertile window. For the care feed, the dates of booked visits, check-ups and boosters, never a visit's reason or outcome. Event titles are a neutral dot unless the user chooses descriptive titles. No symptoms, notes or other log details, and no account identifier beyond the secret link itself."
             location="Wherever the chosen calendar service stores calendars. HealthLog does not contact the service; it only answers the service's requests for the feed."
             policyUrl="https://docs.healthlog.dev/guides/cycle-calendar-feed/"
           />
@@ -874,6 +895,7 @@ export default function PrivacyPage() {
             policyUrl="https://docs.healthlog.dev"
           />
         </ul>
+
         <p>
           The software supports further outbound destinations, each off unless
           an operator configures it: error reports to a GlitchTip installation
@@ -884,6 +906,83 @@ export default function PrivacyPage() {
           e-mail through an SMTP relay, and sign-in through an OpenID Connect
           identity provider. Which of them an instance uses is the
           operator&apos;s choice and their disclosure to make.
+        </p>
+        <SubHeading>6.1 The HealthLog push relay</SubHeading>
+        <p>
+          The push relay at <Code>push.healthlog.dev</Code> delivers
+          notifications from a self-hosted instance to the HealthLog iPhone
+          app from the App Store, which Apple accepts only when they are signed
+          with the key of the account that publishes the app. It is run by the
+          maintainer of the HealthLog project (see the imprint), as an
+          independent controller for the relay&apos;s metadata, on a server in
+          Germany. Its own privacy notice at{" "}
+          <ExternalLink href="https://push.healthlog.dev/privacy">
+            push.healthlog.dev/privacy
+          </ExternalLink>{" "}
+          is the authoritative text; this section summarises it.
+        </p>
+        <p>
+          It is opt-in twice. Nothing goes over the relay until the
+          administrator of an instance switches it on, which requires accepting
+          the relay terms and confirming that the instance is run privately
+          for a person or a household. After that each person decides on their
+          own iPhone, and only that person&apos;s devices are bound. A person
+          withdraws by turning the relay off in the app, which tells the relay
+          directly and deletes the device&apos;s binding at once, even while
+          the instance is unreachable. An administrator who switches the relay
+          off deletes the instance at the relay together with every device
+          binding.
+        </p>
+        <p>
+          What the relay receives: the device&apos;s APNs token while it
+          forwards a notification, a hash of the binding key the app created,
+          the version and day of the person&apos;s consent for that instance,
+          the instance&apos;s id, public key and reported software version, and
+          for every notification its kind, its fixed size and when it was sent.
+          The content of every alert and every background notification is
+          encrypted end to end on the instance for the one device it is meant
+          for, and the relay holds no key that opens it. The address of the
+          instance, and of the device when the app talks to the relay directly,
+          is held in memory only and is not stored or logged.
+        </p>
+        <p>
+          A Live Activity on the lock screen cannot be encrypted that way.
+          Starting and updating one from the instance over the relay needs a
+          second, separate consent on the device and a setting by the
+          administrator; both are off by default. With it, the relay and Apple
+          can read the content state of each start and update: the state of a
+          dose, its countdown and the time format, never a medication name, a
+          dose or any free text. Without it, the instance can only end a Live
+          Activity, and the relay sees nothing of its content.
+        </p>
+        <p>
+          Apple delivers every notification and sees the device token, the
+          type of push and when it was delivered, and can link the token to an
+          Apple account. Timing is the one thing encryption cannot hide: the
+          moment of a notification can reveal, for example, that a dose was
+          recorded on another device at that moment.
+        </p>
+        <p>
+          Retention: at rest the relay keeps the token only as a keyed hash. A
+          device binding is deleted when the person opts out, when the instance
+          removes it or leaves the relay, when Apple reports the token as no
+          longer valid, or after about 13 weeks without a notification. A
+          record of an instance that never delivered a notification is deleted
+          after two days, and one without contact after about 13 weeks. Day
+          counters per instance are kept for 7 days; relay-wide daily totals
+          without any instance or device for 400 days. After a person opts out
+          directly, a keyed hash of the device token and that instance is kept
+          for 365 days, so the instance cannot bind the device again unless the
+          person turns the relay on for it once more. The relay keeps no access
+          log. In the app, &quot;My data at the relay&quot; shows what the
+          relay holds about the device. Questions about the relay go to{" "}
+          <a
+            href="mailto:privacy@healthlog.dev"
+            className="text-purple hover:text-cyan underline-offset-2 hover:underline"
+          >
+            privacy@healthlog.dev
+          </a>
+          .
         </p>
       </Section>
 
