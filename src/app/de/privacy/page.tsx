@@ -1016,8 +1016,9 @@ export default function DatenschutzSeite() {
           signiert sind, das die App veröffentlicht. Betrieben wird das Relay
           vom Entwickler des HealthLog-Projekts (siehe Impressum) als
           eigenständig Verantwortlichem für die Metadaten des Relays, auf einem
-          Server in Deutschland. Maßgeblich ist seine eigene
-          Datenschutzerklärung unter{" "}
+          Server in Deutschland, gemietet bei der Hetzner Online GmbH, die dabei
+          auf Grundlage eines Vertrags zur Auftragsverarbeitung (Art. 28 DSGVO)
+          tätig ist. Maßgeblich ist seine eigene Datenschutzerklärung unter{" "}
           <ExternalLink href="https://push.healthlog.dev/privacy">
             push.healthlog.dev/privacy
           </ExternalLink>

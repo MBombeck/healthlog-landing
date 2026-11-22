@@ -982,7 +982,8 @@ export default function PrivacyPage() {
           the key of the account that publishes the app. It is run by the
           maintainer of the HealthLog project (see the imprint), as an
           independent controller for the relay&apos;s metadata, on a server in
-          Germany. Its own privacy notice at{" "}
+          Germany rented from Hetzner Online GmbH, which processes it under a
+          data processing agreement (Art. 28 GDPR). Its own privacy notice at{" "}
           <ExternalLink href="https://push.healthlog.dev/privacy">
             push.healthlog.dev/privacy
           </ExternalLink>{" "}
