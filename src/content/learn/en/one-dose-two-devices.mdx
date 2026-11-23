@@ -1,0 +1,68 @@
+You take your morning tablet, tap "taken" on your phone and get on with the day. Twenty minutes later your watch, your partner's tablet or the smart pill box on the kitchen counter still thinks the dose is due, and the reminder goes off again. Most of the time you shrug and dismiss it. On a busy morning, with the blister pack half empty and no clear memory of the last few minutes, that second reminder is exactly how a second dose happens. When more than one device keeps track of your medication, they have to agree on what has already been taken.
+
+## Reminders work, which is why they matter
+
+![](/learn-img-2/one-dose-two-devices.jpg)
+
+Taking long-term medication as prescribed is hard for almost everyone. The World Health Organization estimates that in developed countries only about half of people with a chronic illness take their long-term therapy as recommended.[^who2003] Simple reminders measurably help. A meta-analysis of sixteen randomised trials found that text message reminders roughly doubled the odds of taking medication as prescribed, which the authors translate into adherence rising from about 50 to about 68 percent.[^thakkar]
+
+That is the good news, and it is also the reason to take the design of reminders seriously. A reminder is a prompt to act. If it fires for a dose that was already taken, it prompts the wrong act.
+
+## How a double dose happens
+
+Medication errors are common enough that the WHO runs a global patient safety challenge on them, "Medication Without Harm", and estimates their cost at 42 billion US dollars a year.[^whomwh] In hospitals, most of the attention goes to prescribing and dispensing. At home, the person taking the medicine is also the one keeping the records, often across several places at once:
+
+- a reminder app on the phone, and its notifications mirrored to a watch;
+- a second device, such as a tablet in the kitchen or a family member's phone that helps with reminders;
+- a connected pill box or dispenser that records when a compartment opens;
+- a health app that keeps its own medication list.
+
+Each of these can know something the others do not. If the pill box records the morning dose but the phone never hears about it, the phone will remind you as if nothing happened. If you tap "taken" twice, once on each device, a naive system writes two doses and your history now says you took two tablets. Neither of these is a dramatic failure. Both are ordinary, and both point the same way: towards a record, and a reminder, that no longer matches what you did.
+
+<Aside type="caution">
+  If you are not sure whether you already took a dose, do not take another one
+  just to be safe. In the EU, package leaflets follow a template with a section on
+  what to do after a forgotten dose, and its standard wording is not to take a
+  double dose to make up for a forgotten one. When in doubt, ask your pharmacist or the prescriber,
+  and keep the leaflet where you can find it.[^ema]
+</Aside>
+
+## What "agreeing" actually means
+
+For a set of devices to agree on a dose, three things have to be true.
+
+**There is one record, not one per device.** Every device reads and writes the same list of doses. A tap on the phone and a recorded opening of the pill box land in the same place, so the next device to look sees them.
+
+**The same dose reported twice is one dose.** If the pill box and your tap both say "taken" for the 08:00 dose, that is the same event seen twice, not two tablets. A careful system recognises the repeat and records nothing new, rather than adding a second entry or quietly reassigning the extra report to the evening dose.
+
+**The other devices hear about it, and stop reminding.** Once a dose is recorded anywhere, every device that was going to remind you about it should withdraw that reminder. On a phone that schedules its own reminders, that means the server has to tell it, because the phone cannot know otherwise.
+
+The third point is the one people notice. A reminder that keeps going after you have already acted is not just annoying; over time it teaches you to dismiss reminders without reading them, which defeats the purpose of having them.
+
+## Timing is part of the dose
+
+Agreement also depends on time. A dose taken an hour early is still the morning dose. A dose taken five hours late may be the morning dose taken late, or it may be an extra one, depending on the medicine and your schedule. That is a judgement about your medication, not a technical detail, and it belongs to you and your prescriber. What a tracking system can do is apply the same rule everywhere, say which scheduled dose an entry will count for before you save it, and keep a dose that clearly does not belong to the schedule as an extra one rather than silently filling a gap.
+
+| Situation                                    | What a careful system records                     |
+| -------------------------------------------- | ------------------------------------------------- |
+| Taken on the phone, then on the watch        | One dose; the second report changes nothing       |
+| Pill box opens, then you tap "taken"         | One dose, with the time of the first report       |
+| Taken an hour early                          | The scheduled dose, on time or early              |
+| Taken many hours away from any dose time     | An extra dose, shown as such                      |
+| Recorded on one device                       | Reminders for that dose withdrawn on the others   |
+
+## How HealthLog handles it
+
+In HealthLog every device and integration writes to the same dose record on your own server. A take is matched to the scheduled dose nearest to it on the same day, within six hours either side, and when that dose already holds a take, a second report writes nothing and the app says the dose was already recorded. A connected pill box or script gets the same answer, with a field that tells it the dose was already taken. When a dose is recorded on the web, in Telegram or through an integration, the iPhone app learns about it on its next sync, and right away when push is set up for it: it withdraws the reminder it had scheduled and can show a quiet note that the dose was recorded elsewhere. The intake form says which dose an entry counts for before you save it, and an entry far from any dose time is kept as an extra dose.
+
+None of this decides anything about your treatment. It keeps the record honest, so the reminder you see matches the dose you actually still have to take.
+
+This is general information, not medical advice. Questions about a missed or extra dose of a specific medicine belong with your pharmacist or prescriber; in an emergency, or if you think you have taken too much of a medicine, contact emergency services or a poison information centre.
+
+[^who2003]: Adherence to long-term therapy for chronic illnesses in developed countries averages about 50 percent. World Health Organization, "Adherence to long-term therapies: evidence for action," 2003. https://iris.who.int/handle/10665/42682
+
+[^thakkar]: A meta-analysis of 16 randomised trials (2,742 patients) found that mobile phone text messaging approximately doubled the odds of medication adherence (odds ratio 2.11), corresponding to adherence rising from 50 to 67.8 percent. Thakkar J, et al., "Mobile Telephone Text Messaging for Medication Adherence in Chronic Disease: A Meta-analysis," _JAMA Internal Medicine_, 2016;176(3):340-349. https://doi.org/10.1001/jamainternmed.2015.7667
+
+[^whomwh]: Unsafe medication practices and medication errors are a leading cause of avoidable harm in health care, with a global cost estimated at 42 billion US dollars a year. World Health Organization, "Medication Without Harm," Global Patient Safety Challenge. https://www.who.int/initiatives/medication-without-harm
+
+[^ema]: The package leaflet template has a section on what to do after a forgotten dose, with the standard statement "Do not take a double dose to make up for a forgotten tablet". European Medicines Agency, "QRD product information annotated template (English)," version 10.4. https://www.ema.europa.eu/en/documents/template-form/qrd-product-information-annotated-template-english-version-104_en.pdf

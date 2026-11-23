@@ -503,5 +503,41 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Read as a relative signal, a small sustained rise over a night or two can be an early, non-specific illness prompt, especially alongside a rising resting heart rate and a falling heart rate variability. For anyone who menstruates, a steady shift across part of the month often mirrors the luteal-phase rise in temperature. It is a trend against your own nights, honest about how little a single night means.",
     },
   ],
+  "energy-balance-and-your-daily-burn": [
+    {
+      q: "What is TDEE?",
+      a: "Total daily energy expenditure: everything your body burns in a day. It has three parts: resting metabolism, which keeps you alive at rest and is the largest share for anyone who is not very active; the energy you spend moving; and the thermic effect of food, about 5 to 15 percent of the day on a mixed diet.",
+    },
+    {
+      q: "How accurate are the calorie figures from a watch?",
+      a: "Less accurate than the heart rate figures. In a laboratory study of seven wrist-worn devices, none estimated energy expenditure with an error below 20 percent, and a meta-analysis of 60 studies found accuracy varies widely with the type of activity. Compare the active calories from one device with the same device over time, and treat a new device as a new baseline.",
+    },
+    {
+      q: "How is resting energy estimated without a lab test?",
+      a: "Usually with an equation built from weight, height, age and sex. A systematic review found the Mifflin-St Jeor equation the most reliable of the common ones, predicting resting metabolism within 10 percent of measured in more people than any other. It is a good starting point for an individual, not a measurement.",
+    },
+    {
+      q: "My balance says deficit but my weight is not moving. Why?",
+      a: "The usual reasons are logging gaps, since intake tends to be recorded low; device error in the active calories; and the body's own adaptation, because expenditure falls as weight falls and weight responds slowly to a change in intake. Over several weeks, the trend of your weight is the more reliable of the two numbers.",
+    },
+  ],
+  "one-dose-two-devices": [
+    {
+      q: "Why does my phone still remind me after I took my medication?",
+      a: "Because the phone does not know yet. If the dose was recorded on another device, in a pill box or in another app, the phone only stops reminding once that record reaches it. A setup where every device writes to one shared record, and the others are told when a dose is recorded, avoids the extra reminder.",
+    },
+    {
+      q: "I am not sure whether I already took my dose. Should I take another one?",
+      a: "Not just to be safe. Package leaflets in the EU follow a template whose standard wording is not to take a double dose to make up for a forgotten one, and the leaflet of your medicine says what to do after a missed dose. When in doubt, ask your pharmacist or prescriber.",
+    },
+    {
+      q: "Do medication reminders actually help?",
+      a: "Yes. A meta-analysis of sixteen randomised trials found that text message reminders roughly doubled the odds of taking medication as prescribed, which corresponds to adherence rising from about 50 to about 68 percent. That is also why a reminder for a dose already taken matters: it prompts the wrong action.",
+    },
+    {
+      q: "What should happen when two devices report the same dose?",
+      a: "It should count as one dose. A pill box opening and a tap on the phone for the same scheduled dose are the same event seen twice, so a careful system records nothing new for the second report instead of adding a second dose or moving it to a later one.",
+    },
+  ],
 };
 export default FAQ;

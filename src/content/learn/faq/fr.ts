@@ -503,5 +503,41 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Lue comme un signal relatif, une petite hausse durable sur une ou deux nuits peut être un signe de maladie précoce et non spécifique, surtout aux côtés d'une fréquence cardiaque au repos en hausse et d'une variabilité de la fréquence cardiaque en baisse. Pour toute personne qui a ses règles, un décalage régulier sur une partie du mois reflète souvent la hausse de température de la phase lutéale. C'est une tendance face à vos propres nuits, honnête sur le peu que signifie une seule nuit.",
     },
   ],
+  "energy-balance-and-your-daily-burn": [
+    {
+      q: "Qu'est-ce que la DET (TDEE) ?",
+      a: "La dépense énergétique totale quotidienne : tout ce que votre corps dépense en une journée. Elle comporte trois parts : le métabolisme de repos, qui vous maintient en vie au repos et représente la plus grande part pour quiconque n'est pas très actif ; l'énergie dépensée en bougeant ; et l'effet thermique des aliments, environ 5 à 15 % de la journée avec une alimentation mixte.",
+    },
+    {
+      q: "Quelle est la précision des calories affichées par une montre ?",
+      a: "Moindre que celle de la fréquence cardiaque. Dans une étude en laboratoire portant sur sept appareils portés au poignet, aucun n'estimait la dépense énergétique avec une erreur inférieure à 20 %, et une méta-analyse de 60 études a montré que la précision varie fortement selon le type d'activité. Comparez les calories actives d'un appareil avec celles du même appareil dans le temps, et considérez un nouvel appareil comme une nouvelle base de référence.",
+    },
+    {
+      q: "Comment estime-t-on l'énergie de repos sans examen en laboratoire ?",
+      a: "En général avec une équation construite à partir du poids, de la taille, de l'âge et du sexe. Une revue systématique a trouvé l'équation de Mifflin-St Jeor la plus fiable des équations courantes : elle prédisait le métabolisme de repos à 10 % près de la valeur mesurée chez davantage de personnes que toute autre. C'est un bon point de départ pour une personne donnée, pas une mesure.",
+    },
+    {
+      q: "Ma balance indique un déficit, mais mon poids ne bouge pas. Pourquoi ?",
+      a: "Les raisons habituelles sont les lacunes du journal, puisque les apports ont tendance à être consignés trop bas ; l'erreur de l'appareil sur les calories actives ; et l'adaptation du corps lui-même, car la dépense baisse quand le poids baisse et le poids répond lentement à un changement des apports. Sur plusieurs semaines, la tendance de votre poids est le plus fiable des deux chiffres.",
+    },
+  ],
+  "one-dose-two-devices": [
+    {
+      q: "Pourquoi mon téléphone me rappelle-t-il encore mon médicament alors que je l'ai pris ?",
+      a: "Parce que le téléphone ne le sait pas encore. Si la dose a été enregistrée sur un autre appareil, dans un pilulier ou dans une autre application, le téléphone ne cesse de rappeler qu'une fois que cet enregistrement lui parvient. Une configuration où chaque appareil écrit dans un seul registre partagé, et où les autres sont informés quand une dose est enregistrée, évite le rappel en trop.",
+    },
+    {
+      q: "Je ne suis pas sûr d'avoir déjà pris ma dose. Dois-je en prendre une autre ?",
+      a: "Pas par simple précaution. Dans l'UE, les notices suivent un modèle dont la formulation type est de ne pas prendre de dose double pour compenser la dose oubliée, et la notice de votre médicament indique la conduite à tenir après un oubli. En cas de doute, demandez à votre pharmacien ou à votre prescripteur.",
+    },
+    {
+      q: "Les rappels de médicaments aident-ils vraiment ?",
+      a: "Oui. Une méta-analyse de seize essais randomisés a montré que les rappels par SMS doublaient à peu près les chances de prendre ses médicaments comme prescrit, ce qui correspond à une observance passant d'environ 50 à environ 68 %. C'est aussi pourquoi un rappel pour une dose déjà prise compte : il incite au mauvais geste.",
+    },
+    {
+      q: "Que doit-il se passer quand deux appareils signalent la même dose ?",
+      a: "Elle doit compter comme une seule dose. L'ouverture d'un pilulier et un geste sur le téléphone pour la même dose prévue sont le même événement vu deux fois, si bien qu'un système soigneux n'enregistre rien de nouveau pour le second signalement, au lieu d'ajouter une seconde dose ou de la déplacer vers une dose ultérieure.",
+    },
+  ],
 };
 export default FAQ;

@@ -135,9 +135,11 @@ export default function DatenschutzSeite() {
           HealthLog ist Software, kein gehosteter Dienst. Der Entwickler hostet
           keine Gesundheitsakten anderer Personen, und es gibt keinen zentralen
           HealthLog-Server, der Daten aus den installierten Instanzen empfängt.
-          Wer eine Instanz betreibt, entscheidet, welche Daten sie hält und
-          welche externen Dienste sie nutzt, und ist für diese Daten
-          verantwortlich.
+          Der einzige Dienst, den das Projekt für Instanzen betreibt, ist das
+          optionale Push-Relay (Abschnitt 6), das verschlüsselte
+          Benachrichtigungen weiterleitet, die es nicht lesen kann. Wer eine
+          Instanz betreibt, entscheidet, welche Daten sie hält und welche
+          externen Dienste sie nutzt, und ist für diese Daten verantwortlich.
         </p>
         <p>
           Diese Seite hat zwei Teile. Abschnitt 3 behandelt diese Website,
@@ -146,11 +148,10 @@ export default function DatenschutzSeite() {
           personenbezogenen Daten tut, in der Webanwendung ab Fassung{" "}
           {POLICY_VERSION} und in der zugehörigen iOS-Anwendung{" "}
           <em className="text-text-primary not-italic">HealthLog for iOS</em>{" "}
-          (Bundle-Kennung <Code>io.bombeck.healthlog</Code>) ab Version 0.3,
-          damit Nutzerinnen und Nutzer sehen, was eine Instanz tut, und
-          Betreiber eine Grundlage für ihre eigene Datenschutzerklärung haben.
-          Fragen zu Daten in einer bestimmten Instanz richten Sie an deren
-          Betreiber.
+          (Bundle-Kennung <Code>dev.healthlog.app</Code>) ab Version 0.3, damit
+          Nutzerinnen und Nutzer sehen, was eine Instanz tut, und Betreiber eine
+          Grundlage für ihre eigene Datenschutzerklärung haben. Fragen zu Daten
+          in einer bestimmten Instanz richten Sie an deren Betreiber.
         </p>
       </Section>
 
@@ -219,8 +220,8 @@ export default function DatenschutzSeite() {
           gefundenen Laborwerte bestätigen; Dateien und Werte gehören zur Akte,
           deren Aktivitätsprotokoll die betreuende Person nennt, die sie
           hinzugefügt oder bestätigt hat, und jedes Lesen per KI folgt den
-          Einstellungen und Einwilligungen der Akte selbst. Das Löschen der
-          Akte löscht die darin gehaltenen Daten.
+          Einstellungen und Einwilligungen der Akte selbst. Das Löschen der Akte
+          löscht die darin gehaltenen Daten.
         </p>
         <p>
           Der Betreiber einer Instanz ist Verantwortlicher im Sinne der DSGVO.
@@ -257,8 +258,9 @@ export default function DatenschutzSeite() {
           <ExternalLink href="https://www.hetzner.com/de/legal/privacy-policy">
             Hetzner Online GmbH
           </ExternalLink>{" "}
-          in Nürnberg mietet; Hetzner ist Hoster dieser Website. Anfragen
-          erreichen ihn über{" "}
+          in Nürnberg mietet; Hetzner ist Hoster dieser Website und verarbeitet
+          Daten im Auftrag auf Grundlage eines Vertrags zur Auftragsverarbeitung
+          (Art. 28 DSGVO). Anfragen erreichen ihn über{" "}
           <ExternalLink href="https://www.cloudflare.com/de-de/privacypolicy/">
             Cloudflare
           </ExternalLink>
@@ -408,27 +410,30 @@ export default function DatenschutzSeite() {
           Etagen; Umgebungs- und Kopfhörer-Lautstärke; Zeit im Tageslicht;
           Stimmung (Skala 1 bis 5) mit optionaler Freitextnotiz;
           Trainingseinheiten mit optional selbst angehängter GPS-Strecke;
-          Nahrungsenergie, Makronährstoffe (Eiweiß, Kohlenhydrate, Fett,
-          Zucker, Ballaststoffe), Natrium, Kalium und Alkohol als Tagessummen
-          mit Ihren eigenen Tageszielen; Einträge im optionalen
-          Anfallstagebuch (Anfallsart, Beginn und Dauer, gegebene
-          Notfallmedikation, Umstände und wer den Eintrag gemacht hat); sowie
-          persönliche Bestwerte, die daraus automatisch abgeleitet werden. Eine
-          Ernährungs-App, die Sie einrichten, kann Tagessummen mit einem
-          Messwert-Token senden; dieses Token schreibt nur in Ihre eigene Akte
-          und kann nichts zurücklesen.
+          Nahrungsenergie, Makronährstoffe (Eiweiß, Kohlenhydrate, Fett, Zucker,
+          Ballaststoffe), Natrium, Kalium und Alkohol als Tagessummen mit Ihren
+          eigenen Tageszielen; Einträge im optionalen Anfallstagebuch
+          (Anfallsart, Beginn und Dauer, gegebene Notfallmedikation, Umstände
+          und wer den Eintrag gemacht hat); sowie persönliche Bestwerte, die
+          daraus automatisch abgeleitet werden. Eine Ernährungs-App, die Sie
+          einrichten, kann Tagessummen mit einem Messwert-Token senden; dieses
+          Token schreibt nur in Ihre eigene Akte und kann nichts zurücklesen.
         </p>
         <p>
           Dateien, die Sie zum Import hochladen, werden auf der Instanz gelesen
           und erreichen keinen fremden Dienst: ein Apple-Health-Export (seit
-          Version 1.48.0 einschließlich der Laborwerte unter seinen
-          klinischen Datensätzen aus Health Records), ein Health-Connect-Export
-          und Aktivitätsdateien im FIT-Format von einer Uhr oder einem
-          Fahrradcomputer. Deren Einheiten werden zu Trainings mit Herzfrequenz-,
-          Geschwindigkeits-, Leistungs- und Trittfrequenzverlauf und, wenn Sie
-          Trainingsstrecken eingeschaltet haben, mit ihrer verschlüsselt
-          gespeicherten GPS-Strecke. Eine hochgeladene FIT-Datei wird gelöscht,
-          sobald ihr Import endet.
+          Version 1.48.0 einschließlich der Laborwerte unter seinen klinischen
+          Datensätzen aus Health Records), ein Health-Connect-Export, ein
+          Datenbank-Export aus Gadgetbridge, eine Patientenakte als
+          FHIR-R4-Bundle aus einem Patientenportal und Aktivitätsdateien im
+          FIT-Format von einer Uhr oder einem Fahrradcomputer. Deren Einheiten
+          werden zu Trainings mit Herzfrequenz-, Geschwindigkeits-, Leistungs-
+          und Trittfrequenzverlauf und, wenn Sie Trainingsstrecken eingeschaltet
+          haben, mit ihrer verschlüsselt gespeicherten GPS-Strecke. Eine
+          hochgeladene Gadgetbridge-, FHIR- oder FIT-Datei wird gelöscht, sobald
+          ihr Import endet. Seit Version 1.49.0 können Sie den geplanten
+          Health-Connect-Export auch von der Instanz aus einem WebDAV- oder
+          Nextcloud-Ordner abholen lassen, den Sie selbst angeben (Abschnitt 6).
         </p>
 
         <SubHeading>4.3 Apple Health (iOS-Anwendung)</SubHeading>
@@ -444,6 +449,15 @@ export default function DatenschutzSeite() {
           und in Ihrem iCloud-gestützten Health-Speicher; die iOS-Anwendung
           kopiert die einschlägigen Datensätze in Ihr HealthLog-Konto, damit die
           Weboberfläche dieselben Verläufe zeigen kann.
+        </p>
+        <p>
+          Die iOS-Anwendung liest außerdem Laborwerte aus Apple Health Records,
+          den klinischen Datensätzen, die eine Praxis oder Klinik in der
+          Health-App bereitstellt, aber erst, nachdem Sie in der App dafür auf
+          Verbinden tippen und den Lesezugriff erteilen. Die gelesenen
+          Laborwerte gehen an Ihre eigene HealthLog-Instanz und nirgendwohin
+          sonst und werden dort wie jeder andere Laborwert gespeichert. Andere
+          Arten klinischer Datensätze werden nicht gelesen.
         </p>
         <p>
           Schreibzugriff wird für eine Teilmenge angefragt (Körpermasse,
@@ -473,13 +487,13 @@ export default function DatenschutzSeite() {
           speichert ihn verschlüsselt, schickt ihn nur an den gewählten
           Garmin-Dienst und ruft Tageswerte, Schlaf, Herzratenvariabilität,
           Wiegungen, Aktivitäten samt der Originaldatei jeder neuen Aktivität
-          (für ihren Herzfrequenzverlauf) und eingetragene Periodentage ab.
-          Eine Verbindung lässt sich in HealthLog und beim Anbieter widerrufen;
+          (für ihren Herzfrequenzverlauf) und eingetragene Periodentage ab. Eine
+          Verbindung lässt sich in HealthLog und beim Anbieter widerrufen;
           danach wird nichts mehr abgerufen. Google hat die Fitbit-Web-API am
           30. Oktober 2026 abgeschaltet; seit Version 1.48.0 hat HealthLog keine
           Fitbit-Verbindung mehr und speichert keine Fitbit-Token oder
-          -Zugangsdaten. Zuvor aus Fitbit importierte Daten bleiben in der
-          Akte. Fitbit- und Pixel-Geräte werden über Google Health verbunden.
+          -Zugangsdaten. Zuvor aus Fitbit importierte Daten bleiben in der Akte.
+          Fitbit- und Pixel-Geräte werden über Google Health verbunden.
         </p>
 
         <SubHeading>4.5 Medikamente</SubHeading>
@@ -501,12 +515,48 @@ export default function DatenschutzSeite() {
 
         <SubHeading>4.6 KI-Coach und Insights</SubHeading>
         <p>
-          Wenn Sie den Coach aktivieren und einen Sprachmodell-Anbieter
-          einrichten, sendet HealthLog auf Anforderung ein Kontextpaket an
-          diesen Anbieter. Das Paket enthält aus den obigen Daten abgeleiteten
-          Gesundheitskontext (Aggregate, jüngste Beobachtungen, Zielbereiche,
-          optional Medikationskontext) und wird für jede Anfrage neu gebildet.
-          Was der jeweilige Anbieter damit tut, steht in Abschnitt 6.
+          Die KI-Funktionen sind ausgeschaltet, bis Sie sie einschalten und der
+          KI-Nutzung zustimmen. Vorher geht nichts aus diesem oder dem nächsten
+          Abschnitt an ein Sprachmodell. Danach wird ein Modell auf einem von
+          drei Wegen erreicht.
+        </p>
+        <p>
+          <span className="text-text-primary font-medium">
+            Über den HealthLog-Server.
+          </span>
+          Sie wählen einen auf der Instanz eingerichteten Anbieter: Anthropic,
+          OpenAI mit API-Schlüssel, Ihr eigenes verknüpftes ChatGPT-Konto, ein
+          lokales Modell oder einen OpenAI-kompatiblen Endpunkt, den Sie oder
+          der Betreiber eingerichtet haben. App oder Browser senden die Anfrage
+          an den HealthLog-Server, der das Kontextpaket bildet und an diesen
+          Anbieter weiterleitet.
+        </p>
+        <p>
+          <span className="text-text-primary font-medium">
+            Direkt aus der iOS-App mit eigenem Schlüssel.
+          </span>
+          In der iOS-App können Sie stattdessen einen eigenen API-Schlüssel für
+          OpenAI, Anthropic oder Google Gemini eintragen, oder die HTTPS-Adresse
+          eines beliebigen OpenAI-kompatiblen
+          <Code>/chat/completions</Code>-Endpunkts, etwa eines selbst
+          betriebenen Gateways. Die App sendet die Anfrage dann direkt vom
+          Telefon an diesen Anbieter, nicht über den HealthLog-Server. Der
+          Schlüssel liegt im Schlüsselbund des Geräts und wird nie an den
+          HealthLog-Server gesendet. Akzeptiert werden nur https://-Adressen.
+        </p>
+        <p>
+          <span className="text-text-primary font-medium">Auf dem Gerät.</span>
+          Auf einem iPhone mit Apple Intelligence können das tägliche Briefing
+          und kurze Coach-Antworten mit Apples geräteinternen Foundation Models
+          laufen. Dann bleiben Gesundheitskontext und Antwort auf dem Telefon.
+        </p>
+        <p>
+          Auf beiden Wegen, die das Gerät verlassen, wird dasselbe gesendet: aus
+          den obigen Daten abgeleiteter Gesundheitskontext (Aggregate, jüngste
+          Beobachtungen, Zielbereiche, optional Medikationskontext) und Ihre
+          Eingabe, für jede Anfrage neu gebildet. Was der jeweilige Anbieter
+          damit tut, steht in Abschnitt 6. Zustimmung und jeden einzelnen
+          Anbieter können Sie jederzeit in den KI-Einstellungen widerrufen.
         </p>
         <p>
           Sie können jede KI-Aufgabe an eine benannte Kette Ihrer eingerichteten
@@ -544,7 +594,25 @@ export default function DatenschutzSeite() {
           Gesprächszustand vor. Das hat die Software nie so gemacht.
         </p>
 
-        <SubHeading>4.7 Geräte- und Integrationsdaten</SubHeading>
+        <SubHeading>4.7 Laborscan und Dokumenten-KI</SubHeading>
+        <p>
+          Das Scannen eines Laborbefunds oder eines Medikamentenetiketts in der
+          iOS-App geschieht auf dem Gerät. Aufnahme und Texterkennung nutzen
+          Apples geräteinternes Vision-Framework; weder das Foto noch der
+          erkannte Text werden irgendwohin gesendet. Sie prüfen die erkannten
+          Zeilen, und nur die Werte, die Sie speichern, landen in Ihrem
+          HealthLog-Konto, wie ein von Hand eingetragener Wert. Ein KI-Anbieter
+          ist an diesem Schritt nicht beteiligt.
+        </p>
+        <p>
+          Ein Ablagevorschlag, eine Zusammenfassung oder ein Chat zu einem
+          gespeicherten Dokument ist etwas anderes: Dabei geht der gespeicherte
+          Text dieses Dokuments über den HealthLog-Server an den auf der Instanz
+          eingerichteten KI-Anbieter, und zwar erst, wenn Sie der KI-Nutzung
+          zugestimmt und die Funktion aufgerufen haben.
+        </p>
+
+        <SubHeading>4.8 Geräte- und Integrationsdaten</SubHeading>
         <ul className="list-disc space-y-1 pl-5">
           <li>
             Eine Gerätekennung (zufällige UUID, auf dem Gerät erzeugt, im
@@ -574,7 +642,7 @@ export default function DatenschutzSeite() {
           </li>
         </ul>
 
-        <SubHeading>4.8 Sicherheit und Protokolle</SubHeading>
+        <SubHeading>4.9 Sicherheit und Protokolle</SubHeading>
         <ul className="list-disc space-y-1 pl-5">
           <li>
             Anmeldeereignisse: erfolgreiche und fehlgeschlagene Anmeldung,
@@ -597,7 +665,7 @@ export default function DatenschutzSeite() {
           </li>
         </ul>
 
-        <SubHeading>4.9 Nicht erhobene Daten</SubHeading>
+        <SubHeading>4.10 Nicht erhobene Daten</SubHeading>
         <ul className="list-disc space-y-1 pl-5">
           <li>
             Keine Werbekennungen Dritter, keine Fingerabdrücke, keine
@@ -712,7 +780,7 @@ export default function DatenschutzSeite() {
           <SubProcessor
             labels={LABELS}
             name="Anthropic, PBC"
-            role="Anbieter für KI-Coach und Insights, wenn Sie in den Einstellungen Anthropic Claude wählen. Setzt Ihre ausdrückliche KI-Einwilligung voraus."
+            role="Anbieter für KI-Coach und Insights, wenn Sie Anthropic Claude wählen. Erreicht über den HealthLog-Server oder direkt aus der iOS-App, wenn Sie dort einen eigenen Anthropic-Schlüssel eintragen; dann läuft die Anfrage nicht über den HealthLog-Server. Setzt Ihre ausdrückliche KI-Einwilligung voraus."
             data="Coach-Kontextpaket (Gesundheitskontext) und die Züge der Unterhaltung, für die Dauer der Anfrage."
             location="Vereinigte Staaten. Anthropic nennt ein Aufbewahrungsfenster von 30 Tagen zur Missbrauchskontrolle."
             policyUrl="https://www.anthropic.com/legal/privacy"
@@ -720,7 +788,7 @@ export default function DatenschutzSeite() {
           <SubProcessor
             labels={LABELS}
             name="OpenAI, L.L.C. (API-Schlüssel)"
-            role="Alternativer Anbieter für KI-Coach und Insights, wenn Sie ein OpenAI-Modell wählen. Setzt Ihre ausdrückliche KI-Einwilligung voraus."
+            role="Alternativer Anbieter für KI-Coach und Insights, wenn Sie ein OpenAI-Modell wählen. Erreicht über den HealthLog-Server oder direkt aus der iOS-App, wenn Sie dort einen eigenen OpenAI-Schlüssel eintragen. Setzt Ihre ausdrückliche KI-Einwilligung voraus."
             data="Coach-Kontextpaket in derselben Form wie bei Anthropic."
             location="Vereinigte Staaten. Die Aufbewahrung richtet sich nach der für den hinterlegten API-Schlüssel geltenden Regelung von OpenAI."
             policyUrl="https://openai.com/policies/privacy-policy"
@@ -732,6 +800,22 @@ export default function DatenschutzSeite() {
             data="Die OAuth-Token dieses ChatGPT-Kontos (verschlüsselt auf der Instanz gespeichert), die Kennung des ChatGPT-Kontos sowie dasselbe Coach-Kontextpaket und dieselben Gesprächszüge wie oben."
             location="Vereinigte Staaten. Die Nutzung fällt unter die Bedingungen Ihres eigenen ChatGPT-Tarifs."
             policyUrl="https://openai.com/policies/privacy-policy"
+          />
+          <SubProcessor
+            labels={LABELS}
+            name="Google LLC (Gemini API)"
+            role="Anbieter für KI-Coach und Insights, wenn Sie in der iOS-App einen eigenen Google-Gemini-Schlüssel eintragen. Die Anfrage geht direkt von der iOS-App an Gemini und läuft nicht über den HealthLog-Server. Setzt Ihre ausdrückliche KI-Einwilligung voraus. Getrennt vom Eintrag Google Health weiter unten."
+            data="Dasselbe Kontextpaket und dieselben Gesprächszüge wie oben, für die Dauer der Anfrage."
+            location="Vereinigte Staaten und weitere Länder, in denen Google Infrastruktur betreibt."
+            policyUrl="https://policies.google.com/privacy"
+          />
+          <SubProcessor
+            labels={LABELS}
+            name="Ein von Ihnen angegebener OpenAI-kompatibler Endpunkt"
+            role="Anbieter für KI-Coach und Insights, wenn Sie die iOS-App oder die Instanz auf einen eigenen OpenAI-kompatiblen HTTPS-Endpunkt richten, etwa ein selbst betriebenes Gateway. Das ist keine feste Firma: Ziel ist die Adresse, die Sie eintragen. Setzt Ihre ausdrückliche KI-Einwilligung voraus."
+            data="Dasselbe Kontextpaket und dieselben Gesprächszüge wie oben, dazu der API-Schlüssel, falls Sie einen hinterlegt haben."
+            location="Dort, wo der eingerichtete Endpunkt läuft."
+            policyUrl="https://docs.healthlog.dev/"
           />
           <SubProcessor
             labels={LABELS}
@@ -799,11 +883,27 @@ export default function DatenschutzSeite() {
           />
           <SubProcessor
             labels={LABELS}
+            name="WebDAV- oder Nextcloud-Server (Adresse von Ihnen angegeben)"
+            role="Optionales Abholen des geplanten Health-Connect-Exports, wenn Sie eine Ordneradresse eintragen. Die Instanz liest etwa alle sechs Stunden und auf Ihren Abruf hin eine Datei aus diesem Ordner. Der Server ist der, den Sie angeben, meist Ihre eigene Nextcloud."
+            data="Der WebDAV-Benutzername und das Passwort oder App-Passwort (auf der Instanz verschlüsselt gespeichert und nur an den Server gesendet, für den es eingetragen wurde) und bei jedem Abruf eine Leseanfrage für die Exportdatei. In den Ordner wird nichts geschrieben."
+            location="Wo Sie diesen Server betreiben."
+            policyUrl="https://docs.healthlog.dev/guides/import-health-connect/"
+          />
+          <SubProcessor
+            labels={LABELS}
             name="Apple, Inc."
             role="HealthKit (Speicher auf dem Gerät; Datensätze verlassen Gerät und iCloud nicht, solange Sie HealthLog keinen Lesezugriff erteilen) und Apple Push Notification service (bei aktivierten Benachrichtigungen)."
-            data="Der HealthKit-Zugriff bleibt lokal auf dem Gerät. APNs erhält ein Gerätetoken, die Bundle-Kennung der Anwendung und den Inhalt der Benachrichtigung."
+            data="Der HealthKit-Zugriff bleibt lokal auf dem Gerät. APNs erhält ein Gerätetoken, die Bundle-Kennung der Anwendung und den Inhalt der Benachrichtigung. Hat die App einen Schlüssel hinterlegt, ist der Inhalt ein für dieses Gerät verschlüsselter Umschlag mit einem neutralen Text."
             location="Vereinigte Staaten. HealthKit-Daten liegen auf Ihrem Gerät und in iCloud-verschlüsselten Sicherungen unter Ihrer Apple-ID."
             policyUrl="https://www.apple.com/legal/privacy/"
+          />
+          <SubProcessor
+            labels={LABELS}
+            name="HealthLog-Push-Relay (push.healthlog.dev)"
+            role="Optionale Zustellung von Benachrichtigungen an die HealthLog-iPhone-App aus dem App Store, für eine Instanz ohne eigenen Apple-Push-Schlüssel. Aus, bis der Betreiber einer Instanz es einschaltet, und dann nur für Personen, die es in der App einschalten. Betrieben vom Entwickler des HealthLog-Projekts als eigenständig Verantwortlicher für die Metadaten des Relays."
+            data="Ein auf der Instanz für ein Gerät verschlüsselter Umschlag, den das Relay nicht öffnen kann, und die in Abschnitt 6.1 beschriebenen Zustelldaten. Keine Gesundheitsdaten, Namen oder Kontodaten."
+            location="Deutschland."
+            policyUrl="https://push.healthlog.dev/privacy"
           />
           <SubProcessor
             labels={LABELS}
@@ -880,8 +980,8 @@ export default function DatenschutzSeite() {
           <SubProcessor
             labels={LABELS}
             name="Der Kalenderdienst, mit dem Sie abonnieren (optional)"
-            role="Zyklusprognose als Kalender-Abo, ausgeschaltet, bis die Person, der die Akte gehört, oder bei einem betreuten Profil die Betreuungsperson es einschaltet. Sie tragen einen privaten Feed-Link in eine Kalender-App Ihrer Wahl ein, etwa Google Kalender, Apple iCloud-Kalender oder Microsoft Outlook. Dieser Dienst holt den Feed in eigenem Takt von der Instanz ab und behält eine Kopie. Der Link lässt sich jederzeit erneuern oder abschalten; eine Passwortänderung oder ein Löschantrag schaltet ihn ab."
-            data="Die geschätzten Startfenster der nächsten Zyklen und, wenn Sie es einschalten, vergangene Zyklen und das fruchtbare Fenster. Termine heißen nur „●“, solange Sie keine beschreibenden Titel wählen. Keine Symptome, Notizen oder andere Einträge, und außer dem geheimen Link selbst keine Kontokennung."
+            role="Zyklusprognose und seit Version 1.49.0 gebuchte Termine, fällige Vorsorgeuntersuchungen und Auffrischimpfungen als Kalender-Abos, jedes ausgeschaltet, bis die Person, der die Akte gehört, oder bei einem betreuten Profil die Betreuungsperson es einschaltet. Sie tragen einen privaten Feed-Link in eine Kalender-App Ihrer Wahl ein, etwa Google Kalender, Apple iCloud-Kalender oder Microsoft Outlook. Dieser Dienst holt den Feed in eigenem Takt von der Instanz ab und behält eine Kopie. Der Link lässt sich jederzeit erneuern oder abschalten; eine Passwortänderung oder ein Löschantrag schaltet ihn ab."
+            data="Beim Zyklus-Abo die geschätzten Startfenster der nächsten Zyklen und, wenn Sie es einschalten, vergangene Zyklen und das fruchtbare Fenster. Beim Termin-Abo die Daten gebuchter Termine, Vorsorgeuntersuchungen und Auffrischungen, nie der Grund oder das Ergebnis eines Termins. Termine heißen nur „●“, solange Sie keine beschreibenden Titel wählen. Keine Symptome, Notizen oder andere Einträge, und außer dem geheimen Link selbst keine Kontokennung."
             location="Wo der gewählte Kalenderdienst Kalender speichert. HealthLog kontaktiert den Dienst nicht, sondern beantwortet nur dessen Abrufe des Feeds."
             policyUrl="https://docs.healthlog.dev/guides/cycle-calendar-feed/"
           />
@@ -906,6 +1006,90 @@ export default function DatenschutzSeite() {
           OpenID-Connect-Identitätsanbieter. Welche davon eine Instanz nutzt,
           entscheidet der Betreiber und legt es selbst offen.
         </p>
+
+        <SubHeading>6.1 Das HealthLog-Push-Relay</SubHeading>
+        <p>
+          Das Push-Relay unter <Code>push.healthlog.dev</Code> stellt
+          Benachrichtigungen einer selbst betriebenen Instanz an die
+          HealthLog-iPhone-App aus dem App Store zu. Apple nimmt solche
+          Benachrichtigungen nur an, wenn sie mit dem Schlüssel des Kontos
+          signiert sind, das die App veröffentlicht. Betrieben wird das Relay
+          vom Entwickler des HealthLog-Projekts (siehe Impressum) als
+          eigenständig Verantwortlichem für die Metadaten des Relays, auf einem
+          Server in Deutschland, gemietet bei der Hetzner Online GmbH, die dabei
+          auf Grundlage eines Vertrags zur Auftragsverarbeitung (Art. 28 DSGVO)
+          tätig ist. Maßgeblich ist seine eigene Datenschutzerklärung unter{" "}
+          <ExternalLink href="https://push.healthlog.dev/privacy">
+            push.healthlog.dev/privacy
+          </ExternalLink>
+          ; dieser Abschnitt fasst sie zusammen.
+        </p>
+        <p>
+          Die Zustimmung erfolgt zweimal. Über das Relay geht nichts, bis der
+          Administrator einer Instanz es einschaltet; dafür muss er die
+          Bedingungen des Relays annehmen und bestätigen, dass er die Instanz
+          privat für sich oder seinen Haushalt betreibt. Danach entscheidet jede
+          Person auf ihrem eigenen iPhone, und nur deren Geräte werden
+          angebunden. Sie widerrufen, indem Sie das Relay in der App
+          ausschalten; die App meldet das direkt dem Relay, und die Anbindung
+          des Geräts wird sofort gelöscht, auch wenn die Instanz gerade nicht
+          erreichbar ist. Schaltet der Administrator das Relay aus, wird die
+          Instanz beim Relay mit allen Geräteanbindungen gelöscht.
+        </p>
+        <p>
+          Was das Relay erhält: das APNs-Token des Geräts, während es eine
+          Benachrichtigung weiterleitet, einen Hash des Anbindungsschlüssels,
+          den die App erzeugt hat, Fassung und Tag Ihrer Zustimmung für diese
+          Instanz, Kennung, öffentlichen Schlüssel und gemeldete Softwareversion
+          der Instanz und je Benachrichtigung ihre Art, ihre feste Größe und den
+          Zeitpunkt des Versands. Der Inhalt jeder Mitteilung und jeder
+          Hintergrundbenachrichtigung wird auf der Instanz Ende zu Ende für das
+          eine Gerät verschlüsselt, für das er bestimmt ist, und das Relay hat
+          keinen Schlüssel, der ihn öffnet. Die Adresse der Instanz, und die des
+          Geräts, wenn die App direkt mit dem Relay spricht, wird nur im
+          Arbeitsspeicher gehalten und weder gespeichert noch protokolliert.
+        </p>
+        <p>
+          Eine Live-Aktivität auf dem Sperrbildschirm lässt sich so nicht
+          verschlüsseln. Sie über das Relay von der Instanz aus zu starten und
+          zu aktualisieren, braucht eine zweite, eigene Zustimmung auf dem Gerät
+          und eine Einstellung des Administrators; beides ist ab Werk aus. Mit
+          dieser Zustimmung können das Relay und Apple den angezeigten Zustand
+          jedes Starts und jeder Aktualisierung lesen: den Stand einer Dosis,
+          ihren Countdown und das Zeitformat, nie einen Medikamentennamen, eine
+          Dosis oder freien Text. Ohne sie kann die Instanz eine Live-Aktivität
+          nur beenden, und das Relay sieht nichts von ihrem Inhalt.
+        </p>
+        <p>
+          Apple stellt jede Benachrichtigung zu, sieht das Gerätetoken, die Art
+          der Benachrichtigung und den Zeitpunkt der Zustellung und kann das
+          Token einer Apple-ID zuordnen. Den Zeitpunkt kann keine
+          Verschlüsselung verbergen: Er kann zum Beispiel verraten, dass in
+          diesem Moment auf einem anderen Gerät eine Einnahme erfasst wurde.
+        </p>
+        <p>
+          Speicherdauer: Das Token speichert das Relay nur als Hash mit geheimem
+          Schlüssel. Eine Geräteanbindung wird gelöscht, wenn Sie widerrufen,
+          wenn die Instanz sie entfernt oder das Relay verlässt, wenn Apple das
+          Token als ungültig meldet oder nach etwa 13 Wochen ohne
+          Benachrichtigung. Der Eintrag einer Instanz, die nie etwas zugestellt
+          hat, wird nach zwei Tagen gelöscht, einer ohne Kontakt nach etwa 13
+          Wochen. Tageszähler je Instanz werden 7 Tage aufbewahrt, Tagessummen
+          für das ganze Relay ohne Instanz oder Gerät 400 Tage. Widerrufen Sie
+          direkt in der App, wird ein Hash aus Gerätetoken und Instanz 365 Tage
+          aufbewahrt, damit diese Instanz das Gerät nicht erneut anbinden kann,
+          solange Sie das Relay für sie nicht wieder einschalten. Ein
+          Zugriffsprotokoll führt das Relay nicht. In den Relay-Einstellungen
+          der App sehen Sie, was das Relay über das Gerät gespeichert hat.
+          Fragen zum Relay richten Sie an{" "}
+          <a
+            href="mailto:privacy@healthlog.dev"
+            className="text-purple hover:text-cyan underline-offset-2 hover:underline"
+          >
+            privacy@healthlog.dev
+          </a>
+          .
+        </p>
       </Section>
 
       <Section
@@ -913,6 +1097,19 @@ export default function DatenschutzSeite() {
         title="7. Speicherung, Verschlüsselung, Aufbewahrung"
       >
         <ul className="list-disc space-y-1 pl-5">
+          <li>
+            <span className="text-text-primary font-medium">
+              Kein iCloud, kein CloudKit.
+            </span>{" "}
+            HealthLog legt keine eigenen Daten in iCloud oder CloudKit ab. Die
+            Server-Datenbank bleibt auf dem Server des Betreibers. Die lokalen
+            Speicher der iOS-App (Caches, die Offline-Warteschlange,
+            Coach-Nachrichten) liegen im App-Speicher mit abgeschaltetem
+            CloudKit, und sensible lokale Dateien sind von der Gerätesicherung
+            ausgenommen. Apple Health kann HealthKit-Daten über Ihre eigenen
+            iCloud-Einstellungen synchronisieren; das ist Apples Verhalten,
+            keine Speicherung durch HealthLog.
+          </li>
           <li>
             Primärer Datenspeicher: PostgreSQL auf dem Server des Betreibers.
             Sensible Spalten sind einzeln mit AES-256-GCM verschlüsselt, unter

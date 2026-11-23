@@ -197,6 +197,18 @@ const meta: LearnMeta = {
       description:
         "Cómo el calor, la altitud y la contaminación del aire cambian tu frecuencia cardíaca en reposo, tu sueño, tu respiración y tu oxígeno en sangre, por qué esos cambios son información y no avería, y cómo leer tus datos frente al entorno en lugar de en el vacío.",
     },
+    "energy-balance-and-your-daily-burn": {
+      title: "Balance energético: lo que tu gasto diario puede decirte",
+      dek: "Calorías que entran menos calorías que salen suena exacto. Los dos lados son estimaciones, y leer el balance como una tendencia es lo que lo hace útil.",
+      description:
+        "De qué se compone el gasto energético total diario, cómo se estima la energía en reposo, qué precisión tienen las cifras de calorías de los ponibles, por qué la ingesta registrada tiende a quedarse baja, por qué el peso va por detrás de la aritmética y cómo leer tu propio balance energético como una tendencia.",
+    },
+    "one-dose-two-devices": {
+      title: "Una dosis, dos dispositivos",
+      dek: "Cuando un móvil, un reloj y un pastillero llevan la cuenta de tu medicación, tienen que ponerse de acuerdo sobre lo que se ha tomado, o un recordatorio invita a una segunda dosis.",
+      description:
+        "Por qué ayudan los recordatorios de medicación, cómo varios dispositivos que siguen la misma medicación pueden no coincidir, qué hace falta para que se pongan de acuerdo sobre una dosis y qué hacer con una dosis que no estás seguro de haber tomado.",
+    },
   },
 };
 

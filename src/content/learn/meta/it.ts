@@ -198,6 +198,18 @@ const meta: LearnMeta = {
       description:
         "Come caldo, altitudine e inquinamento dell'aria cambiano la frequenza cardiaca a riposo, il sonno, il respiro e l'ossigeno nel sangue, perché quegli scostamenti sono informazione anziché malfunzionamento e come leggere i tuoi dati a confronto con l'ambiente invece che nel vuoto.",
     },
+    "energy-balance-and-your-daily-burn": {
+      title: "Bilancio energetico: cosa può dirti il tuo consumo quotidiano",
+      dek: "Calorie in entrata meno calorie in uscita sembra un conto esatto. Entrambi i lati sono stime, ed è leggere il bilancio come un andamento a renderlo utile.",
+      description:
+        "Di cosa è fatto il dispendio energetico totale giornaliero, come si stima l'energia a riposo, quanto sono accurate le calorie dei dispositivi indossabili, perché l'apporto registrato tende a risultare basso, perché il peso resta indietro rispetto ai conti e come leggere il tuo bilancio energetico come un andamento.",
+    },
+    "one-dose-two-devices": {
+      title: "Una dose, due dispositivi",
+      dek: "Quando telefono, orologio e portapillole tengono tutti traccia dei tuoi farmaci, devono essere d'accordo su ciò che è stato preso, altrimenti un promemoria invita a una seconda dose.",
+      description:
+        "Perché i promemoria per i farmaci aiutano, come più dispositivi che seguono lo stesso farmaco possono non essere d'accordo, cosa serve perché concordino su una dose e cosa fare con una dose che non sei sicuro di aver preso.",
+    },
   },
 };
 

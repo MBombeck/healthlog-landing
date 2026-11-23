@@ -84,6 +84,8 @@ export const LEARN_ARTICLES: LearnArticle[] = [
   { slug: "waist-and-central-fat", category: "body", readingTimeMin: 7, knowledgeSlug: "waist-circumference", tags: ["waist", "WHtR", "visceral fat", "metabolic health"] },
   { slug: "grip-strength-as-a-vital-sign", category: "fitness", readingTimeMin: 7, knowledgeSlug: "grip-strength", tags: ["grip strength", "strength", "sarcopenia", "longevity"] },
   { slug: "weather-altitude-and-your-body", category: "foundations", readingTimeMin: 7, knowledgeSlug: "environment", tags: ["heat", "altitude", "air quality", "environment"] },
+  { slug: "energy-balance-and-your-daily-burn", category: "metabolic", readingTimeMin: 8, knowledgeSlug: null, tags: ["energy balance", "TDEE", "calories", "metabolism"], publishedAt: "2026-11-21", updatedAt: "2026-11-21" },
+  { slug: "one-dose-two-devices", category: "foundations", readingTimeMin: 7, knowledgeSlug: null, tags: ["medication", "adherence", "reminders", "sync"], publishedAt: "2026-11-21", updatedAt: "2026-11-21" },
 ];
 
 export const LEARN_SLUGS = LEARN_ARTICLES.map((a) => a.slug);

@@ -503,5 +503,41 @@ export const FAQ: Record<string, { q: string; a: string }[]> = {
       a: "Letto come segnale relativo, un rialzo piccolo e sostenuto per una o due notti può essere un primo, aspecifico segnale di malattia, specie insieme a una frequenza cardiaca a riposo in salita e a una variabilità della frequenza cardiaca in calo. Per chiunque abbia il ciclo, uno spostamento costante lungo una parte del mese spesso rispecchia il rialzo di temperatura della fase luteale. È un andamento rispetto alle tue stesse notti, onesto su quanto poco significhi una singola notte.",
     },
   ],
+  "energy-balance-and-your-daily-burn": [
+    {
+      q: "Che cos'è il TDEE?",
+      a: "Il dispendio energetico totale giornaliero: tutto ciò che il tuo corpo brucia in un giorno. Ha tre componenti: il metabolismo a riposo, che ti tiene in vita a riposo ed è la quota più grande per chi non è molto attivo; l'energia che spendi muovendoti; e l'effetto termico del cibo, circa il 5-15 per cento della giornata con una dieta mista.",
+    },
+    {
+      q: "Quanto sono accurate le calorie indicate da un orologio?",
+      a: "Meno accurate dei dati sulla frequenza cardiaca. In uno studio di laboratorio su sette dispositivi da polso, nessuno stimava il dispendio energetico con un errore inferiore al 20 per cento, e una meta-analisi di 60 studi ha rilevato che l'accuratezza varia molto con il tipo di attività. Confronta le calorie attive di un dispositivo con quelle dello stesso dispositivo nel tempo e considera un nuovo dispositivo come un nuovo punto di partenza.",
+    },
+    {
+      q: "Come si stima l'energia a riposo senza un esame di laboratorio?",
+      a: "Di solito con un'equazione basata su peso, altezza, età e sesso. Una revisione sistematica ha trovato l'equazione di Mifflin-St Jeor la più affidabile tra quelle comuni: ha predetto il metabolismo a riposo entro il 10 per cento del valore misurato in più persone di qualsiasi altra. Per il singolo è un buon punto di partenza, non una misurazione.",
+    },
+    {
+      q: "Il mio bilancio dice deficit ma il peso non si muove. Perché?",
+      a: "Le ragioni abituali sono le lacune nelle annotazioni, perché l'apporto tende a essere registrato basso; l'errore del dispositivo nelle calorie attive; e l'adattamento del corpo stesso, perché il dispendio scende quando scende il peso e il peso risponde lentamente a un cambiamento dell'apporto. Nell'arco di diverse settimane, l'andamento del peso è il più affidabile dei due numeri.",
+    },
+  ],
+  "one-dose-two-devices": [
+    {
+      q: "Perché il telefono continua a ricordarmelo dopo che ho preso il farmaco?",
+      a: "Perché il telefono non lo sa ancora. Se la dose è stata registrata su un altro dispositivo, in un portapillole o in un'altra app, il telefono smette di ricordartela solo quando quella registrazione lo raggiunge. Una configurazione in cui ogni dispositivo scrive in un unico registro condiviso, e gli altri vengono avvisati quando una dose è registrata, evita il promemoria in più.",
+    },
+    {
+      q: "Non sono sicuro di aver già preso la dose. Devo prenderne un'altra?",
+      a: "Non solo per sicurezza. Nell'UE i foglietti illustrativi seguono un modello la cui formula standard è di non prendere una dose doppia per compensare quella dimenticata, e il foglietto del tuo farmaco dice cosa fare dopo una dose saltata. Nel dubbio, chiedi al farmacista o a chi ti ha prescritto il farmaco.",
+    },
+    {
+      q: "I promemoria per i farmaci aiutano davvero?",
+      a: "Sì. Una meta-analisi di sedici studi randomizzati ha rilevato che i promemoria via SMS hanno all'incirca raddoppiato le probabilità di prendere i farmaci come prescritto, il che corrisponde a un'aderenza che sale da circa il 50 a circa il 68 per cento. È anche il motivo per cui un promemoria per una dose già presa conta: invita all'azione sbagliata.",
+    },
+    {
+      q: "Cosa dovrebbe succedere quando due dispositivi segnalano la stessa dose?",
+      a: "Dovrebbe contare come una sola dose. L'apertura di un portapillole e un tocco sul telefono per la stessa dose programmata sono lo stesso evento visto due volte, quindi un sistema accurato non registra nulla di nuovo per la seconda segnalazione, anziché aggiungere una seconda dose o spostarla a una successiva.",
+    },
+  ],
 };
 export default FAQ;
