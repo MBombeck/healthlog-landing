@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Local maintainer scratch notes — never publish
 .notes/
+
+# generated at build time
+/csp-hashes.conf
