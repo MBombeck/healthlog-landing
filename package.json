@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/gen-image-variants.mjs && next build && node scripts/fix-html-lang.mjs",
+    "build": "node scripts/gen-image-variants.mjs && next build && node scripts/fix-html-lang.mjs && node scripts/csp-hashes.mjs out csp-hashes.conf",
     "start": "next start",
     "lint": "eslint"
   },

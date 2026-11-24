@@ -19,6 +19,9 @@ RUN pnpm build
 FROM nginx:alpine
 
 COPY --from=builder /app/out /usr/share/nginx/html
+# Per-page script hashes for the CSP (scripts/csp-hashes.mjs). conf.d is
+# included in the http context, where the map has to live.
+COPY --from=builder /app/csp-hashes.conf /etc/nginx/conf.d/csp-hashes.conf
 
 # Custom nginx config for SPA.
 #
@@ -66,7 +69,7 @@ server { \
     add_header X-Frame-Options "DENY" always; \
     add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always; \
     add_header Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()" always; \
-    add_header Content-Security-Policy "default-src '"'"'self'"'"'; img-src '"'"'self'"'"' data:; style-src '"'"'self'"'"' '"'"'unsafe-inline'"'"'; font-src '"'"'self'"'"'; script-src '"'"'self'"'"' '"'"'unsafe-inline'"'"'; connect-src '"'"'self'"'"'; frame-ancestors '"'"'none'"'"'; base-uri '"'"'self'"'"'; form-action '"'"'self'"'"'" always; \
+    add_header Content-Security-Policy "default-src '"'"'self'"'"'; img-src '"'"'self'"'"' data:; style-src '"'"'self'"'"' '"'"'unsafe-inline'"'"'; font-src '"'"'self'"'"'; script-src '"'"'self'"'"' $csp_script_hashes; object-src '"'"'none'"'"'; connect-src '"'"'self'"'"'; frame-ancestors '"'"'none'"'"'; base-uri '"'"'self'"'"'; form-action '"'"'self'"'"'" always; \
     \
     location = /.well-known/apple-app-site-association { \
         default_type application/json; \
